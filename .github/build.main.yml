@@ -88,7 +88,7 @@ stages:
 
       - job: Build
         variables:
-          PythonWrapperBaseDirectory: "$(Build.SourcesDirectory)/wraps/python"
+          PythonWrapperBaseDirectory: "$(Build.SourcesDirectory)"
           ImageName: "ubuntu-latest"
           DotNetVersion: "netstandard2.0"
           PythonVersion: "3.8"
@@ -141,7 +141,7 @@ stages:
             inputs:
               SourceFolder: "$(PythonWrapperBaseDirectory)/dist"
               Contents: "**"
-              TargetFolder: "$(Build.ArtifactStagingDirectory)/wraps/python"
+              TargetFolder: "$(Build.ArtifactStagingDirectory)"
               CleanTargetFolder: true
               OverWrite: true
               flattenFolders: true
@@ -149,5 +149,5 @@ stages:
           - task: PublishBuildArtifacts@1
             displayName: "Save artifacts"
             inputs:
-              PathToPublish: "$(Build.ArtifactStagingDirectory)/wraps/python"
+              PathToPublish: "$(Build.ArtifactStagingDirectory)"
               ArtifactName: packages
