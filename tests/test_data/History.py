@@ -7,7 +7,7 @@ from SkenderStockIndicators.indicators.common import Quote
 class HistoryTestData:
     def __init__(self):
         dir = os.path.dirname(__file__)
-        data_path = os.path.join(dir, "../../../../tests/indicators/test data/History.xlsx")
+        data_path = os.path.join(dir, "History.xlsx")
         self.wb = load_workbook(data_path, data_only=True)
 
     def get(self, days: int = 502):
