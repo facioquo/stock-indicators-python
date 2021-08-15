@@ -1,2 +1,5 @@
-from .Quote import Quote
-from .ResultBase import ResultBase
+from .quote import Quote
+from .wrappers import (
+    ResultBase,
+    IndicatorResults
+)
