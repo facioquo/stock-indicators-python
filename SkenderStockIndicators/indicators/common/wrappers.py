@@ -31,7 +31,7 @@ class IndicatorResults(list):
         """
         Check whether _csdata can be passed to extension method.    
         """
-        def decorator(self, *args):
+        def verify_data(self, *args):
             if not isinstance(self._csdata, list) or len(self._csdata) < 1:
                 raise ValueError("Can't remove from empty result.")
 
@@ -42,7 +42,7 @@ class IndicatorResults(list):
 
             return func(self, *args)
 
-        return decorator
+        return verify_data
 
     
     @_verify_data
