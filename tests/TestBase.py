@@ -8,8 +8,8 @@ class TestBase(unittest.TestCase):
     def setUpClass(cls):
         cls.data_reader = HistoryTestData()
         cls.quotes = cls.data_reader.get()
-        cls.history_other = cls.data_reader.get_compare()
-        cls.history_bad = cls.data_reader.get_bad()
+        cls.other_quotes = cls.data_reader.get_compare()
+        cls.bad_quotes = cls.data_reader.get_bad()
 
         cls.converge_quantities = (5, 20, 30, 50, 75, 100, 120, 150, 200, 250, 350, 500, 600, 700, 800, 900, 1000)
 
@@ -17,5 +17,5 @@ class TestBase(unittest.TestCase):
     def tearDownClass(cls):
         cls.data_reader = None
         cls.quotes = None
-        cls.history_other = None
-        cls.history_bad = None
+        cls.other_quotes = None
+        cls.bad_quotes = None

@@ -1,7 +1,7 @@
-from .TestBase import TestBase
+from tests.TestBase import TestBase
 from SkenderStockIndicators import indicators
 
-class TestSma(TestBase):
+class TestSMA(TestBase):
 
     def test_standard(self):
         results = indicators.get_sma(self.quotes, 20)
@@ -36,7 +36,7 @@ class TestSma(TestBase):
     #     self.assertEqual(0.037637, round(float(r.Mape), 6))
 
     def test_bad_data(self):
-        results = indicators.get_sma_extended(self.quotes, 15)
+        results = indicators.get_sma_extended(self.bad_quotes, 15)
 
         self.assertEqual(502, len(results))
 
