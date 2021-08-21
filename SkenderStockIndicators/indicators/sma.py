@@ -1,6 +1,6 @@
 from Skender.Stock.Indicators import Indicator
 from SkenderStockIndicators._cstypes import List, to_pydecimal
-from SkenderStockIndicators.indicators.common.wrappers import IndicatorResults, ResultBase
+from SkenderStockIndicators.indicators.common.results import IndicatorResults, ResultBase
 from SkenderStockIndicators.indicators.common.quote import Quote
 
 

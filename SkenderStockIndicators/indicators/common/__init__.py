@@ -1,5 +1,5 @@
 from .quote import Quote
-from .wrappers import (
+from .results import (
     ResultBase,
     IndicatorResults
 )
