@@ -1,5 +1,5 @@
 from datetime import datetime as PyDateTime
-from typing import Type
+from typing import List, Type, TypeVar
 from Skender.Stock.Indicators import Indicator as CsIndicator
 from Skender.Stock.Indicators import ResultBase as CsResultBase
 from SkenderStockIndicators._cstypes import DateTime as CsDateTime
@@ -17,16 +17,21 @@ class ResultBase:
         self.Date = to_pydatetime(base_result.Date)
 
 
-class IndicatorResults(list):
+T = TypeVar("T", bound=ResultBase)
+class IndicatorResults(List[T]):
     """
     A base wrapper class for the list of results. It provides helper methods written in CSharp implementation.
     """
-
-    def __init__(self, data, wrapper_class: Type[ResultBase]):
+    def __init__(self, data: List, wrapper_class: Type[T]):
         super().__init__([ wrapper_class(i) for i in data ])
         self._csdata = data
         self._wrapper_class = wrapper_class
 
+    def __add__(self, other: Type["IndicatorResults"]):
+        return self.__class__(self._csdata.__add__(other._csdata), self._wrapper_class)
+
+    def __mul__(self, other: Type["IndicatorResults"]):
+        return self.__class__(self._csdata.__mul__(other._csdata), self._wrapper_class)
 
     def _verify_data(func):
         """
@@ -34,7 +39,7 @@ class IndicatorResults(list):
         """
         def verify_data(self, *args):
             if not isinstance(self._csdata, list) or len(self._csdata) < 1:
-                raise ValueError("Can't remove from empty result.")
+                raise ValueError(f"Cannot {func.__name__}() an empty result.")
 
             if not isinstance(self._csdata[0], CsResultBase):
                 raise TypeError(
@@ -45,7 +50,6 @@ class IndicatorResults(list):
 
         return verify_data
 
-    
     @_verify_data
     def find(self, lookup_date: PyDateTime) -> Type[ResultBase]:
         if not isinstance(lookup_date, PyDateTime):
@@ -56,7 +60,6 @@ class IndicatorResults(list):
         result = CsIndicator.Find(CsList(type(self._csdata[0]), self._csdata), CsDateTime(lookup_date))
         return self._wrapper_class(result)
 
-
     @_verify_data
     def remove_warmup_periods(self, remove_periods: int):
         if not isinstance(remove_periods, int):
@@ -66,7 +69,6 @@ class IndicatorResults(list):
 
         removed_results = CsIndicator.RemoveWarmupPeriods[CsResultBase](CsList(type(self._csdata[0]), self._csdata), remove_periods)
         return self.__class__(removed_results, self._wrapper_class)
-
 
     @_verify_data
     def remove_periods(self, remove_periods: int):

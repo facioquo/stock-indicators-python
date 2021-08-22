@@ -23,6 +23,7 @@ class SMAResult(ResultBase):
         super().__init__(sma_result)
         self.Sma = to_pydecimal(sma_result.Sma)
 
+
 class SMAExtendedResult(SMAResult):
     def __init__(self, sma_extended_result):
         super().__init__(sma_extended_result)
@@ -31,7 +32,7 @@ class SMAExtendedResult(SMAResult):
         self.Mape = to_pydecimal(sma_extended_result.Mape)
 
 
-class SMAResults(IndicatorResults):
+class SMAResults(IndicatorResults[SMAResult]):
     """
     A wrapper class for the list of SMA results. It is exactly same with built-in `list`
     except for that it provides some useful helper methods written in CSharp implementation.
@@ -41,6 +42,7 @@ class SMAResults(IndicatorResults):
         super().__init__(data, wrapper_class)
 
     
+    # For overloading.
     # @overload
     # def remove_warmup_periods(self) -> "SMAResults": ...
     # @overload
