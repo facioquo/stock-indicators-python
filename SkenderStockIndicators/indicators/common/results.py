@@ -1,9 +1,9 @@
 from datetime import datetime as PyDateTime
 from typing import Type
-from SkenderStockIndicators._cstypes import DateTime as CsDateTime
-from SkenderStockIndicators._cstypes import List as CsList
 from Skender.Stock.Indicators import Indicator as CsIndicator
 from Skender.Stock.Indicators import ResultBase as CsResultBase
+from SkenderStockIndicators._cstypes import DateTime as CsDateTime
+from SkenderStockIndicators._cstypes import List as CsList
 from SkenderStockIndicators._cstypes import to_pydatetime
 
 
@@ -19,18 +19,18 @@ class ResultBase:
 
 class IndicatorResults(list):
     """
-    A base wrapper class for the list of results. It provides extension methods written in CSharp implementation.
+    A base wrapper class for the list of results. It provides helper methods written in CSharp implementation.
     """
 
     def __init__(self, data, wrapper_class: Type[ResultBase]):
-        super(IndicatorResults, self).__init__([ wrapper_class(i) for i in data ])
+        super().__init__([ wrapper_class(i) for i in data ])
         self._csdata = data
         self._wrapper_class = wrapper_class
 
 
     def _verify_data(func):
         """
-        Check whether _csdata can be passed to extension method.    
+        Check whether _csdata can be passed to helper method.    
         """
         def verify_data(self, *args):
             if not isinstance(self._csdata, list) or len(self._csdata) < 1:
@@ -59,11 +59,15 @@ class IndicatorResults(list):
 
     @_verify_data
     def remove_warmup_periods(self, remove_periods: int):
-        removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata), remove_periods)
-        return IndicatorResults(removed_results, self._wrapper_class)
+        if not isinstance(remove_periods, int):
+            raise TypeError(
+                "remove_periods must be an integer."
+            )
+
+        removed_results = CsIndicator.RemoveWarmupPeriods[CsResultBase](CsList(type(self._csdata[0]), self._csdata), remove_periods)
+        return self.__class__(removed_results, self._wrapper_class)
 
 
-    # TODO: Should change its name, because of duplicated method name with builtin list class.
     @_verify_data
     def remove_periods(self, remove_periods: int):
         if not isinstance(remove_periods, int):
@@ -71,7 +75,7 @@ class IndicatorResults(list):
                 "remove_periods must be an integer."
             )
 
-        removed_results = CsIndicator.Remove(CsList(type(self._csdata[0]), self._csdata), remove_periods)
-        return IndicatorResults(removed_results, self._wrapper_class)
+        removed_results = CsIndicator.Remove[CsResultBase](CsList(type(self._csdata[0]), self._csdata), remove_periods)
+        return self.__class__(removed_results, self._wrapper_class)
 
     

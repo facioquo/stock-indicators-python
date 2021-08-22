@@ -10,6 +10,6 @@ from .common import (
 from .sma import (
     get_sma,
     get_sma_extended,
-    SmaResult,
-    SmaExtendedResult
+    SMAResult,
+    SMAExtendedResult
 )
