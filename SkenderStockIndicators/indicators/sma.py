@@ -1,4 +1,4 @@
-from typing import Optional, Type
+from typing import Iterable, Optional, Type
 from Skender.Stock.Indicators import Indicator
 from SkenderStockIndicators._cstypes import List as CsList
 from SkenderStockIndicators._cstypes import to_pydecimal
@@ -6,13 +6,16 @@ from SkenderStockIndicators.indicators.common.results import IndicatorResults, R
 from SkenderStockIndicators.indicators.common.quote import Quote
 
 
-def get_sma(quotes, lookbackPeriods: int):
-    sma_list = Indicator.GetSma[Quote](CsList(Quote, quotes), lookbackPeriods)
+def get_sma(quotes: Iterable[Quote], lookback_periods: int):
+    sma_list = Indicator.GetSma[Quote](CsList(Quote, quotes), lookback_periods)
     return SMAResults(sma_list, SMAResult)
 
-def get_sma_extended(quotes, lookbackPeriods: int):
-    sma_extended_list = Indicator.GetSmaExtended[Quote](CsList(Quote, quotes), lookbackPeriods)
+def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):
+    sma_extended_list = Indicator.GetSmaExtended[Quote](CsList(Quote, quotes), lookback_periods)
     return SMAResults(sma_extended_list, SMAExtendedResult)
+
+def validate_sma(quotes: Iterable[Quote], lookback_periods: int) -> None:
+    Indicator.ValidateSma[Quote](CsList(Quote, quotes), lookback_periods) 
 
 
 class SMAResult(ResultBase):
