@@ -7,9 +7,12 @@ from .common import (
 )
 '''
 
+from .adl import (
+    get_adl
+)
+
 from .sma import (
     get_sma,
     get_sma_extended,
-    SMAResult,
-    SMAExtendedResult
+    validate_sma
 )
