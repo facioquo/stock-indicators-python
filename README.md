@@ -19,13 +19,14 @@ Explore more information:
 
 ### Example usage
 
-```csharp
-using Skender.Stock.Indicators;
+```python
+from SkenderStockIndicators import indicators
 
-[..]  // prerequisite: get historical quotes from your own source
+# prerequisite: get historical quotes from your own source
+quotes = get_historical_quotes()
 
-// example: get 20-period simple moving average
-IEnumerable<SmaResult> results = quotes.GetSma(20);
+# example: get 20-period simple moving average
+results = indicators.get_sma(quotes, 20)
 ```
 
 See the [guide](docs/GUIDE.md) and the [full list of indicators and overlays](docs/INDICATORS.md) for more information.
