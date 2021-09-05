@@ -37,7 +37,7 @@ class TestADL(TestBase):
 
 
     def test_bad_data(self):
-        results = indicators.get_adl(self.history_bad)
+        results = indicators.get_adl(self.bad_quotes)
 
         self.assertEqual(502, len(results))
     
