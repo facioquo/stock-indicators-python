@@ -12,7 +12,7 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int):
 
 def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):
     sma_extended_list = Indicator.GetSmaExtended[Quote](CsList(Quote, quotes), lookback_periods)
-    return SMAResults(sma_extended_list, SMAExtendedResult)
+    return SMAExtendedResults(sma_extended_list, SMAExtendedResult)
 
 def validate_sma(quotes: Iterable[Quote], lookback_periods: int) -> None:
     Indicator.ValidateSma[Quote](CsList(Quote, quotes), lookback_periods) 
@@ -22,15 +22,6 @@ class SMAResult(ResultBase):
     def __init__(self, sma_result):
         super().__init__(sma_result)
         self.Sma = to_pydecimal(sma_result.Sma)
-
-
-class SMAExtendedResult(SMAResult):
-    def __init__(self, sma_extended_result):
-        super().__init__(sma_extended_result)
-        self.Mad = to_pydecimal(sma_extended_result.Mad)
-        self.Mse = to_pydecimal(sma_extended_result.Mse)
-        self.Mape = to_pydecimal(sma_extended_result.Mape)
-
 
 class SMAResults(IndicatorResults[SMAResult]):
     """
@@ -57,3 +48,28 @@ class SMAResults(IndicatorResults[SMAResult]):
 
         return self.__class__(removed_results, self._wrapper_class)
 
+class SMAExtendedResult(SMAResult):
+    def __init__(self, sma_extended_result):
+        super().__init__(sma_extended_result)
+        self.Mad = to_pydecimal(sma_extended_result.Mad)
+        self.Mse = to_pydecimal(sma_extended_result.Mse)
+        self.Mape = to_pydecimal(sma_extended_result.Mape)
+
+class SMAExtendedResults(IndicatorResults[SMAExtendedResult]):
+    """
+    A wrapper class for the list of SMA-Extended results. It is exactly same with built-in `list`
+    except for that it provides some useful helper methods written in CSharp implementation.
+    """
+
+    def __init__(self, data, wrapper_class: Type[SMAExtendedResult]):
+        super().__init__(data, wrapper_class)
+
+    @IndicatorResults._verify_data
+    def remove_warmup_periods(self, remove_periods: Optional[int] = None):
+        if remove_periods is not None:
+            return super().remove_warmup_periods(remove_periods)
+        
+        removed_results = Indicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
+
+        return self.__class__(removed_results, self._wrapper_class)
+        
