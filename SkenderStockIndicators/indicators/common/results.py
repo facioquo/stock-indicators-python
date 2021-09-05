@@ -1,7 +1,6 @@
 from datetime import datetime as PyDateTime
 from typing import List, Type, TypeVar
-from Skender.Stock.Indicators import Indicator as CsIndicator
-from Skender.Stock.Indicators import ResultBase as CsResultBase
+from SkenderStockIndicators._cslib import CsIndicator, CsResultBase
 from SkenderStockIndicators._cstypes import DateTime as CsDateTime
 from SkenderStockIndicators._cstypes import List as CsList
 from SkenderStockIndicators._cstypes import to_pydatetime

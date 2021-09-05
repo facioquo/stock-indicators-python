@@ -1,4 +1,4 @@
-from Skender.Stock.Indicators import Quote as CsQuote
+from SkenderStockIndicators._cslib import CsQuote
 from SkenderStockIndicators._cstypes import DateTime, Decimal
 
 class Quote(CsQuote):

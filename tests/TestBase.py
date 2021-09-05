@@ -1,5 +1,5 @@
 import unittest
-from .test_data import HistoryTestData
+from tests.test_data import HistoryTestData
 
 class TestBase(unittest.TestCase):
     """Base class for testing"""

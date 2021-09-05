@@ -1,12 +1,12 @@
 from typing import Iterable, List, Optional, Type
-from Skender.Stock.Indicators import Indicator
+from SkenderStockIndicators._cslib import CsIndicator
 from SkenderStockIndicators._cstypes import List as CsList
 from SkenderStockIndicators._cstypes import to_pydecimal
 from SkenderStockIndicators.indicators.common.results import IndicatorResults, ResultBase
 from SkenderStockIndicators.indicators.common.quote import Quote
 
 def get_adl(quotes: Iterable[Quote], sma_periods: Optional[int] = None):
-    adl_results = Indicator.GetAdl[Quote](CsList(Quote, quotes), sma_periods)
+    adl_results = CsIndicator.GetAdl[Quote](CsList(Quote, quotes), sma_periods)
     return ADLResults(adl_results, ADLResult)
 
 
@@ -29,6 +29,6 @@ class ADLResults(IndicatorResults[ADLResult]):
 
     @IndicatorResults._verify_data
     def to_quotes(self) -> List[Quote]:
-        quotes = Indicator.ConvertToQuotes(CsList(type(self._csdata[0]), self._csdata))
+        quotes = CsIndicator.ConvertToQuotes(CsList(type(self._csdata[0]), self._csdata))
 
         return quotes
