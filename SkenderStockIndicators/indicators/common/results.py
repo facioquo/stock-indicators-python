@@ -51,7 +51,7 @@ class IndicatorResults(List[T]):
         return verify_data
 
     @_verify_data
-    def find(self, lookup_date: PyDateTime) -> Type[ResultBase]:
+    def find(self, lookup_date: PyDateTime) -> Type[T]:
         if not isinstance(lookup_date, PyDateTime):
             raise TypeError(
                 "lookup_date must be an instance of datetime.datetime."
