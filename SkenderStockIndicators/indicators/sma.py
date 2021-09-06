@@ -1,5 +1,5 @@
 from typing import Iterable, Optional, Type
-from Skender.Stock.Indicators import Indicator
+from SkenderStockIndicators._cslib import CsIndicator
 from SkenderStockIndicators._cstypes import List as CsList
 from SkenderStockIndicators._cstypes import to_pydecimal
 from SkenderStockIndicators.indicators.common.results import IndicatorResults, ResultBase
@@ -7,15 +7,15 @@ from SkenderStockIndicators.indicators.common.quote import Quote
 
 
 def get_sma(quotes: Iterable[Quote], lookback_periods: int):
-    sma_list = Indicator.GetSma[Quote](CsList(Quote, quotes), lookback_periods)
+    sma_list = CsIndicator.GetSma[Quote](CsList(Quote, quotes), lookback_periods)
     return SMAResults(sma_list, SMAResult)
 
 def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):
-    sma_extended_list = Indicator.GetSmaExtended[Quote](CsList(Quote, quotes), lookback_periods)
+    sma_extended_list = CsIndicator.GetSmaExtended[Quote](CsList(Quote, quotes), lookback_periods)
     return SMAExtendedResults(sma_extended_list, SMAExtendedResult)
 
 def validate_sma(quotes: Iterable[Quote], lookback_periods: int) -> None:
-    Indicator.ValidateSma[Quote](CsList(Quote, quotes), lookback_periods) 
+    CsIndicator.ValidateSma[Quote](CsList(Quote, quotes), lookback_periods) 
 
 
 class SMAResult(ResultBase):
@@ -32,19 +32,12 @@ class SMAResults(IndicatorResults[SMAResult]):
     def __init__(self, data, wrapper_class: Type[SMAResult]):
         super().__init__(data, wrapper_class)
 
-    
-    # For overloading.
-    # @overload
-    # def remove_warmup_periods(self) -> "SMAResults": ...
-    # @overload
-    # def remove_warmup_periods(self, remove_periods: int) -> "SMAResults": ...
-
     @IndicatorResults._verify_data
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):
         if remove_periods is not None:
             return super().remove_warmup_periods(remove_periods)
         
-        removed_results = Indicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
+        removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
 
         return self.__class__(removed_results, self._wrapper_class)
 
@@ -69,7 +62,7 @@ class SMAExtendedResults(IndicatorResults[SMAExtendedResult]):
         if remove_periods is not None:
             return super().remove_warmup_periods(remove_periods)
         
-        removed_results = Indicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
+        removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
 
         return self.__class__(removed_results, self._wrapper_class)
         

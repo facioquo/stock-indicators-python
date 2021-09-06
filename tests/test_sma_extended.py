@@ -1,4 +1,3 @@
-from SkenderStockIndicators._cstypes.decimal import to_pydecimal
 from tests.TestBase import TestBase
 from SkenderStockIndicators import indicators
 

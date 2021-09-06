@@ -19,13 +19,13 @@ def List(generic, sequence):
     Constructing `System.Collections.Generic.List` from `list` of Python.
    
     >>> py_list = [1, 2, 3]
-    >>> cs_list = List(py_list)
+    >>> cs_list = List(int, py_list)
     >>> cs_list
     System.Collections.Generic.List`1[System.Int32]
 
     Notice that It can be iterated like other iterable types in Python.
 
-    >>> cs_list = List([1, 2, 3])
+    >>> cs_list = List(int, [1, 2, 3])
     >>> for i in cs_list:
     >>>     print(i, end='')
     123

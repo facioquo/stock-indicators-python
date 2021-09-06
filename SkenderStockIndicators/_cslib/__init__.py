@@ -13,6 +13,10 @@ import sys
 import clr
 
 dir = os.path.dirname(__file__)
-path = os.path.join(dir, "lib/Skender.Stock.Indicators.dll")
-clr.AddReference(path)
+skender_stock_indicators_dll = os.path.join(dir, "lib/Skender.Stock.Indicators.dll")
+clr.AddReference(skender_stock_indicators_dll)
 clr.AddReference('System.Collections')
+
+from Skender.Stock.Indicators import Indicator as CsIndicator
+from Skender.Stock.Indicators import Quote as CsQuote
+from Skender.Stock.Indicators import ResultBase as CsResultBase
