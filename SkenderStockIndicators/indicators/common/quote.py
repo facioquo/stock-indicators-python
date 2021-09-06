@@ -9,3 +9,14 @@ class Quote(CsQuote):
         self.Low = Decimal(low) if low else super().Low
         self.Close = Decimal(close) if close else super().Close
         self.Volume = Decimal(volume) if volume else super().Volume
+
+    # @staticmethod
+    # def fromCsQuote(csQuote: CsQuote):
+    #     return Quote(
+    #         date=csQuote.Date,
+    #         open=csQuote.Open,
+    #         high=csQuote.High,
+    #         low=csQuote.Low,
+    #         close=csQuote.Close,
+    #         volume=csQuote.Volume
+    #     )
