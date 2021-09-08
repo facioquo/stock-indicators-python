@@ -4,10 +4,10 @@ from SkenderStockIndicators._cstypes import List as CsList
 from SkenderStockIndicators._cstypes import to_pydecimal
 from SkenderStockIndicators.indicators.common.results import IndicatorResults, ResultBase
 from SkenderStockIndicators.indicators.common.quote import Quote
+from SkenderStockIndicators.indicators.common.candles import CandlePart
 
-
-def get_sma(quotes: Iterable[Quote], lookback_periods: int):
-    sma_list = CsIndicator.GetSma[Quote](CsList(Quote, quotes), lookback_periods)
+def get_sma(quotes: Iterable[Quote], lookback_periods: int, candle_part: CandlePart=CandlePart.CLOSE):
+    sma_list = CsIndicator.GetSma[Quote](CsList(Quote, quotes), lookback_periods, candle_part)
     return SMAResults(sma_list, SMAResult)
 
 def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):

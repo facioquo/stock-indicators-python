@@ -20,7 +20,7 @@ class TestSMA(TestBase):
         self.assertEqual(251.8600, round(float(results[501].Sma), 4))
 
     def test_bad_data(self):
-        results = indicators.get_sma_extended(self.bad_quotes, 15)
+        results = indicators.get_sma(self.bad_quotes, 15)
 
         self.assertEqual(502, len(results))
 

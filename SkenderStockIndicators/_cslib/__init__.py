@@ -20,3 +20,4 @@ clr.AddReference('System.Collections')
 from Skender.Stock.Indicators import Indicator as CsIndicator
 from Skender.Stock.Indicators import Quote as CsQuote
 from Skender.Stock.Indicators import ResultBase as CsResultBase
+from Skender.Stock.Indicators import CandlePart as CsCandlePart
