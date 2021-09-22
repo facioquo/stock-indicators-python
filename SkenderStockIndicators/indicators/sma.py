@@ -1,6 +1,7 @@
 from typing import Iterable, Optional, Type
 from SkenderStockIndicators._cslib import CsIndicator
 from SkenderStockIndicators._cstypes import List as CsList
+from SkenderStockIndicators._cstypes.decimal import Decimal as CsDecimal
 from SkenderStockIndicators._cstypes import to_pydecimal
 from SkenderStockIndicators.indicators.common.results import IndicatorResults, ResultBase
 from SkenderStockIndicators.indicators.common.quote import Quote
@@ -21,7 +22,16 @@ def validate_sma(quotes: Iterable[Quote], lookback_periods: int) -> None:
 class SMAResult(ResultBase):
     def __init__(self, sma_result):
         super().__init__(sma_result)
-        self.Sma = to_pydecimal(sma_result.Sma)
+        self.sma = to_pydecimal(sma_result.Sma)
+
+    @property
+    def sma(self):
+        return to_pydecimal(self._csdata.Sma)
+
+    @sma.setter
+    def sma(self, value):
+        self._csdata.Sma = CsDecimal(value)
+
 
 class SMAResults(IndicatorResults[SMAResult]):
     """

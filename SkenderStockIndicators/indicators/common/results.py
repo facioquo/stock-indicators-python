@@ -13,8 +13,16 @@ class ResultBase:
 
     def __init__(self, base_result):
         super().__init__()
-        self.Date = to_pydatetime(base_result.Date)
+        self._csdata = base_result
+        #self.Date = to_pydatetime(base_result.Date)
 
+    @property
+    def date(self):
+        return to_pydatetime(self._csdata.Date)
+    
+    @date.setter
+    def date(self, value):
+        self._csdata.Date = CsDateTime(value)
 
 T = TypeVar("T", bound=ResultBase)
 class IndicatorResults(List[T]):
