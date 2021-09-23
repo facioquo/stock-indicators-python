@@ -24,23 +24,34 @@ class ResultBase:
 T = TypeVar("T", bound=ResultBase)
 class IndicatorResults(List[T]):
     """
-    A base wrapper class for the list of results. It provides helper methods written in CSharp implementation.
+    A base wrapper class for the list of results.
+    It provides helper methods written in CSharp implementation.
     """
     def __init__(self, data: List, wrapper_class: Type[T]):
         super().__init__([ wrapper_class(i) for i in data ])
         self._csdata = data
         self._wrapper_class = wrapper_class
 
-    def __add__(self, other: Type["IndicatorResults"]):
-        return self.__class__(self._csdata.__add__(other._csdata), self._wrapper_class)
+    def reload(self):
+        """
+        Reload a C# array of the results to perform more operations.
+        It is usually called after `done()`
+        """
+        if self._csdata is None:
+            self._csdata = [ i._csdata for i in self ]
+        return self
 
-    def __mul__(self, other: Type["IndicatorResults"]):
-        return self.__class__(self._csdata.__mul__(other._csdata), self._wrapper_class)
+    def done(self):
+        """
+        Remove a C# array of the results after finishing all operations.
+        It is not necessary but saves memory.
+        """
+        self._csdata = None
+        return self
 
-    # start 와 done 함수 만드는건 어떨지..
     def _verify_data(func):
         """
-        Check whether _csdata can be passed to helper method.    
+        Check whether `_csdata` can be passed to helper method.    
         """
         def verify_data(self, *args):
             if not isinstance(self._csdata, list) or len(self._csdata) < 1:
@@ -54,6 +65,14 @@ class IndicatorResults(List[T]):
             return func(self, *args)
 
         return verify_data
+
+    @_verify_data
+    def __add__(self, other: Type["IndicatorResults"]):
+        return self.__class__(self._csdata.__add__(other._csdata), self._wrapper_class)
+
+    @_verify_data
+    def __mul__(self, other: Type["IndicatorResults"]):
+        return self.__class__(self._csdata.__mul__(other._csdata), self._wrapper_class)
 
     @_verify_data
     def find(self, lookup_date: PyDateTime) -> Type[T]:
