@@ -14,9 +14,9 @@ class TestSMAExtended(TestBase):
         # Sample value.
         r = results[501]
         self.assertEqual(251.8600, round(float(r.sma), 4))
-        self.assertEqual(9.4500  , round(float(r.Mad), 4))
-        self.assertEqual(119.2510, round(float(r.Mse), 4))
-        self.assertEqual(0.037637, round(float(r.Mape), 6))
+        self.assertEqual(9.4500  , round(float(r.mad), 4))
+        self.assertEqual(119.2510, round(float(r.mse), 4))
+        self.assertEqual(0.037637, round(float(r.mape), 6))
 
     def test_bad_data(self):
         results = indicators.get_sma_extended(self.bad_quotes, 15)

@@ -1,7 +1,7 @@
 from typing import Iterable, Optional, Type
 from SkenderStockIndicators._cslib import CsIndicator
 from SkenderStockIndicators._cstypes import List as CsList
-from SkenderStockIndicators._cstypes.decimal import Decimal as CsDecimal
+from SkenderStockIndicators._cstypes import Decimal as CsDecimal
 from SkenderStockIndicators._cstypes import to_pydecimal
 from SkenderStockIndicators.indicators.common.results import IndicatorResults, ResultBase
 from SkenderStockIndicators.indicators.common.quote import Quote
@@ -22,7 +22,6 @@ def validate_sma(quotes: Iterable[Quote], lookback_periods: int) -> None:
 class SMAResult(ResultBase):
     def __init__(self, sma_result):
         super().__init__(sma_result)
-        self.sma = to_pydecimal(sma_result.Sma)
 
     @property
     def sma(self):
@@ -54,9 +53,30 @@ class SMAResults(IndicatorResults[SMAResult]):
 class SMAExtendedResult(SMAResult):
     def __init__(self, sma_extended_result):
         super().__init__(sma_extended_result)
-        self.Mad = to_pydecimal(sma_extended_result.Mad)
-        self.Mse = to_pydecimal(sma_extended_result.Mse)
-        self.Mape = to_pydecimal(sma_extended_result.Mape)
+
+    @property
+    def mad(self):
+        return to_pydecimal(self._csdata.Mad)
+    
+    @mad.setter
+    def mad(self, value):
+        self._csdata.Mad = CsDecimal(value)
+    
+    @property
+    def mse(self):
+        return to_pydecimal(self._csdata.Mse)
+    
+    @mse.setter
+    def mse(self, value):
+        self._csdata.Mse = CsDecimal(value)
+    
+    @property
+    def mape(self):
+        return to_pydecimal(self._csdata.Mape)
+    
+    @mape.setter
+    def mape(self, value):
+        self._csdata.Mape = CsDecimal(value)
 
 class SMAExtendedResults(IndicatorResults[SMAExtendedResult]):
     """

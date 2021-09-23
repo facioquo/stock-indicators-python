@@ -5,16 +5,13 @@ from SkenderStockIndicators._cstypes import DateTime as CsDateTime
 from SkenderStockIndicators._cstypes import List as CsList
 from SkenderStockIndicators._cstypes import to_pydatetime
 
-
 class ResultBase:
     """
     A base wrapper class for a single unit of the results.
     """
-
     def __init__(self, base_result):
         super().__init__()
         self._csdata = base_result
-        #self.Date = to_pydatetime(base_result.Date)
 
     @property
     def date(self):
@@ -40,6 +37,7 @@ class IndicatorResults(List[T]):
     def __mul__(self, other: Type["IndicatorResults"]):
         return self.__class__(self._csdata.__mul__(other._csdata), self._wrapper_class)
 
+    # start 와 done 함수 만드는건 어떨지..
     def _verify_data(func):
         """
         Check whether _csdata can be passed to helper method.    

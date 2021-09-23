@@ -11,8 +11,6 @@ class TestSMA(TestBase):
         self.assertEqual(502, len(results))
         self.assertEqual(483, len(list(filter(lambda x: x.sma is not None, results))))
 
-        
-
         # sample values
         self.assertIsNone(results[18].sma)
         self.assertEqual(214.5250, round(float(results[19].sma), 4))
