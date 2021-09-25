@@ -93,15 +93,3 @@ class IndicatorResults(List[T]):
 
         removed_results = CsIndicator.RemoveWarmupPeriods[CsResultBase](CsList(type(self._csdata[0]), self._csdata), remove_periods)
         return self.__class__(removed_results, self._wrapper_class)
-
-    @_verify_data
-    def remove_periods(self, remove_periods: int):
-        if not isinstance(remove_periods, int):
-            raise TypeError(
-                "remove_periods must be an integer."
-            )
-
-        removed_results = CsIndicator.Remove[CsResultBase](CsList(type(self._csdata[0]), self._csdata), remove_periods)
-        return self.__class__(removed_results, self._wrapper_class)
-
-    
