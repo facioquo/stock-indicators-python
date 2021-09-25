@@ -9,14 +9,14 @@ class TestSMAExtended(TestBase):
         # Proper quantities.
         # Should always be the same number of results as there is quotes.
         self.assertEqual(502, len(results))
-        self.assertEqual(483, len(list(filter(lambda x: x.Sma is not None, results))))
+        self.assertEqual(483, len(list(filter(lambda x: x.sma is not None, results))))
 
         # Sample value.
         r = results[501]
-        self.assertEqual(251.8600, round(float(r.Sma), 4))
-        self.assertEqual(9.4500  , round(float(r.Mad), 4))
-        self.assertEqual(119.2510, round(float(r.Mse), 4))
-        self.assertEqual(0.037637, round(float(r.Mape), 6))
+        self.assertEqual(251.8600, round(float(r.sma), 4))
+        self.assertEqual(9.4500  , round(float(r.mad), 4))
+        self.assertEqual(119.2510, round(float(r.mse), 4))
+        self.assertEqual(0.037637, round(float(r.mape), 6))
 
     def test_bad_data(self):
         results = indicators.get_sma_extended(self.bad_quotes, 15)
@@ -29,7 +29,7 @@ class TestSMAExtended(TestBase):
 
         # Assertions
         self.assertEqual(502 - 19, len(results))
-        self.assertEqual(251.8600, round(float(results[len(results)-1].Sma), 4))
+        self.assertEqual(251.8600, round(float(results[len(results)-1].sma), 4))
 
     def test_exceptions(self):
         from System import ArgumentOutOfRangeException
