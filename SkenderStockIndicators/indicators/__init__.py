@@ -11,6 +11,10 @@ from .adl import (
     get_adl
 )
 
+from .adx import (
+    get_adx
+)
+
 from .sma import (
     get_sma,
     get_sma_extended,
