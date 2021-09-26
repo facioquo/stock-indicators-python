@@ -1,4 +1,3 @@
-from unittest import result
 from tests.TestBase import TestBase
 from SkenderStockIndicators import indicators
 

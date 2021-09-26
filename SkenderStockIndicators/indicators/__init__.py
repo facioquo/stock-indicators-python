@@ -15,6 +15,10 @@ from .adx import (
     get_adx
 )
 
+from .alligator import (
+    get_alligator
+)
+
 from .sma import (
     get_sma,
     get_sma_extended,
