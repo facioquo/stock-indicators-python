@@ -1,6 +1,5 @@
 from System import Decimal as CsDecimal
 from decimal import Decimal as PyDecimal
-import math
 
 def Decimal(decimal):
     """
