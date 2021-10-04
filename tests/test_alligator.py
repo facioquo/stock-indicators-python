@@ -1,4 +1,4 @@
-from tests.TestBase import TestBase
+from tests.testbase import TestBase
 from SkenderStockIndicators import indicators
 
 class TestAlligator(TestBase):
