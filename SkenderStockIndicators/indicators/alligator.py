@@ -1,4 +1,4 @@
-from typing import Iterable, List, Optional, Type
+from typing import Iterable, Optional, Type
 from SkenderStockIndicators._cslib import CsIndicator
 from SkenderStockIndicators._cstypes import List as CsList
 from SkenderStockIndicators._cstypes import Decimal as CsDecimal
@@ -44,7 +44,7 @@ class AlligatorResults(IndicatorResults[AlligatorResult]):
     except for that it provides some useful helper methods written in C# implementation.
     """
 
-    def __init__(self, data: List, wrapper_class: Type[AlligatorResult]):
+    def __init__(self, data: Iterable, wrapper_class: Type[AlligatorResult]):
         super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data
