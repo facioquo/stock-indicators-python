@@ -1,12 +1,12 @@
 import os
 from datetime import datetime
 from decimal import Decimal as PyDecimal
-from openpyxl import load_workbook
 import pytest
+from openpyxl import load_workbook
 from SkenderStockIndicators.indicators.common import Quote
 
 dir = os.path.dirname(__file__)
-data_path = os.path.join(dir, "test_data", "History.xlsx")
+data_path = os.path.join(dir, "History.xlsx")
 wb = load_workbook(data_path, data_only=True)
 
 @pytest.fixture(scope='session')
