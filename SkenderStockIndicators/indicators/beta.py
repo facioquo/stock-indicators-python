@@ -12,7 +12,7 @@ def get_beta(market_history: Iterable[Quote], eval_history: Iterable[Quote], loo
 
 class BetaResult(ResultBase):
     """
-    A single unit of Beta results.
+    A wrapper class for a single unit of Beta results.
     """
 
     def __init__(self, beta_result):
