@@ -1,4 +1,3 @@
-
 from typing import Iterable, List, Optional, Type
 from SkenderStockIndicators._cslib import CsIndicator
 from SkenderStockIndicators._cstypes import List as CsList
