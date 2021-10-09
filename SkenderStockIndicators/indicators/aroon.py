@@ -7,7 +7,7 @@ from SkenderStockIndicators.indicators.common.results import IndicatorResults, R
 from SkenderStockIndicators.indicators.common.quote import Quote
 
 def get_aroon(quotes: Iterable[Quote], lookback_periods: int = 25):
-    aroon_results = CsIndicator.GetAroon(CsList(Quote, quotes), lookback_periods)
+    aroon_results = CsIndicator.GetAroon[Quote](CsList(Quote, quotes), lookback_periods)
     return AroonResults(aroon_results, AroonResult)
 
 class AroonResult(ResultBase):
@@ -16,7 +16,7 @@ class AroonResult(ResultBase):
 
     @property
     def aroon_up(self):
-        return to_pydecimal(self._csdata.ArronUp)
+        return to_pydecimal(self._csdata.AroonUp)
 
     @aroon_up.setter
     def aroon_up(self, value):
@@ -32,7 +32,7 @@ class AroonResult(ResultBase):
 
     @property
     def oscillator(self):
-        return self._csdata.Oscillator
+        return to_pydecimal(self._csdata.Oscillator)
 
     @oscillator.setter
     def oscillator(self, value):

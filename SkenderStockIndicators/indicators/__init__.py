@@ -19,6 +19,10 @@ from .alligator import (
     get_alligator
 )
 
+from .aroon import (
+    get_aroon
+)
+
 from .sma import (
     get_sma,
     get_sma_extended,
