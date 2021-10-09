@@ -19,6 +19,10 @@ from .alligator import (
     get_alligator
 )
 
+from .alma import (
+    get_alma
+)
+
 from .sma import (
     get_sma,
     get_sma_extended,
