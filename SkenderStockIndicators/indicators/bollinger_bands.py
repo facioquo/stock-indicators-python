@@ -7,7 +7,7 @@ from SkenderStockIndicators.indicators.common.results import IndicatorResults, R
 from SkenderStockIndicators.indicators.common.quote import Quote
 
 def get_bollinger_bands(quotes: Iterable[Quote], lookback_periods: int = 20, standard_deviations: float = 2):
-    bollinger_bands_results = CsIndicator.GetBollingerBands[Quote](CsList(Quote, quotes), lookback_periods, standard_deviations)
+    bollinger_bands_results = CsIndicator.GetBollingerBands[Quote](CsList(Quote, quotes), lookback_periods, CsDecimal(standard_deviations))
     return BollingerBandsResults(bollinger_bands_results, BollingerBandsResult)
 
 class BollingerBandsResult(ResultBase):

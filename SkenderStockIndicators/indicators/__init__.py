@@ -19,6 +19,11 @@ from .alligator import (
     get_alligator
 )
 
+from .bollinger_bands import (
+    get_bollinger_bands
+)
+
+
 from .sma import (
     get_sma,
     get_sma_extended,

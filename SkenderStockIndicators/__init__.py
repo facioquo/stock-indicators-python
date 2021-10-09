@@ -3,5 +3,6 @@ from .indicators import (
     adl,
     adx,
     alligator,
+    bollinger_bands,
     sma,
 )
