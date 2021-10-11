@@ -19,6 +19,10 @@ from .alligator import (
     get_alligator
 )
 
+from .awesome import (
+    get_awesome
+)
+
 from .atr import (
     get_atr
 )

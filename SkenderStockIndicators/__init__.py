@@ -3,6 +3,7 @@ from .indicators import (
     adl,
     adx,
     alligator,
+    awesome,
     atr,
     aroon,
     alma,
