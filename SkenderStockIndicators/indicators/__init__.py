@@ -23,6 +23,14 @@ from .atr import (
     get_atr
 )
 
+from .aroon import (
+    get_aroon
+)
+
+from .alma import (
+    get_alma
+)
+
 from .sma import (
     get_sma,
     get_sma_extended,
