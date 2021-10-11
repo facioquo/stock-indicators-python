@@ -34,11 +34,12 @@ class SMAResult(ResultBase):
 
 class SMAResults(IndicatorResults[SMAResult]):
     """
-    A wrapper class for the list of SMA results. It is exactly same with built-in `list`
-    except for that it provides some useful helper methods written in CSharp implementation.
+    A wrapper class for the list of SMA(Simple Moving Average) results.
+    It is exactly same with built-in `list` except for that it provides
+    some useful helper methods written in CSharp implementation.
     """
 
-    def __init__(self, data, wrapper_class: Type[SMAResult]):
+    def __init__(self, data: Iterable, wrapper_class: Type[SMAResult]):
         super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data
@@ -84,7 +85,7 @@ class SMAExtendedResults(IndicatorResults[SMAExtendedResult]):
     except for that it provides some useful helper methods written in CSharp implementation.
     """
 
-    def __init__(self, data, wrapper_class: Type[SMAExtendedResult]):
+    def __init__(self, data: Iterable, wrapper_class: Type[SMAExtendedResult]):
         super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data
