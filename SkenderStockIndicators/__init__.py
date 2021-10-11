@@ -4,5 +4,6 @@ from .indicators import (
     adx,
     alligator,
     aroon,
+    alma,
     sma,
 )
