@@ -4,5 +4,11 @@ from .indicators import (
     adx,
     alligator,
     stoch_rsi,
+    bollinger_bands,
+    beta,
+    awesome,
+    atr,
+    aroon,
+    alma,
     sma,
 )
