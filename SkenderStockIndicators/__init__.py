@@ -3,5 +3,6 @@ from .indicators import (
     adl,
     adx,
     alligator,
+    stoch_rsi,
     sma,
 )

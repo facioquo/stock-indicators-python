@@ -7,7 +7,7 @@ from SkenderStockIndicators.indicators.common.results import IndicatorResults, R
 from SkenderStockIndicators.indicators.common.quote import Quote
 
 def get_stoch_rsi(quotes: Iterable[Quote], rsi_periods: int, stoch_periods: int, signal_periods: int, smooth_periods: int = 1):
-    stoch_rsi_results = CsIndicator.GetAdx[Quote](CsList(Quote, quotes), rsi_periods, stoch_periods, signal_periods, smooth_periods)
+    stoch_rsi_results = CsIndicator.GetStochRsi[Quote](CsList(Quote, quotes), rsi_periods, stoch_periods, signal_periods, smooth_periods)
     return StochRSIResults(stoch_rsi_results, StochRSIResult)
 
 class StochRSIResult(ResultBase):
