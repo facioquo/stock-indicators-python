@@ -19,6 +19,10 @@ from .alligator import (
     get_alligator
 )
 
+from .aroon import (
+    get_aroon
+)
+
 from .alma import (
     get_alma
 )
