@@ -19,6 +19,10 @@ from .alligator import (
     get_alligator
 )
 
+from .beta import (
+    get_beta
+)
+
 from .awesome import (
     get_awesome
 )
