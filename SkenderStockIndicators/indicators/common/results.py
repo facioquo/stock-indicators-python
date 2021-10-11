@@ -1,5 +1,5 @@
 from datetime import datetime as PyDateTime
-from typing import List, Type, TypeVar
+from typing import Iterable, List, Type, TypeVar
 from SkenderStockIndicators._cslib import CsIndicator, CsResultBase
 from SkenderStockIndicators._cstypes import DateTime as CsDateTime
 from SkenderStockIndicators._cstypes import List as CsList
@@ -9,7 +9,7 @@ class ResultBase:
     """
     A base wrapper class for a single unit of the results.
     """
-    def __init__(self, base_result):
+    def __init__(self, base_result: Type[CsResultBase]):
         super().__init__()
         self._csdata = base_result
 
@@ -27,7 +27,7 @@ class IndicatorResults(List[T]):
     A base wrapper class for the list of results.
     It provides helper methods written in CSharp implementation.
     """
-    def __init__(self, data: List, wrapper_class: Type[T]):
+    def __init__(self, data: Iterable, wrapper_class: Type[T]):
         super().__init__([ wrapper_class(i) for i in data ])
         self._csdata = data
         self._wrapper_class = wrapper_class
