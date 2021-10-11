@@ -1,4 +1,4 @@
-from typing import Iterable, Optional, Type
+from typing import Iterable, List, Optional, Type
 from SkenderStockIndicators._cslib import CsIndicator
 from SkenderStockIndicators._cstypes import List as CsList
 from SkenderStockIndicators._cstypes import Decimal as CsDecimal
@@ -6,46 +6,46 @@ from SkenderStockIndicators._cstypes import to_pydecimal
 from SkenderStockIndicators.indicators.common.results import IndicatorResults, ResultBase
 from SkenderStockIndicators.indicators.common.quote import Quote
 
-def get_adx(quotes: Iterable[Quote], lookback_periods: int = 14):
-    adx_results = CsIndicator.GetAdx[Quote](CsList(Quote, quotes), lookback_periods)
-    return ADXResults(adx_results, ADXResult)
+def get_atr(quotes: Iterable[Quote], lookback_periods: int = 14):
+    atr_results = CsIndicator.GetAtr[Quote](CsList(Quote, quotes), lookback_periods)
+    return ATRResults(atr_results, ATRResult)
 
-class ADXResult(ResultBase):
-    def __init__(self, adx_result):
-        super().__init__(adx_result)
-
-    @property
-    def pdi(self):
-        return to_pydecimal(self._csdata.Pdi)
-    
-    @pdi.setter
-    def pdi(self, value):
-        self._csdata.Pdi = CsDecimal(value)
-    
-    @property
-    def mdi(self):
-        return to_pydecimal(self._csdata.Mdi)
-    
-    @mdi.setter
-    def mdi(self, value):
-        self._csdata.Mdi = CsDecimal(value)
+class ATRResult(ResultBase):
+    def __init__(self, atr_result):
+        super().__init__(atr_result)
 
     @property
-    def adx(self):
-        return to_pydecimal(self._csdata.Adx)
+    def tr(self):
+        return to_pydecimal(self._csdata.Tr)
+    
+    @tr.setter
+    def tr(self, value):
+        self._csdata.Tr = CsDecimal(value)
 
-    @adx.setter
-    def adx(self, value):
-        self._csdata.Adx = CsDecimal(value)
+    @property
+    def atr(self):
+        return to_pydecimal(self._csdata.Atr)
+    
+    @atr.setter
+    def atr(self, value):
+        self._csdata.Atr = CsDecimal(value)
 
-class ADXResults(IndicatorResults[ADXResult]):
+    @property
+    def atrp(self):
+        return to_pydecimal(self._csdata.Atrp)
+
+    @atrp.setter
+    def atrp(self, value):
+        self._csdata.Atrp = CsDecimal(value)
+    
+class ATRResults(IndicatorResults[ATRResult]):
     """
-    A wrapper class for the list of ADX(Average Directional Movement Index) results.
+    A wrapper class for the list of ATR(Average True Range) results. 
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
 
-    def __init__(self, data: Iterable, wrapper_class: Type[ADXResult]):
+    def __init__(self, data, wrapper_class: Type[ATRResult]):
         super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data
