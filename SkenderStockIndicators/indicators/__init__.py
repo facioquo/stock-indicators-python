@@ -19,6 +19,10 @@ from .alligator import (
     get_alligator
 )
 
+from .stoch_rsi import (
+    get_stoch_rsi
+)
+
 from .bollinger_bands import (
     get_bollinger_bands
 )
