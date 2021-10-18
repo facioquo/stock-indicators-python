@@ -19,36 +19,40 @@ from .alligator import (
     get_alligator
 )
 
-from .stoch_rsi import (
-    get_stoch_rsi
-)
-
-from .bollinger_bands import (
-    get_bollinger_bands
-)
-
-from .beta import (
-    get_beta
-)
-
-from .awesome import (
-    get_awesome
-)
-
-from .atr import (
-    get_atr
+from .alma import (
+    get_alma
 )
 
 from .aroon import (
     get_aroon
 )
 
-from .alma import (
-    get_alma
+from .atr import (
+    get_atr
+)
+
+from .awesome import (
+    get_awesome
+)
+
+from .beta import (
+    get_beta
+)
+
+from .bollinger_bands import (
+    get_bollinger_bands
+)
+
+from .fractal import (
+    get_fractal
 )
 
 from .sma import (
     get_sma,
     get_sma_extended,
     validate_sma
+)
+
+from .stoch_rsi import (
+    get_stoch_rsi
 )
