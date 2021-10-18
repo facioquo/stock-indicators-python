@@ -1,10 +1,10 @@
 from typing import Iterable, List, Optional, Type
-from SkenderStockIndicators._cslib import CsIndicator
-from SkenderStockIndicators._cstypes import List as CsList
-from SkenderStockIndicators._cstypes import Decimal as CsDecimal
-from SkenderStockIndicators._cstypes import to_pydecimal
-from SkenderStockIndicators.indicators.common.results import IndicatorResults, ResultBase
-from SkenderStockIndicators.indicators.common.quote import Quote
+from stock_indicators._cslib import CsIndicator
+from stock_indicators._cstypes import List as CsList
+from stock_indicators._cstypes import Decimal as CsDecimal
+from stock_indicators._cstypes import to_pydecimal
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
+from stock_indicators.indicators.common.quote import Quote
 
 def get_aroon(quotes: Iterable[Quote], lookback_periods: int = 25):
     aroon_results = CsIndicator.GetAroon[Quote](CsList(Quote, quotes), lookback_periods)

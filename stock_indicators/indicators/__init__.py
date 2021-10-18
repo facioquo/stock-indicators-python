@@ -1,4 +1,4 @@
-from SkenderStockIndicators import _cslib
+from stock_indicators import _cslib
 
 '''
 from .common import (

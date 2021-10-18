@@ -9,12 +9,13 @@ It is currently using `.NET Standard 2.0`.
 """
 
 import os
-import sys
 import clr
 
-dir = os.path.dirname(__file__)
-skender_stock_indicators_dll = os.path.join(dir, "lib/Skender.Stock.Indicators.dll")
-clr.AddReference(skender_stock_indicators_dll)
+skender_stock_indicators_dll_path = os.path.join(
+    os.path.dirname(__file__),
+    "lib/Skender.Stock.Indicators.dll"
+)
+clr.AddReference(skender_stock_indicators_dll_path)
 clr.AddReference('System.Collections')
 
 from Skender.Stock.Indicators import Indicator as CsIndicator

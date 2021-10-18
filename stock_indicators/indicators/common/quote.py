@@ -1,5 +1,5 @@
-from SkenderStockIndicators._cslib import CsQuote
-from SkenderStockIndicators._cstypes import DateTime, Decimal
+from stock_indicators._cslib import CsQuote
+from stock_indicators._cstypes import DateTime, Decimal
 
 class Quote(CsQuote):
     def __init__(self, date, open = None, high = None, low = None, close = None, volume = None):
