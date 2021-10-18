@@ -20,7 +20,7 @@ Explore more information:
 ### Example usage
 
 ```python
-from SkenderStockIndicators import indicators
+from stock_indicators import indicators
 
 # prerequisite: get historical quotes from your own source
 quotes = get_historical_quotes()
