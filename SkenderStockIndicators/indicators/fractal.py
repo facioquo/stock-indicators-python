@@ -8,14 +8,14 @@ from SkenderStockIndicators.indicators.common.quote import Quote
 
 #TODO: Needs to support EndType enums.
 # @overload
-# def get_fractal(quotes: Iterable[Quote], window_span: int) -> "FractalResults": ...
+# def get_fractal(quotes: Iterable[Quote], window_span: int = 2) -> "FractalResults": ...
 # @overload
 # def get_fractal(quotes: Iterable[Quote], left_span: int, right_span: int) -> "FractalResults": ...
 # def get_fractal(quotes: Iterable[Quote], left_span: int, right_span: int = None):
 #     fractal_results = CsIndicator.GetFractal[Quote](CsList(Quote, quotes), left_span, right_span)
 #     return FractalResults(fractal_results, FractalResult)
 
-def get_fractal(quotes: Iterable[Quote], window_span: int):
+def get_fractal(quotes: Iterable[Quote], window_span: int = 2):
     fractal_results = CsIndicator.GetFractal[Quote](CsList(Quote, quotes), window_span)
     return FractalResults(fractal_results, FractalResult)
  
