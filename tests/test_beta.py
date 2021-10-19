@@ -1,5 +1,5 @@
 import pytest
-from SkenderStockIndicators import indicators
+from stock_indicators import indicators
 
 class TestBeta:
     def test_beta(self, quotes, other_quotes):

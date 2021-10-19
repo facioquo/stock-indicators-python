@@ -1,10 +1,10 @@
 from typing import Iterable, List, Optional, Type
-from SkenderStockIndicators._cslib import CsIndicator
-from SkenderStockIndicators._cstypes import List as CsList
-from SkenderStockIndicators._cstypes import Decimal as CsDecimal
-from SkenderStockIndicators._cstypes import to_pydecimal
-from SkenderStockIndicators.indicators.common.results import IndicatorResults, ResultBase
-from SkenderStockIndicators.indicators.common.quote import Quote
+from stock_indicators._cslib import CsIndicator
+from stock_indicators._cstypes import List as CsList
+from stock_indicators._cstypes import Decimal as CsDecimal
+from stock_indicators._cstypes import to_pydecimal
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
+from stock_indicators.indicators.common.quote import Quote
 
 def get_awesome(quotes: Iterable[Quote], fast_periods: int = 5, slow_periods: int = 34):
     awesome_results = CsIndicator.GetAwesome[Quote](CsList(Quote, quotes), fast_periods, slow_periods)

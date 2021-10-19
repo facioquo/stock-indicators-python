@@ -3,7 +3,7 @@ from datetime import datetime
 from decimal import Decimal as PyDecimal
 import pytest
 from openpyxl import load_workbook
-from SkenderStockIndicators.indicators.common import Quote
+from stock_indicators.indicators.common import Quote
 
 dir = os.path.dirname(__file__)
 data_path = os.path.join(dir, "History.xlsx")

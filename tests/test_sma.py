@@ -1,5 +1,5 @@
 import pytest
-from SkenderStockIndicators import indicators
+from stock_indicators import indicators
 
 class TestSMA:
     def test_standard(self, quotes):

@@ -4,7 +4,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
-    name="skender-stock-indicators",
+    name="stock-indicators",
     version="0.0.1",
     author="Dave Skender",
     maintainer="Dong-Geon Lee",
@@ -29,10 +29,10 @@ setuptools.setup(
     package_dir={"": "."},
     packages=setuptools.find_packages(exclude=('tests', 'tests.*')),
     package_data={
-        "SkenderStockIndicators._cslib": ["lib/*.dll"],
+        "stock_indicators._cslib": ["lib/*.dll"],
     },
     python_requires=">=3.8",
     install_requires=[
-    'pythonnet',
+        'pythonnet',
     ],
 )

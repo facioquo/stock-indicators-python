@@ -1,5 +1,5 @@
 import pytest
-from SkenderStockIndicators import indicators
+from stock_indicators import indicators
 
 class TestFractal:
     def test_standard_span_2(self, quotes):

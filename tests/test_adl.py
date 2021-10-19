@@ -1,6 +1,6 @@
 import pytest
-from SkenderStockIndicators._cstypes import to_pydecimal
-from SkenderStockIndicators import indicators
+from stock_indicators._cstypes import to_pydecimal
+from stock_indicators import indicators
 
 class TestADL:
     def test_standard(self, quotes):
