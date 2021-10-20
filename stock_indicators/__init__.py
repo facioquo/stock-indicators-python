@@ -9,6 +9,7 @@ from .indicators import (
     awesome,
     beta,
     bollinger_bands,
+    ema,
     fractal,
     sma,
     stoch_rsi,
