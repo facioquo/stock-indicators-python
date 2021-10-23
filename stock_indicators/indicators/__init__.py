@@ -43,6 +43,10 @@ from .bollinger_bands import (
     get_bollinger_bands
 )
 
+from .ema import (
+    get_ema
+)
+
 from .fractal import (
     get_fractal
 )
@@ -59,4 +63,8 @@ from .sma import (
 
 from .stoch_rsi import (
     get_stoch_rsi
+)
+
+from .super_trend import (
+    get_super_trend
 )
