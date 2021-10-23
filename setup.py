@@ -5,10 +5,10 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="stock-indicators",
-    version="0.0.1",
+    version="0.0.0",
     author="Dave Skender",
     maintainer="Dong-Geon Lee",
-    description="Stock indicators.  Send in historical price quotes and get back desired technical indicators such as Stochastic RSI, Average True Range, Parabolic SAR, etc.  Nothing more.",
+    description="Stock Indicators for Python.  Send in historical price quotes and get back desired technical indicators such as Stochastic RSI, Average True Range, Parabolic SAR, etc.  Nothing more.",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://daveskender.github.io/Stock.Indicators.Python",
