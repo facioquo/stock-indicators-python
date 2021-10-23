@@ -43,6 +43,10 @@ from .bollinger_bands import (
     get_bollinger_bands
 )
 
+from .ema import (
+    get_ema
+)
+
 from .fractal import (
     get_fractal
 )
