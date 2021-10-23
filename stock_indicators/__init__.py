@@ -13,6 +13,7 @@ from .indicators import (
     fractal,
     rsi,
     sma,
+    stoch,
     stoch_rsi,
     super_trend,
 )
