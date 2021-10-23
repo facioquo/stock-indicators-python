@@ -47,6 +47,10 @@ from .fractal import (
     get_fractal
 )
 
+from .macd import (
+    get_macd
+)
+
 from .sma import (
     get_sma,
     get_sma_extended,

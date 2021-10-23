@@ -10,6 +10,7 @@ from .indicators import (
     beta,
     bollinger_bands,
     fractal,
+    macd,
     sma,
     stoch_rsi,
 )
