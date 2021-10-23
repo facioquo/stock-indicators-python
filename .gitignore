@@ -128,4 +128,5 @@ dmypy.json
 .pyre/
 
 # personal editor configs
+.vs
 .vscode
