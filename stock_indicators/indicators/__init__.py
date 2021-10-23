@@ -60,3 +60,7 @@ from .sma import (
 from .stoch_rsi import (
     get_stoch_rsi
 )
+
+from .super_trend import (
+    get_super_trend
+)

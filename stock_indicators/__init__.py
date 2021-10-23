@@ -13,4 +13,5 @@ from .indicators import (
     fractal,
     sma,
     stoch_rsi,
+    super_trend,
 )
