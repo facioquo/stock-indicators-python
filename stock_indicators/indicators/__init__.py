@@ -51,6 +51,10 @@ from .fractal import (
     get_fractal
 )
 
+from .rsi import (
+    get_rsi
+)
+
 from .sma import (
     get_sma,
     get_sma_extended,
