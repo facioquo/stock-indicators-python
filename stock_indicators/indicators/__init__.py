@@ -65,6 +65,10 @@ from .sma import (
     validate_sma
 )
 
+from .stoch import (
+    get_stoch
+)
+
 from .stoch_rsi import (
     get_stoch_rsi
 )

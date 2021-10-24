@@ -14,6 +14,7 @@ from .indicators import (
     macd,
     rsi,
     sma,
+    stoch,
     stoch_rsi,
     super_trend,
 )
