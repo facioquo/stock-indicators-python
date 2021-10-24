@@ -51,6 +51,10 @@ from .fractal import (
     get_fractal
 )
 
+from .macd import (
+    get_macd
+)
+
 from .rsi import (
     get_rsi
 )
@@ -59,6 +63,10 @@ from .sma import (
     get_sma,
     get_sma_extended,
     validate_sma
+)
+
+from .stoch import (
+    get_stoch
 )
 
 from .stoch_rsi import (

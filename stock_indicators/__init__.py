@@ -11,8 +11,10 @@ from .indicators import (
     bollinger_bands,
     ema,
     fractal,
+    macd,
     rsi,
     sma,
+    stoch,
     stoch_rsi,
     super_trend,
 )
