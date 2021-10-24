@@ -13,7 +13,7 @@ def get_ema(quotes: Iterable[Quote], lookback_periods: int):
 
 class EMAResult(ResultBase):
     """
-    A wrapper class for a single unit of EMA(Exponential Moving Average) results.
+    A wrapper class for a single unit of EMA results.
     """
 
     def __init__(self, ema_result):

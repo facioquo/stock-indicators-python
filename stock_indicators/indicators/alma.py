@@ -11,6 +11,10 @@ def get_alma(quotes: Iterable[Quote], lookback_periods: int = 9, offset: float =
     return ALMAResults(alma_results, ALMAResult)
 
 class ALMAResult(ResultBase):
+    """
+    A wrapper class for a single unit of ALMA results.
+    """
+
     def __init__(self, alma_result):
         super().__init__(alma_result)
 

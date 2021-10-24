@@ -11,6 +11,10 @@ def get_bollinger_bands(quotes: Iterable[Quote], lookback_periods: int = 20, sta
     return BollingerBandsResults(bollinger_bands_results, BollingerBandsResult)
 
 class BollingerBandsResult(ResultBase):
+    """
+    A wrapper class for a single unit of Bollinger Bands results.
+    """
+
     def __init__(self, bollinger_bands_result):
         super().__init__(bollinger_bands_result)
 

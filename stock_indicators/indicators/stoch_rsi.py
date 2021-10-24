@@ -11,6 +11,10 @@ def get_stoch_rsi(quotes: Iterable[Quote], rsi_periods: int, stoch_periods: int,
     return StochRSIResults(stoch_rsi_results, StochRSIResult)
 
 class StochRSIResult(ResultBase):
+    """
+    A wrapper class for a single unit of Stochastic RSI results.
+    """
+
     def __init__(self, adx_result):
         super().__init__(adx_result)
 

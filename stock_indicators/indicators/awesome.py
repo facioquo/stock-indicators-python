@@ -11,6 +11,10 @@ def get_awesome(quotes: Iterable[Quote], fast_periods: int = 5, slow_periods: in
     return AwesomeResults(awesome_results, AwesomeResult)
 
 class AwesomeResult(ResultBase):
+    """
+    A wrapper class for a single unit of Awesome Oscillator results.
+    """
+
     def __init__(self, awesome_result):
         super().__init__(awesome_result)
 

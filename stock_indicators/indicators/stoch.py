@@ -12,7 +12,7 @@ def get_stoch(quotes: Iterable[Quote], lookback_periods: int = 14, signal_period
 
 class StochResult(ResultBase):
     """
-    A wrapper class for a single unit of Stochastic Oscillator and KDJ Index results.
+    A wrapper class for a single unit of Stochastic Oscillator(with KDJ Index) results.
     """
 
     def __init__(self, macd_result):
@@ -49,7 +49,7 @@ class StochResult(ResultBase):
 
 class StochResults(IndicatorResults[StochResult]):
     """
-    A wrapper class for the list of Stochastic Oscillator and KDJ Index results.
+    A wrapper class for the list of Stochastic Oscillator(with KDJ Index) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """

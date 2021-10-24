@@ -11,6 +11,10 @@ def get_adx(quotes: Iterable[Quote], lookback_periods: int = 14):
     return ADXResults(adx_results, ADXResult)
 
 class ADXResult(ResultBase):
+    """
+    A wrapper class for a single unit of ADX results.
+    """
+
     def __init__(self, adx_result):
         super().__init__(adx_result)
 

@@ -11,6 +11,10 @@ def get_aroon(quotes: Iterable[Quote], lookback_periods: int = 25):
     return AroonResults(aroon_results, AroonResult)
 
 class AroonResult(ResultBase):
+    """
+    A wrapper class for a single unit of Aroon results.
+    """
+
     def __init__(self, aroon_result):
         super().__init__(aroon_result)
 

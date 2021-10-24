@@ -11,6 +11,10 @@ def get_atr(quotes: Iterable[Quote], lookback_periods: int = 14):
     return ATRResults(atr_results, ATRResult)
 
 class ATRResult(ResultBase):
+    """
+    A wrapper class for a single unit of ATR results.
+    """
+
     def __init__(self, atr_result):
         super().__init__(atr_result)
 
