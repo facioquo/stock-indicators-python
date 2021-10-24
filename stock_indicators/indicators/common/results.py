@@ -28,7 +28,7 @@ class IndicatorResults(List[T]):
     It provides helper methods written in CSharp implementation.
     """
     def __init__(self, data: Iterable, wrapper_class: Type[T]):
-        super().__init__([ wrapper_class(i) for i in data ])
+        super().__init__([ wrapper_class(_) for _ in data ])
         self._csdata = data
         self._wrapper_class = wrapper_class
 
@@ -38,7 +38,7 @@ class IndicatorResults(List[T]):
         It is usually called after `done()`
         """
         if self._csdata is None:
-            self._csdata = [ i._csdata for i in self ]
+            self._csdata = [ _._csdata for _ in self ]
         return self
 
     def done(self):
