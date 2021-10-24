@@ -168,7 +168,14 @@ jobs:
         displayName: "Run all tests"
 
       - task: PublishTestResults@2
+        displayName: "Publish test results"
         condition: succeededOrFailed()
         inputs:
           testResultsFiles: "$(PythonWrapperBaseDirectory)/tests/test-results.xml"
           testRunTitle: "Python $(python.version) Tests"
+
+      - task: PublishCodeCoverageResults@1
+        displayName: "Publish code coverage"
+        inputs:
+          codeCoverageTool: Cobertura
+          summaryFileLocation: "$(PythonWrapperBaseDirectory)/tests/coverage.xml"
