@@ -1,12 +1,5 @@
 from stock_indicators import _cslib
 
-'''
-from .common import (
-    Quote,
-    ResultBase
-)
-'''
-
 from .adl import (
     get_adl
 )
