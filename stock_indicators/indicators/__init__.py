@@ -51,6 +51,10 @@ from .fractal import (
     get_fractal
 )
 
+from .macd import (
+    get_macd
+)
+
 from .rsi import (
     get_rsi
 )
