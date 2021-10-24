@@ -15,10 +15,6 @@ def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):
     sma_extended_list = CsIndicator.GetSmaExtended[Quote](CsList(Quote, quotes), lookback_periods)
     return SMAExtendedResults(sma_extended_list, SMAExtendedResult)
 
-def validate_sma(quotes: Iterable[Quote], lookback_periods: int) -> None:
-    CsIndicator.ValidateSma[Quote](CsList(Quote, quotes), lookback_periods) 
-
-
 class SMAResult(ResultBase):
     def __init__(self, sma_result):
         super().__init__(sma_result)
