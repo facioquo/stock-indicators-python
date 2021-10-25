@@ -1,5 +1,4 @@
 import pytest
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators import indicators
 
 class TestATR:
