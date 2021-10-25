@@ -116,6 +116,12 @@ jobs:
         Linux-Python39:
           imageName: ubuntu-latest
           python.version: "3.9"
+        MacOS-Python38:
+          imageName: macOS-latest
+          python.version: "3.8"
+        MacOS-Python39:
+          imageName: macOS-latest
+          python.version: "3.9"
 
     pool:
       name: Azure Pipelines
