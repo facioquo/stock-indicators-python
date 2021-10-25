@@ -16,6 +16,10 @@ def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):
     return SMAExtendedResults(sma_extended_list, SMAExtendedResult)
 
 class SMAResult(ResultBase):
+    """
+    A wrapper class for a single unit of SMA results.
+    """
+
     def __init__(self, sma_result):
         super().__init__(sma_result)
 
@@ -48,6 +52,10 @@ class SMAResults(IndicatorResults[SMAResult]):
         return self.__class__(removed_results, self._wrapper_class)
 
 class SMAExtendedResult(SMAResult):
+    """
+    A wrapper class for a single unit of SMA-Extended results.
+    """
+
     def __init__(self, sma_extended_result):
         super().__init__(sma_extended_result)
 

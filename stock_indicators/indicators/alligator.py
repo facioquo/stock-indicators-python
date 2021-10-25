@@ -11,6 +11,10 @@ def get_alligator(quotes: Iterable[Quote]):
     return AlligatorResults(alligator_results, AlligatorResult)
 
 class AlligatorResult(ResultBase):
+    """
+    A wrapper class for a single unit of Williams Alligator results.
+    """
+
     def __init__(self, alligator_result):
         super().__init__(alligator_result)
 

@@ -1,4 +1,4 @@
-from typing import Iterable, List, Optional, Type
+from typing import Iterable, Optional, Type
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
@@ -11,6 +11,10 @@ def get_aroon(quotes: Iterable[Quote], lookback_periods: int = 25):
     return AroonResults(aroon_results, AroonResult)
 
 class AroonResult(ResultBase):
+    """
+    A wrapper class for a single unit of Aroon results.
+    """
+
     def __init__(self, aroon_result):
         super().__init__(aroon_result)
 
@@ -44,7 +48,7 @@ class AroonResults(IndicatorResults[AroonResult]):
     except for that it provides some useful helper methods written in C# implementation.
     """
 
-    def __init__(self, data: List, wrapper_class: Type[AroonResult]):
+    def __init__(self, data: Iterable, wrapper_class: Type[AroonResult]):
         super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data
