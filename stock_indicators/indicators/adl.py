@@ -11,6 +11,10 @@ def get_adl(quotes: Iterable[Quote], sma_periods: Optional[int] = None):
     return ADLResults(adl_results, ADLResult)
 
 class ADLResult(ResultBase):
+    """
+    A wrapper class for a single unit of ADL results.
+    """
+
     def __init__(self, adl_result):
         super().__init__(adl_result)
 

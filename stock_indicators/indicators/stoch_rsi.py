@@ -1,4 +1,4 @@
-from typing import Iterable, List, Optional, Type
+from typing import Iterable, Optional, Type
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
@@ -11,8 +11,12 @@ def get_stoch_rsi(quotes: Iterable[Quote], rsi_periods: int, stoch_periods: int,
     return StochRSIResults(stoch_rsi_results, StochRSIResult)
 
 class StochRSIResult(ResultBase):
-    def __init__(self, adx_result):
-        super().__init__(adx_result)
+    """
+    A wrapper class for a single unit of Stochastic RSI results.
+    """
+
+    def __init__(self, stoch_rsi_result):
+        super().__init__(stoch_rsi_result)
 
     @property
     def stoch_rsi(self):
@@ -37,7 +41,7 @@ class StochRSIResults(IndicatorResults[StochRSIResult]):
     some useful helper methods written in C# implementation.
     """
 
-    def __init__(self, data: List, wrapper_class: Type[StochRSIResult]):
+    def __init__(self, data: Iterable, wrapper_class: Type[StochRSIResult]):
         super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data

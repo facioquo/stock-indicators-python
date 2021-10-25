@@ -1,4 +1,4 @@
-from typing import Iterable, List, Optional, Type
+from typing import Iterable, Optional, Type
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
@@ -11,6 +11,10 @@ def get_awesome(quotes: Iterable[Quote], fast_periods: int = 5, slow_periods: in
     return AwesomeResults(awesome_results, AwesomeResult)
 
 class AwesomeResult(ResultBase):
+    """
+    A wrapper class for a single unit of Awesome Oscillator results.
+    """
+
     def __init__(self, awesome_result):
         super().__init__(awesome_result)
 
@@ -37,7 +41,7 @@ class AwesomeResults(IndicatorResults[AwesomeResult]):
     some useful helper methods written in C# implementation.
     """
 
-    def __init__(self, data: List, wrapper_class: Type[AwesomeResult]):
+    def __init__(self, data: Iterable, wrapper_class: Type[AwesomeResult]):
         super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data

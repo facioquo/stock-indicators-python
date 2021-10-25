@@ -12,7 +12,7 @@ def get_rsi(quotes: Iterable[Quote], lookback_periods: int = 14):
 
 class RSIResult(ResultBase):
     """
-    A wrapper class for a single unit of RSI(Relative Strength Index) results.
+    A wrapper class for a single unit of RSI results.
     """
 
     def __init__(self, rsi_result):
