@@ -56,7 +56,7 @@ jobs:
           runVersion: latestFromBranch
           runBranch: refs/heads/main
           artifact: packages
-          patterns: "packages/*.nupkg"
+          patterns: "*.nupkg"
 
       - task: ExtractFiles@1
         displayName: "Extract DLL from NuGet"
@@ -147,7 +147,7 @@ jobs:
           runVersion: latestFromBranch
           runBranch: refs/heads/main
           artifact: packages
-          patterns: "packages/*.nupkg"
+          patterns: "*.nupkg"
 
       - task: ExtractFiles@1
         displayName: "Extract Nuget DLL"
