@@ -42,11 +42,6 @@ jobs:
           custom: gitversion
           arguments: "/output buildserver"
 
-      - task: UseDotNet@2
-        displayName: "use .NET SDK 6.0.x"
-        inputs:
-          version: 6.0.x
-      
       - task: DownloadPipelineArtifact@2
         displayName: "Fetch NuGet DLL"
         inputs:
