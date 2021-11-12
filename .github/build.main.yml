@@ -96,11 +96,12 @@ jobs:
           OverWrite: true
           flattenFolders: true
 
-      - task: PublishBuildArtifacts@1
+      - task: PublishPipelineArtifact@1
         displayName: "Save artifacts"
         inputs:
-          PathToPublish: "$(Build.ArtifactStagingDirectory)"
-          ArtifactName: packages
+          targetPath: "$(Build.ArtifactStagingDirectory)"
+          artifact: "packages"
+          publishLocation: "pipeline"
 
   - job: Test
     variables:
