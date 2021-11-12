@@ -1,7 +1,5 @@
 # MAIN BUILD
 
-
-
 trigger:
   - main
 
@@ -35,7 +33,7 @@ jobs:
         inputs:
           command: custom
           custom: tool
-          arguments: "install -g gitversion.tool --version 5.6.10"
+          arguments: "install -g gitversion.tool --version 5.6.11"
 
       - task: DotNetCoreCLI@2
         displayName: "get version number"
@@ -48,7 +46,7 @@ jobs:
         displayName: "Fetch NuGet DLL"
         inputs:
           source: specific
-          project: 5123ca47-74f2-4d67-a5d4-c4d90b8d670a
+          project: Stock.Indicators
           pipeline: 21
           runVersion: latestFromBranch
           runBranch: refs/heads/main
