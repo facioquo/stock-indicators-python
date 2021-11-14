@@ -42,6 +42,24 @@ jobs:
       #     custom: gitversion
       #     arguments: "/output buildserver"
 
+      - task: gitversion/setup@0
+        # condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        displayName: Setup GitVersion
+        inputs:
+          versionSpec: '5.x'
+
+      - task: gitversion/execute@0
+        # condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        displayName: Calculate GitVersion
+        inputs:
+          useConfigFile: true
+          configFilePath: 'gitversion.yml'
+      
+      - powershell: |
+          echo "Current version: $(GitVersion.SemVer)"
+        displayName: Shows currently compiling version
+        # condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+
       - task: DownloadPipelineArtifact@2
         displayName: "Fetch NuGet DLL"
         inputs:
