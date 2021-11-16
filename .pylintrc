@@ -1,2 +1,16 @@
 [MASTER]
-extension-pkg-allow-list=clr
+extension-pkg-allow-list=
+    clr
+
+ignore-long-lines=yes
+
+disable=
+    C0103,
+    C0116,  
+    C0301,
+    C0413,
+    E0401,
+    W0212,
+    #R0801,
+    R0903,
+    R0913
