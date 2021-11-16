@@ -15,9 +15,6 @@ class SuperTrendResult(ResultBase):
     A wrapper class for a single unit of Super Trend results.
     """
 
-    def __init__(self, super_trend_result):
-        super().__init__(super_trend_result)
-
     @property
     def super_trend(self):
         return to_pydecimal(self._csdata.SuperTrend)
@@ -29,7 +26,7 @@ class SuperTrendResult(ResultBase):
     @property
     def upper_band(self):
         return to_pydecimal(self._csdata.UpperBand)
-    
+
     @upper_band.setter
     def upper_band(self, value):
         self._csdata.UpperBand = CsDecimal(value)
@@ -56,7 +53,7 @@ class SuperTrendResults(IndicatorResults[SuperTrendResult]):
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):
         if remove_periods is not None:
             return super().remove_warmup_periods(remove_periods)
-        
+
         removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
 
         return self.__class__(removed_results, self._wrapper_class)

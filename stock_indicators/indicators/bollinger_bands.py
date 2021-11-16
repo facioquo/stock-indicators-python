@@ -15,9 +15,6 @@ class BollingerBandsResult(ResultBase):
     A wrapper class for a single unit of Bollinger Bands results.
     """
 
-    def __init__(self, bollinger_bands_result):
-        super().__init__(bollinger_bands_result)
-
     @property
     def sma(self):
         return to_pydecimal(self._csdata.Sma)
@@ -80,7 +77,7 @@ class BollingerBandsResults(IndicatorResults[BollingerBandsResult]):
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):
         if remove_periods is not None:
             return super().remove_warmup_periods(remove_periods)
-        
+
         removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
 
         return self.__class__(removed_results, self._wrapper_class)

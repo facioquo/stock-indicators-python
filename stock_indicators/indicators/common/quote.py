@@ -63,7 +63,7 @@ class Quote(CsQuote):
     @staticmethod
     def from_csquote(csQuote: CsQuote):
         """
-        Constructs `Quote` instance from C# `Quote` instance. 
+        Constructs `Quote` instance from C# `Quote` instance.
         """
 
         return Quote(

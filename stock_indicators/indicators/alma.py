@@ -15,9 +15,6 @@ class ALMAResult(ResultBase):
     A wrapper class for a single unit of ALMA results.
     """
 
-    def __init__(self, alma_result):
-        super().__init__(alma_result)
-
     @property
     def alma(self):
         return to_pydecimal(self._csdata.Alma)
@@ -28,8 +25,8 @@ class ALMAResult(ResultBase):
 
 class ALMAResults(IndicatorResults[ALMAResult]):
     """
-    A wrapper class for the list of ALMA(Arnaud Legoux Moving Average) results. 
-    It is exactly same with built-in `list` except for that it provides 
+    A wrapper class for the list of ALMA(Arnaud Legoux Moving Average) results.
+    It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in CSharp implementation.
     """
     def __init__(self, data: Iterable, wrapper_class: Type[ALMAResult]):
@@ -39,7 +36,7 @@ class ALMAResults(IndicatorResults[ALMAResult]):
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):
         if remove_periods is not None:
             return super().remove_warmup_periods(remove_periods)
-        
+
         removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
 
         return self.__class__(removed_results, self._wrapper_class)

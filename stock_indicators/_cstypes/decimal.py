@@ -1,23 +1,23 @@
-from System import Decimal as CsDecimal
 from decimal import Decimal as PyDecimal
+from System import Decimal as CsDecimal
 
 def Decimal(decimal):
     """
     Converts a number into C#'s `System.Decimal` class.
-   
+
     Parameter
     ----------
     decimal : `int`, `float` or any `object` that can be represented as a number.
-   
+
     Example
     --------
     Constructing `System.Decimal` from `float` of Python.
-   
+
     >>> cs_decimal = Decimal(2.5)
     >>> cs_decimal
     2.5
     """
-    
+
     return CsDecimal.Parse(str(decimal))
 
 def to_pydecimal(cs_decimal):
@@ -30,5 +30,5 @@ def to_pydecimal(cs_decimal):
 
     """
 
-    if cs_decimal is not None: 
+    if cs_decimal is not None:
         return PyDecimal(str(cs_decimal))

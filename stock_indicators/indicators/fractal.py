@@ -18,15 +18,12 @@ from stock_indicators.indicators.common.quote import Quote
 def get_fractal(quotes: Iterable[Quote], window_span: int = 2):
     fractal_results = CsIndicator.GetFractal[Quote](CsList(Quote, quotes), window_span)
     return FractalResults(fractal_results, FractalResult)
- 
+
 
 class FractalResult(ResultBase):
     """
     A wrapper class for a single unit of Williams Fractal results.
     """
-
-    def __init__(self, fractal_result):
-        super().__init__(fractal_result)
 
     @property
     def fractal_bear(self):

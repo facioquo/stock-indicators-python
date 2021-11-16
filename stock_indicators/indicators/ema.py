@@ -16,9 +16,6 @@ class EMAResult(ResultBase):
     A wrapper class for a single unit of EMA results.
     """
 
-    def __init__(self, ema_result):
-        super().__init__(ema_result)
-
     @property
     def ema(self):
         return to_pydecimal(self._csdata.Ema)
@@ -42,7 +39,7 @@ class EMAResults(IndicatorResults[EMAResult]):
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):
         if remove_periods is not None:
             return super().remove_warmup_periods(remove_periods)
-        
+
         removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
 
         return self.__class__(removed_results, self._wrapper_class)

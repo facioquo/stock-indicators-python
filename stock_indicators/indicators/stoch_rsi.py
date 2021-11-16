@@ -15,9 +15,6 @@ class StochRSIResult(ResultBase):
     A wrapper class for a single unit of Stochastic RSI results.
     """
 
-    def __init__(self, stoch_rsi_result):
-        super().__init__(stoch_rsi_result)
-
     @property
     def stoch_rsi(self):
         return to_pydecimal(self._csdata.StochRsi)
@@ -48,7 +45,7 @@ class StochRSIResults(IndicatorResults[StochRSIResult]):
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):
         if remove_periods is not None:
             return super().remove_warmup_periods(remove_periods)
-        
+
         removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
 
         return self.__class__(removed_results, self._wrapper_class)
