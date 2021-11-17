@@ -23,24 +23,24 @@ jobs:
         inputs:
           versionSpec: "$(PythonVersion)"
 
-      - task: UseDotNet@2
-        displayName: "use .NET SDK 5.0.x"
-        inputs:
-          version: 5.0.x
+      # - task: UseDotNet@2
+      #   displayName: "use .NET SDK 5.0.x"
+      #   inputs:
+      #     version: 5.0.x
 
-      - task: DotNetCoreCLI@2
-        displayName: "use GitVersion"
-        inputs:
-          command: custom
-          custom: tool
-          arguments: "install -g gitversion.tool --version 5.6.10"
+      # - task: DotNetCoreCLI@2
+      #   displayName: "use GitVersion"
+      #   inputs:
+      #     command: custom
+      #     custom: tool
+      #     arguments: "install -g gitversion.tool --version 5.6.11"
 
-      - task: DotNetCoreCLI@2
-        displayName: "get version number"
-        inputs:
-          command: custom
-          custom: gitversion
-          arguments: "/output buildserver"
+      # - task: DotNetCoreCLI@2
+      #   displayName: "get version number"
+      #   inputs:
+      #     command: custom
+      #     custom: gitversion
+      #     arguments: "/output buildserver"
 
       - task: DownloadPipelineArtifact@2
         displayName: "Fetch NuGet DLL"
@@ -51,7 +51,7 @@ jobs:
           runVersion: latestFromBranch
           runBranch: refs/heads/main
           artifact: packages
-          patterns: "packages/*.nupkg"
+          patterns: "*.nupkg"
 
       - task: ExtractFiles@1
         displayName: "Extract DLL from NuGet"
@@ -70,6 +70,24 @@ jobs:
           CleanTargetFolder: true
           OverWrite: true
           flattenFolders: true
+      
+      - task: gitversion/setup@0
+        # condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        displayName: Setup GitVersion
+        inputs:
+          versionSpec: '5.x'
+
+      - task: gitversion/execute@0
+        # condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        displayName: Calculate GitVersion
+        inputs:
+          useConfigFile: true
+          configFilePath: 'gitversion.yml'
+      
+      - powershell: |
+          echo "Current version: $(GitVersion.SemVer)"
+        displayName: Shows currently compiling version
+        # condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
 
       - script: |
           python -m pip install --upgrade pip setuptools wheel build
@@ -78,8 +96,9 @@ jobs:
       - task: CmdLine@2
         displayName: "Build"
         inputs:
-          script: "python -m build"
+          script: "python setup.py $(GitVersion.SemVer) sdist bdist_wheel"
           workingDirectory: $(PythonWrapperBaseDirectory)
+        #condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
 
       - task: CopyFiles@2
         displayName: "Stage artifacts"
@@ -91,11 +110,12 @@ jobs:
           OverWrite: true
           flattenFolders: true
 
-      - task: PublishBuildArtifacts@1
+      - task: PublishPipelineArtifact@1
         displayName: "Save artifacts"
         inputs:
-          PathToPublish: "$(Build.ArtifactStagingDirectory)"
-          ArtifactName: packages
+          targetPath: "$(Build.ArtifactStagingDirectory)"
+          artifact: "packages"
+          publishLocation: "pipeline"
 
   - job: Test
     variables:
@@ -107,21 +127,21 @@ jobs:
         Windows-Python38:
           imageName: windows-latest
           python.version: "3.8"
-        Windows-Python39:
-          imageName: windows-latest
-          python.version: "3.9"
+        # Windows-Python39:
+        #   imageName: windows-latest
+        #   python.version: "3.9"
         Linux-Python38:
           imageName: ubuntu-latest
           python.version: "3.8"
-        Linux-Python39:
-          imageName: ubuntu-latest
-          python.version: "3.9"
+        # Linux-Python39:
+        #   imageName: ubuntu-latest
+        #   python.version: "3.9"
         MacOS-Python38:
           imageName: macOS-latest
           python.version: "3.8"
-        MacOS-Python39:
-          imageName: macOS-latest
-          python.version: "3.9"
+        # MacOS-Python39:
+        #   imageName: macOS-latest
+        #   python.version: "3.9"
 
     pool:
       name: Azure Pipelines
@@ -141,7 +161,7 @@ jobs:
           runVersion: latestFromBranch
           runBranch: refs/heads/main
           artifact: packages
-          patterns: "packages/*.nupkg"
+          patterns: "*.nupkg"
 
       - task: ExtractFiles@1
         displayName: "Extract Nuget DLL"
