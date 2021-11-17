@@ -15,9 +15,6 @@ class AlligatorResult(ResultBase):
     A wrapper class for a single unit of Williams Alligator results.
     """
 
-    def __init__(self, alligator_result):
-        super().__init__(alligator_result)
-
     @property
     def jaw(self):
         return to_pydecimal(self._csdata.Jaw)
@@ -55,7 +52,7 @@ class AlligatorResults(IndicatorResults[AlligatorResult]):
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):
         if remove_periods is not None:
             return super().remove_warmup_periods(remove_periods)
-        
+
         removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
 
         return self.__class__(removed_results, self._wrapper_class)

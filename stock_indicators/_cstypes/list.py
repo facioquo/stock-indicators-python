@@ -3,7 +3,7 @@ from System.Collections.Generic import List as CsList
 def List(generic, sequence):
     """
     Converts Python's iterator type into C#'s `System.Collections.Generic.List` class.
-   
+
     Parameters
     ----------
     generic : generic type for `System.Collections.Generic.List`.
@@ -13,11 +13,11 @@ def List(generic, sequence):
     See Also
     ---------
     [Iterator Types](https://docs.python.org/3/library/stdtypes.html#iterator-types)
-   
+
     Examples
     --------
     Constructing `System.Collections.Generic.List` from `list` of Python.
-   
+
     >>> py_list = [1, 2, 3]
     >>> cs_list = List(int, py_list)
     >>> cs_list
@@ -32,6 +32,7 @@ def List(generic, sequence):
     """
 
     clist = CsList[generic]()
-    for i in sequence: clist.Add(i)
-    
+    for i in sequence:
+        clist.Add(i)
+
     return clist

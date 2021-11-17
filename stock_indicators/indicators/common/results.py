@@ -16,7 +16,7 @@ class ResultBase:
     @property
     def date(self):
         return to_pydatetime(self._csdata.Date)
-    
+
     @date.setter
     def date(self, value):
         self._csdata.Date = CsDateTime(value)
@@ -51,7 +51,7 @@ class IndicatorResults(List[T]):
 
     def _verify_data(func):
         """
-        Check whether `_csdata` can be passed to helper method.    
+        Check whether `_csdata` can be passed to helper method.
         """
         def verify_data(self, *args):
             if not isinstance(self._csdata, list) or len(self._csdata) < 1:

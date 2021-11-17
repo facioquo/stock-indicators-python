@@ -20,9 +20,6 @@ class SMAResult(ResultBase):
     A wrapper class for a single unit of SMA results.
     """
 
-    def __init__(self, sma_result):
-        super().__init__(sma_result)
-
     @property
     def sma(self):
         return to_pydecimal(self._csdata.Sma)
@@ -46,7 +43,7 @@ class SMAResults(IndicatorResults[SMAResult]):
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):
         if remove_periods is not None:
             return super().remove_warmup_periods(remove_periods)
-        
+
         removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
 
         return self.__class__(removed_results, self._wrapper_class)
@@ -56,29 +53,26 @@ class SMAExtendedResult(SMAResult):
     A wrapper class for a single unit of SMA-Extended results.
     """
 
-    def __init__(self, sma_extended_result):
-        super().__init__(sma_extended_result)
-
     @property
     def mad(self):
         return to_pydecimal(self._csdata.Mad)
-    
+
     @mad.setter
     def mad(self, value):
         self._csdata.Mad = CsDecimal(value)
-    
+
     @property
     def mse(self):
         return to_pydecimal(self._csdata.Mse)
-    
+
     @mse.setter
     def mse(self, value):
         self._csdata.Mse = CsDecimal(value)
-    
+
     @property
     def mape(self):
         return to_pydecimal(self._csdata.Mape)
-    
+
     @mape.setter
     def mape(self, value):
         self._csdata.Mape = CsDecimal(value)
@@ -96,7 +90,7 @@ class SMAExtendedResults(IndicatorResults[SMAExtendedResult]):
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):
         if remove_periods is not None:
             return super().remove_warmup_periods(remove_periods)
-        
+
         removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
 
         return self.__class__(removed_results, self._wrapper_class)

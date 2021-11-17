@@ -15,13 +15,10 @@ class ATRResult(ResultBase):
     A wrapper class for a single unit of ATR results.
     """
 
-    def __init__(self, atr_result):
-        super().__init__(atr_result)
-
     @property
     def tr(self):
         return to_pydecimal(self._csdata.Tr)
-    
+
     @tr.setter
     def tr(self, value):
         self._csdata.Tr = CsDecimal(value)
@@ -29,7 +26,7 @@ class ATRResult(ResultBase):
     @property
     def atr(self):
         return to_pydecimal(self._csdata.Atr)
-    
+
     @atr.setter
     def atr(self, value):
         self._csdata.Atr = CsDecimal(value)
@@ -41,10 +38,11 @@ class ATRResult(ResultBase):
     @atrp.setter
     def atrp(self, value):
         self._csdata.Atrp = CsDecimal(value)
-    
+
+
 class ATRResults(IndicatorResults[ATRResult]):
     """
-    A wrapper class for the list of ATR(Average True Range) results. 
+    A wrapper class for the list of ATR(Average True Range) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
@@ -56,7 +54,7 @@ class ATRResults(IndicatorResults[ATRResult]):
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):
         if remove_periods is not None:
             return super().remove_warmup_periods(remove_periods)
-        
+
         removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
 
         return self.__class__(removed_results, self._wrapper_class)

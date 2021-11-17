@@ -15,9 +15,6 @@ class ADLResult(ResultBase):
     A wrapper class for a single unit of ADL results.
     """
 
-    def __init__(self, adl_result):
-        super().__init__(adl_result)
-
     @property
     def money_flow_multiplier(self):
         return to_pydecimal(self._csdata.MoneyFlowMultiplier)

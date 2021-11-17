@@ -15,21 +15,18 @@ class ADXResult(ResultBase):
     A wrapper class for a single unit of ADX results.
     """
 
-    def __init__(self, adx_result):
-        super().__init__(adx_result)
-
     @property
     def pdi(self):
         return to_pydecimal(self._csdata.Pdi)
-    
+
     @pdi.setter
     def pdi(self, value):
         self._csdata.Pdi = CsDecimal(value)
-    
+
     @property
     def mdi(self):
         return to_pydecimal(self._csdata.Mdi)
-    
+
     @mdi.setter
     def mdi(self, value):
         self._csdata.Mdi = CsDecimal(value)
@@ -56,7 +53,7 @@ class ADXResults(IndicatorResults[ADXResult]):
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):
         if remove_periods is not None:
             return super().remove_warmup_periods(remove_periods)
-        
+
         removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
 
         return self.__class__(removed_results, self._wrapper_class)
