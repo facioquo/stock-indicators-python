@@ -30,7 +30,7 @@ jobs:
           pipeline: 21
           runVersion: latestFromBranch
           runBranch: refs/heads/main
-          tags: refs/tags/1.*
+          tags: released
           artifact: packages
           patterns: "*.nupkg"
 
