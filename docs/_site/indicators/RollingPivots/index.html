@@ -1,0 +1,306 @@
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Rolling Pivot Points | Stock Indicators</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Rolling Pivot Points" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Rolling Pivot Points" />
+<meta property="og:description" content="Rolling Pivot Points" />
+<link rel="canonical" href="http://localhost:4000/indicators/RollingPivots/" />
+<meta property="og:url" content="http://localhost:4000/indicators/RollingPivots/" />
+<meta property="og:site_name" content="Stock Indicators" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-11-21T16:11:29+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Rolling Pivot Points" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/indicators/RollingPivots/","headline":"Rolling Pivot Points","dateModified":"2021-11-21T16:05:22+09:00","datePublished":"2021-11-21T16:11:29+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/indicators/RollingPivots/"},"description":"Rolling Pivot Points","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#424242">
+<meta name="msapplication-TileColor" content="#424242">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="/assets/css/style.css?v=b2827a07114582215b9df9bdea330cfea1132af1">
+<link rel="canonical" href="http://localhost:4000/indicators/RollingPivots/" />
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+<link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#424242">
+
+
+</head>
+
+<body>
+  <header class="page-header" role="banner">
+
+    <h1 class="project-name">
+      <a href="/">
+        Stock Indicators
+      </a>
+    </h1>
+
+    <h2 class="project-tagline">
+      Send in historical price quotes and get back desired technical indicators.
+      <br class="not-mobile">
+      Nothing more.
+    </h2>
+
+    <a href="/indicators/" class="btn">Indicators</a>
+    <a href="/guide/" class="btn">Guide</a>
+    <a href="https://www.nuget.org/packages/Skender.Stock.Indicators" class="btn">NuGet<span class="if-large"> Package</span></a>
+    
+    <a href="https://github.com/LeeDongGeon1996/Stock.Indicators.Python" class="btn not-mobile"><span class="if-large">View on </span>GitHub</a>
+    
+  </header>
+
+  <main id="content" class="main-content" role="main">
+    
+
+
+
+
+    
+    
+
+    
+    
+    
+
+    
+    
+     
+
+    
+    
+
+    <div class="cyclotron">
+    <a href="/indicators/Renko/#content" class="prev" title="Renko Chart">«</a>
+    <a href="/indicators/StarcBands/#content" class="next" title="STARC Bands">»</a>
+    </div>
+
+<h1 id="rolling-pivot-points">Rolling Pivot Points</h1>
+
+<p>Created by Dave Skender, Rolling Pivot Points is a modern update to traditional fixed calendar window <a href="../PivotPoints#content">Pivot Points</a>.  It depicts support and resistance levels, based on a defined <em>rolling</em> window and offset.
+<a href="https://github.com/LeeDongGeon1996/Stock.Indicators.Python/discussions/274" title="Community discussion about this indicator">[Discuss] <img class="emoji" title=":speech_balloon:" alt=":speech_balloon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ac.png" height="20" width="20"></a></p>
+
+<p><img src="/assets/charts/RollingPivots.png" alt="image"></p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// usage</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">RollingPivotsResult</span><span class="p">&gt;</span> <span class="n">results</span> <span class="p">=</span> 
+  <span class="n">quotes</span><span class="p">.</span><span class="nf">GetRollingPivots</span><span class="p">(</span><span class="n">lookbackPeriods</span><span class="p">,</span> <span class="n">offsetPeriods</span><span class="p">,</span> <span class="n">pointType</span><span class="p">);</span>  
+</code></pre></div></div>
+
+<h2 id="parameters">Parameters</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>type</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">windowPeriods</code></td>
+      <td>int</td>
+      <td>Number of periods (<code class="language-plaintext highlighter-rouge">W</code>) in the evaluation window.  Must be greater than 0 to calculate; but is typically specified in the 5-20 range.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">offsetPeriods</code></td>
+      <td>int</td>
+      <td>Number of periods (<code class="language-plaintext highlighter-rouge">F</code>) to offset the window from the current period.  Must be greater than or equal to 0 and is typically less than or equal to <code class="language-plaintext highlighter-rouge">W</code>.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">pointType</code></td>
+      <td>PivotPointType</td>
+      <td>Type of Pivot Point.  Default is <code class="language-plaintext highlighter-rouge">PivotPointType.Standard</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<p>For example, a window of 8 with an offset of 4 would evaluate quotes like: <code class="language-plaintext highlighter-rouge">W W W W W W W W F F  F F C</code>, where <code class="language-plaintext highlighter-rouge">W</code> is the window included in the Pivot Point calculation, and <code class="language-plaintext highlighter-rouge">F</code> is the distance from the current evaluation position <code class="language-plaintext highlighter-rouge">C</code>.  A <code class="language-plaintext highlighter-rouge">quotes</code> with daily bars using <code class="language-plaintext highlighter-rouge">W/F</code> values of <code class="language-plaintext highlighter-rouge">20/10</code> would most closely match the <code class="language-plaintext highlighter-rouge">month</code> variant of the traditional <a href="../PivotPoints#content">Pivot Points</a> indicator.</p>
+
+<h3 id="historical-quotes-requirements">Historical quotes requirements</h3>
+
+<p>You must have at least <code class="language-plaintext highlighter-rouge">W+F</code> periods of <code class="language-plaintext highlighter-rouge">quotes</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">quotes</code> is an <code class="language-plaintext highlighter-rouge">IEnumerable&lt;TQuote&gt;</code> collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See <a href="/guide/#historical-quotes">the Guide</a> for more information.</p>
+
+<h3 id="pivotpointtype-options">PivotPointType options</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>type</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PivotPointType.Standard</code></td>
+      <td>Floor Trading (default)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PivotPointType.Camarilla</code></td>
+      <td>Camarilla</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PivotPointType.Demark</code></td>
+      <td>Demark</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PivotPointType.Fibonacci</code></td>
+      <td>Fibonacci</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PivotPointType.Woodie</code></td>
+      <td>Woodie</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="response">Response</h2>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">RollingPivotsResult</span><span class="p">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>This method returns a time series of all available indicator values for the <code class="language-plaintext highlighter-rouge">quotes</code> provided.</li>
+  <li>It always returns the same number of elements as there are in the historical quotes.</li>
+  <li>It does not return a single incremental indicator value.</li>
+  <li>The first <code class="language-plaintext highlighter-rouge">W+F-1</code> periods will have <code class="language-plaintext highlighter-rouge">null</code> values since there’s not enough data to calculate.</li>
+</ul>
+
+<h3 id="rollingpivotsresult">RollingPivotsResult</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>type</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Date</code></td>
+      <td>DateTime</td>
+      <td>Date</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">R3</code></td>
+      <td>decimal</td>
+      <td>Resistance level 3</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">R2</code></td>
+      <td>decimal</td>
+      <td>Resistance level 2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">R1</code></td>
+      <td>decimal</td>
+      <td>Resistance level 1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">PP</code></td>
+      <td>decimal</td>
+      <td>Pivot Point</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">S1</code></td>
+      <td>decimal</td>
+      <td>Support level 1</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">S2</code></td>
+      <td>decimal</td>
+      <td>Support level 2</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">S3</code></td>
+      <td>decimal</td>
+      <td>Support level 3</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="utilities">Utilities</h3>
+
+<ul>
+  <li><a href="/utilities#find-indicator-result-by-date">.Find(lookupDate)</a></li>
+  <li><a href="/utilities#remove-warmup-periods">.RemoveWarmupPeriods()</a></li>
+  <li><a href="/utilities#remove-warmup-periods">.RemoveWarmupPeriods(qty)</a></li>
+</ul>
+
+<p>See <a href="/utilities#utilities-for-indicator-results">Utilities and Helpers</a> for more information.</p>
+
+<h2 id="example">Example</h2>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// fetch historical quotes from your feed (your method)</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Quote</span><span class="p">&gt;</span> <span class="n">quotes</span> <span class="p">=</span> <span class="nf">GetHistoryFromFeed</span><span class="p">(</span><span class="s">"SPY"</span><span class="p">);</span>
+
+<span class="c1">// calculate Woodie-style 14 period Rolling Pivot Points</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">RollingPivotsResult</span><span class="p">&gt;</span> <span class="n">results</span>
+  <span class="p">=</span> <span class="n">quotes</span><span class="p">.</span><span class="nf">GetRollingPivots</span><span class="p">(</span><span class="m">14</span><span class="p">,</span><span class="m">0</span><span class="p">,</span><span class="n">PivotPointType</span><span class="p">.</span><span class="n">Woodie</span><span class="p">);</span>
+</code></pre></div></div>
+
+
+
+
+
+
+    
+    
+
+    
+    
+    
+
+    
+    
+     
+
+    
+    
+
+    <div class="cyclotron">
+    <a href="/indicators/Renko/#content" class="prev" title="Renko Chart">«</a>
+    <a href="/indicators/StarcBands/#content" class="next" title="STARC Bands">»</a>
+    </div>
+
+
+
+
+<!-- swipe gestures -->
+<script type="text/javascript" src="/assets/js/hammer.min.js"></script>
+
+<script>
+    var content = document.getElementById('content');
+
+    new Hammer(content).on('swipeleft', function (event) {
+        document.location.replace("/indicators/StarcBands/#content");
+    });
+
+    new Hammer(content).on('swiperight', function (event) {
+        document.location.replace("/indicators/Renko/#content");
+    });
+</script>
+
+  </main>
+</body>
+
+</html>

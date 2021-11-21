@@ -1,0 +1,146 @@
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Example usage code | Stock Indicators</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Example usage code" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Stock Indicators for Python" />
+<meta property="og:description" content="Stock Indicators for Python" />
+<link rel="canonical" href="http://localhost:4000/examples/" />
+<meta property="og:url" content="http://localhost:4000/examples/" />
+<meta property="og:site_name" content="Stock Indicators" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Example usage code" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/examples/","headline":"Example usage code","dateModified":"2021-11-21T16:02:15+09:00","description":"Stock Indicators for Python","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#424242">
+<meta name="msapplication-TileColor" content="#424242">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="/assets/css/style.css?v=b2827a07114582215b9df9bdea330cfea1132af1">
+<link rel="canonical" href="http://localhost:4000/examples/" />
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+<link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#424242">
+
+
+</head>
+
+<body>
+  <header class="page-header" role="banner">
+
+    <h1 class="project-name">
+      <a href="/">
+        Stock Indicators
+      </a>
+    </h1>
+
+    <h2 class="project-tagline">
+      Send in historical price quotes and get back desired technical indicators.
+      <br class="not-mobile" />
+      Nothing more.
+    </h2>
+
+    <a href="/indicators/" class="btn">Indicators</a>
+    <a href="/guide/" class="btn">Guide</a>
+    <a href="https://www.nuget.org/packages/Skender.Stock.Indicators" class="btn">NuGet<span class="if-large"> Package</span></a>
+    
+    <a href="https://github.com/LeeDongGeon1996/Stock.Indicators.Python" class="btn not-mobile"><span class="if-large">View on </span>GitHub</a>
+    
+  </header>
+
+  <main id="content" class="main-content" role="main">
+    <h1 id="example-usage-code">Example usage code</h1>
+
+<p>To help you get started, here is a simple .NET 6.0 C# console application that you can review as a complete minimal working example.
+There are two minimalist example projects in this Solution: 1) a basic <code class="language-plaintext highlighter-rouge">ConsoleApp</code>, and 2) a bit more advanced <code class="language-plaintext highlighter-rouge">Backtest</code>.  Start with the <code class="language-plaintext highlighter-rouge">ConsoleApp</code> if you are a newbie.
+For more information on how to use this library overall, see the <a href="/guide/#content">Guide and Pro Tips</a>.</p>
+
+<p>To run the sample app:</p>
+
+<ol>
+  <li><a href="/examples/Skender.Stock.Indicators-Examples.zip">Download</a> the ZIP file and extract contents</li>
+  <li>Open <code class="language-plaintext highlighter-rouge">Examples.sln</code> in <a href="https://visualstudio.microsoft.com">Visual Studio</a></li>
+  <li>Review the code in the <code class="language-plaintext highlighter-rouge">Program.cs</code> file</li>
+  <li>Run the <code class="language-plaintext highlighter-rouge">ConsoleApp</code> by any one of the following methods:
+    <ul>
+      <li>pressing the <code class="language-plaintext highlighter-rouge">CTRL+F5</code> key</li>
+      <li>
+        <p>clicking the play button</p>
+
+        <p><img src="/examples/run.png" alt="how to execute the code" /></p>
+      </li>
+      <li>execute <code class="language-plaintext highlighter-rouge">dotnet run</code> CLI command in the <code class="language-plaintext highlighter-rouge">ConsoleApp</code> folder</li>
+    </ul>
+  </li>
+</ol>
+
+<h2 id="console-output">Console output</h2>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="go">SMA Results ---------------------------
+</span><span class="gp">SMA on 2021-08-13 06:00:10Z was $</span>1.742
+<span class="gp">SMA on 2021-08-13 06:05:10Z was $</span>1.737
+<span class="gp">SMA on 2021-08-13 06:10:26Z was $</span>1.733
+<span class="gp">SMA on 2021-08-13 06:15:26Z was $</span>1.731
+<span class="gp">SMA on 2021-08-13 06:20:40Z was $</span>1.730
+<span class="gp">SMA on 2021-08-13 06:25:40Z was $</span>1.729
+<span class="gp">SMA on 2021-08-13 06:30:41Z was $</span>1.728
+<span class="gp">SMA on 2021-08-13 06:35:41Z was $</span>1.727
+<span class="gp">SMA on 2021-08-13 06:40:56Z was $</span>1.726
+<span class="gp">SMA on 2021-08-13 06:50:11Z was $</span>1.727
+<span class="go">
+SMA on Specific Date ------------------
+</span><span class="gp">SMA on 2021-08-12 11:08:17Z was $</span>1.466
+<span class="go">
+SMA Analysis --------------------------
+</span><span class="gp">SMA on 2021-08-13 04:40:21Z was $</span>1.681 and Bullishness is True
+<span class="gp">SMA on 2021-08-13 04:45:21Z was $</span>1.681 and Bullishness is True
+<span class="gp">SMA on 2021-08-13 04:50:21Z was $</span>1.687 and Bullishness is True
+<span class="gp">SMA on 2021-08-13 04:55:22Z was $</span>1.691 and Bullishness is True
+<span class="gp">SMA on 2021-08-13 05:00:25Z was $</span>1.694 and Bullishness is True
+<span class="gp">SMA on 2021-08-13 05:05:25Z was $</span>1.702 and Bullishness is True
+<span class="gp">SMA on 2021-08-13 05:10:40Z was $</span>1.711 and Bullishness is True
+<span class="gp">SMA on 2021-08-13 05:15:40Z was $</span>1.719 and Bullishness is True
+<span class="gp">SMA on 2021-08-13 05:20:40Z was $</span>1.726 and Bullishness is True
+<span class="gp">SMA on 2021-08-13 05:25:40Z was $</span>1.732 and Bullishness is True
+<span class="gp">SMA on 2021-08-13 05:30:40Z was $</span>1.737 and Bullishness is False
+<span class="gp">SMA on 2021-08-13 05:35:40Z was $</span>1.742 and Bullishness is False
+<span class="gp">SMA on 2021-08-13 05:40:41Z was $</span>1.742 and Bullishness is False
+<span class="gp">SMA on 2021-08-13 05:45:55Z was $</span>1.744 and Bullishness is False
+<span class="gp">SMA on 2021-08-13 05:50:55Z was $</span>1.744 and Bullishness is False
+<span class="gp">SMA on 2021-08-13 06:00:10Z was $</span>1.742 and Bullishness is False
+<span class="gp">SMA on 2021-08-13 06:05:10Z was $</span>1.737 and Bullishness is False
+<span class="gp">SMA on 2021-08-13 06:10:26Z was $</span>1.733 and Bullishness is False
+<span class="gp">SMA on 2021-08-13 06:15:26Z was $</span>1.731 and Bullishness is False
+<span class="gp">SMA on 2021-08-13 06:20:40Z was $</span>1.730 and Bullishness is False
+<span class="gp">SMA on 2021-08-13 06:25:40Z was $</span>1.729 and Bullishness is True
+<span class="gp">SMA on 2021-08-13 06:30:41Z was $</span>1.728 and Bullishness is False
+<span class="gp">SMA on 2021-08-13 06:35:41Z was $</span>1.727 and Bullishness is False
+<span class="gp">SMA on 2021-08-13 06:40:56Z was $</span>1.726 and Bullishness is True
+<span class="gp">SMA on 2021-08-13 06:50:11Z was $</span>1.727 and Bullishness is True
+</code></pre></div></div>
+
+<h3 id="more-info">More info</h3>
+
+<ul>
+  <li>Tutorial: <a href="https://docs.microsoft.com/en-us/visualstudio/get-started/csharp/tutorial-console">Create a simple C# console app</a></li>
+  <li>These files can also be found in the <a href="https://github.com/LeeDongGeon1996/Stock.Indicators.Python/tree/main/docs/examples">/docs/examples</a> GitHub repo folder</li>
+</ul>
+
+  </main>
+</body>
+
+</html>

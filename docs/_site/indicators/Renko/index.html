@@ -1,0 +1,336 @@
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Renko Chart | Stock Indicators</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Renko Chart" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Renko Chart" />
+<meta property="og:description" content="Renko Chart" />
+<link rel="canonical" href="http://localhost:4000/indicators/Renko/" />
+<meta property="og:url" content="http://localhost:4000/indicators/Renko/" />
+<meta property="og:site_name" content="Stock Indicators" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-11-21T16:11:29+09:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Renko Chart" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/indicators/Renko/","headline":"Renko Chart","dateModified":"2021-11-21T16:05:22+09:00","datePublished":"2021-11-21T16:11:29+09:00","mainEntityOfPage":{"@type":"WebPage","@id":"http://localhost:4000/indicators/Renko/"},"description":"Renko Chart","@type":"BlogPosting","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#424242">
+<meta name="msapplication-TileColor" content="#424242">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="/assets/css/style.css?v=b2827a07114582215b9df9bdea330cfea1132af1">
+<link rel="canonical" href="http://localhost:4000/indicators/Renko/" />
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+<link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#424242">
+
+
+</head>
+
+<body>
+  <header class="page-header" role="banner">
+
+    <h1 class="project-name">
+      <a href="/">
+        Stock Indicators
+      </a>
+    </h1>
+
+    <h2 class="project-tagline">
+      Send in historical price quotes and get back desired technical indicators.
+      <br class="not-mobile">
+      Nothing more.
+    </h2>
+
+    <a href="/indicators/" class="btn">Indicators</a>
+    <a href="/guide/" class="btn">Guide</a>
+    <a href="https://www.nuget.org/packages/Skender.Stock.Indicators" class="btn">NuGet<span class="if-large"> Package</span></a>
+    
+    <a href="https://github.com/LeeDongGeon1996/Stock.Indicators.Python" class="btn not-mobile"><span class="if-large">View on </span>GitHub</a>
+    
+  </header>
+
+  <main id="content" class="main-content" role="main">
+    
+
+
+
+
+    
+    
+
+    
+    
+    
+
+    
+    
+     
+
+    
+    
+
+    <div class="cyclotron">
+    <a href="/indicators/Rsi/#content" class="prev" title="Relative Strength Index (RSI)">«</a>
+    <a href="/indicators/RollingPivots/#content" class="next" title="Rolling Pivot Points">»</a>
+    </div>
+
+<h1 id="renko-chart">Renko Chart</h1>
+
+<p>The <a href="https://en.m.wikipedia.org/wiki/Renko_chart">Renko Chart</a> is a Japanese price transformed candlestick pattern that uses “bricks” to show a defined increment of change over a non-linear time series.  Transitions can use either <code class="language-plaintext highlighter-rouge">Close</code> or <code class="language-plaintext highlighter-rouge">High/Low</code> price values.  An <a href="#atr-variant">ATR variant</a> is also provided where brick size is determined by Average True Range values.
+<a href="https://github.com/LeeDongGeon1996/Stock.Indicators.Python/discussions/478" title="Community discussion about this indicator">[Discuss] <img class="emoji" title=":speech_balloon:" alt=":speech_balloon:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f4ac.png" height="20" width="20"></a></p>
+
+<p><img src="/assets/charts/Renko.png" alt="image"></p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// usage</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">RenkoResult</span><span class="p">&gt;</span> <span class="n">results</span> <span class="p">=</span>
+  <span class="n">quotes</span><span class="p">.</span><span class="nf">GetRenko</span><span class="p">(</span><span class="n">brickSize</span><span class="p">,</span> <span class="n">endType</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="parameters">Parameters</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>type</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">brickSize</code></td>
+      <td>decimal</td>
+      <td>Brick size.  Must be greater than 0.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">endType</code></td>
+      <td>EndType</td>
+      <td>See options below.  Default is <code class="language-plaintext highlighter-rouge">EndType.Close</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="historical-quotes-requirements">Historical quotes requirements</h3>
+
+<p>You must have at least two periods of <code class="language-plaintext highlighter-rouge">quotes</code>; however, more is typically provided since this is a chartable candlestick pattern.</p>
+
+<p><code class="language-plaintext highlighter-rouge">quotes</code> is an <code class="language-plaintext highlighter-rouge">IEnumerable&lt;TQuote&gt;</code> collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See <a href="/guide/#historical-quotes">the Guide</a> for more information.</p>
+
+<h3 id="endtype-options">EndType options</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>type</th>
+      <th>description</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EndType.Close</code></td>
+      <td>Brick change threshold measured from <code class="language-plaintext highlighter-rouge">Close</code> price (default)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">EndType.HighLow</code></td>
+      <td>Brick change threshold measured from <code class="language-plaintext highlighter-rouge">High</code> and <code class="language-plaintext highlighter-rouge">Low</code> price</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="response">Response</h2>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">RenkoResult</span><span class="p">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>This method returns a time series of all available indicator values for the <code class="language-plaintext highlighter-rouge">quotes</code> provided.</li>
+  <li>It does not return a single incremental indicator value.</li>
+</ul>
+
+<p><img class="emoji" title=":warning:" alt=":warning:" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" height="20" width="20"> WARNING!  Unlike most indicators in this library, this indicator DOES NOT return the same number of elements as there are in the historical quotes.  Renko bricks are added to the results once the <code class="language-plaintext highlighter-rouge">brickSize</code> change is achieved.  For example, if it takes 3 days for a $2.50 price change to occur an entry is made on the third day while the first two are skipped.  If a period change occurs at multiples of <code class="language-plaintext highlighter-rouge">brickSize</code>, multiple bricks are drawn with the same <code class="language-plaintext highlighter-rouge">Date</code>.  See <a href="https://www.investopedia.com/terms/r/renkochart.asp">online documentation</a> for more information.</p>
+
+<h3 id="renkoresult">RenkoResult</h3>
+
+<p>Each result record represents one Renko brick.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>type</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Date</code></td>
+      <td>DateTime</td>
+      <td>Formation date of brick(s)</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Open</code></td>
+      <td>decimal</td>
+      <td>Brick open price</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">High</code></td>
+      <td>decimal</td>
+      <td>Highest high during elapsed quotes periods</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Low</code></td>
+      <td>decimal</td>
+      <td>Lowest low during elapsed quotes periods</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Close</code></td>
+      <td>decimal</td>
+      <td>Brick close price</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Volume</code></td>
+      <td>decimal</td>
+      <td>Sum of Volume over elapsed quotes periods</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">IsUp</code></td>
+      <td>boolean</td>
+      <td>Direction of brick (true=up,false=down)</td>
+    </tr>
+  </tbody>
+</table>
+
+<p><img class="emoji" title=":warning:" alt=":warning:" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" height="20" width="20"> WARNING! When multiple bricks are drawn from a single <code class="language-plaintext highlighter-rouge">quote</code> period, the extra information about <code class="language-plaintext highlighter-rouge">High</code> and <code class="language-plaintext highlighter-rouge">Low</code> wicks and <code class="language-plaintext highlighter-rouge">Volume</code> is potentially confusing to interpret.  <code class="language-plaintext highlighter-rouge">High</code> and <code class="language-plaintext highlighter-rouge">Low</code> wicks will be the same across the multiple bricks; and <code class="language-plaintext highlighter-rouge">Volume</code> is portioning evenly across the number of bricks.  For example, if within one <code class="language-plaintext highlighter-rouge">quote</code> period 3 bricks are drawn, the <code class="language-plaintext highlighter-rouge">Volume</code> for each brick will be <code class="language-plaintext highlighter-rouge">(sum of quotes Volume since last brick) / 3</code>.</p>
+
+<h3 id="utilities">Utilities</h3>
+
+<ul>
+  <li><a href="/utilities#convert-to-quotes">.ConvertToQuotes()</a></li>
+  <li><a href="/utilities#find-indicator-result-by-date">.Find(lookupDate)</a></li>
+  <li><a href="/utilities#remove-warmup-periods">.RemoveWarmupPeriods(qty)</a></li>
+</ul>
+
+<p>See <a href="/utilities#utilities-for-indicator-results">Utilities and Helpers</a> for more information.</p>
+
+<h2 id="example">Example</h2>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// fetch historical quotes from your feed (your method)</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Quote</span><span class="p">&gt;</span> <span class="n">quotes</span> <span class="p">=</span> <span class="nf">GetHistoryFromFeed</span><span class="p">(</span><span class="s">"MSFT"</span><span class="p">);</span>
+
+<span class="c1">// calculate</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">RenkoResult</span><span class="p">&gt;</span> <span class="n">results</span> <span class="p">=</span> <span class="n">quotes</span><span class="p">.</span><span class="nf">GetRenko</span><span class="p">(</span><span class="m">2.5</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="atr-variant">ATR Variant</h2>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// usage</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">RenkoResult</span><span class="p">&gt;</span> <span class="n">results</span> <span class="p">=</span>
+  <span class="n">quotes</span><span class="p">.</span><span class="nf">GetRenkoAtr</span><span class="p">(</span><span class="n">atrPeriods</span><span class="p">,</span> <span class="n">endType</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h3 id="parameters-for-atr">Parameters for ATR</h3>
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>type</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">atrPeriod</code></td>
+      <td>int</td>
+      <td>Number of lookback periods (<code class="language-plaintext highlighter-rouge">A</code>) for ATR evaluation.  Must be greater than 0.</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">endType</code></td>
+      <td>EndType</td>
+      <td>See options below.  Default is <code class="language-plaintext highlighter-rouge">EndType.Close</code>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+<h4 id="historical-quotes-requirements-for-atr">Historical quotes requirements for ATR</h4>
+
+<p>You must have at least <code class="language-plaintext highlighter-rouge">A+100</code> periods of <code class="language-plaintext highlighter-rouge">quotes</code>.</p>
+
+<p><code class="language-plaintext highlighter-rouge">quotes</code> is an <code class="language-plaintext highlighter-rouge">IEnumerable&lt;TQuote&gt;</code> collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See <a href="/guide/#historical-quotes">the Guide</a> for more information.</p>
+
+<h2 id="response-for-atr">Response for ATR</h2>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">RenkoResult</span><span class="p">&gt;</span>
+</code></pre></div></div>
+
+<ul>
+  <li>This method returns a time series of all available indicator values for the <code class="language-plaintext highlighter-rouge">quotes</code> provided.</li>
+  <li>It always returns the same number of elements as there are in the historical quotes.</li>
+  <li>It does not return a single incremental indicator value.</li>
+</ul>
+
+<p><img class="emoji" title=":paintbrush:" alt=":paintbrush:" src="https://github.githubassets.com/images/icons/emoji/unicode/1f58c.png" height="20" width="20"> <strong>Repaint Warning</strong>: When using the <code class="language-plaintext highlighter-rouge">GetRenkoAtr()</code> variant, the last <a href="../Atr/#content">Average True Range (ATR)</a> value is used to set <code class="language-plaintext highlighter-rouge">brickSize</code>.  Since the ATR changes over time, historical bricks will be repainted as new periods are added or updated in <code class="language-plaintext highlighter-rouge">quotes</code>.</p>
+
+
+
+
+
+
+    
+    
+
+    
+    
+    
+
+    
+    
+     
+
+    
+    
+
+    <div class="cyclotron">
+    <a href="/indicators/Rsi/#content" class="prev" title="Relative Strength Index (RSI)">«</a>
+    <a href="/indicators/RollingPivots/#content" class="next" title="Rolling Pivot Points">»</a>
+    </div>
+
+
+
+
+<!-- swipe gestures -->
+<script type="text/javascript" src="/assets/js/hammer.min.js"></script>
+
+<script>
+    var content = document.getElementById('content');
+
+    new Hammer(content).on('swipeleft', function (event) {
+        document.location.replace("/indicators/RollingPivots/#content");
+    });
+
+    new Hammer(content).on('swiperight', function (event) {
+        document.location.replace("/indicators/Rsi/#content");
+    });
+</script>
+
+  </main>
+</body>
+
+</html>

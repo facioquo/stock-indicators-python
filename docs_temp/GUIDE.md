@@ -1,0 +1,153 @@
+# Guide and Pro tips
+
+- [Installation and setup](#installation-and-setup)
+- [Prerequisite data](#prerequisite-data)
+- [Example usage](#example-usage)
+- [Historical quotes](#historical-quotes)
+- [Utilities and Helper functions](UTILITIES.md#content)
+- [Contributing guidelines](CONTRIBUTING.md#content)
+
+## Getting started
+
+### Installation and setup
+
+Find and install the [Skender.Stock.Indicators](https://www.nuget.org/packages/Skender.Stock.Indicators) NuGet package into your Project.  See [more help](https://www.google.com/search?q=install+nuget+package) for installing packages.
+
+```powershell
+# dotnet CLI example
+dotnet add package Skender.Stock.Indicators
+
+# package manager example
+Install-Package Skender.Stock.Indicators
+```
+
+### Prerequisite data
+
+Most indicators require that you provide historical quote data and additional configuration parameters.
+
+You must get historical quotes from your own market data provider.  For clarification, the `GetHistoryFromFeed()` method shown in the example below and throughout our documentation **is not part of this library**, but rather an example to represent your own acquisition of historical quotes.
+
+Historical price data can be provided as an `IEnumerable` of the `Quote` class ([see below](#historical-quotes)); however, it can also be supplied as a generic [custom TQuote type](#using-custom-quote-classes) if you prefer to use your own quote model.
+
+For additional configuration parameters, default values are provided when there is an industry standard.
+You can, of course, override these and provide your own values.
+
+### Example usage
+
+All indicator methods will produce all possible results for the provided historical quotes as a time series dataset -- it is not just a single data point returned.  For example, if you provide 3 years worth of historical quotes for the SMA method, you'll get 3 years of SMA result values.
+
+```csharp
+using Skender.Stock.Indicators;
+
+[..]
+
+// fetch historical quotes from your feed (your method)
+IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
+
+// calculate 20-period SMA
+IEnumerable<SmaResult> results = quotes.GetSma(20);
+
+// use results as needed
+SmaResult result = results.LastOrDefault();
+Console.WriteLine("SMA on {0} was ${1}", result.Date, result.Sma);
+```
+
+```bash
+SMA on 12/31/2018 was $251.86
+```
+
+If you do not prefer using the quotes extension syntax, a full method syntax can also be used.
+
+```csharp
+// alternate full syntax example
+IEnumerable<SmaResult> results = Indicator.GetSma(quotes,20);
+```
+
+See [individual indicator pages](INDICATORS.md) for specific usage guidance.
+
+## Historical quotes
+
+You must provide historical price quotes to the library in the standard OHLCV `IEnumerable<Quote>` format.  It should have a consistent period frequency (day, hour, minute, etc).  See [using custom quote classes](#using-custom-quote-classes) if you prefer to use your own quote class.
+
+| name | type | notes
+| -- |-- |--
+| `Date` | DateTime | Date
+| `Open` | decimal | Open price
+| `High` | decimal | High price
+| `Low` | decimal | Low price
+| `Close` | decimal | Close price
+| `Volume` | decimal | Volume
+
+### Where can I get historical quote data?
+
+There are many places to get stock market data.  Check with your brokerage or other commercial sites.  If you're looking for a free developer API, try [Polygon.io](https://polygon.io), [TwelveData](https://twelvedata.com), or [Alpha Vantage](https://www.alphavantage.co).
+
+### How much historical quote data do I need?
+
+Each indicator will need different amounts of price `quotes` to calculate.  You can find guidance on the individual indicator documentation pages for minimum requirements; however, most use cases will require that you provide more than the minimum.  As a general rule of thumb, you will be safe if you provide 750 points of historical quote data (e.g. 3 years of daily data).  A `BadQuotesException` will be thrown if you do not provide sufficient historical quotes to produce any results.
+
+:warning: IMPORTANT! Some indicators use a smoothing technique that converges to better precision over time.  While you can calculate these with the minimum amount of quote data, the precision to two decimal points often requires 250 or more preceding historical records.
+
+For example, if you are using daily data and want one year of precise EMA(250) data, you need to provide 3 years of historical quotes (1 extra year for the lookback period and 1 extra year for convergence); thereafter, you would discard or not use the first two years of results.  Occassionally, even more is required for optimal precision.
+
+### Using custom quote classes
+
+If you would like to use your own custom `MyCustomQuote` _quote_ class, to avoid needing to transpose into the library `Quote` class, you only need to add the `IQuote` interface.
+
+```csharp
+using Skender.Stock.Indicators;
+
+[..]
+
+public class MyCustomQuote : IQuote
+{
+    // required base properties
+    public DateTime Date { get; set; }
+    public decimal Open { get; set; }
+    public decimal High { get; set; }
+    public decimal Low { get; set; }
+    public decimal Close { get; set; }
+    public decimal Volume { get; set; }
+
+    // custom properties
+    public int MyOtherProperty { get; set; }
+}
+```
+
+```csharp
+// fetch historical quotes from your favorite feed
+IEnumerable<MyCustomQuote> myQuotes = GetHistoryFromFeed("MSFT");
+
+// example: get 20-period simple moving average
+IEnumerable<SmaResult> results = myQuotes.GetSma(20);
+```
+
+#### Using custom quote property names
+
+If you have a model that has different properties names, but the same meaning, you only need to map them.
+Suppose your class has a property called `CloseDate` instead of `Date`, it could be represented like this:
+
+```csharp
+public class MyCustomQuote : IQuote
+{
+    // required base properties
+    DateTime IQuote.Date => CloseDate;
+    public decimal Open { get; set; }
+    public decimal High { get; set; }
+    public decimal Low { get; set; }
+    public decimal Close { get; set; }
+    public decimal Volume { get; set; }
+
+    // custom properties
+    public int MyOtherProperty { get; set; }
+    public DateTime CloseDate { get; set; }
+}
+```
+
+Note the use of explicit interface (property declaration is `IQuote.Date`), this is because having two properties that expose the same information can be confusing, this way `Date` property is only accessible when working with the included `Quote` type, while if you are working with a `MyCustomQuote` the `Date` property will be hidden, avoiding confusion.
+
+For more information on explicit interfaces, refer to the [C# Programming Guide](https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/interfaces/explicit-interface-implementation).
+
+## Utilities
+
+See [Utilities and Helper functions](UTILITIES.md#content) for additional tools.

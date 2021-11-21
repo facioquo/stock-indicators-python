@@ -1,0 +1,731 @@
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Performance benchmarks for v1.15.0 | Stock Indicators</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Performance benchmarks for v1.15.0" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Stock Indicators for Python" />
+<meta property="og:description" content="Stock Indicators for Python" />
+<link rel="canonical" href="http://localhost:4000/performance/" />
+<meta property="og:url" content="http://localhost:4000/performance/" />
+<meta property="og:site_name" content="Stock Indicators" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Performance benchmarks for v1.15.0" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/performance/","headline":"Performance benchmarks for v1.15.0","dateModified":"2021-11-21T16:02:15+09:00","description":"Stock Indicators for Python","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#424242">
+<meta name="msapplication-TileColor" content="#424242">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="/assets/css/style.css?v=b2827a07114582215b9df9bdea330cfea1132af1">
+<link rel="canonical" href="http://localhost:4000/performance/" />
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+<link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#424242">
+
+
+</head>
+
+<body>
+  <header class="page-header" role="banner">
+
+    <h1 class="project-name">
+      <a href="/">
+        Stock Indicators
+      </a>
+    </h1>
+
+    <h2 class="project-tagline">
+      Send in historical price quotes and get back desired technical indicators.
+      <br class="not-mobile" />
+      Nothing more.
+    </h2>
+
+    <a href="/indicators/" class="btn">Indicators</a>
+    <a href="/guide/" class="btn">Guide</a>
+    <a href="https://www.nuget.org/packages/Skender.Stock.Indicators" class="btn">NuGet<span class="if-large"> Package</span></a>
+    
+    <a href="https://github.com/LeeDongGeon1996/Stock.Indicators.Python" class="btn not-mobile"><span class="if-large">View on </span>GitHub</a>
+    
+  </header>
+
+  <main id="content" class="main-content" role="main">
+    <h1 id="performance-benchmarks-for-v1150">Performance benchmarks for v1.15.0</h1>
+
+<p>These are the execution times for the current indicators using two years of historical daily stock quotes (502 periods) with default or typical parameters.</p>
+
+<div class="language-bash highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">BenchmarkDotNet</span><span class="o">=</span>v0.13.0, <span class="nv">OS</span><span class="o">=</span>Windows 10.0.19043.1165 <span class="o">(</span>21H1/May2021Update<span class="o">)</span>
+Intel Core i7-7700HQ CPU 2.80GHz <span class="o">(</span>Kaby Lake<span class="o">)</span>, 1 CPU, 8 logical and 4 physical cores
+.NET <span class="nv">SDK</span><span class="o">=</span>5.0.303
+  <span class="o">[</span>Host]     : .NET 5.0.9 <span class="o">(</span>5.0.921.35908<span class="o">)</span>, X64 RyuJIT
+  DefaultJob : .NET 5.0.9 <span class="o">(</span>5.0.921.35908<span class="o">)</span>, X64 RyuJIT
+</code></pre></div></div>
+
+<h2 id="indicators">indicators</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th style="text-align: right">Mean</th>
+      <th style="text-align: right">Error</th>
+      <th style="text-align: right">StdDev</th>
+      <th style="text-align: right">Median</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>GetAdl</td>
+      <td style="text-align: right">142.97 μs</td>
+      <td style="text-align: right">0.497 μs</td>
+      <td style="text-align: right">0.388 μs</td>
+      <td style="text-align: right">142.94 μs</td>
+    </tr>
+    <tr>
+      <td>GetAdlWithSma</td>
+      <td style="text-align: right">381.47 μs</td>
+      <td style="text-align: right">3.150 μs</td>
+      <td style="text-align: right">3.093 μs</td>
+      <td style="text-align: right">380.48 μs</td>
+    </tr>
+    <tr>
+      <td>GetAdx</td>
+      <td style="text-align: right">751.34 μs</td>
+      <td style="text-align: right">2.972 μs</td>
+      <td style="text-align: right">2.482 μs</td>
+      <td style="text-align: right">750.57 μs</td>
+    </tr>
+    <tr>
+      <td>GetAlligator</td>
+      <td style="text-align: right">234.74 μs</td>
+      <td style="text-align: right">1.240 μs</td>
+      <td style="text-align: right">1.160 μs</td>
+      <td style="text-align: right">234.56 μs</td>
+    </tr>
+    <tr>
+      <td>GetAlma</td>
+      <td style="text-align: right">215.96 μs</td>
+      <td style="text-align: right">1.546 μs</td>
+      <td style="text-align: right">1.370 μs</td>
+      <td style="text-align: right">215.42 μs</td>
+    </tr>
+    <tr>
+      <td>GetAroon</td>
+      <td style="text-align: right">353.01 μs</td>
+      <td style="text-align: right">0.803 μs</td>
+      <td style="text-align: right">0.670 μs</td>
+      <td style="text-align: right">352.93 μs</td>
+    </tr>
+    <tr>
+      <td>GetAtr</td>
+      <td style="text-align: right">159.49 μs</td>
+      <td style="text-align: right">1.414 μs</td>
+      <td style="text-align: right">1.254 μs</td>
+      <td style="text-align: right">159.12 μs</td>
+    </tr>
+    <tr>
+      <td>GetAwesome</td>
+      <td style="text-align: right">330.95 μs</td>
+      <td style="text-align: right">1.490 μs</td>
+      <td style="text-align: right">1.321 μs</td>
+      <td style="text-align: right">331.14 μs</td>
+    </tr>
+    <tr>
+      <td>GetBeta</td>
+      <td style="text-align: right">959.70 μs</td>
+      <td style="text-align: right">2.365 μs</td>
+      <td style="text-align: right">1.975 μs</td>
+      <td style="text-align: right">959.47 μs</td>
+    </tr>
+    <tr>
+      <td>GetBollingerBands</td>
+      <td style="text-align: right">457.88 μs</td>
+      <td style="text-align: right">1.584 μs</td>
+      <td style="text-align: right">1.323 μs</td>
+      <td style="text-align: right">457.95 μs</td>
+    </tr>
+    <tr>
+      <td>GetBop</td>
+      <td style="text-align: right">282.34 μs</td>
+      <td style="text-align: right">1.319 μs</td>
+      <td style="text-align: right">1.030 μs</td>
+      <td style="text-align: right">282.14 μs</td>
+    </tr>
+    <tr>
+      <td>GetCci</td>
+      <td style="text-align: right">843.90 μs</td>
+      <td style="text-align: right">2.398 μs</td>
+      <td style="text-align: right">2.003 μs</td>
+      <td style="text-align: right">843.66 μs</td>
+    </tr>
+    <tr>
+      <td>GetChaikinOsc</td>
+      <td style="text-align: right">268.11 μs</td>
+      <td style="text-align: right">0.989 μs</td>
+      <td style="text-align: right">0.826 μs</td>
+      <td style="text-align: right">268.18 μs</td>
+    </tr>
+    <tr>
+      <td>GetChandelier</td>
+      <td style="text-align: right">368.09 μs</td>
+      <td style="text-align: right">3.612 μs</td>
+      <td style="text-align: right">2.820 μs</td>
+      <td style="text-align: right">367.56 μs</td>
+    </tr>
+    <tr>
+      <td>GetChop</td>
+      <td style="text-align: right">304.53 μs</td>
+      <td style="text-align: right">1.161 μs</td>
+      <td style="text-align: right">0.906 μs</td>
+      <td style="text-align: right">304.36 μs</td>
+    </tr>
+    <tr>
+      <td>GetCmf</td>
+      <td style="text-align: right">669.74 μs</td>
+      <td style="text-align: right">1.981 μs</td>
+      <td style="text-align: right">1.655 μs</td>
+      <td style="text-align: right">669.63 μs</td>
+    </tr>
+    <tr>
+      <td>GetConnorsRsi</td>
+      <td style="text-align: right">1,235.14 μs</td>
+      <td style="text-align: right">21.665 μs</td>
+      <td style="text-align: right">43.764 μs</td>
+      <td style="text-align: right">1,212.54 μs</td>
+    </tr>
+    <tr>
+      <td>GetCorrelation</td>
+      <td style="text-align: right">870.27 μs</td>
+      <td style="text-align: right">3.443 μs</td>
+      <td style="text-align: right">2.875 μs</td>
+      <td style="text-align: right">869.54 μs</td>
+    </tr>
+    <tr>
+      <td>GetDonchian</td>
+      <td style="text-align: right">340.71 μs</td>
+      <td style="text-align: right">3.841 μs</td>
+      <td style="text-align: right">3.207 μs</td>
+      <td style="text-align: right">339.06 μs</td>
+    </tr>
+    <tr>
+      <td>GetDoubleEma</td>
+      <td style="text-align: right">178.53 μs</td>
+      <td style="text-align: right">0.528 μs</td>
+      <td style="text-align: right">0.441 μs</td>
+      <td style="text-align: right">178.45 μs</td>
+    </tr>
+    <tr>
+      <td>GetElderRay</td>
+      <td style="text-align: right">165.20 μs</td>
+      <td style="text-align: right">0.599 μs</td>
+      <td style="text-align: right">0.500 μs</td>
+      <td style="text-align: right">165.24 μs</td>
+    </tr>
+    <tr>
+      <td>GetEma</td>
+      <td style="text-align: right">100.30 μs</td>
+      <td style="text-align: right">0.622 μs</td>
+      <td style="text-align: right">0.582 μs</td>
+      <td style="text-align: right">100.25 μs</td>
+    </tr>
+    <tr>
+      <td>GetEpma</td>
+      <td style="text-align: right">1,384.73 μs</td>
+      <td style="text-align: right">3.229 μs</td>
+      <td style="text-align: right">2.863 μs</td>
+      <td style="text-align: right">1,384.37 μs</td>
+    </tr>
+    <tr>
+      <td>GetFcb</td>
+      <td style="text-align: right">392.19 μs</td>
+      <td style="text-align: right">2.354 μs</td>
+      <td style="text-align: right">2.202 μs</td>
+      <td style="text-align: right">391.52 μs</td>
+    </tr>
+    <tr>
+      <td>GetFisherTransform</td>
+      <td style="text-align: right">280.99 μs</td>
+      <td style="text-align: right">0.783 μs</td>
+      <td style="text-align: right">0.694 μs</td>
+      <td style="text-align: right">280.92 μs</td>
+    </tr>
+    <tr>
+      <td>GetForceIndex</td>
+      <td style="text-align: right">127.98 μs</td>
+      <td style="text-align: right">0.682 μs</td>
+      <td style="text-align: right">0.604 μs</td>
+      <td style="text-align: right">127.83 μs</td>
+    </tr>
+    <tr>
+      <td>GetFractal</td>
+      <td style="text-align: right">104.33 μs</td>
+      <td style="text-align: right">0.469 μs</td>
+      <td style="text-align: right">0.392 μs</td>
+      <td style="text-align: right">104.32 μs</td>
+    </tr>
+    <tr>
+      <td>GetGator</td>
+      <td style="text-align: right">285.22 μs</td>
+      <td style="text-align: right">1.183 μs</td>
+      <td style="text-align: right">0.923 μs</td>
+      <td style="text-align: right">284.83 μs</td>
+    </tr>
+    <tr>
+      <td>GetHeikinAshi</td>
+      <td style="text-align: right">180.60 μs</td>
+      <td style="text-align: right">4.060 μs</td>
+      <td style="text-align: right">11.046 μs</td>
+      <td style="text-align: right">175.51 μs</td>
+    </tr>
+    <tr>
+      <td>GetHma</td>
+      <td style="text-align: right">1,381.84 μs</td>
+      <td style="text-align: right">3.634 μs</td>
+      <td style="text-align: right">3.035 μs</td>
+      <td style="text-align: right">1,381.41 μs</td>
+    </tr>
+    <tr>
+      <td>GetHtTrendline</td>
+      <td style="text-align: right">174.17 μs</td>
+      <td style="text-align: right">1.182 μs</td>
+      <td style="text-align: right">1.048 μs</td>
+      <td style="text-align: right">173.99 μs</td>
+    </tr>
+    <tr>
+      <td>GetHurst</td>
+      <td style="text-align: right">5,577.92 μs</td>
+      <td style="text-align: right">21.799 μs</td>
+      <td style="text-align: right">20.390 μs</td>
+      <td style="text-align: right">5,567.51 μs</td>
+    </tr>
+    <tr>
+      <td>GetIchimoku</td>
+      <td style="text-align: right">938.48 μs</td>
+      <td style="text-align: right">3.479 μs</td>
+      <td style="text-align: right">3.084 μs</td>
+      <td style="text-align: right">938.72 μs</td>
+    </tr>
+    <tr>
+      <td>GetKama</td>
+      <td style="text-align: right">329.93 μs</td>
+      <td style="text-align: right">1.653 μs</td>
+      <td style="text-align: right">1.466 μs</td>
+      <td style="text-align: right">329.66 μs</td>
+    </tr>
+    <tr>
+      <td>GetKlinger</td>
+      <td style="text-align: right">494.76 μs</td>
+      <td style="text-align: right">1.875 μs</td>
+      <td style="text-align: right">1.565 μs</td>
+      <td style="text-align: right">494.16 μs</td>
+    </tr>
+    <tr>
+      <td>GetKeltner</td>
+      <td style="text-align: right">472.58 μs</td>
+      <td style="text-align: right">2.184 μs</td>
+      <td style="text-align: right">2.042 μs</td>
+      <td style="text-align: right">471.92 μs</td>
+    </tr>
+    <tr>
+      <td>GetMacd</td>
+      <td style="text-align: right">217.86 μs</td>
+      <td style="text-align: right">1.426 μs</td>
+      <td style="text-align: right">1.264 μs</td>
+      <td style="text-align: right">217.51 μs</td>
+    </tr>
+    <tr>
+      <td>GetMaEnvelopes</td>
+      <td style="text-align: right">148.26 μs</td>
+      <td style="text-align: right">0.713 μs</td>
+      <td style="text-align: right">0.632 μs</td>
+      <td style="text-align: right">148.01 μs</td>
+    </tr>
+    <tr>
+      <td>GetMama</td>
+      <td style="text-align: right">287.17 μs</td>
+      <td style="text-align: right">2.075 μs</td>
+      <td style="text-align: right">1.620 μs</td>
+      <td style="text-align: right">286.68 μs</td>
+    </tr>
+    <tr>
+      <td>GetMfi</td>
+      <td style="text-align: right">485.62 μs</td>
+      <td style="text-align: right">1.907 μs</td>
+      <td style="text-align: right">1.690 μs</td>
+      <td style="text-align: right">485.18 μs</td>
+    </tr>
+    <tr>
+      <td>GetObv</td>
+      <td style="text-align: right">62.31 μs</td>
+      <td style="text-align: right">0.372 μs</td>
+      <td style="text-align: right">0.330 μs</td>
+      <td style="text-align: right">62.31 μs</td>
+    </tr>
+    <tr>
+      <td>GetObvWithSma</td>
+      <td style="text-align: right">140.16 μs</td>
+      <td style="text-align: right">1.793 μs</td>
+      <td style="text-align: right">1.677 μs</td>
+      <td style="text-align: right">139.93 μs</td>
+    </tr>
+    <tr>
+      <td>GetParabolicSar</td>
+      <td style="text-align: right">94.90 μs</td>
+      <td style="text-align: right">0.533 μs</td>
+      <td style="text-align: right">0.472 μs</td>
+      <td style="text-align: right">94.89 μs</td>
+    </tr>
+    <tr>
+      <td>GetPivotPoints</td>
+      <td style="text-align: right">97.13 μs</td>
+      <td style="text-align: right">0.690 μs</td>
+      <td style="text-align: right">0.612 μs</td>
+      <td style="text-align: right">97.04 μs</td>
+    </tr>
+    <tr>
+      <td>GetPmo</td>
+      <td style="text-align: right">265.15 μs</td>
+      <td style="text-align: right">1.907 μs</td>
+      <td style="text-align: right">1.784 μs</td>
+      <td style="text-align: right">264.94 μs</td>
+    </tr>
+    <tr>
+      <td>GetPrs</td>
+      <td style="text-align: right">133.24 μs</td>
+      <td style="text-align: right">1.900 μs</td>
+      <td style="text-align: right">1.586 μs</td>
+      <td style="text-align: right">N/A</td>
+    </tr>
+    <tr>
+      <td>GetPrsWithSma</td>
+      <td style="text-align: right">205.19 μs</td>
+      <td style="text-align: right">1.452 μs</td>
+      <td style="text-align: right">1.287 μs</td>
+      <td style="text-align: right">N/A</td>
+    </tr>
+    <tr>
+      <td>GetPvo</td>
+      <td style="text-align: right">343.26 μs</td>
+      <td style="text-align: right">4.831 μs</td>
+      <td style="text-align: right">4.034 μs</td>
+      <td style="text-align: right">341.35 μs</td>
+    </tr>
+    <tr>
+      <td>GetRenko</td>
+      <td style="text-align: right">94.18 μs</td>
+      <td style="text-align: right">0.328 μs</td>
+      <td style="text-align: right">0.256 μs</td>
+      <td style="text-align: right">94.18 μs</td>
+    </tr>
+    <tr>
+      <td>GetRenkoAtr</td>
+      <td style="text-align: right">101.58 μs</td>
+      <td style="text-align: right">0.526 μs</td>
+      <td style="text-align: right">0.439 μs</td>
+      <td style="text-align: right">101.42 μs</td>
+    </tr>
+    <tr>
+      <td>GetRoc</td>
+      <td style="text-align: right">94.60 μs</td>
+      <td style="text-align: right">0.350 μs</td>
+      <td style="text-align: right">0.310 μs</td>
+      <td style="text-align: right">94.58 μs</td>
+    </tr>
+    <tr>
+      <td>GetRocWb</td>
+      <td style="text-align: right">200.73 μs</td>
+      <td style="text-align: right">0.623 μs</td>
+      <td style="text-align: right">0.552 μs</td>
+      <td style="text-align: right">200.64 μs</td>
+    </tr>
+    <tr>
+      <td>GetRocWithSma</td>
+      <td style="text-align: right">355.20 μs</td>
+      <td style="text-align: right">1.624 μs</td>
+      <td style="text-align: right">1.519 μs</td>
+      <td style="text-align: right">354.83 μs</td>
+    </tr>
+    <tr>
+      <td>GetRsi</td>
+      <td style="text-align: right">340.61 μs</td>
+      <td style="text-align: right">1.052 μs</td>
+      <td style="text-align: right">0.821 μs</td>
+      <td style="text-align: right">340.70 μs</td>
+    </tr>
+    <tr>
+      <td>GetSlope</td>
+      <td style="text-align: right">880.85 μs</td>
+      <td style="text-align: right">5.654 μs</td>
+      <td style="text-align: right">5.012 μs</td>
+      <td style="text-align: right">879.30 μs</td>
+    </tr>
+    <tr>
+      <td>GetSma</td>
+      <td style="text-align: right">107.26 μs</td>
+      <td style="text-align: right">0.363 μs</td>
+      <td style="text-align: right">0.303 μs</td>
+      <td style="text-align: right">107.21 μs</td>
+    </tr>
+    <tr>
+      <td>GetSmaExtended</td>
+      <td style="text-align: right">942.89 μs</td>
+      <td style="text-align: right">5.649 μs</td>
+      <td style="text-align: right">5.284 μs</td>
+      <td style="text-align: right">940.02 μs</td>
+    </tr>
+    <tr>
+      <td>GetSmma</td>
+      <td style="text-align: right">96.63 μs</td>
+      <td style="text-align: right">0.469 μs</td>
+      <td style="text-align: right">0.439 μs</td>
+      <td style="text-align: right">96.42 μs</td>
+    </tr>
+    <tr>
+      <td>GetStarcBands</td>
+      <td style="text-align: right">418.00 μs</td>
+      <td style="text-align: right">1.100 μs</td>
+      <td style="text-align: right">0.918 μs</td>
+      <td style="text-align: right">417.84 μs</td>
+    </tr>
+    <tr>
+      <td>GetStdDev</td>
+      <td style="text-align: right">296.16 μs</td>
+      <td style="text-align: right">0.870 μs</td>
+      <td style="text-align: right">0.726 μs</td>
+      <td style="text-align: right">296.26 μs</td>
+    </tr>
+    <tr>
+      <td>GetStdDevWithSma</td>
+      <td style="text-align: right">383.25 μs</td>
+      <td style="text-align: right">2.206 μs</td>
+      <td style="text-align: right">2.063 μs</td>
+      <td style="text-align: right">382.67 μs</td>
+    </tr>
+    <tr>
+      <td>GetStdDevChannels</td>
+      <td style="text-align: right">947.06 μs</td>
+      <td style="text-align: right">2.845 μs</td>
+      <td style="text-align: right">2.376 μs</td>
+      <td style="text-align: right">947.12 μs</td>
+    </tr>
+    <tr>
+      <td>GetStoch</td>
+      <td style="text-align: right">403.67 μs</td>
+      <td style="text-align: right">1.003 μs</td>
+      <td style="text-align: right">0.838 μs</td>
+      <td style="text-align: right">403.38 μs</td>
+    </tr>
+    <tr>
+      <td>GetStochRsi</td>
+      <td style="text-align: right">708.34 μs</td>
+      <td style="text-align: right">2.750 μs</td>
+      <td style="text-align: right">2.296 μs</td>
+      <td style="text-align: right">707.45 μs</td>
+    </tr>
+    <tr>
+      <td>GetSuperTrend</td>
+      <td style="text-align: right">301.10 μs</td>
+      <td style="text-align: right">0.886 μs</td>
+      <td style="text-align: right">0.692 μs</td>
+      <td style="text-align: right">301.20 μs</td>
+    </tr>
+    <tr>
+      <td>GetTripleEma</td>
+      <td style="text-align: right">260.73 μs</td>
+      <td style="text-align: right">0.781 μs</td>
+      <td style="text-align: right">0.692 μs</td>
+      <td style="text-align: right">260.85 μs</td>
+    </tr>
+    <tr>
+      <td>GetTrix</td>
+      <td style="text-align: right">319.06 μs</td>
+      <td style="text-align: right">0.923 μs</td>
+      <td style="text-align: right">0.771 μs</td>
+      <td style="text-align: right">319.08 μs</td>
+    </tr>
+    <tr>
+      <td>GetTrixWithSma</td>
+      <td style="text-align: right">374.94 μs</td>
+      <td style="text-align: right">0.969 μs</td>
+      <td style="text-align: right">0.757 μs</td>
+      <td style="text-align: right">375.28 μs</td>
+    </tr>
+    <tr>
+      <td>GetTsi</td>
+      <td style="text-align: right">371.20 μs</td>
+      <td style="text-align: right">1.001 μs</td>
+      <td style="text-align: right">0.836 μs</td>
+      <td style="text-align: right">371.11 μs</td>
+    </tr>
+    <tr>
+      <td>GetT3</td>
+      <td style="text-align: right">464.78 μs</td>
+      <td style="text-align: right">0.754 μs</td>
+      <td style="text-align: right">0.668 μs</td>
+      <td style="text-align: right">464.94 μs</td>
+    </tr>
+    <tr>
+      <td>GetUlcerIndex</td>
+      <td style="text-align: right">1,513.72 μs</td>
+      <td style="text-align: right">20.189 μs</td>
+      <td style="text-align: right">19.828 μs</td>
+      <td style="text-align: right">1,502.68 μs</td>
+    </tr>
+    <tr>
+      <td>GetUltimate</td>
+      <td style="text-align: right">555.05 μs</td>
+      <td style="text-align: right">2.761 μs</td>
+      <td style="text-align: right">2.306 μs</td>
+      <td style="text-align: right">554.72 μs</td>
+    </tr>
+    <tr>
+      <td>GetVolSma</td>
+      <td style="text-align: right">120.00 μs</td>
+      <td style="text-align: right">0.459 μs</td>
+      <td style="text-align: right">0.430 μs</td>
+      <td style="text-align: right">119.86 μs</td>
+    </tr>
+    <tr>
+      <td>GetVortex</td>
+      <td style="text-align: right">282.67 μs</td>
+      <td style="text-align: right">0.636 μs</td>
+      <td style="text-align: right">0.564 μs</td>
+      <td style="text-align: right">282.51 μs</td>
+    </tr>
+    <tr>
+      <td>GetVwap</td>
+      <td style="text-align: right">98.52 μs</td>
+      <td style="text-align: right">0.734 μs</td>
+      <td style="text-align: right">0.573 μs</td>
+      <td style="text-align: right">98.41 μs</td>
+    </tr>
+    <tr>
+      <td>GetWilliamsR</td>
+      <td style="text-align: right">295.51 μs</td>
+      <td style="text-align: right">1.869 μs</td>
+      <td style="text-align: right">1.459 μs</td>
+      <td style="text-align: right">295.22 μs</td>
+    </tr>
+    <tr>
+      <td>GetWma</td>
+      <td style="text-align: right">734.43 μs</td>
+      <td style="text-align: right">4.447 μs</td>
+      <td style="text-align: right">3.942 μs</td>
+      <td style="text-align: right">733.00 μs</td>
+    </tr>
+    <tr>
+      <td>GetZigZag</td>
+      <td style="text-align: right">147.16 μs</td>
+      <td style="text-align: right">0.613 μs</td>
+      <td style="text-align: right">0.512 μs</td>
+      <td style="text-align: right">147.16 μs</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="quotes-functions-mostly-internal">quotes functions (mostly internal)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th style="text-align: right">Mean</th>
+      <th style="text-align: right">Error</th>
+      <th style="text-align: right">StdDev</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>Sort</td>
+      <td style="text-align: right">37,768.62 ns</td>
+      <td style="text-align: right">406.995 ns</td>
+      <td style="text-align: right">360.790 ns</td>
+    </tr>
+    <tr>
+      <td>Validate</td>
+      <td style="text-align: right">40,457.78 ns</td>
+      <td style="text-align: right">301.177 ns</td>
+      <td style="text-align: right">266.985 ns</td>
+    </tr>
+    <tr>
+      <td>Aggregate</td>
+      <td style="text-align: right">83.36 ns</td>
+      <td style="text-align: right">0.699 ns</td>
+      <td style="text-align: right">0.545 ns</td>
+    </tr>
+    <tr>
+      <td>ConvertToBasic</td>
+      <td style="text-align: right">42,362.26 ns</td>
+      <td style="text-align: right">144.200 ns</td>
+      <td style="text-align: right">120.414 ns</td>
+    </tr>
+    <tr>
+      <td>ConvertToQuotes</td>
+      <td style="text-align: right">8,378.83 ns</td>
+      <td style="text-align: right">71.755 ns</td>
+      <td style="text-align: right">63.609 ns</td>
+    </tr>
+  </tbody>
+</table>
+
+<h2 id="math-functions-internal">math functions (internal)</h2>
+
+<table>
+  <thead>
+    <tr>
+      <th>Method</th>
+      <th>Periods</th>
+      <th style="text-align: right">Mean</th>
+      <th style="text-align: right">Error</th>
+      <th style="text-align: right">StdDev</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>StdDev</td>
+      <td>20</td>
+      <td style="text-align: right">36.84 ns</td>
+      <td style="text-align: right">0.194 ns</td>
+      <td style="text-align: right">0.172 ns</td>
+    </tr>
+    <tr>
+      <td>StdDev</td>
+      <td>50</td>
+      <td style="text-align: right">95.47 ns</td>
+      <td style="text-align: right">0.306 ns</td>
+      <td style="text-align: right">0.256 ns</td>
+    </tr>
+    <tr>
+      <td>StdDev</td>
+      <td>250</td>
+      <td style="text-align: right">530.23 ns</td>
+      <td style="text-align: right">1.303 ns</td>
+      <td style="text-align: right">1.088 ns</td>
+    </tr>
+    <tr>
+      <td>StdDev</td>
+      <td>1000</td>
+      <td style="text-align: right">2,142.94 ns</td>
+      <td style="text-align: right">5.994 ns</td>
+      <td style="text-align: right">5.313 ns</td>
+    </tr>
+  </tbody>
+</table>
+
+  </main>
+</body>
+
+</html>

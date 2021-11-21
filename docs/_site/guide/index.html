@@ -1,0 +1,376 @@
+
+
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+<meta charset="UTF-8">
+
+<!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Guide and Pro tips | Stock Indicators</title>
+<meta name="generator" content="Jekyll v3.9.0" />
+<meta property="og:title" content="Guide and Pro tips" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="Stock Indicators for Python" />
+<meta property="og:description" content="Stock Indicators for Python" />
+<link rel="canonical" href="http://localhost:4000/guide/" />
+<meta property="og:url" content="http://localhost:4000/guide/" />
+<meta property="og:site_name" content="Stock Indicators" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Guide and Pro tips" />
+<script type="application/ld+json">
+{"url":"http://localhost:4000/guide/","headline":"Guide and Pro tips","dateModified":"2021-11-21T15:49:07+09:00","description":"Stock Indicators for Python","@type":"WebPage","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#424242">
+<meta name="msapplication-TileColor" content="#424242">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<link rel="stylesheet" href="/assets/css/style.css?v=b2827a07114582215b9df9bdea330cfea1132af1">
+<link rel="canonical" href="http://localhost:4000/guide/" />
+
+<link rel="manifest" href="/site.webmanifest">
+<link rel="icon" type="image/x-icon" href="favicon.ico">
+<link rel="icon" type="image/png" sizes="32x32" href="/assets/icons/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/assets/icons/favicon-16x16.png">
+<link rel="apple-touch-icon" sizes="180x180" href="/assets/icons/apple-touch-icon.png">
+<link rel="mask-icon" href="/assets/icons/safari-pinned-tab.svg" color="#424242">
+
+
+</head>
+
+<body>
+  <header class="page-header" role="banner">
+
+    <h1 class="project-name">
+      <a href="/">
+        Stock Indicators
+      </a>
+    </h1>
+
+    <h2 class="project-tagline">
+      Send in historical price quotes and get back desired technical indicators.
+      <br class="not-mobile">
+      Nothing more.
+    </h2>
+
+    <a href="/indicators/" class="btn">Indicators</a>
+    <a href="/guide/" class="btn">Guide</a>
+    <a href="https://www.nuget.org/packages/Skender.Stock.Indicators" class="btn">NuGet<span class="if-large"> Package</span></a>
+    
+    <a href="https://github.com/LeeDongGeon1996/Stock.Indicators.Python" class="btn not-mobile"><span class="if-large">View on </span>GitHub</a>
+    
+  </header>
+
+  <main id="content" class="main-content" role="main">
+    <h1 id="guide-and-pro-tips">Guide and Pro tips</h1>
+
+<ul>
+  <li><a href="#installation-and-setup">Installation and setup</a></li>
+  <li><a href="#prerequisite-data">Prerequisite data</a></li>
+  <li><a href="#example-usage">Example usage</a></li>
+  <li><a href="#historical-quotes">Historical quotes</a></li>
+  <li><a href="#using-custom-quote-classes">Using custom quote classes</a></li>
+  <li><a href="#using-derived-results-classes">Using derived results classes</a></li>
+  <li><a href="#generating-indicator-of-indicators">Generating indicator of indicators</a></li>
+  <li><a href="/utilities/#content">Utilities and Helper functions</a></li>
+  <li><a href="/contributing/#content">Contributing guidelines</a></li>
+</ul>
+
+<h2 id="getting-started">Getting started</h2>
+
+<h3 id="installation-and-setup">Installation and setup</h3>
+
+<p>Find and install the <a href="https://www.nuget.org/packages/Skender.Stock.Indicators">Skender.Stock.Indicators</a> NuGet package into your Project.  See <a href="https://www.google.com/search?q=install+nuget+package">more help</a> for installing packages.</p>
+
+<div class="language-powershell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c"># dotnet CLI example</span><span class="w">
+</span><span class="n">dotnet</span><span class="w"> </span><span class="nx">add</span><span class="w"> </span><span class="nx">package</span><span class="w"> </span><span class="nx">Skender.Stock.Indicators</span><span class="w">
+
+</span><span class="c"># package manager example</span><span class="w">
+</span><span class="n">Install-Package</span><span class="w"> </span><span class="nx">Skender.Stock.Indicators</span><span class="w">
+</span></code></pre></div></div>
+
+<h3 id="prerequisite-data">Prerequisite data</h3>
+
+<p>Most indicators require that you provide historical quote data and additional configuration parameters.</p>
+
+<p>You must get historical quotes from your own market data provider.  For clarification, the <code class="language-plaintext highlighter-rouge">GetHistoryFromFeed()</code> method shown in the example below and throughout our documentation <strong>is not part of this library</strong>, but rather an example to represent your own acquisition of historical quotes.</p>
+
+<p>Historical price data can be provided as an <code class="language-plaintext highlighter-rouge">List</code>, <code class="language-plaintext highlighter-rouge">IEnumerable</code>, or <code class="language-plaintext highlighter-rouge">ICollection</code> of the <code class="language-plaintext highlighter-rouge">Quote</code> class (<a href="#historical-quotes">see below</a>); however, it can also be supplied as a generic <a href="#using-custom-quote-classes">custom TQuote type</a> if you prefer to use your own quote model.</p>
+
+<p>For additional configuration parameters, default values are provided when there is an industry standard.  You can, of course, override these and provide your own values.</p>
+
+<h3 id="example-usage">Example usage</h3>
+
+<p>All indicator methods will produce all possible results for the provided historical quotes as a time series dataset – it is not just a single data point returned.  For example, if you provide 3 years worth of historical quotes for the SMA method, you’ll get 3 years of SMA result values.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Skender.Stock.Indicators</span><span class="p">;</span>
+
+<span class="p">[..]</span>
+
+<span class="c1">// fetch historical quotes from your feed (your method)</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Quote</span><span class="p">&gt;</span> <span class="n">quotes</span> <span class="p">=</span> <span class="nf">GetHistoryFromFeed</span><span class="p">(</span><span class="s">"MSFT"</span><span class="p">);</span>
+
+<span class="c1">// calculate 20-period SMA</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">SmaResult</span><span class="p">&gt;</span> <span class="n">results</span> <span class="p">=</span> <span class="n">quotes</span><span class="p">.</span><span class="nf">GetSma</span><span class="p">(</span><span class="m">20</span><span class="p">);</span>
+
+<span class="c1">// use results as needed for your use case (example only)</span>
+<span class="k">foreach</span> <span class="p">(</span><span class="n">SmaResult</span> <span class="n">r</span> <span class="k">in</span> <span class="n">results</span><span class="p">)</span>
+<span class="p">{</span>
+    <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">$"SMA on </span><span class="p">{</span><span class="n">r</span><span class="p">.</span><span class="n">Date</span><span class="p">:</span><span class="n">d</span><span class="p">}</span><span class="s"> was $</span><span class="p">{</span><span class="n">r</span><span class="p">.</span><span class="n">Sma</span><span class="p">:</span><span class="n">N4</span><span class="p">}</span><span class="s">"</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-console highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="gp">SMA on 4/19/2018 was $</span>255.0590
+<span class="gp">SMA on 4/20/2018 was $</span>255.2015
+<span class="gp">SMA on 4/23/2018 was $</span>255.6135
+<span class="gp">SMA on 4/24/2018 was $</span>255.5105
+<span class="gp">SMA on 4/25/2018 was $</span>255.6570
+<span class="gp">SMA on 4/26/2018 was $</span>255.9705
+<span class="c">..
+</span></code></pre></div></div>
+
+<p>See <a href="/indicators/">individual indicator pages</a> for specific usage guidance.</p>
+
+<p>More examples available:</p>
+
+<ul>
+  <li>
+<a href="/examples/#content">Example usage code</a> in a simple working console application</li>
+  <li>
+<a href="https://stock-charts.azurewebsites.net">Demo site</a> (a stock chart)</li>
+</ul>
+
+<h2 id="historical-quotes">Historical quotes</h2>
+
+<p>You must provide historical price quotes to the library in the standard <a href="https://acronyms.thefreedictionary.com/OHLCV">OHLCV</a> <code class="language-plaintext highlighter-rouge">IEnumerable&lt;Quote&gt;</code> format.  It should have a consistent period frequency (day, hour, minute, etc).  See <a href="#using-custom-quote-classes">using custom quote classes</a> if you prefer to use your own quote class.</p>
+
+<table>
+  <thead>
+    <tr>
+      <th>name</th>
+      <th>type</th>
+      <th>notes</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Date</code></td>
+      <td>DateTime</td>
+      <td>Date</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Open</code></td>
+      <td>decimal</td>
+      <td>Open price</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">High</code></td>
+      <td>decimal</td>
+      <td>High price</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Low</code></td>
+      <td>decimal</td>
+      <td>Low price</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Close</code></td>
+      <td>decimal</td>
+      <td>Close price</td>
+    </tr>
+    <tr>
+      <td><code class="language-plaintext highlighter-rouge">Volume</code></td>
+      <td>decimal</td>
+      <td>Volume</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3 id="where-can-i-get-historical-quote-data">Where can I get historical quote data?</h3>
+
+<p>There are many places to get stock market data.  Check with your brokerage or other commercial sites.  If you’re looking for a free developer API, see our ongoing <a href="https://github.com/LeeDongGeon1996/Stock.Indicators.Python/discussions/579">discussion on market data</a> for ideas.</p>
+
+<h3 id="how-much-historical-quote-data-do-i-need">How much historical quote data do I need?</h3>
+
+<p>Each indicator will need different amounts of price <code class="language-plaintext highlighter-rouge">quotes</code> to calculate.  You can find guidance on the individual indicator documentation pages for minimum requirements; however, <strong>most use cases will require that you provide more than the minimum</strong>.  As a general rule of thumb, you will be safe if you provide 750 points of historical quote data (e.g. 3 years of daily data).  A <code class="language-plaintext highlighter-rouge">BadQuotesException</code> will be thrown if you do not provide sufficient historical quotes to produce any results.</p>
+
+<p><img class="emoji" title=":warning:" alt=":warning:" src="https://github.githubassets.com/images/icons/emoji/unicode/26a0.png" height="20" width="20"> IMPORTANT! Some indicators use a smoothing technique that converges to better precision over time.  While you can calculate these with the minimum amount of quote data, the precision to two decimal points often requires 250 or more preceding historical records.</p>
+
+<p>For example, if you are using daily data and want one year of precise EMA(250) data, you need to provide 3 years of historical quotes (1 extra year for the lookback period and 1 extra year for convergence); thereafter, you would discard or not use the first two years of results.  Occassionally, even more is required for optimal precision.</p>
+
+<h3 id="using-custom-quote-classes">Using custom quote classes</h3>
+
+<p>If you would like to use your own custom <code class="language-plaintext highlighter-rouge">MyCustomQuote</code> <em>quote</em> class, to avoid needing to transpose into the library <code class="language-plaintext highlighter-rouge">Quote</code> class, you only need to add the <code class="language-plaintext highlighter-rouge">IQuote</code> interface.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">using</span> <span class="nn">Skender.Stock.Indicators</span><span class="p">;</span>
+
+<span class="p">[..]</span>
+
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MyCustomQuote</span> <span class="p">:</span> <span class="n">IQuote</span>
+<span class="p">{</span>
+    <span class="c1">// required base properties</span>
+    <span class="k">public</span> <span class="n">DateTime</span> <span class="n">Date</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">decimal</span> <span class="n">Open</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">decimal</span> <span class="n">High</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">decimal</span> <span class="n">Low</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">decimal</span> <span class="n">Close</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">decimal</span> <span class="n">Volume</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">// custom properties</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">MyOtherProperty</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// fetch historical quotes from your favorite feed</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">MyCustomQuote</span><span class="p">&gt;</span> <span class="n">myQuotes</span> <span class="p">=</span> <span class="nf">GetHistoryFromFeed</span><span class="p">(</span><span class="s">"MSFT"</span><span class="p">);</span>
+
+<span class="c1">// example: get 20-period simple moving average</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">SmaResult</span><span class="p">&gt;</span> <span class="n">results</span> <span class="p">=</span> <span class="n">myQuotes</span><span class="p">.</span><span class="nf">GetSma</span><span class="p">(</span><span class="m">20</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h4 id="using-custom-quote-property-names">Using custom quote property names</h4>
+
+<p>If you have a model that has different properties names, but the same meaning, you only need to map them.
+Suppose your class has a property called <code class="language-plaintext highlighter-rouge">CloseDate</code> instead of <code class="language-plaintext highlighter-rouge">Date</code>, it could be represented like this:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">public</span> <span class="k">class</span> <span class="nc">MyCustomQuote</span> <span class="p">:</span> <span class="n">IQuote</span>
+<span class="p">{</span>
+    <span class="c1">// required base properties</span>
+    <span class="n">DateTime</span> <span class="n">IQuote</span><span class="p">.</span><span class="n">Date</span> <span class="p">=&gt;</span> <span class="n">CloseDate</span><span class="p">;</span>
+    <span class="k">public</span> <span class="kt">decimal</span> <span class="n">Open</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">decimal</span> <span class="n">High</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">decimal</span> <span class="n">Low</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">decimal</span> <span class="n">Close</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="kt">decimal</span> <span class="n">Volume</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+
+    <span class="c1">// custom properties</span>
+    <span class="k">public</span> <span class="kt">int</span> <span class="n">MyOtherProperty</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+    <span class="k">public</span> <span class="n">DateTime</span> <span class="n">CloseDate</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<p>Note the use of explicit interface (property declaration is <code class="language-plaintext highlighter-rouge">IQuote.Date</code>), this is because having two properties that expose the same information can be confusing, this way <code class="language-plaintext highlighter-rouge">Date</code> property is only accessible when working with the included <code class="language-plaintext highlighter-rouge">Quote</code> type, while if you are working with a <code class="language-plaintext highlighter-rouge">MyCustomQuote</code> the <code class="language-plaintext highlighter-rouge">Date</code> property will be hidden, avoiding confusion.</p>
+
+<p>For more information on explicit interfaces, refer to the <a href="https://docs.microsoft.com/en-us/dotnet/csharp/programming-guide/interfaces/explicit-interface-implementation">C# Programming Guide</a>.</p>
+
+<h2 id="using-derived-results-classes">Using derived results classes</h2>
+
+<p>The indicator result (e.g. <code class="language-plaintext highlighter-rouge">EmaResult</code>) classes can be extended in your code.  Here’s an example of how you’d set that up:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// your custom derived class</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MyEma</span> <span class="p">:</span> <span class="n">EmaResult</span>
+<span class="p">{</span>
+  <span class="c1">// my added properties</span>
+  <span class="k">public</span> <span class="kt">int</span> <span class="n">MyId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">void</span> <span class="nf">MyClass</span><span class="p">(){</span>
+
+  <span class="c1">// fetch historical quotes from your feed (your method)</span>
+  <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Quote</span><span class="p">&gt;</span> <span class="n">quotes</span> <span class="p">=</span> <span class="nf">GetHistoryFromFeed</span><span class="p">(</span><span class="s">"SPY"</span><span class="p">);</span>
+
+  <span class="c1">// compute indicator</span>
+  <span class="n">INumerable</span><span class="p">&lt;</span><span class="n">EmaResult</span><span class="p">&gt;</span> <span class="n">emaResults</span> <span class="p">=</span> <span class="n">quotes</span><span class="p">.</span><span class="nf">GetEma</span><span class="p">(</span><span class="m">14</span><span class="p">);</span>
+
+  <span class="c1">// convert to my Ema class list [using LINQ]</span>
+  <span class="n">List</span><span class="p">&lt;</span><span class="n">MyEma</span><span class="p">&gt;</span> <span class="n">myEmaResults</span> <span class="p">=</span> <span class="n">emaResults</span>
+    <span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">e</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">MyEma</span>
+      <span class="p">{</span>
+        <span class="n">MyId</span> <span class="p">=</span> <span class="m">123</span><span class="p">,</span>
+        <span class="n">Date</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Date</span><span class="p">,</span>
+        <span class="n">Ema</span> <span class="p">=</span> <span class="n">e</span><span class="p">.</span><span class="n">Ema</span>
+      <span class="p">})</span>
+    <span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+
+  <span class="c1">// randomly selecting first record from the</span>
+  <span class="c1">// collection here for the example</span>
+  <span class="n">MyEma</span> <span class="n">r</span> <span class="p">=</span> <span class="n">myEmaResults</span><span class="p">.</span><span class="nf">FirstOrDefault</span><span class="p">();</span>
+
+  <span class="c1">// use your custom quote data</span>
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"On {0}, EMA was {1} for my EMA ID {2}."</span><span class="p">,</span>
+                     <span class="n">r</span><span class="p">.</span><span class="n">Date</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">Ema</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">MyId</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h3 id="using-nested-results-classes">Using nested results classes</h3>
+
+<p>If you prefer nested classes, here’s an alternative method for customizing your results:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// your custom nested class</span>
+<span class="k">public</span> <span class="k">class</span> <span class="nc">MyEma</span>
+<span class="p">{</span>
+  <span class="k">public</span> <span class="kt">int</span> <span class="n">MyId</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+  <span class="k">public</span> <span class="n">EmaResult</span> <span class="n">Result</span> <span class="p">{</span> <span class="k">get</span><span class="p">;</span> <span class="k">set</span><span class="p">;</span> <span class="p">}</span>
+<span class="p">}</span>
+
+<span class="k">public</span> <span class="k">void</span> <span class="nf">MyClass</span><span class="p">(){</span>
+
+  <span class="c1">// fetch historical quotes from your feed (your method)</span>
+  <span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Quote</span><span class="p">&gt;</span> <span class="n">quotes</span> <span class="p">=</span> <span class="nf">GetHistoryFromFeed</span><span class="p">(</span><span class="s">"SPY"</span><span class="p">);</span>
+
+  <span class="c1">// compute indicator</span>
+  <span class="n">INumerable</span><span class="p">&lt;</span><span class="n">EmaResult</span><span class="p">&gt;</span> <span class="n">emaResults</span> <span class="p">=</span> <span class="n">quotes</span><span class="p">.</span><span class="nf">GetEma</span><span class="p">(</span><span class="m">14</span><span class="p">);</span>
+
+  <span class="c1">// convert to my Ema class list [using LINQ]</span>
+  <span class="n">List</span><span class="p">&lt;</span><span class="n">MyEma</span><span class="p">&gt;</span> <span class="n">myEmaResults</span> <span class="p">=</span> <span class="n">emaResults</span>
+    <span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">result</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">MyEma</span>
+      <span class="p">{</span>
+        <span class="n">MyId</span> <span class="p">=</span> <span class="m">123</span><span class="p">,</span>
+        <span class="n">Result</span> <span class="p">=</span> <span class="n">result</span>
+      <span class="p">})</span>
+    <span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+
+  <span class="c1">// randomly selecting first record from the</span>
+  <span class="c1">// collection here for the example</span>
+  <span class="n">MyEma</span> <span class="n">r</span> <span class="p">=</span> <span class="n">myEmaResults</span><span class="p">.</span><span class="nf">FirstOrDefault</span><span class="p">();</span>
+
+  <span class="c1">// use your custom quote data</span>
+  <span class="n">Console</span><span class="p">.</span><span class="nf">WriteLine</span><span class="p">(</span><span class="s">"On {0}, EMA was {1} for my EMA ID {2}."</span><span class="p">,</span>
+                     <span class="n">r</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Date</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">Result</span><span class="p">.</span><span class="n">Ema</span><span class="p">,</span> <span class="n">r</span><span class="p">.</span><span class="n">MyId</span><span class="p">);</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h2 id="generating-indicator-of-indicators">Generating indicator of indicators</h2>
+
+<p>If you want to compute an indicator of indicators, such as an SMA of an ADX or an <a href="https://medium.com/@robswc/this-is-what-happens-when-you-combine-the-obv-and-rsi-indicators-6616d991773d">RSI of an OBV</a>, all you need to do is to take the results of one, reformat into a synthetic historical quotes, and send it through to another indicator.  Example:</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// fetch historical quotes from your feed (your method)</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">Quote</span><span class="p">&gt;</span> <span class="n">quotes</span> <span class="p">=</span> <span class="nf">GetHistoryFromFeed</span><span class="p">(</span><span class="s">"SPY"</span><span class="p">);</span>
+
+<span class="c1">// calculate RSI of OBV</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">RsiResult</span><span class="p">&gt;</span> <span class="n">results</span> 
+  <span class="p">=</span> <span class="n">quotes</span><span class="p">.</span><span class="nf">GetObv</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">ConvertToQuotes</span><span class="p">()</span>
+    <span class="p">.</span><span class="nf">GetRsi</span><span class="p">(</span><span class="m">14</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>See <a href="/utilities/#convert-to-quotes">.ConvertToQuotes()</a> for more information.</p>
+
+<p>When <code class="language-plaintext highlighter-rouge">.ConvertToQuotes()</code> is not available for an indicator, a workaround is to convert yourself.</p>
+
+<div class="language-csharp highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// calculate OBV</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">ObvResult</span><span class="p">&gt;</span> <span class="n">obvResults</span> <span class="p">=</span> <span class="n">quotes</span><span class="p">.</span><span class="nf">GetObv</span><span class="p">();</span>
+
+<span class="c1">// convert to synthetic quotes [using LINQ]</span>
+<span class="n">List</span><span class="p">&lt;</span><span class="n">Quote</span><span class="p">&gt;</span> <span class="n">obvQuotes</span> <span class="p">=</span> <span class="n">obvResults</span>
+  <span class="p">.</span><span class="nf">Where</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="n">x</span><span class="p">.</span><span class="n">Obv</span> <span class="p">!=</span> <span class="k">null</span><span class="p">)</span>
+  <span class="p">.</span><span class="nf">Select</span><span class="p">(</span><span class="n">x</span> <span class="p">=&gt;</span> <span class="k">new</span> <span class="n">Quote</span>
+    <span class="p">{</span>
+      <span class="n">Date</span> <span class="p">=</span> <span class="n">x</span><span class="p">.</span><span class="n">Date</span><span class="p">,</span>
+      <span class="n">Close</span> <span class="p">=</span> <span class="n">x</span><span class="p">.</span><span class="n">Obv</span>
+    <span class="p">})</span>
+  <span class="p">.</span><span class="nf">ToList</span><span class="p">();</span>
+
+<span class="c1">// calculate RSI of OBV</span>
+<span class="n">IEnumerable</span><span class="p">&lt;</span><span class="n">RsiResult</span><span class="p">&gt;</span> <span class="n">results</span> <span class="p">=</span> <span class="n">obvQuotes</span><span class="p">.</span><span class="nf">GetRsi</span><span class="p">(</span><span class="m">14</span><span class="p">);</span>
+</code></pre></div></div>
+
+<h2 id="utilities">Utilities</h2>
+
+<p>See <a href="/utilities/#content">Utilities and Helper functions</a> for additional tools.</p>
+
+  </main>
+</body>
+
+</html>
