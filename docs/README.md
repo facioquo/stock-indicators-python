@@ -1,12 +1,10 @@
-# Stock Indicators for .NET
+# Stock Indicators for Python
 
-[![NuGet package](https://img.shields.io/nuget/v/skender.stock.indicators?color=blue&logo=NuGet&label=NuGet%20Package)](https://www.nuget.org/packages/Skender.Stock.Indicators)
-[![Nuget](https://img.shields.io/nuget/dt/skender.stock.indicators?logo=NuGet&label=Downloads)](https://www.nuget.org/packages/Skender.Stock.Indicators)
-[![code coverage](https://img.shields.io/azure-devops/coverage/skender/stock.indicators/21/main?logo=AzureDevOps&label=Code%20Coverage)](https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=21&branchName=main&view=codecoverage-tab)
+[![code coverage](https://img.shields.io/azure-devops/coverage/skender/stock.indicators.python/26/main?logo=AzureDevOps&label=Code%20Coverage)](https://dev.azure.com/skender/Stock.Indicators.Python/_build/latest?definitionId=26&branchName=main&view=codecoverage-tab)
 
-**Stock Indicators for .NET** is a C# [library package](https://www.nuget.org/packages/Skender.Stock.Indicators) that produces financial market technical indicators.  Send in historical price quotes and get back desired indicators such as moving averages, Relative Strength Index, Stochastic Oscillator, Parabolic SAR, etc.  Nothing more.
+**Stock Indicators for Python** is a library that produces financial market technical indicators.  Send in historical price quotes and get back desired indicators such as moving averages, Relative Strength Index, Stochastic Oscillator, Parabolic SAR, etc.  Nothing more.
 
-It can be used in any market analysis software using standard [OHLCV]({{site.baseurl}}/guide/#historical-quotes) price quotes for equities, commodities, forex, cryptocurrencies, and others.  We had private trading algorithms, machine learning, and charting systems in mind when originally creating this library.
+It can be used in any market analysis software using standard OHLCV price quotes for equities, commodities, forex, cryptocurrencies, and others.  We had private trading algorithms, machine learning, and charting systems in mind when originally creating this community library.  A [Stock Indicators for .NET](https://daveskender.github.io/Stock.Indicators) is also available.
 
 Explore more information:
 
@@ -20,28 +18,26 @@ Explore more information:
 
 ## Samples
 
-![image](examples.png)
+![image](https://raw.githubusercontent.com/DaveSkender/Stock.Indicators/main/docs/examples.png)
 
 ### Example usage
 
-```csharp
-using Skender.Stock.Indicators;
+```python
+from stock_indicators import indicators
 
-[..]  // prerequisite: get historical quotes from your own source
+# prerequisite: get historical quotes from your own source
+quotes = get_historical_quotes()
 
-// example: get 20-period simple moving average
-IEnumerable<SmaResult> results = quotes.GetSma(20);
+# example: get 20-period simple moving average
+results = indicators.get_sma(quotes, 20)
 ```
 
 See the [guide]({{site.baseurl}}/guide/#content) and the [full list of indicators and overlays]({{site.baseurl}}/indicators/#content) for more information.
 
-## Frameworks targeted
+## Version supported
 
-- .NET 6.0, 5.0
-- .NET Core 3.1
-- .NET Standard 2.1, 2.0
-
-The compiled library package is [Common Language Specification (CLS) compliant](https://docs.microsoft.com/en-us/dotnet/standard/common-type-system) and can be used in other programming languages, including Python and everything in the .NET universe.
+- Python 3.8
+- Python 3.9
 
 ## License
 
@@ -51,7 +47,7 @@ This repository uses the standard Apache 2.0 open-source license.  Please review
 
 ## :phone: Contact us
 
-[Start a new discussion, ask a question]({{site.github.repository_url}}/discussions), or [submit an issue]({{site.github.repository_url}}/issues) if it is publicly relevant.  You can also direct message [@daveskender](https://twitter.com/messages/compose?recipient_id=27475431).
+[Start a new discussion, ask a question](https://github.com/DaveSkender/Stock.Indicators/discussions), or [submit an issue]({{site.github.repository_url}}/issues) if it is publicly relevant.  You can also direct message [@daveskender](https://twitter.com/messages/compose?recipient_id=27475431).
 
 ## :heart: Patronage
 
