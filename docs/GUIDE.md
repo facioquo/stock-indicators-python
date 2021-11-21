@@ -22,23 +22,25 @@ redirect_from:
 
 ### Installation and setup
 
-Find and install the [Skender.Stock.Indicators](https://www.nuget.org/packages/Skender.Stock.Indicators) NuGet package into your Project.  See [more help](https://www.google.com/search?q=install+nuget+package) for installing packages.
+Find and install the [stock-indicators](#LINK-TO-PYPI) Python package into your environment. See [more help](https://packaging.python.org/tutorials/installing-packages/) for installing packages.
 
 ```powershell
-# dotnet CLI example
-dotnet add package Skender.Stock.Indicators
+# pip example
+pip install stock-indicators
 
-# package manager example
-Install-Package Skender.Stock.Indicators
+# conda example (No plan yet.)
+# conda install stock-indicators
 ```
 
 ### Prerequisite data
 
 Most indicators require that you provide historical quote data and additional configuration parameters.
 
-You must get historical quotes from your own market data provider.  For clarification, the `GetHistoryFromFeed()` method shown in the example below and throughout our documentation **is not part of this library**, but rather an example to represent your own acquisition of historical quotes.
+You must get historical quotes from your own market data provider.  For clarification, the `get_history_from_feed()` method shown in the example below and throughout our documentation **is not part of this library**, but rather an example to represent your own acquisition of historical quotes.
 
-Historical price data can be provided as an `List`, `IEnumerable`, or `ICollection` of the `Quote` class ([see below](#historical-quotes)); however, it can also be supplied as a generic [custom TQuote type](#using-custom-quote-classes) if you prefer to use your own quote model.
+Historical price data can be provided as an `Iterable`(such as `List` or an object having `__iter__()`) of the `Quote` class or its sub-class ([see below](#historical-quotes)); 
+
+<!-- however, it can also be supplied as a generic [custom TQuote type](#using-custom-quote-classes) if you prefer to use your own quote model. -->
 
 For additional configuration parameters, default values are provided when there is an industry standard.  You can, of course, override these and provide your own values.
 
