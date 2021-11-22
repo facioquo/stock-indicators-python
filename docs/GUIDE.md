@@ -115,6 +115,7 @@ If you would like to use your own custom `MyCustomQuote` _quote_ class, you **ha
 from stock_indicators.indicators.common import Quote
 
 class MyCustomQuote(Quote):
+    def foo(self): ...
     ... add your own attributes.
 
 ```
@@ -146,7 +147,7 @@ If you have a model that has different properties names, but the same meaning, y
 Suppose your class has a property called `close_date` instead of `date`, it could be represented like this:
 
 ```python
-from stock_indicators.indicators.common import Quote
+from stock_indicators.indicators.common.quote import Quote, _get_date, _set_date
 
 class MyCustomQuote(Quote):
     close_date = property(_get_date, _set_date)
