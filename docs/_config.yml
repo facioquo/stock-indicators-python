@@ -1,6 +1,6 @@
 # local dev: bundle exec jekyll serve
 
-title: "Stock Indicators"
+title: "Stock Indicators for Python"
 tagline: "Send in historical price quotes and get back desired technical indicators.  Nothing more."
 
 # https://github.com/pages-themes/cayman
@@ -13,7 +13,7 @@ plugins:
   - jekyll-last-modified-at
   - jekyll-redirect-from
 
-google_analytics: G-7602GXEZ0R
+google_analytics: G-MNKJE3KS9Y
 
 exclude: [
   "*.json",
