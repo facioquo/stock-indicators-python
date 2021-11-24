@@ -161,42 +161,34 @@ Note that the property `date` now can be accessed by both `close_date` and `date
 
 The indicator result (e.g. `EMAResult`) classes can be extended in your code.
 
+**Be aware that** If you want to use helper functions, use wrapper class.<br>
 Here's an example of how you'd set that up:
 
-```csharp
-// your custom derived class
-public class MyEma : EmaResult
-{
-  // my added properties
-  public int MyId { get; set; }
-}
+```python
+from stock_indicators import indicators
+from stock_indicators.indicators.ema import EMAResult
 
-public void MyClass(){
+class ExtendedEMA(EMAResult):
+    def __str__(self):
+        return f"EMA on {self.date.date()} was ${self.ema or 0:.4f}"
+    
+# compute indicator
+quotes = get_history_from_feed("MSFT")
+results = indicators.get_ema(quotes, 20)
 
-  // fetch historical quotes from your feed (your method)
-  IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+# 1. list[ExtendedEMA]
+extended_results = [ ExtendedEMA(r._csdata) for r in results ]
+for r in extended_results:
+    print(r)
 
-  // compute indicator
-  INumerable<EmaResult> emaResults = quotes.GetEma(14);
+# 2. use wrapper for helper function
+from stock_indicators.indicators.ema import EMAResults
 
-  // convert to my Ema class list [using LINQ]
-  List<MyEma> myEmaResults = emaResults
-    .Select(e => new MyEma
-      {
-        MyId = 123,
-        Date = e.Date,
-        Ema = e.Ema
-      })
-    .ToList();
+extended_results = EMAResults[ExtendedEMA](results._csdata, ExtendedEMA)
+pruned_results = extended_results.remove_warmup_periods()
+for r in pruned_results:
+    print(r)
 
-  // randomly selecting first record from the
-  // collection here for the example
-  MyEma r = myEmaResults.FirstOrDefault();
-
-  // use your custom quote data
-  Console.WriteLine("On {0}, EMA was {1} for my EMA ID {2}.",
-                     r.Date, r.Ema, r.MyId);
-}
 ```
 
 ### Using nested results classes
