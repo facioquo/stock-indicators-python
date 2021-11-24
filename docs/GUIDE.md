@@ -193,7 +193,8 @@ for r in pruned_results:
 
 ### Using nested results classes
 
-If you prefer nested classes, here's an alternative method for customizing your results:
+If you prefer nested classes, here's an alternative method for customizing your results:<br>
+(Wrapper class is not available for nested result class.)
 
 ```python
 from stock_indicators import indicators
@@ -206,8 +207,12 @@ class NestedEMA:
     def __str__(self):
         return f"EMA on {self.result.date.date()} was ${self.result.ema or 0:.4f}"
 
-my_results = [ NestedEMA(r) for r in results ]
-for r in my_results:
+# compute indicator
+quotes = get_history_from_feed("MSFT")
+results = indicators.get_ema(quotes, 20)
+
+nested_results = [ NestedEMA(r) for r in results ]
+for r in nested_results:
     print(r)
 
 ```
