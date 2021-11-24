@@ -195,39 +195,21 @@ for r in pruned_results:
 
 If you prefer nested classes, here's an alternative method for customizing your results:
 
-```csharp
-// your custom nested class
-public class MyEma
-{
-  public int MyId { get; set; }
-  public EmaResult Result { get; set; }
-}
+```python
+from stock_indicators import indicators
 
-public void MyClass(){
+class NestedEMA:
+    def __init__(self, ema_result):
+        self.id = "123"
+        self.result = ema_result
+    
+    def __str__(self):
+        return f"EMA on {self.result.date.date()} was ${self.result.ema or 0:.4f}"
 
-  // fetch historical quotes from your feed (your method)
-  IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+my_results = [ NestedEMA(r) for r in results ]
+for r in my_results:
+    print(r)
 
-  // compute indicator
-  INumerable<EmaResult> emaResults = quotes.GetEma(14);
-
-  // convert to my Ema class list [using LINQ]
-  List<MyEma> myEmaResults = emaResults
-    .Select(result => new MyEma
-      {
-        MyId = 123,
-        Result = result
-      })
-    .ToList();
-
-  // randomly selecting first record from the
-  // collection here for the example
-  MyEma r = myEmaResults.FirstOrDefault();
-
-  // use your custom quote data
-  Console.WriteLine("On {0}, EMA was {1} for my EMA ID {2}.",
-                     r.Result.Date, r.Result.Ema, r.MyId);
-}
 ```
 
 ## Generating indicator of indicators
