@@ -6,6 +6,10 @@ tagline: "Send in historical price quotes and get back desired technical indicat
 # https://github.com/pages-themes/cayman
 remote_theme: pages-themes/cayman@v0.2.0
 
+# override built-in github url because it does not fetch in build tests
+github:
+  repository_url: "https://github.com/DaveSkender/Stock.Indicators.Python"
+
 plugins:
   - jemoji
   - jekyll-remote-theme
