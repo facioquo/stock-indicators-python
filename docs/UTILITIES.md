@@ -88,15 +88,17 @@ Currently, `.to_quotes()` is only available on a select few indicators.  If you 
 `results.find(lookup_date)` is a simple lookup for your indicator results collection.  Just specify the date you want returned.
 
 ```python
-// fetch historical quotes from your favorite feed
-IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
+# fetch historical quotes from your favorite feed
+quotes = get_history_from_feed("MSFT")
 
-// calculate indicator series
-IEnumerable<SmaResult> results = quotes.GetSma(20);
+# calculate indicator series
+results = indicators.get_ema(quotes, 20)
 
-// find result on a specific date
-DateTime lookupDate = [..] // the date you want to find
-SmaResult result = results.Find(lookupDate);
+# find result on a specific date
+from datetime import datetime
+lookup_date = datetime(2018, 10, 12)
+result = results.find(lookup_date)
+
 ```
 
 ### Remove warmup periods
