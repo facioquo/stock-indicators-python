@@ -181,7 +181,7 @@ for r in extended_results:
 
 ```
 
-**Be aware that** If you want to use helper functions, use wrapper class(e.g. `EMAResults`).<br>
+**Be aware that** If you want to use [helper functions]({{site.baseurl}}/utilities/#utilities-for-indicator-results), use wrapper class(e.g. `EMAResults`).<br>
 ```python
 # 2. use wrapper for helper function
 from stock_indicators.indicators.ema import EMAResults
