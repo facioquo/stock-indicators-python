@@ -69,25 +69,25 @@ IEnumerable<Quote> dayBarQuotes =
 
 ### Convert to quotes
 
-`results.ConvertToQuotes()` will transform indicator results back into an `IEnumerable<Quote>` so it can be re-used to generate an [indicator of indicators]({{site.baseurl}}/guide/#generating-indicator-of-indicators).
+`results.to_quotes()` will transform indicator results back into an `list[Quote]` so it can be re-used to generate an [indicator of indicators]({{site.baseurl}}/guide/#generating-indicator-of-indicators).
 
-```csharp
-// example: an RSI of Renko bricks
-IEnumerable<RsiResult> results 
-  = quotes.GetRenko(..)
-    .ConvertToQuotes()
-    .GetRsi(14);
+```python
+# example: an SMA of RSI
+results = indicators.get_rsi(quotes)
+quotes_from_rsi = results.to_quotes()
+sma_of_rsi = indicators.get_sma(quotes_from_rsi, 20)
+
 ```
 
-Currently, `.ConvertToQuotes` is only available on a select few indicators.  If you find an indicator that is a good candidate for this utility, please [submit an Issue]({{site.github.repository_url}}/issues).
+Currently, `.to_quotes()` is only available on a select few indicators.  If you find an indicator that is a good candidate for this utility, please [submit an Issue](https://github.com/DaveSkender/Stock.Indicators/issues).
 
-:warning: WARNING! In many cases, `.ConvertToQuotes` will remove any `null` results -- this will produce fewer historical `quotes` than were originally provided.
+:warning: WARNING! In many cases, `.to_quotes()` will remove any `None` results -- this will produce fewer historical `quotes` than were originally provided.
 
 ### Find indicator result by date
 
-`results.Find(lookupDate)` is a simple lookup for your indicator results collection.  Just specify the date you want returned.
+`results.find(lookup_date)` is a simple lookup for your indicator results collection.  Just specify the date you want returned.
 
-```csharp
+```python
 // fetch historical quotes from your favorite feed
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 
