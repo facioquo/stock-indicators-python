@@ -105,7 +105,6 @@ Each indicator will need different amounts of price `quotes` to calculate.  You 
 
 For example, if you are using daily data and want one year of precise EMA(250) data, you need to provide 3 years of historical quotes (1 extra year for the lookback period and 1 extra year for convergence); thereafter, you would discard or not use the first two years of results.  Occassionally, even more is required for optimal precision.
 
-====
 
 ### Using custom quote classes
 
@@ -223,39 +222,37 @@ for r in nested_results:
 
 ## Generating indicator of indicators
 
-If you want to compute an indicator of indicators, such as an SMA of an ADX or an [RSI of an OBV](https://medium.com/@robswc/this-is-what-happens-when-you-combine-the-obv-and-rsi-indicators-6616d991773d), all you need to do is to take the results of one, reformat into a synthetic historical quotes, and send it through to another indicator.  Example:
+If you want to compute an indicator of indicators, such as an SMA of an ADX or an [RSI of an OBV](https://medium.com/@robswc/this-is-what-happens-when-you-combine-the-obv-and-rsi-indicators-6616d991773d), all you need to do is to take the results of one, reformat into a synthetic historical quotes, and send it through to another indicator.
 
-```csharp
-// fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+Here's an example of SMA of RSI:
 
-// calculate RSI of OBV
-IEnumerable<RsiResult> results 
-  = quotes.GetObv()
-    .ConvertToQuotes()
-    .GetRsi(14);
+```python
+from stock_indicators import indicators
+
+# fetch historical quotes from your feed (your method)
+quotes = get_history_from_feed("MSFT")
+
+# calculate SMA of RSI
+results = indicators.get_rsi(quotes)
+quotes_from_rsi = results.to_quotes()
+sma_of_rsi = indicators.get_sma(quotes_from_rsi, 20)
+
 ```
 
-See [.ConvertToQuotes()]({{site.baseurl}}/utilities/#convert-to-quotes) for more information.
+See [.to_quotes()]({{site.baseurl}}/utilities/#convert-to-quotes) for more information.
 
-When `.ConvertToQuotes()` is not available for an indicator, a workaround is to convert yourself.
+When `.to_quotes()` is not available for an indicator, a workaround is to convert yourself.
 
-```csharp
-// calculate OBV
-IEnumerable<ObvResult> obvResults = quotes.GetObv();
+```python
+# calculate EMA
+results = indicators.get_ema(quotes, 20)
 
-// convert to synthetic quotes [using LINQ]
-List<Quote> obvQuotes = obvResults
-  .Where(x => x.Obv != null)
-  .Select(x => new Quote
-    {
-      Date = x.Date,
-      Close = x.Obv
-    })
-  .ToList();
+# convert to synthetic quotes
+quotes_from_ema = [ Quote(date=r.date, close=r.ema) for r in results ]
 
-// calculate RSI of OBV
-IEnumerable<RsiResult> results = obvQuotes.GetRsi(14);
+# calculate SMA of EMA
+sma_of_ema = indicators.get_sma(quotes_from_ema, 20)
+
 ```
 
 ## Utilities
