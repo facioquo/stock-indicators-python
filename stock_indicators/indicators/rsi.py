@@ -47,4 +47,4 @@ class RSIResults(IndicatorResults[RSIResult]):
     def to_quotes(self) -> Iterable[Quote]:
         quotes = CsIndicator.ConvertToQuotes(CsList(type(self._csdata[0]), self._csdata))
 
-        return quotes
+        return [ Quote.from_csquote(q) for q in quotes ]
