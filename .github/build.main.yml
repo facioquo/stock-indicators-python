@@ -9,7 +9,6 @@ pr:
 jobs:
   - job: Build
     variables:
-      PythonWrapperBaseDirectory: "$(Build.SourcesDirectory)"
       ImageName: "ubuntu-latest"
       DotNetVersion: "netstandard2.0"
       PythonVersion: "3.8"
@@ -23,33 +22,15 @@ jobs:
         inputs:
           versionSpec: "$(PythonVersion)"
 
-      # - task: UseDotNet@2
-      #   displayName: "use .NET SDK 5.0.x"
-      #   inputs:
-      #     version: 5.0.x
-
-      # - task: DotNetCoreCLI@2
-      #   displayName: "use GitVersion"
-      #   inputs:
-      #     command: custom
-      #     custom: tool
-      #     arguments: "install -g gitversion.tool --version 5.6.11"
-
-      # - task: DotNetCoreCLI@2
-      #   displayName: "get version number"
-      #   inputs:
-      #     command: custom
-      #     custom: gitversion
-      #     arguments: "/output buildserver"
-
       - task: DownloadPipelineArtifact@2
-        displayName: "Fetch NuGet DLL"
+        displayName: "Fetch DLL"
         inputs:
           source: specific
           project: 5123ca47-74f2-4d67-a5d4-c4d90b8d670a
           pipeline: 21
           runVersion: latestFromBranch
           runBranch: refs/heads/main
+          tags: released
           artifact: packages
           patterns: "*.nupkg"
 
@@ -66,28 +47,25 @@ jobs:
         inputs:
           SourceFolder: "$(Build.SourcesDirectory)/unpacked/lib/$(DotNetVersion)"
           Contents: "*.dll"
-          TargetFolder: "$(PythonWrapperBaseDirectory)/stock_indicators/_cslib/lib"
+          TargetFolder: "$(Build.SourcesDirectory)/stock_indicators/_cslib/lib"
           CleanTargetFolder: true
           OverWrite: true
           flattenFolders: true
       
       - task: gitversion/setup@0
-        # condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-        displayName: Setup GitVersion
+        displayName: Use GitVersion
         inputs:
           versionSpec: '5.x'
 
       - task: gitversion/execute@0
-        # condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
-        displayName: Calculate GitVersion
+        displayName: Get GitVersion
         inputs:
           useConfigFile: true
           configFilePath: 'gitversion.yml'
       
       - powershell: |
           echo "Current version: $(GitVersion.SemVer)"
-        displayName: Shows currently compiling version
-        # condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+        displayName: Shows GitVersion
 
       - script: |
           python -m pip install --upgrade pip setuptools wheel build
@@ -97,13 +75,13 @@ jobs:
         displayName: "Build"
         inputs:
           script: "python setup.py $(GitVersion.SemVer) sdist bdist_wheel"
-          workingDirectory: $(PythonWrapperBaseDirectory)
-        #condition: eq(variables['Build.SourceBranch'], 'refs/heads/master')
+          workingDirectory: $(Build.SourcesDirectory)
+        #condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
 
       - task: CopyFiles@2
         displayName: "Stage artifacts"
         inputs:
-          SourceFolder: "$(PythonWrapperBaseDirectory)/dist"
+          SourceFolder: "$(Build.SourcesDirectory)/dist"
           Contents: "**"
           TargetFolder: "$(Build.ArtifactStagingDirectory)"
           CleanTargetFolder: true
@@ -119,7 +97,6 @@ jobs:
 
   - job: Test
     variables:
-      PythonWrapperBaseDirectory: "$(Build.SourcesDirectory)"
       DotNetVersion: "netstandard2.0"
 
     strategy:
@@ -176,7 +153,7 @@ jobs:
         inputs:
           SourceFolder: "$(Build.SourcesDirectory)/unpacked/lib/$(DotNetVersion)"
           Contents: "*.dll"
-          TargetFolder: "$(PythonWrapperBaseDirectory)/stock_indicators/_cslib/lib"
+          TargetFolder: "$(Build.SourcesDirectory)/stock_indicators/_cslib/lib"
           CleanTargetFolder: true
           OverWrite: true
           flattenFolders: true
@@ -198,7 +175,7 @@ jobs:
 
           python -m pip install --upgrade pip setuptools wheel
           pip install -r requirements.txt
-        workingDirectory: $(PythonWrapperBaseDirectory)
+        workingDirectory: $(Build.SourcesDirectory)
         displayName: "Install dependencies"
 
       - bash: |
@@ -213,19 +190,19 @@ jobs:
           fi
 
           pip install -r requirements-test.txt
-          pytest -vr A --junitxml=$(PythonWrapperBaseDirectory)/tests/test-results.xml --cov=$(PythonWrapperBaseDirectory)/stock_indicators --cov-report xml:$(PythonWrapperBaseDirectory)/tests/coverage.xml
-        workingDirectory: $(PythonWrapperBaseDirectory)
+          pytest -vr A --junitxml=$(Build.SourcesDirectory)/tests/test-results.xml --cov=$(Build.SourcesDirectory)/stock_indicators --cov-report xml:$(Build.SourcesDirectory)/tests/coverage.xml
+        workingDirectory: $(Build.SourcesDirectory)
         displayName: "Run all tests"
 
       - task: PublishTestResults@2
         displayName: "Publish test results"
         condition: succeededOrFailed()
         inputs:
-          testResultsFiles: "$(PythonWrapperBaseDirectory)/tests/test-results.xml"
+          testResultsFiles: "$(Build.SourcesDirectory)/tests/test-results.xml"
           testRunTitle: "Python $(python.version) Tests"
 
       - task: PublishCodeCoverageResults@1
         displayName: "Publish code coverage"
         inputs:
           codeCoverageTool: Cobertura
-          summaryFileLocation: "$(PythonWrapperBaseDirectory)/tests/coverage.xml"
+          summaryFileLocation: "$(Build.SourcesDirectory)/tests/coverage.xml"
