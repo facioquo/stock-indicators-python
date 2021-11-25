@@ -161,7 +161,6 @@ Note that the property `date` now can be accessed by both `close_date` and `date
 
 The indicator result (e.g. `EMAResult`) classes can be extended in your code.
 
-**Be aware that** If you want to use helper functions, use wrapper class.<br>
 Here's an example of how you'd set that up:
 
 ```python
@@ -181,6 +180,10 @@ extended_results = [ ExtendedEMA(r._csdata) for r in results ]
 for r in extended_results:
     print(r)
 
+```
+
+**Be aware that** If you want to use helper functions, use wrapper class(e.g. `EMAResults`).<br>
+```python
 # 2. use wrapper for helper function
 from stock_indicators.indicators.ema import EMAResults
 
@@ -188,10 +191,11 @@ extended_results = EMAResults[ExtendedEMA](results._csdata, ExtendedEMA)
 pruned_results = extended_results.remove_warmup_periods()
 for r in pruned_results:
     print(r)
-
+    
 ```
 
-### Using nested results classes
+
+<!-- ### Using nested results classes
 
 If you prefer nested classes, here's an alternative method for customizing your results:<br>
 (Wrapper class is not available for nested result class.)
@@ -215,7 +219,7 @@ nested_results = [ NestedEMA(r) for r in results ]
 for r in nested_results:
     print(r)
 
-```
+``` -->
 
 ## Generating indicator of indicators
 
