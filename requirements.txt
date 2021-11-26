@@ -1,2 +1,2 @@
 # _cslib
-pythonnet
+pythonnet==2.5.2

@@ -1,4 +1,4 @@
-from typing import Iterable, Optional, Type
+from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
@@ -39,14 +39,15 @@ class SuperTrendResult(ResultBase):
     def lower_band(self, value):
         self._csdata.LowerBand = CsDecimal(value)
 
-class SuperTrendResults(IndicatorResults[SuperTrendResult]):
+T = TypeVar("T", bound=SuperTrendResult)
+class SuperTrendResults(IndicatorResults[T]):
     """
     A wrapper class for the list of Super Trend results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
 
-    def __init__(self, data: Iterable, wrapper_class: Type[SuperTrendResult]):
+    def __init__(self, data: Iterable, wrapper_class: Type[T]):
         super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data
