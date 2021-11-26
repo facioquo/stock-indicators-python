@@ -1,8 +1,16 @@
+---
+title: Contributing
+permalink: /contributing/
+layout: default
+redirect_from:
+ - /docs/CONTRIBUTING.html
+---
+
 # Contributing guidelines
 
-[![build status](https://img.shields.io/azure-devops/build/skender/5123ca47-74f2-4d67-a5d4-c4d90b8d670a/21/main?logo=AzureDevops&label=Build%20Status)](https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=21&branchName=main)
-[![code coverage](https://img.shields.io/azure-devops/coverage/skender/stock.indicators/21/main?logo=AzureDevOps&label=Code%20Coverage)](https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=21&branchName=main&view=codecoverage-tab)
-[![CodeQL](https://github.com/DaveSkender/Stock.Indicators/workflows/CodeQL/badge.svg)](https://github.com/DaveSkender/Stock.Indicators/security/code-scanning)
+[![build status](https://img.shields.io/azure-devops/build/skender/5123ca47-74f2-4d67-a5d4-c4d90b8d670a/26/main?logo=AzureDevops&label=Build%20Status)](https://dev.azure.com/skender/Stock.Indicators.Python/_build/latest?definitionId=26&branchName=main)
+[![code coverage](https://img.shields.io/azure-devops/coverage/skender/stock.indicators/26/main?logo=AzureDevOps&label=Code%20Coverage)](https://dev.azure.com/skender/Stock.Indicators.Python/_build/latest?definitionId=26&branchName=main&view=codecoverage-tab)
+[![CodeQL](https://github.com/DaveSkender/Stock.Indicators/workflows/CodeQL/badge.svg)](https://github.com/DaveSkender/Stock.Indicators.Python/security/code-scanning)
 
 **Thanks for taking the time to contribute!**
 
@@ -22,7 +30,19 @@ We are not accepting things that should be done in your own wrapper code:
 
 ## Reporting bugs and feature requests
 
-If you are reporting a bug or suspect a problem, please [submit an Issue](https://github.com/DaveSkender/Stock.Indicators/issues) with a detailed description of the problem + include steps to reproduce, code samples, and any reference materials.  For new features, add a new Issue with the `enhancement` label.
+We have different places to take issues by its category.
+
+### Bug Report
+
+If you are reporting a bug or suspect a problem, please submit an issue with a detailed description of the problem + include steps to reproduce, code samples, and any reference materials.  
+
+:wrench: [Report bugs](https://github.com/DaveSkender/Stock.Indicators.Python/issues)
+
+### Feature Request
+
+For new features, submit an issue with the `enhancement` label.
+
+:bulb: [Request features](https://github.com/DaveSkender/Stock.Indicators/issues)
 
 ## Project management
 
