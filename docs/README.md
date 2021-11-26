@@ -13,7 +13,7 @@ Explore more information:
 - [Demo site](https://stock-charts.azurewebsites.net) (a stock chart)
 - [Example usage code]({{site.baseurl}}/examples/#content)
 - [Release notes]({{site.github.repository_url}}/releases)
-- [Discussions]({{site.github.repository_url}}/discussions)
+- [Discussions](https://github.com/DaveSkender/Stock.Indicators/discussions)
 - [Contributing guidelines]({{site.baseurl}}/contributing/#content)
 
 ## Samples
