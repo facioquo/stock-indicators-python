@@ -103,23 +103,20 @@ result = results.find(lookup_date)
 
 ### Remove warmup periods
 
-`results.RemoveWarmupPeriods()` will remove the recommended initial warmup periods from indicator results.
-An alternative `.RemoveWarmupPeriods(removePeriods)` is also provided if you want to customize the pruning amount.
+`results.remove_warmup_periods()` will remove the recommended initial warmup periods from indicator results.
+An alternative `.remove_warmup_periods(remove_periods)` is also provided if you want to customize the pruning amount.
 
-```csharp
-// auto remove recommended warmup periods
-IEnumerable<AdxResult> results = 
-  quotes.GetAdx(14)
-    .RemoveWarmupPeriods();
+```python
+# auto remove recommended warmup periods
+results = indicators.get_ema(quotes, 20).remove_warmup_periods()
 
-// remove user-specific quantity of periods
-IEnumerable<AdxResult> results = 
-  quotes.GetAdx(14)
-    .RemoveWarmupPeriods(50);
+# remove user-specific quantity of periods
+results = indicators.get_ema(quotes, 20).remove_warmup_periods(10)
+
 ```
 
 See [individual indicator pages]({{site.baseurl}}/indicators/#content) for information on recommended pruning quantities.
 
-:warning: Note: `.RemoveWarmupPeriods()` is not available on indicators that do not have any recommended pruning; however, you can still do a custom pruning by using the customizable `.RemoveWarmupPeriods(removePeriods)`.
+:warning: Note: `.remove_warmup_periods()` is not available on indicators that do not have any recommended pruning; however, you can still do a custom pruning by using the customizable `.remove_warmup_periods(remove_periods)`.
 
-:warning: WARNING! `.RemoveWarmupPeriods()` will reverse-engineer some parameters in determing the recommended pruning amount.  Consequently, on rare occassions when there are unusual results, there can be an erroneous increase in the amount of pruning.  If you want more certainty, use the `.RemoveWarmupPeriods(removePeriods)` with a specific number of `removePeriods`.
+:warning: WARNING! `.remove_warmup_periods()` will reverse-engineer some parameters in determing the recommended pruning amount.  Consequently, on rare occassions when there are unusual results, there can be an erroneous increase in the amount of pruning.  If you want more certainty, use the `.remove_warmup_periods(remove_periods)` with a specific number of `remove_periods`.
