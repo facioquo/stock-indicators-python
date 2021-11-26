@@ -38,7 +38,7 @@ class IndicatorResults(List[T]):
         It is usually called after `done()`
         """
         if self._csdata is None:
-            self._csdata = [ _._csdata for _ in self ]
+            self._csdata: Iterable = [ _._csdata for _ in self ]
         return self
 
     def done(self):

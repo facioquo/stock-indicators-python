@@ -1,4 +1,4 @@
-from typing import Iterable, Type
+from typing import Iterable, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
@@ -41,12 +41,13 @@ class FractalResult(ResultBase):
     def fractal_bull(self, value):
         self._csdata.FractalBull = CsDecimal(value)
 
-class FractalResults(IndicatorResults[FractalResult]):
+T = TypeVar("T", bound=FractalResult)
+class FractalResults(IndicatorResults[T]):
     """
     A wrapper class for the list of Williams Fractal results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
 
-    def __init__(self, data: Iterable, wrapper_class: Type[FractalResult]):
+    def __init__(self, data: Iterable, wrapper_class: Type[T]):
         super().__init__(data, wrapper_class)
