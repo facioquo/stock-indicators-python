@@ -81,7 +81,7 @@ class IndicatorResults(List[T]):
                 "lookup_date must be an instance of datetime.datetime."
             )
 
-        result = CsIndicator.Find(CsList(type(self._csdata[0]), self._csdata), CsDateTime(lookup_date))
+        result = CsIndicator.Find[CsResultBase](CsList(type(self._csdata[0]), self._csdata), CsDateTime(lookup_date))
         return self._wrapper_class(result)
 
     @_verify_data
