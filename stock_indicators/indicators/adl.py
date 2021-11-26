@@ -1,4 +1,4 @@
-from typing import Iterable, Optional, Type
+from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
@@ -47,18 +47,19 @@ class ADLResult(ResultBase):
     def adl_sma(self, value):
         self._csdata.AdlSma = CsDecimal(value)
 
-class ADLResults(IndicatorResults[ADLResult]):
+T = TypeVar("T", bound=ADLResult)
+class ADLResults(IndicatorResults[T]):
     """
     A wrapper class for the list of ADL(Accumulation/Distribution Line) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
 
-    def __init__(self, data: Iterable, wrapper_class: Type[ADLResult]):
+    def __init__(self, data: Iterable, wrapper_class: Type[T]):
         super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data
     def to_quotes(self) -> Iterable[Quote]:
         quotes = CsIndicator.ConvertToQuotes(CsList(type(self._csdata[0]), self._csdata))
 
-        return quotes
+        return [ Quote.from_csquote(q) for q in quotes ]

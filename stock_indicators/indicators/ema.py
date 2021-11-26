@@ -1,4 +1,4 @@
-from typing import Iterable, Optional, Type
+from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
@@ -24,15 +24,15 @@ class EMAResult(ResultBase):
     def ema(self, value):
         self._csdata.Ema = CsDecimal(value)
 
-
-class EMAResults(IndicatorResults[EMAResult]):
+T = TypeVar("T", bound=EMAResult)
+class EMAResults(IndicatorResults[T]):
     """
     A wrapper class for the list of EMA(Exponential Moving Average) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in CSharp implementation.
     """
 
-    def __init__(self, data: Iterable, wrapper_class: Type[EMAResult]):
+    def __init__(self, data: Iterable, wrapper_class: Type[T]):
         super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data

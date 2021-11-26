@@ -1,4 +1,4 @@
-from typing import Iterable, Optional, Type
+from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
@@ -28,15 +28,15 @@ class SMAResult(ResultBase):
     def sma(self, value):
         self._csdata.Sma = CsDecimal(value)
 
-
-class SMAResults(IndicatorResults[SMAResult]):
+T = TypeVar("T", bound=SMAResult)
+class SMAResults(IndicatorResults[T]):
     """
     A wrapper class for the list of SMA(Simple Moving Average) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in CSharp implementation.
     """
 
-    def __init__(self, data: Iterable, wrapper_class: Type[SMAResult]):
+    def __init__(self, data: Iterable, wrapper_class: Type[T]):
         super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data
@@ -77,13 +77,14 @@ class SMAExtendedResult(SMAResult):
     def mape(self, value):
         self._csdata.Mape = CsDecimal(value)
 
-class SMAExtendedResults(IndicatorResults[SMAExtendedResult]):
+T = TypeVar("T", bound=SMAExtendedResult)
+class SMAExtendedResults(IndicatorResults[T]):
     """
     A wrapper class for the list of SMA-Extended results. It is exactly same with built-in `list`
     except for that it provides some useful helper methods written in CSharp implementation.
     """
 
-    def __init__(self, data: Iterable, wrapper_class: Type[SMAExtendedResult]):
+    def __init__(self, data: Iterable, wrapper_class: Type[T]):
         super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data
