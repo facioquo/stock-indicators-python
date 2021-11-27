@@ -2,8 +2,6 @@
 title: Contributing
 permalink: /contributing/
 layout: default
-redirect_from:
- - /docs/CONTRIBUTING.html
 ---
 
 # Contributing guidelines

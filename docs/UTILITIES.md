@@ -2,8 +2,6 @@
 title: Utilities and Helpers
 permalink: /utilities/
 layout: default
-redirect_from:
- - /docs/UTILITIES.html
 ---
 
 # {{ page.title }}

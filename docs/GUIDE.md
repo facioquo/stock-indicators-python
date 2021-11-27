@@ -2,8 +2,6 @@
 title: Guide and Pro tips
 permalink: /guide/
 layout: default
-redirect_from:
- - /docs/GUIDE.html
 ---
 
 # {{ page.title }}

@@ -4,8 +4,6 @@ description: Stochastic Oscillator and KDJ Index
 permalink: /indicators/Stoch/
 type: oscillator
 layout: indicator
-redirect_from:
- - /indicators/Stochastic/README.md
 ---
 
 # {{ page.title }}
