@@ -63,16 +63,25 @@ For new features, submit an issue with the `enhancement` label.
 - We expect all unit tests to execute successfully and all Errors and Warning resolved before you submit your code.
 - Failed builds or unit testing will block acceptance of your Pull Request when submitting changes.
 
+```bash
+# install pytest and other dependancies.
+pip install -r requirements-test.txt
+
+# run all tests.
+pytest -svr A tests
+```
+
 ### Performance benchmarking
 
-Running the `Tests.Performance` console application in `Release` mode will produce performance data that we periodically include in the repo documentation.  You can find the latest results [here](https://daveskender.github.io/Stock.Indicators/performance/).
+Running the commands below in your console will show performance data.  You can find the latest results [here](https://daveskender.github.io/Stock.Indicators/performance/).
 
 ```bash
-# run all performance benchmarks
-dotnet run -c Release
+# install pytest and other dependancies.
+pip install -r requirements-test.txt
+pip install pytest-benchmark
 
-# run individual performance benchmark
-dotnet run -c Release --filter *.GetAdx
+# run benchmarks.
+pytest benchmarks
 ```
 
 ## Documentation
