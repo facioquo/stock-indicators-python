@@ -124,12 +124,12 @@ If you want to contribute administratively, do code reviews, or provide general 
 
 ## Versioning
 
-We use the `GitVersion` tool for [semantic versioning](https://semver.org).  It is mostly auto generated in the [Azure DevOps build](https://dev.azure.com/skender/Stock.Indicators/_build?definitionId=21).
+We use the `GitVersion` tool for [semantic versioning](https://semver.org).  It is mostly auto generated in the [Azure DevOps build](https://dev.azure.com/skender/Stock.Indicators/_build?definitionId=26).
 
 Type | Format | Description
 ------------ | ------ | -----------
 Major | `x.-.-` | A significant deviation with major breaking changes.
-Minor | `-.x.-` | A new feature, usually new non-breaking change, such as adding an indicator.  Minor breaking changes may occur here and are denoted in the [release notes](https://github.com/DaveSkender/Stock.Indicators/releases).
+Minor | `-.x.-` | A new feature, usually new non-breaking change, such as adding an indicator.  Minor breaking changes may occur here and are denoted in the [release notes](https://github.com/DaveSkender/Stock.Indicators.Python/releases).
 Patch | `-.-.x` | A small bug fix, chore, or documentation change.
 Increment | `-.-.-+x` | Intermediate commits between releases.
 
@@ -139,7 +139,7 @@ This only needs to be done on the merge to `main` when the Pull Request is commi
 - Adding `+semver: minor` as a PR merge commit message will increment the minor -.x.- element
 - Adding `+semver: patch` as a PR merge commit message will increment the minor -.-.x element.  Patch element auto-increments, so you'd only need to do this to override the next value.
 
-A Git `tag`, in accordance with the above schema, is introduced automatically after deploying to the public NuGet package manager and is reflected in the [Releases](https://github.com/DaveSkender/Stock.Indicators/releases).
+A Git `tag`, in accordance with the above schema, is introduced automatically after deploying to the PyPI and is reflected in the [Releases](https://github.com/DaveSkender/Stock.Indicators.Python/releases).
 
 ## License
 
