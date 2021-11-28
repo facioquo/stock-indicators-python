@@ -109,7 +109,7 @@ By submitting changes to this repo you are also acknowledging and agree to the t
 When ready, submit a Pull Request with a clear list of what you've done (read more about [pull requests](http://help.github.com/pull-requests)).
 Always write a clear log message for your commits. One-line messages are fine for most changes.
 
-After a Pull Request is reviewed, accepted, and [squash] merged to `main`, we may batch changes before publishing a new package version to [PyPI](#LINK-TO-PYPI).  Please be patient with turnaround time.
+After a Pull Request is reviewed, accepted, and [squash] merged to `main`, we may batch changes before publishing a new package version to [PyPI](https://pypi.org/project/stock-indicators/).  Please be patient with turnaround time.
 
 ## Code reviews and administration
 
@@ -139,7 +139,7 @@ This only needs to be done on the merge to `main` when the Pull Request is commi
 - Adding `+semver: minor` as a PR merge commit message will increment the minor -.x.- element
 - Adding `+semver: patch` as a PR merge commit message will increment the minor -.-.x element.  Patch element auto-increments, so you'd only need to do this to override the next value.
 
-A Git `tag`, in accordance with the above schema, is introduced automatically after deploying to the PyPI and is reflected in the [Releases](https://github.com/DaveSkender/Stock.Indicators.Python/releases).
+A Git `tag`, in accordance with the above schema, is introduced automatically after deploying to the [PyPI](https://pypi.org/project/stock-indicators/) and is reflected in the [Releases](https://github.com/DaveSkender/Stock.Indicators.Python/releases).
 
 ## License
 
