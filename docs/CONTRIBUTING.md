@@ -109,7 +109,7 @@ By submitting changes to this repo you are also acknowledging and agree to the t
 When ready, submit a Pull Request with a clear list of what you've done (read more about [pull requests](http://help.github.com/pull-requests)).
 Always write a clear log message for your commits. One-line messages are fine for most changes.
 
-After a Pull Request is reviewed, accepted, and [squash] merged to `main`, we may batch changes before publishing a new package version to the [public NuGet repository](https://www.nuget.org/packages/Skender.Stock.Indicators).  Please be patient with turnaround time.
+After a Pull Request is reviewed, accepted, and [squash] merged to `main`, we may batch changes before publishing a new package version to [PyPI](#LINK-TO-PYPI).  Please be patient with turnaround time.
 
 ## Code reviews and administration
 
@@ -117,9 +117,10 @@ If you want to contribute administratively, do code reviews, or provide general 
 
 ## Standards and design guidelines
 
-- [.NET Framework Design Guidelines](https://docs.microsoft.com/en-us/dotnet/standard/design-guidelines)
-- [NuGet Best Practices](https://docs.microsoft.com/en-us/dotnet/standard/library-guidance/nuget)
+- [PEP 8 -- Style Guide for Python Code](https://www.python.org/dev/peps/pep-0008/)
+- [PEP 440 -- Version Identification and Dependency Specification](https://www.python.org/dev/peps/pep-0440/)
 - [Semantic Version 2.0](https://semver.org)
+- [Python Packaging User Guide](https://packaging.python.org/)
 
 ## Versioning
 
