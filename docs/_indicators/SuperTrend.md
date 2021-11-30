@@ -6,42 +6,36 @@ layout: indicator
 ---
 
 # {{ page.title }}
+<hr>
 
-Created by Oliver Seban, the SuperTrend indicator attempts to determine the primary trend of Close prices by using [Average True Range (ATR)](../Atr#content) band thresholds.
-It can indicate a buy/sell signal or a trailing stop when the trend changes.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/235 "Community discussion about this indicator")
+## **get_super_trend**(*quotes, lookback_periods=10, multiplier=3*)
 
-![image]({{site.charturl}}/SuperTrend.png)
-
-```csharp
-// usage
-IEnumerable<SuperTrendResult> results =
-  quotes.GetSuperTrend(lookbackPeriods, multiplier);  
-```
+[[source]]({{site.sourceurl}}/super_trend.py)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `lookbackPeriods` | int | Number of periods (`N`) for the ATR evaluation.  Must be greater than 1 and is usually set between 7 and 14.  Default is 10.
-| `multiplier` | decimal | Multiplier sets the ATR band width.  Must be greater than 0 and is usually set around 2 to 3.  Default is 3.
+| `quotes` | Iterable[Type[Quote]] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `lookback_periods` | int, *default 10* | Number of periods (`N`) for the ATR evaluation.  Must be greater than 1 and is usually set between 7 and 14.
+| `multiplier` | float, *default 3* | Multiplier sets the ATR band width.  Must be greater than 0 and is usually set around 2 to 3.
 
 ### Historical quotes requirements
 
 You must have at least `N+100` periods of `quotes`.  Since this uses a smoothing technique, we recommend you use at least `N+250` periods prior to the intended usage date for optimal precision.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Type[Quote]]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Returns
 
 ```csharp
-IEnumerable<SuperTrendResult>
+SuperTrendResults[SuperTrendResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N-1` periods will have `null` SuperTrend values since there's not enough data to calculate.
+- The first `N-1` periods will have `None` SuperTrend values since there's not enough data to calculate.
 
 :hourglass: **Convergence Warning**: the line segment before the first reversal and the first `N+100` periods are unreliable due to an initial guess of trend direction and precision convergence for the underlying ATR values.
 
@@ -49,28 +43,37 @@ IEnumerable<SuperTrendResult>
 
 | name | type | notes
 | -- |-- |--
-| `Date` | DateTime | Date
-| `SuperTrend` | decimal | SuperTrend line contains both Upper and Lower segments
-| `UpperBand` | decimal | Upper band only (bearish/red)
-| `LowerBand` | decimal | Lower band only (bullish/green)
+| `date` | datetime.datetime | Date
+| `super_trend` | decimal.Decimal | SuperTrend line contains both Upper and Lower segments
+| `upper_band` | decimal.Decimal | Upper band only (bearish/red)
+| `lower_band` | decimal.Decimal | Lower band only (bullish/green)
 
-`UpperBand` and `LowerBand` values are provided to differentiate bullish vs bearish trends and to clearly demark trend reversal.  `SuperTrend` is the contiguous combination of both upper and lower line data.
+`upper_band` and `lower_band` values are provided to differentiate bullish vs bearish trends and to clearly demark trend reversal.  `super_trend` is the contiguous combination of both upper and lower line data.
 
 ### Utilities
 
-- [.Find(lookupDate)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
-- [.RemoveWarmupPeriods()]({{site.baseurl}}/utilities#remove-warmup-periods)
-- [.RemoveWarmupPeriods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
+- [.remove_warmup_periods()]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
 ## Example
 
-```csharp
-// fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+```python
+from stock_indicators import indicators
 
-// calculate SuperTrend(14,3)
-IEnumerable<SuperTrendResult> results
-  = quotes.GetSuperTrend(14,3);
+# This method is NOT a part of the library.
+quotes = get_history_from_feed("SPY")
+
+# calculate SuperTrend(14,3)
+results = indicators.get_super_trend(quotes, 14, 3);
 ```
+
+# About: {{ page.title }}
+
+Created by Oliver Seban, the SuperTrend indicator attempts to determine the primary trend of Close prices by using [Average True Range (ATR)](../Atr#content) band thresholds.
+It can indicate a buy/sell signal or a trailing stop when the trend changes.
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/235 "Community discussion about this indicator")
+
+![image]({{site.charturl}}/SuperTrend.png)
