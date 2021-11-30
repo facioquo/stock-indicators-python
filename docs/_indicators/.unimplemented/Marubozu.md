@@ -10,7 +10,7 @@ type: candlestick-pattern
 [Marubozu](https://en.wikipedia.org/wiki/Marubozu) is a candlestick pattern that has no wicks, representing consistent directional movement.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/512 "Community discussion about this indicator")
 
-  <img src="{{site.baseurl}}/assets/charts/Marubozu.png" alt="drawing" height="150" />
+  <img src="{{site.charturl}}/Marubozu.png" alt="drawing" height="150" />
 
 ```csharp
 // usage

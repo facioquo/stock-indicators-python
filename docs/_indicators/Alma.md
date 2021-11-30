@@ -10,7 +10,7 @@ layout: indicator
 Created by Arnaud Legoux and Dimitrios Kouzis-Loukas, [ALMA]({{site.github.repository_url}}/files/5654531/ALMA-Arnaud-Legoux-Moving-Average.pdf) is a Gaussian distribution weighted moving average of Close price over a lookback window.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/209 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Alma.png)
+![image]({{site.charturl}}/Alma.png)
 
 ```csharp
 // usage

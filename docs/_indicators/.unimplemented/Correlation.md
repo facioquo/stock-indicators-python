@@ -11,7 +11,7 @@ layout: indicator
 [Correlation Coefficient](https://en.wikipedia.org/wiki/Correlation_coefficient) between two quote histories, based on Close price.  R-Squared (R&sup2;), Variance, and Covariance are also output.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/259 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Correlation.png)
+![image]({{site.charturl}}/Correlation.png)
 
 ```csharp
 // usage

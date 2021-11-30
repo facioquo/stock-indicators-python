@@ -10,7 +10,7 @@ layout: indicator
 [Exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average) price over a lookback window.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/256 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Ema.png)
+![image]({{site.charturl}}/Ema.png)
 
 EMA is shown as the solid line above.  [Double EMA](../DoubleEma#content) (dashed line) and [Triple EMA](../TripleEma#content) (dotted line) are also shown here for comparison.
 

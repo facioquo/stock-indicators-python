@@ -11,7 +11,7 @@ Created by Oliver Seban, the SuperTrend indicator attempts to determine the prim
 It can indicate a buy/sell signal or a trailing stop when the trend changes.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/235 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/SuperTrend.png)
+![image]({{site.charturl}}/SuperTrend.png)
 
 ```csharp
 // usage

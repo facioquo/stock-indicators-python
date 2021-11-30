@@ -12,7 +12,7 @@ The Volume Simple Moving Average is the average volume over a lookback window.  
 
 :warning: **Deprecation Warning!** `GetVolSma` is now redundant and will be removed from the library at the end of 2021.  It is replaced by [GetSma()](../Sma/#content) with a `CandlePart.Volume` specification.
 
-![image]({{site.baseurl}}/assets/charts/VolSma.png)
+![image]({{site.charturl}}/VolSma.png)
 
 ```csharp
 // legacy usage

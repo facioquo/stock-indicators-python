@@ -9,7 +9,7 @@ layout: indicator
 
 Created by E.W. Dreiss, the Choppiness Index measures the trendiness or choppiness on a scale of 0 to 100, to depict steady trends versus conditions of choppiness.  [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/357 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Chop.png)
+![image]({{site.charturl}}/Chop.png)
 
 ```csharp
 // usage

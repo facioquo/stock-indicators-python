@@ -10,7 +10,7 @@ layout: indicator
 Standard Deviation Channels are based on an linear regression centerline and standard deviations band widths.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/368 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/StdDevChannels.png)
+![image]({{site.charturl}}/StdDevChannels.png)
 
 ```csharp
 // usage
@@ -77,4 +77,4 @@ IEnumerable<StdDevChannelsResult> results
 
 If you specify `null` for the `lookbackPeriods`, you will get a regression line over the entire provided `quotes`.
 
-![image]({{site.baseurl}}/assets/charts/StdDevChannelsFull.png)
+![image]({{site.charturl}}/StdDevChannelsFull.png)

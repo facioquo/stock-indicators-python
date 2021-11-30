@@ -10,7 +10,7 @@ layout: indicator
 Created by Larry Williams, the [Williams %R](https://en.wikipedia.org/wiki/Williams_%25R) momentum indicator is a stochastic oscillator with scale of -100 to 0.  It is exactly the same as the Fast variant of [Stochastic Oscillator](../Stoch#content), but with a different scaling.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/229 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/WilliamsR.png)
+![image]({{site.charturl}}/WilliamsR.png)
 
 ```csharp
 // usage

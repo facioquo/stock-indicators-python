@@ -11,6 +11,8 @@ github:
   repository_url: "https://github.com/DaveSkender/Stock.Indicators.Python"
   base_repository_url: "https://github.com/DaveSkender/Stock.Indicators"
 
+charturl: "https://raw.githubusercontent.com/DaveSkender/Stock.Indicators/main/docs/assets/charts"
+
 plugins:
   - jemoji
   - jekyll-remote-theme

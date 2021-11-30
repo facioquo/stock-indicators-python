@@ -10,7 +10,7 @@ layout: indicator
 Created by J. Welles Wilder, [Average True Range](https://en.wikipedia.org/wiki/Average_true_range) is a measure of volatility that captures gaps and limits between periods.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/269 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Atr.png)
+![image]({{site.charturl}}/Atr.png)
 
 ```csharp
 // usage

@@ -10,7 +10,7 @@ layout: indicator
 [Double exponential moving average](https://en.wikipedia.org/wiki/Double_exponential_moving_average) of the Close price over a lookback window.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/256 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/DoubleEma.png)
+![image]({{site.charturl}}/DoubleEma.png)
 
 DEMA is shown as the dashed line above.  [EMA](../Ema#content) (solid line) and [Triple EMA](../TripleEma#content) (dotted line) are also shown here for comparison.
 

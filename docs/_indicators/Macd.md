@@ -10,7 +10,7 @@ layout: indicator
 Created by Gerald Appel, [MACD](https://en.wikipedia.org/wiki/MACD) is a simple oscillator view of two converging/diverging exponential moving averages.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/248 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Macd.png)
+![image]({{site.charturl}}/Macd.png)
 
 ```csharp
 // usage

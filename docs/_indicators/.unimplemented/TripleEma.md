@@ -11,7 +11,7 @@ layout: indicator
 Note: TEMA is often confused with the alternative [TRIX](../Trix#content) oscillator.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/256 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/TripleEma.png)
+![image]({{site.charturl}}/TripleEma.png)
 
 TEMA is shown as the dotted line above.  [EMA](../Ema#content) (solid line) and [Double EMA](../DoubleEma#content) (dashed line) are also shown here for comparison.
 

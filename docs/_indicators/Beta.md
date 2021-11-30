@@ -11,7 +11,7 @@ layout: indicator
 [Beta](https://en.wikipedia.org/wiki/Beta_(finance)) shows how strongly one stock responds to systemic volatility of the entire market.  [Upside Beta](https://en.wikipedia.org/wiki/Upside_beta) (Beta+) and [Downside Beta](https://en.wikipedia.org/wiki/Downside_beta) (Beta-), [popularized by Harry M. Markowitz](https://www.jstor.org/stable/j.ctt1bh4c8h), are also included.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/268 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Beta.png)
+![image]({{site.charturl}}/Beta.png)
 
 ```csharp
 // usage

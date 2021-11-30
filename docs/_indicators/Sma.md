@@ -10,7 +10,7 @@ layout: indicator
 [Simple Moving Average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average) is the average price over a lookback window.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/240 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Sma.png)
+![image]({{site.charturl}}/Sma.png)
 
 ```csharp
 // usage (with Close price)

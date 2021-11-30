@@ -10,7 +10,7 @@ layout: indicator
 Created by J. Welles Wilder, the [Relative Strength Index](https://en.wikipedia.org/wiki/Relative_strength_index) measures strength of the winning/losing streak over `N` lookback periods on a scale of 0 to 100, to depict overbought and oversold conditions.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/224 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Rsi.png)
+![image]({{site.charturl}}/Rsi.png)
 
 ```csharp
 // usage

@@ -11,7 +11,7 @@ layout: indicator
 Created by Alexander Elder, the [Elder-ray Index](https://www.investopedia.com/terms/e/elderray.asp), also known as Bull and Bear Power, depicts buying and selling pressure.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/378 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/ElderRay.png)
+![image]({{site.charturl}}/ElderRay.png)
 
 ```csharp
 // usage
