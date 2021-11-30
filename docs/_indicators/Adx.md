@@ -9,6 +9,7 @@ layout: indicator
 <hr>
 
 ## **get_adx**(*quotes, lookback_periods=14*)
+
 [[source]]({{site.sourceurl}}/adx.py)
 
 ## Parameters
