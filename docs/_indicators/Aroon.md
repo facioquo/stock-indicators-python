@@ -5,6 +5,9 @@ type: price-trend
 layout: indicator
 ---
 
+# Aroon
+<hr>
+
 ## **get_aroon**(*quotes, lookback_periods=25*)
 
 ## Parameters
