@@ -6,40 +6,33 @@ layout: indicator
 ---
 
 # {{ page.title }}
+<hr>
 
-Created by J. Welles Wilder, the [Average Directional Movement Index](https://en.wikipedia.org/wiki/Average_directional_movement_index) is a measure of price directional movement.  It includes upward and downward indicators, and is often used to measure strength of trend.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/270 "Community discussion about this indicator")
-
-![image]({{site.charturl}}/Adx.png)
-
-```csharp
-// usage
-IEnumerable<AdxResult> results =
-  quotes.GetAdx(lookbackPeriods);  
-```
+## **get_adx**(*quotes, lookback_periods=14*)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `lookbackPeriods` | int | Number of periods (`N`) to consider.  Must be greater than 1.  Default is 14.
+| `quotes` | Iterable[Type[Quote]] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `lookback_periods` | int, *default 14* | Number of periods (`N`) for the lookback evaluation.  Must be greater than 0.
 
 ### Historical quotes requirements
 
 You must have at least `2×N+100` periods of `quotes` to allow for smoothing convergence.  We generally recommend you use at least `2×N+250` data points prior to the intended usage date for better precision.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Type[Quote]]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Returns
 
-```csharp
-IEnumerable<AdxResult>
+```python
+ADXResults<ADXResult>
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `2×N-1` periods will have `null` values for `Adx` since there's not enough data to calculate.
+- The first `2×N-1` periods will have `None` values for `Adx` since there's not enough data to calculate.
 
 :hourglass: **Convergence Warning**: The first `2×N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
@@ -47,25 +40,35 @@ IEnumerable<AdxResult>
 
 | name | type | notes
 | -- |-- |--
-| `Date` | DateTime | Date
-| `Pdi` | decimal | Plus Directional Index (+DI) for `N` lookback periods
-| `Mdi` | decimal | Minus Directional Index (-DI) for `N` lookback periods
-| `Adx` | decimal | Average Directional Index (ADX) for `N` lookback periods
+| `date` | datetime.datetime | Date
+| `pdi` | decimal.Decimal | Plus Directional Index (+DI) for `N` lookback periods
+| `mdi` | decimal.Decimal | Minus Directional Index (-DI) for `N` lookback periods
+| `adx` | decimal.Decimal | Average Directional Index (ADX) for `N` lookback periods
 
 ### Utilities
 
-- [.Find(lookupDate)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
-- [.RemoveWarmupPeriods()]({{site.baseurl}}/utilities#remove-warmup-periods)
-- [.RemoveWarmupPeriods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
+- [.remove_warmup_periods()]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
 ## Example
 
-```csharp
-// fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+```python
+from stock_indicators import indicators
 
-// calculate 14-period ADX
-IEnumerable<AdxResult> results = quotes.GetAdx(14);
+# This method is NOT a part of the library.
+quotes = get_history_from_feed("SPY")
+
+# calculate 14-period ADX
+results = indicators.get_adx(quotes, lookback_periods)
 ```
+
+# About: {{ page.title }}
+
+Created by J. Welles Wilder, the [Average Directional Movement Index](https://en.wikipedia.org/wiki/Average_directional_movement_index) is a measure of price directional movement.  It includes upward and downward indicators, and is often used to measure strength of trend.
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/270 "Community discussion about this indicator")
+
+![image]({{site.charturl}}/Adx.png)
+
