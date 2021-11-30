@@ -6,7 +6,7 @@ from openpyxl import load_workbook
 from stock_indicators.indicators.common import Quote
 
 dir = os.path.dirname(__file__)
-data_path = os.path.join(dir, "History.xlsx")
+data_path = os.path.join(dir, "../samples/quotes/History.xlsx")
 wb = load_workbook(data_path, data_only=True)
 
 @pytest.fixture(scope='session')
