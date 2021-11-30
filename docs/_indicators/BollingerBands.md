@@ -6,69 +6,73 @@ layout: indicator
 ---
 
 # {{ page.title }}
+<hr>
 
-Created by John Bollinger, [Bollinger Bands](https://en.wikipedia.org/wiki/Bollinger_Bands) depict volatility as standard deviation boundary lines from a moving average of Close price.  Bollinger Bands&#174; is a registered trademark of John A. Bollinger.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/267 "Community discussion about this indicator")
+## **get_bollinger_bands**(*quotes, lookback_periods=20, standard_deviations=2*)
 
-![image]({{site.charturl}}/BollingerBands.png)
-
-```csharp
-// usage
-IEnumerable<BollingerBandsResult> results =
-  quotes.GetBollingerBands(lookbackPeriods, standardDeviations);  
-```
+[[source]]({{site.sourceurl}}/bollinger_bands.py)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `lookbackPeriods` | int | Number of periods (`N`) for the center line moving average.  Must be greater than 1 to calculate; however we suggest a larger period for statistically appropriate sample size.  Default is 20.
-| `standardDeviations` | int | Width of bands.  Standard deviations (`D`) from the moving average.  Must be greater than 0.  Default is 2.
+| `quotes` | Iterable[Type[Quote]] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `lookback_periods` | int, *default 20* | Number of periods (`N`) for the center line moving average.  Must be greater than 1 to calculate; however we suggest a larger period for statistically appropriate sample size.
+| `standard_deviations` | int, *default 2* | Width of bands.  Standard deviations (`D`) from the moving average.  Must be greater than 0.
 
 ### Historical quotes requirements
 
 You must have at least `N` periods of `quotes`.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Type[Quote]]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Returns
 
-```csharp
-IEnumerable<BollingerBandsResult>
+```python
+BollingerBandsResults[BollingerBandsResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N-1` periods will have `null` values since there's not enough data to calculate.
+- The first `N-1` periods will have `None` values since there's not enough data to calculate.
 
 ### BollingerBandsResult
 
 | name | type | notes
 | -- |-- |--
-| `Date` | DateTime | Date
-| `Sma` | decimal | Simple moving average (SMA) of Close price (center line)
-| `UpperBand` | decimal | Upper line is `D` standard deviations above the SMA
-| `LowerBand` | decimal | Lower line is `D` standard deviations below the SMA
-| `PercentB` | decimal | `%B` is the location within the bands.  `(Price-LowerBand)/(UpperBand-LowerBand)`
-| `ZScore` | decimal | Z-Score of current Close price (number of standard deviations from mean)
-| `Width` | decimal | Width as percent of SMA price.  `(UpperBand-LowerBand)/Sma`
+| `date` | datetime.datetime | Date
+| `sma` | decimal.Decimal | Simple moving average (SMA) of Close price (center line)
+| `upper_band` | decimal.Decimal | Upper line is `D` standard deviations above the SMA
+| `lower_band` | decimal.Decimal | Lower line is `D` standard deviations below the SMA
+| `percent_b` | decimal.Decimal | `%B` is the location within the bands.  `(Price-lower_band)/(upper_band-lower_band)`
+| `z_score` | decimal.Decimal | Z-Score of current Close price (number of standard deviations from mean)
+| `width` | decimal.Decimal | Width as percent of SMA price.  `(upper_band-lower_band)/sma`
 
 ### Utilities
 
-- [.Find(lookupDate)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
-- [.RemoveWarmupPeriods()]({{site.baseurl}}/utilities#remove-warmup-periods)
-- [.RemoveWarmupPeriods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
+- [.remove_warmup_periods()]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
 ## Example
 
-```csharp
-// fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+```python
+from stock_indicators import indicators
 
-// calculate BollingerBands(12,26,9)
-IEnumerable<BollingerBandsResult> results =
-  quotes.GetBollingerBands(20,2);
+# This method is NOT a part of the library.
+quotes = get_history_from_feed("SPY")
+
+# calculate BollingerBands(20, 2)
+results = indicators.get_bollinger_bands(quotes, 20, 2);
+
 ```
+
+# About: {{ page.title }}
+
+Created by John Bollinger, [Bollinger Bands](https://en.wikipedia.org/wiki/Bollinger_Bands) depict volatility as standard deviation boundary lines from a moving average of Close price.  Bollinger Bands&#174; is a registered trademark of John A. Bollinger.
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/267 "Community discussion about this indicator")
+
+![image]({{site.charturl}}/BollingerBands.png)
