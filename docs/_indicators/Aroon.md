@@ -10,6 +10,8 @@ layout: indicator
 
 ## **get_aroon**(*quotes, lookback_periods=25*)
 
+[[source]]({{site.sourceurl}}/aroon.py)
+
 ## Parameters
 
 | name | type | notes
