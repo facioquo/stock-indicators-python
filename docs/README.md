@@ -13,7 +13,7 @@ Explore more information:
 - [Demo site](https://stock-charts.azurewebsites.net) (a stock chart)
 - [Example usage code]({{site.baseurl}}/examples/#content)
 - [Release notes]({{site.github.repository_url}}/releases)
-- [Discussions](https://github.com/DaveSkender/Stock.Indicators/discussions)
+- [Discussions]({{site.github.base_repository_url}}/discussions)
 - [Contributing guidelines]({{site.baseurl}}/contributing/#content)
 
 ## Samples
@@ -47,7 +47,7 @@ This repository uses the standard Apache 2.0 open-source license.  Please review
 
 ## :phone: Contact us
 
-[Start a new discussion, ask a question](https://github.com/DaveSkender/Stock.Indicators/discussions), or [submit an issue]({{site.github.repository_url}}/issues) if it is publicly relevant.  You can also direct message [@daveskender](https://twitter.com/messages/compose?recipient_id=27475431).
+[Start a new discussion, ask a question]({{site.github.base_repository_url}}/discussions), or [submit an issue]({{site.github.repository_url}}/issues) if it is publicly relevant.  You can also direct message [@daveskender](https://twitter.com/messages/compose?recipient_id=27475431).
 
 ## :heart: Patronage
 

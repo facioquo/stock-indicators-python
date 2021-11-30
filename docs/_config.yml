@@ -9,6 +9,7 @@ remote_theme: pages-themes/cayman@v0.2.0
 # override built-in github url because it does not fetch in build tests
 github:
   repository_url: "https://github.com/DaveSkender/Stock.Indicators.Python"
+  base_repository_url: "https://github.com/DaveSkender/Stock.Indicators"
 
 plugins:
   - jemoji

@@ -34,23 +34,23 @@ We have different places to take issues by its category.
 
 If you are reporting a bug or suspect a problem, please submit an issue with a detailed description of the problem + include steps to reproduce, code samples, and any reference materials.  
 
-:wrench: [Report bugs](https://github.com/DaveSkender/Stock.Indicators.Python/issues)
+:wrench: [Report bugs]({{site.github.repository_url}}/issues)
 
 ### Feature Request
 
 For new features, submit an issue with the `enhancement` label.
 
-:bulb: [Request features](https://github.com/DaveSkender/Stock.Indicators/issues)
+:bulb: [Request features]({{site.github.base_repository_url}}/issues)
 
 ## Project management
 
-- Planned work is managed in [the backlog](https://github.com/DaveSkender/Stock.Indicators/projects/1).
+- Planned work is managed in [the backlog]({{site.github.base_repository_url}}/projects/1).
 - Work items are primarily [entered as Notes](https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/adding-notes-to-a-project-board) (not Issues), except where an issue or feature is user reported.  With that said, Notes can be converted to Issues if in-progress and collaborative discussion is needed.
-- Use the [Discussions](https://github.com/DaveSkender/Stock.Indicators/discussions) area for general ideation and unrelated questions.
+- Use the [Discussions]({{site.github.base_repository_url}}/discussions) area for general ideation and unrelated questions.
 
 ## Developing
 
-- Read this first: [A Step by Step Guide to Making Your First GitHub Contribution](https://codeburst.io/a-step-by-step-guide-to-making-your-first-github-contribution-5302260a2940).  I also have a discussion [on Forking](https://github.com/DaveSkender/Stock.Indicators/discussions/503) if you have questions.
+- Read this first: [A Step by Step Guide to Making Your First GitHub Contribution](https://codeburst.io/a-step-by-step-guide-to-making-your-first-github-contribution-5302260a2940).  I also have a discussion [on Forking]({{site.github.base_repository_url}}/discussions/503) if you have questions.
 - If you are adding a new indicator, the easiest way to do this is to copy the folder of an existing indicator and rename everything using the same naming conventions and taxonomy.  All new indicators should include unit and performance tests.
 - Do not comingle multiple contributions.  Please keep changes small and separate.
 
@@ -129,7 +129,7 @@ We use the `GitVersion` tool for [semantic versioning](https://semver.org).  It 
 Type | Format | Description
 ------------ | ------ | -----------
 Major | `x.-.-` | A significant deviation with major breaking changes.
-Minor | `-.x.-` | A new feature, usually new non-breaking change, such as adding an indicator.  Minor breaking changes may occur here and are denoted in the [release notes](https://github.com/DaveSkender/Stock.Indicators.Python/releases).
+Minor | `-.x.-` | A new feature, usually new non-breaking change, such as adding an indicator.  Minor breaking changes may occur here and are denoted in the [release notes]({{site.github.repository_url}}/releases).
 Patch | `-.-.x` | A small bug fix, chore, or documentation change.
 Increment | `-.-.-+x` | Intermediate commits between releases.
 
@@ -139,7 +139,7 @@ This only needs to be done on the merge to `main` when the Pull Request is commi
 - Adding `+semver: minor` as a PR merge commit message will increment the minor -.x.- element
 - Adding `+semver: patch` as a PR merge commit message will increment the minor -.-.x element.  Patch element auto-increments, so you'd only need to do this to override the next value.
 
-A Git `tag`, in accordance with the above schema, is introduced automatically after deploying to the [PyPI](https://pypi.org/project/stock-indicators/) and is reflected in the [Releases](https://github.com/DaveSkender/Stock.Indicators.Python/releases).
+A Git `tag`, in accordance with the above schema, is introduced automatically after deploying to the [PyPI](https://pypi.org/project/stock-indicators/) and is reflected in the [Releases]({{site.github.repository_url}}/releases).
 
 ## License
 
@@ -149,7 +149,7 @@ This repository uses a standard Apache 2.0 open-source license.  It enables open
 
 ## Contact info
 
-[Start a new discussion, ask a question](https://github.com/DaveSkender/Stock.Indicators/discussions), or [submit an issue](https://github.com/DaveSkender/Stock.Indicators/issues) if it is publicly relevant.  You can also direct message [@daveskender](https://twitter.com/messages/compose?recipient_id=27475431).
+[Start a new discussion, ask a question]({{site.github.base_repository_url}}/discussions), or [submit an issue]({{site.baseurl}}/contributing/#reporting-bugs-and-feature-requests) if it is publicly relevant.  You can also direct message [@daveskender](https://twitter.com/messages/compose?recipient_id=27475431).
 
 Thanks,
 Dave Skender

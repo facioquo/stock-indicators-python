@@ -77,7 +77,7 @@ sma_of_rsi = indicators.get_sma(quotes_from_rsi, 20)
 
 ```
 
-Currently, `.to_quotes()` is only available on a select few indicators.  If you find an indicator that is a good candidate for this utility, please [submit an Issue](https://github.com/DaveSkender/Stock.Indicators/issues).
+Currently, `.to_quotes()` is only available on a select few indicators.  If you find an indicator that is a good candidate for this utility, please [submit an Issue]({{site.baseurl}}/contributing/#reporting-bugs-and-feature-requests).
 
 :warning: WARNING! In many cases, `.to_quotes()` will remove any `None` results -- this will produce fewer historical `quotes` than were originally provided.
 
