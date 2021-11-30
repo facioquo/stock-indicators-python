@@ -5,7 +5,7 @@ type: price-trend
 layout: indicator
 ---
 
-# Aroon
+# {{ page.title }}
 <hr>
 
 ## **get_aroon**(*quotes, lookback_periods=25*)
@@ -71,7 +71,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_aroon(quotes, lookback_periods)
 ```
 
-# About indicator: {{ page.title }}
+# About: {{ page.title }}
 
 Created by Tushar Chande, [Aroon](https://school.stockcharts.com/doku.php?id=technical_indicators:aroon) is a oscillator view of how long ago the new high or low price occured over a lookback window.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/266 "Community discussion about this indicator")
