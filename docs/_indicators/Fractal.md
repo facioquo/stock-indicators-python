@@ -6,24 +6,20 @@ layout: indicator
 ---
 
 # {{ page.title }}
+<hr>
 
-Created by Larry Williams, [Fractal](https://www.investopedia.com/terms/f/fractal.asp) is a retrospective price pattern that identifies a central high or low point.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/255 "Community discussion about this indicator")
-
-![image]({{site.charturl}}/Fractal.png)
-
-```csharp
-// usage
-IEnumerable<FractalResult> results =
-  quotes.GetFractal(windowSpan);  
-```
+## **get_fractal**(*quotes, window_span=2*)
+    
+[[source]]({{site.sourceurl}}/fractal.py)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `windowSpan` | int | Evaluation window span width (`S`).  Must be at least 2.  Default is 2.
-| `endType` | EndType | Determines whether `Close` or `High/Low` are used to find end points.  See [EndType options](#endtype-options) below.  Default is `EndType.HighLow`.
+| `quotes` | Iterable[Type[Quote]] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `window_span` | int, *default 2* | Evaluation window span width (`S`).  Must be at least 2.
+
+<!-- | `endType` | EndType | Determines whether `Close` or `High/Low` are used to find end points.  See [EndType options](#endtype-options) below.  Default is `EndType.HighLow`. -->
 
 The total evaluation window size is `2×S+1`, representing `±S` from the evalution date.
 
@@ -31,19 +27,19 @@ The total evaluation window size is `2×S+1`, representing `±S` from the evalut
 
 You must have at least `2×S+1` periods of `quotes`; however, more is typically provided since this is a chartable candlestick pattern.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Type[Quote]]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-### EndType options
+<!-- ### EndType options
 
 | type | description
 |-- |--
 | `EndType.Close` | Chevron point identified from `Close` price
-| `EndType.HighLow` | Chevron point identified from `High` and `Low` price (default)
+| `EndType.HighLow` | Chevron point identified from `High` and `Low` price (default) -->
 
-## Response
+## Returns
 
-```csharp
-IEnumerable<FractalResult>
+```python
+FractalResults[FractalResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
@@ -57,23 +53,33 @@ IEnumerable<FractalResult>
 
 | name | type | notes
 | -- |-- |--
-| `Date` | DateTime | Date
-| `FractalBear` | decimal | Value indicates a **high** point; otherwise `null` is returned.
-| `FractalBull` | decimal | Value indicates a **low** point; otherwise `null` is returned.
+| `date` | datetime.datetime | Date
+| `fractal_bear` | decimal.Decimal | Value indicates a **high** point; otherwise `None` is returned.
+| `fractal_bull` | decimal.Decimal | Value indicates a **low** point; otherwise `None` is returned.
 
 ### Utilities
 
-- [.Find(lookupDate)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
-- [.RemoveWarmupPeriods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
+- [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
 ## Example
 
-```csharp
-// fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+```python
+from stock_indicators import indicators
 
-// calculate Fractal(5)
-IEnumerable<FractalResult> results = quotes.GetFractal(5);
+# This method is NOT a part of the library.
+quotes = get_history_from_feed("SPY")
+
+# calculate Fractal
+results = indicators.get_fractal(quotes, 5)
 ```
+
+# About: {{ page.title }}
+
+Created by Larry Williams, [Fractal](https://www.investopedia.com/terms/f/fractal.asp) is a retrospective price pattern that identifies a central high or low point.
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/255 "Community discussion about this indicator")
+
+![image]({{site.charturl}}/Fractal.png)
+
