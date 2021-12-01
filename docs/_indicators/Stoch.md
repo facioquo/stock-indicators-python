@@ -81,7 +81,6 @@ quotes = get_history_from_feed("SPY")
 
 # calculate STO %K(14),%D(3) (slow)
 results = indicators.get_stoch(quotes, 14, 3, 3)
-
 ```
 
 # About: {{ page.title }}

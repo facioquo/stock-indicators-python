@@ -62,7 +62,6 @@ quotes = get_history_from_feed("SPY")
 
 # calculate
 results = indicators.get_awesome(quotes, 5, 34)
-
 ```
 
 # About: {{ page.title }}

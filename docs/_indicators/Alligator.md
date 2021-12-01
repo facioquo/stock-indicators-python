@@ -71,7 +71,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # calculate the Williams Alligator
-results = indicators.get_alligator(quotes);
+results = indicators.get_alligator(quotes)
 ```
 
 # About: {{ page.title }}

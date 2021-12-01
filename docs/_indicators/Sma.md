@@ -101,7 +101,7 @@ An extended variant of this indicator includes additional analysis.
 
 ```python
 # usage
-results = indicators.get_sma_extended(quotes, lookbackPeriods);  
+results = indicators.get_sma_extended(quotes, lookbackPeriods)
 ```
 
 

@@ -62,7 +62,6 @@ quotes = get_history_from_feed("SPY")
 
 # calculate RSI(14)
 results = indicators.get_rsi(quotes, 14)
-
 ```
 
 # About: {{ page.title }}
