@@ -10,7 +10,7 @@ layout: indicator
 
 ## **get_bollinger_bands**(*quotes, lookback_periods=20, standard_deviations=2*)
 
-[[source]]({{site.sourceurl}}/bollinger_bands.py)
+Source: [Python wrapper]({{site.sourceurl}}/bollinger_bands.py), [C# core]({{site.sourceurl}}/bollinger_bands.py)
 
 ## Parameters
 
@@ -66,8 +66,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # calculate BollingerBands(20, 2)
-results = indicators.get_bollinger_bands(quotes, 20, 2);
-
+results = indicators.get_bollinger_bands(quotes, 20, 2)
 ```
 
 # About: {{ page.title }}
@@ -76,3 +75,8 @@ Created by John Bollinger, [Bollinger Bands](https://en.wikipedia.org/wiki/Bolli
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/267 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/BollingerBands.png)
+
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/a-d/BollingerBands/BollingerBands.cs)
+ - [Python wrapper]({{site.sourceurl}}/bollinger_bands.py)
