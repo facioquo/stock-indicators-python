@@ -6,35 +6,28 @@ layout: indicator
 ---
 
 # {{ page.title }}
+<hr>
 
-[Simple Moving Average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average) is the average price over a lookback window.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/240 "Community discussion about this indicator")
-
-![image]({{site.charturl}}/Sma.png)
-
-```csharp
-// usage (with Close price)
-IEnumerable<SmaResult> results =
-  quotes.GetSma(lookbackPeriods);
-
-// alternate
-IEnumerable<SmaResult> results =
-  quotes.GetSma(lookbackPeriods, candlePart);
-```
+## **get_sma**(*quotes, lookback_periods*)
+    
+[[source]]({{site.sourceurl}}/sma.py)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `lookbackPeriods` | int | Number of periods (`N`) in the lookback window.  Must be greater than 0.
-| `candlePart` | CandlePart | Optional.  Specify the [OHLCV]({{site.baseurl}}/guide/#historical-quotes) candle part to evaluate.  See [CandlePart options](#candlepart-options) below.  Default is `CandlePart.Close`
+| `quotes` | Iterable[Type[Quote]] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `lookback_periods` | int | Number of periods (`N`) in the lookback window.  Must be greater than 0.
+
+<!-- | `candlePart` | CandlePart | Optional.  Specify the [OHLCV]({{site.baseurl}}/guide/#historical-quotes) candle part to evaluate.  See [CandlePart options](#candlepart-options) below.  Default is `CandlePart.Close` -->
 
 ### Historical quotes requirements
 
 You must have at least `N` periods of `quotes`.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Type[Quote]]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
+<!-- 
 ### CandlePart options
 
 | type | description
@@ -43,60 +36,80 @@ You must have at least `N` periods of `quotes`.
 | `CandlePart.High` | Use `High` price
 | `CandlePart.Low` | Use `Low` price
 | `CandlePart.Close` | Use `Close` price (default)
-| `CandlePart.Volume` | Use `Volume`
+| `CandlePart.Volume` | Use `Volume` -->
 
-## Response
+## Returns
 
-```csharp
-IEnumerable<SmaResult>
+```python
+SMAResults[SMAResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N-1` periods will have `null` values since there's not enough data to calculate.
+- The first `N-1` periods will have `None` values since there's not enough data to calculate.
 
 ### SmaResult
 
 | name | type | notes
 | -- |-- |--
-| `Date` | DateTime | Date
-| `Sma` | decimal | Simple moving average
+| `date` | datetime.datetime | Date
+| `sma` | decimal.Decimal | Simple moving average
 
 ### Utilities
 
-- [.Find(lookupDate)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
-- [.RemoveWarmupPeriods()]({{site.baseurl}}/utilities#remove-warmup-periods)
-- [.RemoveWarmupPeriods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
+- [.remove_warmup_periods()]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
 ## Example
 
-```csharp
-// fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
+```python
+from stock_indicators import indicators
 
-// calculate 20-period SMA
-IEnumerable<SmaResult> results = quotes.GetSma(20);
+# This method is NOT a part of the library.
+quotes = get_history_from_feed("SPY")
+
+# calculate 20-period SMA
+results = indicators.get_sma(quotes, 20)
 ```
 
-## Extended analysis
+
+<hr>
+# Extended analysis
 
 An extended variant of this indicator includes additional analysis.
 
-```csharp
-// usage
-IEnumerable<SmaExtendedResult> results =
-  quotes.GetSmaExtended(lookbackPeriods);  
-```
+## **get_sma_extended**(*quotes, lookback_periods*)
+    
+[[source]]({{site.sourceurl}}/sma.py)
+
+
+## Returns
 
 ### SmaExtendedResult
 
 | name | type | notes
 | -- |-- |--
-| `Date` | DateTime | Date
-| `Sma` | decimal | Simple moving average
-| `Mad` | decimal | Mean absolute deviation
-| `Mse` | decimal | Mean square error
-| `Mape` | decimal | Mean absolute percentage error
+| `date` | datetime.datetime | Date
+| `sma` | decimal.Decimal | Simple moving average
+| `mad` | decimal.Decimal | Mean absolute deviation
+| `mse` | decimal.Decimal | Mean square error
+| `mape` | decimal.Decimal | Mean absolute percentage error
+
+## Example
+
+```python
+# usage
+results = indicators.get_sma_extended(quotes, lookbackPeriods);  
+```
+
+
+# About: {{ page.title }}
+
+[Simple Moving Average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average) is the average price over a lookback window.
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/240 "Community discussion about this indicator")
+
+![image]({{site.charturl}}/Sma.png)
