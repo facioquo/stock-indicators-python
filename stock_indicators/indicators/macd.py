@@ -38,7 +38,23 @@ class MACDResult(ResultBase):
     @histogram.setter
     def histogram(self, value):
         self._csdata.Histogram = CsDecimal(value)
-
+        
+    @property
+    def fast_ema(self):
+        return to_pydecimal(self._csdata.FastEma)
+    
+    @fast_ema.setter
+    def fast_ema(self, value):
+        self._csdata.FastEma = CsDecimal(value)
+        
+    @property
+    def slow_ema(self):
+        return to_pydecimal(self._csdata.SlowEma)
+    
+    @slow_ema.setter
+    def slow_ema(self, value):
+        self._csdata.SlowEma = CsDecimal(value)
+    
 T = TypeVar("T", bound=MACDResult)
 class MACDResults(IndicatorResults[T]):
     """
