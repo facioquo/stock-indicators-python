@@ -6,7 +6,7 @@ from openpyxl import load_workbook
 from stock_indicators.indicators.common import Quote
 
 dir = os.path.dirname(__file__)
-data_path = os.path.join(dir, "History.xlsx")
+data_path = os.path.join(dir, "../samples/quotes/History.xlsx")
 wb = load_workbook(data_path, data_only=True)
 
 @pytest.fixture(scope='session')
@@ -170,8 +170,4 @@ def zigzag_quotes(days: int = 342):
 
     h.reverse()
     return h[:days]
-
-@pytest.fixture(scope='session')
-def converge_quantities():
-    return (5, 20, 30, 50, 75, 100, 120, 150, 200, 250, 350, 500, 600, 700, 800, 900, 1000)
 
