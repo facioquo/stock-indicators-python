@@ -6,8 +6,8 @@ layout: default
 
 # Contributing guidelines
 
-[![build status](https://img.shields.io/azure-devops/build/skender/5123ca47-74f2-4d67-a5d4-c4d90b8d670a/26/main?logo=AzureDevops&label=Build%20Status)](https://dev.azure.com/skender/Stock.Indicators.Python/_build/latest?definitionId=26&branchName=main)
-[![code coverage](https://img.shields.io/azure-devops/coverage/skender/stock.indicators/26/main?logo=AzureDevOps&label=Code%20Coverage)](https://dev.azure.com/skender/Stock.Indicators.Python/_build/latest?definitionId=26&branchName=main&view=codecoverage-tab)
+[![build status](https://img.shields.io/azure-devops/build/skender/5123ca47-74f2-4d67-a5d4-c4d90b8d670a/26/main?logo=AzureDevops&label=Build%20Status)](https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=26&branchName=main)
+[![code coverage](https://img.shields.io/azure-devops/coverage/skender/stock.indicators/26/main?logo=AzureDevOps&label=Code%20Coverage)](https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=26&branchName=main&view=codecoverage-tab)
 [![CodeQL](https://github.com/DaveSkender/Stock.Indicators/workflows/CodeQL/badge.svg)](https://github.com/DaveSkender/Stock.Indicators.Python/security/code-scanning)
 
 **Thanks for taking the time to contribute!**
@@ -56,7 +56,7 @@ For new features, submit an issue with the `enhancement` label.
 
 ## Testing
 
-- We use [Pytest](https://docs.pytest.org/en/6.2.x/) for testing.
+- We use [pytest](https://docs.pytest.org/en/6.2.x/) for testing.
 - Review the `tests` folder for examples of unit tests.  Just copy one of these.
 - New indicators should be tested against manually calculated, proven, accurate results.  It is helpful to include your manual calculations spreadsheet in the appropriate indicator folder when [submitting changes](#submitting-changes).
 - Historical Stock Quotes are automatically added as Pytest fixtures.  A `History.xlsx` Excel file is included in the `tests` folder that is an exact copy of what is used in the unit tests.  Use this for your manual calculations to ensure that it is correct.  Do not commit changes to this Excel file.

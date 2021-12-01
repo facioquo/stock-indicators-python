@@ -6,63 +6,6 @@ layout: default
 
 # {{ page.title }}
 
-- [for Historical Quotes](#utilities-for-historical-quotes)
-- [for Indicator Results](#utilities-for-indicator-results)
-
-## Utilities for historical quotes
-
-  :warning: These features are not available on current implementation.
-
-<!-- 
-### Validate quote history
-
-`quotes.Validate()` is an advanced check of your `IEnumerable<TQuote> quotes` (historical quotes).  It will check for duplicate dates and other bad data.  This comes at a small performance cost, so we did not automatically add these advanced validations in the indicator methods.  Of course, you can and should do your own validation of `quotes` prior to using it in this library.  Bad historical quotes data can produce unexpected results.
-
-```csharp
-// fetch historical quotes from your favorite feed
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
-
-// advanced validation
-IEnumerable<Quote> validatedQuotes = quotes.Validate();
-```
-
-### Resize quote history
-
-`quotes.Aggregate(newSize)` is a tool to convert quotes to larger bar sizes.  For example if you have minute bar sizes in `quotes`, but want to convert it to hourly or daily.
-
-```csharp
-// fetch historical quotes from your favorite feed
-IEnumerable<TQuote> minuteBarQuotes = GetHistoryFromFeed("MSFT");
-
-// aggregate into larger bars
-IEnumerable<Quote> dayBarQuotes = 
-  minuteBarQuotes.Aggregate(PeriodSize.Day);
-```
-
-An alternate version of this utility is provided where you can use any native `TimeSpan` value that is greater than `TimeSpan.Zero`.
-
-```csharp
-// alternate usage
-IEnumerable<Quote> dayBarQuotes = 
-  minuteBarQuotes.Aggregate(TimeSpan timeSpan);
-```
-
-:warning: **Warning**: Partially populated period windows at the beginning, end, and market open/close points in `quotes` can be misleading when aggregated.  For example, if you are aggregating intraday minute bars into 15 minute bars and there is a single 4:00pm minute bar at the end, the resulting 4:00pm 15-minute bar will only have one minute of data in it whereas the previous 3:45pm bar will have all 15 minutes of bars aggregated (3:45-3:59pm).
-
-#### PeriodSize options (for newSize)
-
-- `PeriodSize.Week`
-- `PeriodSize.Day`
-- `PeriodSize.FourHours`
-- `PeriodSize.TwoHours`
-- `PeriodSize.OneHour`
-- `PeriodSize.ThirtyMinutes`
-- `PeriodSize.FifteenMinutes`
-- `PeriodSize.FiveMinutes`
-- `PeriodSize.ThreeMinutes`
-- `PeriodSize.TwoMinutes`
-- `PeriodSize.OneMinute` -->
-
 ## Utilities for indicator results
 
 ### Convert to quotes
