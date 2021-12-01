@@ -6,45 +6,40 @@ layout: indicator
 ---
 
 # {{ page.title }}
+<hr>
 
-Created by by Tushar Chande and Stanley Kroll, [Stochastic RSI](https://school.stockcharts.com/doku.php?id=technical_indicators:stochrsi) is a Stochastic interpretation of the Relative Strength Index.  It is different from, and often confused with the more traditional [Stochastic Oscillator](../Stoch#content).
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/236 "Community discussion about this indicator")
+## **get_stoch_rsi**(*quotes, rsi_periods, stoch_periods, signal_periods, smooth_periods=1*)
 
-![image]({{site.charturl}}/StochRsi.png)
-
-```csharp
-// usage
-IEnumerable<StochRsiResult> results =
-  quotes.GetStochRsi(rsiPeriods, stochPeriods, signalPeriods, smoothPeriods);
-```
+[[source]]({{site.sourceurl}}/stoch_rsi.py)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `rsiPeriods` | int | Number of periods (`R`) in the lookback period.  Must be greater than 0.  Standard is 14.
-| `stochPeriods` | int | Number of periods (`S`) in the lookback period.  Must be greater than 0.  Typically the same value as `rsiPeriods`.
-| `signalPeriods` | int | Number of periods (`G`) in the signal line (SMA of the StochRSI).  Must be greater than 0.  Typically 3-5.
-| `smoothPeriods` | int | Smoothing periods (`M`) for the Stochastic.  Must be greater than 0.  Default is 1 (Fast variant).
+| `quotes` | Iterable[Type[Quote]] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `rsi_periods` | int | Number of periods (`R`) in the lookback period.  Must be greater than 0.  Standard is 14.
+| `stoch_periods` | int | Number of periods (`S`) in the lookback period.  Must be greater than 0.  Typically the same value as `rsi_periods`.
+| `signal_periods` | int | Number of periods (`G`) in the signal line (SMA of the StochRSI).  Must be greater than 0.  Typically 3-5.
+| `smooth_periods` | int, *default 1* | Smoothing periods (`M`) for the Stochastic.  Must be greater than 0.
 
-The original Stochasic RSI formula uses a the Fast variant of the Stochastic calculation (`smoothPeriods=1`).  For a standard period of 14, the original formula would be `quotes.GetStochRSI(14,14,3,1)`.  The "3" here is just for the Signal (%D), which is not present in the original formula, but useful for additional smoothing and analysis.
+The original Stochasic RSI formula uses a the Fast variant of the Stochastic calculation (`smooth_periods=1`).  For a standard period of 14, the original formula would be `indicators.get_stoch_rsi(quotes, 14, 14, 3, 1)`.  The "3" here is just for the Signal (%D), which is not present in the original formula, but useful for additional smoothing and analysis.
 
 ### Historical quotes requirements
 
 You must have at least `N` periods of `quotes`, where `N` is the greater of `R+S+M` and `R+100`.  Since this uses a smoothing technique in the underlying RSI value, we recommend you use at least `10×R` periods prior to the intended usage date for better precision.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Type[Quote]]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
 ## Response
 
-```csharp
-IEnumerable<StochRsiResult>
+```python
+StochRSIResults[StochRSIResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `R+S+M` periods will have `null` values for `StochRsi` since there's not enough data to calculate.
+- The first `R+S+M` periods will have `None` values for `stoch_rsi` since there's not enough data to calculate.
 
 :hourglass: **Convergence Warning**: The first `10×R` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.  We recommend pruning at least `R+S+M+100` initial values.
 
@@ -52,25 +47,33 @@ IEnumerable<StochRsiResult>
 
 | name | type | notes
 | -- |-- |--
-| `Date` | DateTime | Date
-| `StochRsi` | decimal | %K Oscillator = Stochastic RSI = Stoch(`S`,`G`,`M`) of RSI(`R`) of Close price
-| `Signal` | decimal | %D Signal Line = Simple moving average of %K based on `G` periods
+| `date` | datetime.datetime | Date
+| `stoch_rsi` | decimal.Decimal | %K Oscillator = Stochastic RSI = Stoch(`S`,`G`,`M`) of RSI(`R`) of Close price
+| `signal` | decimal.Decimal | %D Signal Line = Simple moving average of %K based on `G` periods
 
 ### Utilities
 
-- [.Find(lookupDate)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
-- [.RemoveWarmupPeriods()]({{site.baseurl}}/utilities#remove-warmup-periods)
-- [.RemoveWarmupPeriods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
+- [.remove_warmup_periods()]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
 ## Example
 
-```csharp
-// fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+```python
+from stock_indicators import indicators
 
-// calculate StochRSI(14)
-IEnumerable<StochRsiResult> results
-  = quotes.GetStochRsi(14,14,1,1);
+# This method is NOT a part of the library.
+quotes = get_history_from_feed("SPY")
+
+# calculate StochRSI
+results = indicators.get_stoch_rsi(quotes, 14, 14, 1, 1)
 ```
+
+# About: {{ page.title }}
+
+Created by by Tushar Chande and Stanley Kroll, [Stochastic RSI](https://school.stockcharts.com/doku.php?id=technical_indicators:stochrsi) is a Stochastic interpretation of the Relative Strength Index.  It is different from, and often confused with the more traditional [Stochastic Oscillator](../Stoch#content).
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/236 "Community discussion about this indicator")
+
+![image]({{site.charturl}}/StochRsi.png)
