@@ -9,8 +9,6 @@ layout: indicator
 <hr>
 
 ## **get_rsi**(*quotes, lookback_periods=14*)
-    
-[[source]]({{site.sourceurl}}/rsi.py)
 
 ## Parameters
 
@@ -73,3 +71,8 @@ Created by J. Welles Wilder, the [Relative Strength Index](https://en.wikipedia.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/224 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Rsi.png)
+
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/m-r/Rsi/Rsi.cs)
+ - [Python wrapper]({{site.sourceurl}}/rsi.py)

@@ -10,8 +10,6 @@ layout: indicator
 
 ## **get_alma**(*quotes, lookback_periods=9, offset=.85, sigma =6*)
 
-[[source]]({{site.sourceurl}}/alma.py)
-
 ## Parameters
 
 | name | type | notes
@@ -72,3 +70,8 @@ Created by Arnaud Legoux and Dimitrios Kouzis-Loukas, [ALMA]({{site.github.repos
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/209 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Alma.png)
+
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/a-d/Alma/Alma.cs)
+ - [Python wrapper]({{site.sourceurl}}/alma.py)

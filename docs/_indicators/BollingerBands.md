@@ -10,8 +10,6 @@ layout: indicator
 
 ## **get_bollinger_bands**(*quotes, lookback_periods=20, standard_deviations=2*)
 
-Source: [Python wrapper]({{site.sourceurl}}/bollinger_bands.py), [C# core]({{site.sourceurl}}/bollinger_bands.py)
-
 ## Parameters
 
 | name | type | notes

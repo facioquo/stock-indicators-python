@@ -9,8 +9,6 @@ layout: indicator
 <hr>
 
 ## **get_fractal**(*quotes, window_span=2*)
-    
-[[source]]({{site.sourceurl}}/fractal.py)
 
 ## Parameters
 
@@ -83,3 +81,7 @@ Created by Larry Williams, [Fractal](https://www.investopedia.com/terms/f/fracta
 
 ![image]({{site.charturl}}/Fractal.png)
 
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/e-k/Fractal/Fractal.cs)
+ - [Python wrapper]({{site.sourceurl}}/fractal.py)

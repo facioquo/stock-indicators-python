@@ -10,8 +10,6 @@ layout: indicator
 
 ## **get_adl**(*quotes, sma_periods=None*)
 
-[[source]]({{site.sourceurl}}/adl.py)
-
 ## Parameters
 
 | name | type | notes
@@ -73,3 +71,8 @@ Created by Marc Chaikin, the [Accumulation/Distribution Line/Index](https://en.w
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/271 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Adl.png)
+
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/a-d/Adl/Adl.cs)
+ - [Python wrapper]({{site.sourceurl}}/adl.py)

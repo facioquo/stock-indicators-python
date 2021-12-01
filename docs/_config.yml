@@ -12,6 +12,7 @@ github:
   base_repository_url: "https://github.com/DaveSkender/Stock.Indicators"
 
 sourceurl: "https://github.com/DaveSkender/Stock.Indicators.Python/blob/main/stock_indicators/indicators"
+base_sourceurl: "https://github.com/DaveSkender/Stock.Indicators/blob/main/src"
 charturl: "https://raw.githubusercontent.com/DaveSkender/Stock.Indicators/main/docs/assets/charts"
 
 plugins:

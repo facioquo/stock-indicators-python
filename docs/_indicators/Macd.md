@@ -10,8 +10,6 @@ layout: indicator
 
 ## **get_macd**(*quotes, fast_periods=12, slow_periods=26, signal_periods=9*)
 
-[[source]]({{site.sourceurl}}/macd.py)
-
 ## Parameters
 
 | name | type | notes
@@ -78,3 +76,8 @@ Created by Gerald Appel, [MACD](https://en.wikipedia.org/wiki/MACD) is a simple 
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/248 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Macd.png)
+
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/m-r/Macd/Macd.cs)
+ - [Python wrapper]({{site.sourceurl}}/macd.py)

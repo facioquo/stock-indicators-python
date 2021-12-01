@@ -10,8 +10,6 @@ layout: indicator
 
 ## **get_super_trend**(*quotes, lookback_periods=10, multiplier=3*)
 
-[[source]]({{site.sourceurl}}/super_trend.py)
-
 ## Parameters
 
 | name | type | notes
@@ -77,3 +75,8 @@ It can indicate a buy/sell signal or a trailing stop when the trend changes.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/235 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/SuperTrend.png)
+
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/s-z/SuperTrend/SuperTrend.cs)
+ - [Python wrapper]({{site.sourceurl}}/super_trend.py)

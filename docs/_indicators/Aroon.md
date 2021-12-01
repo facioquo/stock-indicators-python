@@ -10,8 +10,6 @@ layout: indicator
 
 ## **get_aroon**(*quotes, lookback_periods=25*)
 
-[[source]]({{site.sourceurl}}/aroon.py)
-
 ## Parameters
 
 | name | type | notes
@@ -79,3 +77,8 @@ Created by Tushar Chande, [Aroon](https://school.stockcharts.com/doku.php?id=tec
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/266 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Aroon.png)
+
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/a-d/Aroon/Aroon.cs)
+ - [Python wrapper]({{site.sourceurl}}/aroon.py)

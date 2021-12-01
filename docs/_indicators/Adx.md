@@ -10,8 +10,6 @@ layout: indicator
 
 ## **get_adx**(*quotes, lookback_periods=14*)
 
-[[source]]({{site.sourceurl}}/adx.py)
-
 ## Parameters
 
 | name | type | notes
@@ -74,3 +72,7 @@ Created by J. Welles Wilder, the [Average Directional Movement Index](https://en
 
 ![image]({{site.charturl}}/Adx.png)
 
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/a-d/Adx/Adx.cs)
+ - [Python wrapper]({{site.sourceurl}}/adx.py)

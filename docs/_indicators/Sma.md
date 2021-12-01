@@ -9,8 +9,6 @@ layout: indicator
 <hr>
 
 ## **get_sma**(*quotes, lookback_periods*)
-    
-[[source]]({{site.sourceurl}}/sma.py)
 
 ## Parameters
 
@@ -113,3 +111,8 @@ results = indicators.get_sma_extended(quotes, lookbackPeriods);
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/240 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Sma.png)
+
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/s-z/Sma/Sma.cs)
+ - [Python wrapper]({{site.sourceurl}}/sma.py)

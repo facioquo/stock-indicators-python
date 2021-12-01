@@ -10,8 +10,6 @@ layout: indicator
 
 ## **get_alligator**(*quotes*)
 
-[[source]]({{site.sourceurl}}/alligator.py)
-
 ## Parameters
 
 | name | type | notes
@@ -82,3 +80,8 @@ Created by Bill Williams, Alligator is a depiction of three smoothed moving aver
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/385 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Alligator.png)
+
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/a-d/Alligator/Alligator.cs)
+ - [Python wrapper]({{site.sourceurl}}/alligator.py)

@@ -9,8 +9,6 @@ layout: indicator
 <hr>
 
 ## **get_atr**(*quotes, lookback_periods=14*)
-    
-[[source]]({{site.sourceurl}}/atr.py)
 
 ## Parameters
 
@@ -73,3 +71,8 @@ Created by J. Welles Wilder, [Average True Range](https://en.wikipedia.org/wiki/
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/269 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Atr.png)
+
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/a-d/Atr/Atr.cs)
+ - [Python wrapper]({{site.sourceurl}}/atr.py)

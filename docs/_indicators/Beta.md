@@ -10,8 +10,6 @@ layout: indicator
 <hr>
 
 ## **get_beta**(*market_history, eval_history, lookback_periods*)
-    
-[[source]]({{site.sourceurl}}/beta.py)
 
 ## Parameters
 
@@ -86,3 +84,8 @@ results = indicators.get_beta(history_SPX, history_TSLA, 20)
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/268 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Beta.png)
+
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/a-d/Beta/Beta.cs)
+ - [Python wrapper]({{site.sourceurl}}/beta.py)

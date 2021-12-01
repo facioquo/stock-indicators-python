@@ -10,8 +10,6 @@ layout: indicator
 <hr>
 
 ## **get_stoch**(*quotes, lookback_periods=14, signal_periods=3, smooth_periods=3*)
-    
-[[source]]({{site.sourceurl}}/stoch.py)
 
 ## Parameters
 
@@ -92,3 +90,8 @@ Created by George Lane, the [Stochastic Oscillator](https://en.wikipedia.org/wik
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/237 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Stoch.png)
+
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/s-z/Stoch/Stoch.cs)
+ - [Python wrapper]({{site.sourceurl}}/stoch.py)

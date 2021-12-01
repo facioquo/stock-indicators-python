@@ -11,8 +11,6 @@ layout: indicator
 
 ## **get_awesome**(*quotes, fast_periods=5, slow_periods=34*)
 
-[[source]]({{site.sourceurl}}/awesome.py)
-
 ## Parameters
 
 | name | type | notes
@@ -73,3 +71,8 @@ Created by Bill Williams, the Awesome Oscillator (aka Super AO) is a measure of 
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/282 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Awesome.png)
+
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/a-d/Awesome/Awesome.cs)
+ - [Python wrapper]({{site.sourceurl}}/awesome.py)

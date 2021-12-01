@@ -10,8 +10,6 @@ layout: indicator
 
 ## **get_stoch_rsi**(*quotes, rsi_periods, stoch_periods, signal_periods, smooth_periods=1*)
 
-[[source]]({{site.sourceurl}}/stoch_rsi.py)
-
 ## Parameters
 
 | name | type | notes
@@ -77,3 +75,8 @@ Created by by Tushar Chande and Stanley Kroll, [Stochastic RSI](https://school.s
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/236 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/StochRsi.png)
+
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/s-z/StochRsi/StochRsi.cs)
+ - [Python wrapper]({{site.sourceurl}}/stoch_rsi.py)

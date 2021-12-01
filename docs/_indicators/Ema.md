@@ -9,8 +9,6 @@ layout: indicator
 <hr>
 
 ## **get_ema**(*quotes, lookback_periods*)
-    
-[[source]]({{site.sourceurl}}/ema.py)
 
 ## Parameters
 
@@ -86,3 +84,8 @@ results = indicators.get_ema(quotes, 20)
 ![image]({{site.charturl}}/Ema.png)
 
 EMA is shown as the solid line above.  [Double EMA](../DoubleEma#content) (dashed line) and [Triple EMA](../TripleEma#content) (dotted line) are also shown here for comparison.
+
+## Sources
+
+ - [C# core]({{site.base_sourceurl}}/e-k/Ema/Ema.cs)
+ - [Python wrapper]({{site.sourceurl}}/ema.py)
