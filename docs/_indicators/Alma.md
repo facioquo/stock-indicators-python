@@ -6,64 +6,69 @@ layout: indicator
 ---
 
 # {{ page.title }}
+<hr>
 
-Created by Arnaud Legoux and Dimitrios Kouzis-Loukas, [ALMA]({{site.github.repository_url}}/files/5654531/ALMA-Arnaud-Legoux-Moving-Average.pdf) is a Gaussian distribution weighted moving average of Close price over a lookback window.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/209 "Community discussion about this indicator")
+## **get_alma**(*quotes, lookback_periods=9, offset=.85, sigma =6*)
 
-![image]({{site.charturl}}/Alma.png)
-
-```csharp
-// usage
-IEnumerable<AlmaResult> results =
-  quotes.GetAlma(lookbackPeriods, offset, sigma);  
-```
+[[source]]({{site.sourceurl}}/alma.py)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `lookbackPeriods` | int | Number of periods (`N`) in the moving average.  Must be greater than 1, but is typically in the 5-20 range.  Default is 9.
-| `offset` | double | Adjusts smoothness versus responsiveness on a scale from 0 to 1; where 1 is max responsiveness.  Default is 0.85.
-| `sigma` | double | Defines the width of the Gaussian [normal distribution](https://en.wikipedia.org/wiki/Normal_distribution).  Must be greater than 0.  Default is 6.
+| `quotes` | Iterable[Type[Quote]] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `lookback_periods` | int, *default 9* | Number of periods (`N`) in the moving average.  Must be greater than 1, but is typically in the 5-20 range.
+| `offset` | float, *default 0.85* | Adjusts smoothness versus responsiveness on a scale from 0 to 1; where 1 is max responsiveness.
+| `sigma` | float, *default 6* | Defines the width of the Gaussian [normal distribution](https://en.wikipedia.org/wiki/Normal_distribution).  Must be greater than 0.
 
 ### Historical quotes requirements
 
 You must have at least `N` periods of `quotes`.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Type[Quote]]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Returns
 
-```csharp
-IEnumerable<AlmaResult>
+```python
+ALMAResults[ALMAResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N-1` periods will have `null` values since there's not enough data to calculate.
+- The first `N-1` periods will have `None` values since there's not enough data to calculate.
 
 ### AlmaResult
 
 | name | type | notes
 | -- |-- |--
-| `Date` | DateTime | Date
-| `Alma` | decimal | Arnaud Legoux Moving Average
+| `date` | datetime.datetime | Date
+| `alma` | decimal.Decimal | Arnaud Legoux Moving Average
 
 ### Utilities
 
-- [.Find(lookupDate)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
-- [.RemoveWarmupPeriods()]({{site.baseurl}}/utilities#remove-warmup-periods)
-- [.RemoveWarmupPeriods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
+- [.remove_warmup_periods()]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
+
 ## Example
 
-```csharp
-// fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
+```python
+from stock_indicators import indicators
 
-// calculate Alma(10,0.5,6)
-IEnumerable<AlmaResult> results = quotes.GetAlma(10,0.5,6);
+# This method is NOT a part of the library.
+quotes = get_history_from_feed("SPY")
+
+# calculate Alma
+results = indicators.get_alma(quotes, 10, 0.5, 6)
 ```
+
+# About: {{ page.title }}
+
+Created by Arnaud Legoux and Dimitrios Kouzis-Loukas, [ALMA]({{site.github.repository_url}}/files/5654531/ALMA-Arnaud-Legoux-Moving-Average.pdf) is a Gaussian distribution weighted moving average of Close price over a lookback window.
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/209 "Community discussion about this indicator")
+
+![image]({{site.charturl}}/Alma.png)
