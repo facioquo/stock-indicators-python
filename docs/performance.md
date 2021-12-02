@@ -24,7 +24,7 @@ Apple M1, 8 cores
 |            GetAlma |   3.791 ms |  0.079 ms |   3.773 ms |
 |           GetAroon |   4.196 ms |  0.054 ms |   4.187 ms |
 |             GetAtr |   3.680 ms |  0.034 ms |   3.670 ms |
-|       !!!!  GetAwesome |   330.95 ms |  1.321 ms |   331.14 ms |
+|         GetAwesome |   4.206 ms |  0.041 ms |   4.192 ms |
 |            GetBeta |   8.550 ms |  0.097 ms |   8.535 ms |
 |  GetBollingerBands |   4.826 ms |  0.070 ms |   4.810 ms |
 |             GetEma |   3.678 ms |  0.075 ms |   3.660 ms |
@@ -33,7 +33,7 @@ Apple M1, 8 cores
 |             GetRsi |   4.104 ms |  0.075 ms |   4.087 ms |
 |             GetSma |   3.781 ms |  0.050 ms |   3.766 ms |
 |     GetSmaExtended |   7.710 ms |  0.112 ms |   7.692 ms |
-|       !!!    GetStoch |   4.837 ms |  6.174 ms |   4.340 ms |
+|           GetStoch |   4.212 ms |  0.044 ms |   4.198 ms |
 |        GetStochRsi |   4.984 ms |  0.120 ms |   4.939 ms |
 |      GetSuperTrend |   4.179 ms |  0.058 ms |   4.163 ms |
 
