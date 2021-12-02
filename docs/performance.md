@@ -14,28 +14,28 @@ Apple M1, 8 cores
 .NET SDK=Mono 6.12.0.90
 ```
 
-## indicators
+## Indicators
 
-|             Method |        Mean |     Error |    StdDev |      Median |
-|------------------- |------------:|----------:|----------:|------------:|
-|             GetAdl |   142.97 μs |  0.497 μs |  0.388 μs |   142.94 μs |
-|             GetAdx |   751.34 μs |  2.972 μs |  2.482 μs |   750.57 μs |
-|       GetAlligator |   234.74 μs |  1.240 μs |  1.160 μs |   234.56 μs |
-|            GetAlma |   215.96 μs |  1.546 μs |  1.370 μs |   215.42 μs |
-|           GetAroon |   353.01 μs |  0.803 μs |  0.670 μs |   352.93 μs |
-|             GetAtr |   159.49 μs |  1.414 μs |  1.254 μs |   159.12 μs |
-|         GetAwesome |   330.95 μs |  1.490 μs |  1.321 μs |   331.14 μs |
-|            GetBeta |   959.70 μs |  2.365 μs |  1.975 μs |   959.47 μs |
-|  GetBollingerBands |   457.88 μs |  1.584 μs |  1.323 μs |   457.95 μs |
-|             GetEma |   100.30 μs |  0.622 μs |  0.582 μs |   100.25 μs |
-|         GetFractal |   104.33 μs |  0.469 μs |  0.392 μs |   104.32 μs |
-|            GetMacd |   217.86 μs |  1.426 μs |  1.264 μs |   217.51 μs |
-|             GetRsi |   340.61 μs |  1.052 μs |  0.821 μs |   340.70 μs |
-|             GetSma |   107.26 μs |  0.363 μs |  0.303 μs |   107.21 μs |
-|     GetSmaExtended |   942.89 μs |  5.649 μs |  5.284 μs |   940.02 μs |
-|           GetStoch |   403.67 μs |  1.003 μs |  0.838 μs |   403.38 μs |
-|        GetStochRsi |   708.34 μs |  2.750 μs |  2.296 μs |   707.45 μs |
-|      GetSuperTrend |   301.10 μs |  0.886 μs |  0.692 μs |   301.20 μs |
+|             Method |        Mean |    StdDev |      Median |
+|------------------- |------------:|----------:|------------:|
+|             GetAdl |   3.805 ms |  0.651 ms |   3.627 ms |
+|             GetAdx |   4.857 ms |  0.155 ms |   4.844 ms |
+|       GetAlligator |   3.893 ms |  0.054 ms |   3.834 ms |
+|            GetAlma |   3.791 ms |  0.079 ms |   3.773 ms |
+|           GetAroon |   4.196 ms |  0.054 ms |   4.187 ms |
+|             GetAtr |   3.680 ms |  0.034 ms |   3.670 ms |
+|       !!!!  GetAwesome |   330.95 ms |  1.321 ms |   331.14 ms |
+|            GetBeta |   8.550 ms |  0.097 ms |   8.535 ms |
+|  GetBollingerBands |   4.826 ms |  0.070 ms |   4.810 ms |
+|             GetEma |   3.678 ms |  0.075 ms |   3.660 ms |
+|         GetFractal |   3.670 ms |  0.049 ms |   3.663 ms |
+|            GetMacd |   3.941 ms |  0.070 ms |   3.921 ms |
+|             GetRsi |   4.104 ms |  0.075 ms |   4.087 ms |
+|             GetSma |   3.781 ms |  0.050 ms |   3.766 ms |
+|     GetSmaExtended |   7.710 ms |  0.112 ms |   7.692 ms |
+|       !!!    GetStoch |   4.837 ms |  6.174 ms |   4.340 ms |
+|        GetStochRsi |   4.984 ms |  0.120 ms |   4.939 ms |
+|      GetSuperTrend |   4.179 ms |  0.058 ms |   4.163 ms |
 
 <!-- ## quotes functions (mostly internal)
 
