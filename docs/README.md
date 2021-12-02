@@ -10,8 +10,8 @@ Explore more information:
 
 - [Indicators and overlays]({{site.baseurl}}/indicators/#content)
 - [Guide and Pro tips]({{site.baseurl}}/guide/#content)
+- [Utilities and Helpers]({{site.baseurl}}utilities/#content)
 - [Demo site](https://stock-charts.azurewebsites.net) (a stock chart)
-- [Example usage code]({{site.baseurl}}/examples/#content)
 - [Release notes]({{site.github.repository_url}}/releases)
 - [Discussions]({{site.github.base_repository_url}}/discussions)
 - [Contributing guidelines]({{site.baseurl}}/contributing/#content)
