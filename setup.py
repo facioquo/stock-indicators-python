@@ -36,6 +36,6 @@ setuptools.setup(
     },
     python_requires=">=3.8",
     install_requires=[
-        'pythonnet',
+        'pythonnet==2.5.2',
     ],
 )
