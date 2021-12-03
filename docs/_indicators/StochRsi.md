@@ -69,14 +69,14 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_stoch_rsi(quotes, 14, 14, 1, 1)
 ```
 
-# About: {{ page.title }}
+## About: {{ page.title }}
 
 Created by by Tushar Chande and Stanley Kroll, [Stochastic RSI](https://school.stockcharts.com/doku.php?id=technical_indicators:stochrsi) is a Stochastic interpretation of the Relative Strength Index.  It is different from, and often confused with the more traditional [Stochastic Oscillator](../Stoch#content).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/236 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/StochRsi.png)
 
-## Sources
+### Sources
 
- - [C# core]({{site.base_sourceurl}}/s-z/StochRsi/StochRsi.cs)
- - [Python wrapper]({{site.sourceurl}}/stoch_rsi.py)
+- [C# core]({{site.base_sourceurl}}/s-z/StochRsi/StochRsi.cs)
+- [Python wrapper]({{site.sourceurl}}/stoch_rsi.py)

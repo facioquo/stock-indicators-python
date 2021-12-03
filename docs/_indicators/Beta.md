@@ -78,14 +78,14 @@ history_TSLA = get_history_from_feed("TSLA")
 results = indicators.get_beta(history_SPX, history_TSLA, 20)
 ```
 
-# About: {{ page.title }}
+## About: {{ page.title }}
 
 [Beta](https://en.wikipedia.org/wiki/Beta_(finance)) shows how strongly one stock responds to systemic volatility of the entire market.  [Upside Beta](https://en.wikipedia.org/wiki/Upside_beta) (Beta+) and [Downside Beta](https://en.wikipedia.org/wiki/Downside_beta) (Beta-), [popularized by Harry M. Markowitz](https://www.jstor.org/stable/j.ctt1bh4c8h), are also included.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/268 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Beta.png)
 
-## Sources
+### Sources
 
- - [C# core]({{site.base_sourceurl}}/a-d/Beta/Beta.cs)
- - [Python wrapper]({{site.sourceurl}}/beta.py)
+- [C# core]({{site.base_sourceurl}}/a-d/Beta/Beta.cs)
+- [Python wrapper]({{site.sourceurl}}/beta.py)

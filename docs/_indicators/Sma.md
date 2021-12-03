@@ -105,14 +105,14 @@ results = indicators.get_sma_extended(quotes, lookbackPeriods)
 ```
 
 
-# About: {{ page.title }}
+## About: {{ page.title }}
 
 [Simple Moving Average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average) is the average price over a lookback window.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/240 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Sma.png)
 
-## Sources
+### Sources
 
- - [C# core]({{site.base_sourceurl}}/s-z/Sma/Sma.cs)
- - [Python wrapper]({{site.sourceurl}}/sma.py)
+- [C# core]({{site.base_sourceurl}}/s-z/Sma/Sma.cs)
+- [Python wrapper]({{site.sourceurl}}/sma.py)

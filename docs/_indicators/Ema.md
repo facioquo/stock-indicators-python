@@ -76,7 +76,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_ema(quotes, 20)
 ```
 
-## About: {{ page.title }}
+### About: {{ page.title }}
 
 [Exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average) price over a lookback window.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/256 "Community discussion about this indicator")
@@ -85,7 +85,7 @@ results = indicators.get_ema(quotes, 20)
 
 EMA is shown as the solid line above.  Double EMA (dashed line) and Triple EMA (dotted line) are also shown here for comparison.
 
-### Sources
+#### Sources
 
- - [C# core]({{site.base_sourceurl}}/e-k/Ema/Ema.cs)
- - [Python wrapper]({{site.sourceurl}}/ema.py)
+- [C# core]({{site.base_sourceurl}}/e-k/Ema/Ema.cs)
+- [Python wrapper]({{site.sourceurl}}/ema.py)
