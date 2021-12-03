@@ -74,14 +74,14 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_alligator(quotes)
 ```
 
-# About: {{ page.title }}
+## About: {{ page.title }}
 
-Created by Bill Williams, Alligator is a depiction of three smoothed moving averages of median price, showing chart patterns that compared to an alligator's feeding habits when describing market movement. The moving averages are known as the Jaw, Teeth, and Lips, which are calculated using specific lookback and offset periods.  See also the [Gator Oscillator](../Gator#content).
+Created by Bill Williams, Alligator is a depiction of three smoothed moving averages of median price, showing chart patterns that compared to an alligator's feeding habits when describing market movement. The moving averages are known as the Jaw, Teeth, and Lips, which are calculated using specific lookback and offset periods.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/385 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Alligator.png)
 
-## Sources
+### Sources
 
  - [C# core]({{site.base_sourceurl}}/a-d/Alligator/Alligator.cs)
  - [Python wrapper]({{site.sourceurl}}/alligator.py)
