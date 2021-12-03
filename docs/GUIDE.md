@@ -128,25 +128,15 @@ results = indicators.get_sma(quotes, 20);
 
 #### Using custom quote property names
 
-If you have a model that has different properties names, but the same meaning, you only need to map them. There are already mapper methods for each OHLCV properties. These mappers are in `stock_indicators.indicators.common.quote`
-
-| **OHLCV** | **Mapper Methods** |
-| -- |getter |setter
-| date | `_get_date` | `_set_date`
-| open | `_get_open` | `_set_open`
-| high | `_get_high` | `_set_high`
-| low | `_get_low` | `_set_low`
-| close | `_get_close` | `_set_close`
-| volume | `_get_volume` | `_set_volume`
-
+If you have a model that has different properties names, but the same meaning, you only need to map them. Each properties is `property` object, so you can just reference them. 
 
 Suppose your class has a property called `close_date` instead of `date`, it could be represented like this:
 
 ```python
-from stock_indicators.indicators.common.quote import Quote, _get_date, _set_date
+from stock_indicators.indicators.common.quote import Quote
 
 class MyCustomQuote(Quote):
-    close_date = property(_get_date, _set_date)
+    close_date = Quote.date
 
 ```
 
