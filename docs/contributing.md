@@ -40,11 +40,11 @@ If you are reporting a bug or suspect a problem, please submit an issue with a d
 
 For new features, submit an issue with the `enhancement` label.
 
-:bulb: [Request features]({{site.github.base_repository_url}}/issues)
+:bulb: [Request features]({{site.github.repository_url}}/issues)
 
 ## Project management
 
-- Planned work is managed in [the backlog]({{site.github.base_repository_url}}/projects/1).
+- Planned work is managed in [the backlog]({{site.github.repository_url}}/projects/1).
 - Work items are primarily [entered as Notes](https://docs.github.com/en/free-pro-team@latest/github/managing-your-work-on-github/adding-notes-to-a-project-board) (not Issues), except where an issue or feature is user reported.  With that said, Notes can be converted to Issues if in-progress and collaborative discussion is needed.
 - Use the [Discussions]({{site.github.base_repository_url}}/discussions) area for general ideation and unrelated questions.
 
@@ -59,7 +59,7 @@ For new features, submit an issue with the `enhancement` label.
 - We use [pytest](https://docs.pytest.org/en/6.2.x/) for testing.
 - Review the `tests` folder for examples of unit tests.  Just copy one of these.
 - New indicators should be tested against manually calculated, proven, accurate results.  It is helpful to include your manual calculations spreadsheet in the appropriate indicator folder when [submitting changes](#submitting-changes).
-- Historical Stock Quotes are automatically added as Pytest fixtures.  A `History.xlsx` Excel file is included in the `tests` folder that is an exact copy of what is used in the unit tests.  Use this for your manual calculations to ensure that it is correct.  Do not commit changes to this Excel file.
+- Historical Stock Quotes are automatically added as Pytest fixtures.  A `History.xlsx` Excel file is included in the `samples` folder that is an exact copy of what is used in the unit tests.  Use this for your manual calculations to ensure that it is correct.  Do not commit changes to this Excel file.
 - We expect all unit tests to execute successfully and all Errors and Warning resolved before you submit your code.
 - Failed builds or unit testing will block acceptance of your Pull Request when submitting changes.
 
@@ -139,7 +139,7 @@ This only needs to be done on the merge to `main` when the Pull Request is commi
 - Adding `+semver: minor` as a PR merge commit message will increment the minor -.x.- element
 - Adding `+semver: patch` as a PR merge commit message will increment the minor -.-.x element.  Patch element auto-increments, so you'd only need to do this to override the next value.
 
-A Git `tag`, in accordance with the above schema, is introduced automatically after deploying to the [PyPI](https://pypi.org/project/stock-indicators/) and is reflected in the [Releases]({{site.github.repository_url}}/releases).
+A Git `tag`, in accordance with the above schema, is introduced automatically after deploying to PyPI and is reflected in the [Releases]({{site.github.repository_url}}/releases).
 
 ## License
 
