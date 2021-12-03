@@ -8,7 +8,7 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_alma**(*quotes, lookback_periods=9, offset=.85, sigma =6*)
+## **get_alma**(*quotes, lookback_periods=9, offset=0.85, sigma=6*)
 
 ## Parameters
 
@@ -64,14 +64,14 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_alma(quotes, 10, 0.5, 6)
 ```
 
-# About: {{ page.title }}
+## About: {{ page.title }}
 
-Created by Arnaud Legoux and Dimitrios Kouzis-Loukas, [ALMA]({{site.github.repository_url}}/files/5654531/ALMA-Arnaud-Legoux-Moving-Average.pdf) is a Gaussian distribution weighted moving average of Close price over a lookback window.
+Created by Arnaud Legoux and Dimitrios Kouzis-Loukas, [ALMA]({{site.github.base_repository_url}}/files/5654531/ALMA-Arnaud-Legoux-Moving-Average.pdf) is a Gaussian distribution weighted moving average of Close price over a lookback window.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/209 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Alma.png)
 
-## Sources
+### Sources
 
  - [C# core]({{site.base_sourceurl}}/a-d/Alma/Alma.cs)
  - [Python wrapper]({{site.sourceurl}}/alma.py)
