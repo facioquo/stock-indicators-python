@@ -25,7 +25,7 @@ def get_adl(quotes: Iterable[Quote], sma_periods: Optional[int] = None):
     See more:
          - [ADL Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Adl/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
-    """ 
+    """
     adl_results = CsIndicator.GetAdl[Quote](CsList(Quote, quotes), sma_periods)
     return ADLResults(adl_results, ADLResult)
 

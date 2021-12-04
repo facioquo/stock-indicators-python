@@ -8,10 +8,50 @@ from stock_indicators.indicators.common.quote import Quote
 
 
 def get_sma(quotes: Iterable[Quote], lookback_periods: int):
+    """Get SMA calculated.
+    
+    Simple Moving Average (SMA) is the average of Close price over a lookback window.
+    
+    Parameters:
+        `quotes` : Iterable[Quotes]
+            Historical price quotes.
+        
+        `lookback_periods` : int
+            Number of periods in the lookback window.
+    
+    Returns:
+        `SMAResults[SMAResult]`
+            SMAResults is list of SMAResult with providing useful helper methods.
+    
+    See more:
+         - [SMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Sma/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     sma_list = CsIndicator.GetSma[Quote](CsList(Quote, quotes), lookback_periods)
     return SMAResults(sma_list, SMAResult)
 
 def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):
+    """Get SMA calculated, with extra properties.
+    
+    Simple Moving Average (SMA) is the average of Close price over a lookback window.
+    This extended variant includes mean absolute deviation (MAD), mean square error (MSE),
+    and mean absolute percentage error (MAPE).
+
+    Parameters:
+        `quotes` : Iterable[Quotes]
+            Historical price quotes.
+        
+        `lookback_periods` : int
+            Number of periods in the lookback window.
+    
+    Returns:
+        `SMAExtendedResults[SMAExtendedResult]`
+            SMAExtendedResults is list of SMAExtendedResult with providing useful helper methods.
+    
+    See more:
+         - [SMA-extended Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Sma/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     sma_extended_list = CsIndicator.GetSmaExtended[Quote](CsList(Quote, quotes), lookback_periods)
     return SMAExtendedResults(sma_extended_list, SMAExtendedResult)
 

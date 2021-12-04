@@ -7,6 +7,31 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 def get_macd(quotes: Iterable[Quote], fast_periods: int = 12, slow_periods: int = 26, signal_periods: int = 9):
+    """Get MACD calculated.
+    
+    Moving Average Convergence/Divergence (MACD) is a simple oscillator view of two converging/diverging exponential moving averages.
+    
+    Parameters:
+        `quotes` : Iterable[Quotes]
+            Historical price quotes.
+        
+        `fast_periods` : int, defaults 12
+            Number of periods in the Fast EMA.
+        
+        `slow_periods` : int, defaults 26
+            Number of periods in the Slow EMA.
+            
+        `signal_periods` : int, defaults 9
+            Number of periods for the Signal moving average.
+    
+    Returns:
+        `MACDResults[MACDResult]`
+            MACDResults is list of MACDResult with providing useful helper methods.
+    
+    See more:
+         - [MACD Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Macd/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     macd_results = CsIndicator.GetMacd[Quote](CsList(Quote, quotes), fast_periods, slow_periods, signal_periods)
     return MACDResults(macd_results, MACDResult)
 
