@@ -26,7 +26,7 @@ You must have at least `N+100` periods of `quotes`.  Since this uses a smoothing
 
 ## Returns
 
-```csharp
+```python
 SuperTrendResults[SuperTrendResult]
 ```
 

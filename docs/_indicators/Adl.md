@@ -33,7 +33,7 @@ ADLResults[ADLResult]
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 
-### AdlResult
+### ADLResult
 
 | name | type | notes
 | -- |-- |--
