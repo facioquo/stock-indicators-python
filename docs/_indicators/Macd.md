@@ -70,14 +70,14 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_macd(quotes, 12, 26, 9);
 ```
 
-# About: {{ page.title }}
+## About: {{ page.title }}
 
 Created by Gerald Appel, [MACD](https://en.wikipedia.org/wiki/MACD) is a simple oscillator view of two converging/diverging exponential moving averages.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/248 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Macd.png)
 
-## Sources
+### Sources
 
- - [C# core]({{site.base_sourceurl}}/m-r/Macd/Macd.cs)
- - [Python wrapper]({{site.sourceurl}}/macd.py)
+- [C# core]({{site.base_sourceurl}}/m-r/Macd/Macd.cs)
+- [Python wrapper]({{site.sourceurl}}/macd.py)
