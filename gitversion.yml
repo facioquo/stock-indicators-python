@@ -5,8 +5,3 @@ major-version-bump-message: '\+semver:\s?(breaking|major)'
 minor-version-bump-message: '\+semver:\s?(feature|minor)'
 patch-version-bump-message: '\+semver:\s?(fix|patch)'
 no-bump-message: '\+semver:\s?(none|skip)'
-
-branches:
-  pull-request:
-    tag: 'dev'
-    tag-number-pattern: '<number>'
