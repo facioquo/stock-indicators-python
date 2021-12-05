@@ -7,12 +7,5 @@ patch-version-bump-message: '\+semver:\s?(fix|patch)'
 no-bump-message: '\+semver:\s?(none|skip)'
 
 branches:
-  main: {}
-  release:
-    tag: 'rc'
-  feature:
+  pull-request:
     tag: 'dev'
-  develop:
-    tag: 'a'
-  hotfix:
-    tag: 'post'
