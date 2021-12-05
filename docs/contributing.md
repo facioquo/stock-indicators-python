@@ -8,7 +8,6 @@ layout: default
 
 [![build status](https://img.shields.io/azure-devops/build/skender/5123ca47-74f2-4d67-a5d4-c4d90b8d670a/26/main?logo=AzureDevops&label=Build%20Status)](https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=26&branchName=main)
 [![code coverage](https://img.shields.io/azure-devops/coverage/skender/stock.indicators/26/main?logo=AzureDevOps&label=Code%20Coverage)](https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=26&branchName=main&view=codecoverage-tab)
-[![CodeQL](https://github.com/DaveSkender/Stock.Indicators.Python/workflows/CodeQL/badge.svg)](https://github.com/DaveSkender/Stock.Indicators.Python/security/code-scanning)
 
 **Thanks for taking the time to contribute!**
 
@@ -109,7 +108,7 @@ By submitting changes to this repo you are also acknowledging and agree to the t
 When ready, submit a Pull Request with a clear list of what you've done (read more about [pull requests](http://help.github.com/pull-requests)).
 Always write a clear log message for your commits. One-line messages are fine for most changes.
 
-After a Pull Request is reviewed, accepted, and [squash] merged to `main`, we may batch changes before publishing a new package version to [PyPI](https://pypi.org/project/stock-indicators/).  Please be patient with turnaround time.
+After a Pull Request is reviewed, accepted, and [squash] merged to `main`, we may batch changes before publishing a new package version to PyPI.  Please be patient with turnaround time.
 
 ## Code reviews and administration
 
