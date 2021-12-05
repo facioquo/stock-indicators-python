@@ -5,3 +5,14 @@ major-version-bump-message: '\+semver:\s?(breaking|major)'
 minor-version-bump-message: '\+semver:\s?(feature|minor)'
 patch-version-bump-message: '\+semver:\s?(fix|patch)'
 no-bump-message: '\+semver:\s?(none|skip)'
+
+branches:
+  main: {}
+  release:
+    tag: 'rc'
+  feature:
+    tag: 'dev'
+  develop:
+    tag: 'a'
+  hotfix:
+    tag: 'post'
