@@ -7,6 +7,26 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 def get_adx(quotes: Iterable[Quote], lookback_periods: int = 14):
+    """Get ADX calculated.
+    
+    Average Directional Movement Index (ADX) is a measure of price directional movement.
+    It includes upward and downward indicators, and is often used to measure strength of trend.
+    
+    Parameters:
+        `quotes` : Iterable[Quotes]
+            Historical price quotes.
+        
+        `lookback_periods` : int, defaults 14
+            Number of periods in the lookback window.
+    
+    Returns:
+        `ADXResults[ADXResult]`
+            ADXResults is list of ADXResult with providing useful helper methods.
+    
+    See more:
+         - [ADX Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Adx/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     adx_results = CsIndicator.GetAdx[Quote](CsList(Quote, quotes), lookback_periods)
     return ADXResults(adx_results, ADXResult)
 

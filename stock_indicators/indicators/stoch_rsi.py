@@ -7,6 +7,34 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 def get_stoch_rsi(quotes: Iterable[Quote], rsi_periods: int, stoch_periods: int, signal_periods: int, smooth_periods: int = 1):
+    """Get Stochastic RSI calculated.
+    
+    Stochastic RSI is a Stochastic interpretation of the Relative Strength Index.
+    
+    Parameters:
+        `quotes` : Iterable[Quotes]
+            Historical price quotes.
+        
+        `rsi_periods` : int
+            Number of periods for the RSI.
+            
+        `stoch_periods` : int
+            Number of periods for the Stochastic.
+            
+        `signal_periods` : int
+            Number of periods for the Stochastic RSI SMA signal line.
+            
+        `smooth_periods` : int, defaults 1
+            Number of periods for Stochastic Smoothing.  Use 1 for Fast or 3 for Slow.
+    
+    Returns:
+        `StochRSIResults[StochRSIResult]`
+            StochRSIResults is list of StochRSIResult with providing useful helper methods.
+    
+    See more:
+         - [Stochastic RSI Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/StochRsi/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     stoch_rsi_results = CsIndicator.GetStochRsi[Quote](CsList(Quote, quotes), rsi_periods, stoch_periods, signal_periods, smooth_periods)
     return StochRSIResults(stoch_rsi_results, StochRSIResult)
 
