@@ -9,3 +9,4 @@ no-bump-message: '\+semver:\s?(none|skip)'
 branches:
   pull-request:
     tag: 'dev'
+    tag-number-pattern: '[/-](?<number>\d+)'
