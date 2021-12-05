@@ -1,5 +1,5 @@
 mode: ContinuousDelivery
-
+next-version: 0.0.2
 commit-message-incrementing: Enabled
 major-version-bump-message: '\+semver:\s?(breaking|major)'
 minor-version-bump-message: '\+semver:\s?(feature|minor)'
