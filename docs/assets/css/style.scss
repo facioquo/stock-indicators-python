@@ -224,8 +224,10 @@ h5 {
         }
 
         // string and constant values
+        .bp,
         .s,
-        .m {
+        .m,
+        .mi {
             color: #d32f2f;
         }
     }
