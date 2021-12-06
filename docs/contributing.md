@@ -8,6 +8,7 @@ layout: default
 
 [![build status](https://img.shields.io/azure-devops/build/skender/5123ca47-74f2-4d67-a5d4-c4d90b8d670a/26/main?logo=AzureDevops&label=Build%20Status)](https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=26&branchName=main)
 [![code coverage](https://img.shields.io/azure-devops/coverage/skender/stock.indicators/26/main?logo=AzureDevOps&label=Code%20Coverage)](https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=26&branchName=main&view=codecoverage-tab)
+![CodeQL](https://github.com/DaveSkender/Stock.Indicators.Python/workflows/CodeQL/badge.svg)
 
 **Thanks for taking the time to contribute!**
 
