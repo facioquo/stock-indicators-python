@@ -36,22 +36,3 @@ Apple M1, 8 cores
 |           GetStoch |   4.212 ms |  0.044 ms |   4.198 ms |
 |        GetStochRsi |   4.984 ms |  0.120 ms |   4.939 ms |
 |      GetSuperTrend |   4.179 ms |  0.058 ms |   4.163 ms |
-
-<!-- ## quotes functions (mostly internal)
-
-|          Method |         Mean |      Error |     StdDev |
-|---------------- |-------------:|-----------:|-----------:|
-|            Sort | 37,768.62 ns | 406.995 ns | 360.790 ns |
-|        Validate | 40,457.78 ns | 301.177 ns | 266.985 ns |
-|       Aggregate |     83.36 ns |   0.699 ns |   0.545 ns |
-|  ConvertToBasic | 42,362.26 ns | 144.200 ns | 120.414 ns |
-| ConvertToQuotes |  8,378.83 ns |  71.755 ns |  63.609 ns |
-
-## math functions (internal)
-
-| Method | Periods |        Mean |    Error |   StdDev |
-|------- |-------- |------------:|---------:|---------:|
-| StdDev |      20 |    36.84 ns | 0.194 ns | 0.172 ns |
-| StdDev |      50 |    95.47 ns | 0.306 ns | 0.256 ns |
-| StdDev |     250 |   530.23 ns | 1.303 ns | 1.088 ns |
-| StdDev |    1000 | 2,142.94 ns | 5.994 ns | 5.313 ns | -->
