@@ -20,7 +20,7 @@ layout: default
 
 ### Installation and setup
 
-Find and install the **stock-indicators** Python package into your environment. See [more help](https://packaging.python.org/tutorials/installing-packages/) for installing packages.
+Find and install the **stock-indicators** Python package into your environment. See [more help](https://packaging.python.org/en/latest/tutorials/installing-packages/) for installing packages.
 
 ```powershell
 # pip example

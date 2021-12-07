@@ -30,9 +30,6 @@ exclude: [
   "*.yml", 
   "*.pptx",
   ".offline",
-  "examples/Backtest",
-  "examples/ConsoleApp",
-  "examples/*.sln",
   "GemFile",
   "node_modules",
   "vendor"
