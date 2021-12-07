@@ -52,6 +52,11 @@ from .macd import (
     get_macd
 )
 
+from .roc import (
+    get_roc,
+    get_roc_with_band
+)
+
 from .rsi import (
     get_rsi
 )
