@@ -36,6 +36,10 @@ from .bollinger_bands import (
     get_bollinger_bands
 )
 
+from .chandelier import (
+    get_chandelier
+)
+
 from .elder_ray import (
     get_elder_ray
 )
