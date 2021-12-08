@@ -34,13 +34,13 @@ We have different places to take issues by its category.
 
 If you are reporting a bug or suspect a problem, please submit an issue with a detailed description of the problem + include steps to reproduce, code samples, and any reference materials.  
 
-:wrench: [Report bugs](https://github.com/DaveSkender/Stock.Indicators.Python/issues)
+:wrench: [Report bugs](https://github.com/DaveSkender/Stock.Indicators.Python/issues/new?labels=bug&template=bug_report.md)
 
 ### Feature Request
 
 For new features, submit an issue with the `enhancement` label.
 
-:bulb: [Request features](https://github.com/DaveSkender/Stock.Indicators.Python/issues)
+:bulb: [Request features](https://github.com/DaveSkender/Stock.Indicators.Python/issues/new?labels=enhancement&template=feature_request.md)
 
 ## Project management
 
