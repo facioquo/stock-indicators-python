@@ -36,6 +36,10 @@ from .bollinger_bands import (
     get_bollinger_bands
 )
 
+from .elder_ray import (
+    get_elder_ray
+)
+
 from .ema import (
     get_ema
 )
