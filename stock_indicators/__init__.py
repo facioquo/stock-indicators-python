@@ -14,4 +14,3 @@ and charting systems in mind when originally creating this community
 library. A Stock Indicators for .NET is also available.
 """
 
-from . import indicators
