@@ -40,6 +40,10 @@ from .chandelier import (
     get_chandelier
 )
 
+from .double_ema import (
+    get_double_ema
+)
+
 from .elder_ray import (
     get_elder_ray
 )
@@ -54,6 +58,10 @@ from .fractal import (
 
 from .macd import (
     get_macd
+)
+
+from .parabolic_sar import (
+    get_parabolic_sar
 )
 
 from .roc import (
