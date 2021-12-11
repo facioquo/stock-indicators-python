@@ -73,6 +73,10 @@ from .rsi import (
     get_rsi
 )
 
+from .slope import (
+    get_slope
+)
+
 from .sma import (
     get_sma,
     get_sma_extended,
