@@ -60,6 +60,10 @@ from .fractal import (
     get_fractal
 )
 
+from .ichimoku import (
+    get_ichimoku
+)
+
 from .macd import (
     get_macd
 )
