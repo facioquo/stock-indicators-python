@@ -40,6 +40,10 @@ from .chandelier import (
     get_chandelier
 )
 
+from .donchian import (
+    get_donchian
+)
+
 from .double_ema import (
     get_double_ema
 )
