@@ -60,6 +60,10 @@ from .fractal import (
     get_fractal
 )
 
+from .heikin_ashi import (
+    get_heikin_ashi
+)
+
 from .macd import (
     get_macd
 )
