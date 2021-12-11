@@ -93,3 +93,7 @@ from .stoch_rsi import (
 from .super_trend import (
     get_super_trend
 )
+
+from .triple_ema import (
+    get_triple_ema
+)
