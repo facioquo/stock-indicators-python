@@ -60,6 +60,10 @@ from .macd import (
     get_macd
 )
 
+from .parabolic_sar import (
+    get_parabolic_sar
+)
+
 from .roc import (
     get_roc,
     get_roc_with_band
