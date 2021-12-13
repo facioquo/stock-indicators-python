@@ -64,6 +64,10 @@ from .heikin_ashi import (
     get_heikin_ashi
 )
 
+from .ichimoku import (
+    get_ichimoku
+)
+
 from .macd import (
     get_macd
 )
