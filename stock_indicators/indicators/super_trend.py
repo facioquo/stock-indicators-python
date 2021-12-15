@@ -31,7 +31,7 @@ def get_super_trend(quotes: Iterable[Quote], lookback_periods: int = 10, multipl
          - [SuperTrend Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/SuperTrend/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    super_trend_results = CsIndicator.GetSuperTrend[Quote](CsList(Quote, quotes), lookback_periods, CsDecimal(multiplier))
+    super_trend_results = CsIndicator.GetSuperTrend[Quote](CsList(Quote, quotes), lookback_periods, multiplier)
     return SuperTrendResults(super_trend_results, SuperTrendResult)
 
 class SuperTrendResult(ResultBase):
