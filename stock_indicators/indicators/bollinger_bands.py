@@ -29,7 +29,6 @@ def get_bollinger_bands(quotes: Iterable[Quote], lookback_periods: int = 20, sta
          - [Bollinger Bands&#174; Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/BollingerBands/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    type
     bollinger_bands_results = CsIndicator.GetBollingerBands[Quote](CsList(Quote, quotes), lookback_periods, standard_deviations)
     return BollingerBandsResults(bollinger_bands_results, BollingerBandsResult)
 
@@ -40,7 +39,7 @@ class BollingerBandsResult(ResultBase):
 
     @property
     def sma(self):
-        return to_pydecimal(self._csdata.Sma)
+        return self._dtype_decimal(self._csdata.Sma)
 
     @sma.setter
     def sma(self, value):

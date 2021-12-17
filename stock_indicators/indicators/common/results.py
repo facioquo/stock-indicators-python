@@ -1,17 +1,47 @@
+from math import isnan
 from datetime import datetime as PyDateTime
 from typing import Iterable, List, Type, TypeVar
 from stock_indicators._cslib import CsIndicator, CsResultBase
 from stock_indicators._cstypes import DateTime as CsDateTime
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import to_pydatetime
+from stock_indicators._cstypes import to_pydatetime, to_pydecimal
+
+# Can be None, math.nan or np.nan
+DEFAULT_NAN = None
 
 class ResultBase:
     """
     A base wrapper class for a single unit of the results.
     """
-    def __init__(self, base_result: Type[CsResultBase]):
+    
+    def __init__(self, base_result: Type[CsResultBase], **kwargs):
         super().__init__()
         self._csdata = base_result
+        self._dtype_float = self.__to_py_float(kwargs.get('float', None))
+        self._dtype_decimal = self.__to_py_decimal(kwargs.get('decimal', None))
+        
+    def __to_py_float(self, convertor):
+        if convertor:
+            def decorate(value):
+                r = convertor(value)
+                return DEFAULT_NAN if isnan(r) else r
+        else:
+            def decorate(value):
+                return DEFAULT_NAN if value is None else value    
+        
+        return decorate
+        
+    def __to_py_decimal(self, convertor):
+        if convertor:
+            def decorate(value):
+                r = convertor(to_pydecimal(value))
+                return DEFAULT_NAN if isnan(r) else r
+        else:
+            def decorate(value):
+                r = to_pydecimal(value)
+                return DEFAULT_NAN if r is None else r 
+        
+        return decorate
 
     @property
     def date(self):
@@ -20,6 +50,7 @@ class ResultBase:
     @date.setter
     def date(self, value):
         self._csdata.Date = CsDateTime(value)
+
 
 T = TypeVar("T", bound=ResultBase)
 class IndicatorResults(List[T]):
