@@ -58,8 +58,8 @@ class IndicatorResults(List[T]):
     A base wrapper class for the list of results.
     It provides helper methods written in CSharp implementation.
     """
-    def __init__(self, data: Iterable, wrapper_class: Type[T]):
-        super().__init__([ wrapper_class(_) for _ in data ])
+    def __init__(self, data: Iterable, wrapper_class: Type[T], **kwargs):
+        super().__init__([ wrapper_class(_, **kwargs) for _ in data ])
         self._csdata = data
         self._wrapper_class = wrapper_class
 

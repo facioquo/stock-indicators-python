@@ -6,7 +6,7 @@ from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
-def get_bollinger_bands(quotes: Iterable[Quote], lookback_periods: int = 20, standard_deviations: float = 2):
+def get_bollinger_bands(quotes: Iterable[Quote], lookback_periods: int = 20, standard_deviations: float = 2, **kwargs):
     """Get Bollinger Bands&#174; calculated.
     
     Bollinger Bands&#174; depict volatility as standard deviation boundary lines from a moving average of Close price.
@@ -30,7 +30,7 @@ def get_bollinger_bands(quotes: Iterable[Quote], lookback_periods: int = 20, sta
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
     bollinger_bands_results = CsIndicator.GetBollingerBands[Quote](CsList(Quote, quotes), lookback_periods, standard_deviations)
-    return BollingerBandsResults(bollinger_bands_results, BollingerBandsResult)
+    return BollingerBandsResults(bollinger_bands_results, BollingerBandsResult, **kwargs)
 
 class BollingerBandsResult(ResultBase):
     """
@@ -92,9 +92,6 @@ class BollingerBandsResults(IndicatorResults[T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
-
-    def __init__(self, data: Iterable, wrapper_class: Type[T]):
-        super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):
