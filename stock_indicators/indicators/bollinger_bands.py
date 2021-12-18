@@ -47,7 +47,7 @@ class BollingerBandsResult(ResultBase):
 
     @property
     def upper_band(self):
-        return to_pydecimal(self._csdata.UpperBand)
+        return self._dtype_decimal(self._csdata.UpperBand)
 
     @upper_band.setter
     def upper_band(self, value):
@@ -55,7 +55,7 @@ class BollingerBandsResult(ResultBase):
 
     @property
     def lower_band(self):
-        return to_pydecimal(self._csdata.LowerBand)
+        return self._dtype_decimal(self._csdata.LowerBand)
 
     @lower_band.setter
     def lower_band(self, value):
@@ -63,27 +63,27 @@ class BollingerBandsResult(ResultBase):
 
     @property
     def percent_b(self):
-        return to_pydecimal(self._csdata.PercentB)
+        return self._dtype_float(self._csdata.PercentB)
 
     @percent_b.setter
     def percent_b(self, value):
-        self._csdata.PercentB = CsDecimal(value)
+        self._csdata.PercentB = float(value)
 
     @property
     def z_score(self):
-        return to_pydecimal(self._csdata.ZScore)
+        return self._dtype_float(self._csdata.ZScore)
 
     @z_score.setter
     def z_score(self, value):
-        self._csdata.ZScore = CsDecimal(value)
+        self._csdata.ZScore = float(value)
 
     @property
     def width(self):
-        return to_pydecimal(self._csdata.Width)
+        return self._dtype_float(self._csdata.Width)
 
     @width.setter
     def width(self, value):
-        self._csdata.Width = CsDecimal(value)
+        self._csdata.Width = float(value)
 
 T = TypeVar("T", bound=BollingerBandsResult)
 class BollingerBandsResults(IndicatorResults[T]):
