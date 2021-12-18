@@ -17,25 +17,25 @@ class ResultBase:
     def __init__(self, base_result: Type[CsResultBase], **kwargs):
         super().__init__()
         self._csdata = base_result
-        self._dtype_float = self.__to_py_float(kwargs.get('float', None))
-        self._dtype_decimal = self.__to_py_decimal(kwargs.get('decimal', None))
+        self._dtype_float = self.__get_float_converter(kwargs.get('float', None))
+        self._dtype_decimal = self.__get_decimal_converter(kwargs.get('decimal', None))
         
-    def __to_py_float(self, convertor):
+    def __get_float_converter(self, convertor):
         if convertor:
             def decorate(value):
                 r = convertor(value)
-                return DEFAULT_NAN if isnan(r) else r
+                return DEFAULT_NAN if isnan(r) or r is None else r
         else:
             def decorate(value):
                 return DEFAULT_NAN if value is None else value    
         
         return decorate
         
-    def __to_py_decimal(self, convertor):
+    def __get_decimal_converter(self, convertor):
         if convertor:
             def decorate(value):
                 r = convertor(to_pydecimal(value))
-                return DEFAULT_NAN if isnan(r) else r
+                return DEFAULT_NAN if isnan(r) or r is None else r
         else:
             def decorate(value):
                 r = to_pydecimal(value)
@@ -112,7 +112,8 @@ class IndicatorResults(List[T]):
                 "lookup_date must be an instance of datetime.datetime."
             )
 
-        result = CsIndicator.Find[CsResultBase](CsList(type(self._csdata[0]), self._csdata), CsDateTime(lookup_date))
+        result = CsIndicator.Find[CsResultBase](CsList(type(self._csdata[0]), self._csdata),
+                                                CsDateTime(lookup_date))
         return self._wrapper_class(result)
 
     @_verify_data
@@ -122,5 +123,6 @@ class IndicatorResults(List[T]):
                 "remove_periods must be an integer."
             )
 
-        removed_results = CsIndicator.RemoveWarmupPeriods[CsResultBase](CsList(type(self._csdata[0]), self._csdata), remove_periods)
+        removed_results = CsIndicator.RemoveWarmupPeriods[CsResultBase](CsList(type(self._csdata[0]), self._csdata),
+                                                                        remove_periods)
         return self.__class__(removed_results, self._wrapper_class)
