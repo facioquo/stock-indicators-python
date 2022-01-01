@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -16,7 +17,7 @@ class ChandelierResult(ResultBase):
     """
 
     @property
-    def chandelier_exit(self):
+    def chandelier_exit(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.ChandelierExit)
 
     @chandelier_exit.setter

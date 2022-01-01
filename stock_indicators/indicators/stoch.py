@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -43,7 +44,7 @@ class StochResult(ResultBase):
     """
 
     @property
-    def oscillator(self):
+    def oscillator(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Oscillator)
 
     @oscillator.setter
@@ -51,7 +52,7 @@ class StochResult(ResultBase):
         self._csdata.Oscillator = CsDecimal(value)
 
     @property
-    def signal(self):
+    def signal(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Signal)
 
     @signal.setter
@@ -59,7 +60,7 @@ class StochResult(ResultBase):
         self._csdata.Signal = CsDecimal(value)
 
     @property
-    def percent_j(self):
+    def percent_j(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.PercentJ)
 
     @percent_j.setter

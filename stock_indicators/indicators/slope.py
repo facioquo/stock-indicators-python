@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -16,7 +17,7 @@ class SlopeResult(ResultBase):
     """
 
     @property
-    def slope(self):
+    def slope(self) -> Optional[float]:
         return to_pydecimal(self._csdata.Slope)
 
     @slope.setter
@@ -24,7 +25,7 @@ class SlopeResult(ResultBase):
         self._csdata.Slope = CsDecimal(value)
         
     @property
-    def intercept(self):
+    def intercept(self) -> Optional[float]:
         return to_pydecimal(self._csdata.Intercept)
     
     @intercept.setter
@@ -32,7 +33,7 @@ class SlopeResult(ResultBase):
         self._csdata.Intercept = CsDecimal(value)
         
     @property
-    def stdev(self):
+    def stdev(self) -> Optional[float]:
         return to_pydecimal(self._csdata.StdDev)
     
     @stdev.setter
@@ -40,7 +41,7 @@ class SlopeResult(ResultBase):
         self._csdata.StdDev = CsDecimal(value)
         
     @property
-    def r_squared(self):
+    def r_squared(self) -> Optional[float]:
         return to_pydecimal(self._csdata.RSquared)
     
     @r_squared.setter
@@ -48,7 +49,7 @@ class SlopeResult(ResultBase):
         self._csdata.RSquared = CsDecimal(value)
     
     @property
-    def line(self):
+    def line(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Line)
     
     @line.setter

@@ -38,12 +38,12 @@ class BetaResult(ResultBase):
     """
 
     @property
-    def beta(self):
-        return to_pydecimal(self._csdata.Beta)
+    def beta(self) -> Optional[float]:
+        return self._csdata.Beta
 
     @beta.setter
     def beta(self, value):
-        self._csdata.Beta = CsDecimal(value)
+        self._csdata.Beta = value
 
 T = TypeVar("T", bound=BetaResult)
 class BetaResults(IndicatorResults[T]):

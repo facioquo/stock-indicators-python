@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -61,7 +62,7 @@ class SMAResult(ResultBase):
     """
 
     @property
-    def sma(self):
+    def sma(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Sma)
 
     @sma.setter
@@ -94,7 +95,7 @@ class SMAExtendedResult(SMAResult):
     """
 
     @property
-    def mad(self):
+    def mad(self) -> Optional[float]:
         return to_pydecimal(self._csdata.Mad)
 
     @mad.setter
@@ -102,7 +103,7 @@ class SMAExtendedResult(SMAResult):
         self._csdata.Mad = CsDecimal(value)
 
     @property
-    def mse(self):
+    def mse(self) -> Optional[float]:
         return to_pydecimal(self._csdata.Mse)
 
     @mse.setter
@@ -110,7 +111,7 @@ class SMAExtendedResult(SMAResult):
         self._csdata.Mse = CsDecimal(value)
 
     @property
-    def mape(self):
+    def mape(self) -> Optional[float]:
         return to_pydecimal(self._csdata.Mape)
 
     @mape.setter
