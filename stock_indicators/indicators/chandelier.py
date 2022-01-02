@@ -8,7 +8,7 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 def get_chandelier(quotes: Iterable[Quote], lookback_periods: int = 22, multiplier: float = 3):
-    results = CsIndicator.GetChandelier[Quote](CsList(Quote, quotes), lookback_periods, CsDecimal(multiplier))
+    results = CsIndicator.GetChandelier[Quote](CsList(Quote, quotes), lookback_periods, multiplier)
     return ChandelierResults(results, ChandelierResult)
 
 class ChandelierResult(ResultBase):
