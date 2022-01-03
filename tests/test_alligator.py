@@ -11,7 +11,7 @@ class TestAlligator:
         assert 482 == len(list(filter(lambda x: x.jaw is not None, results)))
         assert 490 == len(list(filter(lambda x: x.teeth is not None, results)))
         assert 495 == len(list(filter(lambda x: x.lips is not None, results)))
-        
+
         # starting calculations at proper index
         assert results[19].jaw is None
         assert results[20].jaw is not None
@@ -37,7 +37,7 @@ class TestAlligator:
         assert 213.74900 == round(float(results[8].lips), 5)
         assert 226.35353 == round(float(results[99].lips), 5)
         assert 244.29591 == round(float(results[501].lips), 5)
-        
+
     def test_bad_data(self, bad_quotes):
         results = indicators.get_alligator(bad_quotes)
 
@@ -46,13 +46,13 @@ class TestAlligator:
     def test_removed(self, quotes):
         results = indicators.get_alligator(quotes).remove_warmup_periods()
 
-        assert 237 == len(results)
+        assert 231 == len(results)
 
         r = results[len(results)-1]
         assert 260.98953 == round(float(r.jaw), 5)
         assert 253.53576 == round(float(r.teeth), 5)
         assert 244.29591 == round(float(r.lips), 5)
-        
+
     def test_exceptions(self, quotes):
         from Skender.Stock.Indicators import BadQuotesException
         with pytest.raises(BadQuotesException):

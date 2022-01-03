@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar, overload
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -37,7 +38,7 @@ class ParabolicSARResult(ResultBase):
     """
 
     @property
-    def sar(self):
+    def sar(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Sar)
 
     @sar.setter
@@ -45,7 +46,7 @@ class ParabolicSARResult(ResultBase):
         self._csdata.Sar = CsDecimal(value)
     
     @property
-    def is_reversal(self):
+    def is_reversal(self) -> Optional[bool]:
         return self._csdata.IsReversal
     
     @is_reversal.setter

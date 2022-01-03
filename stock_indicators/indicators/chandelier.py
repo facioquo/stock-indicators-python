@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -7,7 +8,7 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 def get_chandelier(quotes: Iterable[Quote], lookback_periods: int = 22, multiplier: float = 3):
-    results = CsIndicator.GetChandelier[Quote](CsList(Quote, quotes), lookback_periods, CsDecimal(multiplier))
+    results = CsIndicator.GetChandelier[Quote](CsList(Quote, quotes), lookback_periods, multiplier)
     return ChandelierResults(results, ChandelierResult)
 
 class ChandelierResult(ResultBase):
@@ -16,7 +17,7 @@ class ChandelierResult(ResultBase):
     """
 
     @property
-    def chandelier_exit(self):
+    def chandelier_exit(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.ChandelierExit)
 
     @chandelier_exit.setter

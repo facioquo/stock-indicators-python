@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -41,7 +42,7 @@ class MACDResult(ResultBase):
     """
 
     @property
-    def macd(self):
+    def macd(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Macd)
 
     @macd.setter
@@ -49,7 +50,7 @@ class MACDResult(ResultBase):
         self._csdata.Macd = CsDecimal(value)
 
     @property
-    def signal(self):
+    def signal(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Signal)
 
     @signal.setter
@@ -57,7 +58,7 @@ class MACDResult(ResultBase):
         self._csdata.Signal = CsDecimal(value)
 
     @property
-    def histogram(self):
+    def histogram(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Histogram)
 
     @histogram.setter
@@ -65,7 +66,7 @@ class MACDResult(ResultBase):
         self._csdata.Histogram = CsDecimal(value)
         
     @property
-    def fast_ema(self):
+    def fast_ema(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.FastEma)
     
     @fast_ema.setter
@@ -73,7 +74,7 @@ class MACDResult(ResultBase):
         self._csdata.FastEma = CsDecimal(value)
         
     @property
-    def slow_ema(self):
+    def slow_ema(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.SlowEma)
     
     @slow_ema.setter

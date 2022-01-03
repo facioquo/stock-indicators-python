@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import to_pydecimal
@@ -42,7 +43,7 @@ class ALMAResult(ResultBase):
     """
 
     @property
-    def alma(self):
+    def alma(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Alma)
 
     @alma.setter

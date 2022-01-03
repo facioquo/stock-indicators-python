@@ -1,4 +1,5 @@
-from typing import Iterable, Type, TypeVar
+from decimal import Decimal
+from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
@@ -45,7 +46,7 @@ class FractalResult(ResultBase):
     """
 
     @property
-    def fractal_bear(self):
+    def fractal_bear(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.FractalBear)
 
     @fractal_bear.setter
@@ -53,7 +54,7 @@ class FractalResult(ResultBase):
         self._csdata.FractalBear = CsDecimal(value)
 
     @property
-    def fractal_bull(self):
+    def fractal_bull(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.FractalBull)
 
     @fractal_bull.setter
