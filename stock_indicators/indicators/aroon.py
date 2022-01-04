@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -35,7 +36,7 @@ class AroonResult(ResultBase):
     """
 
     @property
-    def aroon_up(self):
+    def aroon_up(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.AroonUp)
 
     @aroon_up.setter
@@ -43,7 +44,7 @@ class AroonResult(ResultBase):
         self._csdata.AroonUp = CsDecimal(value)
 
     @property
-    def aroon_down(self):
+    def aroon_down(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.AroonDown)
 
     @aroon_down.setter
@@ -51,7 +52,7 @@ class AroonResult(ResultBase):
         self._csdata.AroonDown = CsDecimal(value)
 
     @property
-    def oscillator(self):
+    def oscillator(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Oscillator)
 
     @oscillator.setter

@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -16,7 +17,7 @@ class DonchianResult(ResultBase):
     """
 
     @property
-    def upper_band(self):
+    def upper_band(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.UpperBand)
 
     @upper_band.setter
@@ -24,7 +25,7 @@ class DonchianResult(ResultBase):
         self._csdata.UpperBand = CsDecimal(value)
     
     @property
-    def lower_band(self):
+    def lower_band(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.LowerBand)
 
     @lower_band.setter
@@ -32,7 +33,7 @@ class DonchianResult(ResultBase):
         self._csdata.LowerBand = CsDecimal(value)
         
     @property
-    def center_line(self):
+    def center_line(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Centerline)
 
     @center_line.setter
@@ -40,7 +41,7 @@ class DonchianResult(ResultBase):
         self._csdata.Centerline = CsDecimal(value)
         
     @property
-    def width(self):
+    def width(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Width)
 
     @width.setter

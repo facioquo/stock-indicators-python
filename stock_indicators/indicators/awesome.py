@@ -38,20 +38,20 @@ class AwesomeResult(ResultBase):
     """
 
     @property
-    def oscillator(self):
-        return to_pydecimal(self._csdata.Oscillator)
+    def oscillator(self) -> Optional[float]:
+        return self._csdata.Oscillator
 
     @oscillator.setter
     def oscillator(self, value):
-        self._csdata.Oscillator = CsDecimal(value)
+        self._csdata.Oscillator = value
 
     @property
-    def normalized(self):
-        return to_pydecimal(self._csdata.Normalized)
+    def normalized(self) -> Optional[float]:
+        return self._csdata.Normalized
 
     @normalized.setter
     def normalized(self, value):
-        self._csdata.Normalized = CsDecimal(value)
+        self._csdata.Normalized = value
 
 T = TypeVar("T", bound=AwesomeResult)
 class AwesomeResults(IndicatorResults[T]):

@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -16,7 +17,7 @@ class ElderRayResult(ResultBase):
     """
 
     @property
-    def ema(self):
+    def ema(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Ema)
 
     @ema.setter
@@ -24,7 +25,7 @@ class ElderRayResult(ResultBase):
         self._csdata.Ema = CsDecimal(value)
         
     @property
-    def bull_power(self):
+    def bull_power(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.BullPower)
     
     @bull_power.setter
@@ -32,7 +33,7 @@ class ElderRayResult(ResultBase):
         self._csdata.BullPower = CsDecimal(value)
         
     @property
-    def bear_power(self):
+    def bear_power(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.BearPower)
     
     @bear_power.setter

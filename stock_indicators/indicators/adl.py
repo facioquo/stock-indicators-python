@@ -35,36 +35,36 @@ class ADLResult(ResultBase):
     """
 
     @property
-    def money_flow_multiplier(self):
-        return to_pydecimal(self._csdata.MoneyFlowMultiplier)
+    def money_flow_multiplier(self) -> float:
+        return self._csdata.MoneyFlowMultiplier
 
     @money_flow_multiplier.setter
     def money_flow_multiplier(self, value):
-        self._csdata.MoneyFlowMultiplier = CsDecimal(value)
+        self._csdata.MoneyFlowMultiplier = value
 
     @property
-    def money_flow_volume(self):
-        return to_pydecimal(self._csdata.MoneyFlowVolume)
+    def money_flow_volume(self) -> float:
+        return self._csdata.MoneyFlowVolume
 
     @money_flow_volume.setter
     def money_flow_volume(self, value):
-        self._csdata.MoneyFlowVolume = CsDecimal(value)
+        self._csdata.MoneyFlowVolume = value
 
     @property
-    def adl(self):
-        return to_pydecimal(self._csdata.Adl)
+    def adl(self) -> float:
+        return self._csdata.Adl
 
     @adl.setter
     def adl(self, value):
-        self._csdata.Adl = CsDecimal(value)
+        self._csdata.Adl = value
 
     @property
-    def adl_sma(self):
-        return to_pydecimal(self._csdata.AdlSma)
+    def adl_sma(self) -> Optional[float]:
+        return self._csdata.AdlSma
 
     @adl_sma.setter
     def adl_sma(self, value):
-        self._csdata.AdlSma = CsDecimal(value)
+        self._csdata.AdlSma = value
 
 T = TypeVar("T", bound=ADLResult)
 class ADLResults(IndicatorResults[T]):

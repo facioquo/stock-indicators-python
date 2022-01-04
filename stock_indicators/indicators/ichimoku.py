@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -22,7 +23,7 @@ class IchimokuResult(ResultBase):
     """
 
     @property
-    def tenkan_sen(self):
+    def tenkan_sen(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.TenkanSen)
 
     @tenkan_sen.setter
@@ -30,7 +31,7 @@ class IchimokuResult(ResultBase):
         self._csdata.TenkanSen = CsDecimal(value)
         
     @property
-    def kijun_sen(self):
+    def kijun_sen(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.KijunSen)
     
     @kijun_sen.setter
@@ -38,7 +39,7 @@ class IchimokuResult(ResultBase):
         self._csdata.KijunSen = CsDecimal(value)
         
     @property
-    def senkou_span_a(self):
+    def senkou_span_a(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.SenkouSpanA)
     
     @senkou_span_a.setter
@@ -46,7 +47,7 @@ class IchimokuResult(ResultBase):
         self._csdata.SenkouSpanA = CsDecimal(value)
     
     @property
-    def senkou_span_b(self):
+    def senkou_span_b(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.SenkouSpanB)
     
     @senkou_span_b.setter
@@ -54,7 +55,7 @@ class IchimokuResult(ResultBase):
         self._csdata.SenkouSpanB = CsDecimal(value)
         
     @property
-    def chikou_span(self):
+    def chikou_span(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.ChikouSpan)
     
     @chikou_span.setter
