@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -31,7 +32,7 @@ def get_super_trend(quotes: Iterable[Quote], lookback_periods: int = 10, multipl
          - [SuperTrend Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/SuperTrend/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    super_trend_results = CsIndicator.GetSuperTrend[Quote](CsList(Quote, quotes), lookback_periods, CsDecimal(multiplier))
+    super_trend_results = CsIndicator.GetSuperTrend[Quote](CsList(Quote, quotes), lookback_periods, multiplier)
     return SuperTrendResults(super_trend_results, SuperTrendResult)
 
 class SuperTrendResult(ResultBase):
@@ -40,7 +41,7 @@ class SuperTrendResult(ResultBase):
     """
 
     @property
-    def super_trend(self):
+    def super_trend(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.SuperTrend)
 
     @super_trend.setter
@@ -48,7 +49,7 @@ class SuperTrendResult(ResultBase):
         self._csdata.SuperTrend = CsDecimal(value)
 
     @property
-    def upper_band(self):
+    def upper_band(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.UpperBand)
 
     @upper_band.setter
@@ -56,7 +57,7 @@ class SuperTrendResult(ResultBase):
         self._csdata.UpperBand = CsDecimal(value)
 
     @property
-    def lower_band(self):
+    def lower_band(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.LowerBand)
 
     @lower_band.setter

@@ -7,43 +7,27 @@ from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
-def get_elder_ray(quotes: Iterable[Quote], lookback_periods: int = 13):
-    results = CsIndicator.GetElderRay[Quote](CsList(Quote, quotes), lookback_periods)
-    return ElderRayResults(results, ElderRayResult)
+def get_chandelier(quotes: Iterable[Quote], lookback_periods: int = 22, multiplier: float = 3):
+    results = CsIndicator.GetChandelier[Quote](CsList(Quote, quotes), lookback_periods, multiplier)
+    return ChandelierResults(results, ChandelierResult)
 
-class ElderRayResult(ResultBase):
+class ChandelierResult(ResultBase):
     """
-    A wrapper class for a single unit of Elder-ray Index results.
+    A wrapper class for a single unit of Chandelier Exit results.
     """
 
     @property
-    def ema(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Ema)
+    def chandelier_exit(self) -> Optional[Decimal]:
+        return to_pydecimal(self._csdata.ChandelierExit)
 
-    @ema.setter
-    def ema(self, value):
-        self._csdata.Ema = CsDecimal(value)
+    @chandelier_exit.setter
+    def chandelier_exit(self, value):
+        self._csdata.ChandelierExit = CsDecimal(value)
         
-    @property
-    def bull_power(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.BullPower)
-    
-    @bull_power.setter
-    def bull_power(self, value):
-        self._csdata.BullPower = CsDecimal(value)
-        
-    @property
-    def bear_power(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.BearPower)
-    
-    @bear_power.setter
-    def bear_power(self, value):
-        self._csdata.BearPower = CsDecimal(value)
-
-T = TypeVar("T", bound=ElderRayResult)
-class ElderRayResults(IndicatorResults[T]):
+T = TypeVar("T", bound=ChandelierResult)
+class ChandelierResults(IndicatorResults[T]):
     """
-    A wrapper class for the list of Elder-ray Index results.
+    A wrapper class for the list of Chandelier Exit results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
@@ -59,4 +43,3 @@ class ElderRayResults(IndicatorResults[T]):
         removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
 
         return self.__class__(removed_results, self._wrapper_class)
-        

@@ -36,7 +36,7 @@ class RSIResult(ResultBase):
     """
 
     @property
-    def rsi(self):
+    def rsi(self) -> Optional[float]:
         return to_pydecimal(self._csdata.Rsi)
 
     @rsi.setter

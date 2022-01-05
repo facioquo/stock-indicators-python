@@ -36,28 +36,28 @@ class ADXResult(ResultBase):
     """
 
     @property
-    def pdi(self):
-        return to_pydecimal(self._csdata.Pdi)
+    def pdi(self) -> Optional[float]:
+        return self._csdata.Pdi
 
     @pdi.setter
     def pdi(self, value):
-        self._csdata.Pdi = CsDecimal(value)
+        self._csdata.Pdi = value
 
     @property
-    def mdi(self):
-        return to_pydecimal(self._csdata.Mdi)
+    def mdi(self) -> Optional[float]:
+        return self._csdata.Mdi
 
     @mdi.setter
     def mdi(self, value):
-        self._csdata.Mdi = CsDecimal(value)
+        self._csdata.Mdi = value
 
     @property
-    def adx(self):
-        return to_pydecimal(self._csdata.Adx)
+    def adx(self) -> Optional[float]:
+        return self._csdata.Adx
 
     @adx.setter
     def adx(self, value):
-        self._csdata.Adx = CsDecimal(value)
+        self._csdata.Adx = value
 
 T = TypeVar("T", bound=ADXResult)
 class ADXResults(IndicatorResults[T]):

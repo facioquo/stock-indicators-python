@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -34,7 +35,7 @@ class AlligatorResult(ResultBase):
     """
 
     @property
-    def jaw(self):
+    def jaw(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Jaw)
 
     @jaw.setter
@@ -42,7 +43,7 @@ class AlligatorResult(ResultBase):
         self._csdata.Jaw = CsDecimal(value)
 
     @property
-    def teeth(self):
+    def teeth(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Teeth)
 
     @teeth.setter
@@ -50,7 +51,7 @@ class AlligatorResult(ResultBase):
         self._csdata.Teeth = CsDecimal(value)
 
     @property
-    def lips(self):
+    def lips(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Lips)
 
     @lips.setter
