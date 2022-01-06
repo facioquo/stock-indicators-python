@@ -7,43 +7,27 @@ from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
-def get_elder_ray(quotes: Iterable[Quote], lookback_periods: int = 13):
-    results = CsIndicator.GetElderRay[Quote](CsList(Quote, quotes), lookback_periods)
-    return ElderRayResults(results, ElderRayResult)
+def get_triple_ema(quotes: Iterable[Quote], lookback_periods: int):
+    results = CsIndicator.GetTripleEma[Quote](CsList(Quote, quotes), lookback_periods)
+    return TripleEMAResults(results, TripleEMAResult)
 
-class ElderRayResult(ResultBase):
+class TripleEMAResult(ResultBase):
     """
-    A wrapper class for a single unit of Elder-ray Index results.
+    A wrapper class for a single unit of Triple Exponential Moving Average (TEMA) results.
     """
 
     @property
-    def ema(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Ema)
+    def tema(self) -> Optional[Decimal]:
+        return to_pydecimal(self._csdata.Tema)
 
-    @ema.setter
-    def ema(self, value):
-        self._csdata.Ema = CsDecimal(value)
-        
-    @property
-    def bull_power(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.BullPower)
-    
-    @bull_power.setter
-    def bull_power(self, value):
-        self._csdata.BullPower = CsDecimal(value)
-        
-    @property
-    def bear_power(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.BearPower)
-    
-    @bear_power.setter
-    def bear_power(self, value):
-        self._csdata.BearPower = CsDecimal(value)
+    @tema.setter
+    def tema(self, value):
+        self._csdata.Tema = CsDecimal(value)
 
-T = TypeVar("T", bound=ElderRayResult)
-class ElderRayResults(IndicatorResults[T]):
+T = TypeVar("T", bound=TripleEMAResult)
+class TripleEMAResults(IndicatorResults[T]):
     """
-    A wrapper class for the list of Elder-ray Index results.
+    A wrapper class for the list of Triple Exponential Moving Average (TEMA) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """

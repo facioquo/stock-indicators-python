@@ -20,7 +20,7 @@ class ROCResult(ResultBase):
     """
 
     @property
-    def roc(self):
+    def roc(self) -> Optional[float]:
         return to_pydecimal(self._csdata.Roc)
 
     @roc.setter
@@ -28,7 +28,7 @@ class ROCResult(ResultBase):
         self._csdata.Roc = CsDecimal(value)
         
     @property
-    def roc_sma(self):
+    def roc_sma(self) -> Optional[float]:
         return to_pydecimal(self._csdata.RocSma)
 
     @roc_sma.setter
@@ -62,7 +62,7 @@ class ROCWBResult(ResultBase):
     """
 
     @property
-    def roc(self):
+    def roc(self) -> Optional[float]:
         return to_pydecimal(self._csdata.Roc)
 
     @roc.setter
@@ -70,7 +70,7 @@ class ROCWBResult(ResultBase):
         self._csdata.Roc = CsDecimal(value)
         
     @property
-    def roc_ema(self):
+    def roc_ema(self) -> Optional[float]:
         return to_pydecimal(self._csdata.RocEma)
 
     @roc_ema.setter
@@ -78,7 +78,7 @@ class ROCWBResult(ResultBase):
         self._csdata.RocEma = CsDecimal(value)
         
     @property
-    def upper_band(self):
+    def upper_band(self) -> Optional[float]:
         return to_pydecimal(self._csdata.UpperBand)
     
     @upper_band.setter
@@ -86,7 +86,7 @@ class ROCWBResult(ResultBase):
         self._csdata.UpperBand = CsDecimal(value)
         
     @property
-    def lower_band(self):
+    def lower_band(self) -> Optional[float]:
         return to_pydecimal(self._csdata.LowerBand)
     
     @lower_band.setter

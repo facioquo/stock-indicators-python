@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -35,7 +36,7 @@ class ATRResult(ResultBase):
     """
 
     @property
-    def tr(self):
+    def tr(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Tr)
 
     @tr.setter
@@ -43,7 +44,7 @@ class ATRResult(ResultBase):
         self._csdata.Tr = CsDecimal(value)
 
     @property
-    def atr(self):
+    def atr(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Atr)
 
     @atr.setter
@@ -51,7 +52,7 @@ class ATRResult(ResultBase):
         self._csdata.Atr = CsDecimal(value)
 
     @property
-    def atrp(self):
+    def atrp(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Atrp)
 
     @atrp.setter

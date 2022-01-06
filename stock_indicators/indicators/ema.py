@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -36,7 +37,7 @@ class EMAResult(ResultBase):
     """
 
     @property
-    def ema(self):
+    def ema(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Ema)
 
     @ema.setter

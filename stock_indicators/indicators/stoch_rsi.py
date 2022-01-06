@@ -1,3 +1,4 @@
+from decimal import Decimal
 from typing import Iterable, Optional, Type, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -44,7 +45,7 @@ class StochRSIResult(ResultBase):
     """
 
     @property
-    def stoch_rsi(self):
+    def stoch_rsi(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.StochRsi)
 
     @stoch_rsi.setter
@@ -52,7 +53,7 @@ class StochRSIResult(ResultBase):
         self._csdata.StochRsi = CsDecimal(value)
 
     @property
-    def signal(self):
+    def signal(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Signal)
 
     @signal.setter

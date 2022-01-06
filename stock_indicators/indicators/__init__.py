@@ -36,6 +36,18 @@ from .bollinger_bands import (
     get_bollinger_bands
 )
 
+from .chandelier import (
+    get_chandelier
+)
+
+from .donchian import (
+    get_donchian
+)
+
+from .double_ema import (
+    get_double_ema
+)
+
 from .elder_ray import (
     get_elder_ray
 )
@@ -48,8 +60,20 @@ from .fractal import (
     get_fractal
 )
 
+from .heikin_ashi import (
+    get_heikin_ashi
+)
+
+from .ichimoku import (
+    get_ichimoku
+)
+
 from .macd import (
     get_macd
+)
+
+from .parabolic_sar import (
+    get_parabolic_sar
 )
 
 from .roc import (
@@ -59,6 +83,10 @@ from .roc import (
 
 from .rsi import (
     get_rsi
+)
+
+from .slope import (
+    get_slope
 )
 
 from .sma import (
@@ -76,4 +104,8 @@ from .stoch_rsi import (
 
 from .super_trend import (
     get_super_trend
+)
+
+from .triple_ema import (
+    get_triple_ema
 )

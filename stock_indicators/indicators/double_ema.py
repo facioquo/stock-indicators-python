@@ -7,43 +7,27 @@ from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
-def get_elder_ray(quotes: Iterable[Quote], lookback_periods: int = 13):
-    results = CsIndicator.GetElderRay[Quote](CsList(Quote, quotes), lookback_periods)
-    return ElderRayResults(results, ElderRayResult)
+def get_double_ema(quotes: Iterable[Quote], lookback_periods: int):
+    results = CsIndicator.GetDoubleEma[Quote](CsList(Quote, quotes), lookback_periods)
+    return DoubleEMAResults(results, DoubleEMAResult)
 
-class ElderRayResult(ResultBase):
+class DoubleEMAResult(ResultBase):
     """
-    A wrapper class for a single unit of Elder-ray Index results.
+    A wrapper class for a single unit of Double Exponential Moving Average (DEMA) results.
     """
 
     @property
-    def ema(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Ema)
+    def dema(self) -> Optional[Decimal]:
+        return to_pydecimal(self._csdata.Dema)
 
-    @ema.setter
-    def ema(self, value):
-        self._csdata.Ema = CsDecimal(value)
-        
-    @property
-    def bull_power(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.BullPower)
-    
-    @bull_power.setter
-    def bull_power(self, value):
-        self._csdata.BullPower = CsDecimal(value)
-        
-    @property
-    def bear_power(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.BearPower)
-    
-    @bear_power.setter
-    def bear_power(self, value):
-        self._csdata.BearPower = CsDecimal(value)
+    @dema.setter
+    def dema(self, value):
+        self._csdata.Dema = CsDecimal(value)
 
-T = TypeVar("T", bound=ElderRayResult)
-class ElderRayResults(IndicatorResults[T]):
+T = TypeVar("T", bound=DoubleEMAResult)
+class DoubleEMAResults(IndicatorResults[T]):
     """
-    A wrapper class for the list of Elder-ray Index results.
+    A wrapper class for the list of Double Exponential Moving Average (DEMA) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
