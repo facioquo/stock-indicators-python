@@ -48,8 +48,8 @@ ChandelierResults[ChandelierResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `chandelier_exit` | decimal.Decimal | Exit line
+| `date` | datetime | Date
+| `chandelier_exit` | Decimal, Optional | Exit line
 
 ### Utilities
 

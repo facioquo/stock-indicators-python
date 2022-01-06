@@ -40,10 +40,10 @@ ADXResults<ADXResult>
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `pdi` | decimal.Decimal | Plus Directional Index (+DI) for `N` lookback periods
-| `mdi` | decimal.Decimal | Minus Directional Index (-DI) for `N` lookback periods
-| `adx` | decimal.Decimal | Average Directional Index (ADX) for `N` lookback periods
+| `date` | datetime | Date
+| `pdi` | float, Optional | Plus Directional Index (+DI) for `N` lookback periods
+| `mdi` | float, Optional | Minus Directional Index (-DI) for `N` lookback periods
+| `adx` | float, Optional | Average Directional Index (ADX) for `N` lookback periods
 
 ### Utilities
 

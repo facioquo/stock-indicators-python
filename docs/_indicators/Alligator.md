@@ -49,10 +49,10 @@ AlligatorResults[AlligatorResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `jaw` | decimal.Decimal | Alligator's Jaw
-| `teeth` | decimal.Decimal | Alligator's Teeth
-| `lips` | decimal.Decimal | Alligator's Lips
+| `date` | datetime | Date
+| `jaw` | Decimal, Optional | Alligator's Jaw
+| `teeth` | Decimal, Optional | Alligator's Teeth
+| `lips` | Decimal, Optional | Alligator's Lips
 
 ### Utilities
 
@@ -74,14 +74,14 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_alligator(quotes)
 ```
 
-### About: {{ page.title }}
+## About: {{ page.title }}
 
 Created by Bill Williams, Alligator is a depiction of three smoothed moving averages of median price, showing chart patterns that compared to an alligator's feeding habits when describing market movement. The moving averages are known as the Jaw, Teeth, and Lips, which are calculated using specific lookback and offset periods.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/385 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Alligator.png)
 
-#### Sources
+### Sources
 
 - [C# core]({{site.base_sourceurl}}/a-d/Alligator/Alligator.cs)
 - [Python wrapper]({{site.sourceurl}}/alligator.py)

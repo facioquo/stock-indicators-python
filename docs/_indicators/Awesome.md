@@ -40,9 +40,9 @@ AwesomeResults[AwesomeResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `oscillator` | decimal.Decimal | Awesome Oscillator
-| `normalized` | decimal.Decimal | `100 × oscillator ÷ (median price)`
+| `date` | datetime | Date
+| `oscillator` | float, Optional | Awesome Oscillator
+| `normalized` | float, Optional | `100 × oscillator ÷ (median price)`
 
 ### Utilities
 

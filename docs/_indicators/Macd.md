@@ -42,12 +42,12 @@ MACDResults[MACDResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `macd` | decimal.Decimal | The MACD line is the difference between slow and fast moving averages (`macd = fast_ema - slow_ema`)
-| `signal` | decimal.Decimal | Moving average of the `macd` line
-| `histogram` | decimal.Decimal | Gap between of the `macd` and `signal` line
-| `fast_ema` | decimal.Decimal | Fast Exponential Moving Average
-| `slow_ema` | decimal.Decimal | Slow Exponential Moving Average
+| `date` | datetime | Date
+| `macd` | Decimal, Optional | The MACD line is the difference between slow and fast moving averages (`macd = fast_ema - slow_ema`)
+| `signal` | Decimal, Optional | Moving average of the `macd` line
+| `histogram` | Decimal, Optional | Gap between of the `macd` and `signal` line
+| `fast_ema` | Decimal, Optional | Fast Exponential Moving Average
+| `slow_ema` | Decimal, Optional | Slow Exponential Moving Average
 
 ### Utilities
 

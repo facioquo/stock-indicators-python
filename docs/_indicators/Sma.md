@@ -51,8 +51,8 @@ SMAResults[SMAResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `sma` | decimal.Decimal | Simple moving average
+| `date` | datetime | Date
+| `sma` | Decimal, Optional | Simple moving average
 
 ### Utilities
 
@@ -91,11 +91,11 @@ An extended variant of this indicator includes additional analysis.
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `sma` | decimal.Decimal | Simple moving average
-| `mad` | decimal.Decimal | Mean absolute deviation
-| `mse` | decimal.Decimal | Mean square error
-| `mape` | decimal.Decimal | Mean absolute percentage error
+| `date` | datetime | Date
+| `sma` | Decimal, Optional | Simple moving average
+| `mad` | float, Optional | Mean absolute deviation
+| `mse` | float, Optional | Mean square error
+| `mape` | float, Optional | Mean absolute percentage error
 
 ## Example
 

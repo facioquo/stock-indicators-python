@@ -56,10 +56,10 @@ StochResults[StochResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `oscillator` or `k` | decimal.Decimal | %K Oscillator over prior `N` lookback periods
-| `signal` or `d` | decimal.Decimal | %D Simple moving average of Oscillator
-| `percent_j` or `j` | decimal.Decimal | %J is the weighted divergence of %K and %D: `%J=kFactor×%K-dFactor×%D`
+| `date` | datetime | Date
+| `oscillator` or `k` | Decimal, Optional | %K Oscillator over prior `N` lookback periods
+| `signal` or `d` | Decimal, Optional | %D Simple moving average of Oscillator
+| `percent_j` or `j` | Decimal, Optional | %J is the weighted divergence of %K and %D: `%J=kFactor×%K-dFactor×%D`
 
 Note: aliases of `k`, `d`, and `j` are also provided.  They can be used interchangably with the standard outputs.
 

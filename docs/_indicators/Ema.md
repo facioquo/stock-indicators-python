@@ -53,8 +53,8 @@ EMAResults[EMAResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `ema` | decimal.Decimal | Exponential moving average
+| `date` | datetime | Date
+| `ema` | Decimal, Optional | Exponential moving average
 
 ### Utilities
 

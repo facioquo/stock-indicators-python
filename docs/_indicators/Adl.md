@@ -37,11 +37,11 @@ ADLResults[ADLResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `money_flow_multiplier` | decimal.Decimal | Money Flow Multiplier
-| `money_flow_volume` | decimal.Decimal | Money Flow Volume
-| `adl` | decimal.Decimal | Accumulation Distribution Line (ADL)
-| `adl_sma` | decimal.Decimal | Moving average (SMA) of ADL based on `sma_periods` periods, if specified
+| `date` | datetime | Date
+| `money_flow_multiplier` | float | Money Flow Multiplier
+| `money_flow_volume` | float | Money Flow Volume
+| `adl` | float | Accumulation Distribution Line (ADL)
+| `adl_sma` | float, Optional | Moving average (SMA) of ADL based on `sma_periods` periods, if specified
 
 :warning: **Warning**: absolute values in ADL and MFV are somewhat meaningless, so use with caution.
 

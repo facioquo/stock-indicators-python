@@ -40,8 +40,8 @@ RSIResults[RSIResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `rsi` | decimal.Decimal | RSI over prior `N` lookback periods
+| `date` | datetime | Date
+| `rsi` | float, Optional | RSI over prior `N` lookback periods
 
 ### Utilities
 

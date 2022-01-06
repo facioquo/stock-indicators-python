@@ -47,10 +47,10 @@ AroonResult[AroonResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `aroon_up` | decimal.Decimal | Based on last High price
-| `aroon_down` | decimal.Decimal | Based on last Low price
-| `oscillator` | decimal.Decimal | AroonUp - AroonDown
+| `date` | datetime | Date
+| `aroon_up` | Decimal, Optional | Based on last High price
+| `aroon_down` | Decimal, Optional | Based on last Low price
+| `oscillator` | Decimal, Optional | AroonUp - AroonDown
 
 ### Utilities
 

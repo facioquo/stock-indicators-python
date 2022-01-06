@@ -39,9 +39,9 @@ ROCResults[ROCResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `roc` | decimal.Decimal | Rate of Change over `N` lookback periods (%, not decimal)
-| `roc_sma` | decimal.Decimal | Moving average (SMA) of ROC based on `sma_periods` periods, if specified
+| `date` | datetime | Date
+| `roc` | float, Optional | Rate of Change over `N` lookback periods (%, not decimal)
+| `roc_sma` | float, Optional | Moving average (SMA) of ROC based on `sma_periods` periods, if specified
 
 ### Utilities
 
@@ -87,11 +87,11 @@ ROCWBResults[ROCWBResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `roc` | decimal.Decimal | Rate of Change over `N` lookback periods (%, not decimal)
-| `roc_ema` | decimal.Decimal | Exponential moving average (EMA) of `roc`
-| `upper_band` | decimal.Decimal | Upper band of ROC (overbought indicator)
-| `lower_band` | decimal.Decimal | Lower band of ROC (oversold indicator)
+| `date` | datetime | Date
+| `roc` | float, Optional | Rate of Change over `N` lookback periods (%, not decimal)
+| `roc_ema` | float, Optional | Exponential moving average (EMA) of `roc`
+| `upper_band` | float, Optional | Upper band of ROC (overbought indicator)
+| `lower_band` | float, Optional | Lower band of ROC (oversold indicator)
 
 
 ## About {{ page.title }}

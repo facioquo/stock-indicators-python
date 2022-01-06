@@ -41,10 +41,10 @@ ElderRayResults[ElderRayResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `ema` | decimal.Decimal | Exponential moving average of Close price
-| `bull_power` | decimal.Decimal | Bull Power
-| `bear_power` | decimal.Decimal | Bear Power
+| `date` | datetime | Date
+| `ema` | Decimal, Optional | Exponential moving average of Close price
+| `bull_power` | Decimal, Optional | Bull Power
+| `bear_power` | Decimal, Optional | Bear Power
 
 ### Utilities
 
