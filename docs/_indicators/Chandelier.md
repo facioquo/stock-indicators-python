@@ -17,6 +17,7 @@ layout: indicator
 | `quotes` | Iterable[Type[Quote]] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
 | `lookback_periods` | int, *default 22* | Number of periods (`N`) for the lookback evaluation.
 | `multiplier` | float, *default 3.0* | Multiplier number must be a positive value.
+
 <!-- | `type` | ChandelierType | Direction of exit.  See [ChandelierType options](#chandeliertype-options) below.  Default is `ChandelierType.Long`. -->
 
 ### Historical quotes requirements
@@ -35,7 +36,7 @@ You must have at least `N+1` periods of `quotes`.
 ## Return
 
 ```python
-ChandelierResults<ChandelierResult>
+ChandelierResults[ChandelierResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
@@ -70,10 +71,14 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_chandelier(quotes, 22, 3);
 ```
 
-# About: {{ page.title }}
+## About: {{ page.title }}
 
 Created by Charles Le Beau, the [Chandelier Exit](https://school.stockcharts.com/doku.php?id=technical_indicators:chandelier_exit) is typically used for stop-loss and can be computed for both long or short types.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/263 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Chandelier.png)
 
+### Sources
+
+- [C# core]({{site.base_sourceurl}}/a-d/Chandelier/Chandelier.cs)
+- [Python wrapper]({{site.sourceurl}}/chandelier.py)
