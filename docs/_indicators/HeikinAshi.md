@@ -48,7 +48,7 @@ HeikinAshiResults[HeikinAshiResult]
 
 - [.to_quotes()]({{site.baseurl}}/utilities#convert-to-quotes)
 - [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
-- [.remove_warmup_periods()]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
