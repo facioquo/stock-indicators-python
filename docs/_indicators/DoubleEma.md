@@ -26,7 +26,7 @@ You must have at least `3×N` or `2×N+100` periods of `quotes`, whichever is mo
 ## Return
 
 ```python
-DemaResults[DemaResult]
+DoubleEMAResult[DoubleEMAResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
@@ -36,7 +36,7 @@ DemaResults[DemaResult]
 
 :hourglass: **Convergence Warning**: The first `2×N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
-### DemaResult
+### DoubleEMAResult
 
 | name | type | notes
 | -- |-- |--
