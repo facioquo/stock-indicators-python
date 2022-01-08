@@ -8,6 +8,26 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 def get_triple_ema(quotes: Iterable[Quote], lookback_periods: int):
+    """Get TEMA calculated.
+    
+    Triple Exponential Moving Average (TEMA) of the Close price.
+    Note: TEMA is often confused with the alternative TRIX oscillator.
+    
+    Parameters:
+        `quotes` : Iterable[Quotes]
+            Historical price quotes.
+        
+        `lookback_periods` : int
+            Number of periods in the lookback window.
+    
+    Returns:
+        `TripleEMAResults[TripleEMAResult]`
+            TripleEMAResults is list of TripleEMAResult with providing useful helper methods.
+    
+    See more:
+         - [TEMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/TripleEma/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetTripleEma[Quote](CsList(Quote, quotes), lookback_periods)
     return TripleEMAResults(results, TripleEMAResult)
 

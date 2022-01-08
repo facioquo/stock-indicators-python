@@ -8,6 +8,25 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 def get_donchian(quotes: Iterable[Quote], lookback_periods: int = 20):
+    """Get Donchian Channels calculated.
+    
+    Donchian Channels, also called Price Channels, are derived from highest High and lowest Low values over a lookback window.
+    
+    Parameters:
+        `quotes` : Iterable[Quotes]
+            Historical price quotes.
+        
+        `lookback_periods` : int, defaults 22
+            Number of periods in the lookback window.
+    
+    Returns:
+        `DonchianResults[DonchianResult]`
+            DonchianResults is list of DonchianResult with providing useful helper methods.
+    
+    See more:
+         - [Donchian Channels Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Donchian/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetDonchian[Quote](CsList(Quote, quotes), lookback_periods)
     return DonchianResults(results, DonchianResult)
 
