@@ -9,12 +9,12 @@ from stock_indicators.indicators.common.quote import Quote
 
 def get_ichimoku(quotes: Iterable[Quote],
                  tenkan_periods: int = 9,
-                 kijunPeriods: int = 26,
-                 senkouBPeriods: int = 52):
+                 kijun_periods: int = 26,
+                 senkou_b_periods: int = 52):
     results = CsIndicator.GetIchimoku[Quote](CsList(Quote, quotes),
                                              tenkan_periods,
-                                             kijunPeriods,
-                                             senkouBPeriods)
+                                             kijun_periods,
+                                             senkou_b_periods)
     return IchimokuResults(results, IchimokuResult)
 
 class IchimokuResult(ResultBase):

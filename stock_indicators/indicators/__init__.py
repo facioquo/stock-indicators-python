@@ -109,3 +109,7 @@ from .super_trend import (
 from .triple_ema import (
     get_triple_ema
 )
+
+from .trix import (
+    get_trix
+)
