@@ -7,41 +7,14 @@ from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
-def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = 9,
-                 kijunPeriods: int = 26, senkouBPeriods: int = 52):
-    """Get Ichimoku Cloud calculated.
-    
-    Ichimoku Cloud, also known as Ichimoku Kinkō Hyō, is a collection of indicators
-    that depict support and resistance, momentum, and trend direction.
-      
-    Parameters:
-        `quotes` : Iterable[Quotes]
-            Historical price quotes.
-        
-        `tenkan_periods` : int, defaults 9
-            Number of periods in the lookback window.
-        
-        `kijunPeriods` : int, defaults 9
-            Number of periods in the lookback window.
-        
-        `tenkan_periods` : int, defaults 9
-            Number of periods in the lookback window.
-        
-        `tenkan_periods` : int, defaults 9
-            Number of periods in the lookback window.
-    
-    Returns:
-        `DonchianResults[DonchianResult]`
-            DonchianResults is list of DonchianResult with providing useful helper methods.
-    
-    See more:
-         - [Ichimoku Cloud Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Donchian/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
-    """
+def get_ichimoku(quotes: Iterable[Quote],
+                 tenkan_periods: int = 9,
+                 kijun_periods: int = 26,
+                 senkou_b_periods: int = 52):
     results = CsIndicator.GetIchimoku[Quote](CsList(Quote, quotes),
                                              tenkan_periods,
-                                             kijunPeriods,
-                                             senkouBPeriods)
+                                             kijun_periods,
+                                             senkou_b_periods)
     return IchimokuResults(results, IchimokuResult)
 
 class IchimokuResult(ResultBase):
