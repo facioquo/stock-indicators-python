@@ -9,7 +9,7 @@ class ResultBase:
     """
     A base wrapper class for a single unit of the results.
     """
-    def __init__(self, base_result: Type[CsResultBase]):
+    def __init__(self, base_result: CsResultBase):
         super().__init__()
         self._csdata = base_result
 
@@ -67,15 +67,15 @@ class IndicatorResults(List[T]):
         return verify_data
 
     @_verify_data
-    def __add__(self, other: Type["IndicatorResults"]):
+    def __add__(self, other: "IndicatorResults"):
         return self.__class__(self._csdata.__add__(other._csdata), self._wrapper_class)
 
     @_verify_data
-    def __mul__(self, other: Type["IndicatorResults"]):
+    def __mul__(self, other: "IndicatorResults"):
         return self.__class__(self._csdata.__mul__(other._csdata), self._wrapper_class)
 
     @_verify_data
-    def find(self, lookup_date: PyDateTime) -> Type[T]:
+    def find(self, lookup_date: PyDateTime) -> T:
         if not isinstance(lookup_date, PyDateTime):
             raise TypeError(
                 "lookup_date must be an instance of datetime.datetime."
