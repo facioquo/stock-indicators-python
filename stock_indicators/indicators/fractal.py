@@ -20,7 +20,8 @@ from stock_indicators.indicators.parabolic_sar import ParabolicSARResult
 def get_fractal(quotes: Iterable[Quote], window_span: int = 2):
     """Get Williams Fractal calculated.
     
-    Williams Fractal is a retrospective price pattern that identifies a central high or low point over a lookback window.
+    Williams Fractal is a retrospective price pattern that
+    identifies a central high or low point over a lookback window.
 
     Parameters:
         `quotes` : Iterable[Quotes]

@@ -9,7 +9,8 @@ from stock_indicators.indicators.common.quote import Quote
 def get_awesome(quotes: Iterable[Quote], fast_periods: int = 5, slow_periods: int = 34):
     """Get Awesome Oscillator calculated.
     
-    Awesome Oscillator (aka Super AO) is a measure of the gap between a fast and slow period modified moving average.
+    Awesome Oscillator (aka Super AO) is a measure of the gap
+    between a fast and slow period modified moving average.
     
     Parameters:
         `quotes` : Iterable[Quotes]

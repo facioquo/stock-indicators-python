@@ -10,7 +10,8 @@ from stock_indicators.indicators.common.quote import Quote
 def get_bollinger_bands(quotes: Iterable[Quote], lookback_periods: int = 20, standard_deviations: float = 2):
     """Get Bollinger Bands&#174; calculated.
     
-    Bollinger Bands&#174; depict volatility as standard deviation boundary lines from a moving average of Close price.
+    Bollinger Bands&#174; depict volatility as standard deviation
+    boundary lines from a moving average of Close price.
     
     Parameters:
         `quotes` : Iterable[Quotes]
