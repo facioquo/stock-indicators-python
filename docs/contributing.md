@@ -73,7 +73,7 @@ pytest -svr A tests
 
 ### Performance benchmarking
 
-Running the commands below in your console will show performance data.  You can find the latest results [here](https://daveskender.github.io/Stock.Indicators.Python/performance/).
+Running the commands below in your console will show performance data.  You can find the latest results [here]({{site.baseurl}}/performance/).
 
 ```bash
 # install pytest and other dependancies.
