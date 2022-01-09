@@ -37,11 +37,11 @@ class RSIResult(ResultBase):
 
     @property
     def rsi(self) -> Optional[float]:
-        return to_pydecimal(self._csdata.Rsi)
+        return self._csdata.Rsi
 
     @rsi.setter
     def rsi(self, value):
-        self._csdata.Rsi = CsDecimal(value)
+        self._csdata.Rsi = value
 
 T = TypeVar("T", bound=RSIResult)
 class RSIResults(IndicatorResults[T]):
