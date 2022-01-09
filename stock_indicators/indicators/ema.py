@@ -52,9 +52,6 @@ class EMAResults(IndicatorResults[T]):
     some useful helper methods written in CSharp implementation.
     """
 
-    def __init__(self, data: Iterable, wrapper_class: Type[T]):
-        super().__init__(data, wrapper_class)
-
     @IndicatorResults._verify_data
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):
         if remove_periods is not None:

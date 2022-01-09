@@ -74,9 +74,6 @@ class ADLResults(IndicatorResults[T]):
     some useful helper methods written in C# implementation.
     """
 
-    def __init__(self, data: Iterable, wrapper_class: Type[T]):
-        super().__init__(data, wrapper_class)
-
     @IndicatorResults._verify_data
     def to_quotes(self) -> Iterable[Quote]:
         quotes = CsIndicator.ConvertToQuotes(CsList(type(self._csdata[0]), self._csdata))

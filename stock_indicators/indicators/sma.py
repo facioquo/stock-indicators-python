@@ -77,9 +77,6 @@ class SMAResults(IndicatorResults[T]):
     some useful helper methods written in CSharp implementation.
     """
 
-    def __init__(self, data: Iterable, wrapper_class: Type[T]):
-        super().__init__(data, wrapper_class)
-
     @IndicatorResults._verify_data
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):
         if remove_periods is not None:
@@ -124,9 +121,6 @@ class SMAExtendedResults(IndicatorResults[T]):
     A wrapper class for the list of SMA-Extended results. It is exactly same with built-in `list`
     except for that it provides some useful helper methods written in CSharp implementation.
     """
-
-    def __init__(self, data: Iterable, wrapper_class: Type[T]):
-        super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):

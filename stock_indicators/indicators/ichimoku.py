@@ -69,6 +69,4 @@ class IchimokuResults(IndicatorResults[T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
-
-    def __init__(self, data: Iterable, wrapper_class: Type[T]):
-        super().__init__(data, wrapper_class)
+    pass
