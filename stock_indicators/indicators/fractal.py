@@ -1,5 +1,5 @@
 from decimal import Decimal
-from typing import Iterable, Optional, Type, TypeVar
+from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
@@ -19,7 +19,8 @@ from stock_indicators.indicators.common.quote import Quote
 def get_fractal(quotes: Iterable[Quote], window_span: int = 2):
     """Get Williams Fractal calculated.
     
-    Williams Fractal is a retrospective price pattern that identifies a central high or low point over a lookback window.
+    Williams Fractal is a retrospective price pattern that
+    identifies a central high or low point over a lookback window.
 
     Parameters:
         `quotes` : Iterable[Quotes]
@@ -68,6 +69,4 @@ class FractalResults(IndicatorResults[T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
-
-    def __init__(self, data: Iterable, wrapper_class: Type[T]):
-        super().__init__(data, wrapper_class)
+    pass
