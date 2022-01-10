@@ -26,7 +26,7 @@ You must have at least `4×N` or `3×N+100` periods of `quotes`, whichever is mo
 ## Return
 
 ```python
-TripleEMAResults[TripleEMAResult]
+TEMAResults[TEMAResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
@@ -36,7 +36,7 @@ TripleEMAResults[TripleEMAResult]
 
 :hourglass: **Convergence Warning**: The first `3×N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
-### TripleEMAResult
+### TEMAResult
 
 | name | type | notes
 | -- |-- |--

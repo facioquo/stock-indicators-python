@@ -21,8 +21,8 @@ def get_triple_ema(quotes: Iterable[Quote], lookback_periods: int):
             Number of periods in the lookback window.
     
     Returns:
-        `TripleEMAResults[TripleEMAResult]`
-            TripleEMAResults is list of TripleEMAResult with providing useful helper methods.
+        `TEMAResults[TEMAResult]`
+            TEMAResults is list of TEMAResult with providing useful helper methods.
     
     See more:
          - [TEMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/TripleEma/#content)
