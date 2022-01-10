@@ -71,6 +71,9 @@ def test_benchmark_sma_extended(benchmark, quotes):
 
 def test_benchmark_sma(benchmark, quotes):
     benchmark(indicators.get_sma, quotes, 20)
+    
+def test_benchmark_stdev_channels(benchmark, quotes):
+    benchmark(indicators.get_stdev_channels, quotes, 20, 2)
 
 def test_benchmark_stoch_rsi(benchmark, quotes):
     benchmark(indicators.get_stoch_rsi, quotes, 14, 14, 3, 1)
