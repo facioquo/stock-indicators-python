@@ -9,9 +9,9 @@ from stock_indicators.indicators.common.quote import Quote
 
 def get_triple_ema(quotes: Iterable[Quote], lookback_periods: int):
     results = CsIndicator.GetTripleEma[Quote](CsList(Quote, quotes), lookback_periods)
-    return TripleEMAResults(results, TripleEMAResult)
+    return TEMAResults(results, TEMAResult)
 
-class TripleEMAResult(ResultBase):
+class TEMAResult(ResultBase):
     """
     A wrapper class for a single unit of Triple Exponential Moving Average (TEMA) results.
     """
@@ -24,8 +24,8 @@ class TripleEMAResult(ResultBase):
     def tema(self, value):
         self._csdata.Tema = CsDecimal(value)
 
-T = TypeVar("T", bound=TripleEMAResult)
-class TripleEMAResults(IndicatorResults[T]):
+T = TypeVar("T", bound=TEMAResult)
+class TEMAResults(IndicatorResults[T]):
     """
     A wrapper class for the list of Triple Exponential Moving Average (TEMA) results.
     It is exactly same with built-in `list` except for that it provides
