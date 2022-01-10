@@ -38,35 +38,35 @@ class SlopeResult(ResultBase):
 
     @property
     def slope(self) -> Optional[float]:
-        return to_pydecimal(self._csdata.Slope)
+        return self._csdata.Slope
 
     @slope.setter
     def slope(self, value):
-        self._csdata.Slope = CsDecimal(value)
+        self._csdata.Slope = value
         
     @property
     def intercept(self) -> Optional[float]:
-        return to_pydecimal(self._csdata.Intercept)
+        return self._csdata.Intercept
     
     @intercept.setter
     def intercept(self, value):
-        self._csdata.Intercept = CsDecimal(value)
+        self._csdata.Intercept = value
         
     @property
     def stdev(self) -> Optional[float]:
-        return to_pydecimal(self._csdata.StdDev)
+        return self._csdata.StdDev
     
     @stdev.setter
     def stdev(self, value):
-        self._csdata.StdDev = CsDecimal(value)
+        self._csdata.StdDev = value
         
     @property
     def r_squared(self) -> Optional[float]:
-        return to_pydecimal(self._csdata.RSquared)
+        return self._csdata.RSquared
     
     @r_squared.setter
     def r_squared(self, value):
-        self._csdata.RSquared = CsDecimal(value)
+        self._csdata.RSquared = value
     
     @property
     def line(self) -> Optional[Decimal]:

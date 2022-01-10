@@ -94,6 +94,10 @@ from .sma import (
     get_sma_extended,
 )
 
+from .stdev_channels import (
+    get_stdev_channels
+)
+
 from .stoch import (
     get_stoch
 )
