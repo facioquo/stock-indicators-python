@@ -8,6 +8,22 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 def get_heikin_ashi(quotes: Iterable[Quote]):
+    """Get Heikin-Ashi calculated.
+    
+    Heikin-Ashi is a modified candlestick pattern that uses prior day for smoothing.
+    
+    Parameters:
+        `quotes` : Iterable[Quotes]
+            Historical price quotes.
+    
+    Returns:
+        `HeikinAshiResults[HeikinAshiResult]`
+            HeikinAshiResults is list of HeikinAshiResult with providing useful helper methods.
+    
+    See more:
+         - [Heikin-Ashi Channels Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/HeikinAshi/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetHeikinAshi[Quote](CsList(Quote, quotes))
     return HeikinAshiResults(results, HeikinAshiResult)
 

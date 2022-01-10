@@ -51,9 +51,9 @@ FractalResults[FractalResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `fractal_bear` | decimal.Decimal | Value indicates a **high** point; otherwise `None` is returned.
-| `fractal_bull` | decimal.Decimal | Value indicates a **low** point; otherwise `None` is returned.
+| `date` | datetime | Date
+| `fractal_bear` | Decimal, Optional | Value indicates a **high** point; otherwise `None` is returned.
+| `fractal_bull` | Decimal, Optional | Value indicates a **low** point; otherwise `None` is returned.
 
 ### Utilities
 

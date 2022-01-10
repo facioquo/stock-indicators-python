@@ -1,49 +1,47 @@
 ---
-title: Average Directional Index (ADX)
-permalink: /indicators/Adx/
-type: price-trend
+title: Double Exponential Moving Average (DEMA)
+permalink: /indicators/DoubleEma/
+type: moving-average
 layout: indicator
 ---
 
 # {{ page.title }}
 <hr>
 
-## **get_adx**(*quotes, lookback_periods=14*)
-
+## **get_double_ema**(*quotes, lookback_periods*)
+    
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
 | `quotes` | Iterable[Type[Quote]] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
-| `lookback_periods` | int, *default 14* | Number of periods (`N`) for the lookback evaluation.  Must be greater than 0.
+| `lookback_periods` | int | Number of periods (`N`) in the moving average.  Must be greater than 0.
 
 ### Historical quotes requirements
 
-You must have at least `2×N+100` periods of `quotes` to allow for smoothing convergence.  We generally recommend you use at least `2×N+250` data points prior to the intended usage date for better precision.
+You must have at least `3×N` or `2×N+100` periods of `quotes`, whichever is more.  Since this uses a smoothing technique, we recommend you use at least `2×N+250` data points prior to the intended usage date for better precision.
 
 `quotes` is an `Iterable[Type[Quote]]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Returns
+## Return
 
 ```python
-ADXResults<ADXResult>
+DEMAResult[DEMAResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `2×N-1` periods will have `None` values for `Adx` since there's not enough data to calculate.
+- The first `2×N-1` periods will have `None` values since there's not enough data to calculate.
 
 :hourglass: **Convergence Warning**: The first `2×N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
-### ADXResult
+### DEMAResult
 
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `pdi` | float, Optional | Plus Directional Index (+DI) for `N` lookback periods
-| `mdi` | float, Optional | Minus Directional Index (-DI) for `N` lookback periods
-| `adx` | float, Optional | Average Directional Index (ADX) for `N` lookback periods
+| `dema` | Decimal, Optional | Double exponential moving average
 
 ### Utilities
 
@@ -61,18 +59,20 @@ from stock_indicators import indicators
 # This method is NOT a part of the library.
 quotes = get_history_from_feed("SPY")
 
-# calculate 14-period ADX
-results = indicators.get_adx(quotes, lookback_periods)
+# calculate 20-period DEMA
+results = indicators.get_double_ema(quotes, 20);
 ```
 
 ## About: {{ page.title }}
 
-Created by J. Welles Wilder, the [Average Directional Movement Index](https://en.wikipedia.org/wiki/Average_directional_movement_index) is a measure of price directional movement.  It includes upward and downward indicators, and is often used to measure strength of trend.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/270 "Community discussion about this indicator")
+[Double exponential moving average](https://en.wikipedia.org/wiki/Double_exponential_moving_average) of the Close price over a lookback window.
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/256 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Adx.png)
+![image]({{site.charturl}}/DoubleEma.png)
+
+DEMA is shown as the dashed line above.  [EMA](../Ema#content) (solid line) and [Triple EMA](../TripleEma#content) (dotted line) are also shown here for comparison.
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Adx/Adx.cs)
-- [Python wrapper]({{site.sourceurl}}/adx.py)
+- [C# core]({{site.base_sourceurl}}/a-d/DoubleEma/DoubleEma.cs)
+- [Python wrapper]({{site.sourceurl}}/double_ema.py)

@@ -8,6 +8,26 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 def get_slope(quotes: Iterable[Quote], lookback_periods: int):
+    """Get Slope calculated.
+    
+    Slope of the best fit line is determined by an ordinary least-squares simple linear regression on Close price.
+    It can be used to help identify trend strength and direction.
+    
+    Parameters:
+        `quotes` : Iterable[Quotes]
+            Historical price quotes.
+        
+        `lookback_periods` : int
+            Number of periods in the lookback window.
+    
+    Returns:
+        `SlopeResults[SlopeResult]`
+            SlopeResults is list of SlopeResult with providing useful helper methods.
+    
+    See more:
+         - [Slope Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Slope/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetSlope[Quote](CsList(Quote, quotes), lookback_periods)
     return SlopeResults(results, SlopeResult)
 

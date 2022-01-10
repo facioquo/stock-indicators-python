@@ -5,6 +5,29 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 def get_roc(quotes: Iterable[Quote], lookback_periods: int, sma_periods: int = None):
+    """Get ROC calculated.
+    
+    Rate of Change (ROC), also known as Momentum Oscillator, is the percent change
+    of Close price over a lookback window.
+      
+    Parameters:
+        `quotes` : Iterable[Quotes]
+            Historical price quotes.
+        
+        `lookback_periods` : int
+            Number of periods in the lookback window.
+        
+        `sma_periods` : int, optional
+            Number of periods for an ROC SMA signal line.
+    
+    Returns:
+        `ROCResults[ROCResult]`
+            ROCResults is list of ROCResult with providing useful helper methods.
+    
+    See more:
+         - [ROC Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Roc/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetRoc[Quote](CsList(Quote, quotes), lookback_periods, sma_periods)
     return ROCResults(results, ROCResult)
 

@@ -7,5 +7,4 @@ assignees: ''
 
 ---
 
-Describe the problem and solution you would like.  Include reference materials (links, screenshots, etc).
-Please delete this explanatory text when submitting.
+Describe the problem and solution you would like.  Include reference materials (links, screenshots, etc).  Please delete this explanatory text when submitting.

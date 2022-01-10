@@ -1,23 +1,22 @@
 ---
-title: Exponential Moving Average (EMA)
-permalink: /indicators/Ema/
-type: moving-average
+title: Elder-ray Index
+description: Elder-ray Index with Bull and Bear Power
+permalink: /indicators/ElderRay/
+type: price-trend
 layout: indicator
 ---
 
 # {{ page.title }}
 <hr>
 
-## **get_ema**(*quotes, lookback_periods*)
+## **get_elder_ray**(*quotes, lookback_periods=13*)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
 | `quotes` | Iterable[Type[Quote]] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
-| `lookback_periods` | int | Number of periods (`N`) in the moving average.  Must be greater than 0.
-
-<!-- | `candlePart` | CandlePart | Optional.  Specify the [OHLCV]({{site.baseurl}}/guide/#historical-quotes) candle part to evaluate.  See [CandlePart options](#candlepart-options) below.  Default is `CandlePart.Close` -->
+| `lookback_periods` | int, *default 13*  | Number of periods (`N`) for the underlying EMA evaluation.  Must be greater than 0.
 
 ### Historical quotes requirements
 
@@ -25,36 +24,27 @@ You must have at least `2×N` or `N+100` periods of `quotes`, whichever is more.
 
 `quotes` is an `Iterable[Type[Quote]]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-<!-- 
-### CandlePart options
-
-| type | description
-|-- |--
-| `CandlePart.Open` | Use `Open` price
-| `CandlePart.High` | Use `High` price
-| `CandlePart.Low` | Use `Low` price
-| `CandlePart.Close` | Use `Close` price (default)
-| `CandlePart.Volume` | Use `Volume` -->
-
 ## Returns
 
 ```python
-EMAResults[EMAResult]
+ElderRayResults[ElderRayResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N-1` periods will have `None` values since there's not enough data to calculate.
+- The first `N-1` periods will have `None` indicator values since there's not enough data to calculate.
 
 :hourglass: **Convergence Warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
-### EMAResult
+### ElderRayResult
 
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `ema` | Decimal, Optional | Exponential moving average
+| `ema` | Decimal, Optional | Exponential moving average of Close price
+| `bull_power` | Decimal, Optional | Bull Power
+| `bear_power` | Decimal, Optional | Bear Power
 
 ### Utilities
 
@@ -64,6 +54,7 @@ EMAResults[EMAResult]
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
+
 ## Example
 
 ```python
@@ -72,20 +63,18 @@ from stock_indicators import indicators
 # This method is NOT a part of the library.
 quotes = get_history_from_feed("SPY")
 
-# calculate 20-period EMA
-results = indicators.get_ema(quotes, 20)
+# calculate ElderRay(13)
+results = indicators.get_elder_ray(quotes, 13);
 ```
 
-### About: {{ page.title }}
+## {{ page.title }}
 
-[Exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average) price over a lookback window.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/256 "Community discussion about this indicator")
+Created by Alexander Elder, the [Elder-ray Index](https://www.investopedia.com/terms/e/elderray.asp), also known as Bull and Bear Power, depicts buying and selling pressure.
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/378 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Ema.png)
+![image]({{site.charturl}}/ElderRay.png)
 
-EMA is shown as the solid line above.  Double EMA (dashed line) and Triple EMA (dotted line) are also shown here for comparison.
+### Sources
 
-#### Sources
-
-- [C# core]({{site.base_sourceurl}}/e-k/Ema/Ema.cs)
-- [Python wrapper]({{site.sourceurl}}/ema.py)
+- [C# core]({{site.base_sourceurl}}/e-k/ElderRay/ElderRay.cs)
+- [Python wrapper]({{site.sourceurl}}/elder_ray.py)

@@ -8,6 +8,25 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 def get_double_ema(quotes: Iterable[Quote], lookback_periods: int):
+    """Get DEMA calculated.
+    
+    Double Exponential Moving Average (DEMA) of the Close price.
+    
+    Parameters:
+        `quotes` : Iterable[Quotes]
+            Historical price quotes.
+        
+        `lookback_periods` : int
+            Number of periods in the lookback window.
+    
+    Returns:
+        `DEMAResults[DEMAResult]`
+            DEMAResults is list of DEMAResult with providing useful helper methods.
+    
+    See more:
+         - [DEMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/DoubleEma/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetDoubleEma[Quote](CsList(Quote, quotes), lookback_periods)
     return DEMAResults(results, DEMAResult)
 

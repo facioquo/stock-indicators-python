@@ -8,6 +8,25 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 def get_elder_ray(quotes: Iterable[Quote], lookback_periods: int = 13):
+    """Get Elder-ray Index calculated.
+    
+    The Elder-ray Index depicts buying and selling pressure, also known as Bull and Bear Power.
+    
+    Parameters:
+        `quotes` : Iterable[Quotes]
+            Historical price quotes.
+        
+        `lookback_periods` : int, defaults 13
+            Number of periods for the EMA.
+    
+    Returns:
+        `ElderRayResults[ElderRayResult]`
+            ElderRayResults is list of ElderRayResult with providing useful helper methods.
+    
+    See more:
+         - [Elder-ray Index Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/ElderRay/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetElderRay[Quote](CsList(Quote, quotes), lookback_periods)
     return ElderRayResults(results, ElderRayResult)
 

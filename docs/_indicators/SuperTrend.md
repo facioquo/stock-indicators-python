@@ -41,10 +41,10 @@ SuperTrendResults[SuperTrendResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `super_trend` | decimal.Decimal | SuperTrend line contains both Upper and Lower segments
-| `upper_band` | decimal.Decimal | Upper band only (bearish/red)
-| `lower_band` | decimal.Decimal | Lower band only (bullish/green)
+| `date` | datetime | Date
+| `super_trend` | Decimal, Optional | SuperTrend line contains both Upper and Lower segments
+| `upper_band` | Decimal, Optional | Upper band only (bearish/red)
+| `lower_band` | Decimal, Optional | Lower band only (bullish/green)
 
 `upper_band` and `lower_band` values are provided to differentiate bullish vs bearish trends and to clearly demark trend reversal.  `super_trend` is the contiguous combination of both upper and lower line data.
 

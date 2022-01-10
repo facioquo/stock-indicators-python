@@ -8,6 +8,29 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 def get_trix(quotes: Iterable[Quote], lookback_periods: int, signal_periods: Optional[int] = None):
+    """Get TRIX calculated.
+    
+    Triple EMA Oscillator (TRIX) is the rate of change for a 3 EMA smoothing of the Close price over a lookback window.
+    TRIX is often confused with TEMA.
+    
+    Parameters:
+        `quotes` : Iterable[Quotes]
+            Historical price quotes.
+        
+        `lookback_periods` : int
+            Number of periods in the lookback window.
+        
+        `signal_periods` : int, optional
+            Number of periods for a TRIX SMA signal line.
+    
+    Returns:
+        `TRIXResults[TRIXResult]`
+            TRIXResults is list of TRIXResult with providing useful helper methods.
+    
+    See more:
+         - [TRIX Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Trix/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetTrix[Quote](CsList(Quote, quotes), lookback_periods, signal_periods)
     return TRIXResults(results, TRIXResult)
 

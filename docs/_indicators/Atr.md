@@ -40,10 +40,10 @@ ATRResults[ATRResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `tr` | decimal.Decimal | True Range for current period
-| `atr` | decimal.Decimal | Average True Range for `N` lookback periods
-| `atrp` | decimal.Decimal | Average True Range Percent is `(atr/Close Price)*100`.  This normalizes so it can be compared to other stocks.
+| `date` | datetime | Date
+| `tr` | Decimal, Optional  | True Range for current period
+| `atr` | Decimal, Optional  | Average True Range for `N` lookback periods
+| `atrp` | Decimal, Optional  | Average True Range Percent is `(atr/Close Price)*100`.  This normalizes so it can be compared to other stocks.
 
 ### Utilities
 

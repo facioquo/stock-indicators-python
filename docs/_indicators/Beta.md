@@ -49,8 +49,8 @@ BetaResults[BetaResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | datetime.datetime | Date
-| `beta` | decimal.Decimal | Beta coefficient based on `N` lookback periods
+| `date` | datetime | Date
+| `beta` | float, Optional | Beta coefficient based on `N` lookback periods
 
 <!-- | `BetaUp` | decimal | Beta+ (Up Beta)
 | `BetaDown` | decimal | Beta- (Down Beta)
