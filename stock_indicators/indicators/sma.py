@@ -93,27 +93,27 @@ class SMAExtendedResult(SMAResult):
 
     @property
     def mad(self) -> Optional[float]:
-        return to_pydecimal(self._csdata.Mad)
+        return self._csdata.Mad
 
     @mad.setter
     def mad(self, value):
-        self._csdata.Mad = CsDecimal(value)
+        self._csdata.Mad = value
 
     @property
     def mse(self) -> Optional[float]:
-        return to_pydecimal(self._csdata.Mse)
+        return self._csdata.Mse
 
     @mse.setter
     def mse(self, value):
-        self._csdata.Mse = CsDecimal(value)
+        self._csdata.Mse = value
 
     @property
     def mape(self) -> Optional[float]:
-        return to_pydecimal(self._csdata.Mape)
+        return self._csdata.Mape
 
     @mape.setter
     def mape(self, value):
-        self._csdata.Mape = CsDecimal(value)
+        self._csdata.Mape = value
 
 T = TypeVar("T", bound=SMAExtendedResult)
 class SMAExtendedResults(IndicatorResults[T]):
