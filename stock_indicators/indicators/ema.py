@@ -10,20 +10,20 @@ from stock_indicators.indicators.common.quote import Quote
 # TODO: Need to support CandlePart Enum
 def get_ema(quotes: Iterable[Quote], lookback_periods: int):
     """Get EMA calculated.
-    
+
     Exponential Moving Average (EMA) of the Close price.
-    
+
     Parameters:
         `quotes` : Iterable[Quotes]
             Historical price quotes.
-        
+
         `lookback_periods` : int
             Number of periods in the lookback window.
-    
+
     Returns:
         `EMAResults[EMAResult]`
             EMAResults is list of EMAResult with providing useful helper methods.
-    
+
     See more:
          - [EMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Ema/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)

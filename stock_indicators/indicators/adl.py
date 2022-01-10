@@ -6,20 +6,20 @@ from stock_indicators.indicators.common.quote import Quote
 
 def get_adl(quotes: Iterable[Quote], sma_periods: Optional[int] = None):
     """Get ADL calculated.
-    
+
     Accumulation/Distribution Line (ADL) is a rolling accumulation of Chaikin Money Flow Volume.
-    
+
     Parameters:
         `quotes` : Iterable[Quotes]
             Historical price quotes.
-        
+
         `sma_periods` : int, optional
             Number of periods in the moving average of ADL.
-    
+
     Returns:
         `ADLResults[ADLResult]`
             ADLResults is list of ADLResult with providing useful helper methods.
-    
+
     See more:
          - [ADL Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Adl/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)

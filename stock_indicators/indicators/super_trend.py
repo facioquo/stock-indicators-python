@@ -9,25 +9,25 @@ from stock_indicators.indicators.common.quote import Quote
 
 def get_super_trend(quotes: Iterable[Quote], lookback_periods: int = 10, multiplier: float = 3):
     """Get SuperTrend calculated.
-    
+
     SuperTrend attempts to determine the primary trend of Close prices by using 
     Average True Range (ATR) band thresholds. It can indicate a buy/sell signal or a 
     trailing stop when the trend changes.
-    
+
     Parameters:
         `quotes` : Iterable[Quotes]
             Historical price quotes.
-        
+
         `lookback_periods` : int, defaults 10
             Number of periods in the lookback window.
-            
+
         `multiplier` : float, defaults 3
             Multiplier sets the ATR band width.
-    
+
     Returns:
         `SuperTrendResults[SuperTrendResult]`
             SuperTrendResults is list of SuperTrendResult with providing useful helper methods.
-    
+
     See more:
          - [SuperTrend Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/SuperTrend/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)

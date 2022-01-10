@@ -9,17 +9,17 @@ from stock_indicators.indicators.common.quote import Quote
 
 def get_heikin_ashi(quotes: Iterable[Quote]):
     """Get Heikin-Ashi calculated.
-    
+
     Heikin-Ashi is a modified candlestick pattern that uses prior day for smoothing.
-    
+
     Parameters:
         `quotes` : Iterable[Quotes]
             Historical price quotes.
-    
+
     Returns:
         `HeikinAshiResults[HeikinAshiResult]`
             HeikinAshiResults is list of HeikinAshiResult with providing useful helper methods.
-    
+
     See more:
          - [Heikin-Ashi Channels Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/HeikinAshi/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
@@ -39,35 +39,35 @@ class HeikinAshiResult(ResultBase):
     @open.setter
     def open(self, value):
         self._csdata.Open = CsDecimal(value)
-        
+
     @property
     def high(self) -> Decimal:
         return to_pydecimal(self._csdata.High)
-    
+
     @high.setter
     def high(self, value):
         self._csdata.High = CsDecimal(value)
-        
+
     @property
     def low(self) -> Decimal:
         return to_pydecimal(self._csdata.Low)
-    
+
     @low.setter
     def low(self, value):
         self._csdata.Low = CsDecimal(value)
-        
+
     @property
     def close(self) -> Decimal:
         return to_pydecimal(self._csdata.Close)
-    
+
     @close.setter
     def close(self, value):
         self._csdata.Close = CsDecimal(value)
-        
+
     @property
     def volume(self) -> Decimal:
         return to_pydecimal(self._csdata.Volume)
-    
+
     @volume.setter
     def volume(self, value):
         self._csdata.Volume = CsDecimal(value)

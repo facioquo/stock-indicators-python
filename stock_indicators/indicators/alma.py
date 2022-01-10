@@ -9,27 +9,27 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 
 def get_alma(quotes: Iterable[Quote], lookback_periods: int = 9, offset: float = .85, sigma : float = 6):
     """Get ALMA calculated.
-    
+
     Arnaud Legoux Moving Average (ALMA) is a Gaussian distribution 
     weighted moving average of Close price over a lookback window.
-    
+
     Parameters:
         `quotes` : Iterable[Quotes]
             Historical price quotes.
-        
+
         `lookback_periods` : int, defaults 9
             Number of periods in the lookback window.
-            
+
         `offset` : float, defaults 0.85
             Adjusts smoothness versus responsiveness.
-            
+
         `sigma` : float, defaults 6
             Defines the width of the Gaussian normal distribution.
 
     Returns:
         `ALMAResults[ALMAResult]`
             ALMAResults is list of ALMAResult with providing useful helper methods.
-    
+
     See more:
          - [ALMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Alma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
