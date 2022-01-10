@@ -1,5 +1,5 @@
 from decimal import Decimal
-from typing import Iterable, Optional, Type, TypeVar, overload
+from typing import Iterable, Optional, TypeVar, overload
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
@@ -81,9 +81,6 @@ class ParabolicSARResults(IndicatorResults[T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
-
-    def __init__(self, data: Iterable, wrapper_class: Type[T]):
-        super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):

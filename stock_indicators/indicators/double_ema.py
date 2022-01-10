@@ -1,5 +1,5 @@
 from decimal import Decimal
-from typing import Iterable, Optional, Type, TypeVar
+from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
@@ -28,9 +28,9 @@ def get_double_ema(quotes: Iterable[Quote], lookback_periods: int):
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
     results = CsIndicator.GetDoubleEma[Quote](CsList(Quote, quotes), lookback_periods)
-    return DoubleEMAResults(results, DoubleEMAResult)
+    return DEMAResults(results, DEMAResult)
 
-class DoubleEMAResult(ResultBase):
+class DEMAResult(ResultBase):
     """
     A wrapper class for a single unit of Double Exponential Moving Average (DEMA) results.
     """
@@ -43,16 +43,13 @@ class DoubleEMAResult(ResultBase):
     def dema(self, value):
         self._csdata.Dema = CsDecimal(value)
 
-T = TypeVar("T", bound=DoubleEMAResult)
-class DoubleEMAResults(IndicatorResults[T]):
+T = TypeVar("T", bound=DEMAResult)
+class DEMAResults(IndicatorResults[T]):
     """
     A wrapper class for the list of Double Exponential Moving Average (DEMA) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
-
-    def __init__(self, data: Iterable, wrapper_class: Type[T]):
-        super().__init__(data, wrapper_class)
 
     @IndicatorResults._verify_data
     def remove_warmup_periods(self, remove_periods: Optional[int] = None):
