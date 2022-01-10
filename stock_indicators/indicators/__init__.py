@@ -29,6 +29,7 @@ from .sma import (
     get_sma,
     get_sma_extended
 )
+from .stdev_channels import (get_stdev_channels)
 from .stoch import (get_stoch)
 from .stoch_rsi import (get_stoch_rsi)
 from .super_trend import (get_super_trend)
