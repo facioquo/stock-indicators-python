@@ -9,9 +9,9 @@ from stock_indicators.indicators.common.quote import Quote
 
 def get_double_ema(quotes: Iterable[Quote], lookback_periods: int):
     results = CsIndicator.GetDoubleEma[Quote](CsList(Quote, quotes), lookback_periods)
-    return DoubleEMAResults(results, DoubleEMAResult)
+    return DEMAResults(results, DEMAResult)
 
-class DoubleEMAResult(ResultBase):
+class DEMAResult(ResultBase):
     """
     A wrapper class for a single unit of Double Exponential Moving Average (DEMA) results.
     """
@@ -24,8 +24,8 @@ class DoubleEMAResult(ResultBase):
     def dema(self, value):
         self._csdata.Dema = CsDecimal(value)
 
-T = TypeVar("T", bound=DoubleEMAResult)
-class DoubleEMAResults(IndicatorResults[T]):
+T = TypeVar("T", bound=DEMAResult)
+class DEMAResults(IndicatorResults[T]):
     """
     A wrapper class for the list of Double Exponential Moving Average (DEMA) results.
     It is exactly same with built-in `list` except for that it provides
