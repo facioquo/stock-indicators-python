@@ -20,8 +20,8 @@ def get_double_ema(quotes: Iterable[Quote], lookback_periods: int):
             Number of periods in the lookback window.
     
     Returns:
-        `DoubleEMAResults[DoubleEMAResult]`
-            DoubleEMAResults is list of DoubleEMAResult with providing useful helper methods.
+        `DEMAResults[DEMAResult]`
+            DEMAResults is list of DEMAResult with providing useful helper methods.
     
     See more:
          - [DEMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/DoubleEma/#content)
