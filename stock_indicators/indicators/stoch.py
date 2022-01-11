@@ -9,28 +9,28 @@ from stock_indicators.indicators.common.quote import Quote
 
 def get_stoch(quotes: Iterable[Quote], lookback_periods: int = 14, signal_periods: int = 3, smooth_periods: int = 3):
     """Get Stochastic Oscillator calculated, with KDJ indexes.
-    
+
     Stochastic Oscillatoris a momentum indicator that looks back N periods to produce a scale of 0 to 100.
     %J is also included for the KDJ Index extension.
-      
+
     Parameters:
         `quotes` : Iterable[Quotes]
             Historical price quotes.
-        
+
         `lookback_periods` : int, defaults 14
             Number of periods for the Oscillator.
-            
+
         `signal_periods` : int, defaults 3
             Smoothing period for the %D signal line.
-            
+
         `smooth_periods` : int, defaults 3
             Smoothing period for the %K Oscillator.
             Use 3 for Slow or 1 for Fast.
-    
+
     Returns:
         `StochResults[StochResult]`
             StochResults is list of StochResult with providing useful helper methods.
-    
+
     See more:
          - [Stochastic Oscillator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Stoch/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)

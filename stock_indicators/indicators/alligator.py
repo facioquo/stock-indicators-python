@@ -9,11 +9,11 @@ from stock_indicators.indicators.common.quote import Quote
 
 def get_alligator(quotes: Iterable[Quote]):
     """Get Williams Alligator calculated.
-    
-    Williams Alligator is an indicator that transposes multiple moving averages, 
-    showing chart patterns that creator Bill Williams compared to an alligator's 
+
+    Williams Alligator is an indicator that transposes multiple moving averages,
+    showing chart patterns that creator Bill Williams compared to an alligator's
     feeding habits when describing market movement.
-    
+
     Parameters:
         `quotes` : Iterable[Quotes]
             Historical price quotes.
@@ -21,7 +21,7 @@ def get_alligator(quotes: Iterable[Quote]):
     Returns:
         `AlligatorResults[AlligatorResult]`
             AlligatorResults is list of AlligatorResult with providing useful helper methods.
-    
+
     See more:
          - [Williams Alligator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Alligator/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)

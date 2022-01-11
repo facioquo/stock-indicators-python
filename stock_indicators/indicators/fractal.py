@@ -18,28 +18,27 @@ from stock_indicators.indicators.common.quote import Quote
 
 def get_fractal(quotes: Iterable[Quote], window_span: int = 2):
     """Get Williams Fractal calculated.
-    
+
     Williams Fractal is a retrospective price pattern that
     identifies a central high or low point over a lookback window.
 
     Parameters:
         `quotes` : Iterable[Quotes]
             Historical price quotes.
-        
+
         `window_span` : int, defaults 2
             Number of span periods to the left and right of the evaluation period.
-    
+
     Returns:
         `FractalResults[FractalResult]`
             FractalResults is list of FractalResult with providing useful helper methods.
-    
+
     See more:
          - [Williams Fractal Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Fractal/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
     fractal_results = CsIndicator.GetFractal[Quote](CsList(Quote, quotes), window_span)
     return FractalResults(fractal_results, FractalResult)
-
 
 class FractalResult(ResultBase):
     """

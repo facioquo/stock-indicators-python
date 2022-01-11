@@ -11,24 +11,24 @@ def get_stdev_channels(quotes: Iterable[Quote],
                        lookback_periods: Optional[int] = 20,
                        standard_deviations: float = 2):
     """Get Standard Deviation Channels calculated.
-    
+
     Standard Deviation Channels are based on an linearregression centerline
     and standard deviations band widths.
-    
+
     Parameters:
         `quotes` : Iterable[Quotes]
             Historical price quotes.
-        
+
         `lookback_periods` : int, optional, defaults 20
             Size of the evaluation window.
-            
+
         `standard_deviations` : float, defaults 2
             Width of bands. Number of Standard Deviations from the regression line.
-    
+
     Returns:
         `StdevChannelsResults[StdevChannelsResult]`
             StdevChannelsResults is list of StdevChannelsResult with providing useful helper methods.
-    
+
     See more:
          - [Stdev Channels Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/StdDevChannels/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
@@ -48,7 +48,7 @@ class StdevChannelsResult(ResultBase):
     @center_line.setter
     def center_line(self, value):
         self._csdata.Centerline = CsDecimal(value)
-        
+
     @property
     def upper_channel(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.UpperChannel)
@@ -56,7 +56,7 @@ class StdevChannelsResult(ResultBase):
     @upper_channel.setter
     def upper_channel(self, value):
         self._csdata.UpperChannel = CsDecimal(value)
-        
+
     @property
     def lower_channel(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.LowerChannel)
@@ -64,7 +64,7 @@ class StdevChannelsResult(ResultBase):
     @lower_channel.setter
     def lower_channel(self, value):
         self._csdata.LowerChannel = CsDecimal(value)
-        
+
     @property
     def break_point(self) -> bool:
         return self._csdata.BreakPoint

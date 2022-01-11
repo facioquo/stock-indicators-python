@@ -6,21 +6,21 @@ from stock_indicators.indicators.common.quote import Quote
 
 def get_rsi(quotes: Iterable[Quote], lookback_periods: int = 14):
     """Get RSI calculated.
-    
+
     Relative Strength Index (RSI) measures strength of the winning/losing streak over N lookback periods
     on a scale of 0 to 100, to depict overbought and oversold conditions.
-    
+
     Parameters:
         `quotes` : Iterable[Quotes]
             Historical price quotes.
-        
+
         `lookback_periods` : int, defaults 14
             Number of periods in the lookback window.
-    
+
     Returns:
         `RSIResults[RSIResult]`
             RSIResults is list of RSIResult with providing useful helper methods.
-    
+
     See more:
          - [RSI Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Rsi/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)

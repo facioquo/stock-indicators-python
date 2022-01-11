@@ -9,23 +9,23 @@ from stock_indicators.indicators.common.quote import Quote
 
 def get_chandelier(quotes: Iterable[Quote], lookback_periods: int = 22, multiplier: float = 3):
     """Get Chandelier Exit calculated.
-    
+
     Chandelier Exit is typically used for stop-loss and can be computed for both long or short types.
-    
+
     Parameters:
         `quotes` : Iterable[Quotes]
             Historical price quotes.
-        
+
         `lookback_periods` : int, defaults 22
             Number of periods in the lookback window.
-            
+
         `multiplier` : float, defaults 3.0
             Multiplier.
-    
+
     Returns:
         `ChandelierResults[ChandelierResult]`
             ChandelierResults is list of ChandelierResult with providing useful helper methods.
-    
+
     See more:
          - [Chandelier Exit Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Chandelier/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
@@ -45,7 +45,7 @@ class ChandelierResult(ResultBase):
     @chandelier_exit.setter
     def chandelier_exit(self, value):
         self._csdata.ChandelierExit = CsDecimal(value)
-        
+
 T = TypeVar("T", bound=ChandelierResult)
 class ChandelierResults(IndicatorResults[T]):
     """

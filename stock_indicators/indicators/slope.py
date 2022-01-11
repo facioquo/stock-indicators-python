@@ -9,21 +9,21 @@ from stock_indicators.indicators.common.quote import Quote
 
 def get_slope(quotes: Iterable[Quote], lookback_periods: int):
     """Get Slope calculated.
-    
+
     Slope of the best fit line is determined by an ordinary least-squares simple linear regression on Close price.
     It can be used to help identify trend strength and direction.
-    
+
     Parameters:
         `quotes` : Iterable[Quotes]
             Historical price quotes.
-        
+
         `lookback_periods` : int
             Number of periods in the lookback window.
-    
+
     Returns:
         `SlopeResults[SlopeResult]`
             SlopeResults is list of SlopeResult with providing useful helper methods.
-    
+
     See more:
          - [Slope Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Slope/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
@@ -43,35 +43,35 @@ class SlopeResult(ResultBase):
     @slope.setter
     def slope(self, value):
         self._csdata.Slope = value
-        
+
     @property
     def intercept(self) -> Optional[float]:
         return self._csdata.Intercept
-    
+
     @intercept.setter
     def intercept(self, value):
         self._csdata.Intercept = value
-        
+
     @property
     def stdev(self) -> Optional[float]:
         return self._csdata.StdDev
-    
+
     @stdev.setter
     def stdev(self, value):
         self._csdata.StdDev = value
-        
+
     @property
     def r_squared(self) -> Optional[float]:
         return self._csdata.RSquared
-    
+
     @r_squared.setter
     def r_squared(self, value):
         self._csdata.RSquared = value
-    
+
     @property
     def line(self) -> Optional[Decimal]:
         return to_pydecimal(self._csdata.Line)
-    
+
     @line.setter
     def line(self, value):
         self._csdata.Line = CsDecimal(value)

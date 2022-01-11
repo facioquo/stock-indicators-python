@@ -6,23 +6,23 @@ from stock_indicators.indicators.common.quote import Quote
 
 def get_beta(market_history: Iterable[Quote], eval_history: Iterable[Quote], lookback_periods: int):
     """Get Beta calculated.
-    
+
     Beta shows how strongly one stock responds to systemic volatility of the entire market.
-    
+
     Parameters:
         `market_history` : Iterable[Quotes]
             Historical price quotes for Market.
 
         `eval_history` : Iterable[Quotes]
             Historical price quotes for Evaluation.
-        
+
         `lookback_periods` : int
             Number of periods in the lookback window.
-    
+
     Returns:
         `BetaResults[BetaResult]`
             BetaResults is list of BetaResult with providing useful helper methods.
-    
+
     See more:
          - [Beta Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Beta/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)

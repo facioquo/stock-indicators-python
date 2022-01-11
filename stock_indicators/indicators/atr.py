@@ -9,20 +9,20 @@ from stock_indicators.indicators.common.quote import Quote
 
 def get_atr(quotes: Iterable[Quote], lookback_periods: int = 14):
     """Get ATR calculated.
-    
+
     Average True Range (ATR) is a measure of volatility that captures gaps and limits between periods.
-    
+
     Parameters:
         `quotes` : Iterable[Quotes]
             Historical price quotes.
-        
+
         `lookback_periods` : int, defaults 14
             Number of periods in the lookback window.
-    
+
     Returns:
         `ATRResults[ATRResult]`
             ATRResults is list of ATRResult with providing useful helper methods.
-    
+
     See more:
          - [ATR Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Atr/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
