@@ -16,6 +16,7 @@ class Decimal:
         >>> cs_decimal
         2.5
     """
+    
     def __new__(cls, decimal) -> CsDecimal:
         return CsDecimal.Parse(str(decimal))
 
