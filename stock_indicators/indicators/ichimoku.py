@@ -7,6 +7,7 @@ from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
+
 def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = 9,
                  kijun_periods: int = 26, senkou_b_periods: int = 52):
     """Get Ichimoku Cloud calculated.
@@ -41,6 +42,7 @@ def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = 9,
                                              kijun_periods,
                                              senkou_b_periods)
     return IchimokuResults(results, IchimokuResult)
+
 
 class IchimokuResult(ResultBase):
     """
@@ -87,6 +89,7 @@ class IchimokuResult(ResultBase):
     def chikou_span(self, value):
         self._csdata.ChikouSpan = CsDecimal(value)
 
+
 T = TypeVar("T", bound=IchimokuResult)
 class IchimokuResults(IndicatorResults[T]):
     """
@@ -94,4 +97,4 @@ class IchimokuResults(IndicatorResults[T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
-    pass
+

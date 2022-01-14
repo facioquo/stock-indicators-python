@@ -40,6 +40,7 @@ def get_fractal(quotes: Iterable[Quote], window_span: int = 2):
     fractal_results = CsIndicator.GetFractal[Quote](CsList(Quote, quotes), window_span)
     return FractalResults(fractal_results, FractalResult)
 
+
 class FractalResult(ResultBase):
     """
     A wrapper class for a single unit of Williams Fractal results.
@@ -61,6 +62,7 @@ class FractalResult(ResultBase):
     def fractal_bull(self, value):
         self._csdata.FractalBull = CsDecimal(value)
 
+
 T = TypeVar("T", bound=FractalResult)
 class FractalResults(IndicatorResults[T]):
     """
@@ -68,4 +70,4 @@ class FractalResults(IndicatorResults[T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
-    pass
+

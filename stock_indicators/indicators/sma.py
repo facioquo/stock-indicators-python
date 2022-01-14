@@ -4,6 +4,7 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
+from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
@@ -56,6 +57,7 @@ def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):
     sma_extended_list = CsIndicator.GetSmaExtended[Quote](CsList(Quote, quotes), lookback_periods)
     return SMAExtendedResults(sma_extended_list, SMAExtendedResult)
 
+
 class SMAResult(ResultBase):
     """
     A wrapper class for a single unit of SMA results.
@@ -69,22 +71,15 @@ class SMAResult(ResultBase):
     def sma(self, value):
         self._csdata.Sma = CsDecimal(value)
 
+
 T = TypeVar("T", bound=SMAResult)
-class SMAResults(IndicatorResults[T]):
+class SMAResults(RemoveWarmupMixin, IndicatorResults[T]):
     """
     A wrapper class for the list of SMA(Simple Moving Average) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in CSharp implementation.
     """
 
-    @IndicatorResults._verify_data
-    def remove_warmup_periods(self, remove_periods: Optional[int] = None):
-        if remove_periods is not None:
-            return super().remove_warmup_periods(remove_periods)
-
-        removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
-
-        return self.__class__(removed_results, self._wrapper_class)
 
 class SMAExtendedResult(SMAResult):
     """
@@ -115,19 +110,10 @@ class SMAExtendedResult(SMAResult):
     def mape(self, value):
         self._csdata.Mape = value
 
+
 T = TypeVar("T", bound=SMAExtendedResult)
-class SMAExtendedResults(IndicatorResults[T]):
+class SMAExtendedResults(RemoveWarmupMixin, IndicatorResults[T]):
     """
     A wrapper class for the list of SMA-Extended results. It is exactly same with built-in `list`
     except for that it provides some useful helper methods written in CSharp implementation.
     """
-
-    @IndicatorResults._verify_data
-    def remove_warmup_periods(self, remove_periods: Optional[int] = None):
-        if remove_periods is not None:
-            return super().remove_warmup_periods(remove_periods)
-
-        removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
-
-        return self.__class__(removed_results, self._wrapper_class)
-        

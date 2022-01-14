@@ -4,8 +4,10 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
+from stock_indicators.indicators.common.helpers import ToQuotesMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+
 
 def get_heikin_ashi(quotes: Iterable[Quote]):
     """Get Heikin-Ashi calculated.
@@ -26,6 +28,7 @@ def get_heikin_ashi(quotes: Iterable[Quote]):
     """
     results = CsIndicator.GetHeikinAshi[Quote](CsList(Quote, quotes))
     return HeikinAshiResults(results, HeikinAshiResult)
+
 
 class HeikinAshiResult(ResultBase):
     """
@@ -72,16 +75,11 @@ class HeikinAshiResult(ResultBase):
     def volume(self, value):
         self._csdata.Volume = CsDecimal(value)
 
+
 T = TypeVar("T", bound=HeikinAshiResult)
-class HeikinAshiResults(IndicatorResults[T]):
+class HeikinAshiResults(ToQuotesMixin, IndicatorResults[T]):
     """
     A wrapper class for the list of Heikin-Ashi results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
-
-    @IndicatorResults._verify_data
-    def to_quotes(self) -> Iterable[Quote]:
-        quotes = CsIndicator.ConvertToQuotes(CsList(type(self._csdata[0]), self._csdata))
-
-        return [ Quote.from_csquote(q) for q in quotes ]
