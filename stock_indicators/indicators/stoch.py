@@ -4,8 +4,10 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
+from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+
 
 def get_stoch(quotes: Iterable[Quote], lookback_periods: int = 14, signal_periods: int = 3, smooth_periods: int = 3):
     """Get Stochastic Oscillator calculated, with KDJ indexes.
@@ -37,6 +39,7 @@ def get_stoch(quotes: Iterable[Quote], lookback_periods: int = 14, signal_period
     """
     stoch_results = CsIndicator.GetStoch[Quote](CsList(Quote, quotes), lookback_periods, signal_periods, smooth_periods)
     return StochResults(stoch_results, StochResult)
+
 
 class StochResult(ResultBase):
     """
@@ -71,20 +74,11 @@ class StochResult(ResultBase):
     d = signal
     j = percent_j
 
+
 T = TypeVar("T", bound=StochResult)
-class StochResults(IndicatorResults[T]):
+class StochResults(RemoveWarmupMixin, IndicatorResults[T]):
     """
     A wrapper class for the list of Stochastic Oscillator(with KDJ Index) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
-
-    @IndicatorResults._verify_data
-    def remove_warmup_periods(self, remove_periods: Optional[int] = None):
-        if remove_periods is not None:
-            return super().remove_warmup_periods(remove_periods)
-
-        removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
-
-        return self.__class__(removed_results, self._wrapper_class)
-        

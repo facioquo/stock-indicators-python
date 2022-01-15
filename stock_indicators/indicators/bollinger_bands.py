@@ -4,8 +4,10 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
+from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+
 
 def get_bollinger_bands(quotes: Iterable[Quote], lookback_periods: int = 20, standard_deviations: float = 2):
     """Get Bollinger Bands&#174; calculated.
@@ -33,6 +35,7 @@ def get_bollinger_bands(quotes: Iterable[Quote], lookback_periods: int = 20, sta
     """
     bollinger_bands_results = CsIndicator.GetBollingerBands[Quote](CsList(Quote, quotes), lookback_periods, standard_deviations)
     return BollingerBandsResults(bollinger_bands_results, BollingerBandsResult)
+
 
 class BollingerBandsResult(ResultBase):
     """
@@ -87,20 +90,11 @@ class BollingerBandsResult(ResultBase):
     def width(self, value):
         self._csdata.Width = value
 
+
 T = TypeVar("T", bound=BollingerBandsResult)
-class BollingerBandsResults(IndicatorResults[T]):
+class BollingerBandsResults(RemoveWarmupMixin, IndicatorResults[T]):
     """
     A wrapper class for the list of Bollinger Bands results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
-
-    @IndicatorResults._verify_data
-    def remove_warmup_periods(self, remove_periods: Optional[int] = None):
-        if remove_periods is not None:
-            return super().remove_warmup_periods(remove_periods)
-
-        removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
-
-        return self.__class__(removed_results, self._wrapper_class)
-        

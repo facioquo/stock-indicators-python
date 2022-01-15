@@ -1,8 +1,10 @@
 from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
+from stock_indicators.indicators.common.helpers import ToQuotesMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+
 
 def get_adl(quotes: Iterable[Quote], sma_periods: Optional[int] = None):
     """Get ADL calculated.
@@ -26,6 +28,7 @@ def get_adl(quotes: Iterable[Quote], sma_periods: Optional[int] = None):
     """
     adl_results = CsIndicator.GetAdl[Quote](CsList(Quote, quotes), sma_periods)
     return ADLResults(adl_results, ADLResult)
+
 
 class ADLResult(ResultBase):
     """
@@ -64,16 +67,12 @@ class ADLResult(ResultBase):
     def adl_sma(self, value):
         self._csdata.AdlSma = value
 
+
 T = TypeVar("T", bound=ADLResult)
-class ADLResults(IndicatorResults[T]):
+class ADLResults(ToQuotesMixin, IndicatorResults[T]):
     """
     A wrapper class for the list of ADL(Accumulation/Distribution Line) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
 
-    @IndicatorResults._verify_data
-    def to_quotes(self) -> Iterable[Quote]:
-        quotes = CsIndicator.ConvertToQuotes(CsList(type(self._csdata[0]), self._csdata))
-
-        return [ Quote.from_csquote(q) for q in quotes ]

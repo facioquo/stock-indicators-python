@@ -1,8 +1,10 @@
 from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
+from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+
 
 def get_roc(quotes: Iterable[Quote], lookback_periods: int, sma_periods: int = None):
     """Get ROC calculated.
@@ -61,6 +63,7 @@ def get_roc_with_band(quotes: Iterable[Quote], lookback_periods: int, ema_period
     results = CsIndicator.GetRocWb[Quote](CsList(Quote, quotes), lookback_periods, ema_periods, std_dev_periods)
     return ROCWBResults(results, ROCWBResult)
 
+
 class ROCResult(ResultBase):
     """
     A wrapper class for a single unit of ROC results.
@@ -82,22 +85,14 @@ class ROCResult(ResultBase):
     def roc_sma(self, value):
         self._csdata.RocSma = value
 
+
 T = TypeVar("T", bound=ROCResult)
-class ROCResults(IndicatorResults[T]):
+class ROCResults(RemoveWarmupMixin, IndicatorResults[T]):
     """
     A wrapper class for the list of ROC(Rate of Change) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
-
-    @IndicatorResults._verify_data
-    def remove_warmup_periods(self, remove_periods: Optional[int] = None):
-        if remove_periods is not None:
-            return super().remove_warmup_periods(remove_periods)
-
-        removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
-
-        return self.__class__(removed_results, self._wrapper_class)
 
 
 class ROCWBResult(ResultBase):
@@ -137,19 +132,11 @@ class ROCWBResult(ResultBase):
     def lower_band(self, value):
         self._csdata.LowerBand = value
 
+
 T = TypeVar("T", bound=ROCWBResult)
-class ROCWBResults(IndicatorResults[T]):
+class ROCWBResults(RemoveWarmupMixin, IndicatorResults[T]):
     """
     A wrapper class for the list of ROC(Rate of Change) with band results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
-
-    @IndicatorResults._verify_data
-    def remove_warmup_periods(self, remove_periods: Optional[int] = None):
-        if remove_periods is not None:
-            return super().remove_warmup_periods(remove_periods)
-
-        removed_results = CsIndicator.RemoveWarmupPeriods(CsList(type(self._csdata[0]), self._csdata))
-
-        return self.__class__(removed_results, self._wrapper_class)
