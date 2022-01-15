@@ -2,39 +2,37 @@ from datetime import datetime as PyDateTime
 from System import DateTime as CsDateTime
 from System.Globalization import CultureInfo
 
-def DateTime(datetime):
+
+class DateTime:
     """
-    Converts Python's `datetime.datetime` class into C#'s `System.DateTime` struct.
+    Class for constructing C#'s `System.DateTime` object from Python's `datetime.datetime` instance.
 
-    Parameter
-    ----------
-    datetime : `datetime.datetime`.
+    Parameters:
+        datetime : `datetime.datetime`.
 
-    Example
-    --------
-    Constructing `System.DateTime` from `datetime.datetime` of Python.
-
-    >>> now = datetime.now()
-    >>> cs_now = DateTime(now)
-    >>> cs_now
-    3/26/2021 10:02:22 PM
+    Example:
+        Constructing `System.DateTime` from `datetime.datetime` of Python.
+        
+        >>> now = datetime.now()
+        >>> cs_now = DateTime(now)
+        >>> cs_now
+        3/26/2021 10:02:22 PM
     """
+    
+    def __new__(cls, datetime) -> CsDateTime:
+        if not isinstance(datetime, PyDateTime):
+            raise TypeError("Only datetime.datetime is allowed")
 
-    if not isinstance(datetime, PyDateTime):
-        raise TypeError("Only datetime.datetime is allowed")
-
-    return CsDateTime.Parse(datetime.isoformat())
+        return CsDateTime.Parse(datetime.isoformat())
+    
 
 def to_pydatetime(cs_datetime):
     """
     Converts C#'s `System.DateTime` struct to a native Python datetime object.
 
-    Parameter
-    ----------
-    cs_datetime : `System.DateTime` of C#.
-
+    Parameter:
+        cs_datetime : `System.DateTime` of C#.
     """
-
     if not isinstance(cs_datetime, CsDateTime):
         raise TypeError("Only System.DateTime is allowed")
 
