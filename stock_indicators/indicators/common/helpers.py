@@ -1,4 +1,5 @@
 from typing import Iterable, Optional
+from typing_extensions import Self
 
 from stock_indicators.indicators.common.quote import Quote
 from stock_indicators.indicators.common.results import IndicatorResults
@@ -9,7 +10,7 @@ from stock_indicators._cstypes import List as CsList
 class RemoveWarmupMixin:
     """Mixin for remove_warmup_periods()."""
     @IndicatorResults._verify_data
-    def remove_warmup_periods(self, remove_periods: Optional[int] = None):
+    def remove_warmup_periods(self, remove_periods: Optional[int] = None) -> Self:
         if remove_periods is not None:
             return super().remove_warmup_periods(remove_periods)
 
