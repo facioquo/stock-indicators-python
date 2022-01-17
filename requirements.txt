@@ -1,2 +1,3 @@
 # _cslib
 pythonnet==2.5.2
+typing_extensions>=4.0.0
