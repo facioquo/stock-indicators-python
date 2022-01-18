@@ -23,7 +23,7 @@ class ChaikinOscResult(ResultBase):
     @money_flow_multiplier.setter
     def money_flow_multiplier(self, value):
         self._csdata.MoneyFlowMultiplier = value
-        
+
     @property
     def money_flow_volume(self) -> float:
         return self._csdata.MoneyFlowVolume
@@ -31,7 +31,7 @@ class ChaikinOscResult(ResultBase):
     @money_flow_volume.setter
     def money_flow_volume(self, value):
         self._csdata.MoneyFlowVolume = value
-        
+
     @property
     def adl(self) -> float:
         return self._csdata.Adl
@@ -47,7 +47,7 @@ class ChaikinOscResult(ResultBase):
     @oscillator.setter
     def oscillator(self, value):
         self._csdata.Oscillator = value
-        
+
 
 T = TypeVar("T", bound=ChaikinOscResult)
 class ChaikinOscResults(RemoveWarmupMixin, IndicatorResults[T]):

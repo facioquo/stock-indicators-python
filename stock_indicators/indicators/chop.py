@@ -31,7 +31,7 @@ class ChopResult(ResultBase):
 T = TypeVar("T", bound=ChopResult)
 class ChopResults(RemoveWarmupMixin, IndicatorResults[T]):
     """
-    A wrapper class for the list of Choppiness Index (CHOP)) results.
+    A wrapper class for the list of Choppiness Index (CHOP) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in CSharp implementation.
     """
