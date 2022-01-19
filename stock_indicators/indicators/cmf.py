@@ -1,19 +1,22 @@
+from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
+from stock_indicators._cstypes import Decimal as CsDecimal
+from stock_indicators._cstypes.decimal import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_chaikin_osc(quotes: Iterable[Quote], fast_periods: int = 3, slow_periods: int = 10):
-    results = CsIndicator.GetChaikinOsc[Quote](CsList(Quote, quotes), fast_periods, slow_periods)
-    return ChaikinOscResults(results, ChaikinOscResult)
+def get_cmf(quotes: Iterable[Quote], lookback_periods: int = 20):
+    results = CsIndicator.GetCmf[Quote](CsList(Quote, quotes), lookback_periods)
+    return CMFResults(results, CMFResult)
 
 
-class ChaikinOscResult(ResultBase):
+class CMFResult(ResultBase):
     """
-    A wrapper class for a single unit of Chaikin Oscillator results.
+    A wrapper class for a single unit of Chaikin Money Flow (CMF) results.
     """
 
     @property
@@ -33,26 +36,18 @@ class ChaikinOscResult(ResultBase):
         self._csdata.MoneyFlowVolume = value
 
     @property
-    def adl(self) -> float:
-        return self._csdata.Adl
+    def cmf(self) -> Optional[float]:
+        return self._csdata.Cmf
 
-    @adl.setter
-    def adl(self, value):
-        self._csdata.Adl = value
-
-    @property
-    def oscillator(self) -> Optional[float]:
-        return self._csdata.Oscillator
-
-    @oscillator.setter
-    def oscillator(self, value):
-        self._csdata.Oscillator = value
+    @cmf.setter
+    def cmf(self, value):
+        self._csdata.Cmf = value
 
 
-T = TypeVar("T", bound=ChaikinOscResult)
-class ChaikinOscResults(RemoveWarmupMixin, IndicatorResults[T]):
+T = TypeVar("T", bound=CMFResult)
+class CMFResults(RemoveWarmupMixin, IndicatorResults[T]):
     """
-    A wrapper class for the list of Chaikin Oscillator results.
+    A wrapper class for the list of Chaikin Money Flow (CMF) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in CSharp implementation.
     """

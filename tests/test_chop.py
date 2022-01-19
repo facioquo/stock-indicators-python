@@ -46,5 +46,3 @@ class TestChop:
         from Skender.Stock.Indicators import BadQuotesException
         with pytest.raises(BadQuotesException):
             indicators.get_chop(quotes[:30], 30)
-        
-        
