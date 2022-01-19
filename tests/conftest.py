@@ -11,35 +11,17 @@ wb = load_workbook(data_path, data_only=True)
 
 @pytest.fixture(scope='session')
 def quotes(days: int = 502):
-    rows = list(wb['History (primary)'])[1:]
+    rows = list(wb['Default'])[1:]
 
     h = []
     for row in rows:
         h.append(Quote(
+            row[1].value,
+            row[2].value,
             row[3].value,
             row[4].value,
             row[5].value,
             row[6].value,
-            row[7].value,
-            row[8].value,
-        ))
-
-    h.reverse()
-    return h[:days]
-
-@pytest.fixture(scope='session')
-def other_quotes(days: int = 502):
-    rows = list(wb['Compare'])[1:]
-
-    h = []
-    for row in rows:
-        h.append(Quote(
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
-            row[7].value,
-            row[8].value,
         ))
 
     h.reverse()
@@ -53,13 +35,49 @@ def bad_quotes(days: int = 502):
     for row in rows:
         h.append(Quote(
             # Quoto.date cannot be null.
-            row[3].value or datetime.now(),
+            row[1].value or datetime.now(),
             # Keep micro values.
+            '{:f}'.format(PyDecimal(row[2].value)) if row[2].value is not None else None,
+            '{:f}'.format(PyDecimal(row[3].value)) if row[3].value is not None else None,
             '{:f}'.format(PyDecimal(row[4].value)) if row[4].value is not None else None,
             '{:f}'.format(PyDecimal(row[5].value)) if row[5].value is not None else None,
             '{:f}'.format(PyDecimal(row[6].value)) if row[6].value is not None else None,
-            '{:f}'.format(PyDecimal(row[7].value)) if row[7].value is not None else None,
-            '{:f}'.format(PyDecimal(row[8].value)) if row[8].value is not None else None,
+        ))
+
+    h.reverse()
+    return h[:days]
+
+@pytest.fixture(scope='session')
+def big_quotes(days: int = 1246):
+    rows = list(wb['TooBig'])[1:]
+
+    h = []
+    for row in rows:
+        h.append(Quote(
+            row[1].value,
+            row[2].value,
+            row[3].value,
+            row[4].value,
+            row[5].value,
+            row[6].value,
+        ))
+
+    h.reverse()
+    return h[:days]
+
+@pytest.fixture(scope='session')
+def other_quotes(days: int = 502):
+    rows = list(wb['Compare'])[1:]
+
+    h = []
+    for row in rows:
+        h.append(Quote(
+            row[2].value,
+            row[3].value,
+            row[4].value,
+            row[5].value,
+            row[6].value,
+            row[7].value,
         ))
 
     h.reverse()
@@ -67,17 +85,17 @@ def bad_quotes(days: int = 502):
 
 @pytest.fixture(scope='session')
 def bitcoin_quotes(days: int = 1246):
-    rows = list(wb['Bitcoin'])[1:]
+    rows = list(wb['BTCUSDT'])[1:]
 
     h = []
     for row in rows:
         h.append(Quote(
+            row[1].value,
+            row[2].value,
             row[3].value,
             row[4].value,
             row[5].value,
             row[6].value,
-            row[7].value,
-            row[8].value,
         ))
 
     h.reverse()
@@ -90,12 +108,12 @@ def intraday_quotes(days: int = 1564):
     h = []
     for row in rows:
         h.append(Quote(
+            row[1].value,
+            row[2].value,
             row[3].value,
             row[4].value,
             row[5].value,
             row[6].value,
-            row[7].value,
-            row[8].value,
         ))
 
     h.reverse()
@@ -108,12 +126,12 @@ def longish_quotes(days: int = 5285):
     h = []
     for row in rows:
         h.append(Quote(
+            row[2].value,
             row[3].value,
             row[4].value,
             row[5].value,
             row[6].value,
             row[7].value,
-            row[8].value,
         ))
 
     h.reverse()
@@ -126,12 +144,12 @@ def longest_quotes():
     h = []
     for row in rows:
         h.append(Quote(
+            row[2].value,
             row[3].value,
             row[4].value,
             row[5].value,
             row[6].value,
             row[7].value,
-            row[8].value,
         ))
 
     return h
@@ -143,12 +161,12 @@ def penny_quotes():
     h = []
     for row in rows:
         h.append(Quote(
+            row[1].value,
             row[2].value,
             row[3].value,
             row[4].value,
             row[5].value,
             row[6].value,
-            row[7].value,
         ))
 
     return h
@@ -160,12 +178,12 @@ def zigzag_quotes(days: int = 342):
     h = []
     for row in rows:
         h.append(Quote(
+            row[0].value,
             row[1].value,
             row[2].value,
             row[3].value,
             row[4].value,
             row[5].value,
-            row[6].value,
         ))
 
     h.reverse()
