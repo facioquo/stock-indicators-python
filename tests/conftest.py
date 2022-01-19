@@ -102,6 +102,24 @@ def bitcoin_quotes(days: int = 1246):
     return h[:days]
 
 @pytest.fixture(scope='session')
+def mismatch_quotes(days: int = 502):
+    rows = list(wb['Mismatch'])[1:]
+
+    h = []
+    for row in rows:
+        h.append(Quote(
+            row[1].value,
+            row[2].value,
+            row[3].value,
+            row[4].value,
+            row[5].value,
+            row[6].value,
+        ))
+
+    h.reverse()
+    return h[:days]
+
+@pytest.fixture(scope='session')
 def intraday_quotes(days: int = 1564):
     rows = list(wb['Intraday'])[1:]
 
