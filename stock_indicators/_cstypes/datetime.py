@@ -12,19 +12,19 @@ class DateTime:
 
     Example:
         Constructing `System.DateTime` from `datetime.datetime` of Python.
-        
+
         >>> now = datetime.now()
         >>> cs_now = DateTime(now)
         >>> cs_now
         3/26/2021 10:02:22 PM
     """
-    
+
     def __new__(cls, datetime) -> CsDateTime:
         if not isinstance(datetime, PyDateTime):
             raise TypeError("Only datetime.datetime is allowed")
 
         return CsDateTime.Parse(datetime.isoformat())
-    
+
 
 def to_pydatetime(cs_datetime):
     """

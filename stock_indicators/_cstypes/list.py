@@ -27,7 +27,7 @@ class List:
         >>>     print(i, end='')
         123
     """
-    
+
     def __new__(cls, generic, sequence) -> CsList:
         clist = CsList[generic]()
         for i in sequence:
