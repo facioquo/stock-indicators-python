@@ -16,7 +16,7 @@ def get_slope(quotes: Iterable[Quote], lookback_periods: int):
     It can be used to help identify trend strength and direction.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int

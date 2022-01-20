@@ -12,7 +12,7 @@ def get_adl(quotes: Iterable[Quote], sma_periods: Optional[int] = None):
     Accumulation/Distribution Line (ADL) is a rolling accumulation of Chaikin Money Flow Volume.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `sma_periods` : int, optional

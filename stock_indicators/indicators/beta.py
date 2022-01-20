@@ -12,10 +12,10 @@ def get_beta(market_history: Iterable[Quote], eval_history: Iterable[Quote], loo
     Beta shows how strongly one stock responds to systemic volatility of the entire market.
 
     Parameters:
-        `market_history` : Iterable[Quotes]
+        `market_history` : Iterable[Quote]
             Historical price quotes for Market.
 
-        `eval_history` : Iterable[Quotes]
+        `eval_history` : Iterable[Quote]
             Historical price quotes for Evaluation.
 
         `lookback_periods` : int

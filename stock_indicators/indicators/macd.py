@@ -16,7 +16,7 @@ def get_macd(quotes: Iterable[Quote], fast_periods: int = 12, slow_periods: int 
     of two converging/diverging exponential moving averages.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `fast_periods` : int, defaults 12

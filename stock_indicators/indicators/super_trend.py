@@ -17,11 +17,11 @@ def get_super_trend(quotes: Iterable[Quote], lookback_periods: int = 10, multipl
     trailing stop when the trend changes.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int, defaults 10
-            Number of periods in the lookback window.
+            Number of periods for ATR.
 
         `multiplier` : float, defaults 3
             Multiplier sets the ATR band width.

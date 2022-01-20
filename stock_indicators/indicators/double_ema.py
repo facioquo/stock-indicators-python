@@ -15,7 +15,7 @@ def get_double_ema(quotes: Iterable[Quote], lookback_periods: int):
     Double Exponential Moving Average (DEMA) of the Close price.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int

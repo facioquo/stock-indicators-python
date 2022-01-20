@@ -13,7 +13,7 @@ def get_rsi(quotes: Iterable[Quote], lookback_periods: int = 14):
     on a scale of 0 to 100, to depict overbought and oversold conditions.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int, defaults 14

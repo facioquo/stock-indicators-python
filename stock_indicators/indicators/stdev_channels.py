@@ -18,7 +18,7 @@ def get_stdev_channels(quotes: Iterable[Quote],
     and standard deviations band widths.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int, optional, defaults 20

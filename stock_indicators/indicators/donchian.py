@@ -15,7 +15,7 @@ def get_donchian(quotes: Iterable[Quote], lookback_periods: int = 20):
     Donchian Channels, also called Price Channels, are derived from highest High and lowest Low values over a lookback window.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int, defaults 22

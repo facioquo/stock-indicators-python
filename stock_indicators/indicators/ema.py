@@ -15,7 +15,7 @@ def get_ema(quotes: Iterable[Quote], lookback_periods: int):
     Exponential Moving Average (EMA) of the Close price.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int
