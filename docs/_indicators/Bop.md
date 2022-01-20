@@ -60,7 +60,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # Calculate 14-period BOP
-results = quotes.get_bop(quotes, 14);
+results = indicators.get_bop(quotes, 14);
 ```
 
 ## About: {{ page.title }}
