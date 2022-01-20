@@ -15,7 +15,7 @@ def get_stoch_rsi(quotes: Iterable[Quote], rsi_periods: int, stoch_periods: int,
     Stochastic RSI is a Stochastic interpretation of the Relative Strength Index.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `rsi_periods` : int

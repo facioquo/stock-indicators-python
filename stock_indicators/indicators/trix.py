@@ -16,7 +16,7 @@ def get_trix(quotes: Iterable[Quote], lookback_periods: int, signal_periods: Opt
     TRIX is often confused with TEMA.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int

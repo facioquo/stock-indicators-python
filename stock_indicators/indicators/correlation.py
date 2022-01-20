@@ -8,6 +8,28 @@ from stock_indicators.indicators.common.quote import Quote
 
 def get_correlation(quotes_a: Iterable[Quote], quotes_b: Iterable[Quote],
                     lookback_periods: int):
+    """Get Correlation Coefficient calculated.
+
+    Correlation Coefficient between two quote histories, based on Close price.
+
+    Parameters:
+        `quotes_a` : Iterable[Quote]
+            Historical price quotes A for comparison.
+
+        `quotes_b` : Iterable[Quote]
+            Historical price quotes B for comparison.
+
+        `lookback_periods` : int
+            Number of periods in the lookback window.
+
+    Returns:
+        `CorrelationResults[CorrelationResult]`
+            CorrelationResults is list of CorrelationResult with providing useful helper methods.
+
+    See more:
+         - [Correlation Coefficient Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Correlation/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetCorrelation[Quote](CsList(Quote, quotes_a), CsList(Quote, quotes_b),
                                                 lookback_periods)
     return CorrelationResults(results, CorrelationResult)

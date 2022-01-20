@@ -12,10 +12,11 @@ from stock_indicators.indicators.common.quote import Quote
 def get_chandelier(quotes: Iterable[Quote], lookback_periods: int = 22, multiplier: float = 3):
     """Get Chandelier Exit calculated.
 
-    Chandelier Exit is typically used for stop-loss and can be computed for both long or short types.
+    Chandelier Exit is typically used for stop-loss and can be
+    computed for both long or short types.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int, defaults 22

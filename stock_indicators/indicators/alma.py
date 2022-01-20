@@ -16,7 +16,7 @@ def get_alma(quotes: Iterable[Quote], lookback_periods: int = 9, offset: float =
     weighted moving average of Close price over a lookback window.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int, defaults 9

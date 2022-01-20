@@ -15,7 +15,7 @@ def get_atr(quotes: Iterable[Quote], lookback_periods: int = 14):
     Average True Range (ATR) is a measure of volatility that captures gaps and limits between periods.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int, defaults 14

@@ -15,7 +15,7 @@ def get_aroon(quotes: Iterable[Quote], lookback_periods: int = 25):
     Aroon is a simple oscillator view of how long the new high or low price occured over a lookback window.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int, defaults 25

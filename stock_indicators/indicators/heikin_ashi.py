@@ -15,7 +15,7 @@ def get_heikin_ashi(quotes: Iterable[Quote]):
     Heikin-Ashi is a modified candlestick pattern that uses prior day for smoothing.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
     Returns:

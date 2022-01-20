@@ -16,7 +16,7 @@ def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = 9,
     that depict support and resistance, momentum, and trend direction.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `tenkan_periods` : int, defaults 9

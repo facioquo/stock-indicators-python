@@ -7,6 +7,26 @@ from stock_indicators.indicators.common.quote import Quote
 
 
 def get_bop(quotes: Iterable[Quote], smooth_periods: int = 14):
+    """Get BOP calculated.
+
+    Balance of Power (aka Balance of Market Power) is a momentum oscillator
+    that depicts the strength of buying and selling pressure.
+
+    Parameters:
+        `quotes` : Iterable[Quote]
+            Historical price quotes.
+
+        `smooth_periods` : int, defaults 14
+            Number of periods for smoothing.
+
+    Returns:
+        `BOPResults[BOPResult]`
+            BOPResults is list of BOPResult with providing useful helper methods.
+
+    See more:
+         - [BOP Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Bop/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetBop[Quote](CsList(Quote, quotes), smooth_periods)
     return BOPResults(results, BOPResult)
 

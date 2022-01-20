@@ -13,7 +13,7 @@ def get_awesome(quotes: Iterable[Quote], fast_periods: int = 5, slow_periods: in
     between a fast and slow period modified moving average.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `fast_periods` : int, defaults 5

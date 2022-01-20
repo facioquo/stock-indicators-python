@@ -15,7 +15,7 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int):
     Simple Moving Average (SMA) is the average of Close price over a lookback window.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int
@@ -40,7 +40,7 @@ def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):
     and mean absolute percentage error (MAPE).
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int
@@ -114,6 +114,7 @@ class SMAExtendedResult(SMAResult):
 T = TypeVar("T", bound=SMAExtendedResult)
 class SMAExtendedResults(RemoveWarmupMixin, IndicatorResults[T]):
     """
-    A wrapper class for the list of SMA-Extended results. It is exactly same with built-in `list`
-    except for that it provides some useful helper methods written in CSharp implementation.
+    A wrapper class for the list of SMA-Extended results.
+    It is exactly same with built-in `list` except for that it provides
+    some useful helper methods written in CSharp implementation.
     """
