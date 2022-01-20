@@ -15,8 +15,8 @@ layout: indicator
 | name | type | notes
 | -- |-- |--
 | `quotes` | Iterable[Type[Quote]] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
-| `fast_periods` | int | Number of periods (`F`) in the ADL fast EMA.  Must be greater than 0 and smaller than `S`.  Default is 3.
-| `slow_periods` | int | Number of periods (`S`) in the ADL slow EMA.  Must be greater `F`.  Default is 10.
+| `fast_periods` | int, *default 3* | Number of periods (`F`) in the ADL fast EMA.  Must be greater than 0 and smaller than `S`.
+| `slow_periods` | int, *default 10* | Number of periods (`S`) in the ADL slow EMA.  Must be greater `F`.
 
 ### Historical quotes requirements
 
