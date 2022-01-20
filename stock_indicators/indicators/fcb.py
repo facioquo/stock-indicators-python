@@ -10,6 +10,27 @@ from stock_indicators.indicators.common.quote import Quote
 
 
 def get_fcb(quotes: Iterable[Quote], window_span: int = 2):
+    """Get FCB calculated.
+
+    Fractal Chaos Bands (FCB) outline high and low price channels
+    to depict broad less-chaotic price movements.
+    FCB is a channelized depiction of Williams Fractals.
+
+    Parameters:
+        `quotes` : Iterable[Quote]
+            Historical price quotes.
+
+        `window_span` : int, defaults 2
+            Number of span periods in the evaluation window.
+
+    Returns:
+        `FCBResults[FCBResult]`
+            FCBResults is list of FCBResult with providing useful helper methods.
+
+    See more:
+         - [FCB Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Fcb/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetFcb[Quote](CsList(Quote, quotes), window_span)
     return FCBResults(results, FCBResult)
 

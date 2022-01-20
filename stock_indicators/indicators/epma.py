@@ -10,6 +10,27 @@ from stock_indicators.indicators.common.quote import Quote
 
 
 def get_epma(quotes: Iterable[Quote], lookback_periods: int):
+    """Get EPMA calculated.
+
+    Endpoint Moving Average (EPMA), also known as Least Squares
+    Moving Average (LSMA), plots the projected last point of a linear
+    regression lookback window.
+
+    Parameters:
+        `quotes` : Iterable[Quote]
+            Historical price quotes.
+
+        `lookback_periods` : int
+            Number of periods in the lookback window.
+
+    Returns:
+        `EPMAResults[EPMAResult]`
+            EPMAResults is list of EPMAResult with providing useful helper methods.
+
+    See more:
+         - [EPMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Epma/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetEpma[Quote](CsList(Quote, quotes), lookback_periods)
     return EPMAResults(results, EPMAResult)
 

@@ -7,6 +7,26 @@ from stock_indicators.indicators.common.quote import Quote
 
 
 def get_cci(quotes: Iterable[Quote], lookback_periods: int = 20):
+    """Get CCI calculated.
+
+    Commodity Channel Index (CCI) is an oscillator depicting deviation
+    from typical price range, often used to identify cyclical trends.
+
+    Parameters:
+        `quotes` : Iterable[Quote]
+            Historical price quotes.
+
+        `lookback_periods` : int, defaults 20
+            Number of periods in the lookback window.
+
+    Returns:
+        `CCIResults[CCIResult]`
+            CCIResults is list of CCIResult with providing useful helper methods.
+
+    See more:
+         - [CCI Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Cci/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetCci[Quote](CsList(Quote, quotes), lookback_periods)
     return CCIResults(results, CCIResult)
 
