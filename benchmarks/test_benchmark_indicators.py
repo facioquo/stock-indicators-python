@@ -26,6 +26,36 @@ def test_benchmark_beta(benchmark, quotes, other_quotes):
     
 def test_benchmark_bollinger_bands(benchmark, quotes):
     benchmark(indicators.get_bollinger_bands, quotes)
+
+def test_benchmark_bop(benchmark, quotes):
+    benchmark(indicators.get_bop, quotes)
+    
+def test_benchmark_cci(benchmark, quotes):
+    benchmark(indicators.get_cci, quotes, 20)
+    
+def test_benchmark_chaikin_osc(benchmark, quotes):
+    benchmark(indicators.get_chaikin_osc, quotes)
+
+def test_benchmark_chop(benchmark, quotes):
+    benchmark(indicators.get_chop, quotes)
+    
+def test_benchmark_cmf(benchmark, quotes):
+    benchmark(indicators.get_cmf, quotes)
+    
+def test_benchmark_connors_rsi(benchmark, quotes):
+    benchmark(indicators.get_connors_rsi, quotes)
+    
+def test_benchmark_correlation(benchmark, quotes, other_quotes):
+    benchmark(indicators.get_correlation, quotes, other_quotes, 20)
+    
+def test_benchmark_dpo(benchmark, quotes):
+    benchmark(indicators.get_dpo, quotes, 14)
+    
+def test_benchmark_epma(benchmark, quotes):
+    benchmark(indicators.get_epma, quotes, 20)
+    
+def test_benchmark_fcb(benchmark, quotes):
+    benchmark(indicators.get_fcb, quotes)
     
 def test_chandelier(benchmark, quotes):
     benchmark(indicators.get_chandelier, quotes)
