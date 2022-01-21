@@ -16,7 +16,7 @@ def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = 9,
     that depict support and resistance, momentum, and trend direction.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `tenkan_periods` : int, defaults 9
@@ -97,4 +97,3 @@ class IchimokuResults(IndicatorResults[T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
-

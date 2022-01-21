@@ -7,6 +7,29 @@ from stock_indicators.indicators.common.quote import Quote
 
 
 def get_chaikin_osc(quotes: Iterable[Quote], fast_periods: int = 3, slow_periods: int = 10):
+    """Get Chaikin Oscillator calculated.
+
+    Chaikin Oscillator is the difference between fast and slow
+    Exponential Moving Averages (EMA) of the Accumulation/Distribution Line (ADL).
+
+    Parameters:
+        `quotes` : Iterable[Quote]
+            Historical price quotes.
+
+        `fast_periods` : int, defaults 3
+            Number of periods for the ADL fast EMA.
+
+        `slow_periods` : int, defaults 10
+            Number of periods for the ADL slow EMA.
+
+    Returns:
+        `ChaikinOscResults[ChaikinOscResult]`
+            ChaikinOscResults is list of ChaikinOscResult with providing useful helper methods.
+
+    See more:
+         - [Chaikin Oscillator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/ChaikinOsc/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetChaikinOsc[Quote](CsList(Quote, quotes), fast_periods, slow_periods)
     return ChaikinOscResults(results, ChaikinOscResult)
 

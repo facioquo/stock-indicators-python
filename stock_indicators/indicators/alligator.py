@@ -17,7 +17,7 @@ def get_alligator(quotes: Iterable[Quote]):
     feeding habits when describing market movement.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
     Returns:

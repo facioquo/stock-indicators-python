@@ -16,7 +16,7 @@ def get_bollinger_bands(quotes: Iterable[Quote], lookback_periods: int = 20, sta
     boundary lines from a moving average of Close price.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int, defaults 20

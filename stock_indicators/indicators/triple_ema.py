@@ -16,7 +16,7 @@ def get_triple_ema(quotes: Iterable[Quote], lookback_periods: int):
     Note: TEMA is often confused with the alternative TRIX oscillator.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int

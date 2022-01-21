@@ -12,7 +12,7 @@ def get_adl(quotes: Iterable[Quote], sma_periods: Optional[int] = None):
     Accumulation/Distribution Line (ADL) is a rolling accumulation of Chaikin Money Flow Volume.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `sma_periods` : int, optional
@@ -75,4 +75,3 @@ class ADLResults(ToQuotesMixin, IndicatorResults[T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
-

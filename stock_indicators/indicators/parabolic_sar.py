@@ -29,7 +29,7 @@ def get_parabolic_sar(quotes, acceleration_step = 0.02,
     used to determine trend direction and reversals.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `acceleration_step` : float, defaults 0.02

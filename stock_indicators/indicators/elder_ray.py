@@ -15,7 +15,7 @@ def get_elder_ray(quotes: Iterable[Quote], lookback_periods: int = 13):
     The Elder-ray Index depicts buying and selling pressure, also known as Bull and Bear Power.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int, defaults 13

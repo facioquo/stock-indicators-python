@@ -13,7 +13,7 @@ def get_roc(quotes: Iterable[Quote], lookback_periods: int, sma_periods: int = N
     of Close price over a lookback window.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int
@@ -40,7 +40,7 @@ def get_roc_with_band(quotes: Iterable[Quote], lookback_periods: int, ema_period
     over a lookback window with standard deviation bands.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int

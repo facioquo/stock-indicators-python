@@ -16,7 +16,7 @@ def get_stoch(quotes: Iterable[Quote], lookback_periods: int = 14, signal_period
     %J is also included for the KDJ Index extension.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int, defaults 14

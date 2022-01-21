@@ -23,7 +23,7 @@ def get_fractal(quotes: Iterable[Quote], window_span: int = 2):
     identifies a central high or low point over a lookback window.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `window_span` : int, defaults 2

@@ -13,7 +13,7 @@ def get_adx(quotes: Iterable[Quote], lookback_periods: int = 14):
     It includes upward and downward indicators, and is often used to measure strength of trend.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int, defaults 14

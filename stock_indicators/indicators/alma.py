@@ -12,11 +12,11 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 def get_alma(quotes: Iterable[Quote], lookback_periods: int = 9, offset: float = .85, sigma : float = 6):
     """Get ALMA calculated.
 
-    Arnaud Legoux Moving Average (ALMA) is a Gaussian distribution 
+    Arnaud Legoux Moving Average (ALMA) is a Gaussian distribution
     weighted moving average of Close price over a lookback window.
 
     Parameters:
-        `quotes` : Iterable[Quotes]
+        `quotes` : Iterable[Quote]
             Historical price quotes.
 
         `lookback_periods` : int, defaults 9

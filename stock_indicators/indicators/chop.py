@@ -10,6 +10,26 @@ from stock_indicators.indicators.common.quote import Quote
 
 
 def get_chop(quotes: Iterable[Quote], lookback_periods: int = 14):
+    """Get Choppiness Index calculated.
+
+    Choppiness Index (CHOP) measures the trendiness or choppiness
+    over N lookback periods on a scale of 0 to 100.
+
+    Parameters:
+        `quotes` : Iterable[Quote]
+            Historical price quotes.
+
+        `lookback_periods` : int, defaults 14
+            Number of periods in the lookback window.
+
+    Returns:
+        `ChopResults[ChopResult]`
+            ChopResults is list of ChopResult with providing useful helper methods.
+
+    See more:
+         - [Choppiness Index Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Chop/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetChop[Quote](CsList(Quote, quotes), lookback_periods)
     return ChopResults(results, ChopResult)
 

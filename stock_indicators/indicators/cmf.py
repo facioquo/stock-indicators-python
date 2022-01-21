@@ -7,6 +7,26 @@ from stock_indicators.indicators.common.quote import Quote
 
 
 def get_cmf(quotes: Iterable[Quote], lookback_periods: int = 20):
+    """Get CMF calculated.
+
+    Chaikin Money Flow (CMF) is the simple moving average
+    of Money Flow Volume (MFV).
+
+    Parameters:
+        `quotes` : Iterable[Quote]
+            Historical price quotes.
+
+        `lookback_periods` : int, defaults 20
+            Number of periods for the MFV moving average.
+
+    Returns:
+        `CMFResults[CMFResult]`
+            CMFResults is list of CMFResult with providing useful helper methods.
+
+    See more:
+         - [CMF Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Cmf/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetCmf[Quote](CsList(Quote, quotes), lookback_periods)
     return CMFResults(results, CMFResult)
 

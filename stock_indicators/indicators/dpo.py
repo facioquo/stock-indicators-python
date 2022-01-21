@@ -10,6 +10,26 @@ from stock_indicators.indicators.common.quote import Quote
 
 
 def get_dpo(quotes: Iterable[Quote], lookback_periods: int):
+    """Get DPO calculated.
+
+    Detrended Price Oscillator (DPO) depicts the difference
+    between price and an offset simple moving average.
+
+    Parameters:
+        `quotes` : Iterable[Quote]
+            Historical price quotes.
+
+        `lookback_periods` : int
+            Number of periods in the lookback window.
+
+    Returns:
+        `DPOResults[DPOResult]`
+            DPOResults is list of DPOResult with providing useful helper methods.
+
+    See more:
+         - [DPO Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Dpo/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
     results = CsIndicator.GetDpo[Quote](CsList(Quote, quotes), lookback_periods)
     return DPOResults(results, DPOResult)
 
