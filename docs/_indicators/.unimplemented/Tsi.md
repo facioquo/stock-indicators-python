@@ -10,12 +10,12 @@ layout: indicator
 Created by William Blau, the [True Strength Index](https://en.wikipedia.org/wiki/True_strength_index) is a momentum oscillator that depicts trends in price changes.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/300 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Tsi.png)
+![image]({{site.baseurl}}/assets/charts/Tsi.png)
 
 ```csharp
 // usage
-IEnumerable<TsiResult> results = 
-  quotes.GetTsi(lookbackPeriods, smoothPeriods, signalPeriods);  
+IEnumerable<TsiResult> results =
+  quotes.GetTsi(lookbackPeriods, smoothPeriods, signalPeriods);
 ```
 
 ## Parameters
@@ -28,7 +28,7 @@ IEnumerable<TsiResult> results =
 
 ### Historical quotes requirements
 
-You must have at least `N+M+100` periods of `quotes`.  Since this uses a two EMA smoothing techniques, we recommend you use at least `N+M+250` data points prior to the intended usage date for better precision.
+You must have at least `N+M+100` periods of `quotes` to cover the convergence periods.  Since this uses a two EMA smoothing techniques, we recommend you use at least `N+M+250` data points prior to the intended usage date for better precision.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
@@ -44,15 +44,15 @@ IEnumerable<TsiResult>
 - The first `N+M-1` periods will have `null` values since there's not enough data to calculate.
 - `Signal` will be `null` for all periods if `signalPeriods=0`.
 
-:warning: **Warning**: The first `N+M+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+:hourglass: **Convergence Warning**: The first `N+M+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### TsiResult
 
 | name | type | notes
 | -- |-- |--
 | `Date` | DateTime | Date
-| `Tsi` | decimal | True Strength Index
-| `Signal` | decimal | Signal line (EMA of TSI)
+| `Tsi` | double | True Strength Index
+| `Signal` | double | Signal line (EMA of TSI)
 
 ### Utilities
 

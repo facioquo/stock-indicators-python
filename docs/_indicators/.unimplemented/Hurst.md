@@ -11,12 +11,12 @@ layout: indicator
 The [Hurst Exponent](https://en.wikipedia.org/wiki/Hurst_exponent) is a [random-walk](https://en.wikipedia.org/wiki/Random_walk) path analysis that measures trending and mean-reverting tendencies of incremental return values.  When `H` is greater than 0.5 it depicts trending.  When `H` is less than 0.5 it is is more likely to revert to the mean.  When `H` is around 0.5 it represents a random walk.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/477 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Hurst.png)
+![image]({{site.baseurl}}/assets/charts/Hurst.png)
 
 ```csharp
 // usage
 IEnumerable<HurstResult> results =
-  quotes.GetHurst(lookbackPeriods);  
+  quotes.GetHurst(lookbackPeriods);
 ```
 
 ## Parameters
@@ -27,7 +27,7 @@ IEnumerable<HurstResult> results =
 
 ### Historical quotes requirements
 
-You must have at least `N+1` periods of `quotes`.
+You must have at least `N+1` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 

@@ -10,12 +10,12 @@ layout: indicator
 Created by Dave Skender, Rolling Pivot Points is a modern update to traditional fixed calendar window [Pivot Points](../PivotPoints#content).  It depicts support and resistance levels, based on a defined _rolling_ window and offset.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/274 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/RollingPivots.png)
+![image]({{site.baseurl}}/assets/charts/RollingPivots.png)
 
 ```csharp
 // usage
-IEnumerable<RollingPivotsResult> results = 
-  quotes.GetRollingPivots(lookbackPeriods, offsetPeriods, pointType);  
+IEnumerable<RollingPivotsResult> results =
+  quotes.GetRollingPivots(lookbackPeriods, offsetPeriods, pointType);
 ```
 
 ## Parameters
@@ -30,7 +30,7 @@ For example, a window of 8 with an offset of 4 would evaluate quotes like: `W W 
 
 ### Historical quotes requirements
 
-You must have at least `W+F` periods of `quotes`.
+You must have at least `W+F` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 

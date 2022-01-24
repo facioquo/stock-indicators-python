@@ -10,7 +10,7 @@ layout: indicator
 Popularized by Joseph Granville, [On-balance Volume](https://en.wikipedia.org/wiki/On-balance_volume) is a rolling accumulation of volume based on Close price direction.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/246 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Obv.png)
+![image]({{site.baseurl}}/assets/charts/Obv.png)
 
 ```csharp
 // usage
@@ -19,7 +19,7 @@ IEnumerable<ObvResult> results =
 
 // usage with optional overlay SMA of OBV (shown above)
 IEnumerable<ObvResult> results =
-  quotes.GetObv(smaPeriods);  
+  quotes.GetObv(smaPeriods);
 ```
 
 ## Parameters
@@ -30,7 +30,7 @@ IEnumerable<ObvResult> results =
 
 ### Historical quotes requirements
 
-You must have at least two historical quotes; however, since this is a trendline, more is recommended.
+You must have at least two historical quotes to cover the warmup periods; however, since this is a trendline, more is recommended.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
@@ -50,8 +50,8 @@ IEnumerable<ObvResult>
 | name | type | notes
 | -- |-- |--
 | `Date` | DateTime | Date
-| `Obv` | decimal | On-balance Volume
-| `ObvSma` | decimal | Moving average (SMA) of OBV based on `smaPeriods` periods, if specified
+| `Obv` | double | On-balance Volume
+| `ObvSma` | double | Moving average (SMA) of OBV based on `smaPeriods` periods, if specified
 
 :warning: **Warning**: absolute values in OBV are somewhat meaningless, so use with caution.
 

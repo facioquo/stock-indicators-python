@@ -10,12 +10,12 @@ layout: indicator
 Created by Larry Williams, the [Williams %R](https://en.wikipedia.org/wiki/Williams_%25R) momentum indicator is a stochastic oscillator with scale of -100 to 0.  It is exactly the same as the Fast variant of [Stochastic Oscillator](../Stoch#content), but with a different scaling.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/229 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/WilliamsR.png)
+![image]({{site.baseurl}}/assets/charts/WilliamsR.png)
 
 ```csharp
 // usage
 IEnumerable<WilliamsResult> results =
-  quotes.GetWilliamsR(lookbackPeriods);  
+  quotes.GetWilliamsR(lookbackPeriods);
 ```
 
 ## Parameters
@@ -26,7 +26,7 @@ IEnumerable<WilliamsResult> results =
 
 ### Historical quotes requirements
 
-You must have at least `N` periods of `quotes`.
+You must have at least `N` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 

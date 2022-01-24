@@ -7,15 +7,15 @@ layout: indicator
 
 # {{ page.title }}
 
-Created by Manning Stoller, [Stoller Average Range Channel (STARC) Bands](https://en.wikipedia.org/wiki/StarcBands_channel), are based on an SMA centerline and ATR band widths.  See also [Keltner Channels](../Keltner#content) for an EMA centerline equivalent.
+Created by Manning Stoller, [Stoller Average Range Channel (STARC) Bands](https://www.investopedia.com/terms/s/starc.asp), are based on an SMA centerline and ATR band widths.  See also [Keltner Channels](../Keltner#content) for an EMA centerline equivalent.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/292 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/StarcBands.png)
+![image]({{site.baseurl}}/assets/charts/StarcBands.png)
 
 ```csharp
 // usage
-IEnumerable<StarcBandsResult> results = 
-  quotes.GetStarcBands(smaPeriods, multiplier, atrPeriods);  
+IEnumerable<StarcBandsResult> results =
+  quotes.GetStarcBands(smaPeriods, multiplier, atrPeriods);
 ```
 
 ## Parameters
@@ -28,7 +28,7 @@ IEnumerable<StarcBandsResult> results =
 
 ### Historical quotes requirements
 
-You must have at least `S` or `A+100` periods of `quotes`, whichever is more.  Since this uses a smoothing technique, we recommend you use at least `A+150` data points prior to the intended usage date for better precision.
+You must have at least `S` or `A+100` periods of `quotes`, whichever is more, to cover the convergence periods.  Since this uses a smoothing technique, we recommend you use at least `A+150` data points prior to the intended usage date for better precision.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 

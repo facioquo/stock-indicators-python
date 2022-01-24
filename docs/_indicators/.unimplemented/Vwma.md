@@ -1,28 +1,28 @@
 ---
-title: Ulcer Index (UI)
-permalink: /indicators/UlcerIndex/
-type: price-characteristic
+title: Volume Weighted Moving Average (VWMA)
+permalink: /indicators/Vwma/
+type: moving-average
 layout: indicator
 ---
 
 # {{ page.title }}
 
-Created by Peter Martin, the [Ulcer Index](https://en.wikipedia.org/wiki/Ulcer_index) is a measure of downside Close price volatility over a lookback window.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/232 "Community discussion about this indicator")
+Volume Weighted Moving Average is the volume adjusted average price over a lookback window.
+[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/657 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/UlcerIndex.png)
+![image]({{site.baseurl}}/assets/charts/Vwma.png)
 
 ```csharp
-// usage
-IEnumerable<UlcerIndexResult> results =
-  quotes.GetUlcerIndex(lookbackPeriods);
+// legacy usage
+IEnumerable<VwmaResult> results =
+  quotes.GetVwma(lookbackPeriods);
 ```
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `lookbackPeriods` | int | Number of periods (`N`) for review.  Must be greater than 0.  Default is 14.
+| `lookbackPeriods` | int | Number of periods (`N`) in the moving average.  Must be greater than 0.
 
 ### Historical quotes requirements
 
@@ -33,20 +33,20 @@ You must have at least `N` periods of `quotes` to cover the warmup periods.
 ## Response
 
 ```csharp
-IEnumerable<UlcerIndexResult>
+IEnumerable<VwmaResult>
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N-1` periods will have `null` values since there's not enough data to calculate.
+- The first `N-1` periods will have `null` values for `Vwma` since there's not enough data to calculate.
 
-### UlcerIndexResult
+### VwmaResult
 
 | name | type | notes
 | -- |-- |--
 | `Date` | DateTime | Date
-| `UI` | double | Ulcer Index
+| `Vwma` | decimal | Volume Weighted Moving Average for `N` lookback periods
 
 ### Utilities
 
@@ -60,8 +60,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```csharp
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 
-// calculate UI(14)
-IEnumerable<UlcerIndexResult> results = quotes.GetUlcerIndex(14);
+// calculate 10-period VWMA
+IEnumerable<VwmaResult> results = quotes.GetVwma(10);
 ```

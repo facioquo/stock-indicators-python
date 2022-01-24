@@ -10,12 +10,12 @@ layout: indicator
 The [Percentage Volume Oscillator](https://school.stockcharts.com/doku.php?id=technical_indicators:percentage_volume_oscillator_pvo) is a simple oscillator view of two converging/diverging exponential moving averages of Volume.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/305 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Pvo.png)
+![image]({{site.baseurl}}/assets/charts/Pvo.png)
 
 ```csharp
 // usage
 IEnumerable<PvoResult> results =
-  quotes.GetPvo(fastPeriods, slowPeriods, signalPeriods);  
+  quotes.GetPvo(fastPeriods, slowPeriods, signalPeriods);
 ```
 
 ## Parameters
@@ -28,7 +28,7 @@ IEnumerable<PvoResult> results =
 
 ### Historical quotes requirements
 
-You must have at least `2×(S+P)` or `S+P+100` worth of `quotes`, whichever is more.  Since this uses a smoothing technique, we recommend you use at least `S+P+250` data points prior to the intended usage date for better precision.
+You must have at least `2×(S+P)` or `S+P+100` worth of `quotes`, whichever is more, to cover the convergence periods.  Since this uses a smoothing technique, we recommend you use at least `S+P+250` data points prior to the intended usage date for better precision.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 

@@ -10,7 +10,7 @@ layout: indicator
 [Zig Zag](https://school.stockcharts.com/doku.php?id=technical_indicators:zigzag) is a price chart overlay that simplifies the up and down movements and transitions based on a percent change smoothing threshold.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/226 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/ZigZag.png)
+![image]({{site.baseurl}}/assets/charts/ZigZag.png)
 
 ```csharp
 // usage
@@ -27,7 +27,7 @@ IEnumerable<ZigZagResult> results =
 
 ### Historical quotes requirements
 
-You must have at least two periods of `quotes` to calculate, but notably more is needed to be useful.
+You must have at least two periods of `quotes` to cover the warmup periods, but notably more is needed to be useful.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
