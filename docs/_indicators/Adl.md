@@ -19,7 +19,7 @@ layout: indicator
 
 ### Historical quotes requirements
 
-You must have at least two historical quotes; however, since this is a trendline, more is recommended.
+You must have at least two historical quotes to cover the warmup periods; however, since this is a trendline, more is recommended.
 
 `quotes` is an `Iterable[Type[Quote]]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 

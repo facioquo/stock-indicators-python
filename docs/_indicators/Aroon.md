@@ -28,7 +28,7 @@ results = indicators.get_aroon(quotes, lookback_periods)
 
 ### Historical quotes requirements
 
-You must have at least `N` periods of `quotes`.
+You must have at least `N` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `Iterable[Type[Quote]]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
