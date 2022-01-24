@@ -43,4 +43,7 @@ class TestParabolicSAR:
             indicators.get_parabolic_sar(quotes, 0, 1)
 
         with pytest.raises(ArgumentOutOfRangeException):
+            indicators.get_parabolic_sar(quotes, 0.02, 0)
+
+        with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_parabolic_sar(quotes, 6, 2)
