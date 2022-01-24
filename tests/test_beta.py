@@ -37,7 +37,3 @@ class TestBeta:
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_beta(quotes, other_quotes, 0)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_beta(quotes[:29], other_quotes[:29], 30)
