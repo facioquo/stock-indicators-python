@@ -38,10 +38,3 @@ class TestEMA:
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_ema(quotes, 0)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_ema(quotes[:129], 30)
-        
-        with pytest.raises(BadQuotesException):
-            indicators.get_ema(quotes[:499], 250)

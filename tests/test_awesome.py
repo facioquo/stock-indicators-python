@@ -45,8 +45,3 @@ class TestAwesome:
 
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_awesome(quotes, 25, 25)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_awesome(quotes[:33], 5, 34)
-            

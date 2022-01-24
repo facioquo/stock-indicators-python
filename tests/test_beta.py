@@ -41,6 +41,3 @@ class TestBeta:
         from Skender.Stock.Indicators import BadQuotesException
         with pytest.raises(BadQuotesException):
             indicators.get_beta(quotes[:29], other_quotes[:29], 30)
-        
-        with pytest.raises(BadQuotesException):
-            indicators.get_beta(quotes, other_quotes[:300], 30)

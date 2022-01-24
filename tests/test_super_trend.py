@@ -68,7 +68,3 @@ class TestSuperTrend:
 
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_super_trend(quotes, 7, 0)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_super_trend(quotes[:129], 30)

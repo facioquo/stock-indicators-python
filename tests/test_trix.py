@@ -39,14 +39,7 @@ class TestTRIX:
         assert -0.230742 == round(float(last.trix), 6)
         assert -0.204536 == round(float(last.signal), 6)
         
-    def test_exceptions(self, quotes, longish_quotes):
+    def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_trix(quotes, 0)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_trix(quotes[:189], 30)
-            
-        with pytest.raises(BadQuotesException):
-            indicators.get_trix(longish_quotes[:999], 250)

@@ -92,7 +92,3 @@ class TestStochRSI:
 
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_stoch_rsi(quotes, 14, 14, 3, 0)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_stoch_rsi(quotes[:129], 30, 30, 5, 5)

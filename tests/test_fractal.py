@@ -74,7 +74,3 @@ class TestFractal:
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_fractal(quotes, 1)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_fractal(quotes[:10], 5)

@@ -44,8 +44,3 @@ class TestParabolicSAR:
 
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_parabolic_sar(quotes, 6, 2)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_parabolic_sar(quotes[:1], 0.02, 0.2)
-            

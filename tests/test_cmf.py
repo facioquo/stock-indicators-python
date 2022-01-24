@@ -45,9 +45,3 @@ class TestCMF:
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_cmf(quotes, 0)
-        
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_cmf(quotes[:20], 20)
-
-        

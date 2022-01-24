@@ -52,8 +52,3 @@ class TestAlligator:
         assert 260.98953 == round(float(r.jaw), 5)
         assert 253.53576 == round(float(r.teeth), 5)
         assert 244.29591 == round(float(r.lips), 5)
-
-    def test_exceptions(self, quotes):
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_alligator(quotes[:114])

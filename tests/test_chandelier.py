@@ -37,7 +37,3 @@ class TestChandelier:
         
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_chandelier(quotes, 25, 0)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_chandelier(quotes[:30], 30)

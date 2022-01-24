@@ -57,7 +57,3 @@ class TestConnorsRSI:
             
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_connors_rsi(quotes, 3, 2, 1)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_connors_rsi(quotes[:102], 3, 2, 100)
