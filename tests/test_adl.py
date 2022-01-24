@@ -58,7 +58,3 @@ class TestADL:
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_adl(quotes, 0)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_adl(quotes[:1])

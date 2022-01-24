@@ -29,14 +29,7 @@ class TestTripleEMA:
         last = results.pop()
         assert 238.7690 == round(float(last.tema), 4)
 
-    def test_exceptions(self, quotes, longish_quotes):
+    def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_triple_ema(quotes, 0)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_triple_ema(quotes[:189], 30)
-            
-        with pytest.raises(BadQuotesException):
-            indicators.get_triple_ema(longish_quotes[:999], 250)

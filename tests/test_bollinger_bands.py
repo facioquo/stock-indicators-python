@@ -55,7 +55,3 @@ class TestBollingerBands:
         
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_bollinger_bands(quotes, 2, 0)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_bollinger_bands(quotes[:29], 30, 2)

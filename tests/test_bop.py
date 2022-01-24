@@ -39,7 +39,3 @@ class TestBOP:
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_bop(quotes, 0)
-        
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_bop(quotes[:24], 25)

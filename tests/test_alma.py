@@ -50,7 +50,3 @@ class TestALMA:
         
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_alma(quotes, 10, .5, 0)
-        
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_alma(quotes[:10], 11, .5)

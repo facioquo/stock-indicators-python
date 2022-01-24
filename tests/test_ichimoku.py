@@ -54,8 +54,3 @@ class TestIchimoku:
 
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_ichimoku(quotes, 9, 26, 26)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_macd(quotes[:51], 9, 26, 52)
-            

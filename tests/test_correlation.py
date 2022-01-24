@@ -43,17 +43,7 @@ class TestCorrelation:
         assert 0.8460 == round(float(last.correlation), 4)
         assert 0.7157 == round(float(last.r_squared), 4)
         
-    def test_exceptions(self, quotes, other_quotes, mismatch_quotes):
+    def test_exceptions(self, quotes, other_quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_correlation(quotes, other_quotes, 0)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_correlation(quotes[:29], other_quotes[:29], 30)
-            
-        with pytest.raises(BadQuotesException):
-            indicators.get_correlation(quotes, other_quotes[:300], 30)
-            
-        with pytest.raises(BadQuotesException):
-            indicators.get_correlation(mismatch_quotes, other_quotes, 20)

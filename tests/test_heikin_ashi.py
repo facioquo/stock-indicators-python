@@ -28,9 +28,3 @@ class TestHeikinAshi:
     def test_bad_data(self, bad_quotes):
         r = indicators.get_heikin_ashi(bad_quotes)
         assert 502 == len(r)
-        
-    def test_exceptions(self, quotes):
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_heikin_ashi(quotes[:1])
-          

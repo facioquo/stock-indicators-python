@@ -55,10 +55,3 @@ class TestMACD:
 
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_macd(quotes, 12, 26, -1)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_macd(quotes[:409], 12, 200, 5)
-            
-        with pytest.raises(BadQuotesException):
-            indicators.get_macd(quotes[:134], 12, 26, 9)

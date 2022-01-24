@@ -51,8 +51,3 @@ class TestFCB:
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_fcb(quotes, 1)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_fcb(quotes[:60], 30)
-

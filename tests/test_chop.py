@@ -42,7 +42,3 @@ class TestChop:
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_chop(quotes, 1)
-        
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_chop(quotes[:30], 30)

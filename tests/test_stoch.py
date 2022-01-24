@@ -90,7 +90,3 @@ class TestStoch:
 
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_stoch(quotes, 14, 3, 0)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_stoch(quotes[:32], 30, 3, 3)

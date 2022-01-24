@@ -42,10 +42,3 @@ class TestChaikinOsc:
         
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_chaikin_osc(quotes, 10, 5)
-        
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_chaikin_osc(quotes[:109], 3, 10)
-        
-        with pytest.raises(BadQuotesException):
-            indicators.get_chaikin_osc(quotes[:499], 3, 250)

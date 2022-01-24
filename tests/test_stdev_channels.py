@@ -99,7 +99,3 @@ class TestStdevChannels:
 
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_stdev_channels(quotes, 20,0)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_stdev_channels(quotes[:19], 20, 2)

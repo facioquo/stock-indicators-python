@@ -50,7 +50,3 @@ class TestAdx:
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_adx(quotes, 1)
-
-        from Skender.Stock.Indicators import BadQuotesException
-        with pytest.raises(BadQuotesException):
-            indicators.get_adx(quotes[:159], 30)
