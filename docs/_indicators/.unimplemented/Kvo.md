@@ -10,12 +10,12 @@ layout: indicator
 Created by Stephen Klinger, the [Klinger Volume Oscillator](https://www.investopedia.com/terms/k/klingeroscillator.asp) depicts volume-based trend reversal and divergence between short and long-term money flow.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/446 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Kvo.png)
+![image]({{site.baseurl}}/assets/charts/Kvo.png)
 
 ```csharp
 // usage
-IEnumerable<KvoResult> results = 
-  quotes.GetKvo(shortPeriods, longPeriods, signalPeriods);  
+IEnumerable<KvoResult> results =
+  quotes.GetKvo(shortPeriods, longPeriods, signalPeriods);
 ```
 
 ## Parameters
@@ -28,7 +28,7 @@ IEnumerable<KvoResult> results =
 
 ### Historical quotes requirements
 
-You must have at least `L+100` periods of `quotes`.  Since this uses a smoothing technique, we recommend you use at least `L+150` data points prior to the intended usage date for better precision.
+You must have at least `L+100` periods of `quotes` to cover the warmup periods.  Since this uses a smoothing technique, we recommend you use at least `L+150` data points prior to the intended usage date for better precision.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
@@ -50,8 +50,8 @@ IEnumerable<KvoResult>
 | name | type | notes
 | -- |-- |--
 | `Date` | DateTime | Date
-| `Oscillator` | decimal | Klinger Oscillator
-| `Signal` | decimal | EMA of Klinger Oscillator (signal line)
+| `Oscillator` | double | Klinger Oscillator
+| `Signal` | double | EMA of Klinger Oscillator (signal line)
 
 ### Utilities
 

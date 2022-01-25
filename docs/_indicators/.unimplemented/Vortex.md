@@ -10,12 +10,12 @@ layout: indicator
 Created by Etienne Botes and Douglas Siepman, the [Vortex Indicator](https://en.wikipedia.org/wiki/Vortex_indicator) is a measure of price directional movement.  It includes positive and negative indicators, and is often used to identify trends and reversals.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/339 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Vortex.png)
+![image]({{site.baseurl}}/assets/charts/Vortex.png)
 
 ```csharp
 // usage
 IEnumerable<VortexResult> results =
-  quotes.GetVortex(lookbackPeriods);  
+  quotes.GetVortex(lookbackPeriods);
 ```
 
 ## Parameters
@@ -26,7 +26,7 @@ IEnumerable<VortexResult> results =
 
 ### Historical quotes requirements
 
-You must have at least `N+1` periods of `quotes`.
+You must have at least `N+1` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
@@ -46,8 +46,8 @@ IEnumerable<VortexResult>
 | name | type | notes
 | -- |-- |--
 | `Date` | DateTime | Date
-| `Pvi` | decimal | Positive Vortex Indicator (VI+)
-| `Nvi` | decimal | Negative Vortex Indicator (VI-)
+| `Pvi` | double | Positive Vortex Indicator (VI+)
+| `Nvi` | double | Negative Vortex Indicator (VI-)
 
 ### Utilities
 

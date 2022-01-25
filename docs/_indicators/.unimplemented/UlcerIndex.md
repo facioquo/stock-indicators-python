@@ -10,12 +10,12 @@ layout: indicator
 Created by Peter Martin, the [Ulcer Index](https://en.wikipedia.org/wiki/Ulcer_index) is a measure of downside Close price volatility over a lookback window.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/232 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/UlcerIndex.png)
+![image]({{site.baseurl}}/assets/charts/UlcerIndex.png)
 
 ```csharp
 // usage
 IEnumerable<UlcerIndexResult> results =
-  quotes.GetUlcerIndex(lookbackPeriods);  
+  quotes.GetUlcerIndex(lookbackPeriods);
 ```
 
 ## Parameters
@@ -26,7 +26,7 @@ IEnumerable<UlcerIndexResult> results =
 
 ### Historical quotes requirements
 
-You must have at least `N` periods of `quotes`.
+You must have at least `N` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
@@ -46,7 +46,7 @@ IEnumerable<UlcerIndexResult>
 | name | type | notes
 | -- |-- |--
 | `Date` | DateTime | Date
-| `UI` | decimal | Ulcer Index
+| `UI` | double | Ulcer Index
 
 ### Utilities
 

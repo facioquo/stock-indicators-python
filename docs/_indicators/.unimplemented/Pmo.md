@@ -10,7 +10,7 @@ layout: indicator
 Created by Carl Swenlin, the DecisionPoint [Price Momentum Oscillator](https://school.stockcharts.com/doku.php?id=technical_indicators:dppmo) is double-smoothed ROC based momentum indicator.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/244 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Pmo.png)
+![image]({{site.baseurl}}/assets/charts/Pmo.png)
 
 ```csharp
 // usage
@@ -28,7 +28,7 @@ IEnumerable<PmoResult> results =
 
 ### Historical quotes requirements
 
-You must have at least `N` periods of `quotes`, where `N` is the greater of `T+S`,`2×T`, or `T+100`.  Since this uses multiple smoothing operations, we recommend you use at least `N+250` data points prior to the intended usage date for better precision.
+You must have at least `N` periods of `quotes`, where `N` is the greater of `T+S`,`2×T`, or `T+100` to cover the convergence periods.  Since this uses multiple smoothing operations, we recommend you use at least `N+250` data points prior to the intended usage date for better precision.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
@@ -50,8 +50,8 @@ IEnumerable<PmoResult>
 | name | type | notes
 | -- |-- |--
 | `Date` | DateTime | Date
-| `Pmo` | decimal | Price Momentum Oscillator
-| `Signal` | decimal | Signal line is EMA of PMO
+| `Pmo` | double | Price Momentum Oscillator
+| `Signal` | double | Signal line is EMA of PMO
 
 ### Utilities
 

@@ -10,12 +10,12 @@ layout: indicator
 Created by Chester W. Keltner, [Keltner Channels](https://en.wikipedia.org/wiki/Keltner_channel) are based on an EMA centerline and ATR band widths.  See also [STARC Bands](../StarcBands#content) for an SMA centerline equivalent.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/249 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Keltner.png)
+![image]({{site.baseurl}}/assets/charts/Keltner.png)
 
 ```csharp
 // usage
 IEnumerable<KeltnerResult> results =
-  quotes.GetKeltner(emaPeriods, multiplier, atrPeriods);  
+  quotes.GetKeltner(emaPeriods, multiplier, atrPeriods);
 ```
 
 ## Parameters
@@ -28,7 +28,7 @@ IEnumerable<KeltnerResult> results =
 
 ### Historical quotes requirements
 
-You must have at least `2×N` or `N+100` periods of `quotes`, whichever is more, where `N` is the greater of `E` or `A` periods.  Since this uses a smoothing technique, we recommend you use at least `N+250` data points prior to the intended usage date for better precision.
+You must have at least `2×N` or `N+100` periods of `quotes`, whichever is more, where `N` is the greater of `E` or `A` periods, to cover the convergence periods.  Since this uses a smoothing technique, we recommend you use at least `N+250` data points prior to the intended usage date for better precision.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 

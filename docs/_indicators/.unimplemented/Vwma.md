@@ -1,21 +1,21 @@
 ---
-title: Detrended Price Oscillator (DPO)
-permalink: /indicators/Dpo/
-type: oscillator
+title: Volume Weighted Moving Average (VWMA)
+permalink: /indicators/Vwma/
+type: moving-average
 layout: indicator
 ---
 
 # {{ page.title }}
 
-[Detrended Price Oscillator](https://en.wikipedia.org/wiki/Detrended_price_oscillator) depicts the difference between price and an offset simple moving average.  It is used to identify trend cycles and duration.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/551 "Community discussion about this indicator")
+Volume Weighted Moving Average is the volume adjusted average price over a lookback window.
+[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/657 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Dpo.png)
+![image]({{site.baseurl}}/assets/charts/Vwma.png)
 
 ```csharp
-// usage
-IEnumerable<DpoResult> results =
-  quotes.GetDpo(lookbackPeriods);
+// legacy usage
+IEnumerable<VwmaResult> results =
+  quotes.GetVwma(lookbackPeriods);
 ```
 
 ## Parameters
@@ -26,33 +26,32 @@ IEnumerable<DpoResult> results =
 
 ### Historical quotes requirements
 
-You must have at least `N` historical quotes.
+You must have at least `N` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
 ## Response
 
 ```csharp
-IEnumerable<DpoResult>
+IEnumerable<VwmaResult>
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N/2-2` and last `N/2+1` periods will be `null` since they cannot be calculated.
+- The first `N-1` periods will have `null` values for `Vwma` since there's not enough data to calculate.
 
-### DpoResult
+### VwmaResult
 
 | name | type | notes
 | -- |-- |--
 | `Date` | DateTime | Date
-| `Sma` | decimal | Simple moving average offset by `N/2+1` periods
-| `Dpo` | decimal | Detrended Price Oscillator (DPO)
+| `Vwma` | decimal | Volume Weighted Moving Average for `N` lookback periods
 
 ### Utilities
 
-- [.ConvertToQuotes()]({{site.baseurl}}/utilities#convert-to-quotes)
 - [.Find(lookupDate)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
+- [.RemoveWarmupPeriods()]({{site.baseurl}}/utilities#remove-warmup-periods)
 - [.RemoveWarmupPeriods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
@@ -61,8 +60,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```csharp
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 
-// calculate
-IEnumerable<DpoResult> results = quotes.GetDpo(14);
+// calculate 10-period VWMA
+IEnumerable<VwmaResult> results = quotes.GetVwma(10);
 ```

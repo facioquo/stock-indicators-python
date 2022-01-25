@@ -10,7 +10,7 @@ layout: indicator
 Created by John Ehlers, the Hilbert Transform Instantaneous Trendline is a 5-period trendline of high/low price that uses signal processing to reduce noise.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/363 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/HtTrendline.png)
+![image]({{site.baseurl}}/assets/charts/HtTrendline.png)
 
 ```csharp
 // usage
@@ -20,7 +20,7 @@ IEnumerable<HtlResult> results =
 
 ## Historical quotes requirements
 
-Since this indicator has a warmup period, you must have at least `100` periods of `quotes`.
+You must have at least `100` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 

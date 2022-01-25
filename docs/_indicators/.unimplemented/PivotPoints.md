@@ -11,12 +11,12 @@ layout: indicator
 See also the alternative [Rolling Pivot Points](../RollingPivots#content) variant for a modern update that uses a rolling window.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/274 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/PivotPoints.png)
+![image]({{site.baseurl}}/assets/charts/PivotPoints.png)
 
 ```csharp
 // usage
 IEnumerable<PivotPointsResult> results =
-  quotes.GetPivotPoints(windowSize, pointType);  
+  quotes.GetPivotPoints(windowSize, pointType);
 ```
 
 ## Parameters
@@ -28,7 +28,7 @@ IEnumerable<PivotPointsResult> results =
 
 ### Historical quotes requirements
 
-You must have at least `2` windows of `quotes`.  For example, if you specify a `Week` window size, you need at least 14 calendar days of `quotes`.
+You must have at least `2` windows of `quotes` to cover the warmup periods.  For example, if you specify a `Week` window size, you need at least 14 calendar days of `quotes`.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 

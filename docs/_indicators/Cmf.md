@@ -1,6 +1,6 @@
 ---
-title: Accumulation/Distribution Line (ADL)
-permalink: /indicators/Adl/
+title: Chaikin Money Flow (CMF)
+permalink: /indicators/Cmf/
 type: volume-based
 layout: indicator
 ---
@@ -8,47 +8,48 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_adl**(*quotes, sma_periods=None*)
-
+## **get_cmf**(*quotes, lookback_periods=20*)
+    
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
 | `quotes` | Iterable[Type[Quote]] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
-| `sma_periods` | int, Optional | Number of periods (`N`) in the moving average of ADL.  Must be greater than 0, if specified.
+| `lookback_periods` | int, *default 20* | Number of periods (`N`) in the moving average.  Must be greater than 0.
 
 ### Historical quotes requirements
 
-You must have at least two historical quotes to cover the warmup periods; however, since this is a trendline, more is recommended.
+You must have at least `N+1` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `Iterable[Type[Quote]]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Returns
+## Return
 
 ```python
-ADLResults[ADLResult]
+CMFResults[CMFResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `CMFResults` is just a list of `CMFResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
+- The first `N-1` periods will have `None` values since there's not enough data to calculate.
 
-### ADLResult
+### CmfResult
 
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
 | `money_flow_multiplier` | float | Money Flow Multiplier
 | `money_flow_volume` | float | Money Flow Volume
-| `adl` | float | Accumulation Distribution Line (ADL)
-| `adl_sma` | float, Optional | Moving average (SMA) of ADL based on `sma_periods` periods, if specified
+| `cmf` | float, Optional | Chaikin Money Flow = SMA of MFV for `N` lookback periods
 
-:warning: **Warning**: absolute values in ADL and MFV are somewhat meaningless, so use with caution.
+:warning: **Warning**: absolute values in MFV and CMF are somewhat meaningless, so use with caution.
 
 ### Utilities
 
-- [.to_quotes()]({{site.baseurl}}/utilities#convert-to-quotes)
 - [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
+- [.remove_warmup_periods()]({{site.baseurl}}/utilities#remove-warmup-periods)
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
@@ -61,18 +62,18 @@ from stock_indicators import indicators
 # This method is NOT a part of the library.
 quotes = get_history_from_feed("SPY")
 
-# calculate
-results = indicators.get_adl(quotes)
+# Calculate 20-period CMF
+results = indicators.get_cmf(quotes, 20);
 ```
 
 ## About: {{ page.title }}
 
-Created by Marc Chaikin, the [Accumulation/Distribution Line/Index](https://en.wikipedia.org/wiki/Accumulation/distribution_index) is a rolling accumulation of Chaikin Money Flow Volume.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/271 "Community discussion about this indicator")
+Created by Marc Chaikin, [Chaikin Money Flow](https://en.wikipedia.org/wiki/Chaikin_Analytics#Chaikin_Money_Flow) is the simple moving average of the Money Flow Volume.
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/261 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Adl.png)
+![image]({{site.charturl}}/Cmf.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Adl/Adl.cs)
-- [Python wrapper]({{site.sourceurl}}/adl.py)
+- [C# core]({{site.base_sourceurl}}/a-d/Cmf/Cmf.cs)
+- [Python wrapper]({{site.sourceurl}}/cmf.py)

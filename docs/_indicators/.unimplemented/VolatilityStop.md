@@ -10,12 +10,12 @@ layout: indicator
 Created by J. Welles Wilder, [Volatility Stop](https://archive.org/details/newconceptsintec00wild), also known his Volatility System, is an [ATR](../Atr/) based indicator used to determine trend direction, stops, and reversals.  It is similar to Wilder's [Parabolic SAR](../ParabolicSar/#content) and [SuperTrend](../SuperTrend/#content).
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/564 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/VolatilityStop.png)
+![image]({{site.baseurl}}/assets/charts/VolatilityStop.png)
 
 ```csharp
 // usage
 IEnumerable<VolatilityStopResult> results =
-  quotes.GetVolatilityStop(lookbackPeriods, multiplier);  
+  quotes.GetVolatilityStop(lookbackPeriods, multiplier);
 ```
 
 ## Parameters
@@ -23,11 +23,11 @@ IEnumerable<VolatilityStopResult> results =
 | name | type | notes
 | -- |-- |--
 | `lookbackPeriods` | int | Number of periods (`N`) ATR lookback window.  Must be greater than 1.  Default is 7.
-| `multiplier` | decimal | ATR multiplier for the offset.  Must be greater than 0.  Default is 3.0.
+| `multiplier` | double | ATR multiplier for the offset.  Must be greater than 0.  Default is 3.0.
 
 ### Historical quotes requirements
 
-You must have at least `N+100` periods of `quotes`.  Since the underlying ATR uses a smoothing technique, we recommend you use at least `N+250` data points prior to the intended usage date for better precision.  Initial values prior to the first reversal are not accurate and are excluded from the results.  Therefore, provide sufficient quotes to capture prior trend reversals.
+You must have at least `N+100` periods of `quotes` to cover the convergence periods.  Since the underlying ATR uses a smoothing technique, we recommend you use at least `N+250` data points prior to the intended usage date for better precision.  Initial values prior to the first reversal are not accurate and are excluded from the results.  Therefore, provide sufficient quotes to capture prior trend reversals.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 

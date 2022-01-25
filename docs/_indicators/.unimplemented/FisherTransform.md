@@ -10,12 +10,12 @@ layout: indicator
 Created by John Ehlers, the [Fisher Transform](https://www.investopedia.com/terms/f/fisher-transform.asp) converts prices into a Gaussian normal distribution.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/409 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/FisherTransform.png)
+![image]({{site.baseurl}}/assets/charts/FisherTransform.png)
 
 ```csharp
 // usage
 IEnumerable<FisherTransformResult> results =
-  quotes.GetFisherTransform(lookbackPeriods);  
+  quotes.GetFisherTransform(lookbackPeriods);
 ```
 
 ## Parameters
@@ -26,7 +26,7 @@ IEnumerable<FisherTransformResult> results =
 
 ### Historical quotes requirements
 
-You must have at least `N` periods of `quotes`.
+You must have at least `N` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
@@ -47,8 +47,8 @@ IEnumerable<FisherTransformResult>
 | name | type | notes
 | -- |-- |--
 | `Date` | DateTime | Date
-| `Fisher` | decimal | Fisher Transform
-| `Trigger` | decimal | FT offset by one period
+| `Fisher` | double | Fisher Transform
+| `Trigger` | double | FT offset by one period
 
 ### Utilities
 

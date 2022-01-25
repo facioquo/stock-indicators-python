@@ -11,16 +11,16 @@ layout: indicator
 [Standard Deviation](https://en.wikipedia.org/wiki/Standard_deviation) of Close price over a rolling lookback window.  Also known as Historical Volatility (HV).
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/239 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/StdDev.png)
+![image]({{site.baseurl}}/assets/charts/StdDev.png)
 
 ```csharp
 // usage
 IEnumerable<StdDevResult> results =
-  quotes.GetStdDev(lookbackPeriods);  
+  quotes.GetStdDev(lookbackPeriods);
 
 // usage with optional SMA of STDEV (shown above)
 IEnumerable<StdDevResult> results =
-  quotes.GetStdDev(lookbackPeriods, smaPeriods);  
+  quotes.GetStdDev(lookbackPeriods, smaPeriods);
 ```
 
 ## Parameters
@@ -32,7 +32,7 @@ IEnumerable<StdDevResult> results =
 
 ### Historical quotes requirements
 
-You must have at least `N` periods of `quotes`.
+You must have at least `N` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
@@ -52,10 +52,10 @@ IEnumerable<StdDevResult>
 | name | type | notes
 | -- |-- |--
 | `Date` | DateTime | Date
-| `StdDev` | decimal | Standard Deviation of Close price over `N` lookback periods
-| `Mean` | decimal | Mean value of Close price over `N` lookback periods
-| `ZScore` | decimal | Z-Score of current Close price (number of standard deviations from mean)
-| `StdDevSma` | decimal | Moving average (SMA) of STDDEV based on `smaPeriods` periods, if specified
+| `StdDev` | double | Standard Deviation of Close price over `N` lookback periods
+| `Mean` | double | Mean value of Close price over `N` lookback periods
+| `ZScore` | double | Z-Score of current Close price (number of standard deviations from mean)
+| `StdDevSma` | double | Moving average (SMA) of STDDEV based on `smaPeriods` periods, if specified
 
 ### Utilities
 

@@ -10,7 +10,7 @@ layout: indicator
 Created by Quong and Soudack, the [Money Flow Index](https://en.wikipedia.org/wiki/Money_flow_index) is a price-volume oscillator that shows buying and selling momentum.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/247 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Mfi.png)
+![image]({{site.baseurl}}/assets/charts/Mfi.png)
 
 ```csharp
 // usage
@@ -26,7 +26,7 @@ IEnumerable<MfiResult> results =
 
 ### Historical quotes requirements
 
-You must have at least `N+1` historical quotes.
+You must have at least `N+1` historical quotes to cover the warmup periods.
 
 `quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
