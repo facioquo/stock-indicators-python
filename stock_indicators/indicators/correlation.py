@@ -81,8 +81,8 @@ class CorrelationResult(ResultBase):
         self._csdata.RSquared = value
 
 
-T = TypeVar("T", bound=CorrelationResult)
-class CorrelationResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=CorrelationResult)
+class CorrelationResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Correlation Coefficient results.
     It is exactly same with built-in `list` except for that it provides

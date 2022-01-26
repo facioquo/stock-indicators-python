@@ -77,8 +77,8 @@ class StdevChannelsResult(ResultBase):
         self._csdata.BreakPoint = value
 
 
-T = TypeVar("T", bound=StdevChannelsResult)
-class StdevChannelsResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=StdevChannelsResult)
+class StdevChannelsResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Standard Deviation Channels results.
     It is exactly same with built-in `list` except for that it provides

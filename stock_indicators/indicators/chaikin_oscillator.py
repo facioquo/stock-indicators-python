@@ -72,8 +72,8 @@ class ChaikinOscResult(ResultBase):
         self._csdata.Oscillator = value
 
 
-T = TypeVar("T", bound=ChaikinOscResult)
-class ChaikinOscResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=ChaikinOscResult)
+class ChaikinOscResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Chaikin Oscillator results.
     It is exactly same with built-in `list` except for that it provides

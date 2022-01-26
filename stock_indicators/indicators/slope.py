@@ -79,8 +79,8 @@ class SlopeResult(ResultBase):
     def line(self, value):
         self._csdata.Line = CsDecimal(value)
 
-T = TypeVar("T", bound=SlopeResult)
-class SlopeResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=SlopeResult)
+class SlopeResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Slope results.
     It is exactly same with built-in `list` except for that it provides

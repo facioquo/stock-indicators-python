@@ -63,8 +63,8 @@ class FractalResult(ResultBase):
         self._csdata.FractalBull = CsDecimal(value)
 
 
-T = TypeVar("T", bound=FractalResult)
-class FractalResults(IndicatorResults[T]):
+_T = TypeVar("_T", bound=FractalResult)
+class FractalResults(IndicatorResults[_T]):
     """
     A wrapper class for the list of Williams Fractal results.
     It is exactly same with built-in `list` except for that it provides

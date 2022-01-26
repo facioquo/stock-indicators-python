@@ -77,8 +77,8 @@ class ConnorsRSIResult(ResultBase):
         self._csdata.ConnorsRsi = value
 
 
-T = TypeVar("T", bound=ConnorsRSIResult)
-class ConnorsRSIResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=ConnorsRSIResult)
+class ConnorsRSIResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Connors RSI results.
     It is exactly same with built-in `list` except for that it provides

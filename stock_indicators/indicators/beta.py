@@ -47,8 +47,8 @@ class BetaResult(ResultBase):
         self._csdata.Beta = value
 
 
-T = TypeVar("T", bound=BetaResult)
-class BetaResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=BetaResult)
+class BetaResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Beta results.
     It is exactly same with built-in `list` except for that it provides

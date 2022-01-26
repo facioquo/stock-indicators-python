@@ -56,8 +56,8 @@ class DPOResult(ResultBase):
         self._csdata.Dpo = CsDecimal(value)
 
 
-T = TypeVar("T", bound=DPOResult)
-class DPOResults(ToQuotesMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=DPOResult)
+class DPOResults(ToQuotesMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Detrended Price Oscillator (DPO) results.
     It is exactly same with built-in `list` except for that it provides

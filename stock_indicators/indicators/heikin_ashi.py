@@ -76,8 +76,8 @@ class HeikinAshiResult(ResultBase):
         self._csdata.Volume = CsDecimal(value)
 
 
-T = TypeVar("T", bound=HeikinAshiResult)
-class HeikinAshiResults(ToQuotesMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=HeikinAshiResult)
+class HeikinAshiResults(ToQuotesMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Heikin-Ashi results.
     It is exactly same with built-in `list` except for that it provides

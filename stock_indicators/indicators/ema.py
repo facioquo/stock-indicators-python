@@ -47,8 +47,8 @@ class EMAResult(ResultBase):
         self._csdata.Ema = CsDecimal(value)
 
 
-T = TypeVar("T", bound=EMAResult)
-class EMAResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=EMAResult)
+class EMAResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of EMA(Exponential Moving Average) results.
     It is exactly same with built-in `list` except for that it provides

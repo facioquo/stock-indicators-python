@@ -75,8 +75,8 @@ class StochResult(ResultBase):
     j = percent_j
 
 
-T = TypeVar("T", bound=StochResult)
-class StochResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=StochResult)
+class StochResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Stochastic Oscillator(with KDJ Index) results.
     It is exactly same with built-in `list` except for that it provides

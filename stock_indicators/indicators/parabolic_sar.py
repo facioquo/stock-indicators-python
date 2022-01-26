@@ -78,8 +78,8 @@ class ParabolicSARResult(ResultBase):
         self._csdata.IsReversal = value
 
 
-T = TypeVar("T", bound=ParabolicSARResult)
-class ParabolicSARResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=ParabolicSARResult)
+class ParabolicSARResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Parabolic SAR(stop and reverse) results.
     It is exactly same with built-in `list` except for that it provides

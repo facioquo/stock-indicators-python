@@ -71,8 +71,8 @@ class DonchianResult(ResultBase):
         self._csdata.Width = CsDecimal(value)
 
 
-T = TypeVar("T", bound=DonchianResult)
-class DonchianResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=DonchianResult)
+class DonchianResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Donchian Channels results.
     It is exactly same with built-in `list` except for that it provides

@@ -45,8 +45,8 @@ class CCIResult(ResultBase):
         self._csdata.Cci = value
 
 
-T = TypeVar("T", bound=CCIResult)
-class CCIResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=CCIResult)
+class CCIResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Commodity Channel Index (CCI) results.
     It is exactly same with built-in `list` except for that it provides

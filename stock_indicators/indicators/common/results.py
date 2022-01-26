@@ -21,13 +21,13 @@ class ResultBase:
     def date(self, value):
         self._csdata.Date = CsDateTime(value)
 
-T = TypeVar("T", bound=ResultBase)
-class IndicatorResults(List[T]):
+_T = TypeVar("_T", bound=ResultBase)
+class IndicatorResults(List[_T]):
     """
     A base wrapper class for the list of results.
     It provides helper methods written in CSharp implementation.
     """
-    def __init__(self, data: Iterable, wrapper_class: Type[T]):
+    def __init__(self, data: Iterable, wrapper_class: Type[_T]):
         super().__init__([ wrapper_class(_) for _ in data ])
         self._csdata = data
         self._wrapper_class = wrapper_class
@@ -75,7 +75,7 @@ class IndicatorResults(List[T]):
         return self.__class__(self._csdata.__mul__(other._csdata), self._wrapper_class)
 
     @_verify_data
-    def find(self, lookup_date: PyDateTime) -> T:
+    def find(self, lookup_date: PyDateTime) -> _T:
         if not isinstance(lookup_date, PyDateTime):
             raise TypeError(
                 "lookup_date must be an instance of datetime.datetime."

@@ -68,8 +68,8 @@ class SuperTrendResult(ResultBase):
         self._csdata.LowerBand = CsDecimal(value)
 
 
-T = TypeVar("T", bound=SuperTrendResult)
-class SuperTrendResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=SuperTrendResult)
+class SuperTrendResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Super Trend results.
     It is exactly same with built-in `list` except for that it provides
