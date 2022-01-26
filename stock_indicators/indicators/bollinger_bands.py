@@ -91,8 +91,8 @@ class BollingerBandsResult(ResultBase):
         self._csdata.Width = value
 
 
-T = TypeVar("T", bound=BollingerBandsResult)
-class BollingerBandsResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=BollingerBandsResult)
+class BollingerBandsResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Bollinger Bands results.
     It is exactly same with built-in `list` except for that it provides

@@ -63,8 +63,8 @@ class AroonResult(ResultBase):
         self._csdata.Oscillator = CsDecimal(value)
 
 
-T = TypeVar("T", bound=AroonResult)
-class AroonResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=AroonResult)
+class AroonResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Aroon results.
     It is exactly same with built-in `list` except for that it provides

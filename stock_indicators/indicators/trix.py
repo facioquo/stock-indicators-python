@@ -67,8 +67,8 @@ class TRIXResult(ResultBase):
         self._csdata.Signal = CsDecimal(value)
 
 
-T = TypeVar("T", bound=TRIXResult)
-class TRIXResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=TRIXResult)
+class TRIXResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Triple EMA Oscillator (TRIX) results.
     It is exactly same with built-in `list` except for that it provides

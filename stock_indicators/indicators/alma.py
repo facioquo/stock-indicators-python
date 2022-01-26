@@ -54,8 +54,8 @@ class ALMAResult(ResultBase):
         self._csdata.Alma = CsDecimal(value)
 
 
-T = TypeVar("T", bound=ALMAResult)
-class ALMAResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=ALMAResult)
+class ALMAResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of ALMA(Arnaud Legoux Moving Average) results.
     It is exactly same with built-in `list` except for that it provides

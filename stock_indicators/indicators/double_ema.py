@@ -47,8 +47,8 @@ class DEMAResult(ResultBase):
         self._csdata.Dema = CsDecimal(value)
 
 
-T = TypeVar("T", bound=DEMAResult)
-class DEMAResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=DEMAResult)
+class DEMAResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Double Exponential Moving Average (DEMA) results.
     It is exactly same with built-in `list` except for that it provides

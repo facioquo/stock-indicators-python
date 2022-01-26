@@ -57,8 +57,8 @@ class FCBResult(ResultBase):
         self._csdata.LowerBand = CsDecimal(value)
 
 
-T = TypeVar("T", bound=FCBResult)
-class FCBResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=FCBResult)
+class FCBResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Fractal Chaos Bands (FCB) results.
     It is exactly same with built-in `list` except for that it provides

@@ -63,8 +63,8 @@ class ATRResult(ResultBase):
         self._csdata.Atrp = CsDecimal(value)
 
 
-T = TypeVar("T", bound=ATRResult)
-class ATRResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=ATRResult)
+class ATRResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of ATR(Average True Range) results.
     It is exactly same with built-in `list` except for that it provides

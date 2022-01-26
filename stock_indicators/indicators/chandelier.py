@@ -51,8 +51,8 @@ class ChandelierResult(ResultBase):
         self._csdata.ChandelierExit = CsDecimal(value)
 
 
-T = TypeVar("T", bound=ChandelierResult)
-class ChandelierResults(RemoveWarmupMixin,IndicatorResults[T]):
+_T = TypeVar("_T", bound=ChandelierResult)
+class ChandelierResults(RemoveWarmupMixin,IndicatorResults[_T]):
     """
     A wrapper class for the list of Chandelier Exit results.
     It is exactly same with built-in `list` except for that it provides

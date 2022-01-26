@@ -46,8 +46,8 @@ class BOPResult(ResultBase):
         self._csdata.Bop = value
 
 
-T = TypeVar("T", bound=BOPResult)
-class BOPResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=BOPResult)
+class BOPResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Balance of Power (aka Balance of Market Power) results.
     It is exactly same with built-in `list` except for that it provides

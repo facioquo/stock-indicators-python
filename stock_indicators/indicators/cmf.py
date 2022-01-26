@@ -61,8 +61,8 @@ class CMFResult(ResultBase):
         self._csdata.Cmf = value
 
 
-T = TypeVar("T", bound=CMFResult)
-class CMFResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=CMFResult)
+class CMFResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Chaikin Money Flow (CMF) results.
     It is exactly same with built-in `list` except for that it provides

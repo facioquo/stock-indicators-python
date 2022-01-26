@@ -61,8 +61,8 @@ class ADXResult(ResultBase):
         self._csdata.Adx = value
 
 
-T = TypeVar("T", bound=ADXResult)
-class ADXResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=ADXResult)
+class ADXResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of ADX(Average Directional Movement Index) results.
     It is exactly same with built-in `list` except for that it provides

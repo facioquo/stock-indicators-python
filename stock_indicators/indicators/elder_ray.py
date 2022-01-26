@@ -63,8 +63,8 @@ class ElderRayResult(ResultBase):
         self._csdata.BearPower = CsDecimal(value)
 
 
-T = TypeVar("T", bound=ElderRayResult)
-class ElderRayResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=ElderRayResult)
+class ElderRayResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Elder-ray Index results.
     It is exactly same with built-in `list` except for that it provides

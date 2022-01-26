@@ -48,8 +48,8 @@ class ChopResult(ResultBase):
         self._csdata.Chop = CsDecimal(value)
 
 
-T = TypeVar("T", bound=ChopResult)
-class ChopResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=ChopResult)
+class ChopResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Choppiness Index (CHOP) results.
     It is exactly same with built-in `list` except for that it provides
