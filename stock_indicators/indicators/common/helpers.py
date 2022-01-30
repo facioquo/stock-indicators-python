@@ -1,4 +1,4 @@
-from typing import Iterable, Optional
+from typing import List, Optional
 from typing_extensions import Self
 
 from stock_indicators.indicators.common.quote import Quote
@@ -22,7 +22,7 @@ class RemoveWarmupMixin:
 class ToQuotesMixin:
     """Mixin for to_quotes()."""
     @IndicatorResults._verify_data
-    def to_quotes(self) -> Iterable[Quote]:
+    def to_quotes(self) -> List[Quote]:
         quotes = CsIndicator.ConvertToQuotes(CsList(type(self._csdata[0]), self._csdata))
 
         return [ Quote.from_csquote(q) for q in quotes ]
