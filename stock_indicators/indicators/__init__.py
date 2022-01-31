@@ -31,6 +31,7 @@ from .heikin_ashi import (get_heikin_ashi)
 from .hma import (get_hma)
 from .ht_trendline import (get_ht_trendline)
 from .ichimoku import (get_ichimoku)
+from .kama import (get_kama)
 from .macd import (get_macd)
 from .parabolic_sar import (get_parabolic_sar)
 from .roc import (
