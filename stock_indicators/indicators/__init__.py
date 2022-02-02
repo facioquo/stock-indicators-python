@@ -34,6 +34,7 @@ from .hurst import (get_hurst)
 from .ichimoku import (get_ichimoku)
 from .kama import (get_kama)
 from .macd import (get_macd)
+from .mfi import (get_mfi)
 from .parabolic_sar import (get_parabolic_sar)
 from .roc import (
     get_roc,
