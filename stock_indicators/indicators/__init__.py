@@ -33,6 +33,7 @@ from .ht_trendline import (get_ht_trendline)
 from .hurst import (get_hurst)
 from .ichimoku import (get_ichimoku)
 from .kama import (get_kama)
+from .kvo import (get_kvo)
 from .macd import (get_macd)
 from .parabolic_sar import (get_parabolic_sar)
 from .roc import (
