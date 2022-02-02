@@ -20,13 +20,13 @@ def get_keltner(quotes: Iterable[Quote], ema_periods: int = 20,
         `quotes` : Iterable[Quote]
             Historical price quotes.
 
-        `ema_periods` : int
+        `ema_periods` : int, defaults 20
             Number of periods for the centerline EMA.
 
-        `multiplier` : float
+        `multiplier` : float, defaults 2
             ATR multiplier sets the width of the channel.
 
-        `atr_periods` : int
+        `atr_periods` : int, defaults 10
             Number of periods in the ATR evaluation.
 
     Returns:
