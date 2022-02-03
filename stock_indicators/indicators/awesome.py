@@ -56,8 +56,8 @@ class AwesomeResult(ResultBase):
         self._csdata.Normalized = value
 
 
-T = TypeVar("T", bound=AwesomeResult)
-class AwesomeResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=AwesomeResult)
+class AwesomeResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Awesome Oscillator (aka Super AO) results.
     It is exactly same with built-in `list` except for that it provides

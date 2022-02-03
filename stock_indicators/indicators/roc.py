@@ -86,8 +86,8 @@ class ROCResult(ResultBase):
         self._csdata.RocSma = value
 
 
-T = TypeVar("T", bound=ROCResult)
-class ROCResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=ROCResult)
+class ROCResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of ROC(Rate of Change) results.
     It is exactly same with built-in `list` except for that it provides
@@ -133,8 +133,8 @@ class ROCWBResult(ResultBase):
         self._csdata.LowerBand = value
 
 
-T = TypeVar("T", bound=ROCWBResult)
-class ROCWBResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=ROCWBResult)
+class ROCWBResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of ROC(Rate of Change) with band results.
     It is exactly same with built-in `list` except for that it provides

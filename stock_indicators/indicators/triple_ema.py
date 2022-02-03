@@ -48,8 +48,8 @@ class TEMAResult(ResultBase):
         self._csdata.Tema = CsDecimal(value)
 
 
-T = TypeVar("T", bound=TEMAResult)
-class TEMAResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=TEMAResult)
+class TEMAResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Triple Exponential Moving Average (TEMA) results.
     It is exactly same with built-in `list` except for that it provides

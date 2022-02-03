@@ -8,11 +8,12 @@ from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
-# TODO: Need to support CandlePart Enum
-def get_ema(quotes: Iterable[Quote], lookback_periods: int):
-    """Get EMA calculated.
 
-    Exponential Moving Average (EMA) of the Close price.
+def get_hma(quotes: Iterable[Quote], lookback_periods: int):
+    """Get HMA calculated.
+
+    Hull Moving Average (HMA) is a modified weighted average
+    of Close price over N lookback periods that reduces lag.
 
     Parameters:
         `quotes` : Iterable[Quote]
@@ -22,35 +23,35 @@ def get_ema(quotes: Iterable[Quote], lookback_periods: int):
             Number of periods in the lookback window.
 
     Returns:
-        `EMAResults[EMAResult]`
-            EMAResults is list of EMAResult with providing useful helper methods.
+        `HMAResults[HMAResult]`
+            HMAResults is list of HMAResult with providing useful helper methods.
 
     See more:
-         - [EMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Ema/#content)
+         - [HMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Hma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    ema_list = CsIndicator.GetEma[Quote](CsList(Quote, quotes), lookback_periods)
-    return EMAResults(ema_list, EMAResult)
+    results = CsIndicator.GetHma[Quote](CsList(Quote, quotes), lookback_periods)
+    return HMAResults(results, HMAResult)
 
 
-class EMAResult(ResultBase):
+class HMAResult(ResultBase):
     """
-    A wrapper class for a single unit of EMA results.
+    A wrapper class for a single unit of Hull Moving Average (HMA) results.
     """
 
     @property
-    def ema(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Ema)
+    def hma(self) -> Optional[Decimal]:
+        return to_pydecimal(self._csdata.Hma)
 
-    @ema.setter
-    def ema(self, value):
-        self._csdata.Ema = CsDecimal(value)
+    @hma.setter
+    def hma(self, value):
+        self._csdata.Hma = CsDecimal(value)
 
 
-_T = TypeVar("_T", bound=EMAResult)
-class EMAResults(RemoveWarmupMixin, IndicatorResults[_T]):
+_T = TypeVar("_T", bound=HMAResult)
+class HMAResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
-    A wrapper class for the list of EMA(Exponential Moving Average) results.
+    A wrapper class for the list of Hull Moving Average (HMA) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in CSharp implementation.
     """

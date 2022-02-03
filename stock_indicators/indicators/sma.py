@@ -72,8 +72,8 @@ class SMAResult(ResultBase):
         self._csdata.Sma = CsDecimal(value)
 
 
-T = TypeVar("T", bound=SMAResult)
-class SMAResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=SMAResult)
+class SMAResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of SMA(Simple Moving Average) results.
     It is exactly same with built-in `list` except for that it provides
@@ -111,8 +111,8 @@ class SMAExtendedResult(SMAResult):
         self._csdata.Mape = value
 
 
-T = TypeVar("T", bound=SMAExtendedResult)
-class SMAExtendedResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=SMAExtendedResult)
+class SMAExtendedResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of SMA-Extended results.
     It is exactly same with built-in `list` except for that it provides

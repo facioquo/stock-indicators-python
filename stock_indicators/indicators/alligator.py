@@ -62,8 +62,8 @@ class AlligatorResult(ResultBase):
         self._csdata.Lips = CsDecimal(value)
 
 
-T = TypeVar("T", bound=AlligatorResult)
-class AlligatorResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=AlligatorResult)
+class AlligatorResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Williams Alligator results.
     It is exactly same with built-in `list` except for that it provides

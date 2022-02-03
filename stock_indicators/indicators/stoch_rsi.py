@@ -64,8 +64,8 @@ class StochRSIResult(ResultBase):
         self._csdata.Signal = CsDecimal(value)
 
 
-T = TypeVar("T", bound=StochRSIResult)
-class StochRSIResults(RemoveWarmupMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=StochRSIResult)
+class StochRSIResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Stochastic RSI results.
     It is exactly same with built-in `list` except for that it provides

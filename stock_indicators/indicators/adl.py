@@ -68,8 +68,8 @@ class ADLResult(ResultBase):
         self._csdata.AdlSma = value
 
 
-T = TypeVar("T", bound=ADLResult)
-class ADLResults(ToQuotesMixin, IndicatorResults[T]):
+_T = TypeVar("_T", bound=ADLResult)
+class ADLResults(ToQuotesMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of ADL(Accumulation/Distribution Line) results.
     It is exactly same with built-in `list` except for that it provides

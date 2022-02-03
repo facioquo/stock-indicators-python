@@ -90,8 +90,8 @@ class IchimokuResult(ResultBase):
         self._csdata.ChikouSpan = CsDecimal(value)
 
 
-T = TypeVar("T", bound=IchimokuResult)
-class IchimokuResults(IndicatorResults[T]):
+_T = TypeVar("_T", bound=IchimokuResult)
+class IchimokuResults(IndicatorResults[_T]):
     """
     A wrapper class for the list of Ichimoku Cloud results.
     It is exactly same with built-in `list` except for that it provides

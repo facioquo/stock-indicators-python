@@ -86,8 +86,8 @@ class MACDResult(ResultBase):
         self._csdata.SlowEma = CsDecimal(value)
 
 
-T = TypeVar("T", bound=MACDResult)
-class MACDResults(RemoveWarmupMixin ,IndicatorResults[T]):
+_T = TypeVar("_T", bound=MACDResult)
+class MACDResults(RemoveWarmupMixin ,IndicatorResults[_T]):
     """
     A wrapper class for the list of MACD(Moving Average Convergence/Divergence) results.
     It is exactly same with built-in `list` except for that it provides
