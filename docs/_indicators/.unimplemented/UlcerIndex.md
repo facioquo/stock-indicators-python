@@ -39,7 +39,7 @@ IEnumerable<UlcerIndexResult>
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N-1` periods will have `null` values since there's not enough data to calculate.
+- The first `N-1` periods will have `None` values since there's not enough data to calculate.
 
 ### UlcerIndexResult
 

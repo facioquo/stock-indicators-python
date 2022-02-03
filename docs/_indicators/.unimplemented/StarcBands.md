@@ -41,7 +41,7 @@ IEnumerable<StarcBandsResult>
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N-1` periods will have `null` values since there's not enough data to calculate, where `N` is the greater of `S` or `A`.
+- The first `N-1` periods will have `None` values since there's not enough data to calculate, where `N` is the greater of `S` or `A`.
 
 :hourglass: **Convergence Warning**: The first `A+150` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 

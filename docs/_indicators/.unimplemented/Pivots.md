@@ -60,8 +60,8 @@ IEnumerable<PivotsResult>
 | name | type | notes
 | -- |-- |--
 | `Date` | DateTime | Date
-| `HighPoint` | decimal | Value indicates a **high** point; otherwise `null` is returned.
-| `LowPoint` | decimal | Value indicates a **low** point; otherwise `null` is returned.
+| `HighPoint` | decimal | Value indicates a **high** point; otherwise `None` is returned.
+| `LowPoint` | decimal | Value indicates a **low** point; otherwise `None` is returned.
 | `HighLine` | decimal | Drawn line between two high points in the `maxTrendPeriods`
 | `LowLine` | decimal | Drawn line between two low points in the `maxTrendPeriods`
 | `HighTrend` | PivotTrend | Enum that represents higher high or lower high.  See [PivotTrend values](#pivottrend-values) below.

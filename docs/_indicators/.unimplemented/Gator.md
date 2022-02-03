@@ -38,7 +38,7 @@ IEnumerable<GatorResult>
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first 10-20 periods will have `null` values since there's not enough data to calculate.
+- The first 10-20 periods will have `None` values since there's not enough data to calculate.
 
 :hourglass: **Convergence Warning**: The first 150 periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 

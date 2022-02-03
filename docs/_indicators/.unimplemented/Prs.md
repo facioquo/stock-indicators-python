@@ -27,7 +27,7 @@ IEnumerable<PrsResult> results =
 | name | type | notes
 | -- |-- |--
 | `historyEval` | IEnumerable\<[TQuote]({{site.baseurl}}/guide/#historical-quotes)\> | Historical quotes for evaluation.  You must have the same number of periods as `historyBase`.
-| `lookbackPeriods` | int | Optional.  Number of periods (`N`) to lookback to compute % difference.  Must be greater than 0 if specified or `null`.
+| `lookbackPeriods` | int | Optional.  Number of periods (`N`) to lookback to compute % difference.  Must be greater than 0 if specified or `None`.
 | `smaPeriods` | int | Optional.  Number of periods (`S`) in the SMA lookback period for `Prs`.  Must be greater than 0.
 
 ### Historical quotes requirements
@@ -45,7 +45,7 @@ IEnumerable<PrsResult>
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The `N` periods will have `null` values for `PrsPercent` and the first `S-1` periods will have `null` values for `Sma` since there's not enough data to calculate.
+- The `N` periods will have `None` values for `PrsPercent` and the first `S-1` periods will have `None` values for `Sma` since there's not enough data to calculate.
 
 ### PrResult
 

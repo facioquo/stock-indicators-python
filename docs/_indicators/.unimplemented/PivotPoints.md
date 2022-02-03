@@ -60,7 +60,7 @@ IEnumerable<PivotPointsResult>
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first window will have `null` values since there's not enough data to calculate.
+- The first window will have `None` values since there's not enough data to calculate.
 
 :warning: **Warning**: The second window may be innaccurate if the first window contains incomplete data.  For example, this can occur if you specify a `Month` window size and only provide 45 calendar days (1.5 months) of `quotes`.
 
