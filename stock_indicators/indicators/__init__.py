@@ -37,6 +37,7 @@ from .keltner import (get_keltner)
 from .kvo import (get_kvo)
 from .macd import (get_macd)
 from .mama import (get_mama)
+from .mfi import (get_mfi)
 from .parabolic_sar import (get_parabolic_sar)
 from .roc import (
     get_roc,
