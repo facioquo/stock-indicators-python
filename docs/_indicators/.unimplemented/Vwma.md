@@ -10,7 +10,7 @@ layout: indicator
 Volume Weighted Moving Average is the volume adjusted average price over a lookback window.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/657 "Community discussion about this indicator")
 
-!![image]({{site.charturl}}/Vwma.png)
+![image]({{site.charturl}}/Vwma.png)
 
 ```python
 // legacy usage

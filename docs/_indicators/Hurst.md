@@ -69,7 +69,7 @@ results = indicators.get_hurst(quotes, 20);
 The [Hurst Exponent](https://en.wikipedia.org/wiki/Hurst_exponent) is a [random-walk](https://en.wikipedia.org/wiki/Random_walk) path analysis that measures trending and mean-reverting tendencies of incremental return values.  When `H` is greater than 0.5 it depicts trending.  When `H` is less than 0.5 it is is more likely to revert to the mean.  When `H` is around 0.5 it represents a random walk.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/477 "Community discussion about this indicator")
 
-!![image]({{site.charturl}}/Hurst.png)
+![image]({{site.charturl}}/Hurst.png)
 
 ### Sources
 

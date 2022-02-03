@@ -10,7 +10,7 @@ layout: indicator
 Created by Bill Williams, the Gator Oscillator is an expanded view of [Williams Alligator](../Alligator#content).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/385 "Community discussion about this indicator")
 
-!![image]({{site.charturl}}/Gator.png)
+![image]({{site.charturl}}/Gator.png)
 
 ```python
 // usage

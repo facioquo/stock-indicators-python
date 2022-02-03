@@ -10,7 +10,7 @@ layout: indicator
 [Zig Zag](https://school.stockcharts.com/doku.php?id=technical_indicators:zigzag) is a price chart overlay that simplifies the up and down movements and transitions based on a percent change smoothing threshold.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/226 "Community discussion about this indicator")
 
-!![image]({{site.charturl}}/ZigZag.png)
+![image]({{site.charturl}}/ZigZag.png)
 
 ```python
 // usage
