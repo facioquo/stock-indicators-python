@@ -6,40 +6,34 @@ layout: indicator
 ---
 
 # {{ page.title }}
+<hr>
 
-Created by Alexander Elder, the [Force Index](https://en.wikipedia.org/wiki/Force_index) depicts volume-based buying and selling pressure.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/382 "Community discussion about this indicator")
-
-!![image]({{site.charturl}}/ForceIndex.png)
-
-```csharp
-// usage
-IEnumerable<ForceIndexResult> results =
-  quotes.GetForceIndex(lookbackPeriods);
-```
+## **get_force_index**(*quotes, lookback_periods*)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `lookbackPeriods` | int | Lookback window (`N`) for the EMA of Force Index.  Must be greater than 0 and is commonly 2 or 13 (shorter/longer view).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `lookback_periods` | int | Lookback window (`N`) for the EMA of Force Index.  Must be greater than 0 and is commonly 2 or 13 (shorter/longer view).
 
 ### Historical quotes requirements
 
 You must have at least `N+100` for `2×N` periods of `quotes`, whichever is more, to cover the convergence periods.  Since this uses a smoothing technique for EMA, we recommend you use at least `N+250` data points prior to the intended usage date for better precision.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
-```csharp
-IEnumerable<ForceIndexResult>
+```python
+ForceIndexResults[ForceIndexResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `ForceIndexResults` is just a list of `ForceIndexResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N` periods for will be `null` since they cannot be calculated.
+- The first `N` periods for will be `None` since they cannot be calculated.
 
 :hourglass: **Convergence Warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
@@ -47,36 +41,37 @@ IEnumerable<ForceIndexResult>
 
 | name | type | notes
 | -- |-- |--
-| `Date` | DateTime | Date
-| `ForceIndex` | double | Force Index
+| `date` | datetime | Date
+| `force_index` | float, Optional | Force Index
 
 ### Utilities
 
-- [.Find(lookupDate)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
-- [.RemoveWarmupPeriods()]({{site.baseurl}}/utilities#remove-warmup-periods)
-- [.RemoveWarmupPeriods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
+- [.remove_warmup_periods()]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
 ## Example
 
-```csharp
-// fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+```python
+from stock_indicators import indicators
 
-// calculate ForceIndex(13)
-IEnumerable<ForceIndexResult> results
-  = quotes.GetForceIndex(13);
+# This method is NOT a part of the library.
+quotes = get_history_from_feed("SPY")
+
+# Calculate ForceIndex(13)
+results = indicators.get_force_index(quotes, 13);
 ```
 
-# {{ page.title }}
+## About: {{ page.title }}
 
 Created by Alexander Elder, the [Force Index](https://en.wikipedia.org/wiki/Force_index) depicts volume-based buying and selling pressure.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/382 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/382 "Community discussion about this indicator")
 
-!![image]({{site.charturl}}/ForceIndex.png)
+![image]({{site.charturl}}/ForceIndex.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Dpo/Dpo.cs)
-- [Python wrapper]({{site.sourceurl}}/dpo.py)
+- [C# core]({{site.base_sourceurl}}/e-k/ForceIndex/ForceIndex.cs)
+- [Python wrapper]({{site.sourceurl}}/force_index.py)
