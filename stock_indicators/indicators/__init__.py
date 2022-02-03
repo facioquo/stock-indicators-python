@@ -49,6 +49,7 @@ from .sma import (
     get_sma,
     get_sma_extended
 )
+from .starc_bands import (get_starc_bands)
 from .stdev_channels import (get_stdev_channels)
 from .stoch import (get_stoch)
 from .stoch_rsi import (get_stoch_rsi)
