@@ -34,7 +34,7 @@ You must have at least one historical quote to calculate; however, more is often
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
 ```python
 IEnumerable<VwapResult>

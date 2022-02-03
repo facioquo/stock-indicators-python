@@ -50,7 +50,7 @@ These are the supported moving average types:
 
 :warning: For ALMA, default values are used for `offset` and `sigma`.
 
-## Response
+## Return
 
 ```python
 IEnumerable<MaEnvelopeResult>

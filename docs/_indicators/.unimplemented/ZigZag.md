@@ -38,7 +38,7 @@ You must have at least two periods of `quotes` to cover the warmup periods, but 
 | `EndType.Close` | Percent change measured from `Close` price (default)
 | `EndType.HighLow` | Percent change measured from `High` and `Low` price
 
-## Response
+## Return
 
 ```python
 IEnumerable<ZigZagResult>

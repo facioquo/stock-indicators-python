@@ -38,7 +38,7 @@ You must have at least two periods of `quotes` to cover the warmup periods; howe
 | `EndType.Close` | Brick change threshold measured from `Close` price (default)
 | `EndType.HighLow` | Brick change threshold measured from `High` and `Low` price
 
-## Response
+## Return
 
 ```python
 IEnumerable<RenkoResult>
@@ -104,7 +104,7 @@ You must have at least `A+100` periods of `quotes`.
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response for ATR
+## Return for ATR
 
 ```python
 IEnumerable<RenkoResult>

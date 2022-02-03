@@ -32,7 +32,7 @@ You must have at least `N+M+100` periods of `quotes` to cover the convergence pe
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
 ```python
 IEnumerable<TsiResult>

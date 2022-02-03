@@ -51,7 +51,7 @@ You must have at least `2` windows of `quotes` to cover the warmup periods.  For
 | `PivotPointType.Fibonacci` | Fibonacci
 | `PivotPointType.Woodie` | Woodie
 
-## Response
+## Return
 
 ```python
 IEnumerable<PivotPointsResult>

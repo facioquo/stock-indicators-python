@@ -32,7 +32,7 @@ You must have at least `S` or `A+100` periods of `quotes`, whichever is more, to
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
 ```python
 IEnumerable<StarcBandsResult>

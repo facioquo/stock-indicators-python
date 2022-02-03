@@ -36,7 +36,7 @@ You must have at least `N` periods of `historyBase` to calculate `PrsPercent` if
 
 `historyBase` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
 ```python
 IEnumerable<PrsResult>

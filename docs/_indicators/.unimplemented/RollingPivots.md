@@ -44,7 +44,7 @@ You must have at least `W+F` periods of `quotes` to cover the warmup periods.
 | `PivotPointType.Fibonacci` | Fibonacci
 | `PivotPointType.Woodie` | Woodie
 
-## Response
+## Return
 
 ```python
 IEnumerable<RollingPivotsResult>

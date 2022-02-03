@@ -32,7 +32,7 @@ You must have at least `2×(S+C)` or `S+C+100` worth of `quotes`, whichever is m
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
 ```python
 IEnumerable<StcResult>

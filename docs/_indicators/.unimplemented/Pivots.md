@@ -42,7 +42,7 @@ You must have at least `L+R+1` periods of `quotes` to cover the warmup periods; 
 | `EndType.Close` | Chevron point identified from `Close` price
 | `EndType.HighLow` | Chevron point identified from `High` and `Low` price (default)
 
-## Response
+## Return
 
 ```python
 IEnumerable<PivotsResult>
