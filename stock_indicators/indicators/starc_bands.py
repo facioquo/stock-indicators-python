@@ -10,7 +10,7 @@ from stock_indicators.indicators.common.quote import Quote
 
 
 def get_starc_bands(quotes: Iterable[Quote], sma_periods: int = 20,
-            multiplier: float = 2, atr_periods: int  = 10):
+            multiplier: float = 2, atr_periods: int = 10):
     """Get STARC Bands calculated.
 
     Stoller Average Range Channel (STARC) Bands, are based
