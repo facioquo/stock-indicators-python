@@ -11,7 +11,7 @@ layout: indicator
 See also the alternative [Rolling Pivot Points](../RollingPivots#content) variant for a modern update that uses a rolling window.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/274 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/PivotPoints.png)
+!![image]({{site.charturl}}/PivotPoints.png)
 
 ```csharp
 // usage

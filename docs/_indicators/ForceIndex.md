@@ -10,7 +10,7 @@ layout: indicator
 Created by Alexander Elder, the [Force Index](https://en.wikipedia.org/wiki/Force_index) depicts volume-based buying and selling pressure.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/382 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/ForceIndex.png)
+!![image]({{site.charturl}}/ForceIndex.png)
 
 ```csharp
 // usage
@@ -68,3 +68,15 @@ IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 IEnumerable<ForceIndexResult> results
   = quotes.GetForceIndex(13);
 ```
+
+# {{ page.title }}
+
+Created by Alexander Elder, the [Force Index](https://en.wikipedia.org/wiki/Force_index) depicts volume-based buying and selling pressure.
+[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/382 "Community discussion about this indicator")
+
+!![image]({{site.charturl}}/ForceIndex.png)
+
+### Sources
+
+- [C# core]({{site.base_sourceurl}}/a-d/Dpo/Dpo.cs)
+- [Python wrapper]({{site.sourceurl}}/dpo.py)

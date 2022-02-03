@@ -10,7 +10,7 @@ layout: indicator
 Created by John Ehlers, the [MAMA](http://mesasoftware.com/papers/MAMA.pdf) indicator is a 5-period adaptive moving average of high/low price.
 [[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/211 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Mama.png)
+!![image]({{site.charturl}}/Mama.png)
 
 ```csharp
 // usage
