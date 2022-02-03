@@ -8,7 +8,7 @@ layout: indicator
 # {{ page.title }}
 
 The Volume Simple Moving Average is the average volume over a lookback window.  This is helpful when you are trying to assess whether volume is above or below normal.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/230 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/230 "Community discussion about this indicator")
 
 :warning: **Deprecation Warning!** `GetVolSma` is now redundant and will be removed from the library at the end of 2021.  It is replaced by [GetSma()](../Sma/#content) with a `CandlePart.Volume` specification.
 

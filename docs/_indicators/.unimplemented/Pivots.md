@@ -8,7 +8,7 @@ layout: indicator
 # {{ page.title }}
 
 Pivots is an extended version of [Williams Fractal](../Fractal#content) that includes identification of Higher High, Lower Low, Higher Low, and Lower Low trends between pivots in a lookback window.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/436 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/436 "Community discussion about this indicator")
 
 !![image]({{site.charturl}}/Pivots.png)
 

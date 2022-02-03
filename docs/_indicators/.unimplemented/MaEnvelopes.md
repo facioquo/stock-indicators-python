@@ -8,7 +8,7 @@ layout: indicator
 # {{ page.title }}
 
 [Moving Average Envelopes](https://en.wikipedia.org/wiki/Moving_average_envelope) is a price band overlay that is offset from the moving average of Close price over a lookback window.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/288 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/288 "Community discussion about this indicator")
 
 !![image]({{site.charturl}}/MaEnvelopes.png)
 

@@ -8,7 +8,7 @@ layout: indicator
 # {{ page.title }}
 
 Popularized by Joseph Granville, [On-balance Volume](https://en.wikipedia.org/wiki/On-balance_volume) is a rolling accumulation of volume based on Close price direction.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/246 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/246 "Community discussion about this indicator")
 
 !![image]({{site.charturl}}/Obv.png)
 
