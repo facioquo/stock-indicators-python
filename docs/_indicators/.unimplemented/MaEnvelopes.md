@@ -12,7 +12,7 @@ layout: indicator
 
 !![image]({{site.charturl}}/MaEnvelopes.png)
 
-```csharp
+```python
 // usage
 IEnumerable<MaEnvelopeResult> results =
   quotes.GetSmaEnvelopes(lookbackPeriods, percentOffset, movingAverageType);  
@@ -52,7 +52,7 @@ These are the supported moving average types:
 
 ## Response
 
-```csharp
+```python
 IEnumerable<MaEnvelopeResult>
 ```
 
@@ -83,7 +83,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 

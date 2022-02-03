@@ -12,7 +12,7 @@ Popularized by Joseph Granville, [On-balance Volume](https://en.wikipedia.org/wi
 
 !![image]({{site.charturl}}/Obv.png)
 
-```csharp
+```python
 // usage
 IEnumerable<ObvResult> results =
   quotes.GetObv();
@@ -36,7 +36,7 @@ You must have at least two historical quotes to cover the warmup periods; howeve
 
 ## Response
 
-```csharp
+```python
 IEnumerable<ObvResult>
 ```
 
@@ -65,7 +65,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

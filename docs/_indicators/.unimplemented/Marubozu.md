@@ -12,7 +12,7 @@ type: candlestick-pattern
 
   <img src="{{site.baseurl}}/assets/charts/Marubozu.png" alt="drawing" height="150" />
 
-```csharp
+```python
 // usage
 IEnumerable<CandleResult> results =
   quotes.GetMarubozu(minBodyPercent);
@@ -32,7 +32,7 @@ You must have at least one historical quote; however, more is typically provided
 
 ## Response
 
-```csharp
+```python
 IEnumerable<CandleResult>
 ```
 
@@ -54,7 +54,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

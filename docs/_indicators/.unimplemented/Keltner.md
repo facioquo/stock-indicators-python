@@ -12,7 +12,7 @@ Created by Chester W. Keltner, [Keltner Channels](https://en.wikipedia.org/wiki/
 
 !![image]({{site.charturl}}/Keltner.png)
 
-```csharp
+```python
 // usage
 IEnumerable<KeltnerResult> results =
   quotes.GetKeltner(emaPeriods, multiplier, atrPeriods);
@@ -34,7 +34,7 @@ You must have at least `2×N` or `N+100` periods of `quotes`, whichever is more,
 
 ## Response
 
-```csharp
+```python
 IEnumerable<KeltnerResult>
 ```
 
@@ -65,7 +65,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

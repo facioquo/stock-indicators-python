@@ -12,7 +12,7 @@ Created by Larry Williams, the [Williams %R](https://en.wikipedia.org/wiki/Willi
 
 !![image]({{site.charturl}}/WilliamsR.png)
 
-```csharp
+```python
 // usage
 IEnumerable<WilliamsResult> results =
   quotes.GetWilliamsR(lookbackPeriods);
@@ -32,7 +32,7 @@ You must have at least `N` periods of `quotes` to cover the warmup periods.
 
 ## Response
 
-```csharp
+```python
 IEnumerable<WilliamsResult>
 ```
 
@@ -58,7 +58,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

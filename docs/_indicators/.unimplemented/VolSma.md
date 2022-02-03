@@ -14,7 +14,7 @@ The Volume Simple Moving Average is the average volume over a lookback window.  
 
 ![image]({{site.charturl}}/VolSma.png)
 
-```csharp
+```python
 // legacy usage
 IEnumerable<VolSmaResult> results =
   quotes.GetVolSma(lookbackPeriods);
@@ -38,7 +38,7 @@ You must have at least `N` periods of `quotes`.
 
 ## Response
 
-```csharp
+```python
 IEnumerable<VolSmaResult>
 ```
 
@@ -65,7 +65,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 

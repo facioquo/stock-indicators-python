@@ -12,7 +12,7 @@ Created by Quong and Soudack, the [Money Flow Index](https://en.wikipedia.org/wi
 
 !![image]({{site.charturl}}/Mfi.png)
 
-```csharp
+```python
 // usage
 IEnumerable<MfiResult> results =
   quotes.GetMfi(lookbackPeriods);
@@ -32,7 +32,7 @@ You must have at least `N+1` historical quotes to cover the warmup periods.
 
 ## Response
 
-```csharp
+```python
 IEnumerable<MfiResult>
 ```
 
@@ -58,7 +58,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

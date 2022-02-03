@@ -12,7 +12,7 @@ Created by J. Welles Wilder, [Volatility Stop](https://archive.org/details/newco
 
 !![image]({{site.charturl}}/VolatilityStop.png)
 
-```csharp
+```python
 // usage
 IEnumerable<VolatilityStopResult> results =
   quotes.GetVolatilityStop(lookbackPeriods, multiplier);
@@ -33,7 +33,7 @@ You must have at least `N+100` periods of `quotes` to cover the convergence peri
 
 ## Response
 
-```csharp
+```python
 IEnumerable<VolatilityStopResult>
 ```
 
@@ -66,7 +66,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

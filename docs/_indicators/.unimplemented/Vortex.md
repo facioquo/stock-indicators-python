@@ -12,7 +12,7 @@ Created by Etienne Botes and Douglas Siepman, the [Vortex Indicator](https://en.
 
 !![image]({{site.charturl}}/Vortex.png)
 
-```csharp
+```python
 // usage
 IEnumerable<VortexResult> results =
   quotes.GetVortex(lookbackPeriods);
@@ -32,7 +32,7 @@ You must have at least `N+1` periods of `quotes` to cover the warmup periods.
 
 ## Response
 
-```csharp
+```python
 IEnumerable<VortexResult>
 ```
 
@@ -59,7 +59,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

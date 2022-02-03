@@ -13,7 +13,7 @@ See also the alternative [Rolling Pivot Points](../RollingPivots#content) varian
 
 !![image]({{site.charturl}}/PivotPoints.png)
 
-```csharp
+```python
 // usage
 IEnumerable<PivotPointsResult> results =
   quotes.GetPivotPoints(windowSize, pointType);
@@ -53,7 +53,7 @@ You must have at least `2` windows of `quotes` to cover the warmup periods.  For
 
 ## Response
 
-```csharp
+```python
 IEnumerable<PivotPointsResult>
 ```
 
@@ -89,7 +89,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

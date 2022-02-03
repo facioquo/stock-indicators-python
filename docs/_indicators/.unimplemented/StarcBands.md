@@ -12,7 +12,7 @@ Created by Manning Stoller, [Stoller Average Range Channel (STARC) Bands](https:
 
 !![image]({{site.charturl}}/StarcBands.png)
 
-```csharp
+```python
 // usage
 IEnumerable<StarcBandsResult> results =
   quotes.GetStarcBands(smaPeriods, multiplier, atrPeriods);
@@ -34,7 +34,7 @@ You must have at least `S` or `A+100` periods of `quotes`, whichever is more, to
 
 ## Response
 
-```csharp
+```python
 IEnumerable<StarcBandsResult>
 ```
 
@@ -64,7 +64,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

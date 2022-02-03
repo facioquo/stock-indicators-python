@@ -13,7 +13,7 @@ layout: indicator
 
 !![image]({{site.charturl}}/Smma.png)
 
-```csharp
+```python
 // usage
 IEnumerable<SmmaResult> results =
   quotes.GetSmma(lookbackPeriods);
@@ -33,7 +33,7 @@ You must have at least `2×N` or `N+100` periods of `quotes`, whichever is more,
 
 ## Response
 
-```csharp
+```python
 IEnumerable<SmmaResult>
 ```
 
@@ -61,7 +61,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 

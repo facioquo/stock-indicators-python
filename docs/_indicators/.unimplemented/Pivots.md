@@ -12,7 +12,7 @@ Pivots is an extended version of [Williams Fractal](../Fractal#content) that inc
 
 !![image]({{site.charturl}}/Pivots.png)
 
-```csharp
+```python
 // usage
 IEnumerable<PivotsResult> results =
   quotes.GetPivots(leftSpan, rightSpan, maxTrendPeriods, endType);
@@ -44,7 +44,7 @@ You must have at least `L+R+1` periods of `quotes` to cover the warmup periods; 
 
 ## Response
 
-```csharp
+```python
 IEnumerable<PivotsResult>
 ```
 
@@ -85,7 +85,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

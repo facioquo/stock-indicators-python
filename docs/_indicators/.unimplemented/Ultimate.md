@@ -12,7 +12,7 @@ Created by Larry Williams, the [Ultimate Oscillator](https://en.wikipedia.org/wi
 
 !![image]({{site.charturl}}/Ultimate.png)
 
-```csharp
+```python
 // usage
 IEnumerable<UltimateResult> results =
   quotes.GetUltimate(shortPeriods, middlePeriods, longPeriods);
@@ -34,7 +34,7 @@ You must have at least `L+1` periods of `quotes` to cover the warmup periods.
 
 ## Response
 
-```csharp
+```python
 IEnumerable<UltimateResult>
 ```
 
@@ -60,7 +60,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 

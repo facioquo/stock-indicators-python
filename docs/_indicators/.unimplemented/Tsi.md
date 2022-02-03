@@ -12,7 +12,7 @@ Created by William Blau, the [True Strength Index](https://en.wikipedia.org/wiki
 
 !![image]({{site.charturl}}/Tsi.png)
 
-```csharp
+```python
 // usage
 IEnumerable<TsiResult> results =
   quotes.GetTsi(lookbackPeriods, smoothPeriods, signalPeriods);
@@ -34,7 +34,7 @@ You must have at least `N+M+100` periods of `quotes` to cover the convergence pe
 
 ## Response
 
-```csharp
+```python
 IEnumerable<TsiResult>
 ```
 
@@ -64,7 +64,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 

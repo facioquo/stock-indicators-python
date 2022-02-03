@@ -12,7 +12,7 @@ Created by Carl Swenlin, the DecisionPoint [Price Momentum Oscillator](https://s
 
 !![image]({{site.charturl}}/Pmo.png)
 
-```csharp
+```python
 // usage
 IEnumerable<PmoResult> results =
   quotes.GetPmo(timePeriods, smoothPeriods, signalPeriods);
@@ -34,7 +34,7 @@ You must have at least `N` periods of `quotes`, where `N` is the greater of `T+S
 
 ## Response
 
-```csharp
+```python
 IEnumerable<PmoResult>
 ```
 
@@ -63,7 +63,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

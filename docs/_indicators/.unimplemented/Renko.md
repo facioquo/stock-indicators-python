@@ -12,7 +12,7 @@ The [Renko Chart](https://en.m.wikipedia.org/wiki/Renko_chart) is a Japanese pri
 
 !![image]({{site.charturl}}/Renko.png)
 
-```csharp
+```python
 // usage
 IEnumerable<RenkoResult> results =
   quotes.GetRenko(brickSize, endType);
@@ -40,7 +40,7 @@ You must have at least two periods of `quotes` to cover the warmup periods; howe
 
 ## Response
 
-```csharp
+```python
 IEnumerable<RenkoResult>
 ```
 
@@ -75,7 +75,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 
@@ -85,7 +85,7 @@ IEnumerable<RenkoResult> results = quotes.GetRenko(2.5);
 
 ## ATR Variant
 
-```csharp
+```python
 // usage
 IEnumerable<RenkoResult> results =
   quotes.GetRenkoAtr(atrPeriods, endType);
@@ -106,7 +106,7 @@ You must have at least `A+100` periods of `quotes`.
 
 ## Response for ATR
 
-```csharp
+```python
 IEnumerable<RenkoResult>
 ```
 

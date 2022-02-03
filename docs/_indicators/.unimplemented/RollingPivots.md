@@ -12,7 +12,7 @@ Created by Dave Skender, Rolling Pivot Points is a modern update to traditional 
 
 !![image]({{site.charturl}}/RollingPivots.png)
 
-```csharp
+```python
 // usage
 IEnumerable<RollingPivotsResult> results =
   quotes.GetRollingPivots(lookbackPeriods, offsetPeriods, pointType);
@@ -46,7 +46,7 @@ You must have at least `W+F` periods of `quotes` to cover the warmup periods.
 
 ## Response
 
-```csharp
+```python
 IEnumerable<RollingPivotsResult>
 ```
 
@@ -78,7 +78,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

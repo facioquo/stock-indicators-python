@@ -12,7 +12,7 @@ Created by Doug Schaff, [Schaff Trend Cycle](https://www.investopedia.com/articl
 
 !![image]({{site.charturl}}/Stc.png)
 
-```csharp
+```python
 // usage
 IEnumerable<StcResult> results =
   quotes.GetStc(cyclePeriods, fastPeriods, slowPeriods);
@@ -34,7 +34,7 @@ You must have at least `2×(S+C)` or `S+C+100` worth of `quotes`, whichever is m
 
 ## Response
 
-```csharp
+```python
 IEnumerable<StcResult>
 ```
 
@@ -62,7 +62,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

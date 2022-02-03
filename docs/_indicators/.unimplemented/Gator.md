@@ -12,7 +12,7 @@ Created by Bill Williams, the Gator Oscillator is an expanded view of [Williams 
 
 !![image]({{site.charturl}}/Gator.png)
 
-```csharp
+```python
 // usage
 IEnumerable<GatorResult> results =
   quotes.GetGator();
@@ -31,7 +31,7 @@ If using default settings, you must have at least 121 periods of `quotes`. Since
 
 ## Response
 
-```csharp
+```python
 IEnumerable<GatorResult>
 ```
 
@@ -62,7 +62,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 

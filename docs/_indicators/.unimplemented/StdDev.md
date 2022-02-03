@@ -13,7 +13,7 @@ layout: indicator
 
 !![image]({{site.charturl}}/StdDev.png)
 
-```csharp
+```python
 // usage
 IEnumerable<StdDevResult> results =
   quotes.GetStdDev(lookbackPeriods);
@@ -38,7 +38,7 @@ You must have at least `N` periods of `quotes` to cover the warmup periods.
 
 ## Response
 
-```csharp
+```python
 IEnumerable<StdDevResult>
 ```
 
@@ -67,7 +67,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPX");
 

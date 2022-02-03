@@ -12,7 +12,7 @@ Created by Peter Martin, the [Ulcer Index](https://en.wikipedia.org/wiki/Ulcer_i
 
 !![image]({{site.charturl}}/UlcerIndex.png)
 
-```csharp
+```python
 // usage
 IEnumerable<UlcerIndexResult> results =
   quotes.GetUlcerIndex(lookbackPeriods);
@@ -32,7 +32,7 @@ You must have at least `N` periods of `quotes` to cover the warmup periods.
 
 ## Response
 
-```csharp
+```python
 IEnumerable<UlcerIndexResult>
 ```
 
@@ -58,7 +58,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

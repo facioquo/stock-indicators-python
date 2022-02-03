@@ -12,7 +12,7 @@ The [Volume Weighted Average Price](https://en.wikipedia.org/wiki/Volume-weighte
 
 !![image]({{site.charturl}}/Vwap.png)
 
-```csharp
+```python
 // usage
 IEnumerable<VwapResult> results =
   quotes.GetVwap();
@@ -36,7 +36,7 @@ You must have at least one historical quote to calculate; however, more is often
 
 ## Response
 
-```csharp
+```python
 IEnumerable<VwapResult>
 ```
 
@@ -63,7 +63,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

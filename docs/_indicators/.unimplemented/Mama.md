@@ -12,7 +12,7 @@ Created by John Ehlers, the [MAMA](http://mesasoftware.com/papers/MAMA.pdf) indi
 
 !![image]({{site.charturl}}/Mama.png)
 
-```csharp
+```python
 // usage
 IEnumerable<MamaResult> results =
   quotes.GetMama(fastLimit, slowLimit);
@@ -33,7 +33,7 @@ You must have at least `50` periods of `quotes` to cover the warmup periods.
 
 ## Response
 
-```csharp
+```python
 IEnumerable<MamaResult>
 ```
 
@@ -62,7 +62,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 

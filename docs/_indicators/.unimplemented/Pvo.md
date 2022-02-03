@@ -12,7 +12,7 @@ The [Percentage Volume Oscillator](https://school.stockcharts.com/doku.php?id=te
 
 !![image]({{site.charturl}}/Pvo.png)
 
-```csharp
+```python
 // usage
 IEnumerable<PvoResult> results =
   quotes.GetPvo(fastPeriods, slowPeriods, signalPeriods);
@@ -34,7 +34,7 @@ You must have at least `2×(S+P)` or `S+P+100` worth of `quotes`, whichever is m
 
 ## Response
 
-```csharp
+```python
 IEnumerable<PvoResult>
 ```
 
@@ -64,7 +64,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

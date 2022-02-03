@@ -12,7 +12,7 @@ layout: indicator
 
 !![image]({{site.charturl}}/Prs.png)
 
-```csharp
+```python
 // usage
 IEnumerable<PrsResult> results =
   historyBase.GetPrs(historyEval);  
@@ -38,7 +38,7 @@ You must have at least `N` periods of `historyBase` to calculate `PrsPercent` if
 
 ## Response
 
-```csharp
+```python
 IEnumerable<PrsResult>
 ```
 
@@ -65,7 +65,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> historySPX = GetHistoryFromFeed("SPX");
 IEnumerable<Quote> historyTSLA = GetHistoryFromFeed("TSLA");

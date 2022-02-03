@@ -12,7 +12,7 @@ Created by Stephen Klinger, the [Klinger Volume Oscillator](https://www.investop
 
 !![image]({{site.charturl}}/Kvo.png)
 
-```csharp
+```python
 // usage
 IEnumerable<KvoResult> results =
   quotes.GetKvo(shortPeriods, longPeriods, signalPeriods);
@@ -34,7 +34,7 @@ You must have at least `L+100` periods of `quotes` to cover the warmup periods. 
 
 ## Response
 
-```csharp
+```python
 IEnumerable<KvoResult>
 ```
 
@@ -63,7 +63,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

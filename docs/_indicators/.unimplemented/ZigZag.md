@@ -12,7 +12,7 @@ layout: indicator
 
 !![image]({{site.charturl}}/ZigZag.png)
 
-```csharp
+```python
 // usage
 IEnumerable<ZigZagResult> results =
   quotes.GetZigZag(endType, percentChange);
@@ -40,7 +40,7 @@ You must have at least two periods of `quotes` to cover the warmup periods, but 
 
 ## Response
 
-```csharp
+```python
 IEnumerable<ZigZagResult>
 ```
 
@@ -74,7 +74,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

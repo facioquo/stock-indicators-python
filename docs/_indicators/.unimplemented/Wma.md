@@ -12,7 +12,7 @@ layout: indicator
 
 !![image]({{site.charturl}}/Wma.png)
 
-```csharp
+```python
 // usage
 IEnumerable<WmaResult> results =
   quotes.GetWma(lookbackPeriods);
@@ -32,7 +32,7 @@ You must have at least `N` periods of `quotes` to cover the warmup periods.
 
 ## Response
 
-```csharp
+```python
 IEnumerable<WmaResult>
 ```
 
@@ -58,7 +58,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 
