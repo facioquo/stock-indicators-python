@@ -8,11 +8,11 @@ layout: indicator
 # {{ page.title }}
 
 The [Volume Weighted Average Price](https://en.wikipedia.org/wiki/Volume-weighted_average_price) is a Volume weighted average of Close price, typically used on intraday data.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/310 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/310 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Vwap.png)
+![image]({{site.charturl}}/Vwap.png)
 
-```csharp
+```python
 // usage
 IEnumerable<VwapResult> results =
   quotes.GetVwap();
@@ -32,11 +32,11 @@ IEnumerable<VwapResult> results =
 
 You must have at least one historical quote to calculate; however, more is often needed to be useful.  Historical quotes are typically provided for a single day using minute-based intraday periods.  Since this is an accumulated weighted average price, different start dates will produce different results.  The accumulation starts at the first period in the provided `quotes`, unless it is specified in the optional `startDate` parameter.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<VwapResult>
 ```
 
@@ -44,7 +44,7 @@ IEnumerable<VwapResult>
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first period or the `startDate` will have a `Vwap = Close` value since it is the initial starting point.
-- `Vwap` values before `startDate`, if specified, will be `null`.
+- `Vwap` values before `startDate`, if specified, will be `None`.
 
 ### VwapResult
 
@@ -63,7 +63,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

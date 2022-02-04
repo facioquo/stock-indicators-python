@@ -8,11 +8,11 @@ layout: indicator
 # {{ page.title }}
 
 Created by J. Welles Wilder, [Volatility Stop](https://archive.org/details/newconceptsintec00wild), also known his Volatility System, is an [ATR](../Atr/) based indicator used to determine trend direction, stops, and reversals.  It is similar to Wilder's [Parabolic SAR](../ParabolicSar/#content) and [SuperTrend](../SuperTrend/#content).
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/564 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/564 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/VolatilityStop.png)
+![image]({{site.charturl}}/VolatilityStop.png)
 
-```csharp
+```python
 // usage
 IEnumerable<VolatilityStopResult> results =
   quotes.GetVolatilityStop(lookbackPeriods, multiplier);
@@ -29,18 +29,18 @@ IEnumerable<VolatilityStopResult> results =
 
 You must have at least `N+100` periods of `quotes` to cover the convergence periods.  Since the underlying ATR uses a smoothing technique, we recommend you use at least `N+250` data points prior to the intended usage date for better precision.  Initial values prior to the first reversal are not accurate and are excluded from the results.  Therefore, provide sufficient quotes to capture prior trend reversals.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<VolatilityStopResult>
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first trend will have `null` values since it is not accurate and based on an initial guess.
+- The first trend will have `None` values since it is not accurate and based on an initial guess.
 
 :hourglass: **Convergence Warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
@@ -66,7 +66,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

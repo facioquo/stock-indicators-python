@@ -1,7 +1,6 @@
 ---
-title: Endpoint Moving Average (EPMA)
-description: Endpoint Moving Average (EPMA) and Least Squares Moving Average (LSMA)
-permalink: /indicators/Epma/
+title: MESA Adaptive Moving Average (MAMA)
+permalink: /indicators/Mama/
 type: moving-average
 layout: indicator
 ---
@@ -9,39 +8,43 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_epma**(*quotes, lookback_periods*)
-    
+## **get_mama**(*quotes, fast_limit=0.5, slow_limit=0.05*)
+
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
 | `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
-| `lookback_periods` | int | Number of periods (`N`) in the moving average.  Must be greater than 0.
+| `fast_limit` | float, *default 0.5* | Fast limit threshold.  Must be greater than `slowLimit` and less than 1.
+| `slow_limit` | float, *default 0.05* | Slow limit threshold.  Must be greater than 0.
 
 ### Historical quotes requirements
 
-You must have at least `N` periods of `quotes` to cover the warmup periods.
+You must have at least `50` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
 ## Return
 
 ```python
-EPMAResults[EPMAResult]
+MAMAResults[MAMAResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
-- `EPMAResults` is just a list of `EPMAResult`.
+- `MAMAResults` is just a list of `MAMAResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N-1` periods will have `None` values since there's not enough data to calculate.
+- The first `5` periods will have `None` values for `Mama` since there's not enough data to calculate.
 
-### EPMAResult
+:hourglass: **Convergence Warning**: The first `50` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+
+### MAMAResult
 
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `epma` | Decimal, Optional | Endpoint moving average
+| `mama` | Decimal, Optional | MESA adaptive moving average (MAMA)
+| `fama` | Decimal, Optional | Following adaptive moving average (FAMA)
 
 ### Utilities
 
@@ -59,18 +62,18 @@ from stock_indicators import indicators
 # This method is NOT a part of the library.
 quotes = get_history_from_feed("SPY")
 
-# Calculate 20-period EPMA
-results = indicators.get_epma(quotes, 20);
+# Calculate Mama(0.5,0.05)
+results = indicators.get_mama(quotes, 0.5,0.05);
 ```
 
 ## About: {{ page.title }}
 
-Endpoint Moving Average (EPMA), also known as Least Squares Moving Average (LSMA), plots the projected last point of a linear regression lookback window.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/371 "Community discussion about this indicator")
+Created by John Ehlers, the [MAMA](http://mesasoftware.com/papers/MAMA.pdf) indicator is a 5-period adaptive moving average of high/low price.
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/211 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Epma.png)
+![image]({{site.charturl}}/Mama.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Epma/Epma.cs)
-- [Python wrapper]({{site.sourceurl}}/epma.py)
+- [C# core]({{site.base_sourceurl}}/m-r/Mama/Mama.cs)
+- [Python wrapper]({{site.sourceurl}}/mama.py)

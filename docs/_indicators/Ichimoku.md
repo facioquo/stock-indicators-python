@@ -15,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Type[Quote]] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
 | `tenkan_periods` | int, *default 9* | Number of periods (`T`) in the Tenkan-sen midpoint evaluation.  Must be greater than 0.
 | `kijun_periods` | int, *default 26* | Number of periods (`K`) in the shorter Kijun-sen midpoint evaluation.  Must be greater than 0.
 | `senkou_b_periods` | int, *default 52* | Number of periods (`S`) in the longer Senkou leading span B midpoint evaluation.  Must be greater than `K`.
@@ -31,7 +31,7 @@ See overloads usage above to determine which parameters are relevant for each.  
 
 You must have at least the greater of `T`,`K`, `S`, and offset periods for `quotes` to cover the warmup periods; though, given the leading and lagging nature, we recommend notably more.
 
-`quotes` is an `Iterable[Type[Quote]]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
 ## Return
 

@@ -8,11 +8,11 @@ type: candlestick-pattern
 # {{ page.title }}
 
 [Marubozu](https://en.wikipedia.org/wiki/Marubozu) is a candlestick pattern that has no wicks, representing consistent directional movement.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/512 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/512 "Community discussion about this indicator")
 
   <img src="{{site.baseurl}}/assets/charts/Marubozu.png" alt="drawing" height="150" />
 
-```csharp
+```python
 // usage
 IEnumerable<CandleResult> results =
   quotes.GetMarubozu(minBodyPercent);
@@ -28,11 +28,11 @@ IEnumerable<CandleResult> results =
 
 You must have at least one historical quote; however, more is typically provided since this is a chartable candlestick pattern.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<CandleResult>
 ```
 
@@ -54,7 +54,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

@@ -8,11 +8,11 @@ layout: indicator
 # {{ page.title }}
 
 Created by Doug Schaff, [Schaff Trend Cycle](https://www.investopedia.com/articles/forex/10/schaff-trend-cycle-indicator.asp) is a stochastic oscillator view of two converging/diverging exponential moving averages (a.k.a MACD).
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/570 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/570 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Stc.png)
+![image]({{site.charturl}}/Stc.png)
 
-```csharp
+```python
 // usage
 IEnumerable<StcResult> results =
   quotes.GetStc(cyclePeriods, fastPeriods, slowPeriods);
@@ -30,18 +30,18 @@ IEnumerable<StcResult> results =
 
 You must have at least `2×(S+C)` or `S+C+100` worth of `quotes`, whichever is more, to cover the convergence periods.  Since this uses a smoothing technique, we recommend you use at least `S+C+250` data points prior to the intended usage date for better precision.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<StcResult>
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `S+C` slow periods will have `null` values since there's not enough data to calculate.
+- The first `S+C` slow periods will have `None` values since there's not enough data to calculate.
 
 :hourglass: **Convergence Warning**: The first `S+C+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
@@ -62,7 +62,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

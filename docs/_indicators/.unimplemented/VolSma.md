@@ -8,13 +8,13 @@ layout: indicator
 # {{ page.title }}
 
 The Volume Simple Moving Average is the average volume over a lookback window.  This is helpful when you are trying to assess whether volume is above or below normal.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/230 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/230 "Community discussion about this indicator")
 
 :warning: **Deprecation Warning!** `GetVolSma` is now redundant and will be removed from the library at the end of 2021.  It is replaced by [GetSma()](../Sma/#content) with a `CandlePart.Volume` specification.
 
 ![image]({{site.charturl}}/VolSma.png)
 
-```csharp
+```python
 // legacy usage
 IEnumerable<VolSmaResult> results =
   quotes.GetVolSma(lookbackPeriods);
@@ -34,18 +34,18 @@ IEnumerable<SmaResult> results =
 
 You must have at least `N` periods of `quotes`.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<VolSmaResult>
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N-1` periods will have `null` values for `VolSma` since there's not enough data to calculate.
+- The first `N-1` periods will have `None` values for `VolSma` since there's not enough data to calculate.
 
 ### VolSmaResult
 
@@ -65,7 +65,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 

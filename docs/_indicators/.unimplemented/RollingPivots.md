@@ -8,11 +8,11 @@ layout: indicator
 # {{ page.title }}
 
 Created by Dave Skender, Rolling Pivot Points is a modern update to traditional fixed calendar window [Pivot Points](../PivotPoints#content).  It depicts support and resistance levels, based on a defined _rolling_ window and offset.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/274 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/274 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/RollingPivots.png)
+![image]({{site.charturl}}/RollingPivots.png)
 
-```csharp
+```python
 // usage
 IEnumerable<RollingPivotsResult> results =
   quotes.GetRollingPivots(lookbackPeriods, offsetPeriods, pointType);
@@ -32,7 +32,7 @@ For example, a window of 8 with an offset of 4 would evaluate quotes like: `W W 
 
 You must have at least `W+F` periods of `quotes` to cover the warmup periods.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
 ### PivotPointType options
 
@@ -44,16 +44,16 @@ You must have at least `W+F` periods of `quotes` to cover the warmup periods.
 | `PivotPointType.Fibonacci` | Fibonacci
 | `PivotPointType.Woodie` | Woodie
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<RollingPivotsResult>
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `W+F-1` periods will have `null` values since there's not enough data to calculate.
+- The first `W+F-1` periods will have `None` values since there's not enough data to calculate.
 
 ### RollingPivotsResult
 
@@ -78,7 +78,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

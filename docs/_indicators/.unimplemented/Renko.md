@@ -8,11 +8,11 @@ layout: indicator
 # {{ page.title }}
 
 The [Renko Chart](https://en.m.wikipedia.org/wiki/Renko_chart) is a Japanese price transformed candlestick pattern that uses "bricks" to show a defined increment of change over a non-linear time series.  Transitions can use either `Close` or `High/Low` price values.  An [ATR variant](#atr-variant) is also provided where brick size is determined by Average True Range values.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/478 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/478 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Renko.png)
+![image]({{site.charturl}}/Renko.png)
 
-```csharp
+```python
 // usage
 IEnumerable<RenkoResult> results =
   quotes.GetRenko(brickSize, endType);
@@ -29,7 +29,7 @@ IEnumerable<RenkoResult> results =
 
 You must have at least two periods of `quotes` to cover the warmup periods; however, more is typically provided since this is a chartable candlestick pattern.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
 ### EndType options
 
@@ -38,9 +38,9 @@ You must have at least two periods of `quotes` to cover the warmup periods; howe
 | `EndType.Close` | Brick change threshold measured from `Close` price (default)
 | `EndType.HighLow` | Brick change threshold measured from `High` and `Low` price
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<RenkoResult>
 ```
 
@@ -75,7 +75,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 
@@ -85,7 +85,7 @@ IEnumerable<RenkoResult> results = quotes.GetRenko(2.5);
 
 ## ATR Variant
 
-```csharp
+```python
 // usage
 IEnumerable<RenkoResult> results =
   quotes.GetRenkoAtr(atrPeriods, endType);
@@ -102,11 +102,11 @@ IEnumerable<RenkoResult> results =
 
 You must have at least `A+100` periods of `quotes`.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response for ATR
+## Return for ATR
 
-```csharp
+```python
 IEnumerable<RenkoResult>
 ```
 

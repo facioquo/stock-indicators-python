@@ -8,11 +8,11 @@ layout: indicator
 # {{ page.title }}
 
 Created by Bill Williams, the Gator Oscillator is an expanded view of [Williams Alligator](../Alligator#content).
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/385 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/385 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Gator.png)
+![image]({{site.charturl}}/Gator.png)
 
-```csharp
+```python
 // usage
 IEnumerable<GatorResult> results =
   quotes.GetGator();
@@ -27,18 +27,18 @@ IEnumerable<GatorResult> results = quotes
 
 If using default settings, you must have at least 121 periods of `quotes`. Since this uses a smoothing technique, we recommend you use at least 271 data points prior to the intended usage date for better precision.  If using a custom Alligator configuration, see [Alligator documentation](../Alligator#historical-quotes-requirements) for historical quotes requirements.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<GatorResult>
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first 10-20 periods will have `null` values since there's not enough data to calculate.
+- The first 10-20 periods will have `None` values since there's not enough data to calculate.
 
 :hourglass: **Convergence Warning**: The first 150 periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
@@ -62,7 +62,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 

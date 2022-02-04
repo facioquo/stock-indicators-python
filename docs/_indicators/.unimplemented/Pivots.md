@@ -8,11 +8,11 @@ layout: indicator
 # {{ page.title }}
 
 Pivots is an extended version of [Williams Fractal](../Fractal#content) that includes identification of Higher High, Lower Low, Higher Low, and Lower Low trends between pivots in a lookback window.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/436 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/436 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Pivots.png)
+![image]({{site.charturl}}/Pivots.png)
 
-```csharp
+```python
 // usage
 IEnumerable<PivotsResult> results =
   quotes.GetPivots(leftSpan, rightSpan, maxTrendPeriods, endType);
@@ -33,7 +33,7 @@ The total evaluation window size is `L+R+1`.
 
 You must have at least `L+R+1` periods of `quotes` to cover the warmup periods; however, more is typically provided since this is a chartable candlestick pattern.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
 ### EndType options
 
@@ -42,9 +42,9 @@ You must have at least `L+R+1` periods of `quotes` to cover the warmup periods; 
 | `EndType.Close` | Chevron point identified from `Close` price
 | `EndType.HighLow` | Chevron point identified from `High` and `Low` price (default)
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<PivotsResult>
 ```
 
@@ -60,8 +60,8 @@ IEnumerable<PivotsResult>
 | name | type | notes
 | -- |-- |--
 | `Date` | DateTime | Date
-| `HighPoint` | decimal | Value indicates a **high** point; otherwise `null` is returned.
-| `LowPoint` | decimal | Value indicates a **low** point; otherwise `null` is returned.
+| `HighPoint` | decimal | Value indicates a **high** point; otherwise `None` is returned.
+| `LowPoint` | decimal | Value indicates a **low** point; otherwise `None` is returned.
 | `HighLine` | decimal | Drawn line between two high points in the `maxTrendPeriods`
 | `LowLine` | decimal | Drawn line between two low points in the `maxTrendPeriods`
 | `HighTrend` | PivotTrend | Enum that represents higher high or lower high.  See [PivotTrend values](#pivottrend-values) below.
@@ -85,7 +85,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

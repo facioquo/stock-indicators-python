@@ -1,46 +1,48 @@
 ---
-title: Choppiness Index
-permalink: /indicators/Chop/
-type: price-characteristic
+title: Hilbert Transform Instantaneous Trendline
+permalink: /indicators/HtTrendline/
+type: moving-average
 layout: indicator
 ---
 
 # {{ page.title }}
 <hr>
 
-## **get_chop**(*quotes, lookback_periods=14*)
+## **get_ht_trendline**(*quotes*)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
 | `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
-| `lookback_periods` | int, *default 14* | Number of periods (`N`) for the lookback evaluation.  Must be greater than 1.
 
-### Historical quotes requirements
+## Historical quotes requirements
 
-You must have at least `N+1` periods of `quotes` to cover the warmup periods.
+You must have at least `100` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
 ## Return
 
 ```python
-ChopResults[ChopResult]
+HTTrendlineResults[HTTrendlineResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
-- `ChopResults` is just a list of `ChopResult`.
+- `HTTrendlineResults` is just a list of `HTTrendlineResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N` periods will have `None` values since there's not enough data to calculate.
+- The first `6` periods will have `None` values for `smooth_price` since there's not enough data to calculate.
 
-### ChopResult
+:hourglass: **Convergence Warning**: The first `100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+
+### HTTrendlineResult
 
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `chop` | decimal, Optional | Choppiness Index
+| `trendline` | Decimal, Optional | HT Trendline
+| `smooth_price` | Decimal, Optional | Weighted moving average of `(H+L)/2` price
 
 ### Utilities
 
@@ -58,17 +60,18 @@ from stock_indicators import indicators
 # This method is NOT a part of the library.
 quotes = get_history_from_feed("SPY")
 
-# Calculate CHOP(14)
-results = indicators.get_chop(quotes, 14);
+# Calculate HT Trendline
+results = indicators.get_ht_trendline(quotes);
 ```
 
 ## About: {{ page.title }}
 
-Created by E.W. Dreiss, the Choppiness Index measures the trendiness or choppiness on a scale of 0 to 100, to depict steady trends versus conditions of choppiness.  [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/357 "Community discussion about this indicator")
+Created by John Ehlers, the Hilbert Transform Instantaneous Trendline is a 5-period trendline of high/low price that uses signal processing to reduce noise.
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/363 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Chop.png)
+![image]({{site.charturl}}/HtTrendline.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Chop/Chop.cs)
-- [Python wrapper]({{site.sourceurl}}/chop.py)
+- [C# core]({{site.base_sourceurl}}/e-k/HtTrendline/HtTrendline.cs)
+- [Python wrapper]({{site.sourceurl}}/ht_trendline.py)

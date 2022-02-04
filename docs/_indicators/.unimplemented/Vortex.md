@@ -8,11 +8,11 @@ layout: indicator
 # {{ page.title }}
 
 Created by Etienne Botes and Douglas Siepman, the [Vortex Indicator](https://en.wikipedia.org/wiki/Vortex_indicator) is a measure of price directional movement.  It includes positive and negative indicators, and is often used to identify trends and reversals.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/339 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/339 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Vortex.png)
+![image]({{site.charturl}}/Vortex.png)
 
-```csharp
+```python
 // usage
 IEnumerable<VortexResult> results =
   quotes.GetVortex(lookbackPeriods);
@@ -28,18 +28,18 @@ IEnumerable<VortexResult> results =
 
 You must have at least `N+1` periods of `quotes` to cover the warmup periods.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<VortexResult>
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N` periods will have `null` values for VI since there's not enough data to calculate.
+- The first `N` periods will have `None` values for VI since there's not enough data to calculate.
 
 ### VortexResult
 
@@ -59,7 +59,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

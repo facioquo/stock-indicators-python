@@ -8,11 +8,11 @@ layout: indicator
 # {{ page.title }}
 
 Created by William Blau, the [True Strength Index](https://en.wikipedia.org/wiki/True_strength_index) is a momentum oscillator that depicts trends in price changes.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/300 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/300 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Tsi.png)
+![image]({{site.charturl}}/Tsi.png)
 
-```csharp
+```python
 // usage
 IEnumerable<TsiResult> results =
   quotes.GetTsi(lookbackPeriods, smoothPeriods, signalPeriods);
@@ -30,19 +30,19 @@ IEnumerable<TsiResult> results =
 
 You must have at least `N+M+100` periods of `quotes` to cover the convergence periods.  Since this uses a two EMA smoothing techniques, we recommend you use at least `N+M+250` data points prior to the intended usage date for better precision.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<TsiResult>
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N+M-1` periods will have `null` values since there's not enough data to calculate.
-- `Signal` will be `null` for all periods if `signalPeriods=0`.
+- The first `N+M-1` periods will have `None` values since there's not enough data to calculate.
+- `Signal` will be `None` for all periods if `signalPeriods=0`.
 
 :hourglass: **Convergence Warning**: The first `N+M+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
@@ -64,7 +64,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 

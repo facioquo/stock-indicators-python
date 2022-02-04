@@ -8,11 +8,11 @@ layout: indicator
 # {{ page.title }}
 
 [Moving Average Envelopes](https://en.wikipedia.org/wiki/Moving_average_envelope) is a price band overlay that is offset from the moving average of Close price over a lookback window.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/288 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/288 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/MaEnvelopes.png)
+![image]({{site.charturl}}/MaEnvelopes.png)
 
-```csharp
+```python
 // usage
 IEnumerable<MaEnvelopeResult> results =
   quotes.GetSmaEnvelopes(lookbackPeriods, percentOffset, movingAverageType);  
@@ -30,7 +30,7 @@ IEnumerable<MaEnvelopeResult> results =
 
 See links in the supported [MaType options](#matype-options) section below for details on the inherited requirements for `quotes` and `lookbackPeriods`.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
 ### MaType options
 
@@ -50,16 +50,16 @@ These are the supported moving average types:
 
 :warning: For ALMA, default values are used for `offset` and `sigma`.
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<MaEnvelopeResult>
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first periods will have `null` values since there's not enough data to calculate; the quantity will vary based on the `movingAverageType` specified.
+- The first periods will have `None` values since there's not enough data to calculate; the quantity will vary based on the `movingAverageType` specified.
 
 :hourglass: **Convergence Warning**: Some moving average variants have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.  See links in the supported [MaType options](#matype-options) section above for more information.
 
@@ -83,7 +83,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 

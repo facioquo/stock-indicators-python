@@ -14,7 +14,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Type[Quote]] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
 | `lookback_periods` | int, Optional, *default 20*  | Size (`N`) of the evaluation window.  Must be `None` or greater than 1 to calculate.  A `None` value will produce a full `quotes` evaluation window ([see below](#alternative-depiction-for-full-quotes-variant)).
 | `standard_deviations` | int, *default 2*  | Width of bands.  Standard deviations (`D`) from the regression line.  Must be greater than 0.  Default is 2.
 
@@ -22,7 +22,7 @@ layout: indicator
 
 You must have at least `N` periods of `quotes` to cover the warmup periods.
 
-`quotes` is an `Iterable[Type[Quote]]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
 ## Return
 

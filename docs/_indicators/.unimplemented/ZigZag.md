@@ -8,11 +8,11 @@ layout: indicator
 # {{ page.title }}
 
 [Zig Zag](https://school.stockcharts.com/doku.php?id=technical_indicators:zigzag) is a price chart overlay that simplifies the up and down movements and transitions based on a percent change smoothing threshold.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/226 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/226 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/ZigZag.png)
+![image]({{site.charturl}}/ZigZag.png)
 
-```csharp
+```python
 // usage
 IEnumerable<ZigZagResult> results =
   quotes.GetZigZag(endType, percentChange);
@@ -29,7 +29,7 @@ IEnumerable<ZigZagResult> results =
 
 You must have at least two periods of `quotes` to cover the warmup periods, but notably more is needed to be useful.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
 ### EndType options
 
@@ -38,9 +38,9 @@ You must have at least two periods of `quotes` to cover the warmup periods, but 
 | `EndType.Close` | Percent change measured from `Close` price (default)
 | `EndType.HighLow` | Percent change measured from `High` and `Low` price
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<ZigZagResult>
 ```
 
@@ -48,7 +48,7 @@ IEnumerable<ZigZagResult>
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - If you do not supply enough points to cover the percent change, there will be no Zig Zag points or lines.
-- The first line segment starts after the first confirmed point; ZigZag values before the first confirmed point will be `null`.
+- The first line segment starts after the first confirmed point; ZigZag values before the first confirmed point will be `None`.
 - The last line segment is an approximation as the direction is indeterminate.
 
 :warning: **Warning**:  depending on the specified `endType`, the indicator cannot be initialized if the first `Quote` in `quotes` has a `High`,`Low`, or `Close` value of 0 (zero).
@@ -74,7 +74,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

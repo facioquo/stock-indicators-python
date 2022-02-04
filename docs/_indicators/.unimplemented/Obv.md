@@ -8,11 +8,11 @@ layout: indicator
 # {{ page.title }}
 
 Popularized by Joseph Granville, [On-balance Volume](https://en.wikipedia.org/wiki/On-balance_volume) is a rolling accumulation of volume based on Close price direction.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/246 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/246 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Obv.png)
+![image]({{site.charturl}}/Obv.png)
 
-```csharp
+```python
 // usage
 IEnumerable<ObvResult> results =
   quotes.GetObv();
@@ -32,11 +32,11 @@ IEnumerable<ObvResult> results =
 
 You must have at least two historical quotes to cover the warmup periods; however, since this is a trendline, more is recommended.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<ObvResult>
 ```
 
@@ -65,7 +65,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
 

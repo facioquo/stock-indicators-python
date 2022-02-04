@@ -8,11 +8,11 @@ layout: indicator
 # {{ page.title }}
 
 Volume Weighted Moving Average is the volume adjusted average price over a lookback window.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/657 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/657 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Vwma.png)
+![image]({{site.charturl}}/Vwma.png)
 
-```csharp
+```python
 // legacy usage
 IEnumerable<VwmaResult> results =
   quotes.GetVwma(lookbackPeriods);
@@ -28,18 +28,18 @@ IEnumerable<VwmaResult> results =
 
 You must have at least `N` periods of `quotes` to cover the warmup periods.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<VwmaResult>
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N-1` periods will have `null` values for `Vwma` since there's not enough data to calculate.
+- The first `N-1` periods will have `None` values for `Vwma` since there's not enough data to calculate.
 
 ### VwmaResult
 
@@ -58,7 +58,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 

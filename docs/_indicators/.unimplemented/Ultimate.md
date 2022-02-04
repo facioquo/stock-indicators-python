@@ -8,11 +8,11 @@ layout: indicator
 # {{ page.title }}
 
 Created by Larry Williams, the [Ultimate Oscillator](https://en.wikipedia.org/wiki/Ultimate_oscillator) uses several lookback periods to weigh buying power against true range price to produce on oversold / overbought oscillator.
-[[Discuss] :speech_balloon:]({{site.github.repository_url}}/discussions/231 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/231 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/assets/charts/Ultimate.png)
+![image]({{site.charturl}}/Ultimate.png)
 
-```csharp
+```python
 // usage
 IEnumerable<UltimateResult> results =
   quotes.GetUltimate(shortPeriods, middlePeriods, longPeriods);
@@ -30,18 +30,18 @@ IEnumerable<UltimateResult> results =
 
 You must have at least `L+1` periods of `quotes` to cover the warmup periods.
 
-`quotes` is an `IEnumerable<TQuote>` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+`quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
-```csharp
+```python
 IEnumerable<UltimateResult>
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `L-1` periods will have `null` Ultimate values since there's not enough data to calculate.
+- The first `L-1` periods will have `None` Ultimate values since there's not enough data to calculate.
 
 ### UltimateResult
 
@@ -60,7 +60,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ## Example
 
-```csharp
+```python
 // fetch historical quotes from your feed (your method)
 IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
 
