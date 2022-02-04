@@ -11,7 +11,7 @@ def get_hurst(quotes: Iterable[Quote], lookback_periods: int = 100):
 
     Hurst Exponent is a measure of randomness, trending, and
     mean-reverting tendencies of incremental return values.
-    
+
     Parameters:
         `quotes` : Iterable[Quote]
             Historical price quotes.
