@@ -12,7 +12,7 @@ def get_kvo(quotes: Iterable[Quote], fast_periods: int = 34,
 
     Klinger Volume Oscillator (KVO) depicts volume-based divergence
     between short and long-term money flow.
-    
+
     Parameters:
         `quotes` : Iterable[Quote]
             Historical price quotes.

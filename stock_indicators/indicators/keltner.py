@@ -15,7 +15,7 @@ def get_keltner(quotes: Iterable[Quote], ema_periods: int = 20,
 
     Keltner Channels are based on an EMA centerline andATR band widths.
     See also STARC Bands for an SMA centerline equivalent.
-    
+
     Parameters:
         `quotes` : Iterable[Quote]
             Historical price quotes.

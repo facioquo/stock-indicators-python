@@ -15,7 +15,7 @@ def get_mama(quotes: Iterable[Quote], fast_limit: float = 0.5,
 
     MESA Adaptive Moving Average (MAMA) is a 5-period
     adaptive moving average of high/low price.
-    
+
     Parameters:
         `quotes` : Iterable[Quote]
             Historical price quotes.

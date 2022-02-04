@@ -15,7 +15,7 @@ def get_kama(quotes: Iterable[Quote], er_periods: int = 10,
 
     Kaufman’s Adaptive Moving Average (KAMA) is an volatility
     adaptive moving average of Close price over configurable lookback periods.
-    
+
     Parameters:
         `quotes` : Iterable[Quote]
             Historical price quotes.
