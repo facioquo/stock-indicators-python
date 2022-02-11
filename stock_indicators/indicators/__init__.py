@@ -40,6 +40,7 @@ from .mama import (get_mama)
 from .mfi import (get_mfi)
 from .obv import (get_obv)
 from .parabolic_sar import (get_parabolic_sar)
+from .pmo import (get_pmo)
 from .roc import (
     get_roc,
     get_roc_with_band
