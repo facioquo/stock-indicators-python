@@ -53,6 +53,7 @@ from .sma import (
     get_sma_extended
 )
 from .smi import (get_smi)
+from .smma import (get_smma)
 from .starc_bands import (get_starc_bands)
 from .stdev_channels import (get_stdev_channels)
 from .stoch import (get_stoch)
