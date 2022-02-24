@@ -60,7 +60,7 @@ def test_benchmark_double_ema(benchmark, quotes):
 def test_benchmark_dpo(benchmark, quotes):
     benchmark(indicators.get_dpo, quotes, 14)
 
-def test_elder_ray(benchmark, quotes):
+def test_benchmark_elder_ray(benchmark, quotes):
     benchmark(indicators.get_elder_ray, quotes)
 
 def test_benchmark_ema(benchmark, quotes):
@@ -113,9 +113,18 @@ def test_benchmark_mama(benchmark, quotes):
     
 def test_benchmark_mfi(benchmark, quotes):
     benchmark(indicators.get_mfi, quotes)
+    
+def test_benchmark_obv(benchmark, quotes):
+    benchmark(indicators.get_obv, quotes)
 
 def test_benchmark_parabolic_sar(benchmark, quotes):
     benchmark(indicators.get_parabolic_sar, quotes)
+    
+def test_benchmark_pmo(benchmark, quotes):
+    benchmark(indicators.get_pmo, quotes)
+
+def test_benchmark_prs(benchmark, quotes):
+    benchmark(indicators.get_prs, quotes, quotes)
 
 def test_benchmark_roc(benchmark, quotes):
     benchmark(indicators.get_roc, quotes, 20)
@@ -131,12 +140,24 @@ def test_benchmark_sma_extended(benchmark, quotes):
 
 def test_benchmark_sma(benchmark, quotes):
     benchmark(indicators.get_sma, quotes, 20)
+
+def test_benchmark_smi(benchmark, quotes):
+    benchmark(indicators.get_smi, quotes, 14, 20, 5, 3)
+    
+def test_benchmark_smma(benchmark, quotes):
+    benchmark(indicators.get_smma, quotes, 20)
     
 def test_benchmark_starc_bands(benchmark, quotes):
     benchmark(indicators.get_starc_bands, quotes)
     
+def test_benchmark_stc(benchmark, quotes):
+    benchmark(indicators.get_stc, quotes)
+    
 def test_benchmark_stdev_channels(benchmark, quotes):
     benchmark(indicators.get_stdev_channels, quotes, 20, 2)
+    
+def test_benchmark_stdev(benchmark, quotes):
+    benchmark(indicators.get_stdev, quotes, 10)
 
 def test_benchmark_stoch_rsi(benchmark, quotes):
     benchmark(indicators.get_stoch_rsi, quotes, 14, 14, 3, 1)
@@ -147,8 +168,17 @@ def test_benchmark_stoch(benchmark, quotes):
 def test_benchmark_super_trend(benchmark, quotes):
     benchmark(indicators.get_super_trend, quotes)
 
+def test_benchmark_t3(benchmark, quotes):
+    benchmark(indicators.get_t3, quotes)
+    
 def test_benchmark_triple_ema(benchmark, quotes):
     benchmark(indicators.get_triple_ema, quotes, 20)
 
 def test_benchmark_trix(benchmark, quotes):
     benchmark(indicators.get_trix, quotes, 20, 5)
+
+def test_benchmark_tsi(benchmark, quotes):
+    benchmark(indicators.get_tsi, quotes)
+    
+def test_benchmark_ulcer_index(benchmark, quotes):
+    benchmark(indicators.get_ulcer_index, quotes)
