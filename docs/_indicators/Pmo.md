@@ -6,25 +6,16 @@ layout: indicator
 ---
 
 # {{ page.title }}
+<hr>
 
-Created by Carl Swenlin, the DecisionPoint [Price Momentum Oscillator](https://school.stockcharts.com/doku.php?id=technical_indicators:dppmo) is double-smoothed ROC based momentum indicator.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/244 "Community discussion about this indicator")
-
-![image]({{site.charturl}}/Pmo.png)
-
-```python
-// usage
-IEnumerable<PmoResult> results =
-  quotes.GetPmo(timePeriods, smoothPeriods, signalPeriods);
-```
+## **get_pmo**(*quotes, time_periods=35*)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `timePeriods` | int | Number of periods (`T`) for ROC EMA smoothing.  Must be greater than 1.  Default is 35.
-| `smoothPeriods` | int | Number of periods (`S`) for PMO EMA smoothing.  Must be greater than 0.  Default is 20.
-| `signalPeriods` | int | Number of periods (`G`) for Signal line EMA.  Must be greater than 0.  Default is 10.
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `time_periods` | int, *default 35* | Number of periods (`T`) for ROC EMA smoothing.  Must be greater than 1.
 
 ### Historical quotes requirements
 
@@ -35,38 +26,53 @@ You must have at least `N` periods of `quotes`, where `N` is the greater of `T+S
 ## Return
 
 ```python
-IEnumerable<PmoResult>
+PMOResults[PMOResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `PMOResults` is just a list of `PMOResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first `T+S-1` periods will have `None` values for PMO since there's not enough data to calculate.
 
 :hourglass: **Convergence Warning**: The first `T+S+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
-### PmoResult
+### PMOResult
 
 | name | type | notes
 | -- |-- |--
-| `Date` | DateTime | Date
-| `Pmo` | double | Price Momentum Oscillator
-| `Signal` | double | Signal line is EMA of PMO
+| `date` | datetime | Date
+| `pmo` | float, Optional | Price Momentum Oscillator
+| `signal` | float, Optional | Signal line is EMA of PMO
 
 ### Utilities
 
-- [.Find(lookupDate)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
-- [.RemoveWarmupPeriods()]({{site.baseurl}}/utilities#remove-warmup-periods)
-- [.RemoveWarmupPeriods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
+- [.remove_warmup_periods()]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
 ## Example
 
 ```python
-// fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+from stock_indicators import indicators
 
-// calculate 20-period PMO
-IEnumerable<PmoResult> results = quotes.GetPmo(35,20,10);
+# This method is NOT a part of the library.
+quotes = get_history_from_feed("SPY")
+
+# Calculate 20-period PMO
+results = indicators.get_pmo(quotes, 35,20,10);
 ```
+
+## About: {{ page.title }}
+
+Created by Carl Swenlin, the DecisionPoint [Price Momentum Oscillator](https://school.stockcharts.com/doku.php?id=technical_indicators:dppmo) is double-smoothed ROC based momentum indicator.
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/244 "Community discussion about this indicator")
+
+![image]({{site.charturl}}/Pmo.png)
+
+### Sources
+
+- [C# core]({{site.base_sourceurl}}/m-r/Pmo/Pmo.cs)
+- [Python wrapper]({{site.sourceurl}}/pmo.py)
