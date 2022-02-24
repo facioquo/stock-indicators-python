@@ -7,23 +7,16 @@ layout: indicator
 ---
 
 # {{ page.title }}
+<hr>
 
-[Smoothed Moving Average](https://en.wikipedia.org/wiki/Moving_average#Modified_moving_average) is the average of Close price over a lookback window using a smoothing method.  SMMA is also known as modified moving average (MMA) and running moving average (RMA).
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/375 "Community discussion about this indicator")
-
-![image]({{site.charturl}}/Smma.png)
-
-```python
-// usage
-IEnumerable<SmmaResult> results =
-  quotes.GetSmma(lookbackPeriods)
-```
-
+## **get_smma**(*quotes, lookback_periods*)
+    
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `lookbackPeriods` | int | Number of periods (`N`) in the moving average.  Must be greater than 0.
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `lookback_periods` | int | Number of periods (`N`) in the moving average.  Must be greater than 0.
 
 ### Historical quotes requirements
 
@@ -34,37 +27,52 @@ You must have at least `2×N` or `N+100` periods of `quotes`, whichever is more,
 ## Return
 
 ```python
-IEnumerable<SmmaResult>
+SMMAResult[SMMAResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `SMMAResults` is just a list of `SMMAResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values since there's not enough data to calculate.
 
 :hourglass: **Convergence Warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
-### SmmaResult
+### SMMAResult
 
 | name | type | notes
 | -- |-- |--
-| `Date` | DateTime | Date
-| `Smma` | decimal | Smoothed moving average
+| `date` | datetime | Date
+| `smma` | Decimal, Optional | Smoothed moving average
 
 ### Utilities
 
-- [.Find(lookupDate)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
-- [.RemoveWarmupPeriods()]({{site.baseurl}}/utilities#remove-warmup-periods)
-- [.RemoveWarmupPeriods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
+- [.remove_warmup_periods()]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
 ## Example
 
 ```python
-// fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT")
+from stock_indicators import indicators
 
-// calculate 20-period SMMA
-IEnumerable<SmmaResult> results = quotes.GetSmma(20)
+# This method is NOT a part of the library.
+quotes = get_history_from_feed("SPY")
+
+# Calculate 20-period SMMA
+results = indicators.get_smma(quotes, 20)
 ```
+
+## About: {{ page.title }}
+
+[Smoothed Moving Average](https://en.wikipedia.org/wiki/Moving_average#Modified_moving_average) is the average of Close price over a lookback window using a smoothing method.  SMMA is also known as modified moving average (MMA) and running moving average (RMA).
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/375 "Community discussion about this indicator")
+
+![image]({{site.charturl}}/Smma.png)
+
+### Sources
+
+- [C# core]({{site.base_sourceurl}}/s-z/Smma/Smma.cs)
+- [Python wrapper]({{site.sourceurl}}/smma.py)
