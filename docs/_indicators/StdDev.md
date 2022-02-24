@@ -77,4 +77,4 @@ results = indicators.get_stdev(quotes, 10)
 ### Sources
 
 - [C# core]({{site.base_sourceurl}}/s-z/StdDev/StdDev.cs)
-- [Python wrapper]({{site.sourceurl}}/Stdev.py)
+- [Python wrapper]({{site.sourceurl}}/stdev.py)
