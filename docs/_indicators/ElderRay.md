@@ -64,7 +64,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # calculate ElderRay(13)
-results = indicators.get_elder_ray(quotes, 13);
+results = indicators.get_elder_ray(quotes, 13)
 ```
 
 ## {{ page.title }}

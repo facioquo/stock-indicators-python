@@ -16,7 +16,7 @@ Created by William Blau, the Stochastic Momentum Index (SMI) is a double-smoothe
 // usage (standard)
 IEnumerable<SmiResult> results =
   quotes.GetSmi(lookbackPeriods, firstSmoothPeriods,
-                 secondSmoothPeriods, signalPeriods);
+                 secondSmoothPeriods, signalPeriods)
 ```
 
 ## Parameters
@@ -67,8 +67,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY")
 
 // calculate SMI(14,20,5,3)
-IEnumerable<SmiResult> results = quotes.GetSmi(14,20,5,3);
+IEnumerable<SmiResult> results = quotes.GetSmi(14,20,5,3)
 ```

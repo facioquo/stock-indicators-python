@@ -15,7 +15,7 @@ Created by William Blau, the [True Strength Index](https://en.wikipedia.org/wiki
 ```python
 // usage
 IEnumerable<TsiResult> results =
-  quotes.GetTsi(lookbackPeriods, smoothPeriods, signalPeriods);
+  quotes.GetTsi(lookbackPeriods, smoothPeriods, signalPeriods)
 ```
 
 ## Parameters
@@ -66,8 +66,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT")
 
 // calculate 20-period TSI
-IEnumerable<TsiResult> results = quotes.GetTsi(25,13,7);
+IEnumerable<TsiResult> results = quotes.GetTsi(25,13,7)
 ```

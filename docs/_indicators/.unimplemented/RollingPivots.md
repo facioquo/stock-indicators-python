@@ -15,7 +15,7 @@ Created by Dave Skender, Rolling Pivot Points is a modern update to traditional 
 ```python
 // usage
 IEnumerable<RollingPivotsResult> results =
-  quotes.GetRollingPivots(lookbackPeriods, offsetPeriods, pointType);
+  quotes.GetRollingPivots(lookbackPeriods, offsetPeriods, pointType)
 ```
 
 ## Parameters
@@ -80,9 +80,9 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY")
 
 // calculate Woodie-style 14 period Rolling Pivot Points
 IEnumerable<RollingPivotsResult> results
-  = quotes.GetRollingPivots(14,0,PivotPointType.Woodie);
+  = quotes.GetRollingPivots(14,0,PivotPointType.Woodie)
 ```

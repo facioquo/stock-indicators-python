@@ -64,7 +64,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # Calculate Klinger(34,55,13)
-results = indicators.get_keltner(quotes, 34,55,13);
+results = indicators.get_keltner(quotes, 34,55,13)
 ```
 
 ## About: {{ page.title }}

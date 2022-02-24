@@ -15,7 +15,7 @@ Created by Peter Martin, the [Ulcer Index](https://en.wikipedia.org/wiki/Ulcer_i
 ```python
 // usage
 IEnumerable<UlcerIndexResult> results =
-  quotes.GetUlcerIndex(lookbackPeriods);
+  quotes.GetUlcerIndex(lookbackPeriods)
 ```
 
 ## Parameters
@@ -60,8 +60,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY")
 
 // calculate UI(14)
-IEnumerable<UlcerIndexResult> results = quotes.GetUlcerIndex(14);
+IEnumerable<UlcerIndexResult> results = quotes.GetUlcerIndex(14)
 ```

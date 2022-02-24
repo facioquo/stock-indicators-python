@@ -15,7 +15,7 @@ Created by Doug Schaff, [Schaff Trend Cycle](https://www.investopedia.com/articl
 ```python
 // usage
 IEnumerable<StcResult> results =
-  quotes.GetStc(cyclePeriods, fastPeriods, slowPeriods);
+  quotes.GetStc(cyclePeriods, fastPeriods, slowPeriods)
 ```
 
 ## Parameters
@@ -64,8 +64,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY")
 
 // calculate STC(12,26,9)
-IEnumerable<StcResult> results = quotes.GetStc(10,23,50);
+IEnumerable<StcResult> results = quotes.GetStc(10,23,50)
 ```

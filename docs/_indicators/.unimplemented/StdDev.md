@@ -16,11 +16,11 @@ layout: indicator
 ```python
 // usage
 IEnumerable<StdDevResult> results =
-  quotes.GetStdDev(lookbackPeriods);
+  quotes.GetStdDev(lookbackPeriods)
 
 // usage with optional SMA of STDEV (shown above)
 IEnumerable<StdDevResult> results =
-  quotes.GetStdDev(lookbackPeriods, smaPeriods);
+  quotes.GetStdDev(lookbackPeriods, smaPeriods)
 ```
 
 ## Parameters
@@ -69,8 +69,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPX");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("SPX")
 
 // calculate 10-period Standard Deviation
-IEnumerable<StdDevResult> results = quotes.GetStdDev(10);
+IEnumerable<StdDevResult> results = quotes.GetStdDev(10)
 ```

@@ -15,7 +15,7 @@ Pivots is an extended version of [Williams Fractal](../Fractal#content) that inc
 ```python
 // usage
 IEnumerable<PivotsResult> results =
-  quotes.GetPivots(leftSpan, rightSpan, maxTrendPeriods, endType);
+  quotes.GetPivots(leftSpan, rightSpan, maxTrendPeriods, endType)
 ```
 
 ## Parameters
@@ -87,8 +87,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY")
 
 // calculate Pivots(2,2,20) using High/Low values
-IEnumerable<PivotsResult> results = quotes.GetPivots(2,2,20,EndType.HighLow);
+IEnumerable<PivotsResult> results = quotes.GetPivots(2,2,20,EndType.HighLow)
 ```

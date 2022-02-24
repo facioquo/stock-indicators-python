@@ -59,7 +59,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # Calculate
-results = indicators.get_mfi(quotes, 14);
+results = indicators.get_mfi(quotes, 14)
 ```
 
 ## About: {{ page.title }}

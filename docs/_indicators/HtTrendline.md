@@ -61,7 +61,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # Calculate HT Trendline
-results = indicators.get_ht_trendline(quotes);
+results = indicators.get_ht_trendline(quotes)
 ```
 
 ## About: {{ page.title }}

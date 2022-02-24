@@ -15,7 +15,7 @@ Created by Larry Williams, the [Williams %R](https://en.wikipedia.org/wiki/Willi
 ```python
 // usage
 IEnumerable<WilliamsResult> results =
-  quotes.GetWilliamsR(lookbackPeriods);
+  quotes.GetWilliamsR(lookbackPeriods)
 ```
 
 ## Parameters
@@ -60,8 +60,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY")
 
 // calculate WilliamsR(14)
-IEnumerable<WilliamsResult> results = quotes.GetWilliamsR(14);
+IEnumerable<WilliamsResult> results = quotes.GetWilliamsR(14)
 ```

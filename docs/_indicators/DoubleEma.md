@@ -60,7 +60,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # calculate 20-period DEMA
-results = indicators.get_double_ema(quotes, 20);
+results = indicators.get_double_ema(quotes, 20)
 ```
 
 ## About: {{ page.title }}

@@ -59,7 +59,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # Calculate 20-period CCI
-results = indicators.get_cci(quotes, 20);
+results = indicators.get_cci(quotes, 20)
 ```
 
 ## About: {{ page.title }}

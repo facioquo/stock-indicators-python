@@ -16,7 +16,7 @@ layout: indicator
 ```python
 // usage
 IEnumerable<SmmaResult> results =
-  quotes.GetSmma(lookbackPeriods);
+  quotes.GetSmma(lookbackPeriods)
 ```
 
 ## Parameters
@@ -63,8 +63,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT")
 
 // calculate 20-period SMMA
-IEnumerable<SmmaResult> results = quotes.GetSmma(20);
+IEnumerable<SmmaResult> results = quotes.GetSmma(20)
 ```

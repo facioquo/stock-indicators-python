@@ -17,11 +17,11 @@ The Volume Simple Moving Average is the average volume over a lookback window.  
 ```python
 // legacy usage
 IEnumerable<VolSmaResult> results =
-  quotes.GetVolSma(lookbackPeriods);
+  quotes.GetVolSma(lookbackPeriods)
 
 // please convert to equivalent:
 IEnumerable<SmaResult> results =
-  quotes.GetSma(lookbackPeriods, CandlePart.Volume);
+  quotes.GetSma(lookbackPeriods, CandlePart.Volume)
 ```
 
 ## Parameters
@@ -67,8 +67,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT")
 
 // calculate 20-period SMA of Volume
-IEnumerable<VolSmaResult> results = quotes.GetVolSma(20);
+IEnumerable<VolSmaResult> results = quotes.GetVolSma(20)
 ```

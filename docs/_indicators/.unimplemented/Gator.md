@@ -15,12 +15,12 @@ Created by Bill Williams, the Gator Oscillator is an expanded view of [Williams 
 ```python
 // usage
 IEnumerable<GatorResult> results =
-  quotes.GetGator();
+  quotes.GetGator()
 
 // with custom Alligator configuration
 IEnumerable<GatorResult> results = quotes
   .GetAlligator([see Alligator docs])
-  .GetGator();
+  .GetGator()
 ```
 
 ## Historical quotes requirements
@@ -64,8 +64,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT")
 
 // calculate the Gator Oscillator
-IEnumerable<GatorResult> results = quotes.GetGator();
+IEnumerable<GatorResult> results = quotes.GetGator()
 ```

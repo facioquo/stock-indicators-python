@@ -15,7 +15,7 @@ type: candlestick-pattern
 ```python
 // usage
 IEnumerable<CandleResult> results =
-  quotes.GetMarubozu(minBodyPercent);
+  quotes.GetMarubozu(minBodyPercent)
 ```
 
 ## Parameters
@@ -56,8 +56,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY")
 
 // calculate
-IEnumerable<CandleResult> results = quotes.GetMarubozu();
+IEnumerable<CandleResult> results = quotes.GetMarubozu()
 ```

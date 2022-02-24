@@ -61,7 +61,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # Calculate ForceIndex(13)
-results = indicators.get_force_index(quotes, 13);
+results = indicators.get_force_index(quotes, 13)
 ```
 
 ## About: {{ page.title }}

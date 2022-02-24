@@ -15,7 +15,7 @@ The [Renko Chart](https://en.m.wikipedia.org/wiki/Renko_chart) is a Japanese pri
 ```python
 // usage
 IEnumerable<RenkoResult> results =
-  quotes.GetRenko(brickSize, endType);
+  quotes.GetRenko(brickSize, endType)
 ```
 
 ## Parameters
@@ -77,10 +77,10 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT")
 
 // calculate
-IEnumerable<RenkoResult> results = quotes.GetRenko(2.5);
+IEnumerable<RenkoResult> results = quotes.GetRenko(2.5)
 ```
 
 ## ATR Variant
@@ -88,7 +88,7 @@ IEnumerable<RenkoResult> results = quotes.GetRenko(2.5);
 ```python
 // usage
 IEnumerable<RenkoResult> results =
-  quotes.GetRenkoAtr(atrPeriods, endType);
+  quotes.GetRenkoAtr(atrPeriods, endType)
 ```
 
 ### Parameters for ATR

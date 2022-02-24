@@ -66,7 +66,7 @@ quotes_spx = get_history_from_feed("SPX")
 quotes_tsla = get_history_from_feed("TSLA")
 
 # Calculate 20-period Correlation
-results = indicators.get_correlation(quotes_spx, quotes_tsla, 20);
+results = indicators.get_correlation(quotes_spx, quotes_tsla, 20)
 ```
 
 ## About: {{ page.title }}

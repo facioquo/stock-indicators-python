@@ -61,7 +61,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # calculate
-results = indicators.get_heikin_ashi(quotes);
+results = indicators.get_heikin_ashi(quotes)
 ```
 
 ## About: {{ page.title }}

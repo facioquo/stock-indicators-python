@@ -15,7 +15,7 @@ Created by Etienne Botes and Douglas Siepman, the [Vortex Indicator](https://en.
 ```python
 // usage
 IEnumerable<VortexResult> results =
-  quotes.GetVortex(lookbackPeriods);
+  quotes.GetVortex(lookbackPeriods)
 ```
 
 ## Parameters
@@ -61,8 +61,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY")
 
 // calculate 14-period VI
-IEnumerable<VortexResult> results = quotes.GetVortex(14);
+IEnumerable<VortexResult> results = quotes.GetVortex(14)
 ```

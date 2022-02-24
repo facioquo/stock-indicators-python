@@ -15,7 +15,7 @@ layout: indicator
 ```python
 // usage
 IEnumerable<ZigZagResult> results =
-  quotes.GetZigZag(endType, percentChange);
+  quotes.GetZigZag(endType, percentChange)
 ```
 
 ## Parameters
@@ -76,9 +76,9 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY")
 
 // calculate 3% change ZIGZAG
 IEnumerable<ZigZagResult> results
-  = quotes.GetZigZag(EndType.Close,3);
+  = quotes.GetZigZag(EndType.Close,3)
 ```

@@ -64,7 +64,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # calculate 20-period Slope
-results = indicators.get_slope(quotes, 20);
+results = indicators.get_slope(quotes, 20)
 ```
 
 ## About: {{ page.title }}

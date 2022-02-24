@@ -15,7 +15,7 @@ Volume Weighted Moving Average is the volume adjusted average price over a lookb
 ```python
 // legacy usage
 IEnumerable<VwmaResult> results =
-  quotes.GetVwma(lookbackPeriods);
+  quotes.GetVwma(lookbackPeriods)
 ```
 
 ## Parameters
@@ -60,8 +60,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT")
 
 // calculate 10-period VWMA
-IEnumerable<VwmaResult> results = quotes.GetVwma(10);
+IEnumerable<VwmaResult> results = quotes.GetVwma(10)
 ```

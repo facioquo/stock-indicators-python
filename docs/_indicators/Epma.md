@@ -60,7 +60,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # Calculate 20-period EPMA
-results = indicators.get_epma(quotes, 20);
+results = indicators.get_epma(quotes, 20)
 ```
 
 ## About: {{ page.title }}

@@ -62,7 +62,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # Calculate Fcb(14)
-results = indicators.get_fcb(quotes, 14);
+results = indicators.get_fcb(quotes, 14)
 ```
 
 ## About: {{ page.title }}
