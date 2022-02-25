@@ -53,7 +53,7 @@ For pruning of warmup periods, we recommend using the following guidelines:
 
 ```python
 indicators.get_fisher_transform(quotes, lookback_periods)
-  .remove_warmup_periods(lookback_periods + 15);
+  .remove_warmup_periods(lookback_periods + 15)
 ```
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
@@ -67,7 +67,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # Calculate 10-period FisherTransform
-results = indicators.get_fisher_transform(quotes, 10);
+results = indicators.get_fisher_transform(quotes, 10)
 ```
 
 ## About: {{ page.title }}

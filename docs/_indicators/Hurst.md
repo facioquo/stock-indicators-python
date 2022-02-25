@@ -61,7 +61,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # Calculate 20-period Hurst
-results = indicators.get_hurst(quotes, 20);
+results = indicators.get_hurst(quotes, 20)
 ```
 
 ## About: {{ page.title }}

@@ -15,7 +15,7 @@ Created by Larry Williams, the [Ultimate Oscillator](https://en.wikipedia.org/wi
 ```python
 // usage
 IEnumerable<UltimateResult> results =
-  quotes.GetUltimate(shortPeriods, middlePeriods, longPeriods);
+  quotes.GetUltimate(shortPeriods, middlePeriods, longPeriods)
 ```
 
 ## Parameters
@@ -62,8 +62,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT")
 
 // calculate 20-period Ultimate
-IEnumerable<UltimateResult> results = quotes.GetUltimate(7,14,28);
+IEnumerable<UltimateResult> results = quotes.GetUltimate(7,14,28)
 ```

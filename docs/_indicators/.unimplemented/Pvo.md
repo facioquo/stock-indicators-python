@@ -15,7 +15,7 @@ The [Percentage Volume Oscillator](https://school.stockcharts.com/doku.php?id=te
 ```python
 // usage
 IEnumerable<PvoResult> results =
-  quotes.GetPvo(fastPeriods, slowPeriods, signalPeriods);
+  quotes.GetPvo(fastPeriods, slowPeriods, signalPeriods)
 ```
 
 ## Parameters
@@ -66,8 +66,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY")
 
 // calculate Pvo(12,26,9)
-IEnumerable<PvoResult> results = quotes.GetPvo(12,26,9);
+IEnumerable<PvoResult> results = quotes.GetPvo(12,26,9)
 ```

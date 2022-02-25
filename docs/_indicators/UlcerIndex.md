@@ -1,53 +1,51 @@
 ---
-title: Heikin-Ashi
-permalink: /indicators/HeikinAshi/
-type: price-transform
+title: Ulcer Index (UI)
+permalink: /indicators/UlcerIndex/
+type: price-characteristic
 layout: indicator
 ---
 
 # {{ page.title }}
 <hr>
 
-## **get_heikin_ashi**(*quotes*)
-
+## **get_ulcer_index**(*quotes, lookback_periods=14*)
+    
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
 | `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `lookback_periods` | int, *default 14* | Number of periods (`N`) for review.  Must be greater than 0.
 
 ### Historical quotes requirements
 
-You must have at least two periods of `quotes` to cover the warmup periods; however, more is typically provided since this is a chartable candlestick pattern.
+You must have at least `N` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
 ## Return
 
 ```python
-HeikinAshiResults[HeikinAshiResult]
+UlcerIndexResults[UlcerIndexResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `UlcerIndexResults` is just a list of `UlcerIndexResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first period will have `None` values since there's not enough data to calculate.
+- The first `N-1` periods will have `None` values since there's not enough data to calculate.
 
-### HeikinAshiResult
+### UlcerIndexResult
 
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `open` | Decimal | Modified open price
-| `high` | Decimal | Modified high price
-| `low` | Decimal | Modified low price
-| `close` | Decimal | Modified close price
-| `volume` | Decimal | Volume (same as `quotes`)
+| `ui` | float, Optional | Ulcer Index
 
 ### Utilities
 
-- [.to_quotes()]({{site.baseurl}}/utilities#convert-to-quotes)
 - [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
+- [.remove_warmup_periods()]({{site.baseurl}}/utilities#remove-warmup-periods)
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
@@ -60,18 +58,18 @@ from stock_indicators import indicators
 # This method is NOT a part of the library.
 quotes = get_history_from_feed("SPY")
 
-# calculate
-results = indicators.get_heikin_ashi(quotes)
+# Calculate UI(14)
+results = indicators.get_ulcer_index(quotes, 14)
 ```
 
-## About: {{ page.title }}
+# About: {{ page.title }}
 
-Created by Munehisa Homma, [Heikin-Ashi](https://en.wikipedia.org/wiki/Candlestick_chart#Heikin-Ashi_candlesticks) is a modified candlestick pattern that uses prior day for smoothing.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/254 "Community discussion about this indicator")
+Created by Peter Martin, the [Ulcer Index](https://en.wikipedia.org/wiki/Ulcer_index) is a measure of downside Close price volatility over a lookback window.
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/232 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/HeikinAshi.png)
+![image]({{site.charturl}}/UlcerIndex.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/HeikinAshi/HeikinAshi.cs)
-- [Python wrapper]({{site.sourceurl}}/heikin_ashi.py)
+- [C# core]({{site.base_sourceurl}}/s-z/UlcerIndex/UlcerIndex.cs)
+- [Python wrapper]({{site.sourceurl}}/ulcer_index.py)

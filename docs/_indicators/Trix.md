@@ -63,7 +63,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # calculate 20-period Trix
-results = indicators.get_trix(quotes, 14);
+results = indicators.get_trix(quotes, 14)
 ```
 
 ## About: {{ page.title }}

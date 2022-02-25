@@ -1,50 +1,52 @@
 ---
-title: Elder-ray Index
-description: Elder-ray Index with Bull and Bear Power
-permalink: /indicators/ElderRay/
-type: price-trend
+title: Stochastic Momentum Index (SMI)
+permalink: /indicators/Smi/
+type: oscillator
 layout: indicator
 ---
 
 # {{ page.title }}
 <hr>
 
-## **get_elder_ray**(*quotes, lookback_periods=13*)
+## **get_smi**(*quotes, lookback_periods, first_smooth_periods, second_smooth_periods, signal_periods=3*)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
 | `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
-| `lookback_periods` | int, *default 13*  | Number of periods (`N`) for the underlying EMA evaluation.  Must be greater than 0.
+| `lookback_periods` | int | Lookback period (`N`) for the stochastic.  Must be greater than 0.
+| `first_smooth_periods` | int | First smoothing factor lookback.  Must be greater than 0.
+| `second_smooth_periods` | int | Second smoothing factor lookback.  Must be greater than 0.
+| `signal_periods` | int, *default 3* | EMA of SMI lookback periods.  Must be greater than 0.
 
 ### Historical quotes requirements
 
-You must have at least `2×N` or `N+100` periods of `quotes`, whichever is more, to cover the convergence periods.  Since this uses a smoothing technique, we recommend you use at least `N+250` data points prior to the intended usage date for better precision.
+You must have at least `N+100` periods of `quotes` to cover the convergence periods.
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Returns
+## Return
 
 ```python
-ElderRayResults[ElderRayResult]
+SMIResults[SMIResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `SMIResults` is just a list of `SMIResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first `N-1` periods will have `None` indicator values since there's not enough data to calculate.
+- The first `N-1` periods will have `None` SMI values since there's not enough data to calculate.
 
 :hourglass: **Convergence Warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
-### ElderRayResult
+### SMIResult
 
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `ema` | Decimal, Optional | Exponential moving average of Close price
-| `bull_power` | Decimal, Optional | Bull Power
-| `bear_power` | Decimal, Optional | Bear Power
+| `smi` | Decimal, Optional | Stochastic Momentum Index (SMI)
+| `signal` | Decimal, Optional | Signal line: an Exponential Moving Average (EMA) of SMI
 
 ### Utilities
 
@@ -54,7 +56,6 @@ ElderRayResults[ElderRayResult]
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
-
 ## Example
 
 ```python
@@ -63,18 +64,18 @@ from stock_indicators import indicators
 # This method is NOT a part of the library.
 quotes = get_history_from_feed("SPY")
 
-# calculate ElderRay(13)
-results = indicators.get_elder_ray(quotes, 13)
+# Calculate SMI(14,20,5,3)
+results = indicators.get_smi(quotes, 14, 20, 5, 3)
 ```
 
-## {{ page.title }}
+# About: {{ page.title }}
 
-Created by Alexander Elder, the [Elder-ray Index](https://www.investopedia.com/terms/e/elderray.asp), also known as Bull and Bear Power, depicts buying and selling pressure.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/378 "Community discussion about this indicator")
+Created by William Blau, the Stochastic Momentum Index (SMI) is a double-smoothed variant of the [Stochastic Oscillator](../Stoch/#content) on a scale from -100 to 100.
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/625 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/ElderRay.png)
+![image]({{site.charturl}}/Smi.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/ElderRay/ElderRay.cs)
-- [Python wrapper]({{site.sourceurl}}/elder_ray.py)
+- [C# core]({{site.base_sourceurl}}/s-z/Smi/Smi.cs)
+- [Python wrapper]({{site.sourceurl}}/smi.py)

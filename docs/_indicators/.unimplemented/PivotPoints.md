@@ -16,7 +16,7 @@ See also the alternative [Rolling Pivot Points](../RollingPivots#content) varian
 ```python
 // usage
 IEnumerable<PivotPointsResult> results =
-  quotes.GetPivotPoints(windowSize, pointType);
+  quotes.GetPivotPoints(windowSize, pointType)
 ```
 
 ## Parameters
@@ -91,9 +91,9 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY")
 
 // calculate Woodie-style month-based Pivot Points
 IEnumerable<PivotPointsResult> results
-  = quotes.GetPivotPoints(PeriodSize.Month,PivotPointType.Woodie);
+  = quotes.GetPivotPoints(PeriodSize.Month,PivotPointType.Woodie)
 ```

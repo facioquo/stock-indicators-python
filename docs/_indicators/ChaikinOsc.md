@@ -67,7 +67,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # Calculate 20-period Chaikin Oscillator
-results = indicators.get_chaikin_osc(quotes, 20);
+results = indicators.get_chaikin_osc(quotes, 20)
 ```
 
 ## About: {{ page.title }}

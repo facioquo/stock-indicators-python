@@ -63,7 +63,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # calculate ParabolicSar(0.02,0.2)
-results = indicators.get_parabolic_sar(quotes, 0.02, 0.2);
+results = indicators.get_parabolic_sar(quotes, 0.02, 0.2)
 ```
 
 ## About: {{ page.title }}

@@ -68,7 +68,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # calculate Chandelier(22,3)
-results = indicators.get_chandelier(quotes, 22, 3);
+results = indicators.get_chandelier(quotes, 22, 3)
 ```
 
 ## About: {{ page.title }}

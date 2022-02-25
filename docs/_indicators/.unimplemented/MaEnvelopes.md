@@ -15,7 +15,7 @@ layout: indicator
 ```python
 // usage
 IEnumerable<MaEnvelopeResult> results =
-  quotes.GetSmaEnvelopes(lookbackPeriods, percentOffset, movingAverageType);  
+  quotes.GetSmaEnvelopes(lookbackPeriods, percentOffset, movingAverageType)  
 ```
 
 ## Parameters
@@ -85,9 +85,9 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT")
 
 // calculate 20-period SMA envelopes with 2.5% offset
 IEnumerable<MaEnvelopeResult> results = 
-    quotes.GetMaEnvelopes(20,2.5,MaType.SMA);
+    quotes.GetMaEnvelopes(20,2.5,MaType.SMA)
 ```

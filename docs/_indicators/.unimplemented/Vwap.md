@@ -15,11 +15,11 @@ The [Volume Weighted Average Price](https://en.wikipedia.org/wiki/Volume-weighte
 ```python
 // usage
 IEnumerable<VwapResult> results =
-  quotes.GetVwap();
+  quotes.GetVwap()
 
 // usage with optional anchored start date
 IEnumerable<VwapResult> results =
-  quotes.GetVwap(startDate);  
+  quotes.GetVwap(startDate)  
 ```
 
 ## Parameters
@@ -65,8 +65,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY")
 
 // calculate
-IEnumerable<VwapResult> results = quotes.GetVwap();
+IEnumerable<VwapResult> results = quotes.GetVwap()
 ```

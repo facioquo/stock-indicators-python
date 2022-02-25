@@ -62,7 +62,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # calculate Donchian(20)
-results = indicators.get_donchian(quotes, 20);
+results = indicators.get_donchian(quotes, 20)
 ```
 
 ## About: {{ page.title }}

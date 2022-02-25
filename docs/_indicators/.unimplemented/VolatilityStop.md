@@ -15,7 +15,7 @@ Created by J. Welles Wilder, [Volatility Stop](https://archive.org/details/newco
 ```python
 // usage
 IEnumerable<VolatilityStopResult> results =
-  quotes.GetVolatilityStop(lookbackPeriods, multiplier);
+  quotes.GetVolatilityStop(lookbackPeriods, multiplier)
 ```
 
 ## Parameters
@@ -68,9 +68,9 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("SPY")
 
 // calculate VolatilityStop(20,2.5)
 IEnumerable<VolatilityStopResult> results
-  = quotes.VolatilityStop(20,2.5m);
+  = quotes.VolatilityStop(20,2.5m)
 ```

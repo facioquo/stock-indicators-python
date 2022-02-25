@@ -15,7 +15,7 @@ layout: indicator
 ```python
 // usage
 IEnumerable<WmaResult> results =
-  quotes.GetWma(lookbackPeriods);
+  quotes.GetWma(lookbackPeriods)
 ```
 
 ## Parameters
@@ -60,8 +60,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 // fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT");
+IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT")
 
 // calculate 20-period WMA
-IEnumerable<WmaResult> results = quotes.GetWma(20);
+IEnumerable<WmaResult> results = quotes.GetWma(20)
 ```

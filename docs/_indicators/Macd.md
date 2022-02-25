@@ -67,7 +67,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # calculate MACD(12,26,9)
-results = indicators.get_macd(quotes, 12, 26, 9);
+results = indicators.get_macd(quotes, 12, 26, 9)
 ```
 
 ## About: {{ page.title }}

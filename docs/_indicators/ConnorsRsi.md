@@ -66,7 +66,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # Calculate ConnorsRsi(3,2.100)
-results = indicators.get_connors_rsi(quotes, 3, 2, 100);
+results = indicators.get_connors_rsi(quotes, 3, 2, 100)
 ```
 
 ## About: {{ page.title }}
