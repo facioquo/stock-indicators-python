@@ -1,6 +1,7 @@
 from datetime import datetime as PyDateTime
-from System import DateTime as CsDateTime
-from System.Globalization import CultureInfo
+
+from stock_indicators._cslib import CsDateTime
+from stock_indicators._cslib import CultureInfo
 
 
 class DateTime:
