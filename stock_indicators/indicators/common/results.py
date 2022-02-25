@@ -1,9 +1,11 @@
 from datetime import datetime as PyDateTime
 from typing import Iterable, List, Type, TypeVar
+
 from stock_indicators._cslib import CsIndicator, CsResultBase
 from stock_indicators._cstypes import DateTime as CsDateTime
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import to_pydatetime
+
 
 class ResultBase:
     """
@@ -76,6 +78,9 @@ class IndicatorResults(List[_T]):
 
     @_verify_data
     def find(self, lookup_date: PyDateTime) -> _T:
+        """
+        Find indicator values on a specific date.
+        """
         if not isinstance(lookup_date, PyDateTime):
             raise TypeError(
                 "lookup_date must be an instance of datetime.datetime."
@@ -88,6 +93,9 @@ class IndicatorResults(List[_T]):
 
     @_verify_data
     def remove_warmup_periods(self, remove_periods: int):
+        """
+        Remove a specific quantity of results from the beginning of the results list.
+        """
         if not isinstance(remove_periods, int):
             raise TypeError(
                 "remove_periods must be an integer."

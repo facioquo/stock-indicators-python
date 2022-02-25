@@ -4,6 +4,7 @@ from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes.datetime import to_pydatetime
 from stock_indicators._cstypes.decimal import to_pydecimal
 
+
 def _get_date(quote):
     return to_pydatetime(quote.Date)
 

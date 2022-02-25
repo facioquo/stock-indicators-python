@@ -1,5 +1,6 @@
 from decimal import Decimal as PyDecimal
-from System import Decimal as CsDecimal
+
+from stock_indicators._cslib import CsDecimal
 
 
 class Decimal:

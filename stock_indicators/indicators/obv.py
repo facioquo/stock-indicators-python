@@ -1,4 +1,5 @@
 from typing import Iterable, Optional, TypeVar
+
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import ToQuotesMixin
@@ -11,7 +12,7 @@ def get_obv(quotes: Iterable[Quote], sma_periods: Optional[int] = None):
 
     On-balance Volume (OBV) is a rolling accumulation of
     volume based on Close price direction.
-    
+
     Parameters:
         `quotes` : Iterable[Quote]
             Historical price quotes.
