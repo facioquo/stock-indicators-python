@@ -1,4 +1,4 @@
-from System.Collections.Generic import List as CsList
+from stock_indicators._cslib import CsList
 
 class List:
     """
