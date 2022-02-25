@@ -11,6 +11,9 @@ class RemoveWarmupMixin:
     """Mixin for remove_warmup_periods()."""
     @IndicatorResults._verify_data
     def remove_warmup_periods(self, remove_periods: Optional[int] = None) -> Self:
+        """
+        Remove the recommended(or specified) quantity of results from the beginning of the results list.
+        """
         if remove_periods is not None:
             return super().remove_warmup_periods(remove_periods)
 
@@ -23,6 +26,9 @@ class ToQuotesMixin:
     """Mixin for to_quotes()."""
     @IndicatorResults._verify_data
     def to_quotes(self) -> List[Quote]:
+        """
+        Convert indicator results into historical quotes.
+        """
         quotes = CsIndicator.ConvertToQuotes(CsList(type(self._csdata[0]), self._csdata))
 
         return [ Quote.from_csquote(q) for q in quotes ]
