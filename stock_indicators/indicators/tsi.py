@@ -1,4 +1,5 @@
 from typing import Iterable, Optional, TypeVar
+
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
@@ -19,10 +20,10 @@ def get_tsi(quotes: Iterable[Quote], lookback_periods: int = 25,
 
         `lookback_periods` : int, defaults 25
            Number of periods for the first EMA.
-            
+
         `smooth_periods` : int, defaults 13
             Number of periods in the second smoothing.
-            
+
         `signal_periods` : int, defaults 7
             Number of periods in the TSI SMA signal line.
 

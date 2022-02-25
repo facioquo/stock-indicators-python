@@ -1,5 +1,6 @@
 from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
+
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
@@ -14,7 +15,7 @@ def get_smma(quotes: Iterable[Quote], lookback_periods: int):
 
     Smoothed Moving Average (SMMA) is the average of Close price
     over a lookback window using a smoothing method.
-      
+
     Parameters:
         `quotes` : Iterable[Quote]
             Historical price quotes.

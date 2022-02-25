@@ -1,4 +1,5 @@
 from typing import Iterable, Optional, TypeVar
+
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
@@ -11,7 +12,7 @@ def get_stdev(quotes: Iterable[Quote], lookback_periods: int,
     """Get Rolling Standard Deviation calculated.
 
     Rolling Standard Deviation of Close price over a lookback window.
-    
+
     Parameters:
         `quotes` : Iterable[Quote]
             Historical price quotes.
