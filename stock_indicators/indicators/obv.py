@@ -11,7 +11,7 @@ def get_obv(quotes: Iterable[Quote], sma_periods: Optional[int] = None):
 
     On-balance Volume (OBV) is a rolling accumulation of
     volume based on Close price direction.
-    
+
     Parameters:
         `quotes` : Iterable[Quote]
             Historical price quotes.

@@ -14,7 +14,7 @@ def get_smma(quotes: Iterable[Quote], lookback_periods: int):
 
     Smoothed Moving Average (SMMA) is the average of Close price
     over a lookback window using a smoothing method.
-      
+
     Parameters:
         `quotes` : Iterable[Quote]
             Historical price quotes.

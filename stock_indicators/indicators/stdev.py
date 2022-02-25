@@ -11,7 +11,7 @@ def get_stdev(quotes: Iterable[Quote], lookback_periods: int,
     """Get Rolling Standard Deviation calculated.
 
     Rolling Standard Deviation of Close price over a lookback window.
-    
+
     Parameters:
         `quotes` : Iterable[Quote]
             Historical price quotes.
