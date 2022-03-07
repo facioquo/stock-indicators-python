@@ -21,10 +21,8 @@ class DateTime:
     """
 
     def __new__(cls, datetime) -> CsDateTime:
-        if not isinstance(datetime, PyDateTime):
-            raise TypeError("Only datetime.datetime is allowed")
-
-        return CsDateTime.Parse(datetime.isoformat())
+        if isinstance(datetime, PyDateTime):
+            return CsDateTime.Parse(datetime.isoformat())
 
 
 def to_pydatetime(cs_datetime):
@@ -34,7 +32,5 @@ def to_pydatetime(cs_datetime):
     Parameter:
         cs_datetime : `System.DateTime` of C#.
     """
-    if not isinstance(cs_datetime, CsDateTime):
-        raise TypeError("Only System.DateTime is allowed")
-
-    return PyDateTime.fromisoformat(cs_datetime.ToString("o", CultureInfo.InvariantCulture)[:-1])
+    if isinstance(cs_datetime, CsDateTime):
+        return PyDateTime.fromisoformat(cs_datetime.ToString("o", CultureInfo.InvariantCulture)[:-1])
