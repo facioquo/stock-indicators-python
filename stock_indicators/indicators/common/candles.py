@@ -1,16 +1,80 @@
-
 from decimal import Decimal
 from typing import Optional
 
+from typing_extensions import Self
+
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
-from stock_indicators.indicators.common.results import ResultBase
+from stock_indicators.indicators.common.enums import Signal
+from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
+
+
+class CondenseMixin:
+    """Mixin for condense()."""
+    @IndicatorResults._verify_data
+    def condense(self) -> Self:
+        """
+        Remove non-essential results so it only returns meaningful data records.
+        """
+        return self.__class__(filter(lambda x: x.signal != Signal.NONE, self), self._wrapper_class)
+
+
+class CandleProperties(Quote):
+    """
+    A wrapper class for `CsCandleProperties`, which is an extended version of `Quote`.
+    It contains additional calculated properties.
+    """
+    @property
+    def size(self) -> Decimal:
+        return to_pydecimal(self.high - self.low)
+
+    @property
+    def body(self) -> Decimal:
+        return to_pydecimal(self.open - self.close \
+            if (self.open > self.close) \
+            else self.close - self.open)
+
+    @property
+    def upper_wick(self) -> Decimal:
+        return to_pydecimal(self.high - (
+            self.open \
+            if self.open > self.close \
+            else self.close))
+
+    @property
+    def lower_wick(self) -> Decimal:
+        return to_pydecimal((self.close \
+            if self.open > self.close \
+            else self.open) - self.low)
+
+    @property
+    def body_pct(self) -> float:
+        return float(self.body / self.size) if self.size != 0 else 1
+
+    @property
+    def upper_wick_pct(self) -> float:
+        return float(self.upper_wick / self.size) if self.size != 0 else 1
+
+    @property
+    def lower_wick_pct(self) -> float:
+        return float(self.lower_wick / self.size) if self.size != 0 else 1
+
+    @property
+    def is_bullish(self) -> bool:
+        return self.Close > self.Open
+
+    @property
+    def is_bearish(self) -> bool:
+        return self.Close < self.Open
 
 
 class CandleResult(ResultBase):
     """
     A wrapper class for a single unit of Candles.
     """
+    
+    __candle_prop_cache = None
 
     @property
     def price(self) -> Optional[Decimal]:
@@ -19,3 +83,23 @@ class CandleResult(ResultBase):
     @price.setter
     def price(self, value):
         self._csdata.Price = CsDecimal(value)
+
+    @property
+    def signal(self) -> Signal:
+        return self._csdata.Signal
+
+    @signal.setter
+    def signal(self, value):
+        self._csdata.Signal = value
+
+    @property
+    def candle(self) -> CandleProperties:
+        if not self.__candle_prop_cache:
+            self.__candle_prop_cache = CandleProperties.from_csquote(self._csdata.Candle)
+
+        return self.__candle_prop_cache
+
+    @candle.setter
+    def candle(self, value):
+        self._csdata.Candle = value
+        self.__candle_prop_cache = None
