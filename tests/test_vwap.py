@@ -104,5 +104,3 @@ class TestVWAP:
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_vwap(quotes, start_date)
-
-                
