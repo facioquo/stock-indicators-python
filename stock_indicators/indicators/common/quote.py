@@ -61,13 +61,13 @@ class Quote(CsQuote):
         self.close = close if close else super().Close
         self.volume = volume if volume else super().Volume
 
-    @staticmethod
-    def from_csquote(csQuote: CsQuote):
+    @classmethod
+    def from_csquote(cls, csQuote: CsQuote):
         """
         Constructs `Quote` instance from C# `Quote` instance.
         """
 
-        return Quote(
+        return cls(
             date=to_pydatetime(csQuote.Date),
             open=csQuote.Open,
             high=csQuote.High,
