@@ -15,7 +15,7 @@ class CondenseMixin:
     @IndicatorResults._verify_data
     def condense(self) -> Self:
         """
-        Remove non-essential results so it only returns meaningful data records.
+        Remove results which have no signal, so it only returns meaningful data records.
         """
         return self.__class__(filter(lambda x: x.signal != Signal.NONE, self), self._wrapper_class)
 
