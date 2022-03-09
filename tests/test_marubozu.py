@@ -32,7 +32,6 @@ class TestMarubozu:
         r = results[277]
         assert 248.13 == round(float(r.price), 2)
         assert Signal.BEAR_SIGNAL == r.signal
-
         
     def test_bad_data(self, bad_quotes):
         r = indicators.get_marubozu(bad_quotes)

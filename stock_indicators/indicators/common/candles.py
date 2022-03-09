@@ -1,5 +1,5 @@
 from decimal import Decimal
-from typing import Optional
+from typing import Optional, TypeVar
 
 from typing_extensions import Self
 
@@ -71,7 +71,7 @@ class CandleProperties(Quote):
 
 class CandleResult(ResultBase):
     """
-    A wrapper class for a single unit of Candles.
+    A wrapper class for a single unit of Candlestick pattern results.
     """
     
     __candle_prop_cache = None
@@ -103,3 +103,12 @@ class CandleResult(ResultBase):
     def candle(self, value):
         self._csdata.Candle = value
         self.__candle_prop_cache = None
+
+
+_T = TypeVar("_T", bound=CandleResult)
+class CandleResults(CondenseMixin, IndicatorResults[_T]):
+    """
+    A wrapper class for the list of Candlestick pattern results.
+    It is exactly same with built-in `list` except for that it provides
+    some useful helper methods written in CSharp implementation.
+    """
