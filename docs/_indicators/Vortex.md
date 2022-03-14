@@ -23,7 +23,7 @@ You must have at least `N+1` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-## Response
+## Return
 
 ```python
 VortexResults[VortexResult]
@@ -73,4 +73,4 @@ Created by Etienne Botes and Douglas Siepman, the [Vortex Indicator](https://en.
 ### Sources
 
 - [C# core]({{site.base_sourceurl}}/s-z/Vortex/Vortex.cs)
-- [Python wrapper]({{site.sourceurl}}/Vortex.py)
+- [Python wrapper]({{site.sourceurl}}/vortex.py)
