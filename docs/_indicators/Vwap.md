@@ -71,7 +71,7 @@ results = indicators.get_vwap(quotes);
 The [Volume Weighted Average Price](https://en.wikipedia.org/wiki/Volume-weighted_average_price) is a Volume weighted average of Close price, typically used on intraday data.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/310 "Community discussion about this indicator")
 
-![image]({{site.baseurl}}/Vwap.png)
+![image]({{site.charturl}}/Vwap.png)
 
 ### Sources
 
