@@ -6,25 +6,18 @@ layout: indicator
 ---
 
 # {{ page.title }}
+<hr>
 
-Created by Larry Williams, the [Ultimate Oscillator](https://en.wikipedia.org/wiki/Ultimate_oscillator) uses several lookback periods to weigh buying power against true range price to produce on oversold / overbought oscillator.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/231 "Community discussion about this indicator")
-
-![image]({{site.charturl}}/Ultimate.png)
-
-```python
-// usage
-IEnumerable<UltimateResult> results =
-  quotes.GetUltimate(shortPeriods, middlePeriods, longPeriods)
-```
-
+## **get_ultimate**(*quotes, short_periods=7, middle_periods=14, long_periods=28*)
+    
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `shortPeriods` | int | Number of periods (`S`) in the short lookback.  Must be greater than 0.  Default is 7.
-| `middlePeriods` | int | Number of periods (`M`) in the middle lookback.  Must be greater than `S`.  Default is 14.
-| `longPeriods` | int | Number of periods (`L`) in the long lookback.  Must be greater than `M`.  Default is 28.
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `short_periods` | int, *default 7* | Number of periods (`S`) in the short lookback.  Must be greater than 0.
+| `middle_periods` | int, *default 14* | Number of periods (`M`) in the middle lookback.  Must be greater than `S`.
+| `long_periods` | int, *default 28* | Number of periods (`L`) in the long lookback.  Must be greater than `M`.
 
 ### Historical quotes requirements
 
@@ -35,10 +28,11 @@ You must have at least `L+1` periods of `quotes` to cover the warmup periods.
 ## Return
 
 ```python
-IEnumerable<UltimateResult>
+UltimateResults[UltimateResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `UltimateResults` is just a list of `UltimateResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first `L-1` periods will have `None` Ultimate values since there's not enough data to calculate.
@@ -47,23 +41,37 @@ IEnumerable<UltimateResult>
 
 | name | type | notes
 | -- |-- |--
-| `Date` | DateTime | Date
-| `Ultimate` | decimal | Simple moving average for `N` lookback periods
+| `date` | datetime | Date
+| `ultimate` | Decimal, Optional | Simple moving average for `N` lookback periods
 
 ### Utilities
 
-- [.Find(lookupDate)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
-- [.RemoveWarmupPeriods()]({{site.baseurl}}/utilities#remove-warmup-periods)
-- [.RemoveWarmupPeriods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
+- [.remove_warmup_periods()]({{site.baseurl}}/utilities#remove-warmup-periods)
+- [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
 ## Example
 
 ```python
-// fetch historical quotes from your feed (your method)
-IEnumerable<Quote> quotes = GetHistoryFromFeed("MSFT")
+from stock_indicators import indicators
 
-// calculate 20-period Ultimate
-IEnumerable<UltimateResult> results = quotes.GetUltimate(7,14,28)
+# This method is NOT a part of the library.
+quotes = get_history_from_feed("SPY")
+
+# calculate 20-period Ultimate
+results = indicators.get_ultimate(quotes, 7, 14, 28)
 ```
+
+## About: {{ page.title }}
+
+Created by Larry Williams, the [Ultimate Oscillator](https://en.wikipedia.org/wiki/Ultimate_oscillator) uses several lookback periods to weigh buying power against true range price to produce on oversold / overbought oscillator.
+[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/231 "Community discussion about this indicator")
+
+![image]({{site.charturl}}/Ultimate.png)
+
+### Sources
+
+- [C# core]({{site.base_sourceurl}}/s-z/Ultimate/Ultimate.cs)
+- [Python wrapper]({{site.sourceurl}}/ultimate.py)
