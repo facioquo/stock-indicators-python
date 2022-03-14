@@ -13,6 +13,7 @@ layout: default
 - [Using custom quote classes](#using-custom-quote-classes)
 - [Using derived results classes](#using-derived-results-classes)
 - [Generating indicator of indicators](#generating-indicator-of-indicators)
+- [Candlestick patterns](#candlestick-patterns)
 - [Utilities and Helper functions]({{site.baseurl}}/utilities/#content)
 - [Contributing guidelines]({{site.baseurl}}/contributing/#content)
 
@@ -241,6 +242,49 @@ quotes_from_ema = [ Quote(date=r.date, close=r.ema) for r in results ]
 sma_of_ema = indicators.get_sma(quotes_from_ema, 20)
 
 ```
+
+## Candlestick patterns
+
+[Candlestick Patterns]({{site.baseurl}}/indicators/#candlestick-pattern) are a unique form of indicator and have a common output model.
+
+{% include candle-result.md %}
+
+### Signal
+
+When a candlestick pattern is recognized, it produces a signal.  In some cases, an intrinsic confirmation is also available.  In cases where previous bars were used to identify a pattern, they are indicates as the basis for the signal. [Documentation for each candlestick pattern]({{site.baseurl}}/indicators/#candlestick-pattern) will indicate whether confirmation and/or basis information is produced.
+
+| type | description
+|-- |:--
+| `Signal.BULL_CONFIRMED` | Confirmation of a prior bull signal
+| `Signal.BULL_SIGNAL` | Matching bullish pattern
+| `Signal.BULL_BASIS` | Bars supporting a bullish signal
+| `Signal.NEUTRAL` | Matching for non-directional patterns
+| `Signal.NONE` | No match
+| `Signal.BEAR_BASIS` | Bars supporting a bearish signal
+| `Signal.BEAR_SIGNAL` | Matching bearish pattern
+| `Signal.BEAR_CONFIRMED` | Confirmation of a prior bear signal
+
+### Candle
+
+The `CandleProperties` class is an extended version of `Quote`, and contains additional calculated properties.
+
+| name | type | notes
+| -- |-- |--
+| `date` | datetime | Date
+| `open` | Decimal | Open price
+| `high` | Decimal | High price
+| `low` | Decimal | Low price
+| `close` | Decimal | Close price
+| `volume` | Decimal | Volume
+| `size` | Decimal | `high-low`
+| `body` | Decimal | `|open-close|`
+| `upper_wick` | Decimal | Upper wick size
+| `lower_wick` | Decimal | Lower wick size
+| `body_pct` | float | `body/size`
+| `upper_wick_pct` | float | `upper_wick/size`
+| `lower_wick_pct` | float | `lower_wick/size`
+| `is_bullish` | bool | `close>open` direction
+| `is_bearish` | bool | `close<open` direction
 
 ## Utilities
 
