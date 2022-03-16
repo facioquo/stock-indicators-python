@@ -52,7 +52,3 @@ class TestT3:
 
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_t3(quotes, 25, 0)
-
-    
-    
-    

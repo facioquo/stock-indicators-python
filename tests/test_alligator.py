@@ -1,4 +1,3 @@
-import pytest
 from stock_indicators import indicators
 
 class TestAlligator:
