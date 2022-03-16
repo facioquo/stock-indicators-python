@@ -210,4 +210,3 @@ def zigzag_quotes(days: int = 342):
 @pytest.fixture(scope='session')
 def converge_quantities():
     return (5, 20, 30, 50, 75, 100, 120, 150, 200, 250, 350, 500, 600, 700, 800, 900, 1000)
-

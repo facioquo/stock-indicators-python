@@ -1,4 +1,3 @@
-from unittest import result
 import pytest
 from stock_indicators import indicators
 

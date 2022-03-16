@@ -1,5 +1,6 @@
 from enum import Enum, EnumMeta
 
+
 class _ValueEnumMeta(EnumMeta):
     """
     EnumMeta that returns `value`.
@@ -22,6 +23,6 @@ class _ValueEnumMeta(EnumMeta):
             obj = obj.value
         return obj
 
+
 class ValueEnum(Enum, metaclass=_ValueEnumMeta):
     """Enum class that returns `value`"""
-    pass
