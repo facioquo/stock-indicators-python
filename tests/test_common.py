@@ -23,5 +23,3 @@ class TestCommon:
         
         results = results.remove_warmup_periods(1000)
         assert 0 == len(results)
-
-        

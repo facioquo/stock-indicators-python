@@ -1,6 +1,6 @@
-from unicodedata import unidata_version
 import pytest
 from stock_indicators import indicators
+
 
 class TestVWMA:
     def test_standard(self, quotes):
@@ -50,9 +50,3 @@ class TestVWMA:
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_vwma(quotes, 0)
-
-        
-        
-        
-        
-        

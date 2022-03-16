@@ -73,7 +73,7 @@ class CandleResult(ResultBase):
     """
     A wrapper class for a single unit of Candlestick pattern results.
     """
-    
+
     __candle_prop_cache = None
 
     @property

@@ -1,4 +1,3 @@
-from email.quoprimime import quote
 import pytest
 from stock_indicators import indicators
 

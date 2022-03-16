@@ -1,4 +1,3 @@
-from cgitb import reset
 import pytest
 from stock_indicators import indicators
 
