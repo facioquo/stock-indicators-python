@@ -50,6 +50,9 @@ def test_benchmark_connors_rsi(benchmark, quotes):
     
 def test_benchmark_correlation(benchmark, quotes, other_quotes):
     benchmark(indicators.get_correlation, quotes, other_quotes, 20)
+
+def test_benchmark_doji(benchmark, quotes):
+    benchmark(indicators.get_doji, quotes)
     
 def test_benchmark_donchian(benchmark, quotes):
     benchmark(indicators.get_donchian, quotes)
@@ -110,6 +113,9 @@ def test_benchmark_macd(benchmark, quotes):
     
 def test_benchmark_mama(benchmark, quotes):
     benchmark(indicators.get_mama, quotes)
+    
+def test_benchmark_marubozu(benchmark, quotes):
+    benchmark(indicators.get_marubozu, quotes)
     
 def test_benchmark_mfi(benchmark, quotes):
     benchmark(indicators.get_mfi, quotes)
@@ -182,3 +188,24 @@ def test_benchmark_tsi(benchmark, quotes):
     
 def test_benchmark_ulcer_index(benchmark, quotes):
     benchmark(indicators.get_ulcer_index, quotes)
+
+def test_benchmark_ultimate(benchmark, quotes):
+    benchmark(indicators.get_ultimate, quotes)
+
+def test_benchmark_volatility_stop(benchmark, quotes):
+    benchmark(indicators.get_volatility_stop, quotes)
+    
+def test_benchmark_vortex(benchmark, quotes):
+    benchmark(indicators.get_vortex, quotes, 14)
+    
+def test_benchmark_vwap(benchmark, quotes):
+    benchmark(indicators.get_vwap, quotes)
+    
+def test_benchmark_vwma(benchmark, quotes):
+    benchmark(indicators.get_vwma, quotes, 10)
+
+def test_benchmark_williams_r(benchmark, quotes):
+    benchmark(indicators.get_williams_r, quotes)
+
+def test_benchmark_wma(benchmark, quotes):
+    benchmark(indicators.get_wma, quotes, 20)
