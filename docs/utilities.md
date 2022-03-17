@@ -8,6 +8,19 @@ layout: default
 
 ## Utilities for indicator results
 
+### Condense
+
+`results.condense()` will remove non-essential results so it only returns meaningful data records.  For example, when used on [Candlestick Patterns]({{site.baseurl}}/indicators/#candlestick-pattern), it will only return records where a signal is generated.
+
+```python
+# Example: only show Marubozu signals
+results = quotes.get_marubozu(quotes).condense();
+```
+
+Currently, `.condense()` is only available on a select few indicators.  If you find an indicator that is a good candidate for this utility, please [submit an Issue]({{site.github.base_repository_url}}/issues).
+
+:warning: WARNING! In all cases, `.condense()` will remove non-essential results and will produce fewer records than are in `quotes`.
+
 ### Convert to quotes
 
 `results.to_quotes()` will transform indicator results back into an `list[Quote]` so it can be re-used to generate an [indicator of indicators]({{site.baseurl}}/guide/#generating-indicator-of-indicators).
