@@ -11,7 +11,7 @@ class TestMarubozu:
         
         r = results[31]
         assert r.price is None
-        assert r.signal == 0
+        assert r.signal == Signal.NONE
         
         r = results[32]
         assert 222.10 == round(float(r.price), 2)
