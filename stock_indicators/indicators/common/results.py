@@ -31,7 +31,7 @@ class IndicatorResults(List[_T]):
     """
     def __init__(self, data: Iterable, wrapper_class: Type[_T]):
         super().__init__([ wrapper_class(_) for _ in data ])
-        self._csdata = data
+        self._csdata = list(data)
         self._wrapper_class = wrapper_class
 
     def reload(self):
@@ -40,7 +40,7 @@ class IndicatorResults(List[_T]):
         It is usually called after `done()`
         """
         if self._csdata is None:
-            self._csdata: Iterable = [ _._csdata for _ in self ]
+            self._csdata = [ _._csdata for _ in self ]
         return self
 
     def done(self):

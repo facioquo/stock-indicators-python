@@ -11,7 +11,7 @@ class TestDoji:
         
         r = results[1]
         assert r.price is None
-        assert r.signal == 0
+        assert Signal.NONE == r.signal
         
         r = results[23]
         assert 216.28 == round(float(r.price), 2)
@@ -31,7 +31,7 @@ class TestDoji:
         
         r = results[451]
         assert 273.64 == round(float(r.price), 2)
-        assert 1 == r.signal
+        assert Signal.NEUTRAL == r.signal
         
         r = results[477]
         assert 256.86 == round(float(r.price), 2)
