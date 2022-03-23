@@ -4,7 +4,7 @@ from typing_extensions import Self
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.quotes import Quote
 from stock_indicators.indicators.common.results import IndicatorResults
 
 

@@ -3,7 +3,7 @@ from typing import Iterable
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.candles import CandleResult, CandleResults
-from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.quotes import Quote
 
 
 def get_marubozu(quotes: Iterable[Quote], min_body_percent: float = 0.95):
