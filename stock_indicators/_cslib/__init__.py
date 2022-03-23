@@ -29,3 +29,4 @@ from Skender.Stock.Indicators import Quote as CsQuote
 from Skender.Stock.Indicators import ResultBase as CsResultBase
 from Skender.Stock.Indicators import CandlePart as CsCandlePart
 from Skender.Stock.Indicators import Signal as CsSignal
+from Skender.Stock.Indicators import BetaType as CsBetaType
