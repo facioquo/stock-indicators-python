@@ -85,7 +85,7 @@ def other_quotes(days: int = 502):
 
 @pytest.fixture(scope='session')
 def bitcoin_quotes(days: int = 1246):
-    rows = list(wb['BTCUSDT'])[1:]
+    rows = list(wb['Bitcoin'])[1:]
 
     h = []
     for row in rows:
@@ -192,6 +192,42 @@ def penny_quotes():
 @pytest.fixture(scope='session')
 def zigzag_quotes(days: int = 342):
     rows = list(wb['ZigZag'])[1:]
+
+    h = []
+    for row in rows:
+        h.append(Quote(
+            row[0].value,
+            row[1].value,
+            row[2].value,
+            row[3].value,
+            row[4].value,
+            row[5].value,
+        ))
+
+    h.reverse()
+    return h[:days]
+
+@pytest.fixture(scope='session')
+def spx_quotes(days: int = 8111):
+    rows = list(wb['SPX'])[1:]
+
+    h = []
+    for row in rows:
+        h.append(Quote(
+            row[0].value,
+            row[1].value,
+            row[2].value,
+            row[3].value,
+            row[4].value,
+            row[5].value,
+        ))
+
+    h.reverse()
+    return h[:days]
+
+@pytest.fixture(scope='session')
+def msft_quotes(days: int = 8111):
+    rows = list(wb['MSFT'])[1:]
 
     h = []
     for row in rows:
