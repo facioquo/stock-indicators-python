@@ -1,3 +1,4 @@
+import pytest
 from stock_indicators import indicators
 
 class TestAlligator:
@@ -38,16 +39,49 @@ class TestAlligator:
         assert 244.29591 == round(float(results[501].lips), 5)
 
     def test_bad_data(self, bad_quotes):
-        results = indicators.get_alligator(bad_quotes)
+        results = indicators.get_alligator(bad_quotes, 3, 3, 2, 1, 1, 1)
 
         assert 502 == len(results)
 
-    def test_removed(self, quotes):
-        results = indicators.get_alligator(quotes).remove_warmup_periods()
+    def test_no_quotes(self, quotes):
+        r = indicators.get_alligator([])
+        assert 0 == len(r)
+        
+        r = indicators.get_alligator(quotes[:1])
+        assert 1 == len(r)
 
-        assert 231 == len(results)
+    def test_removed(self, quotes):
+        results = indicators.get_alligator(quotes, 13, 8).remove_warmup_periods()
+
+        assert 502 - 21 - 250 == len(results)
 
         r = results[len(results)-1]
         assert 260.98953 == round(float(r.jaw), 5)
         assert 253.53576 == round(float(r.teeth), 5)
         assert 244.29591 == round(float(r.lips), 5)
+    
+    def test_exceptions(self, quotes):
+        from System import ArgumentOutOfRangeException
+        with pytest.raises(ArgumentOutOfRangeException):
+            indicators.get_alligator(quotes, 13, 8, 13, 5, 5, 3)
+            
+        with pytest.raises(ArgumentOutOfRangeException):
+            indicators.get_alligator(quotes, 13, 8, 8, 5, 8, 3)
+        
+        with pytest.raises(ArgumentOutOfRangeException):
+            indicators.get_alligator(quotes, 13, 8, 8, 5, 0, 3)
+        
+        with pytest.raises(ArgumentOutOfRangeException):
+            indicators.get_alligator(quotes, 13, 0, 8, 5, 5, 3)
+        
+        with pytest.raises(ArgumentOutOfRangeException):
+            indicators.get_alligator(quotes, 13, 8, 8, 0, 5, 3)
+        
+        with pytest.raises(ArgumentOutOfRangeException):
+            indicators.get_alligator(quotes, 13, 8, 8, 5, 5, 0)
+        
+        with pytest.raises(ArgumentOutOfRangeException):
+            indicators.get_alligator(quotes, 13, 8, 12, 11, 5, 3)
+        
+        with pytest.raises(ArgumentOutOfRangeException):
+            indicators.get_alligator(quotes, 13, 8, 8, 5, 7, 7)

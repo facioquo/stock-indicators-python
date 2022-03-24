@@ -10,7 +10,10 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_alligator(quotes: Iterable[Quote]):
+def get_alligator(quotes: Iterable[Quote],
+                  jaw_periods: int = 13, jaw_offset: int = 8,
+                  teeth_periods: int = 8, teeth_offset: int = 5,
+                  lips_periods: int = 5, lips_offset: int = 3):
     """Get Williams Alligator calculated.
 
     Williams Alligator is an indicator that transposes multiple moving averages,
@@ -21,6 +24,24 @@ def get_alligator(quotes: Iterable[Quote]):
         `quotes` : Iterable[Quote]
             Historical price quotes.
 
+        `jaw_periods` : int, defaults 13
+            Lookback periods for the Jaw line
+
+        `jaw_offset` : int, defaults 8
+            Offset periods for the Jaw line.
+
+        `teeth_periods` : int, defaults 8
+            Lookback periods for the Teeth line.
+
+        `teeth_offset` : int, defaults 5
+            Offset periods for the Teeth line.
+
+        `lips_periods` : int, defaults 5
+            Lookback periods for the Lips line.
+
+        `lips_offset` : int, defaults 3
+            Offset periods for the Lips line.
+
     Returns:
         `AlligatorResults[AlligatorResult]`
             AlligatorResults is list of AlligatorResult with providing useful helper methods.
@@ -29,7 +50,10 @@ def get_alligator(quotes: Iterable[Quote]):
          - [Williams Alligator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Alligator/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    alligator_results = CsIndicator.GetAlligator[Quote](CsList(Quote, quotes))
+    alligator_results = CsIndicator.GetAlligator[Quote](CsList(Quote, quotes),
+                                                        jaw_periods, jaw_offset,
+                                                        teeth_periods, teeth_offset,
+                                                        lips_periods, lips_offset)
     return AlligatorResults(alligator_results, AlligatorResult)
 
 
