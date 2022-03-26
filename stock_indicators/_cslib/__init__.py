@@ -18,15 +18,20 @@ skender_stock_indicators_dll_path = os.path.join(
 clr.AddReference(skender_stock_indicators_dll_path)
 clr.AddReference('System.Collections')
 
+# Built-in
 from System import DateTime as CsDateTime
 from System import Decimal as CsDecimal
 from System import Enum as CsEnum
 from System.Globalization import CultureInfo
 from System.Collections.Generic import List as CsList
 
+# Classes
 from Skender.Stock.Indicators import Indicator as CsIndicator
 from Skender.Stock.Indicators import Quote as CsQuote
 from Skender.Stock.Indicators import ResultBase as CsResultBase
+
+# Enums
 from Skender.Stock.Indicators import CandlePart as CsCandlePart
 from Skender.Stock.Indicators import Signal as CsSignal
 from Skender.Stock.Indicators import BetaType as CsBetaType
+from Skender.Stock.Indicators import ChandelierType as CsChandelierType
