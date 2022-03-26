@@ -5,12 +5,14 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
+from stock_indicators.indicators.common.enums import ChandelierType
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_chandelier(quotes: Iterable[Quote], lookback_periods: int = 22, multiplier: float = 3):
+def get_chandelier(quotes: Iterable[Quote], lookback_periods: int = 22,
+                   multiplier: float = 3, chandelier_type: ChandelierType = ChandelierType.LONG):
     """Get Chandelier Exit calculated.
 
     Chandelier Exit is typically used for stop-loss and can be
@@ -26,6 +28,9 @@ def get_chandelier(quotes: Iterable[Quote], lookback_periods: int = 22, multipli
         `multiplier` : float, defaults 3.0
             Multiplier.
 
+        `chandelier_type` : ChandelierType, defaults ChandelierType.LONG
+            Short or Long variant selection.
+
     Returns:
         `ChandelierResults[ChandelierResult]`
             ChandelierResults is list of ChandelierResult with providing useful helper methods.
@@ -34,7 +39,8 @@ def get_chandelier(quotes: Iterable[Quote], lookback_periods: int = 22, multipli
          - [Chandelier Exit Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Chandelier/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    results = CsIndicator.GetChandelier[Quote](CsList(Quote, quotes), lookback_periods, multiplier)
+    results = CsIndicator.GetChandelier[Quote](CsList(Quote, quotes), lookback_periods,
+                                               multiplier, chandelier_type)
     return ChandelierResults(results, ChandelierResult)
 
 

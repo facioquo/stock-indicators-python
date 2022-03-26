@@ -1,4 +1,4 @@
-from stock_indicators._cslib import CsCandlePart, CsSignal, CsEnum, CsBetaType
+from stock_indicators._cslib import CsCandlePart, CsSignal, CsEnum, CsBetaType, CsChandelierType
 from stock_indicators.indicators.common._contrib.enum import ValueEnum
 
 
@@ -7,7 +7,11 @@ class BetaType(ValueEnum):
     UP = CsBetaType.Up
     DOWN = CsBetaType.Down
     ALL = CsBetaType.All
-    
+
+
+class ChandelierType(ValueEnum):
+    LONG = CsChandelierType.Long
+    SHORT = CsChandelierType.Short
 
 class CandlePart(ValueEnum):
     OPEN = CsCandlePart.Open
