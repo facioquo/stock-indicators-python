@@ -1,5 +1,6 @@
 from stock_indicators._cslib import (
-    CsCandlePart, CsSignal, CsEnum, CsBetaType, CsChandelierType, CsMaType)
+    CsCandlePart, CsSignal, CsEnum, CsBetaType, CsChandelierType, CsMaType,
+    CsPivotPointType)
 from stock_indicators.indicators.common._contrib.enum import ValueEnum
 
 
@@ -35,6 +36,14 @@ class MAType(ValueEnum):
     SMMA = CsMaType.SMMA
     TEMA = CsMaType.TEMA
     WMA = CsMaType.WMA
+
+
+class PivotPointType(ValueEnum):
+    STANDARD = CsPivotPointType.Standard
+    CAMARILLA = CsPivotPointType.Camarilla
+    DEMARK = CsPivotPointType.Demark
+    FIBONACCI = CsPivotPointType.Fibonacci
+    WOODIE = CsPivotPointType.Woodie
 
 
 class Signal(ValueEnum):
