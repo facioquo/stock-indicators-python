@@ -1,5 +1,6 @@
 from stock_indicators._cslib import (
-    CsCandlePart, CsSignal, CsEnum, CsBetaType, CsChandelierType, CsMaType)
+    CsCandlePart, CsSignal, CsEnum, CsBetaType, CsChandelierType, CsMaType,
+    CsPivotPointType, CsPeriodSize)
 from stock_indicators.indicators.common._contrib.enum import ValueEnum
 
 
@@ -35,6 +36,29 @@ class MAType(ValueEnum):
     SMMA = CsMaType.SMMA
     TEMA = CsMaType.TEMA
     WMA = CsMaType.WMA
+
+
+class PeriodSize(ValueEnum):
+    MONTH = CsPeriodSize.Month
+    WEEK = CsPeriodSize.Week
+    DAY = CsPeriodSize.Day
+    FOUR_HOURS = CsPeriodSize.FourHours
+    TWO_HOURS = CsPeriodSize.TwoHours
+    ONE_HOUR = CsPeriodSize.OneHour
+    THIRTY_MINUTES = CsPeriodSize.ThirtyMinutes
+    FIFTEEN_MINUTES = CsPeriodSize.FifteenMinutes
+    FIVE_MINUTES = CsPeriodSize.FiveMinutes
+    THREE_MINUTES = CsPeriodSize.ThreeMinutes
+    TWO_MINUTES = CsPeriodSize.TwoMinutes
+    ONE_MINUTE = CsPeriodSize.OneMinute
+
+
+class PivotPointType(ValueEnum):
+    STANDARD = CsPivotPointType.Standard
+    CAMARILLA = CsPivotPointType.Camarilla
+    DEMARK = CsPivotPointType.Demark
+    FIBONACCI = CsPivotPointType.Fibonacci
+    WOODIE = CsPivotPointType.Woodie
 
 
 class Signal(ValueEnum):
