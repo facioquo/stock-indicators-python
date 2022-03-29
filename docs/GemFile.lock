@@ -290,7 +290,6 @@ GEM
     unf_ext (0.0.8.1)
     unf_ext (0.0.8.1-x64-mingw32)
     unicode-display_width (1.8.0)
-    wdm (0.1.1)
     yell (2.2.2)
     zeitwerk (2.5.4)
 
@@ -306,7 +305,6 @@ DEPENDENCIES
   jekyll-remote-theme
   jekyll-sitemap
   jemoji
-  wdm (>= 0.1.1)
 
 BUNDLED WITH
    2.2.31

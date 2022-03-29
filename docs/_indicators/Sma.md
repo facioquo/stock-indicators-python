@@ -14,7 +14,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
 | `lookback_periods` | int | Number of periods (`N`) in the lookback window.  Must be greater than 0.
 
 <!-- | `candlePart` | CandlePart | Optional.  Specify the [OHLCV]({{site.baseurl}}/guide/#historical-quotes) candle part to evaluate.  See [CandlePart options](#candlepart-options) below.  Default is `CandlePart.Close` -->
@@ -81,13 +81,14 @@ results = indicators.get_sma(quotes, 20)
 An extended variant of this indicator includes additional analysis.
 
 ## **get_sma_extended**(*quotes, lookback_periods*)
-    
-[[source]]({{site.sourceurl}}/sma.py)
-
 
 ## Returns
 
-### SmaExtendedResult
+```python
+SMAExtendedResults[SMAExtendedResult]
+```
+
+### SMAExtendedResult
 
 | name | type | notes
 | -- |-- |--
@@ -101,7 +102,7 @@ An extended variant of this indicator includes additional analysis.
 
 ```python
 # usage
-results = indicators.get_sma_extended(quotes, lookbackPeriods)
+results = indicators.get_sma_extended(quotes, lookback_periods)
 ```
 
 

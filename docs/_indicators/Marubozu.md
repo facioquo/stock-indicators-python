@@ -14,7 +14,7 @@ type: candlestick-pattern
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
 | `min_body_percent` | float, *default 0.95* | Minimum body size as a decimalized percent of total candle size.  Must be between 0.8 and 1, if specified.
 
 ### Historical quotes requirements
@@ -25,7 +25,7 @@ You must have at least one historical quote; however, more is typically provided
 
 ## Return
 
-```csharp
+```python
 CandleResults[CandleResult]
 ```
 

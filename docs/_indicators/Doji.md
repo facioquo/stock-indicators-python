@@ -14,7 +14,7 @@ type: candlestick-pattern
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
 | `max_price_change_percent` | float, *default 0.001* | Optional.  Maximum absolute decimalized percent difference in open and close price.  Must be between 0 and 0.005, if specified.
 
 ### Historical quotes requirements

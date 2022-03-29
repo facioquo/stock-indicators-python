@@ -14,7 +14,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
 | `acceleration_step` | float, *default 0.02* | Incremental step size for the Acceleration Factor.  Must be greater than 0.
 | `max_acceleration_factor` | float, *default 0.2* | Maximimum factor limit.  Must be greater than `acceleration_step`.
 
