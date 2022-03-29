@@ -82,14 +82,21 @@ More examples available:
 
 You must provide historical price quotes to the library in the standard [OHLCV](https://acronyms.thefreedictionary.com/OHLCV) `Iterable[Quote]`(such as a list of `Quote`) format.  It should have a consistent period frequency (day, hour, minute, etc).
 
+**class Quote(date, open=None, high=None, low=None, close=None, volume=None)**
+[[source]](https://github.com/DaveSkender/Stock.Indicators.Python/blob/main/stock_indicators/indicators/common/quote.py)
+
 | name | type | notes
 | -- |-- |--
 | date | [`datetime.datetime`](https://docs.python.org/3.8/library/datetime.html#datetime.datetime) | Date
-| open | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal) | Open price
-| high | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal) | High price
-| low | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal) | Low price
-| close | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal) | Close price
-| volume | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal) | Volume
+| open | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Open price
+| high | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | High price
+| low | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Low price
+| close | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Close price
+| volume | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Volume
+
+**Note that** 
+1. `date` is always required, while each ohlcv values are optional.
+2. ohlcv can be provided by `float`, `Decimal` and `str` representing number, but these are always stored as `Decimal`.
 
 ### Where can I get historical quote data?
 
