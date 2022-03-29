@@ -66,6 +66,13 @@ class PivotPointType(ValueEnum):
     WOODIE = CsPivotPointType.Woodie
 
 
+class PivotTrend(ValueEnum):
+    HH = CsPivotTrend.HH
+    LH = CsPivotTrend.LH
+    HL = CsPivotTrend.HL
+    LL = CsPivotTrend.LL
+
+
 class Signal(ValueEnum):
     BULL_CONFIRMED = CsSignal.BullConfirmed
     BULL_SIGNAL = CsSignal.BullSignal

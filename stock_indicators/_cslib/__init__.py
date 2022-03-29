@@ -41,4 +41,8 @@ from Skender.Stock.Indicators import PivotPointType as CsPivotPointType
 from Skender.Stock.Indicators import PeriodSize as CsPeriodSize
 =======
 from Skender.Stock.Indicators import EndType as CsEndType
+<<<<<<< HEAD
 >>>>>>> e6e34e5 (Add EndType)
+=======
+from Skender.Stock.Indicators import PivotTrend as CsPivotTrend
+>>>>>>> ab4b9d0 (Add PivtTrend)
