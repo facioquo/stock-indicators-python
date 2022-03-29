@@ -14,7 +14,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
 | `rsi_periods` | int | Number of periods (`R`) in the lookback period.  Must be greater than 0.  Standard is 14.
 | `stoch_periods` | int | Number of periods (`S`) in the lookback period.  Must be greater than 0.  Typically the same value as `rsi_periods`.
 | `signal_periods` | int | Number of periods (`G`) in the signal line (SMA of the StochRSI).  Must be greater than 0.  Typically 3-5.

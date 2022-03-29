@@ -16,7 +16,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the Quote class or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
 | `start` | datetime, Optional | The anchor date used to start the VWAP accumulation.  The earliest date in `quotes` is used when not provided.
 | `year`, `month`, `day`, `hour`, `minute`| int, Optional | The anchor date used to start the VWAP accumulation.  The earliest date in `quotes` is used when not provided.
 
