@@ -81,13 +81,14 @@ results = indicators.get_sma(quotes, 20)
 An extended variant of this indicator includes additional analysis.
 
 ## **get_sma_extended**(*quotes, lookback_periods*)
-    
-[[source]]({{site.sourceurl}}/sma.py)
-
 
 ## Returns
 
-### SmaExtendedResult
+```python
+SMAExtendedResults[SMAExtendedResult]
+```
+
+### SMAExtendedResult
 
 | name | type | notes
 | -- |-- |--
@@ -101,7 +102,7 @@ An extended variant of this indicator includes additional analysis.
 
 ```python
 # usage
-results = indicators.get_sma_extended(quotes, lookbackPeriods)
+results = indicators.get_sma_extended(quotes, lookback_periods)
 ```
 
 
