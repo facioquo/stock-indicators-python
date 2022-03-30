@@ -1,8 +1,11 @@
+from decimal import Decimal
+
 from stock_indicators._cslib import CsQuote
 from stock_indicators._cstypes import DateTime as CsDateTime
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes.datetime import to_pydatetime
 from stock_indicators._cstypes.decimal import to_pydecimal
+from stock_indicators.indicators.common._contrib.type_resolver import _generate_cs_inherited_class
 
 
 def _get_date(quote):
@@ -41,7 +44,7 @@ def _get_volume(quote):
 def _set_volume(quote, value):
     quote.Volume = CsDecimal(value)
 
-class Quote(CsQuote):
+class _Quote:
     """
     A base wrapper class for a single unit of historical quotes.
     """
@@ -55,11 +58,11 @@ class Quote(CsQuote):
 
     def __init__(self, date, open = None, high = None, low = None, close = None, volume = None):
         self.date = date
-        self.open = open if open else super().Open
-        self.high = high if high else super().High
-        self.low = low if low else super().Low
-        self.close = close if close else super().Close
-        self.volume = volume if volume else super().Volume
+        self.open: Decimal = open if open else 0
+        self.high: Decimal = high if high else 0
+        self.low: Decimal = low if low else 0
+        self.close: Decimal = close if close else 0
+        self.volume: Decimal = volume if volume else 0
 
     @classmethod
     def from_csquote(cls, csQuote: CsQuote):
@@ -75,3 +78,5 @@ class Quote(CsQuote):
             close=csQuote.Close,
             volume=csQuote.Volume
         )
+
+Quote = _generate_cs_inherited_class(_Quote, CsQuote)

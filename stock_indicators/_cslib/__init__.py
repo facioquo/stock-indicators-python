@@ -28,6 +28,7 @@ from System.Collections.Generic import List as CsList
 # Classes
 from Skender.Stock.Indicators import Indicator as CsIndicator
 from Skender.Stock.Indicators import Quote as CsQuote
+from Skender.Stock.Indicators import CandleProperties as CsCandleProperties
 from Skender.Stock.Indicators import ResultBase as CsResultBase
 
 # Enums
