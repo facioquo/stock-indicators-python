@@ -36,13 +36,7 @@ from Skender.Stock.Indicators import Signal as CsSignal
 from Skender.Stock.Indicators import BetaType as CsBetaType
 from Skender.Stock.Indicators import ChandelierType as CsChandelierType
 from Skender.Stock.Indicators import MaType as CsMaType
-<<<<<<< HEAD
 from Skender.Stock.Indicators import PivotPointType as CsPivotPointType
 from Skender.Stock.Indicators import PeriodSize as CsPeriodSize
-=======
 from Skender.Stock.Indicators import EndType as CsEndType
-<<<<<<< HEAD
->>>>>>> e6e34e5 (Add EndType)
-=======
 from Skender.Stock.Indicators import PivotTrend as CsPivotTrend
->>>>>>> ab4b9d0 (Add PivtTrend)

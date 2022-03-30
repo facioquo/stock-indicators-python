@@ -1,6 +1,6 @@
 from stock_indicators._cslib import (
     CsCandlePart, CsSignal, CsEnum, CsBetaType, CsChandelierType, CsMaType,
-    CsPivotPointType, CsPeriodSize, CsEndType)
+    CsPivotPointType, CsPeriodSize, CsEndType, CsPivotTrend)
 from stock_indicators.indicators.common._contrib.enum import ValueEnum
 
 
