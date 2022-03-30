@@ -1,6 +1,6 @@
 from stock_indicators._cslib import (
     CsCandlePart, CsSignal, CsEnum, CsBetaType, CsChandelierType, CsMaType,
-    CsPivotPointType, CsPeriodSize)
+    CsPivotPointType, CsPeriodSize, CsEndType, CsPivotTrend)
 from stock_indicators.indicators.common._contrib.enum import ValueEnum
 
 
@@ -22,7 +22,12 @@ class CandlePart(ValueEnum):
     LOW = CsCandlePart.Low
     CLOSE = CsCandlePart.Close
     VOLUME = CsCandlePart.Volume
-    
+
+
+class EndType(ValueEnum):
+    CLOSE = CsEndType.Close
+    HIGH_LOW = CsEndType.HighLow
+
 
 class MAType(ValueEnum):
     ALMA = CsMaType.ALMA
@@ -59,6 +64,13 @@ class PivotPointType(ValueEnum):
     DEMARK = CsPivotPointType.Demark
     FIBONACCI = CsPivotPointType.Fibonacci
     WOODIE = CsPivotPointType.Woodie
+
+
+class PivotTrend(ValueEnum):
+    HH = CsPivotTrend.HH
+    LH = CsPivotTrend.LH
+    HL = CsPivotTrend.HL
+    LL = CsPivotTrend.LL
 
 
 class Signal(ValueEnum):

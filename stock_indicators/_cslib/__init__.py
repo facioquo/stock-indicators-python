@@ -38,3 +38,5 @@ from Skender.Stock.Indicators import ChandelierType as CsChandelierType
 from Skender.Stock.Indicators import MaType as CsMaType
 from Skender.Stock.Indicators import PivotPointType as CsPivotPointType
 from Skender.Stock.Indicators import PeriodSize as CsPeriodSize
+from Skender.Stock.Indicators import EndType as CsEndType
+from Skender.Stock.Indicators import PivotTrend as CsPivotTrend
