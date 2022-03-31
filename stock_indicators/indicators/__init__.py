@@ -48,6 +48,7 @@ from .pivot_points import (get_pivot_points)
 from .pivots import (get_pivots)
 from .pmo import (get_pmo)
 from .prs import (get_prs)
+from .pvo import (get_pvo)
 from .roc import (
     get_roc,
     get_roc_with_band
