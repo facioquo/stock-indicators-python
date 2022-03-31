@@ -6,7 +6,7 @@ from typing_extensions import Self
 from stock_indicators._cslib import CsCandleProperties
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
-from stock_indicators.indicators.common._contrib.type_resolver import _generate_cs_inherited_class
+from stock_indicators.indicators.common._contrib.type_resolver import generate_cs_inherited_class
 from stock_indicators.indicators.common.enums import Signal
 from stock_indicators.indicators.common.quote import _Quote
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
@@ -71,7 +71,7 @@ class _CandleProperties(_Quote):
         return self.Close < self.Open
 
 
-CandleProperties = _generate_cs_inherited_class(_CandleProperties, CsCandleProperties)
+CandleProperties = generate_cs_inherited_class(_CandleProperties, CsCandleProperties)
 
 
 class CandleResult(ResultBase):

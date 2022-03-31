@@ -5,7 +5,7 @@ from stock_indicators._cstypes import DateTime as CsDateTime
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes.datetime import to_pydatetime
 from stock_indicators._cstypes.decimal import to_pydecimal
-from stock_indicators.indicators.common._contrib.type_resolver import _generate_cs_inherited_class
+from stock_indicators.indicators.common._contrib.type_resolver import generate_cs_inherited_class
 
 
 def _get_date(quote):
@@ -79,4 +79,4 @@ class _Quote:
             volume=csQuote.Volume
         )
 
-Quote = _generate_cs_inherited_class(_Quote, CsQuote)
+Quote = generate_cs_inherited_class(_Quote, CsQuote)
