@@ -1,4 +1,7 @@
+from collections import deque
+
 from stock_indicators._cslib import CsList
+
 
 class List:
     """
@@ -29,8 +32,7 @@ class List:
     """
 
     def __new__(cls, generic, sequence) -> CsList:
-        clist = CsList[generic]()
-        for i in sequence:
-            clist.Add(i)
-
-        return clist
+        cs_list = CsList[generic]()
+        deque(map(cs_list.Add, sequence), maxlen=0)
+        
+        return cs_list
