@@ -55,6 +55,7 @@ from .renko import (
 from .roc import (
     get_roc,
     get_roc_with_band)
+from .rolling_pivots import (get_rolling_pivots)
 from .rsi import (get_rsi)
 from .slope import (get_slope)
 from .sma import (
