@@ -95,6 +95,9 @@ def test_benchmark_ht_trendline(benchmark, quotes):
     
 def test_benchmark_hurst(benchmark, quotes):
     benchmark(indicators.get_hurst, quotes)
+    
+def test_benchmark_hurst_longlong(benchmark, longish_quotes):
+    benchmark(indicators.get_hurst, longish_quotes+longish_quotes)
 
 def test_benchmark_ichimoku(benchmark, quotes):
     benchmark(indicators.get_ichimoku, quotes)
