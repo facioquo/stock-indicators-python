@@ -8,9 +8,7 @@ from stock_indicators._cstypes import to_pydatetime
 
 
 class ResultBase:
-    """
-    A base wrapper class for a single unit of the results.
-    """
+    """A base wrapper class for a single unit of the results."""
     def __init__(self, base_result: CsResultBase):
         super().__init__()
         self._csdata = base_result
@@ -31,7 +29,7 @@ class IndicatorResults(List[_T]):
     """
     def __init__(self, data: Iterable, wrapper_class: Type[_T]):
         super().__init__([ wrapper_class(_) for _ in data ])
-        self._csdata = list(data)
+        self._csdata = data
         self._wrapper_class = wrapper_class
 
     def reload(self):
@@ -51,15 +49,17 @@ class IndicatorResults(List[_T]):
         self._csdata = None
         return self
 
+    def _get_csdata_type(self):
+        """Get C# result object type."""
+        return type(self[0]._csdata)
+
     def _verify_data(func):
-        """
-        Check whether `_csdata` can be passed to helper method.
-        """
+        """Check whether `_csdata` can be passed to helper method."""
         def verify_data(self, *args):
-            if not isinstance(self._csdata, list) or len(self._csdata) < 1:
+            if not isinstance(self._csdata, Iterable) or len(self) < 1:
                 raise ValueError(f"Cannot {func.__name__}() an empty result.")
 
-            if not isinstance(self._csdata[0], CsResultBase):
+            if not issubclass(self._get_csdata_type(), CsResultBase):
                 raise TypeError(
                     "The data should be an instance of Skender.Stock.Indicators.ResultBase or its subclasses."
                 )
@@ -78,16 +78,14 @@ class IndicatorResults(List[_T]):
 
     @_verify_data
     def find(self, lookup_date: PyDateTime) -> _T:
-        """
-        Find indicator values on a specific date.
-        """
+        """Find indicator values on a specific date."""
         if not isinstance(lookup_date, PyDateTime):
             raise TypeError(
                 "lookup_date must be an instance of datetime.datetime."
             )
 
         result = CsIndicator.Find[CsResultBase](
-            CsList(type(self._csdata[0]), self._csdata), CsDateTime(lookup_date)
+            CsList(self._get_csdata_type(), self._csdata), CsDateTime(lookup_date)
         )
         return self._wrapper_class(result)
 
@@ -102,6 +100,6 @@ class IndicatorResults(List[_T]):
             )
 
         removed_results = CsIndicator.RemoveWarmupPeriods[CsResultBase](
-            CsList(type(self._csdata[0]), self._csdata), remove_periods
+            CsList(self._get_csdata_type(), self._csdata), remove_periods
         )
         return self.__class__(removed_results, self._wrapper_class)
