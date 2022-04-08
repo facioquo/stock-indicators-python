@@ -9,7 +9,7 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_beta**(*market_history, eval_history, lookback_periods*)
+## **get_beta**(*market_history, eval_history, lookback_periods, beta_type=BetaType.STANDARD*)
 
 ## Parameters
 
