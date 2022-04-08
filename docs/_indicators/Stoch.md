@@ -22,7 +22,7 @@ layout: indicator
 
 <!-- | `kFactor` | int | Optional. Weight of %K in the %J calculation.  Must be greater than 0. Default is 3.
 | `dFactor` | int | Optional. Weight of %D in the %J calculation.  Must be greater than 0. Default is 2.
-| `movingAverageType` | MaType | Optional. Type of moving average (SMA or SMMA) used for smoothing.  See [MaType options](#matype-options) below.  Default is `MaType.SMA`. -->
+| `movingAverageType` | MAType | Optional. Type of moving average (SMA or SMMA) used for smoothing.  See [MAType options](#MAType-options) below.  Default is `MAType.SMA`. -->
 
 ### Historical quotes requirements
 
@@ -30,14 +30,14 @@ You must have at least `N+S` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-<!-- ### MaType options
+<!-- ### MAType options
 
 These are the supported moving average types:
 
 | type | description
 |-- |--
-| `MaType.SMA` | [Simple Moving Average](../Sma#content) (default)
-| `MaType.SMMA` | [Smoothed Moving Average](../Smma#content) -->
+| `MAType.SMA` | [Simple Moving Average](../Sma#content) (default)
+| `MAType.SMMA` | [Smoothed Moving Average](../Smma#content) -->
 
 ## Returns
 
@@ -50,7 +50,7 @@ StochResults[StochResult]
 - It does not return a single incremental indicator value.
 - The first `N+S-2` periods will have `None` Oscillator values since there's not enough data to calculate.
 
-<!-- :hourglass: **Convergence Warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods when using `MaType.SMMA`.  Standard use of `MaType.SMA` does not have convergence-related precision errors. -->
+<!-- :hourglass: **Convergence Warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods when using `MAType.SMMA`.  Standard use of `MAType.SMA` does not have convergence-related precision errors. -->
 
 ### StochResult
 
