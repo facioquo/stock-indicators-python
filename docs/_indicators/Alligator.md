@@ -8,7 +8,7 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_alligator**(*quotes*)
+## **get_alligator**(*quotes, jaw_periods==13, jaw_offset=8, teeth_periods=8, teeth_offset=5, lips_periods=5, lips_offset=3*)
 
 ## Parameters
 
