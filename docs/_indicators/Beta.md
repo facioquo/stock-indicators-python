@@ -48,14 +48,14 @@ BetaResults[BetaResult]
 
 | name | type | notes
 | -- |-- |--
-| `date` | DateTime | Date
-| `beta` | double | Beta coefficient based on `N` lookback periods
-| `beta_up` | double | Beta+ (Up Beta)
-| `beta_down` | double | Beta- (Down Beta)
-| `ratio` | double | Beta ratio is `beta_up/beta_down`
-| `convexity` | double | Beta convexity is <code>(beta_up-beta_down)<sup>2</sup></code>
-| `returns_eval` | double | Returns of evaluated quotes (`R`)
-| `returns_mrkt` | double | Returns of market quotes (`Rm`)
+| `date` | datetime | Date
+| `beta` | float, Optional | Beta coefficient based on `N` lookback periods
+| `beta_up` | float, Optional | Beta+ (Up Beta)
+| `beta_down` | float, Optional | Beta- (Down Beta)
+| `ratio` | float, Optional | Beta ratio is `beta_up/beta_down`
+| `convexity` | float, Optional | Beta convexity is <code>(beta_up-beta_down)<sup>2</sup></code>
+| `returns_eval` | float, Optional | Returns of evaluated quotes (`R`)
+| `returns_mrkt` | float, Optional | Returns of market quotes (`Rm`)
 
 ### Utilities
 
