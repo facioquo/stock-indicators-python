@@ -18,7 +18,7 @@ layout: indicator
 | `market_history` | Iterable[Quote] | Historical [market] Quotes data should be at any consistent frequency (day, hour, minute, etc).  This `market` quotes will be used to establish the baseline.
 | `eval_history` | Iterable[Quote] | Historical [evaluation stock] Quotes data should be at any consistent frequency (day, hour, minute, etc).
 | `lookback_periods` | int | Number of periods (`N`) in the lookback period.  Must be greater than 0 to calculate; however we suggest a larger period for statistically appropriate sample size and especially when using Beta +/-.
-| `beta_type` | BetaType | Type of Beta to calculate.  Default is `BetaType.STANDARD`. See [BetaType options](#betatype-options) below.
+| `beta_type` | BetaType, *default BetaType.STANDARD* | Type of Beta to calculate.  See [BetaType options](#betatype-options) below.
 
 ### Historical quotes requirements
 You must have at least `N` periods of quotes to cover the warmup periods.  You must have at least the same matching date elements of `market_history`.  Exception will be thrown if not matched.  Historical price quotes should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
