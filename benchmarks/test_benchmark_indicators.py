@@ -1,4 +1,5 @@
 from stock_indicators import indicators
+from stock_indicators.indicators.common.enums import PeriodSize
 
 def test_benchmark_adl(benchmark, quotes):
     benchmark(indicators.get_adl, quotes)
@@ -84,6 +85,9 @@ def test_benchmark_force_index(benchmark, quotes):
 def test_benchmark_fractal(benchmark, quotes):
     benchmark(indicators.get_fractal, quotes)
 
+def test_benchmark_gator(benchmark, quotes):
+    benchmark(indicators.get_gator, quotes)
+
 def test_benchmark_heikin_ashi(benchmark, quotes):
     benchmark(indicators.get_heikin_ashi, quotes)
     
@@ -111,6 +115,9 @@ def test_benchmark_keltner(benchmark, quotes):
 def test_benchmark_kvo(benchmark, quotes):
     benchmark(indicators.get_kvo, quotes)
 
+def test_benchmark_ma_envelopes(benchmark, quotes):
+    benchmark(indicators.get_ma_envelopes, quotes, 10)
+
 def test_benchmark_macd(benchmark, quotes):
     benchmark(indicators.get_macd, quotes)
     
@@ -129,14 +136,29 @@ def test_benchmark_obv(benchmark, quotes):
 def test_benchmark_parabolic_sar(benchmark, quotes):
     benchmark(indicators.get_parabolic_sar, quotes)
     
+def test_benchmark_pivot_points(benchmark, quotes):
+    benchmark(indicators.get_pivot_points, quotes, PeriodSize.MONTH)
+
+def test_benchmark_pivots(benchmark, quotes):
+    benchmark(indicators.get_pivots, quotes)
+    
 def test_benchmark_pmo(benchmark, quotes):
     benchmark(indicators.get_pmo, quotes)
 
 def test_benchmark_prs(benchmark, quotes):
     benchmark(indicators.get_prs, quotes, quotes)
 
+def test_benchmark_pvo(benchmark, quotes):
+    benchmark(indicators.get_pvo, quotes)
+
+def test_benchmark_renko(benchmark, quotes):
+    benchmark(indicators.get_renko, quotes, 2.5)
+
 def test_benchmark_roc(benchmark, quotes):
     benchmark(indicators.get_roc, quotes, 20)
+
+def test_benchmark_rolling_pivots(benchmark, quotes):
+    benchmark(indicators.get_rolling_pivots, quotes, 11, 9)
 
 def test_benchmark_rsi(benchmark, quotes):
     benchmark(indicators.get_rsi, quotes)
