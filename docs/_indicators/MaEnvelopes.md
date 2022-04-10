@@ -17,11 +17,11 @@ layout: indicator
 | `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
 | `lookback_periods` | int | Number of periods (`N`) in the moving average.  Must be greater than 1.
 | `percent_offset` | float, *default 2.5* | Percent offset for envelope width.  Example: 3.5% would be entered as 3.5 (not 0.035).  Must be greater than 0.  Typical values range from 2 to 10.
-| `ma_type` | MAType, *default MAType.SMA* | Type of moving average (e.g. SMA, EMA, HMA).  See [MAType options](#MAType-options) below.
+| `ma_type` | MAType, *default MAType.SMA* | Type of moving average (e.g. SMA, EMA, HMA).  See [MAType options](#matype-options) below.
 
 ### Historical quotes requirements
 
-See links in the supported [MAType options](#MAType-options) section below for details on the inherited requirements for `quotes` and `lookback_periods`.
+See links in the supported [MAType options](#matype-options) section below for details on the inherited requirements for `quotes` and `lookback_periods`.
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
@@ -55,7 +55,7 @@ MAEnvelopeResults[MAEnvelopeResult]
 - It does not return a single incremental indicator value.
 - The first periods will have `None` values since there's not enough data to calculate; the quantity will vary based on the `ma_type` specified.
 
-:hourglass: **Convergence Warning**: Some moving average variants have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.  See links in the supported [MAType options](#MAType-options) section above for more information.
+:hourglass: **Convergence Warning**: Some moving average variants have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.  See links in the supported [MAType options](#matype-options) section above for more information.
 
 ### MaEnvelopeResult
 
