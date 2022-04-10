@@ -43,20 +43,24 @@ from .mama import (get_mama)
 from .marubozu import (get_marubozu)
 from .mfi import (get_mfi)
 from .obv import (get_obv)
-from .pivot_points import (get_pivot_points)
 from .parabolic_sar import (get_parabolic_sar)
+from .pivot_points import (get_pivot_points)
+from .pivots import (get_pivots)
 from .pmo import (get_pmo)
 from .prs import (get_prs)
+from .pvo import (get_pvo)
+from .renko import (
+    get_renko,
+    get_renko_atr)
 from .roc import (
     get_roc,
-    get_roc_with_band
-)
+    get_roc_with_band)
+from .rolling_pivots import (get_rolling_pivots)
 from .rsi import (get_rsi)
 from .slope import (get_slope)
 from .sma import (
     get_sma,
-    get_sma_extended
-)
+    get_sma_extended)
 from .smi import (get_smi)
 from .smma import (get_smma)
 from .starc_bands import (get_starc_bands)
