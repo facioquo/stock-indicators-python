@@ -14,4 +14,5 @@ and charting systems in mind when originally creating this community
 library. A Stock Indicators for .NET is also available.
 """
 
+from stock_indicators import indicators
 from stock_indicators.indicators.common.quote import Quote
