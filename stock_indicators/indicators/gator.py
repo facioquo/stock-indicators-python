@@ -28,7 +28,7 @@ def get_gator(quotes):
          - [Gator Oscillator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Gator/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    if not quotes or type(quotes[0]) == Quote:
+    if not quotes or isinstance(quotes[0], Quote):
         results = CsIndicator.GetGator[Quote](CsList(Quote, quotes))
     else:
         # Get C# objects.
