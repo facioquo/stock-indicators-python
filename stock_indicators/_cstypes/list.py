@@ -30,9 +30,8 @@ class List:
         >>>     print(i, end='')
         123
     """
-
     def __new__(cls, generic, sequence) -> CsList:
         cs_list = CsList[generic]()
         deque(map(cs_list.Add, sequence), maxlen=0)
-        
+
         return cs_list
