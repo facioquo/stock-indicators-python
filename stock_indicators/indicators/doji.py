@@ -12,7 +12,7 @@ def get_doji(quotes: Iterable[Quote], max_price_change_percent: float = 0.001):
     (preview)
     Doji is a single candlestick pattern where open and
     close price are virtually identical, representing market indecision.
-    
+
     Parameters:
         `quotes` : Iterable[Quote]
             Historical price quotes.

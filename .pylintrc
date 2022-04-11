@@ -4,6 +4,8 @@ extension-pkg-allow-list=
 
 ignore-long-lines=yes
 
+ignore-imports=yes
+
 disable=
     C0103,
     C0116,  

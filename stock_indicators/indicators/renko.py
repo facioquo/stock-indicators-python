@@ -1,5 +1,5 @@
 from decimal import Decimal
-from typing import Iterable, Optional, TypeVar
+from typing import Iterable, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
