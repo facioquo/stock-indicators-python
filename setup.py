@@ -23,8 +23,10 @@ setuptools.setup(
     license="Apache 2.0",
     classifiers=[
         "Programming Language :: Python",
+        "Programming Language :: Python :: 3.7",
         "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
+        "Programming Language :: Python :: 3.10",
         "License :: OSI Approved :: Apache Software License",
         "Operating System :: OS Independent",
     ],
@@ -34,7 +36,7 @@ setuptools.setup(
     package_data={
         "stock_indicators._cslib": ["lib/*.dll"],
     },
-    python_requires=">=3.8",
+    python_requires=">=3.7",
     install_requires=[
         'pythonnet==3.0.0a1',
         'typing_extensions>=4.0.0',
