@@ -8,7 +8,7 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_chandelier**(*quotes, lookback_periods=22, multiplier=3.0*)
+## **get_chandelier**(*quotes, lookback_periods=22, multiplier=3.0, chandelier_type=ChandelierType.LONG*)
 
 ## Parameters
 
@@ -17,8 +17,7 @@ layout: indicator
 | `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
 | `lookback_periods` | int, *default 22* | Number of periods (`N`) for the lookback evaluation.
 | `multiplier` | float, *default 3.0* | Multiplier number must be a positive value.
-
-<!-- | `type` | ChandelierType | Direction of exit.  See [ChandelierType options](#chandeliertype-options) below.  Default is `ChandelierType.Long`. -->
+| `chandelier_type` | ChandelierType, *default ChandelierType.LONG* | Direction of exit.  See [ChandelierType options](#chandeliertype-options) below.
 
 ### Historical quotes requirements
 
@@ -26,12 +25,12 @@ You must have at least `N+1` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-<!-- ### ChandelierType options
+### ChandelierType options
 
 | type | description
 |-- |--
-| `ChandelierType.Long` | Intended as stop loss value for long positions. (default)
-| `ChandelierType.Short` | Intended as stop loss value for short positions. -->
+| `LONG` | Intended as stop loss value for long positions. (default)
+| `SHORT` | Intended as stop loss value for short positions.
 
 ## Return
 
@@ -40,6 +39,7 @@ ChandelierResults[ChandelierResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `ChandelierResults` is just a list of `ChandelierResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first `N` periods will have `None` Chandelier values since there's not enough data to calculate.
