@@ -16,7 +16,7 @@ def get_ma_envelopes(quotes: Iterable[Quote], lookback_periods: int,
 
     Moving Average Envelopes is a price band overlay that is offset
     from the moving average of Close price over a lookback window.
-    
+
     Parameters:
         `quotes` : Iterable[Quote]
             Historical price quotes.

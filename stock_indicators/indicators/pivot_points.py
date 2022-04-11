@@ -18,7 +18,7 @@ def get_pivot_points(quotes, window_size: PeriodSize,
     Pivot Points depict support and resistance levels, based on
     the prior lookback window.
     You can specify window size (e.g. month, week, day, etc).
-    
+
     Parameters:
         `quotes` : Iterable[Quote]
             Historical price quotes.

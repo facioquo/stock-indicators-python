@@ -37,7 +37,7 @@ def get_gator(quotes):
             cs_results = quotes._csdata
         else:
             cs_results = [ q._csdata for q in quotes ]
-            
+
         results = CsIndicator.GetGator(CsList(type(cs_results[0]), cs_results))
     return GatorResults(results, GatorResult)
 
