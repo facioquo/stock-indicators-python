@@ -64,8 +64,11 @@ jobs:
           configFilePath: 'gitversion.yml'
       
       - powershell: |
-          echo "Current version: $(GitVersion.SemVer)"
-        displayName: Shows GitVersion
+          echo "Current SemVer: $(GitVersion.SemVer)"
+          echo "Current MajorMinorPatch: $(GitVersion.MajorMinorPatch)"
+          sed -i "s/version=.*/version=\'$(GitVersion.MajorMinorPatch)\',/g" setup.py
+          cat setup.py
+        displayName: Update version string in setup.py
 
       - script: |
           python -m pip install --upgrade pip setuptools wheel build
@@ -74,7 +77,7 @@ jobs:
       - task: CmdLine@2
         displayName: "Build"
         inputs:
-          script: "python setup.py $(GitVersion.SemVer) sdist bdist_wheel"
+          script: "python setup.py sdist bdist_wheel"
           workingDirectory: $(Build.SourcesDirectory)
         #condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
 
