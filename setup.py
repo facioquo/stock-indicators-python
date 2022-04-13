@@ -1,6 +1,3 @@
-import sys
-version = sys.argv[1]
-del sys.argv[1]
 import setuptools
 
 with open("README.md", "r", encoding="utf-8") as fh:
@@ -8,7 +5,7 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="stock-indicators",
-    version=version,
+    version="0.7.0",
     author="Dave Skender",
     maintainer="Dong-Geon Lee",
     description="Stock Indicators for Python.  Send in historical price quotes and get back desired technical indicators such as Stochastic RSI, Average True Range, Parabolic SAR, etc.  Nothing more.",
