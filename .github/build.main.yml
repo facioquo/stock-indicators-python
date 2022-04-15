@@ -74,7 +74,7 @@ jobs:
       - task: CmdLine@2
         displayName: "Build"
         inputs:
-          script: "python setup.py $(GitVersion.SemVer) sdist bdist_wheel"
+          script: "python setup.py sdist bdist_wheel semver:$(GitVersion.SemVer)"
           workingDirectory: $(Build.SourcesDirectory)
         #condition: eq(variables['Build.SourceBranch'], 'refs/heads/main')
 

@@ -1,8 +1,18 @@
 import sys
-version = sys.argv[1]
-del sys.argv[1]
 import setuptools
 
+# Set semver.
+PREFIX_VERSION = "semver:"
+DEFAULT_VERSION = "0.0.0.dev0"
+
+if sys.argv[-1].startswith(PREFIX_VERSION):
+    version = sys.argv[-1].split(':')[1]
+    sys.argv.pop()
+else:
+    version = DEFAULT_VERSION
+
+
+# Build.
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
