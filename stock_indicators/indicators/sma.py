@@ -5,12 +5,14 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
+from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_sma(quotes: Iterable[Quote], lookback_periods: int):
+def get_sma(quotes: Iterable[Quote], lookback_periods: int,
+            candle_part: CandlePart = CandlePart.CLOSE):
     """Get SMA calculated.
 
     Simple Moving Average (SMA) is the average of Close price over a lookback window.
@@ -22,6 +24,9 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int):
         `lookback_periods` : int
             Number of periods in the lookback window.
 
+        `candle_part` : int, defaults CandlePart.CLOSE
+            Selected OHLCV part.
+
     Returns:
         `SMAResults[SMAResult]`
             SMAResults is list of SMAResult with providing useful helper methods.
@@ -30,7 +35,7 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int):
          - [SMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Sma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    sma_list = CsIndicator.GetSma[Quote](CsList(Quote, quotes), lookback_periods)
+    sma_list = CsIndicator.GetSma[Quote](CsList(Quote, quotes), lookback_periods, candle_part)
     return SMAResults(sma_list, SMAResult)
 
 def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):
