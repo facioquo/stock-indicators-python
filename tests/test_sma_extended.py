@@ -1,7 +1,18 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators._cslib import CsDecimal
 
 class TestSMAExtended:
+    def test_result_types(self, quotes):
+        results = indicators.get_sma_extended(quotes, 20)
+        
+        # Sample value.
+        r = results[501]
+        assert CsDecimal == type(r._csdata.Sma)
+        assert     float == type(r._csdata.Mad)
+        assert     float == type(r._csdata.Mse)
+        assert     float == type(r._csdata.Mape)
+
     def test_extended(self, quotes):
         results = indicators.get_sma_extended(quotes, 20)
 
