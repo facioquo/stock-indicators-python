@@ -24,7 +24,7 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int,
         `lookback_periods` : int
             Number of periods in the lookback window.
 
-        `candle_part` : int, defaults CandlePart.CLOSE
+        `candle_part` : CandlePart, defaults CandlePart.CLOSE
             Selected OHLCV part.
 
     Returns:
