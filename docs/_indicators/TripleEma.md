@@ -69,11 +69,11 @@ results = indicators.get_triple_ema(quotes, 20)
 Note: TEMA is often confused with the alternative [TRIX](../Trix#content) oscillator.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/256 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/TripleEma.png)
+![image]({{site.charturl}}/Tema.png)
 
 TEMA is shown as the dotted line above.  [EMA](../Ema#content) (solid line) and [Double EMA](../DoubleEma#content) (dashed line) are also shown here for comparison.
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/TripleEma/TripleEma.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/Tema/Tema.cs)
 - [Python wrapper]({{site.sourceurl}}/triple_ema.py)

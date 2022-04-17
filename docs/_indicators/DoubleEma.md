@@ -68,11 +68,11 @@ results = indicators.get_double_ema(quotes, 20)
 [Double exponential moving average](https://en.wikipedia.org/wiki/Double_exponential_moving_average) of the Close price over a lookback window.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/256 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/DoubleEma.png)
+![image]({{site.charturl}}/Dema.png)
 
 DEMA is shown as the dashed line above.  [EMA](../Ema#content) (solid line) and [Triple EMA](../TripleEma#content) (dotted line) are also shown here for comparison.
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/DoubleEma/DoubleEma.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Dema/Dema.cs)
 - [Python wrapper]({{site.sourceurl}}/double_ema.py)
