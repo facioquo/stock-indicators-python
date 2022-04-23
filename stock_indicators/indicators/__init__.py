@@ -21,7 +21,9 @@ from .connors_rsi import (get_connors_rsi)
 from .correlation import (get_correlation)
 from .doji import (get_doji)
 from .donchian import (get_donchian)
-from .double_ema import (get_double_ema)
+from .double_ema import (
+    get_double_ema,
+    get_dema)
 from .dpo import (get_dpo)
 from .elder_ray import (get_elder_ray)
 from .ema import (get_ema)
@@ -73,7 +75,9 @@ from .stoch import (get_stoch)
 from .stoch_rsi import (get_stoch_rsi)
 from .super_trend import (get_super_trend)
 from .t3 import (get_t3)
-from .triple_ema import (get_triple_ema)
+from .triple_ema import (
+    get_triple_ema,
+    get_tema)
 from .trix import (get_trix)
 from .tsi import (get_tsi)
 from .ulcer_index import (get_ulcer_index)

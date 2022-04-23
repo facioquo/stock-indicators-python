@@ -1,5 +1,6 @@
 from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
+from warnings import warn
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -10,7 +11,7 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_triple_ema(quotes: Iterable[Quote], lookback_periods: int):
+def get_tema(quotes: Iterable[Quote], lookback_periods: int):
     """Get TEMA calculated.
 
     Triple Exponential Moving Average (TEMA) of the Close price.
@@ -33,6 +34,11 @@ def get_triple_ema(quotes: Iterable[Quote], lookback_periods: int):
     """
     results = CsIndicator.GetTema[Quote](CsList(Quote, quotes), lookback_periods)
     return TEMAResults(results, TEMAResult)
+
+
+def get_triple_ema(quotes: Iterable[Quote], lookback_periods: int):
+    warn('This method is deprecated. Use get_tema() instead.', DeprecationWarning, stacklevel=2)
+    return get_tema(quotes, lookback_periods)
 
 
 class TEMAResult(ResultBase):

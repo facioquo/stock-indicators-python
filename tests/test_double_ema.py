@@ -3,7 +3,7 @@ from stock_indicators import indicators
 
 class TestDoubleEMA:
     def test_standard(self, quotes):
-        results = indicators.get_double_ema(quotes, 20)
+        results = indicators.get_dema(quotes, 20)
         
         assert 502 == len(results)
         assert 464 == len(list(filter(lambda x: x.dema is not None, results)))
@@ -18,11 +18,11 @@ class TestDoubleEMA:
         assert 241.1677 == round(float(r.dema), 4)
         
     def test_bad_data(self, bad_quotes):
-        r = indicators.get_double_ema(bad_quotes, 15)
+        r = indicators.get_dema(bad_quotes, 15)
         assert 502 == len(r)
         
     def test_removed(self, quotes):
-        results = indicators.get_double_ema(quotes, 20).remove_warmup_periods()
+        results = indicators.get_dema(quotes, 20).remove_warmup_periods()
         
         assert 502 - (2 * 20 + 100) == len(results)
         
@@ -32,4 +32,4 @@ class TestDoubleEMA:
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
-            indicators.get_double_ema(quotes, 0)
+            indicators.get_dema(quotes, 0)
