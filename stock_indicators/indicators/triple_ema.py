@@ -31,7 +31,7 @@ def get_triple_ema(quotes: Iterable[Quote], lookback_periods: int):
          - [TEMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/TripleEma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    results = CsIndicator.GetTripleEma[Quote](CsList(Quote, quotes), lookback_periods)
+    results = CsIndicator.GetTema[Quote](CsList(Quote, quotes), lookback_periods)
     return TEMAResults(results, TEMAResult)
 
 

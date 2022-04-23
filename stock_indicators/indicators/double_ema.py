@@ -30,7 +30,7 @@ def get_double_ema(quotes: Iterable[Quote], lookback_periods: int):
          - [DEMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/DoubleEma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    results = CsIndicator.GetDoubleEma[Quote](CsList(Quote, quotes), lookback_periods)
+    results = CsIndicator.GetDema[Quote](CsList(Quote, quotes), lookback_periods)
     return DEMAResults(results, DEMAResult)
 
 
