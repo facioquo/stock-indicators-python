@@ -22,6 +22,11 @@ class CandlePart(ValueEnum):
     LOW = CsCandlePart.Low
     CLOSE = CsCandlePart.Close
     VOLUME = CsCandlePart.Volume
+    HL2 = CsCandlePart.HL2
+    HLC3 = CsCandlePart.HLC3
+    OC2 = CsCandlePart.OC2
+    OHL3 = CsCandlePart.OHL3
+    OHLC4 = CsCandlePart.OHLC4
 
 
 class EndType(ValueEnum):
