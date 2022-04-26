@@ -5,12 +5,14 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
+from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_wma(quotes: Iterable[Quote], lookback_periods: int):
+def get_wma(quotes: Iterable[Quote], lookback_periods: int,
+            candle_part: CandlePart = CandlePart.CLOSE):
     """Get WMA calculated.
 
     Weighted Moving Average (WMA) is the linear weighted average
@@ -24,6 +26,9 @@ def get_wma(quotes: Iterable[Quote], lookback_periods: int):
         `lookback_periods` : int
            Number of periods in the lookback window.
 
+        `candle_part` : CandlePart, defaults CandlePart.CLOSE
+            Selected OHLCV part.
+
     Returns:
         `WMAResults[WMAResult]`
             WMAResults is list of WMAResult with providing useful helper methods.
@@ -32,7 +37,8 @@ def get_wma(quotes: Iterable[Quote], lookback_periods: int):
          - [WMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Wma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    results = CsIndicator.GetWma[Quote](CsList(Quote, quotes), lookback_periods)
+    results = CsIndicator.GetWma[Quote](CsList(Quote, quotes), lookback_periods,
+                                        candle_part)
     return WMAResults(results, WMAResult)
 
 
