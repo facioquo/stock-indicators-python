@@ -10,7 +10,7 @@ jobs:
   - job: Build
     variables:
       ImageName: "ubuntu-latest"
-      DotNetVersion: "netstandard2.0"
+      DotNetVersion: "netstandard2.1"
       PythonVersion: "3.8"
 
     pool:
@@ -97,7 +97,7 @@ jobs:
 
   - job: Test
     variables:
-      DotNetVersion: "netstandard2.0"
+      DotNetVersion: "netstandard2.1"
 
     strategy:
       matrix:
