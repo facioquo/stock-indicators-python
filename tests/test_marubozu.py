@@ -4,7 +4,7 @@ from stock_indicators.indicators.common.enums import Match
 
 class TestMarubozu:
     def test_standard(self, quotes):
-        results = indicators.get_marubozu(quotes, 0.95)
+        results = indicators.get_marubozu(quotes, 95)
 
         assert 502 == len(results)
         assert 6 == len(list(filter(lambda x: x.match != Match.NONE, results)))
