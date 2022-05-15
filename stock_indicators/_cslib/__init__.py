@@ -40,4 +40,4 @@ from Skender.Stock.Indicators import MaType as CsMaType
 from Skender.Stock.Indicators import PeriodSize as CsPeriodSize
 from Skender.Stock.Indicators import PivotPointType as CsPivotPointType
 from Skender.Stock.Indicators import PivotTrend as CsPivotTrend
-from Skender.Stock.Indicators import Signal as CsSignal
+from Skender.Stock.Indicators import Match as CsMatch

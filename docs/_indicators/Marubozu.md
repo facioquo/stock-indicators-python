@@ -33,9 +33,9 @@ CandleResults[CandleResult]
 - `CandleResults` is just a list of `CandleResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The candlestick pattern is indicated on dates where `signal` is `Signal.BULL_SIGNAL` or `Signal.BEAR_SIGNAL`.
+- The candlestick pattern is indicated on dates where `match` is `Match.BULL_SIGNAL` or `Match.BEAR_SIGNAL`.
 - `price` is `close` price; however, all OHLC elements are included in the `candle` properties.
-- There is no intrinsic basis or confirmation signal provided for this pattern.
+- There is no intrinsic basis or confirmation Match provided for this pattern.
 
 {% include candle-result.md %}
 
