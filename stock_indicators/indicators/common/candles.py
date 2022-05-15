@@ -17,9 +17,9 @@ class CondenseMixin:
     @IndicatorResults._verify_data
     def condense(self) -> Self:
         """
-        Remove results which have no Match, so it only returns meaningful data records.
+        Remove results which have no match, so it only returns meaningful data records.
         """
-        return self.__class__(filter(lambda x: x.Match != Match.NONE, self), self._wrapper_class)
+        return self.__class__(filter(lambda x: x.match != Match.NONE, self), self._wrapper_class)
 
 
 class _CandleProperties(_Quote):
@@ -90,11 +90,11 @@ class CandleResult(ResultBase):
         self._csdata.Price = CsDecimal(value)
 
     @property
-    def Match(self) -> Match:
+    def match(self) -> Match:
         return self._csdata.Match
 
-    @Match.setter
-    def Match(self, value):
+    @match.setter
+    def match(self, value):
         self._csdata.Match = value
 
     @property

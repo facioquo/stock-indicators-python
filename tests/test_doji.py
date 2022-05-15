@@ -7,35 +7,35 @@ class TestDoji:
         results = indicators.get_doji(quotes, 0.001)
 
         assert 502 == len(results)
-        assert 112 == len(list(filter(lambda x: x.Match != Match.NONE, results)))
+        assert 112 == len(list(filter(lambda x: x.match != Match.NONE, results)))
 
         r = results[1]
         assert r.price is None
-        assert Match.NONE == r.Match
+        assert Match.NONE == r.match
 
         r = results[23]
         assert 216.28 == round(float(r.price), 2)
-        assert Match.NEUTRAL == r.Match
+        assert Match.NEUTRAL == r.match
 
         r = results[46]
         assert r.price is None
-        assert Match.NONE == r.Match
+        assert Match.NONE == r.match
 
         r = results[34]
         assert r.price is None
-        assert Match.NONE == r.Match
+        assert Match.NONE == r.match
 
         r = results[392]
         assert r.price is None
-        assert Match.NONE == r.Match
+        assert Match.NONE == r.match
 
         r = results[451]
         assert 273.64 == round(float(r.price), 2)
-        assert Match.NEUTRAL == r.Match
+        assert Match.NEUTRAL == r.match
 
         r = results[477]
         assert 256.86 == round(float(r.price), 2)
-        assert Match.NEUTRAL == r.Match
+        assert Match.NEUTRAL == r.match
 
     def test_bad_data(self, bad_quotes):
         r = indicators.get_doji(bad_quotes)

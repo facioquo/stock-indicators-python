@@ -7,31 +7,31 @@ class TestMarubozu:
         results = indicators.get_marubozu(quotes, 0.95)
 
         assert 502 == len(results)
-        assert 6 == len(list(filter(lambda x: x.Match != Match.NONE, results)))
+        assert 6 == len(list(filter(lambda x: x.match != Match.NONE, results)))
 
         r = results[31]
         assert r.price is None
-        assert r.Match == Match.NONE
+        assert r.match == Match.NONE
 
         r = results[32]
         assert 222.10 == round(float(r.price), 2)
-        assert Match.BULL_SIGNAL == r.Match
+        assert Match.BULL_SIGNAL == r.match
 
         r = results[33]
         assert r.price is None
-        assert Match.NONE == r.Match
+        assert Match.NONE == r.match
 
         r = results[34]
         assert r.price is None
-        assert Match.NONE == r.Match
+        assert Match.NONE == r.match
 
         r = results[274]
         assert r.price is None
-        assert Match.NONE == r.Match
+        assert Match.NONE == r.match
 
         r = results[277]
         assert 248.13 == round(float(r.price), 2)
-        assert Match.BEAR_SIGNAL == r.Match
+        assert Match.BEAR_SIGNAL == r.match
 
     def test_bad_data(self, bad_quotes):
         r = indicators.get_marubozu(bad_quotes)
