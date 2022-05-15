@@ -6,7 +6,7 @@ from stock_indicators.indicators.common.candles import CandleResult, CandleResul
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_marubozu(quotes: Iterable[Quote], min_body_percent: float = 0.95):
+def get_marubozu(quotes: Iterable[Quote], min_body_percent: float = 95):
     """Get Marubozu calculated.
 
     (preview)
@@ -17,7 +17,7 @@ def get_marubozu(quotes: Iterable[Quote], min_body_percent: float = 0.95):
         `quotes` : Iterable[Quote]
             Historical price quotes.
 
-        `min_body_percent` : float, defaults 0.95
+        `min_body_percent` : float, defaults 95
             Minimum candle body size as decimalized percentage.
 
     Returns:
