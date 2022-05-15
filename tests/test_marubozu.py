@@ -45,13 +45,13 @@ class TestMarubozu:
         assert 1 == len(r)
 
     def test_condense(self, quotes):
-        r = indicators.get_marubozu(quotes, 0.95).condense()
+        r = indicators.get_marubozu(quotes, 95).condense()
         assert 6 == len(r)
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
-            indicators.get_marubozu(quotes, 0.799)
+            indicators.get_marubozu(quotes, 79.9)
 
         with pytest.raises(ArgumentOutOfRangeException):
-            indicators.get_marubozu(quotes, 1.001)
+            indicators.get_marubozu(quotes, 100.1)

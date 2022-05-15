@@ -8,14 +8,14 @@ type: candlestick-pattern
 # {{ page.title }}
 <hr>
 
-## **get_doji**(*quotes, max_price_change_percent=0.001*)
+## **get_doji**(*quotes, max_price_change_percent=0.1*)
     
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
 | `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
-| `max_price_change_percent` | float, *default 0.001* | Optional.  Maximum absolute decimalized percent difference in open and close price.  Must be between 0 and 0.005, if specified.
+| `max_price_change_percent` | float, *default 0.1* | Optional.  Maximum absolute percent difference in open and close price.  Example: 0.3% would be entered as 0.3 (not 0.003).  Must be between 0 and 0.5 percent, if specified.
 
 ### Historical quotes requirements
 

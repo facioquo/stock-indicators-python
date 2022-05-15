@@ -4,7 +4,7 @@ from stock_indicators.indicators.common.enums import Match
 
 class TestDoji:
     def test_standard(self, quotes):
-        results = indicators.get_doji(quotes, 0.001)
+        results = indicators.get_doji(quotes, 0.1)
 
         assert 502 == len(results)
         assert 112 == len(list(filter(lambda x: x.match != Match.NONE, results)))
@@ -49,13 +49,13 @@ class TestDoji:
         assert 1 == len(r)
 
     def test_condense(self, quotes):
-        r = indicators.get_doji(quotes, 0.001).condense()
+        r = indicators.get_doji(quotes, 0.1).condense()
         assert 112 == len(r)
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
-            indicators.get_doji(quotes, -0.00001)
+            indicators.get_doji(quotes, -0.001)
 
         with pytest.raises(ArgumentOutOfRangeException):
-            indicators.get_doji(quotes, 0.0050001)
+            indicators.get_doji(quotes, 0.50001)
