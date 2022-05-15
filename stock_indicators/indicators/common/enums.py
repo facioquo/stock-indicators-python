@@ -1,5 +1,5 @@
 from stock_indicators._cslib import (
-    CsCandlePart, CsSignal, CsEnum, CsBetaType, CsChandelierType, CsMaType,
+    CsCandlePart, CsMatch, CsEnum, CsBetaType, CsChandelierType, CsMaType,
     CsPivotPointType, CsPeriodSize, CsEndType, CsPivotTrend)
 from stock_indicators.indicators.common._contrib.enum import ValueEnum
 
@@ -78,12 +78,12 @@ class PivotTrend(ValueEnum):
     LL = CsPivotTrend.LL
 
 
-class Signal(ValueEnum):
-    BULL_CONFIRMED = CsSignal.BullConfirmed
-    BULL_SIGNAL = CsSignal.BullSignal
-    BULL_BASIS = CsSignal.BullBasis
-    NEUTRAL = CsSignal.Neutral
-    NONE = CsEnum.Parse(CsSignal, "None")
-    BEAR_BASIS = CsSignal.BearBasis
-    BEAR_SIGNAL = CsSignal.BearSignal
-    BEAR_CONFIRMED = CsSignal.BearConfirmed
+class Match(ValueEnum):
+    BULL_CONFIRMED = CsMatch.BullConfirmed
+    BULL_SIGNAL = CsMatch.BullSignal
+    BULL_BASIS = CsMatch.BullBasis
+    NEUTRAL = CsMatch.Neutral
+    NONE = CsEnum.Parse(CsMatch, "None")
+    BEAR_BASIS = CsMatch.BearBasis
+    BEAR_SIGNAL = CsMatch.BearSignal
+    BEAR_CONFIRMED = CsMatch.BearConfirmed

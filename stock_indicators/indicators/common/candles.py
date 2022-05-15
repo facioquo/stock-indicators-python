@@ -7,7 +7,7 @@ from stock_indicators._cslib import CsCandleProperties
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common._contrib.type_resolver import generate_cs_inherited_class
-from stock_indicators.indicators.common.enums import Signal
+from stock_indicators.indicators.common.enums import Match
 from stock_indicators.indicators.common.quote import _Quote
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
@@ -17,9 +17,9 @@ class CondenseMixin:
     @IndicatorResults._verify_data
     def condense(self) -> Self:
         """
-        Remove results which have no signal, so it only returns meaningful data records.
+        Remove results which have no Match, so it only returns meaningful data records.
         """
-        return self.__class__(filter(lambda x: x.signal != Signal.NONE, self), self._wrapper_class)
+        return self.__class__(filter(lambda x: x.Match != Match.NONE, self), self._wrapper_class)
 
 
 class _CandleProperties(_Quote):
@@ -90,12 +90,12 @@ class CandleResult(ResultBase):
         self._csdata.Price = CsDecimal(value)
 
     @property
-    def signal(self) -> Signal:
-        return self._csdata.Signal
+    def Match(self) -> Match:
+        return self._csdata.Match
 
-    @signal.setter
-    def signal(self, value):
-        self._csdata.Signal = value
+    @Match.setter
+    def Match(self, value):
+        self._csdata.Match = value
 
     @property
     def candle(self) -> CandleProperties:
