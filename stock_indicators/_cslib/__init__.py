@@ -2,7 +2,7 @@
 Skender.Stock.Indicators
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-This module loads `Skender.Stock.Indicators.dll`(v1.23.0), which is a compiled library package
+This module loads `Skender.Stock.Indicators.dll`(v1.23.1), which is a compiled library package
 from <https://github.com/DaveSkender/Stock.Indicators>, written in C#.
 
 It is currently using `.NET Standard 2.1`.
@@ -40,4 +40,4 @@ from Skender.Stock.Indicators import MaType as CsMaType
 from Skender.Stock.Indicators import PeriodSize as CsPeriodSize
 from Skender.Stock.Indicators import PivotPointType as CsPivotPointType
 from Skender.Stock.Indicators import PivotTrend as CsPivotTrend
-from Skender.Stock.Indicators import Signal as CsSignal
+from Skender.Stock.Indicators import Match as CsMatch

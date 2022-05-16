@@ -1,6 +1,6 @@
 ---
 title: Double Exponential Moving Average (DEMA)
-permalink: /indicators/DoubleEma/
+permalink: /indicators/Dema/
 type: moving-average
 layout: indicator
 ---
@@ -8,7 +8,7 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_double_ema**(*quotes, lookback_periods*)
+## **get_dema**(*quotes, lookback_periods*)
     
 ## Parameters
 
@@ -60,7 +60,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # calculate 20-period DEMA
-results = indicators.get_double_ema(quotes, 20)
+results = indicators.get_dema(quotes, 20)
 ```
 
 ## About: {{ page.title }}
@@ -70,7 +70,7 @@ results = indicators.get_double_ema(quotes, 20)
 
 ![image]({{site.charturl}}/Dema.png)
 
-DEMA is shown as the dashed line above.  [EMA](../Ema#content) (solid line) and [Triple EMA](../TripleEma#content) (dotted line) are also shown here for comparison.
+See related [EMA](../Ema#content) and [Triple EMA](../Tema#content).
 
 ### Sources
 

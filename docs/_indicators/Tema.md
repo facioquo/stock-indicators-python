@@ -1,6 +1,6 @@
 ---
 title: Triple Exponential Moving Average (TEMA)
-permalink: /indicators/TripleEma/
+permalink: /indicators/Tema/
 type: moving-average
 layout: indicator
 ---
@@ -8,7 +8,7 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_triple_ema**(*quotes, lookback_periods*)
+## **get_tema**(*quotes, lookback_periods*)
 
 ## Parameters
 
@@ -60,7 +60,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # calculate 20-period TEMA
-results = indicators.get_triple_ema(quotes, 20)
+results = indicators.get_tema(quotes, 20)
 ```
 
 ## About: {{ page.title }}
@@ -71,9 +71,9 @@ Note: TEMA is often confused with the alternative [TRIX](../Trix#content) oscill
 
 ![image]({{site.charturl}}/Tema.png)
 
-TEMA is shown as the dotted line above.  [EMA](../Ema#content) (solid line) and [Double EMA](../DoubleEma#content) (dashed line) are also shown here for comparison.
+See related [EMA](../Ema#content) and [Double EMA](../Dema#content).
 
 ### Sources
 
 - [C# core]({{site.base_sourceurl}}/s-z/Tema/Tema.cs)
-- [Python wrapper]({{site.sourceurl}}/triple_ema.py)
+- [Python wrapper]({{site.sourceurl}}/tema.py)

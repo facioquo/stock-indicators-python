@@ -6,10 +6,10 @@ class TestDoubleEMA:
         results = indicators.get_dema(quotes, 20)
         
         assert 502 == len(results)
-        assert 464 == len(list(filter(lambda x: x.dema is not None, results)))
+        assert 483 == len(list(filter(lambda x: x.dema is not None, results)))
         
         r = results[51]
-        assert 226.0011 == round(float(r.dema), 4)
+        assert 225.8259 == round(float(r.dema), 4)
         
         r = results[249]
         assert 258.4452 == round(float(r.dema), 4)

@@ -256,20 +256,20 @@ sma_of_ema = indicators.get_sma(quotes_from_ema, 20)
 
 {% include candle-result.md %}
 
-### Signal
+### Match
 
-When a candlestick pattern is recognized, it produces a signal.  In some cases, an intrinsic confirmation is also available.  In cases where previous bars were used to identify a pattern, they are indicates as the basis for the signal. [Documentation for each candlestick pattern]({{site.baseurl}}/indicators/#candlestick-pattern) will indicate whether confirmation and/or basis information is produced.
+When a candlestick pattern is recognized, it produces a match.  In some cases, an intrinsic confirmation is also available.  In cases where previous bars were used to identify a pattern, they are indicates as the basis for the match. [Documentation for each candlestick pattern]({{site.baseurl}}/indicators/#candlestick-pattern) will indicate whether confirmation and/or basis information is produced.
 
 | type | description
 |-- |:--
-| `Signal.BULL_CONFIRMED` | Confirmation of a prior bull signal
-| `Signal.BULL_SIGNAL` | Matching bullish pattern
-| `Signal.BULL_BASIS` | Bars supporting a bullish signal
-| `Signal.NEUTRAL` | Matching for non-directional patterns
-| `Signal.NONE` | No match
-| `Signal.BEAR_BASIS` | Bars supporting a bearish signal
-| `Signal.BEAR_SIGNAL` | Matching bearish pattern
-| `Signal.BEAR_CONFIRMED` | Confirmation of a prior bear signal
+| `Match.BULL_CONFIRMED` | Confirmation of a prior bull Match
+| `Match.BULL_SIGNAL` | Matching bullish pattern
+| `Match.BULL_BASIS` | Bars supporting a bullish Match
+| `Match.NEUTRAL` | Matching for non-directional patterns
+| `Match.NONE` | No match
+| `Match.BEAR_BASIS` | Bars supporting a bearish Match
+| `Match.BEAR_SIGNAL` | Matching bearish pattern
+| `Match.BEAR_CONFIRMED` | Confirmation of a prior bear Match
 
 ### Candle
 

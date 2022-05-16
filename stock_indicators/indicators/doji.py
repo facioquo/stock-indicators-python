@@ -6,7 +6,7 @@ from stock_indicators.indicators.common.candles import CandleResult, CandleResul
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_doji(quotes: Iterable[Quote], max_price_change_percent: float = 0.001):
+def get_doji(quotes: Iterable[Quote], max_price_change_percent: float = 0.1):
     """Get Doji calculated.
 
     (preview)
@@ -17,7 +17,7 @@ def get_doji(quotes: Iterable[Quote], max_price_change_percent: float = 0.001):
         `quotes` : Iterable[Quote]
             Historical price quotes.
 
-        `max_price_change_percent` : float, defaults 0.001
+        `max_price_change_percent` : float, defaults 0.1
             Maximum absolute decimalized percent difference in open and close price.
 
     Returns:
