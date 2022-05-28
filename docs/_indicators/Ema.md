@@ -16,8 +16,7 @@ layout: indicator
 | -- |-- |--
 | `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
 | `lookback_periods` | int | Number of periods (`N`) in the moving average.  Must be greater than 0.
-
-<!-- | `candlePart` | CandlePart | Optional.  Specify the [OHLCV]({{site.baseurl}}/guide/#historical-quotes) candle part to evaluate.  See [CandlePart options](#candlepart-options) below.  Default is `CandlePart.Close` -->
+| `candle_part` | CandlePart, *default CandlePart.CLOSE* | Specify candle part to evaluate.  See [CandlePart options](#candlepart-options) below.
 
 ### Historical quotes requirements
 
@@ -25,16 +24,7 @@ You must have at least `2×N` or `N+100` periods of `quotes`, whichever is more,
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-<!-- 
-### CandlePart options
-
-| type | description
-|-- |--
-| `CandlePart.Open` | Use `Open` price
-| `CandlePart.High` | Use `High` price
-| `CandlePart.Low` | Use `Low` price
-| `CandlePart.Close` | Use `Close` price (default)
-| `CandlePart.Volume` | Use `Volume` -->
+{% include candlepart-options.md %}
 
 ## Returns
 
@@ -83,7 +73,7 @@ results = indicators.get_ema(quotes, 20)
 
 ![image]({{site.charturl}}/Ema.png)
 
-EMA is shown as the solid line above.  Double EMA (dashed line) and Triple EMA (dotted line) are also shown here for comparison.
+See also related [Double EMA](../Dema#content) and [Triple EMA](../Tema#content).
 
 #### Sources
 

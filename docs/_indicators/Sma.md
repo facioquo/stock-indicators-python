@@ -16,7 +16,7 @@ layout: indicator
 | -- |-- |--
 | `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
 | `lookback_periods` | int | Number of periods (`N`) in the lookback window.  Must be greater than 0.
-| `candle_part` | CandlePart, *default CandlePart.CLOSE* | Optional.  Specify candle part to evaluate.  See [CandlePart options](#candlepart-options) below.
+| `candle_part` | CandlePart, *default CandlePart.CLOSE* | Specify candle part to evaluate.  See [CandlePart options](#candlepart-options) below.
 
 
 ### Historical quotes requirements
