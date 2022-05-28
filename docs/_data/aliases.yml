@@ -6,6 +6,10 @@
   permalink: /indicators/StdDev/
   type: price-characteristic
 
+- title: Hurst Exponent
+  permalink: /indicators/Hurst/
+  type: price-trend
+
 - title: KDJ Index
   permalink: /indicators/Stoch/
   type: oscillator
@@ -14,8 +18,32 @@
   permalink: /indicators/Epma/
   type: moving-average
 
+- title: Linear Regression (best-fit line)
+  permalink: /indicators/Slope/
+  type: numerical-analysis
+
+- title: Mean absolute deviation
+  permalink: /indicators/Sma/
+  type: numerical-analysis
+
+- title: Mean square error
+  permalink: /indicators/Sma/
+  type: numerical-analysis
+
+- title: Mean absolute percentage error
+  permalink: /indicators/Sma/
+  type: numerical-analysis
+
+- title: Modified Moving Average (MMA)
+  permalink: /indicators/Smma/
+  type: moving-average
+
 - title: Momentum Oscillator
   permalink: /indicators/Roc/
+  type: price-characteristic
+
+- title: Normalized Average True Range
+  permalink: /indicators/Atr/
   type: price-characteristic
 
 - title: Price Channels
@@ -34,10 +62,14 @@
   permalink: /indicators/Roc/
   type: oscillator
 
+- title: Running Moving Average (RMA)
+  permalink: /indicators/Smma/
+  type: moving-average
+
 - title: SuperTrend
   permalink: /indicators/SuperTrend/
   type: stop-and-reverse
 
-# - title: Volume Simple Moving Average
-#   permalink: /indicators/VolSma/
-#   type: volume-based
+- title: Z-Score
+  permalink: /indicators/StdDev/
+  type: numerical-analysis
