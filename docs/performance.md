@@ -1,7 +1,7 @@
 ---
-title: Performance benchmarks for v0.1.0
+title: Performance benchmarks for v0.7.1
 permalink: /performance/
-layout: default
+layout: page
 ---
 
 # {{ page.title }}

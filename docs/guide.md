@@ -1,7 +1,7 @@
 ---
 title: Guide and Pro tips
 permalink: /guide/
-layout: default
+layout: page
 ---
 
 # {{ page.title }}
