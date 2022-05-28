@@ -8,7 +8,7 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_sma**(*quotes, lookback_periods*)
+## **get_sma**(*quotes, lookback_periods, candle_part=CandlePart.CLOSE*)
 
 ## Parameters
 

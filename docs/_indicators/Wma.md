@@ -8,7 +8,7 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_wma**(*quotes, lookback_periods*)
+## **get_wma**(*quotes, lookback_periods, candle_part=CandlePart.CLOSE*)
     
 ## Parameters
 
@@ -16,12 +16,15 @@ layout: indicator
 | -- |-- |--
 | `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
 | `lookback_periods` | int | Number of periods (`N`) in the moving average.  Must be greater than 0.
+| `candle_part` | CandlePart, *default CandlePart.CLOSE* | Specify candle part to evaluate.  See [CandlePart options](#candlepart-options) below.
 
 ### Historical quotes requirements
 
 You must have at least `N` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+
+{% include candlepart-options.md %}
 
 ## Return
 
