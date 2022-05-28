@@ -8,8 +8,8 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_keltner**(*quotes, fast_periods=34, slow_periods=55, signal_periods=13*)
-
+## **get_kvo**(*quotes, fast_periods=34, slow_periods=55, signal_periods=13*)
+    
 ## Parameters
 
 | name | type | notes
@@ -64,7 +64,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # Calculate Klinger(34,55,13)
-results = indicators.get_keltner(quotes, 34,55,13)
+results = indicators.get_kvo(quotes, 34, 55, 13)
 ```
 
 ## About: {{ page.title }}
