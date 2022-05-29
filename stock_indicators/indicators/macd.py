@@ -5,12 +5,15 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
+from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_macd(quotes: Iterable[Quote], fast_periods: int = 12, slow_periods: int = 26, signal_periods: int = 9):
+def get_macd(quotes: Iterable[Quote], fast_periods: int = 12,
+             slow_periods: int = 26, signal_periods: int = 9,
+             candle_part: CandlePart = CandlePart.CLOSE):
     """Get MACD calculated.
 
     Moving Average Convergence/Divergence (MACD) is a simple oscillator view
@@ -29,6 +32,9 @@ def get_macd(quotes: Iterable[Quote], fast_periods: int = 12, slow_periods: int 
         `signal_periods` : int, defaults 9
             Number of periods for the Signal moving average.
 
+        `candle_part` : CandlePart, defaults CandlePart.CLOSE
+            Selected OHLCV part.
+
     Returns:
         `MACDResults[MACDResult]`
             MACDResults is list of MACDResult with providing useful helper methods.
@@ -37,7 +43,9 @@ def get_macd(quotes: Iterable[Quote], fast_periods: int = 12, slow_periods: int 
          - [MACD Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Macd/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    macd_results = CsIndicator.GetMacd[Quote](CsList(Quote, quotes), fast_periods, slow_periods, signal_periods)
+    macd_results = CsIndicator.GetMacd[Quote](CsList(Quote, quotes), fast_periods,
+                                              slow_periods, signal_periods,
+                                              candle_part)
     return MACDResults(macd_results, MACDResult)
 
 
