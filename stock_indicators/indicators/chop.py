@@ -41,12 +41,12 @@ class ChopResult(ResultBase):
     """
 
     @property
-    def chop(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Chop)
+    def chop(self) -> Optional[float]:
+        return self._csdata.Chop
 
     @chop.setter
     def chop(self, value):
-        self._csdata.Chop = CsDecimal(value)
+        self._csdata.Chop = value
 
 
 _T = TypeVar("_T", bound=ChopResult)
