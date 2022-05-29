@@ -40,7 +40,7 @@ ChopResults[ChopResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `chop` | decimal, Optional | Choppiness Index
+| `chop` | float, Optional | Choppiness Index
 
 ### Utilities
 

@@ -46,8 +46,8 @@ StochRSIResults[StochRSIResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `stoch_rsi` | Decimal, Optional | %K Oscillator = Stochastic RSI = Stoch(`S`,`G`,`M`) of RSI(`R`) of Close price
-| `signal` | Decimal, Optional | %D Signal Line = Simple moving average of %K based on `G` periods
+| `stoch_rsi` | float, Optional | %K Oscillator = Stochastic RSI = Stoch(`S`,`G`,`M`) of RSI(`R`) of Close price
+| `signal` | float, Optional | %D Signal Line = Simple moving average of %K based on `G` periods
 
 ### Utilities
 

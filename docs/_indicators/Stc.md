@@ -44,7 +44,7 @@ STCResults[STCResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `stc` | Decimal, Optional | Schaff Trend Cycle
+| `stc` | float, Optional | Schaff Trend Cycle
 
 ### Utilities
 

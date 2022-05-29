@@ -44,9 +44,9 @@ PVOResults[PVOResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `pvo` | Decimal, Optional | Normalized difference between two Volume moving averages
-| `signal` | Decimal, Optional | Moving average of the `pvo` line
-| `histogram` | Decimal, Optional | Gap between of the `pvo` and `signal` line
+| `pvo` | float, Optional | Normalized difference between two Volume moving averages
+| `signal` | float, Optional | Moving average of the `pvo` line
+| `histogram` | float, Optional | Gap between of the `pvo` and `signal` line
 
 ### Utilities
 
