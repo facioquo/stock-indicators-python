@@ -49,12 +49,12 @@ class UltimateResult(ResultBase):
     """
 
     @property
-    def ultimate(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Ultimate)
+    def ultimate(self) -> Optional[float]:
+        return self._csdata.Ultimate
 
     @ultimate.setter
     def ultimate(self, value):
-        self._csdata.Ultimate = CsDecimal(value)
+        self._csdata.Ultimate = value
 
 
 _T = TypeVar("_T", bound=UltimateResult)

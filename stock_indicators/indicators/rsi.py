@@ -47,7 +47,7 @@ class RSIResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=RSIResult)
-class RSIResults(ToQuotesMixin, RemoveWarmupMixin, IndicatorResults[_T]):
+class RSIResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of RSI(Relative Strength Index) results.
     It is exactly same with built-in `list` except for that it provides

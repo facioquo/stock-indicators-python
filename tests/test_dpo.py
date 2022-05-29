@@ -20,13 +20,13 @@ class TestDPO:
         assert r.dpo is None
         assert r.sma is None
         
-    def test_to_quotes(self, quotes):
-        new_quotes = indicators.get_dpo(quotes, 14).to_quotes()
+    # def test_to_quotes(self, quotes):
+    #     new_quotes = indicators.get_dpo(quotes, 14).to_quotes()
         
-        assert 489 == len(new_quotes)
+    #     assert 489 == len(new_quotes)
         
-        q = new_quotes.pop()
-        assert 2.18214 == round(float(q.close), 5)
+    #     q = new_quotes.pop()
+    #     assert 2.18214 == round(float(q.close), 5)
         
     def test_bad_data(self, bad_quotes):
         r = indicators.get_dpo(bad_quotes, 5)

@@ -49,20 +49,20 @@ class StochRSIResult(ResultBase):
     """
 
     @property
-    def stoch_rsi(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.StochRsi)
+    def stoch_rsi(self) -> Optional[float]:
+        return self._csdata.StochRsi
 
     @stoch_rsi.setter
     def stoch_rsi(self, value):
-        self._csdata.StochRsi = CsDecimal(value)
+        self._csdata.StochRsi = value
 
     @property
-    def signal(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Signal)
+    def signal(self) -> Optional[float]:
+        return self._csdata.Signal
 
     @signal.setter
     def signal(self, value):
-        self._csdata.Signal = CsDecimal(value)
+        self._csdata.Signal = value
 
 
 _T = TypeVar("_T", bound=StochRSIResult)

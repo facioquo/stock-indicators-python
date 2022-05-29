@@ -55,7 +55,7 @@ class OBVResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=OBVResult)
-class OBVResults(ToQuotesMixin, IndicatorResults[_T]):
+class OBVResults(IndicatorResults[_T]):
     """
     A wrapper class for the list of On-balance Volume (OBV) results.
     It is exactly same with built-in `list` except for that it provides

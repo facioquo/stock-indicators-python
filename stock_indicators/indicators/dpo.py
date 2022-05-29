@@ -58,7 +58,7 @@ class DPOResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=DPOResult)
-class DPOResults(ToQuotesMixin, IndicatorResults[_T]):
+class DPOResults(IndicatorResults[_T]):
     """
     A wrapper class for the list of Detrended Price Oscillator (DPO) results.
     It is exactly same with built-in `list` except for that it provides

@@ -47,7 +47,7 @@ class HurstResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=HurstResult)
-class HurstResults(ToQuotesMixin, RemoveWarmupMixin, IndicatorResults[_T]):
+class HurstResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Hurst Exponent results.
     It is exactly same with built-in `list` except for that it provides

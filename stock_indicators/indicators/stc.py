@@ -49,12 +49,12 @@ class STCResult(ResultBase):
     """
 
     @property
-    def stc(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Stc)
+    def stc(self) -> Optional[float]:
+        return self._csdata.Stc
 
     @stc.setter
     def stc(self, value):
-        self._csdata.Stc = CsDecimal(value)
+        self._csdata.Stc = value
 
 
 _T = TypeVar("_T", bound=STCResult)
