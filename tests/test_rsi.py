@@ -1,6 +1,5 @@
 import pytest
 from stock_indicators import indicators
-from stock_indicators._cstypes.decimal import to_pydecimal
 
 class TestRSI:
     def test_standard(self, quotes):
