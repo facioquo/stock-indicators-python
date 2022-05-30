@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -48,28 +45,28 @@ class StochResult(ResultBase):
     """
 
     @property
-    def oscillator(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Oscillator)
+    def oscillator(self) -> Optional[float]:
+        return self._csdata.Oscillator
 
     @oscillator.setter
     def oscillator(self, value):
-        self._csdata.Oscillator = CsDecimal(value)
+        self._csdata.Oscillator = value
 
     @property
-    def signal(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Signal)
+    def signal(self) -> Optional[float]:
+        return self._csdata.Signal
 
     @signal.setter
     def signal(self, value):
-        self._csdata.Signal = CsDecimal(value)
+        self._csdata.Signal = value
 
     @property
-    def percent_j(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.PercentJ)
+    def percent_j(self) -> Optional[float]:
+        return self._csdata.PercentJ
 
     @percent_j.setter
     def percent_j(self, value):
-        self._csdata.PercentJ = CsDecimal(value)
+        self._csdata.PercentJ = value
 
     k = oscillator
     d = signal

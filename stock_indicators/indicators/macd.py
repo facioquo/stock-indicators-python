@@ -55,28 +55,28 @@ class MACDResult(ResultBase):
     """
 
     @property
-    def macd(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Macd)
+    def macd(self) -> Optional[float]:
+        return self._csdata.Macd
 
     @macd.setter
     def macd(self, value):
-        self._csdata.Macd = CsDecimal(value)
+        self._csdata.Macd = value
 
     @property
-    def signal(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Signal)
+    def signal(self) -> Optional[float]:
+        return self._csdata.Signal
 
     @signal.setter
     def signal(self, value):
-        self._csdata.Signal = CsDecimal(value)
+        self._csdata.Signal = value
 
     @property
-    def histogram(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Histogram)
+    def histogram(self) -> Optional[float]:
+        return self._csdata.Histogram
 
     @histogram.setter
     def histogram(self, value):
-        self._csdata.Histogram = CsDecimal(value)
+        self._csdata.Histogram = value
 
     @property
     def fast_ema(self) -> Optional[Decimal]:

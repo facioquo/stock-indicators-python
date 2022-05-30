@@ -11,16 +11,16 @@ class TestHurst:
         r = results[15820]
         assert 0.483563 == round(float(r.hurst_exponent), 6)
 
-    def test_to_quotes(self, longest_quotes):
-        new_quotes = indicators.get_hurst(longest_quotes, len(longest_quotes) - 1).to_quotes()
+    # def test_to_quotes(self, longest_quotes):
+    #     new_quotes = indicators.get_hurst(longest_quotes, len(longest_quotes) - 1).to_quotes()
         
-        assert 1  == len(new_quotes)
+    #     assert 1  == len(new_quotes)
         
-        q = new_quotes.pop()
-        assert 0.483563 == round(float(q.open), 6)
-        assert 0.483563 == round(float(q.high), 6)
-        assert 0.483563 == round(float(q.low), 6)
-        assert 0.483563 == round(float(q.close), 6)
+    #     q = new_quotes.pop()
+    #     assert 0.483563 == round(float(q.open), 6)
+    #     assert 0.483563 == round(float(q.high), 6)
+    #     assert 0.483563 == round(float(q.low), 6)
+    #     assert 0.483563 == round(float(q.close), 6)
         
     def test_bad_data(self, bad_quotes):
         r = indicators.get_hurst(bad_quotes, 150)
