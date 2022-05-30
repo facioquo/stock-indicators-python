@@ -47,7 +47,7 @@ ADLResults[ADLResult]
 
 ### Utilities
 
-- [.to_quotes()]({{site.baseurl}}/utilities#convert-to-quotes)
+- ~~[.to_quotes()]({{site.baseurl}}/utilities#convert-to-quotes)~~ <code style='color: #f32faf; important'>[deprecated]</code>
 - [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 

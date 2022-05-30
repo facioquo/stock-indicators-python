@@ -23,6 +23,8 @@ Currently, `.condense()` is only available on a select few indicators.  If you f
 
 ### Convert to quotes
 
+<code style='color: #f32faf; important'>The .to_quotes() method is now deprecated.<code>
+
 `results.to_quotes()` will transform indicator results back into an `list[Quote]` so it can be re-used to generate an [indicator of indicators]({{site.baseurl}}/guide/#generating-indicator-of-indicators).
 
 ```python

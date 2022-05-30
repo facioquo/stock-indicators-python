@@ -219,7 +219,8 @@ for r in nested_results:
 
 If you want to compute an indicator of indicators, such as an SMA of an ADX or an [RSI of an OBV](https://medium.com/@robswc/this-is-what-happens-when-you-combine-the-obv-and-rsi-indicators-6616d991773d), all you need to do is to take the results of one, reformat into a synthetic historical quotes, and send it through to another indicator.
 
-Here's an example of SMA of RSI:
+<!-- MEMO: This example is for to_quotes(), deprecated. -->
+<!-- Here's an example of SMA of RSI:
 
 ```python
 from stock_indicators import indicators
@@ -232,13 +233,19 @@ results = indicators.get_rsi(quotes)
 quotes_from_rsi = results.to_quotes()
 sma_of_rsi = indicators.get_sma(quotes_from_rsi, 20)
 
-```
+``` -->
 
-See [.to_quotes()]({{site.baseurl}}/utilities/#convert-to-quotes) for more information.
+~~See [.to_quotes()]({{site.baseurl}}/utilities/#convert-to-quotes) for more information.~~
+The .to_quotes() method is now deprecated.
 
-When `.to_quotes()` is not available for an indicator, a workaround is to convert yourself.
+A workaround is to convert yourself.
 
 ```python
+from stock_indicators import indicators
+
+# fetch historical quotes from your feed (your method)
+quotes = get_history_from_feed("MSFT")
+
 # calculate EMA
 results = indicators.get_ema(quotes, 20)
 
