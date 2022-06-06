@@ -110,6 +110,28 @@ Each indicator will need different amounts of price `quotes` to calculate.  You 
 
 For example, if you are using daily data and want one year of precise EMA(250) data, you need to provide 3 years of historical quotes (1 extra year for the lookback period and 1 extra year for convergence); thereafter, you would discard or not use the first two years of results.  Occassionally, even more is required for optimal precision.
 
+### Using Pandas.Dataframe
+
+If you are using `Pandas.Dataframe` to hold quote data, you have to convert it into our `Quote` instance. That means you must iterate them row by row. There's [an awesome article](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) that introduces the best-efficiency way to iterate `Dataframe`.
+
+Here's an example we'd like to suggest: **Use list comprehension**
+```python
+# Suppose that you have dataframe like the below.
+#             date    open    high     low   close     volume
+# 0     2018-12-31  244.92  245.54  242.87  245.28  147031456
+# 1     2018-12-28  244.94  246.73  241.87  243.15  155998912
+# 2     2018-12-27  238.06  243.68  234.52  243.46  189794032
+# ...          ...     ...     ...     ...     ...        ...
+
+quotes_list = [
+    Quote(d,o,h,l,c,v) 
+    for d,o,h,l,c,v 
+    in zip(df['date'], df['open'], df['high'], df['low'], df['close'], df['volume'])
+]
+```
+
+You can also use `numpy.vectorize()`, its gain is too slight and hard to apply in this case.
+
 
 ### Using custom quote classes
 
