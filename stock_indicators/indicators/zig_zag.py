@@ -16,7 +16,7 @@ def get_zig_zag(quotes: Iterable[Quote], end_type: EndType = EndType.CLOSE,
 
     Zig Zag is a price chart overlay that simplifies the up and down
     movements and transitions based on a percent change smoothing threshold.
-    
+
     Parameters:
         `quotes` : Iterable[Quote]
             Historical price quotes.
