@@ -14,7 +14,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `lookback_periods` | int, Optional, *default 20*  | Size (`N`) of the evaluation window.  Must be `None` or greater than 1 to calculate.  A `None` value will produce a full `quotes` evaluation window ([see below](#alternative-depiction-for-full-quotes-variant)).
 | `standard_deviations` | int, *default 2*  | Width of bands.  Standard deviations (`D`) from the regression line.  Must be greater than 0.  Default is 2.
 

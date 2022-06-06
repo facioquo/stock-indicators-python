@@ -14,7 +14,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `fast_periods` | int, *default 34* | Number of lookback periods (`F`) for the short-term EMA.  Must be greater than 2.
 | `slow_periods` | int, *default 55* | Number of lookback periods (`L`) for the long-term EMA.  Must be greater than `F`.
 | `signal_periods` | int, *default 13* | Number of lookback periods for the signal line.  Must be greater than 0.
