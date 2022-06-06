@@ -54,7 +54,7 @@ class ZigZagResult(ResultBase):
         self._csdata.ZigZag = CsDecimal(value)
 
     @property
-    def point_type(self) -> str:
+    def point_type(self) -> Optional[str]:
         return self._csdata.PointType
 
     @point_type.setter

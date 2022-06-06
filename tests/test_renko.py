@@ -114,22 +114,22 @@ class TestRenko:
         assert  492824400 == float(round(r.volume, 0))
         assert    r.is_up == True
         
-    def test_to_quotes(self, quotes):
-        new_quotes = indicators.get_renko(quotes, 2.5).to_quotes()
+    # def test_to_quotes(self, quotes):
+    #     new_quotes = indicators.get_renko(quotes, 2.5).to_quotes()
         
-        assert 154 == len(new_quotes)
+    #     assert 154 == len(new_quotes)
         
-        q = new_quotes[153]
-        assert      240.5 == float(round(q.open, 1))
-        assert     243.68 == float(round(q.high, 2))
-        assert     234.52 == float(round(q.low, 2))
-        assert        243 == float(round(q.close, 0))
-        assert  189794032 == float(round(q.volume, 0))
+    #     q = new_quotes[153]
+    #     assert      240.5 == float(round(q.open, 1))
+    #     assert     243.68 == float(round(q.high, 2))
+    #     assert     234.52 == float(round(q.low, 2))
+    #     assert        243 == float(round(q.close, 0))
+    #     assert  189794032 == float(round(q.volume, 0))
         
-    def test_use_as_quotes(self, quotes):
-        renko_quotes = indicators.get_renko(quotes, 0.5).to_quotes()
-        renko_sma = indicators.get_sma(renko_quotes, 5)
-        assert 1124 == len(list(filter(lambda x: x.sma is not None, renko_sma)))
+    # def test_use_as_quotes(self, quotes):
+    #     renko_quotes = indicators.get_renko(quotes, 0.5).to_quotes()
+    #     renko_sma = indicators.get_sma(renko_quotes, 5)
+    #     assert 1124 == len(list(filter(lambda x: x.sma is not None, renko_sma)))
         
     def test_bad_data(self, bad_quotes):
         r = indicators.get_renko(bad_quotes, 100)
