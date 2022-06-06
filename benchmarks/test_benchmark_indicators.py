@@ -234,3 +234,6 @@ def test_benchmark_williams_r(benchmark, quotes):
 
 def test_benchmark_wma(benchmark, quotes):
     benchmark(indicators.get_wma, quotes, 20)
+
+def test_benchmark_zig_zag(benchmark, quotes):
+    benchmark(indicators.get_zig_zag, quotes)
