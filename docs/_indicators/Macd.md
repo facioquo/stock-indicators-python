@@ -14,16 +14,19 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `fast_periods` | int, *default 12* | Number of periods (`F`) for the faster moving average.  Must be greater than 0.
 | `slow_periods` | int, *default 26* | Number of periods (`S`) for the slower moving average.  Must be greater than `fast_periods`.
 | `signal_periods` | int, *default 9* | Number of periods (`P`) for the moving average of MACD.  Must be greater than or equal to 0.
+| `candle_part` | CandlePart, *default CandlePart.CLOSE* | Specify candle part to evaluate.  See [CandlePart options](#candlepart-options) below.
 
 ### Historical quotes requirements
 
 You must have at least `2×(S+P)` or `S+P+100` worth of `quotes`, whichever is more, to cover the convergence periods.  Since this uses a smoothing technique, we recommend you use at least `S+P+250` data points prior to the intended usage date for better precision.
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
+
+{% include candlepart-options.md %}
 
 ## Returns
 
@@ -43,9 +46,9 @@ MACDResults[MACDResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `macd` | Decimal, Optional | The MACD line is the difference between slow and fast moving averages (`macd = fast_ema - slow_ema`)
-| `signal` | Decimal, Optional | Moving average of the `macd` line
-| `histogram` | Decimal, Optional | Gap between of the `macd` and `signal` line
+| `macd` | float, Optional | The MACD line is the difference between slow and fast moving averages (`macd = fast_ema - slow_ema`)
+| `signal` | float, Optional | Moving average of the `macd` line
+| `histogram` | float, Optional | Gap between of the `macd` and `signal` line
 | `fast_ema` | Decimal, Optional | Fast Exponential Moving Average
 | `slow_ema` | Decimal, Optional | Slow Exponential Moving Average
 

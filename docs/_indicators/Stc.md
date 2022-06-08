@@ -14,7 +14,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `cycle_periods` | int, *default 10* | Number of periods (`C`) for the Trend Cycle.  Must be greater than or equal to 0.
 | `fast_periods` | int, *default 23* | Number of periods (`F`) for the faster moving average.  Must be greater than 0.
 | `slow_periods` | int, *default 50* | Number of periods (`S`) for the slower moving average.  Must be greater than `fast_periods`.
@@ -44,7 +44,7 @@ STCResults[STCResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `stc` | Decimal, Optional | Schaff Trend Cycle
+| `stc` | float, Optional | Schaff Trend Cycle
 
 ### Utilities
 

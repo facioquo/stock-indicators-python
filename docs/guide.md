@@ -1,7 +1,7 @@
 ---
 title: Guide and Pro tips
 permalink: /guide/
-layout: default
+layout: page
 ---
 
 # {{ page.title }}
@@ -109,6 +109,28 @@ Each indicator will need different amounts of price `quotes` to calculate.  You 
 :warning: IMPORTANT! Some indicators use a smoothing technique that converges to better precision over time.  While you can calculate these with the minimum amount of quote data, the precision to two decimal points often requires 250 or more preceding historical records.
 
 For example, if you are using daily data and want one year of precise EMA(250) data, you need to provide 3 years of historical quotes (1 extra year for the lookback period and 1 extra year for convergence); thereafter, you would discard or not use the first two years of results.  Occassionally, even more is required for optimal precision.
+
+### Using Pandas.Dataframe
+
+If you are using `Pandas.Dataframe` to hold quote data, you have to convert it into our `Quote` instance. That means you must iterate them row by row. There's [an awesome article](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) that introduces the best-efficiency way to iterate `Dataframe`.
+
+Here's an example we'd like to suggest: **Use list comprehension**
+```python
+# Suppose that you have dataframe like the below.
+#             date    open    high     low   close     volume
+# 0     2018-12-31  244.92  245.54  242.87  245.28  147031456
+# 1     2018-12-28  244.94  246.73  241.87  243.15  155998912
+# 2     2018-12-27  238.06  243.68  234.52  243.46  189794032
+# ...          ...     ...     ...     ...     ...        ...
+
+quotes_list = [
+    Quote(d,o,h,l,c,v) 
+    for d,o,h,l,c,v 
+    in zip(df['date'], df['open'], df['high'], df['low'], df['close'], df['volume'])
+]
+```
+
+You can also use `numpy.vectorize()`, its gain is too slight and hard to apply in this case.
 
 
 ### Using custom quote classes
@@ -219,7 +241,8 @@ for r in nested_results:
 
 If you want to compute an indicator of indicators, such as an SMA of an ADX or an [RSI of an OBV](https://medium.com/@robswc/this-is-what-happens-when-you-combine-the-obv-and-rsi-indicators-6616d991773d), all you need to do is to take the results of one, reformat into a synthetic historical quotes, and send it through to another indicator.
 
-Here's an example of SMA of RSI:
+<!-- MEMO: This example is for to_quotes(), deprecated. -->
+<!-- Here's an example of SMA of RSI:
 
 ```python
 from stock_indicators import indicators
@@ -232,13 +255,19 @@ results = indicators.get_rsi(quotes)
 quotes_from_rsi = results.to_quotes()
 sma_of_rsi = indicators.get_sma(quotes_from_rsi, 20)
 
-```
+``` -->
 
-See [.to_quotes()]({{site.baseurl}}/utilities/#convert-to-quotes) for more information.
+~~See [.to_quotes()]({{site.baseurl}}/utilities/#convert-to-quotes) for more information.~~
+The .to_quotes() method is now deprecated.
 
-When `.to_quotes()` is not available for an indicator, a workaround is to convert yourself.
+A workaround is to convert yourself.
 
 ```python
+from stock_indicators import indicators
+
+# fetch historical quotes from your feed (your method)
+quotes = get_history_from_feed("MSFT")
+
 # calculate EMA
 results = indicators.get_ema(quotes, 20)
 

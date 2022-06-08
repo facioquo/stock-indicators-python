@@ -273,3 +273,30 @@ h5 {
 .circle {
     border-radius: 50%;
 }
+
+// FOOTER / EDIT PAGE
+.footer {
+  margin-top: 3rem;
+  font-size: 0.9rem;
+
+  .footer-body {
+    font-size: 0.8rem;
+
+    .btn {
+      background-color: $color-primary;
+      color: $color-primary-light;
+      margin-top: 8px;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+
+      &:hover {
+        background-color: $color-primary-hover;
+        text-decoration: none;
+      }
+    }
+  }
+}
+
+.qna-dataframe {
+    font-size: 13px;
+}

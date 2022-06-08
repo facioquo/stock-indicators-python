@@ -14,7 +14,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `short_periods` | int, *default 7* | Number of periods (`S`) in the short lookback.  Must be greater than 0.
 | `middle_periods` | int, *default 14* | Number of periods (`M`) in the middle lookback.  Must be greater than `S`.
 | `long_periods` | int, *default 28* | Number of periods (`L`) in the long lookback.  Must be greater than `M`.
@@ -42,7 +42,7 @@ UltimateResults[UltimateResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `ultimate` | Decimal, Optional | Simple moving average for `N` lookback periods
+| `ultimate` | float, Optional | Simple moving average for `N` lookback periods
 
 ### Utilities
 

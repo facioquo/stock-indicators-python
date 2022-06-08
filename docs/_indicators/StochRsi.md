@@ -14,7 +14,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `rsi_periods` | int | Number of periods (`R`) in the lookback period.  Must be greater than 0.  Standard is 14.
 | `stoch_periods` | int | Number of periods (`S`) in the lookback period.  Must be greater than 0.  Typically the same value as `rsi_periods`.
 | `signal_periods` | int | Number of periods (`G`) in the signal line (SMA of the StochRSI).  Must be greater than 0.  Typically 3-5.
@@ -46,8 +46,8 @@ StochRSIResults[StochRSIResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `stoch_rsi` | Decimal, Optional | %K Oscillator = Stochastic RSI = Stoch(`S`,`G`,`M`) of RSI(`R`) of Close price
-| `signal` | Decimal, Optional | %D Signal Line = Simple moving average of %K based on `G` periods
+| `stoch_rsi` | float, Optional | %K Oscillator = Stochastic RSI = Stoch(`S`,`G`,`M`) of RSI(`R`) of Close price
+| `signal` | float, Optional | %D Signal Line = Simple moving average of %K based on `G` periods
 
 ### Utilities
 

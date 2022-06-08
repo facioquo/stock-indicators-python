@@ -15,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `lookback_periods` | int, *default 14* | Lookback period (`N`) for the oscillator (%K).  Must be greater than 0.
 | `signal_periods` | int, *default 3* | Smoothing period for the signal (%D).  Must be greater than 0.
 | `smooth_periods` | int, *default 3* | Smoothing period (`S`) for the Oscillator (%K).  "Slow" stochastic uses 3, "Fast" stochastic uses 1.  Must be greater than 0.
@@ -57,9 +57,9 @@ StochResults[StochResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `oscillator` or `k` | Decimal, Optional | %K Oscillator over prior `N` lookback periods
-| `signal` or `d` | Decimal, Optional | %D Simple moving average of Oscillator
-| `percent_j` or `j` | Decimal, Optional | %J is the weighted divergence of %K and %D: `%J=kFactor×%K-dFactor×%D`
+| `oscillator` or `k` | float, Optional | %K Oscillator over prior `N` lookback periods
+| `signal` or `d` | float, Optional | %D Simple moving average of Oscillator
+| `percent_j` or `j` | float, Optional | %J is the weighted divergence of %K and %D: `%J=kFactor×%K-dFactor×%D`
 
 Note: aliases of `k`, `d`, and `j` are also provided.  They can be used interchangably with the standard outputs.
 
