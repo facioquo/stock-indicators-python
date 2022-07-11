@@ -48,7 +48,7 @@ setuptools.setup(
     },
     python_requires=">=3.7",
     install_requires=[
-        'pythonnet==3.0.0a1',
+        'pythonnet==3.0.0rc3',
         'typing_extensions>=4.0.0',
     ],
 )
