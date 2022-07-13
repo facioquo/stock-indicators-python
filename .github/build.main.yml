@@ -21,36 +21,6 @@ jobs:
       - task: UsePythonVersion@0
         inputs:
           versionSpec: "$(PythonVersion)"
-
-      - task: DownloadPipelineArtifact@2
-        displayName: "Fetch DLL"
-        inputs:
-          source: specific
-          project: 5123ca47-74f2-4d67-a5d4-c4d90b8d670a
-          pipeline: 21
-          runVersion: latestFromBranch
-          runBranch: refs/heads/main
-          tags: released
-          artifact: packages
-          patterns: "*.nupkg"
-
-      - task: ExtractFiles@1
-        displayName: "Extract DLL from NuGet"
-        inputs:
-          archiveFilePatterns: "$(Pipeline.Workspace)/*.nupkg"
-          destinationFolder: "$(Build.SourcesDirectory)/unpacked"
-          cleanDestinationFolder: true
-          overwriteExistingFiles: true
-
-      - task: CopyFiles@2
-        displayName: "Replace DLL"
-        inputs:
-          SourceFolder: "$(Build.SourcesDirectory)/unpacked/lib/$(DotNetVersion)"
-          Contents: "*.dll"
-          TargetFolder: "$(Build.SourcesDirectory)/stock_indicators/_cslib/lib"
-          CleanTargetFolder: true
-          OverWrite: true
-          flattenFolders: true
       
       - task: gitversion/setup@0
         displayName: Use GitVersion
@@ -128,35 +98,6 @@ jobs:
       - task: UsePythonVersion@0
         inputs:
           versionSpec: "$(python.version)"
-
-      - task: DownloadPipelineArtifact@2
-        displayName: "Fetch NuGet DLL"
-        inputs:
-          source: specific
-          project: 5123ca47-74f2-4d67-a5d4-c4d90b8d670a
-          pipeline: 21
-          runVersion: latestFromBranch
-          runBranch: refs/heads/main
-          artifact: packages
-          patterns: "*.nupkg"
-
-      - task: ExtractFiles@1
-        displayName: "Extract Nuget DLL"
-        inputs:
-          archiveFilePatterns: "$(Pipeline.Workspace)/*.nupkg"
-          destinationFolder: "$(Build.SourcesDirectory)/unpacked"
-          cleanDestinationFolder: true
-          overwriteExistingFiles: true
-
-      - task: CopyFiles@2
-        displayName: "Replace DLL"
-        inputs:
-          SourceFolder: "$(Build.SourcesDirectory)/unpacked/lib/$(DotNetVersion)"
-          Contents: "*.dll"
-          TargetFolder: "$(Build.SourcesDirectory)/stock_indicators/_cslib/lib"
-          CleanTargetFolder: true
-          OverWrite: true
-          flattenFolders: true
 
       - bash: |
           # echo $(Agent.OS)
