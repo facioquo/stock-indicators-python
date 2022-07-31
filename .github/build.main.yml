@@ -1,5 +1,4 @@
 # MAIN BUILD
-
 trigger:
   - main
 
@@ -72,25 +71,25 @@ jobs:
 
   - job: Test
     variables:
-      DotNetVersion: "netstandard2.1"
+      PythonVersion: "3.8"
 
     strategy:
       matrix:
         Windows-Python38:
           imageName: windows-latest
-          python.version: "3.8"
+          python.version: "$(python.version)"
         # Windows-Python39:
         #   imageName: windows-latest
         #   python.version: "3.9"
         Linux-Python38:
           imageName: ubuntu-latest
-          python.version: "3.8"
+          python.version: "$(python.version)"
         # Linux-Python39:
         #   imageName: ubuntu-latest
         #   python.version: "3.9"
         MacOS-Python38:
           imageName: macOS-latest
-          python.version: "3.8"
+          python.version: "$(python.version)"
         # MacOS-Python39:
         #   imageName: macOS-latest
         #   python.version: "3.9"
@@ -139,6 +138,7 @@ jobs:
           #   # See https://github.com/MicrosoftDocs/azure-devops-docs/issues/3812.
           #   source $CONDA/bin/activate $CONDA/envs/myEnvironment
           # fi
+          dotnet --info
 
           pip install -r requirements-test.txt
           pytest -vr A tests --junitxml=$(Build.SourcesDirectory)/tests/test-results.xml --cov=$(Build.SourcesDirectory)/stock_indicators --cov-report xml:$(Build.SourcesDirectory)/tests/coverage.xml
