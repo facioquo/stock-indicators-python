@@ -141,7 +141,7 @@ jobs:
           dotnet --info
 
           pip install -r requirements-test.txt
-          pytest -vr A tests --junitxml=$(Build.SourcesDirectory)/tests/test-results.xml --cov=$(Build.SourcesDirectory)/stock_indicators --cov-report xml:$(Build.SourcesDirectory)/tests/coverage.xml
+          pytest -svr A tests --junitxml=$(Build.SourcesDirectory)/tests/test-results.xml --cov=$(Build.SourcesDirectory)/stock_indicators --cov-report xml:$(Build.SourcesDirectory)/tests/coverage.xml
         workingDirectory: $(Build.SourcesDirectory)
         displayName: "Run all tests"
 
