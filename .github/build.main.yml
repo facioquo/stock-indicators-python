@@ -77,19 +77,19 @@ jobs:
       matrix:
         Windows-Python38:
           imageName: windows-latest
-          python.version: "$(python.version)"
+          python.version: "$(PythonVersion)"
         # Windows-Python39:
         #   imageName: windows-latest
         #   python.version: "3.9"
         Linux-Python38:
           imageName: ubuntu-latest
-          python.version: "$(python.version)"
+          python.version: "$(PythonVersion)"
         # Linux-Python39:
         #   imageName: ubuntu-latest
         #   python.version: "3.9"
         MacOS-Python38:
           imageName: macOS-latest
-          python.version: "$(python.version)"
+          python.version: "$(PythonVersion)"
         # MacOS-Python39:
         #   imageName: macOS-latest
         #   python.version: "3.9"
