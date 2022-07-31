@@ -5,11 +5,28 @@ Skender.Stock.Indicators
 This module loads `Skender.Stock.Indicators.dll`(v1.23.1), which is a compiled library package
 from <https://github.com/DaveSkender/Stock.Indicators>, written in C#.
 
-It is currently using `.NET Standard 2.1`.
+It is currently using `.NET 6.0`.
 """
 
 import os
-import clr
+
+try:
+    from pythonnet import load
+    load(runtime="coreclr",
+        runtime_config=os.path.join(os.path.dirname(__file__), 'runtimeconfig.json'))
+
+finally:
+    try:
+        import clr
+
+    except:
+        raise ImportError(("fail to import clr.\n"
+        "Stock Indicators for Python has dependency on pythonnet, which uses CLR.\n"
+        "Check that you have CLR installed, such as .NET6.0+ or Mono.\n"
+        ".NET:\n\t"
+        "https://dotnet.microsoft.com/en-us/download/dotnet\n"
+        "Mono:\n\t"
+        "https://www.mono-project.com/download/stable/"))
 
 skender_stock_indicators_dll_path = os.path.join(
     os.path.dirname(__file__),

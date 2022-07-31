@@ -1,5 +1,4 @@
 # MAIN BUILD
-
 trigger:
   - main
 
@@ -10,7 +9,6 @@ jobs:
   - job: Build
     variables:
       ImageName: "ubuntu-latest"
-      DotNetVersion: "netstandard2.1"
       PythonVersion: "3.8"
 
     pool:
@@ -18,6 +16,12 @@ jobs:
       vmImage: "$(imageName)"
 
     steps:
+      - task: UseDotNet@2
+        displayName: Use .NET 6.0
+        inputs:
+          packageType: 'sdk'
+          version: '6.0.x'
+
       - task: UsePythonVersion@0
         inputs:
           versionSpec: "$(PythonVersion)"
@@ -67,25 +71,25 @@ jobs:
 
   - job: Test
     variables:
-      DotNetVersion: "netstandard2.1"
+      PythonVersion: "3.8"
 
     strategy:
       matrix:
         Windows-Python38:
           imageName: windows-latest
-          python.version: "3.8"
+          python.version: "$(PythonVersion)"
         # Windows-Python39:
         #   imageName: windows-latest
         #   python.version: "3.9"
         Linux-Python38:
           imageName: ubuntu-latest
-          python.version: "3.8"
+          python.version: "$(PythonVersion)"
         # Linux-Python39:
         #   imageName: ubuntu-latest
         #   python.version: "3.9"
         MacOS-Python38:
           imageName: macOS-latest
-          python.version: "3.8"
+          python.version: "$(PythonVersion)"
         # MacOS-Python39:
         #   imageName: macOS-latest
         #   python.version: "3.9"
@@ -95,6 +99,12 @@ jobs:
       vmImage: "$(imageName)"
 
     steps:
+      - task: UseDotNet@2
+        displayName: Use .NET 6.0
+        inputs:
+          packageType: 'sdk'
+          version: '6.0.x'
+
       - task: UsePythonVersion@0
         inputs:
           versionSpec: "$(python.version)"
