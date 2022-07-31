@@ -138,10 +138,9 @@ jobs:
           #   # See https://github.com/MicrosoftDocs/azure-devops-docs/issues/3812.
           #   source $CONDA/bin/activate $CONDA/envs/myEnvironment
           # fi
-          dotnet --info
 
           pip install -r requirements-test.txt
-          pytest -svr A tests --junitxml=$(Build.SourcesDirectory)/tests/test-results.xml --cov=$(Build.SourcesDirectory)/stock_indicators --cov-report xml:$(Build.SourcesDirectory)/tests/coverage.xml
+          pytest -vr A tests --junitxml=$(Build.SourcesDirectory)/tests/test-results.xml --cov=$(Build.SourcesDirectory)/stock_indicators --cov-report xml:$(Build.SourcesDirectory)/tests/coverage.xml
         workingDirectory: $(Build.SourcesDirectory)
         displayName: "Run all tests"
 
