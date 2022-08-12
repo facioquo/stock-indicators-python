@@ -42,7 +42,14 @@ setuptools.setup(
     ],
     platforms=["Windows", "Linux"],
     package_dir={"": "."},
-    packages=setuptools.find_packages(exclude=('tests', 'tests.*')),
+    packages=setuptools.find_packages(
+        exclude=(
+            'tests',
+            'tests.*',
+            'benchmarks',
+            'benchmarks.*'
+        )
+    ),
     package_data={
         "stock_indicators._cslib": ["lib/*.dll"],
     },
