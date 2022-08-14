@@ -59,12 +59,13 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 from stock_indicators import indicators
+from stock_indicators import CandlePart     # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
 quotes = get_history_from_feed("SPY")
 
 # calculate 20-period EMA
-results = indicators.get_ema(quotes, 20)
+results = indicators.get_ema(quotes, 20, CandlePart.CLOSE)
 ```
 
 ### About: {{ page.title }}

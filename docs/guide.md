@@ -294,6 +294,10 @@ sma_of_ema = indicators.get_sma(quotes_from_ema, 20)
 
 When a candlestick pattern is recognized, it produces a match.  In some cases, an intrinsic confirmation is also available.  In cases where previous bars were used to identify a pattern, they are indicates as the basis for the match. [Documentation for each candlestick pattern]({{site.baseurl}}/indicators/#candlestick-pattern) will indicate whether confirmation and/or basis information is produced.
 
+```python
+from stock_indicators.indicators.common.enums import Match
+```
+
 | type | description
 |-- |:--
 | `Match.BULL_CONFIRMED` | Confirmation of a prior bull Match

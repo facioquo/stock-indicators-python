@@ -26,6 +26,10 @@ You must have at least two periods of `quotes` to cover the warmup periods; howe
 
 ### EndType options
 
+```python
+from stock_indicators.indicators.common.enums import EndType
+```
+
 | type | description
 |-- |--
 | `CLOSE` | Brick change threshold measured from `close` price (default)
@@ -78,12 +82,13 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 from stock_indicators import indicators
+from stock_indicators import EndType     # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
 quotes = get_history_from_feed("SPY")
 
 # Calculate
-results = indicators.get_renko(quotes, 2.5);
+results = indicators.get_renko(quotes, 2.5, EndType.CLOSE);
 ```
 
 ## ATR Variant

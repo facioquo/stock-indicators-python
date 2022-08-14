@@ -29,6 +29,10 @@ You must have at least `W+F` periods of `quotes` to cover the warmup periods.
 
 ### PivotPointType options
 
+```python
+from stock_indicators.indicators.common.enums import PivotPointType
+```
+
 | type | description
 |-- |--
 | `PivotPointType.STANDARD` | Floor Trading (default)
@@ -74,6 +78,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 from stock_indicators import indicators
+from stock_indicators import PivotPointType     # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
 quotes = get_history_from_feed("SPY")

@@ -30,6 +30,10 @@ You must have at least `L+R+1` periods of `quotes` to cover the warmup periods; 
 
 ### EndType options
 
+```python
+from stock_indicators.indicators.common.enums import EndType
+```
+
 | type | description
 |-- |--
 | `CLOSE` | Chevron point identified from `close` price
@@ -63,6 +67,10 @@ PivotsResults[PivotsResult]
 
 #### PivotTrend values
 
+```python
+from stock_indicators.indicators.common.enums import PivotTrend
+```
+
 | type | description
 |-- |--
 | `PivotTrend.HH` | Higher high
@@ -81,6 +89,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 from stock_indicators import indicators
+from stock_indicators import EndType     # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
 quotes = get_history_from_feed("SPY")

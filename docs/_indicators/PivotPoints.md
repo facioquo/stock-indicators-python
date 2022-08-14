@@ -26,6 +26,10 @@ You must have at least `2` windows of `quotes` to cover the warmup periods.  For
 
 ### PeriodSize options (for `window_size`)
 
+```python
+from stock_indicators.indicators.common.enums import PeriodSize
+```
+
 | type | description
 |-- |--
 | `PeriodSize.MONTH` | Use the prior month's data to calculate current month's Pivot Points
@@ -34,6 +38,10 @@ You must have at least `2` windows of `quotes` to cover the warmup periods.  For
 | `PeriodSize.ONEHOUR` | [..] hourly
 
 ### PivotPointType options
+
+```python
+from stock_indicators.indicators.common.enums import PivotPointType
+```
 
 | type | description
 |-- |--
@@ -84,6 +92,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 from stock_indicators import indicators
+from stock_indicators import PeriodSize, PivotPointType      # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
 quotes = get_history_from_feed("SPY")
