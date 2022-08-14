@@ -28,7 +28,7 @@ You must have at least `S` or `A+100` periods of `quotes`, whichever is more, to
 ## Return
 
 ```python
-STARCBandsResult[STARCBandsResult]
+STARCBandsResults[STARCBandsResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.

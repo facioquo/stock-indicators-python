@@ -26,10 +26,11 @@ You must have at least `3×N` or `2×N+100` periods of `quotes`, whichever is mo
 ## Return
 
 ```python
-DEMAResult[DEMAResult]
+DEMAResults[DEMAResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `DEMAResults` is just a list of `DEMAResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first `2×N-1` periods will have `None` values since there's not enough data to calculate.

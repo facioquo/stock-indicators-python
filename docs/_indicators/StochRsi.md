@@ -35,6 +35,7 @@ StochRSIResults[StochRSIResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `StochRSIResults` is just a list of `StochRSIResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first `R+S+M` periods will have `None` values for `stoch_rsi` since there's not enough data to calculate.

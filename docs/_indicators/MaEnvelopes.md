@@ -45,7 +45,7 @@ These are the supported moving average types:
 
 ## Return
 
-```csharp
+```python
 MAEnvelopeResults[MAEnvelopeResult]
 ```
 

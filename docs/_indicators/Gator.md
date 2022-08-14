@@ -25,7 +25,7 @@ If using default settings, you must have at least 121 periods of `quotes`. Since
 
 ## Return
 
-```csharp
+```python
 GatorResults[GatorResult]
 ```
 

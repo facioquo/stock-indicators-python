@@ -28,7 +28,7 @@ You must have at least one historical quote to calculate; however, more is often
 
 ## Return
 
-```csharp
+```python
 VWAPResults[VWAPResult]
 ```
 

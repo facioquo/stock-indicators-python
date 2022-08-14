@@ -34,6 +34,7 @@ ParabolicSARResults[ParabolicSARResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `ParabolicSARResults` is just a list of `ParabolicSARResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first trend will have `None` values since it is not accurate and based on an initial guess.

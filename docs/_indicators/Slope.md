@@ -30,6 +30,7 @@ SlopeResults[SlopeResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `SlopeResults` is just a list of `SlopeResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values for `slope` since there's not enough data to calculate.
