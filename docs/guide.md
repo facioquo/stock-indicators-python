@@ -263,7 +263,7 @@ sma_of_rsi = indicators.get_sma(quotes_from_rsi, 20)
 ``` -->
 
 ~~See [.to_quotes()]({{site.baseurl}}/utilities/#convert-to-quotes) for more information.~~
-The .to_quotes() method is now deprecated.
+The .to_quotes() method is deprecated. (since v0.8.0)
 
 A workaround is to convert yourself.
 
