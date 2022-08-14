@@ -82,7 +82,10 @@ More examples available:
 
 You must provide historical price quotes to the library in the standard [OHLCV](https://acronyms.thefreedictionary.com/OHLCV) `Iterable[Quote]`(such as a list of `Quote`) format.  It should have a consistent period frequency (day, hour, minute, etc).
 
-### stock_indicators.indicators.common.quote.**Quote**
+<!-- ### stock_indicators.indicators.common.quote.**Quote** -->
+```python
+from stock_indicators.indicators.common.quote import Quote
+```
 
 **class Quote(date, open=None, high=None, low=None, close=None, volume=None)**
 [[source]](https://github.com/DaveSkender/Stock.Indicators.Python/blob/main/stock_indicators/indicators/common/quote.py)
