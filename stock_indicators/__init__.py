@@ -15,4 +15,4 @@ library. A Stock Indicators for .NET is also available.
 """
 
 from stock_indicators import indicators
-from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common import *
