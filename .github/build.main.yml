@@ -2,9 +2,11 @@
 
 trigger:
   - main
+  - V0.8
 
 pr:
   - main
+  - V0.8
 
 jobs:
   - job: Build
