@@ -1,6 +1,6 @@
 from stock_indicators import indicators
 
-class TestFractal:
+class TestGator:
     def test_standard(self, quotes):
         results = indicators.get_gator(quotes)
 
