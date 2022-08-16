@@ -26,6 +26,10 @@ You must have at least two periods of `quotes` to cover the warmup periods, but 
 
 ### EndType options
 
+```python
+from stock_indicators.indicators.common.enums import EndType
+```
+
 | type | description
 |-- |--
 | `EndType.CLOSE` | Percent change measured from `close` price (default)
@@ -70,6 +74,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 from stock_indicators import indicators
+from stock_indicators import EndType     # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
 quotes = get_history_from_feed("SPY")

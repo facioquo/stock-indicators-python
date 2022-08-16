@@ -27,7 +27,9 @@ See links in the supported [MAType options](#matype-options) section below for d
 
 ### MAType options
 
-These are the supported moving average types:
+```python
+from stock_indicators.indicators.common.enums import MAType
+```
 
 | type | description
 |-- |--
@@ -45,7 +47,7 @@ These are the supported moving average types:
 
 ## Return
 
-```csharp
+```python
 MAEnvelopeResults[MAEnvelopeResult]
 ```
 
@@ -81,6 +83,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 from stock_indicators import indicators
+from stock_indicators import MAType     # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
 quotes = get_history_from_feed("SPY")

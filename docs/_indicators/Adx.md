@@ -26,10 +26,11 @@ You must have at least `2×N+100` periods of `quotes` to allow for smoothing con
 ## Returns
 
 ```python
-ADXResults<ADXResult>
+ADXResults[ADXResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `ADXResults` is just a list of `ADXResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first `2×N-1` periods will have `None` values for `Adx` since there's not enough data to calculate.

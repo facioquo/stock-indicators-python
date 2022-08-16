@@ -82,6 +82,11 @@ More examples available:
 
 You must provide historical price quotes to the library in the standard [OHLCV](https://acronyms.thefreedictionary.com/OHLCV) `Iterable[Quote]`(such as a list of `Quote`) format.  It should have a consistent period frequency (day, hour, minute, etc).
 
+<!-- ### stock_indicators.indicators.common.quote.**Quote** -->
+```python
+from stock_indicators.indicators.common.quote import Quote
+```
+
 **class Quote(date, open=None, high=None, low=None, close=None, volume=None)**
 [[source]](https://github.com/DaveSkender/Stock.Indicators.Python/blob/main/stock_indicators/indicators/common/quote.py)
 
@@ -258,7 +263,7 @@ sma_of_rsi = indicators.get_sma(quotes_from_rsi, 20)
 ``` -->
 
 ~~See [.to_quotes()]({{site.baseurl}}/utilities/#convert-to-quotes) for more information.~~
-The .to_quotes() method is now deprecated.
+The .to_quotes() method is deprecated. (since v0.8.0)
 
 A workaround is to convert yourself.
 
@@ -288,6 +293,10 @@ sma_of_ema = indicators.get_sma(quotes_from_ema, 20)
 ### Match
 
 When a candlestick pattern is recognized, it produces a match.  In some cases, an intrinsic confirmation is also available.  In cases where previous bars were used to identify a pattern, they are indicates as the basis for the match. [Documentation for each candlestick pattern]({{site.baseurl}}/indicators/#candlestick-pattern) will indicate whether confirmation and/or basis information is produced.
+
+```python
+from stock_indicators.indicators.common.enums import Match
+```
 
 | type | description
 |-- |:--

@@ -41,6 +41,7 @@ FractalResults[FractalResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `FractalResults` is just a list of `FractalResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first and last `S` periods in `quotes` are unable to be calculated since there's not enough prior/following data.

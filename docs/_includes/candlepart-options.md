@@ -1,5 +1,9 @@
 ### CandlePart options
 
+```python
+from stock_indicators.indicators.common.enums import CandlePart
+```
+
 | type | description
 |-- |--
 | `CandlePart.OPEN` | `open` price

@@ -27,6 +27,10 @@ You must have at least `N+1` periods of `quotes` to cover the warmup periods.
 
 ### ChandelierType options
 
+```python
+from stock_indicators.indicators.common.enums import ChandelierType
+```
+
 | type | description
 |-- |--
 | `LONG` | Intended as stop loss value for long positions. (default)
@@ -63,12 +67,13 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 from stock_indicators import indicators
+from stock_indicators import ChandelierType     # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
 quotes = get_history_from_feed("SPY")
 
 # calculate Chandelier(22,3)
-results = indicators.get_chandelier(quotes, 22, 3)
+results = indicators.get_chandelier(quotes, 22, 3, ChandelierType.LONG)
 ```
 
 ## About: {{ page.title }}

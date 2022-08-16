@@ -40,6 +40,7 @@ IchimokuResults[IchimokuResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `IchimokuResults` is just a list of `IchimokuResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first `T-1`, `K-1`, and `S-1` periods will have various `None` values since there's not enough data to calculate.  Custom offset periods may also increase `None` results for warmup periods.

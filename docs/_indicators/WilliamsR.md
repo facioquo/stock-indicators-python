@@ -26,7 +26,7 @@ You must have at least `N` periods of `quotes` to cover the warmup periods.
 ## Return
 
 ```python
-WilliamsResult[WilliamsResult]
+WilliamsResults[WilliamsResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
