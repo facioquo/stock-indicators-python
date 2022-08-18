@@ -39,11 +39,22 @@ class TestIchimoku:
         assert 264.7700 == round(float(r.senkou_span_a), 4)
         assert 269.8200 == round(float(r.senkou_span_b), 4)
         assert r.chikou_span is None
+
+    def test_extended(self, quotes):
+        r = indicators.get_ichimoku(quotes, 3, 13, 40, 0, 0)
+        assert 502 == len(r)
         
     def test_bad_data(self, quotes):
         r = indicators.get_ichimoku(quotes)
         assert 502 == len(r)
-    
+
+    def test_no_quotes(self, quotes):
+        r = indicators.get_ichimoku([])
+        assert 0 == len(r)
+        
+        r = indicators.get_ichimoku(quotes[:1])
+        assert 1 == len(r)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
@@ -54,3 +65,12 @@ class TestIchimoku:
 
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_ichimoku(quotes, 9, 26, 26)
+
+        with pytest.raises(ArgumentOutOfRangeException):
+            indicators.get_ichimoku(quotes, 9, 26, 52, -1)
+
+        with pytest.raises(ArgumentOutOfRangeException):
+            indicators.get_ichimoku(quotes, 9, 26, 52, -1, 12)
+
+        with pytest.raises(ArgumentOutOfRangeException):
+            indicators.get_ichimoku(quotes, 9, 26, 52, 12, -1)
