@@ -1,3 +1,4 @@
+from collections import deque
 from datetime import datetime as PyDateTime
 from typing import Iterable, List, Type, TypeVar
 
@@ -28,7 +29,7 @@ class IndicatorResults(List[_T]):
     It provides helper methods written in CSharp implementation.
     """
     def __init__(self, data: Iterable, wrapper_class: Type[_T]):
-        super().__init__([ wrapper_class(_) for _ in data ])
+        super().__init__(deque(map(wrapper_class, data), 0))
         self._csdata = data
         self._wrapper_class = wrapper_class
 
