@@ -1,5 +1,5 @@
 from decimal import Decimal
-from typing import Iterable, Optional, TypeVar
+from typing import Iterable, Optional, TypeVar, overload
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -9,8 +9,20 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
+@overload
 def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = 9,
-                 kijun_periods: int = 26, senkou_b_periods: int = 52):
+                 kijun_periods: int = 26, senkou_b_periods: int = 52) -> "IchimokuResults[IchimokuResult]": ...
+@overload
+def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int,
+                 kijun_periods: int, senkou_b_periods: int,
+                 offset_periods: int) -> "IchimokuResults[IchimokuResult]": ...
+@overload
+def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int,
+                 kijun_periods: int, senkou_b_periods: int,
+                 senkou_offset: int, chikou_offset: int) -> "IchimokuResults[IchimokuResult]": ...
+def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = None,
+                 kijun_periods: int = None, senkou_b_periods: int = None,
+                 senkou_offset: int = None, chikou_offset: int = None):
     """Get Ichimoku Cloud calculated.
 
     Ichimoku Cloud, also known as Ichimoku Kinkō Hyō, is a collection of indicators
@@ -20,15 +32,24 @@ def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = 9,
         `quotes` : Iterable[Quote]
             Historical price quotes.
 
-        `tenkan_periods` : int, defaults 9
+        `tenkan_periods` : int
             Number of periods in the Tenkan-sen midpoint evaluation.
 
-        `kijun_periods` : int, defaults 26
+        `kijun_periods` : int
             Number of periods in the shorter Kijun-sen midpoint evaluation.
-            This value is also used to offset Senkou and Chinkou spans.
+            This value is also used to offset Senkou and Chinkou spans, if the both aren't specified.
 
-        `senkou_b_periods` : int, defaults 52
+        `senkou_b_periods` : int
             Number of periods in the longer Senkou leading span B midpoint evaluation.
+
+        `offset_periods` : int
+            Number of periods to displace the Senkou and Chikou Spans.
+
+        `senkou_offset` : int
+            Number of periods to displace the Senkou Spans.
+
+        `chikou_offset` : int
+            Number of periods in displace the Chikou Span.
 
     Returns:
         `IchimokuResults[IchimokuResult]`
@@ -38,10 +59,17 @@ def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = 9,
          - [Ichimoku Cloud Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Ichimoku/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    results = CsIndicator.GetIchimoku[Quote](CsList(Quote, quotes),
-                                             tenkan_periods,
-                                             kijun_periods,
-                                             senkou_b_periods)
+    if chikou_offset is None:
+        if senkou_offset is None:
+            if tenkan_periods is None: tenkan_periods = 9
+            if kijun_periods is None: kijun_periods = 26
+            if senkou_b_periods is None: senkou_b_periods = 52
+            senkou_offset = kijun_periods
+        chikou_offset = senkou_offset
+
+    results = CsIndicator.GetIchimoku[Quote](CsList(Quote, quotes), tenkan_periods,
+                                             kijun_periods, senkou_b_periods,
+                                             senkou_offset, chikou_offset)
     return IchimokuResults(results, IchimokuResult)
 
 
