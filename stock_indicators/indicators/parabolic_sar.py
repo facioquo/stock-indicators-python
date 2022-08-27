@@ -1,5 +1,5 @@
 from decimal import Decimal
-from typing import Optional, TypeVar
+from typing import Iterable, Optional, TypeVar, overload
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -10,8 +10,14 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_parabolic_sar(quotes, acceleration_step = 0.02,
-                      max_acceleration_factor = 0.2):
+@overload
+def get_parabolic_sar(quotes: Iterable[Quote], acceleration_step: float = 0.02,
+                      max_acceleration_factor: float = 0.2) -> "ParabolicSARResults[ParabolicSARResult]": ...
+@overload
+def get_parabolic_sar(quotes: Iterable[Quote], acceleration_step: float,
+                      max_acceleration_factor: float, initial_factor: float) -> "ParabolicSARResults[ParabolicSARResult]": ...
+def get_parabolic_sar(quotes, acceleration_step = None,
+                      max_acceleration_factor = None, initial_factor = None):
     """Get Parabolic SAR calculated.
 
     Parabolic SAR (stop and reverse) is a price-time based indicator
@@ -21,11 +27,14 @@ def get_parabolic_sar(quotes, acceleration_step = 0.02,
         `quotes` : Iterable[Quote]
             Historical price quotes.
 
-        `acceleration_step` : float, defaults 0.02
+        `acceleration_step` : float
             Incremental step size.
 
-        `max_acceleration_factor` : float, defaults 0.2
+        `max_acceleration_factor` : float
             Maximum step threshold.
+
+        `initial_factor` : float
+            Initial starting acceleration factor.
 
     Returns:
         `ParabolicSARResults[ParabolicSARResult]`
@@ -35,8 +44,16 @@ def get_parabolic_sar(quotes, acceleration_step = 0.02,
          - [Parabolic SAR Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/ParabolicSar/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    results = CsIndicator.GetParabolicSar[Quote](CsList(Quote, quotes), CsDecimal(acceleration_step),
+    if initial_factor is None:
+        if acceleration_step is None: acceleration_step = 0.02
+        if max_acceleration_factor is None: max_acceleration_factor = 0.2
+
+        results = CsIndicator.GetParabolicSar[Quote](CsList(Quote, quotes), CsDecimal(acceleration_step),
                                                  CsDecimal(max_acceleration_factor))
+    else:
+        results = CsIndicator.GetParabolicSar[Quote](CsList(Quote, quotes), CsDecimal(acceleration_step),
+                                                 CsDecimal(max_acceleration_factor), CsDecimal(initial_factor))
+
     return ParabolicSARResults(results, ParabolicSARResult)
 
 
