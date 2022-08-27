@@ -38,7 +38,7 @@ def get_wma(quotes: Iterable[Quote], lookback_periods: int,
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
     results = CsIndicator.GetWma[Quote](CsList(Quote, quotes), lookback_periods,
-                                        candle_part)
+                                        candle_part.cs_value)
     return WMAResults(results, WMAResult)
 
 

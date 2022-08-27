@@ -35,7 +35,7 @@ def get_zig_zag(quotes: Iterable[Quote], end_type: EndType = EndType.CLOSE,
          - [Zig Zag Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/ZigZag/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    results = CsIndicator.GetZigZag[Quote](CsList(Quote, quotes), end_type,
+    results = CsIndicator.GetZigZag[Quote](CsList(Quote, quotes), end_type.cs_value,
                                            CsDecimal(percent_change))
     return ZigZagResults(results, ZigZagResult)
 

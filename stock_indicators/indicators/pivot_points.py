@@ -37,8 +37,8 @@ def get_pivot_points(quotes, window_size: PeriodSize,
          - [Pivot Points Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/PivotPoints/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    results = CsIndicator.GetPivotPoints[Quote](CsList(Quote, quotes), window_size,
-                                                 point_type)
+    results = CsIndicator.GetPivotPoints[Quote](CsList(Quote, quotes), window_size.cs_value,
+                                                 point_type.cs_value)
     return PivotPointsResults(results, PivotPointsResult)
 
 

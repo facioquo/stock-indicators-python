@@ -91,11 +91,11 @@ class CandleResult(ResultBase):
 
     @property
     def match(self) -> Match:
-        return self._csdata.Match
+        return Match(int(self._csdata.Match))
 
     @match.setter
     def match(self, value):
-        self._csdata.Match = value
+        self._csdata.Match = value.cs_value
 
     @property
     def candle(self) -> CandleProperties:

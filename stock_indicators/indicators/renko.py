@@ -37,7 +37,7 @@ def get_renko(quotes: Iterable[Quote], brick_size: float,
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
     results = CsIndicator.GetRenko[Quote](CsList(Quote, quotes), CsDecimal(brick_size),
-                                           end_type)
+                                           end_type.cs_value)
     return RenkoResults(results, RenkoResult)
 
 
@@ -67,7 +67,7 @@ def get_renko_atr(quotes: Iterable[Quote], atr_periods: int,
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
     results = CsIndicator.GetRenkoAtr[Quote](CsList(Quote, quotes), atr_periods,
-                                           end_type)
+                                           end_type.cs_value)
     return RenkoResults(results, RenkoResult)
 
 
