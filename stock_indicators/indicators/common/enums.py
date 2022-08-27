@@ -1,22 +1,22 @@
 from stock_indicators._cslib import (
     CsCandlePart, CsMatch, CsEnum, CsBetaType, CsChandelierType, CsMaType,
     CsPivotPointType, CsPeriodSize, CsEndType, CsPivotTrend)
-from stock_indicators.indicators.common._contrib.enum import ValueEnum
+from stock_indicators.indicators.common._contrib.enum import CsCompatibleIntEnum
 
 
-class BetaType(ValueEnum):
+class BetaType(CsCompatibleIntEnum):
     STANDARD = CsBetaType.Standard
     UP = CsBetaType.Up
     DOWN = CsBetaType.Down
     ALL = CsBetaType.All
 
 
-class ChandelierType(ValueEnum):
+class ChandelierType(CsCompatibleIntEnum):
     LONG = CsChandelierType.Long
     SHORT = CsChandelierType.Short
 
 
-class CandlePart(ValueEnum):
+class CandlePart(CsCompatibleIntEnum):
     OPEN = CsCandlePart.Open
     HIGH = CsCandlePart.High
     LOW = CsCandlePart.Low
@@ -29,12 +29,12 @@ class CandlePart(ValueEnum):
     OHLC4 = CsCandlePart.OHLC4
 
 
-class EndType(ValueEnum):
+class EndType(CsCompatibleIntEnum):
     CLOSE = CsEndType.Close
     HIGH_LOW = CsEndType.HighLow
 
 
-class MAType(ValueEnum):
+class MAType(CsCompatibleIntEnum):
     ALMA = CsMaType.ALMA
     DEMA = CsMaType.DEMA
     EPMA = CsMaType.EPMA
@@ -48,7 +48,7 @@ class MAType(ValueEnum):
     WMA = CsMaType.WMA
 
 
-class PeriodSize(ValueEnum):
+class PeriodSize(CsCompatibleIntEnum):
     MONTH = CsPeriodSize.Month
     WEEK = CsPeriodSize.Week
     DAY = CsPeriodSize.Day
@@ -63,7 +63,7 @@ class PeriodSize(ValueEnum):
     ONE_MINUTE = CsPeriodSize.OneMinute
 
 
-class PivotPointType(ValueEnum):
+class PivotPointType(CsCompatibleIntEnum):
     STANDARD = CsPivotPointType.Standard
     CAMARILLA = CsPivotPointType.Camarilla
     DEMARK = CsPivotPointType.Demark
@@ -71,14 +71,14 @@ class PivotPointType(ValueEnum):
     WOODIE = CsPivotPointType.Woodie
 
 
-class PivotTrend(ValueEnum):
+class PivotTrend(CsCompatibleIntEnum):
     HH = CsPivotTrend.HH
     LH = CsPivotTrend.LH
     HL = CsPivotTrend.HL
     LL = CsPivotTrend.LL
 
 
-class Match(ValueEnum):
+class Match(CsCompatibleIntEnum):
     BULL_CONFIRMED = CsMatch.BullConfirmed
     BULL_SIGNAL = CsMatch.BullSignal
     BULL_BASIS = CsMatch.BullBasis
