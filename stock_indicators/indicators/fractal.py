@@ -46,9 +46,9 @@ def get_fractal(quotes, left_span = None, right_span = EndType.HIGH_LOW, end_typ
     """
     if isinstance(right_span, EndType):
         if left_span is None: left_span = 2
-        fractal_results = CsIndicator.GetFractal[Quote](CsList(Quote, quotes), left_span, right_span)
+        fractal_results = CsIndicator.GetFractal[Quote](CsList(Quote, quotes), left_span, right_span.cs_value)
     else:
-        fractal_results = CsIndicator.GetFractal[Quote](CsList(Quote, quotes), left_span, right_span, end_type)
+        fractal_results = CsIndicator.GetFractal[Quote](CsList(Quote, quotes), left_span, right_span, end_type.cs_value)
 
     return FractalResults(fractal_results, FractalResult)
 
