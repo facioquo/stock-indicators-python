@@ -1,9 +1,10 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.enums import EndType
 
 class TestFractal:
     def test_standard_span_2(self, quotes):
-        results = indicators.get_fractal(quotes, 2)
+        results = indicators.get_fractal(quotes)
 
         assert 502 == len(results)
         assert  63 == len(list(filter(lambda x: x.fractal_bear is not None, results)))
@@ -35,7 +36,7 @@ class TestFractal:
 
 
     def test_standard_span_4(self, quotes):
-        results = indicators.get_fractal(quotes, 4)
+        results = indicators.get_fractal(quotes, 4, 4, EndType.HIGH_LOW)
 
         assert 502 == len(results)
         assert  35 == len(list(filter(lambda x: x.fractal_bear is not None, results)))
@@ -64,6 +65,13 @@ class TestFractal:
         r = results[500]
         assert r.fractal_bear is None
         assert r.fractal_bull is None
+
+    def test_no_data(self, quotes):
+        r = indicators.get_fractal([])
+        assert 0 == len(r)
+
+        r = indicators.get_fractal(quotes[:1])
+        assert 1 == len(r)
 
     def test_bad_data(self, bad_quotes):
         r = indicators.get_fractal(bad_quotes)
