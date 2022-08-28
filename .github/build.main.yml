@@ -75,26 +75,44 @@ jobs:
     variables:
       PythonVersion: "3.8"
 
-    strategy:
+        strategy:
       matrix:
+        Windows-Python37:
+          imageName: windows-latest
+          python.version: "3.7"
         Windows-Python38:
           imageName: windows-latest
-          python.version: "$(PythonVersion)"
-        # Windows-Python39:
-        #   imageName: windows-latest
-        #   python.version: "3.9"
+          python.version: "3.8"
+        Windows-Python39:
+          imageName: windows-latest
+          python.version: "3.9"
+        Windows-Python310:
+          imageName: windows-latest
+          python.version: "3.10"
+        Linux-Python37:
+          imageName: ubuntu-latest
+          python.version: "3.7"
         Linux-Python38:
           imageName: ubuntu-latest
-          python.version: "$(PythonVersion)"
-        # Linux-Python39:
-        #   imageName: ubuntu-latest
-        #   python.version: "3.9"
+          python.version: "3.8"
+        Linux-Python39:
+          imageName: ubuntu-latest
+          python.version: "3.9"
+        Linux-Python310:
+          imageName: ubuntu-latest
+          python.version: "3.10"
+        MacOS-Python37:
+          imageName: macOS-latest
+          python.version: "3.7"
         MacOS-Python38:
           imageName: macOS-latest
-          python.version: "$(PythonVersion)"
-        # MacOS-Python39:
-        #   imageName: macOS-latest
-        #   python.version: "3.9"
+          python.version: "3.8"
+        MacOS-Python39:
+          imageName: macOS-latest
+          python.version: "3.9"
+        MacOS-Python310:
+          imageName: macOS-latest
+          python.version: "3.10"
 
     pool:
       name: Azure Pipelines
