@@ -1,5 +1,5 @@
 {% comment %}
-  JEKYLL SITE TEMPLATE OVERRIDE 
+  JEKYLL SITE TEMPLATE OVERRIDE
   Ref: https://jekyllrb.com/docs/usage/
   Ref: https://github.com/pages-themes/cayman
   Local dev: bundle exec jekyll serve
@@ -37,24 +37,26 @@
 <body>
   <header class="page-header" role="banner">
 
-    <h1 class="project-name">
+    <div class="project-name">
       <a href="{{ '/' | absolute_url }}">
-        {{site.title}}
+        stock indicators <small>for Python</small>
       </a>
-    </h1>
+    </div>
 
-    <h2 class="project-tagline">
+    <div class="project-tagline">
       Send in historical price quotes and get back desired technical indicators.
       <br class="not-mobile" />
       Nothing more.
-    </h2>
+    </div>
 
+    <div class="btn-container">
     <a href="{{site.baseurl}}/indicators/" class="btn">Indicators</a>
     <a href="{{site.baseurl}}/guide/" class="btn">Guide</a>
-    <a href="https://pypi.org/project/stock-indicators/" class="btn">PyPI</a>
+    <a href="https://www.nuget.org/packages/Skender.Stock.Indicators" class="btn">NuGet<span class="if-large"> Package</span></a>
     {% if site.github.is_project_page %}
     <a href="{{site.github.repository_url}}" class="btn not-mobile"><span class="if-large">View on </span>GitHub</a>
     {% endif %}
+    </div>
   </header>
 
   <main id="content" class="main-content" role="main">
