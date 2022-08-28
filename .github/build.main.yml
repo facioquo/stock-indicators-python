@@ -75,7 +75,7 @@ jobs:
     variables:
       PythonVersion: "3.8"
 
-        strategy:
+    strategy:
       matrix:
         Windows-Python37:
           imageName: windows-latest
