@@ -36,7 +36,7 @@ def get_beta(market_history: Iterable[Quote], eval_history: Iterable[Quote],
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
     beta_results = CsIndicator.GetBeta[Quote](CsList(Quote, market_history), CsList(Quote, eval_history),
-                                              lookback_periods, beta_type)
+                                              lookback_periods, beta_type.cs_value)
     return BetaResults(beta_results, BetaResult)
 
 

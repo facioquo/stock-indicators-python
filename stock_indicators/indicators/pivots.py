@@ -45,7 +45,7 @@ def get_pivots(quotes: Iterable[Quote], left_span: int = 2,
     """
     results = CsIndicator.GetPivots[Quote](CsList(Quote, quotes), left_span,
                                            right_span, max_trend_periods,
-                                           end_type)
+                                           end_type.cs_value)
     return PivotsResults(results, PivotsResult)
 
 
@@ -88,19 +88,23 @@ class PivotsResult(ResultBase):
 
     @property
     def high_trend(self) -> Optional[PivotTrend]:
-        return self._csdata.HighTrend
+        if self._csdata.HighTrend is not None:
+            return PivotTrend(int(self._csdata.HighTrend))
+        return None
 
     @high_trend.setter
     def high_trend(self, value):
-        self._csdata.HighTrend = value
+        self._csdata.HighTrend = value.cs_value
 
     @property
     def low_trend(self) -> Optional[PivotTrend]:
-        return self._csdata.LowTrend
+        if self._csdata.LowTrend is not None:
+            return PivotTrend(int(self._csdata.LowTrend))
+        return None
 
     @low_trend.setter
     def low_trend(self, value):
-        self._csdata.LowTrend = value
+        self._csdata.LowTrend = value.cs_value
 
 
 _T = TypeVar("_T", bound=PivotsResult)

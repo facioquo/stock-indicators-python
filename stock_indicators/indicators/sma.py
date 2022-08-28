@@ -35,7 +35,7 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int,
          - [SMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Sma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    sma_list = CsIndicator.GetSma[Quote](CsList(Quote, quotes), lookback_periods, candle_part)
+    sma_list = CsIndicator.GetSma[Quote](CsList(Quote, quotes), lookback_periods, candle_part.cs_value)
     return SMAResults(sma_list, SMAResult)
 
 def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):

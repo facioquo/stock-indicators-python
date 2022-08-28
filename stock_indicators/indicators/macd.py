@@ -45,7 +45,7 @@ def get_macd(quotes: Iterable[Quote], fast_periods: int = 12,
     """
     macd_results = CsIndicator.GetMacd[Quote](CsList(Quote, quotes), fast_periods,
                                               slow_periods, signal_periods,
-                                              candle_part)
+                                              candle_part.cs_value)
     return MACDResults(macd_results, MACDResult)
 
 

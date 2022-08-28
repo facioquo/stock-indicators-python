@@ -40,7 +40,7 @@ def get_chandelier(quotes: Iterable[Quote], lookback_periods: int = 22,
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
     results = CsIndicator.GetChandelier[Quote](CsList(Quote, quotes), lookback_periods,
-                                               multiplier, chandelier_type)
+                                               multiplier, chandelier_type.cs_value)
     return ChandelierResults(results, ChandelierResult)
 
 
