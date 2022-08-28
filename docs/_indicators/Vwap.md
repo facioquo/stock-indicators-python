@@ -16,7 +16,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `start` | datetime, Optional | The anchor date used to start the VWAP accumulation.  The earliest date in `quotes` is used when not provided.
 | `year`, `month`, `day`, `hour`, `minute`| int, Optional | The anchor date used to start the VWAP accumulation.  The earliest date in `quotes` is used when not provided.
 
@@ -28,7 +28,7 @@ You must have at least one historical quote to calculate; however, more is often
 
 ## Return
 
-```csharp
+```python
 VWAPResults[VWAPResult]
 ```
 

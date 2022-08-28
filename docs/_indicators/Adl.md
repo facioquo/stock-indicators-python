@@ -14,7 +14,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `sma_periods` | int, Optional | Number of periods (`N`) in the moving average of ADL.  Must be greater than 0, if specified.
 
 ### Historical quotes requirements
@@ -30,6 +30,7 @@ ADLResults[ADLResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `ADLResults` is just a list of `ADLResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 
@@ -47,7 +48,7 @@ ADLResults[ADLResult]
 
 ### Utilities
 
-- [.to_quotes()]({{site.baseurl}}/utilities#convert-to-quotes)
+- ~~[.to_quotes()]({{site.baseurl}}/utilities#convert-to-quotes)~~ <code style='color: #d32f2f; important'>[deprecated]</code>
 - [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 

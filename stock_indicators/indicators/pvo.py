@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -49,28 +46,28 @@ class PVOResult(ResultBase):
     """
 
     @property
-    def pvo(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Pvo)
+    def pvo(self) -> Optional[float]:
+        return self._csdata.Pvo
 
     @pvo.setter
     def pvo(self, value):
-        self._csdata.Pvo = CsDecimal(value)
+        self._csdata.Pvo = value
 
     @property
-    def signal(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Signal)
+    def signal(self) -> Optional[float]:
+        return self._csdata.Signal
 
     @signal.setter
     def signal(self, value):
-        self._csdata.Signal = CsDecimal(value)
+        self._csdata.Signal = value
 
     @property
-    def histogram(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Histogram)
+    def histogram(self) -> Optional[float]:
+        return self._csdata.Histogram
 
     @histogram.setter
     def histogram(self, value):
-        self._csdata.Histogram = CsDecimal(value)
+        self._csdata.Histogram = value
 
 
 _T = TypeVar("_T", bound=PVOResult)

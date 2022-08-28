@@ -39,7 +39,7 @@ def get_ma_envelopes(quotes: Iterable[Quote], lookback_periods: int,
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
     results = CsIndicator.GetMaEnvelopes[Quote](CsList(Quote, quotes), lookback_periods,
-                                            percent_offset, ma_type)
+                                            percent_offset, ma_type.cs_value)
     return MAEnvelopeResults(results, MAEnvelopeResult)
 
 

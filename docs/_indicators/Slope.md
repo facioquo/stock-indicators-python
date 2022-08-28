@@ -14,7 +14,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `lookback_periods` | int | Number of periods (`N`) for the linear regression.  Must be greater than 0.
 
 ### Historical quotes requirements
@@ -30,6 +30,7 @@ SlopeResults[SlopeResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `SlopeResults` is just a list of `SlopeResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values for `slope` since there's not enough data to calculate.

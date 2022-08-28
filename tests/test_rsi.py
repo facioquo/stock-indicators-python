@@ -1,6 +1,5 @@
 import pytest
 from stock_indicators import indicators
-from stock_indicators._cstypes.decimal import to_pydecimal
 
 class TestRSI:
     def test_standard(self, quotes):
@@ -33,16 +32,16 @@ class TestRSI:
         r = results[52]
         assert   0 == round(float(r.rsi), 4)
 
-    def test_convert_to_quotes(self, quotes):
-        results = indicators.get_rsi(quotes, 14).to_quotes()
+    # def test_convert_to_quotes(self, quotes):
+    #     results = indicators.get_rsi(quotes, 14).to_quotes()
         
-        assert 488 == len(results)
+    #     assert 488 == len(results)
 
-        first = results[0]
-        assert 62.0541 == round(float(to_pydecimal(first.Close)), 4)
+    #     first = results[0]
+    #     assert 62.0541 == round(float(to_pydecimal(first.Close)), 4)
 
-        last = results.pop()
-        assert 42.0773 == round(float(to_pydecimal(last.Close)), 4)
+    #     last = results.pop()
+    #     assert 42.0773 == round(float(to_pydecimal(last.Close)), 4)
 
     def test_bad_data(self, bad_quotes):
         r = indicators.get_rsi(bad_quotes, 20)

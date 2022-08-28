@@ -1,7 +1,7 @@
 ---
 title: Guide and Pro tips
 permalink: /guide/
-layout: default
+layout: page
 ---
 
 # {{ page.title }}
@@ -82,6 +82,11 @@ More examples available:
 
 You must provide historical price quotes to the library in the standard [OHLCV](https://acronyms.thefreedictionary.com/OHLCV) `Iterable[Quote]`(such as a list of `Quote`) format.  It should have a consistent period frequency (day, hour, minute, etc).
 
+<!-- ### stock_indicators.indicators.common.quote.**Quote** -->
+```python
+from stock_indicators.indicators.common.quote import Quote
+```
+
 **class Quote(date, open=None, high=None, low=None, close=None, volume=None)**
 [[source]](https://github.com/DaveSkender/Stock.Indicators.Python/blob/main/stock_indicators/indicators/common/quote.py)
 
@@ -109,6 +114,28 @@ Each indicator will need different amounts of price `quotes` to calculate.  You 
 :warning: IMPORTANT! Some indicators use a smoothing technique that converges to better precision over time.  While you can calculate these with the minimum amount of quote data, the precision to two decimal points often requires 250 or more preceding historical records.
 
 For example, if you are using daily data and want one year of precise EMA(250) data, you need to provide 3 years of historical quotes (1 extra year for the lookback period and 1 extra year for convergence); thereafter, you would discard or not use the first two years of results.  Occassionally, even more is required for optimal precision.
+
+### Using Pandas.Dataframe
+
+If you are using `Pandas.Dataframe` to hold quote data, you have to convert it into our `Quote` instance. That means you must iterate them row by row. There's [an awesome article](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) that introduces the best-efficiency way to iterate `Dataframe`.
+
+Here's an example we'd like to suggest: **Use list comprehension**
+```python
+# Suppose that you have dataframe like the below.
+#             date    open    high     low   close     volume
+# 0     2018-12-31  244.92  245.54  242.87  245.28  147031456
+# 1     2018-12-28  244.94  246.73  241.87  243.15  155998912
+# 2     2018-12-27  238.06  243.68  234.52  243.46  189794032
+# ...          ...     ...     ...     ...     ...        ...
+
+quotes_list = [
+    Quote(d,o,h,l,c,v) 
+    for d,o,h,l,c,v 
+    in zip(df['date'], df['open'], df['high'], df['low'], df['close'], df['volume'])
+]
+```
+
+You can also use `numpy.vectorize()`, its gain is too slight and hard to apply in this case.
 
 
 ### Using custom quote classes
@@ -219,7 +246,8 @@ for r in nested_results:
 
 If you want to compute an indicator of indicators, such as an SMA of an ADX or an [RSI of an OBV](https://medium.com/@robswc/this-is-what-happens-when-you-combine-the-obv-and-rsi-indicators-6616d991773d), all you need to do is to take the results of one, reformat into a synthetic historical quotes, and send it through to another indicator.
 
-Here's an example of SMA of RSI:
+<!-- MEMO: This example is for to_quotes(), deprecated. -->
+<!-- Here's an example of SMA of RSI:
 
 ```python
 from stock_indicators import indicators
@@ -232,13 +260,19 @@ results = indicators.get_rsi(quotes)
 quotes_from_rsi = results.to_quotes()
 sma_of_rsi = indicators.get_sma(quotes_from_rsi, 20)
 
-```
+``` -->
 
-See [.to_quotes()]({{site.baseurl}}/utilities/#convert-to-quotes) for more information.
+~~See [.to_quotes()]({{site.baseurl}}/utilities/#convert-to-quotes) for more information.~~
+The .to_quotes() method is deprecated. (since v0.8.0)
 
-When `.to_quotes()` is not available for an indicator, a workaround is to convert yourself.
+A workaround is to convert yourself.
 
 ```python
+from stock_indicators import indicators
+
+# fetch historical quotes from your feed (your method)
+quotes = get_history_from_feed("MSFT")
+
 # calculate EMA
 results = indicators.get_ema(quotes, 20)
 
@@ -256,20 +290,24 @@ sma_of_ema = indicators.get_sma(quotes_from_ema, 20)
 
 {% include candle-result.md %}
 
-### Signal
+### Match
 
-When a candlestick pattern is recognized, it produces a signal.  In some cases, an intrinsic confirmation is also available.  In cases where previous bars were used to identify a pattern, they are indicates as the basis for the signal. [Documentation for each candlestick pattern]({{site.baseurl}}/indicators/#candlestick-pattern) will indicate whether confirmation and/or basis information is produced.
+When a candlestick pattern is recognized, it produces a match.  In some cases, an intrinsic confirmation is also available.  In cases where previous bars were used to identify a pattern, they are indicates as the basis for the match. [Documentation for each candlestick pattern]({{site.baseurl}}/indicators/#candlestick-pattern) will indicate whether confirmation and/or basis information is produced.
+
+```python
+from stock_indicators.indicators.common.enums import Match
+```
 
 | type | description
 |-- |:--
-| `Signal.BULL_CONFIRMED` | Confirmation of a prior bull signal
-| `Signal.BULL_SIGNAL` | Matching bullish pattern
-| `Signal.BULL_BASIS` | Bars supporting a bullish signal
-| `Signal.NEUTRAL` | Matching for non-directional patterns
-| `Signal.NONE` | No match
-| `Signal.BEAR_BASIS` | Bars supporting a bearish signal
-| `Signal.BEAR_SIGNAL` | Matching bearish pattern
-| `Signal.BEAR_CONFIRMED` | Confirmation of a prior bear signal
+| `Match.BULL_CONFIRMED` | Confirmation of a prior bull Match
+| `Match.BULL_SIGNAL` | Matching bullish pattern
+| `Match.BULL_BASIS` | Bars supporting a bullish Match
+| `Match.NEUTRAL` | Matching for non-directional patterns
+| `Match.NONE` | No match
+| `Match.BEAR_BASIS` | Bars supporting a bearish Match
+| `Match.BEAR_SIGNAL` | Matching bearish pattern
+| `Match.BEAR_CONFIRMED` | Confirmation of a prior bear Match
 
 ### Candle
 

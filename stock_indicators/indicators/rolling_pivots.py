@@ -40,7 +40,7 @@ def get_rolling_pivots(quotes: Iterable[Quote], window_periods: int,
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
     results = CsIndicator.GetRollingPivots[Quote](CsList(Quote, quotes), window_periods,
-                                                 offset_periods, point_type)
+                                                 offset_periods, point_type.cs_value)
     return RollingPivotsResults(results, RollingPivotsResult)
 
 

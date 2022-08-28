@@ -26,16 +26,16 @@ class TestOBV:
         assert     539843504 == r.obv
         assert 1016208844.40 == r.obv_sma
         
-    def test_convert_to_quotes(self, quotes):
-        new_quotes = indicators.get_obv(quotes).to_quotes()
+    # def test_convert_to_quotes(self, quotes):
+    #     new_quotes = indicators.get_obv(quotes).to_quotes()
         
-        assert 502 == len(new_quotes)
+    #     assert 502 == len(new_quotes)
         
-        q = new_quotes[249]
-        assert 1780918888 == q.close
+    #     q = new_quotes[249]
+    #     assert 1780918888 == q.close
         
-        q = new_quotes[501]
-        assert 539843504 == q.close
+    #     q = new_quotes[501]
+    #     assert 539843504 == q.close
         
     def test_bad_data(self, bad_quotes):
         r = indicators.get_obv(bad_quotes)

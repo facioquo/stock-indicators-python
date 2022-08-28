@@ -1,6 +1,6 @@
 ---
 title: Double Exponential Moving Average (DEMA)
-permalink: /indicators/DoubleEma/
+permalink: /indicators/Dema/
 type: moving-average
 layout: indicator
 ---
@@ -8,13 +8,13 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_double_ema**(*quotes, lookback_periods*)
+## **get_dema**(*quotes, lookback_periods*)
     
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `lookback_periods` | int | Number of periods (`N`) in the moving average.  Must be greater than 0.
 
 ### Historical quotes requirements
@@ -26,10 +26,11 @@ You must have at least `3×N` or `2×N+100` periods of `quotes`, whichever is mo
 ## Return
 
 ```python
-DEMAResult[DEMAResult]
+DEMAResults[DEMAResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `DEMAResults` is just a list of `DEMAResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first `2×N-1` periods will have `None` values since there's not enough data to calculate.
@@ -60,7 +61,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # calculate 20-period DEMA
-results = indicators.get_double_ema(quotes, 20)
+results = indicators.get_dema(quotes, 20)
 ```
 
 ## About: {{ page.title }}
@@ -68,11 +69,11 @@ results = indicators.get_double_ema(quotes, 20)
 [Double exponential moving average](https://en.wikipedia.org/wiki/Double_exponential_moving_average) of the Close price over a lookback window.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/256 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/DoubleEma.png)
+![image]({{site.charturl}}/Dema.png)
 
-DEMA is shown as the dashed line above.  [EMA](../Ema#content) (solid line) and [Triple EMA](../TripleEma#content) (dotted line) are also shown here for comparison.
+See related [EMA](../Ema#content) and [Triple EMA](../Tema#content).
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/DoubleEma/DoubleEma.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Dema/Dema.cs)
 - [Python wrapper]({{site.sourceurl}}/double_ema.py)

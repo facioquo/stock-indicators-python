@@ -1,5 +1,4 @@
 import pytest
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators import indicators
 
 class TestADL:
@@ -23,16 +22,16 @@ class TestADL:
         assert 3439986548.42 == round(float(r2.adl),                   2)
         assert r2.adl_sma is None
 
-    def test_convert_to_quotes(self, quotes):
-        new_quotes = indicators.get_adl(quotes).to_quotes()
+    # def test_convert_to_quotes(self, quotes):
+    #     new_quotes = indicators.get_adl(quotes).to_quotes()
 
-        assert 502 == len(new_quotes)
+    #     assert 502 == len(new_quotes)
 
-        q1 = new_quotes[249]
-        assert 3266400865.74 == round(float(to_pydecimal(q1.Close)), 2)
+    #     q1 = new_quotes[249]
+    #     assert 3266400865.74 == round(float(to_pydecimal(q1.Close)), 2)
 
-        q2 = new_quotes[501]
-        assert 3439986548.42 == round(float(to_pydecimal(q2.Close)), 2)
+    #     q2 = new_quotes[501]
+    #     assert 3439986548.42 == round(float(to_pydecimal(q2.Close)), 2)
 
     def test_bad_data(self, bad_quotes):
         results = indicators.get_adl(bad_quotes)

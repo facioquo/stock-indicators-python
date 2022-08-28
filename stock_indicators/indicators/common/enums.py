@@ -1,35 +1,40 @@
 from stock_indicators._cslib import (
-    CsCandlePart, CsSignal, CsEnum, CsBetaType, CsChandelierType, CsMaType,
+    CsCandlePart, CsMatch, CsEnum, CsBetaType, CsChandelierType, CsMaType,
     CsPivotPointType, CsPeriodSize, CsEndType, CsPivotTrend)
-from stock_indicators.indicators.common._contrib.enum import ValueEnum
+from stock_indicators.indicators.common._contrib.enum import CsCompatibleIntEnum
 
 
-class BetaType(ValueEnum):
+class BetaType(CsCompatibleIntEnum):
     STANDARD = CsBetaType.Standard
     UP = CsBetaType.Up
     DOWN = CsBetaType.Down
     ALL = CsBetaType.All
 
 
-class ChandelierType(ValueEnum):
+class ChandelierType(CsCompatibleIntEnum):
     LONG = CsChandelierType.Long
     SHORT = CsChandelierType.Short
 
 
-class CandlePart(ValueEnum):
+class CandlePart(CsCompatibleIntEnum):
     OPEN = CsCandlePart.Open
     HIGH = CsCandlePart.High
     LOW = CsCandlePart.Low
     CLOSE = CsCandlePart.Close
     VOLUME = CsCandlePart.Volume
+    HL2 = CsCandlePart.HL2
+    HLC3 = CsCandlePart.HLC3
+    OC2 = CsCandlePart.OC2
+    OHL3 = CsCandlePart.OHL3
+    OHLC4 = CsCandlePart.OHLC4
 
 
-class EndType(ValueEnum):
+class EndType(CsCompatibleIntEnum):
     CLOSE = CsEndType.Close
     HIGH_LOW = CsEndType.HighLow
 
 
-class MAType(ValueEnum):
+class MAType(CsCompatibleIntEnum):
     ALMA = CsMaType.ALMA
     DEMA = CsMaType.DEMA
     EPMA = CsMaType.EPMA
@@ -43,7 +48,7 @@ class MAType(ValueEnum):
     WMA = CsMaType.WMA
 
 
-class PeriodSize(ValueEnum):
+class PeriodSize(CsCompatibleIntEnum):
     MONTH = CsPeriodSize.Month
     WEEK = CsPeriodSize.Week
     DAY = CsPeriodSize.Day
@@ -58,7 +63,7 @@ class PeriodSize(ValueEnum):
     ONE_MINUTE = CsPeriodSize.OneMinute
 
 
-class PivotPointType(ValueEnum):
+class PivotPointType(CsCompatibleIntEnum):
     STANDARD = CsPivotPointType.Standard
     CAMARILLA = CsPivotPointType.Camarilla
     DEMARK = CsPivotPointType.Demark
@@ -66,19 +71,19 @@ class PivotPointType(ValueEnum):
     WOODIE = CsPivotPointType.Woodie
 
 
-class PivotTrend(ValueEnum):
+class PivotTrend(CsCompatibleIntEnum):
     HH = CsPivotTrend.HH
     LH = CsPivotTrend.LH
     HL = CsPivotTrend.HL
     LL = CsPivotTrend.LL
 
 
-class Signal(ValueEnum):
-    BULL_CONFIRMED = CsSignal.BullConfirmed
-    BULL_SIGNAL = CsSignal.BullSignal
-    BULL_BASIS = CsSignal.BullBasis
-    NEUTRAL = CsSignal.Neutral
-    NONE = CsEnum.Parse(CsSignal, "None")
-    BEAR_BASIS = CsSignal.BearBasis
-    BEAR_SIGNAL = CsSignal.BearSignal
-    BEAR_CONFIRMED = CsSignal.BearConfirmed
+class Match(CsCompatibleIntEnum):
+    BULL_CONFIRMED = CsMatch.BullConfirmed
+    BULL_SIGNAL = CsMatch.BullSignal
+    BULL_BASIS = CsMatch.BullBasis
+    NEUTRAL = CsMatch.Neutral
+    NONE = CsEnum.Parse(CsMatch, "None")
+    BEAR_BASIS = CsMatch.BearBasis
+    BEAR_SIGNAL = CsMatch.BearSignal
+    BEAR_CONFIRMED = CsMatch.BearConfirmed

@@ -1,5 +1,6 @@
 from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
+from warnings import warn
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -10,7 +11,7 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_double_ema(quotes: Iterable[Quote], lookback_periods: int):
+def get_dema(quotes: Iterable[Quote], lookback_periods: int):
     """Get DEMA calculated.
 
     Double Exponential Moving Average (DEMA) of the Close price.
@@ -30,8 +31,13 @@ def get_double_ema(quotes: Iterable[Quote], lookback_periods: int):
          - [DEMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/DoubleEma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    results = CsIndicator.GetDoubleEma[Quote](CsList(Quote, quotes), lookback_periods)
+    results = CsIndicator.GetDema[Quote](CsList(Quote, quotes), lookback_periods)
     return DEMAResults(results, DEMAResult)
+
+
+def get_double_ema(quotes: Iterable[Quote], lookback_periods: int):
+    warn('This method is deprecated. Use get_dema() instead.', DeprecationWarning, stacklevel=2)
+    return get_dema(quotes, lookback_periods)
 
 
 class DEMAResult(ResultBase):

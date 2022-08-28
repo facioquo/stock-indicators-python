@@ -14,7 +14,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `lookback_periods` | int, *default 9* | Number of periods (`N`) in the moving average.  Must be greater than 1, but is typically in the 5-20 range.
 | `offset` | float, *default 0.85* | Adjusts smoothness versus responsiveness on a scale from 0 to 1; where 1 is max responsiveness.
 | `sigma` | float, *default 6* | Defines the width of the Gaussian [normal distribution](https://en.wikipedia.org/wiki/Normal_distribution).  Must be greater than 0.
@@ -32,6 +32,7 @@ ALMAResults[ALMAResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `ALMAResults` is just a list of `ALMAResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values since there's not enough data to calculate.

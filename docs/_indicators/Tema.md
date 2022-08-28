@@ -1,6 +1,6 @@
 ---
 title: Triple Exponential Moving Average (TEMA)
-permalink: /indicators/TripleEma/
+permalink: /indicators/Tema/
 type: moving-average
 layout: indicator
 ---
@@ -8,13 +8,13 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_triple_ema**(*quotes, lookback_periods*)
+## **get_tema**(*quotes, lookback_periods*)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `lookback_periods` | int | Number of periods (`N`) in the moving average.  Must be greater than 0.
 
 ### Historical quotes requirements
@@ -30,6 +30,7 @@ TEMAResults[TEMAResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `TEMAResults` is just a list of `TEMAResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first `3×N-2` periods will have `None` values since there's not enough data to calculate.  Also note that we are using the proper [weighted variant](https://en.wikipedia.org/wiki/Triple_exponential_moving_average) for TEMA.  If you prefer the unweighted raw 3 EMAs value, please use the `Ema3` output from the [TRIX](../Trix#content) oscillator instead.
@@ -60,7 +61,7 @@ from stock_indicators import indicators
 quotes = get_history_from_feed("SPY")
 
 # calculate 20-period TEMA
-results = indicators.get_triple_ema(quotes, 20)
+results = indicators.get_tema(quotes, 20)
 ```
 
 ## About: {{ page.title }}
@@ -69,11 +70,11 @@ results = indicators.get_triple_ema(quotes, 20)
 Note: TEMA is often confused with the alternative [TRIX](../Trix#content) oscillator.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/256 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/TripleEma.png)
+![image]({{site.charturl}}/Tema.png)
 
-TEMA is shown as the dotted line above.  [EMA](../Ema#content) (solid line) and [Double EMA](../DoubleEma#content) (dashed line) are also shown here for comparison.
+See related [EMA](../Ema#content) and [Double EMA](../Dema#content).
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/TripleEma/TripleEma.cs)
-- [Python wrapper]({{site.sourceurl}}/triple_ema.py)
+- [C# core]({{site.base_sourceurl}}/s-z/Tema/Tema.cs)
+- [Python wrapper]({{site.sourceurl}}/tema.py)

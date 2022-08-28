@@ -9,29 +9,32 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_beta**(*market_history, eval_history, lookback_periods*)
+## **get_beta**(*market_history, eval_history, lookback_periods, beta_type=BetaType.STANDARD*)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `market_history` | Iterable[Quote] | Historical [market] Quotes data should be at any consistent frequency (day, hour, minute, etc).  This `market` quotes will be used to establish the baseline.
+| `market_history` | Iterable[Quote] | Historical [market] Quotes data should be at any consistent frequency (day, hour, minute, etc).  This `market` quotes will be used to establish the baseline. <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `eval_history` | Iterable[Quote] | Historical [evaluation stock] Quotes data should be at any consistent frequency (day, hour, minute, etc).
 | `lookback_periods` | int | Number of periods (`N`) in the lookback period.  Must be greater than 0 to calculate; however we suggest a larger period for statistically appropriate sample size and especially when using Beta +/-.
-
-<!-- | `type` | BetaType | Type of Beta to calculate.  Default is `BetaType.Standard`. See [BetaType options](#betatype-options) below. -->
+| `beta_type` | BetaType, *default BetaType.STANDARD* | Type of Beta to calculate.  See [BetaType options](#betatype-options) below.
 
 ### Historical quotes requirements
 You must have at least `N` periods of quotes to cover the warmup periods.  You must have at least the same matching date elements of `market_history`.  Exception will be thrown if not matched.  Historical price quotes should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-<!-- #### BetaType options
+#### BetaType options
+
+```python
+from stock_indicators.indicators.common.enums import BetaType
+```
 
 | type | description
 |-- |--
-| `Standard` | Standard Beta only.  Uses all historical quotes.
-| `Up` | Upside Beta only.  Uses historical quotes from market up bars only.
-| `Down` | Downside Beta only.  Uses historical quotes from market down bars only.
-| `All` | Returns all of the above.  Use this option if you want `Ratio` and `Convexity` values returned.  Note: 3× slower to calculate. -->
+| `STANDARD` | Standard Beta only.  Uses all historical quotes.
+| `UP` | Upside Beta only.  Uses historical quotes from market up bars only.
+| `DOWN` | Downside Beta only.  Uses historical quotes from market down bars only.
+| `ALL` | Returns all of the above.  Use this option if you want `ratio` and `convexity` values returned.  Note: 3× slower to calculate.
 
 ## Returns
 
@@ -40,6 +43,7 @@ BetaResults[BetaResult]
 ```
 
 - This method returns a time series of all available indicator values for the `quotes` provided.
+- `BetaResults` is just a list of `BetaResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values since there's not enough data to calculate.
@@ -50,11 +54,12 @@ BetaResults[BetaResult]
 | -- |-- |--
 | `date` | datetime | Date
 | `beta` | float, Optional | Beta coefficient based on `N` lookback periods
-
-<!-- | `BetaUp` | decimal | Beta+ (Up Beta)
-| `BetaDown` | decimal | Beta- (Down Beta)
-| `Ratio` | decimal | Beta ratio is `BetaUp/BetaDown`
-| `Convexity` | decimal | Beta convexity is <code>(BetaUp-BetaDown)<sup>2</sup></code> -->
+| `beta_up` | float, Optional | Beta+ (Up Beta)
+| `beta_down` | float, Optional | Beta- (Down Beta)
+| `ratio` | float, Optional | Beta ratio is `beta_up/beta_down`
+| `convexity` | float, Optional | Beta convexity is <code>(beta_up-beta_down)<sup>2</sup></code>
+| `returns_eval` | float, Optional | Returns of evaluated quotes (`R`)
+| `returns_mrkt` | float, Optional | Returns of market quotes (`Rm`)
 
 ### Utilities
 
@@ -68,13 +73,14 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 from stock_indicators import indicators
+from stock_indicators import BetaType      # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
 history_SPX = get_history_from_feed("SPX")
 history_TSLA = get_history_from_feed("TSLA")
 
 # calculate 20-period Beta coefficient
-results = indicators.get_beta(history_SPX, history_TSLA, 20)
+results = indicators.get_beta(history_SPX, history_TSLA, 20, BetaType.STANDARD)
 ```
 
 ## About: {{ page.title }}

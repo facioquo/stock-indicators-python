@@ -1,7 +1,7 @@
 ---
 title: Utilities and Helpers
 permalink: /utilities/
-layout: default
+layout: page
 ---
 
 # {{ page.title }}
@@ -22,6 +22,8 @@ Currently, `.condense()` is only available on a select few indicators.  If you f
 :warning: WARNING! In all cases, `.condense()` will remove non-essential results and will produce fewer records than are in `quotes`.
 
 ### Convert to quotes
+
+<code style='color: #d32f2f; important'>The .to_quotes() method is deprecated. (since v0.8.0)<code>
 
 `results.to_quotes()` will transform indicator results back into an `list[Quote]` so it can be re-used to generate an [indicator of indicators]({{site.baseurl}}/guide/#generating-indicator-of-indicators).
 

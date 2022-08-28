@@ -1,3 +1,4 @@
+from warnings import warn
 from typing import List, Optional
 
 from typing_extensions import Self
@@ -27,7 +28,10 @@ class ToQuotesMixin:
     """Mixin for to_quotes()."""
     @IndicatorResults._verify_data
     def to_quotes(self) -> List[Quote]:
-        """Convert indicator results into historical quotes."""
+        """Deprecated.
+        Convert indicator results into historical quotes."""
+        warn('The .to_quotes() method is deprecated.', DeprecationWarning, stacklevel=2)
+
         quotes = CsIndicator.ConvertToQuotes(CsList(self._get_csdata_type(), self._csdata))
 
         return [ Quote.from_csquote(q) for q in quotes ]

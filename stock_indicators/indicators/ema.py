@@ -5,12 +5,14 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
+from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
-# TODO: Need to support CandlePart Enum
-def get_ema(quotes: Iterable[Quote], lookback_periods: int):
+
+def get_ema(quotes: Iterable[Quote], lookback_periods: int,
+            candle_part: CandlePart = CandlePart.CLOSE):
     """Get EMA calculated.
 
     Exponential Moving Average (EMA) of the Close price.
@@ -22,6 +24,9 @@ def get_ema(quotes: Iterable[Quote], lookback_periods: int):
         `lookback_periods` : int
             Number of periods in the lookback window.
 
+        `candle_part` : CandlePart, defaults CandlePart.CLOSE
+            Selected OHLCV part.
+
     Returns:
         `EMAResults[EMAResult]`
             EMAResults is list of EMAResult with providing useful helper methods.
@@ -30,7 +35,8 @@ def get_ema(quotes: Iterable[Quote], lookback_periods: int):
          - [EMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Ema/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    ema_list = CsIndicator.GetEma[Quote](CsList(Quote, quotes), lookback_periods)
+    ema_list = CsIndicator.GetEma[Quote](CsList(Quote, quotes), lookback_periods,
+                                         candle_part.cs_value)
     return EMAResults(ema_list, EMAResult)
 
 
