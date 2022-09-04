@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -44,28 +41,28 @@ class TRIXResult(ResultBase):
     """
 
     @property
-    def ema3(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Ema3)
+    def ema3(self) -> Optional[float]:
+        return self._csdata.Ema3
 
     @ema3.setter
     def ema3(self, value):
-        self._csdata.Ema3 = CsDecimal(value)
+        self._csdata.Ema3 = value
 
     @property
-    def trix(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Trix)
+    def trix(self) -> Optional[float]:
+        return self._csdata.Trix
 
     @trix.setter
     def trix(self, value):
-        self._csdata.Trix = CsDecimal(value)
+        self._csdata.Trix = value
 
     @property
-    def signal(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Signal)
+    def signal(self) -> Optional[float]:
+        return self._csdata.Signal
 
     @signal.setter
     def signal(self, value):
-        self._csdata.Signal = CsDecimal(value)
+        self._csdata.Signal = value
 
 
 _T = TypeVar("_T", bound=TRIXResult)
