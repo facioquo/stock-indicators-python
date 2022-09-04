@@ -41,7 +41,7 @@ class ChaikinOscResult(ResultBase):
     """
 
     @property
-    def money_flow_multiplier(self) -> float:
+    def money_flow_multiplier(self) -> Optional[float]:
         return self._csdata.MoneyFlowMultiplier
 
     @money_flow_multiplier.setter
@@ -49,7 +49,7 @@ class ChaikinOscResult(ResultBase):
         self._csdata.MoneyFlowMultiplier = value
 
     @property
-    def money_flow_volume(self) -> float:
+    def money_flow_volume(self) -> Optional[float]:
         return self._csdata.MoneyFlowVolume
 
     @money_flow_volume.setter
@@ -57,7 +57,7 @@ class ChaikinOscResult(ResultBase):
         self._csdata.MoneyFlowVolume = value
 
     @property
-    def adl(self) -> float:
+    def adl(self) -> Optional[float]:
         return self._csdata.Adl
 
     @adl.setter
