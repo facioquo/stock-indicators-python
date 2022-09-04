@@ -45,6 +45,8 @@ class RSIResult(ResultBase):
     def rsi(self, value):
         self._csdata.Rsi = value
 
+    value = rsi
+
 
 _T = TypeVar("_T", bound=RSIResult)
 class RSIResults(ToQuotesMixin, RemoveWarmupMixin, IndicatorResults[_T]):

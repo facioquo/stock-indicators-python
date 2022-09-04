@@ -38,7 +38,7 @@ class CMFResult(ResultBase):
     """
 
     @property
-    def money_flow_multiplier(self) -> float:
+    def money_flow_multiplier(self) -> Optional[float]:
         return self._csdata.MoneyFlowMultiplier
 
     @money_flow_multiplier.setter
@@ -46,7 +46,7 @@ class CMFResult(ResultBase):
         self._csdata.MoneyFlowMultiplier = value
 
     @property
-    def money_flow_volume(self) -> float:
+    def money_flow_volume(self) -> Optional[float]:
         return self._csdata.MoneyFlowVolume
 
     @money_flow_volume.setter
