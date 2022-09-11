@@ -51,7 +51,10 @@ setuptools.setup(
         )
     ),
     package_data={
-        "stock_indicators._cslib": ["lib/*.dll"],
+        "stock_indicators._cslib": [
+            "runtimeconfig.json",
+            "lib/*.dll"
+        ],
     },
     python_requires=">=3.7",
     install_requires=[
