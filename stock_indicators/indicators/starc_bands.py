@@ -39,7 +39,7 @@ def get_starc_bands(quotes: Iterable[Quote], sma_periods: int = 20,
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
     results = CsIndicator.GetStarcBands[Quote](CsList(Quote, quotes), sma_periods,
-                                               CsDecimal(multiplier), atr_periods)
+                                               multiplier, atr_periods)
     return STARCBandsResults(results, STARCBandsResult)
 
 
