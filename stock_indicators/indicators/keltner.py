@@ -39,7 +39,7 @@ def get_keltner(quotes: Iterable[Quote], ema_periods: int = 20,
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
     results = CsIndicator.GetKeltner[Quote](CsList(Quote, quotes), ema_periods,
-                                            CsDecimal(multiplier), atr_periods)
+                                            multiplier, atr_periods)
     return KeltnerResults(results, KeltnerResult)
 
 

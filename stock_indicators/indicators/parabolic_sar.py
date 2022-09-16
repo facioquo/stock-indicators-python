@@ -48,11 +48,11 @@ def get_parabolic_sar(quotes, acceleration_step = None,
         if acceleration_step is None: acceleration_step = 0.02
         if max_acceleration_factor is None: max_acceleration_factor = 0.2
 
-        results = CsIndicator.GetParabolicSar[Quote](CsList(Quote, quotes), CsDecimal(acceleration_step),
-                                                 CsDecimal(max_acceleration_factor))
+        results = CsIndicator.GetParabolicSar[Quote](CsList(Quote, quotes), acceleration_step,
+                                                 max_acceleration_factor)
     else:
-        results = CsIndicator.GetParabolicSar[Quote](CsList(Quote, quotes), CsDecimal(acceleration_step),
-                                                 CsDecimal(max_acceleration_factor), CsDecimal(initial_factor))
+        results = CsIndicator.GetParabolicSar[Quote](CsList(Quote, quotes), acceleration_step,
+                                                 max_acceleration_factor, initial_factor)
 
     return ParabolicSARResults(results, ParabolicSARResult)
 
