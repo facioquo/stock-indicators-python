@@ -2,7 +2,6 @@ from typing import Iterable, Optional, TypeVar
 from warnings import warn
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cslib import CsQuoteUtility
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
@@ -34,7 +33,7 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int,
          - [SMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Sma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    quotes = CsQuoteUtility.Use[Quote](CsList(Quote, quotes), candle_part.cs_value)
+    quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var. 
     results = CsIndicator.GetSma(quotes, lookback_periods)
     return SMAResults(results, SMAResult)
 
