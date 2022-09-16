@@ -64,7 +64,8 @@ from .rsi import (get_rsi)
 from .slope import (get_slope)
 from .sma import (
     get_sma,
-    get_sma_extended)
+    get_sma_extended,
+    get_sma_analysis)
 from .smi import (get_smi)
 from .smma import (get_smma)
 from .starc_bands import (get_starc_bands)

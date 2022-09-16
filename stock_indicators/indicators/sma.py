@@ -1,11 +1,9 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
+from warnings import warn
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cslib import CsQuoteUtility
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
@@ -16,7 +14,7 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int,
             candle_part: CandlePart = CandlePart.CLOSE):
     """Get SMA calculated.
 
-    Simple Moving Average (SMA) is the average of Close price over a lookback window.
+    Simple Moving Average (SMA) is the average of price over a lookback window.
 
     Parameters:
         `quotes` : Iterable[Quote]
@@ -40,12 +38,12 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int,
     results = CsIndicator.GetSma(quotes, lookback_periods)
     return SMAResults(results, SMAResult)
 
-def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):
-    """Get SMA calculated, with extra properties.
+def get_sma_analysis(quotes: Iterable[Quote], lookback_periods: int):
+    """Get SMA calculated, with more analysis.
 
-    Simple Moving Average (SMA) is the average of Close price over a lookback window.
-    This extended variant includes mean absolute deviation (MAD), mean square error (MSE),
-    and mean absolute percentage error (MAPE).
+    Simple Moving Average (SMA) is the average of price over a lookback window.
+    This extended variant includes mean absolute deviation (MAD),
+    mean square error (MSE), and mean absolute percentage error (MAPE).
 
     Parameters:
         `quotes` : Iterable[Quote]
@@ -62,8 +60,12 @@ def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):
          - [SMA-extended Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Sma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    sma_extended_list = CsIndicator.GetSmaExtended[Quote](CsList(Quote, quotes), lookback_periods)
-    return SMAExtendedResults(sma_extended_list, SMAExtendedResult)
+    sma_extended_list = CsIndicator.GetSmaAnalysis[Quote](CsList(Quote, quotes), lookback_periods)
+    return SMAAnalysisResults(sma_extended_list, SMAAnalysisResult)
+
+def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):
+    warn('This method is deprecated. Use get_sma_analysis() instead.', DeprecationWarning, stacklevel=2)
+    return get_sma_analysis(quotes, lookback_periods)
 
 
 class SMAResult(ResultBase):
@@ -72,12 +74,12 @@ class SMAResult(ResultBase):
     """
 
     @property
-    def sma(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Sma)
+    def sma(self) -> Optional[float]:
+        return self._csdata.Sma
 
     @sma.setter
     def sma(self, value):
-        self._csdata.Sma = CsDecimal(value)
+        self._csdata.Sma = value
 
 
 _T = TypeVar("_T", bound=SMAResult)
@@ -89,9 +91,9 @@ class SMAResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
 
 
-class SMAExtendedResult(SMAResult):
+class SMAAnalysisResult(SMAResult):
     """
-    A wrapper class for a single unit of SMA-Extended results.
+    A wrapper class for a single unit of SMA Analysis results.
     """
 
     @property
@@ -119,10 +121,10 @@ class SMAExtendedResult(SMAResult):
         self._csdata.Mape = value
 
 
-_T = TypeVar("_T", bound=SMAExtendedResult)
-class SMAExtendedResults(RemoveWarmupMixin, IndicatorResults[_T]):
+_T = TypeVar("_T", bound=SMAAnalysisResult)
+class SMAAnalysisResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
-    A wrapper class for the list of SMA-Extended results.
+    A wrapper class for the list of SMA Analysis results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in CSharp implementation.
     """
