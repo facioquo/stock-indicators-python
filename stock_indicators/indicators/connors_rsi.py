@@ -46,12 +46,14 @@ class ConnorsRSIResult(ResultBase):
     """
 
     @property
-    def rsi_close(self) -> Optional[float]:
-        return self._csdata.RsiClose
+    def rsi(self) -> Optional[float]:
+        return self._csdata.Rsi
 
-    @rsi_close.setter
-    def rsi_close(self, value):
-        self._csdata.RsiClose = value
+    @rsi.setter
+    def rsi(self, value):
+        self._csdata.Rsi = value
+
+    rsi_close = rsi
 
     @property
     def rsi_streak(self) -> Optional[float]:
