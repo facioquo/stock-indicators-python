@@ -2,6 +2,7 @@ from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
+from stock_indicators._cslib import CsQuoteUtility
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
@@ -35,8 +36,9 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int,
          - [SMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Sma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    sma_list = CsIndicator.GetSma[Quote](CsList(Quote, quotes), lookback_periods, candle_part.cs_value)
-    return SMAResults(sma_list, SMAResult)
+    quotes = CsQuoteUtility.Use[Quote](CsList(Quote, quotes), candle_part.cs_value)
+    results = CsIndicator.GetSma(quotes, lookback_periods)
+    return SMAResults(results, SMAResult)
 
 def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):
     """Get SMA calculated, with extra properties.
