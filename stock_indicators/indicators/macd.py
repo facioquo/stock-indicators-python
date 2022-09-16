@@ -2,7 +2,6 @@ from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.enums import CandlePart
@@ -43,7 +42,8 @@ def get_macd(quotes: Iterable[Quote], fast_periods: int = 12,
          - [MACD Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Macd/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    macd_results = CsIndicator.GetMacd[Quote](CsList(Quote, quotes), fast_periods,
+    quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var. 
+    macd_results = CsIndicator.GetMacd[Quote](quotes, fast_periods,
                                               slow_periods, signal_periods,
                                               candle_part.cs_value)
     return MACDResults(macd_results, MACDResult)
