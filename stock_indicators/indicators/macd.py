@@ -1,9 +1,6 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
@@ -78,20 +75,20 @@ class MACDResult(ResultBase):
         self._csdata.Histogram = value
 
     @property
-    def fast_ema(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.FastEma)
+    def fast_ema(self) -> Optional[float]:
+        return self._csdata.FastEma
 
     @fast_ema.setter
     def fast_ema(self, value):
-        self._csdata.FastEma = CsDecimal(value)
+        self._csdata.FastEma = value
 
     @property
-    def slow_ema(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.SlowEma)
+    def slow_ema(self) -> Optional[float]:
+        return self._csdata.SlowEma
 
     @slow_ema.setter
     def slow_ema(self, value):
-        self._csdata.SlowEma = CsDecimal(value)
+        self._csdata.SlowEma = value
 
 
 _T = TypeVar("_T", bound=MACDResult)
