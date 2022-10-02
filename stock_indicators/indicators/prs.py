@@ -41,7 +41,7 @@ def get_prs(eval_quotes: Iterable[Quote], base_quotes: Iterable[Quote],
     """
     warn('Eval and Base quotes have been reversed in v1! Ensure you swap parameter location. '
          'This warning will be removed after v1.0.0', SyntaxWarning)
-    
+
     results = CsIndicator.GetPrs[Quote](CsList(Quote, eval_quotes), CsList(Quote, base_quotes),
                                         lookback_periods, sma_periods)
     return PRSResults(results, PRSResult)
