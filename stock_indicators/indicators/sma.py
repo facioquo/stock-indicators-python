@@ -52,11 +52,11 @@ def get_sma_analysis(quotes: Iterable[Quote], lookback_periods: int):
             Number of periods in the lookback window.
 
     Returns:
-        `SMAExtendedResults[SMAExtendedResult]`
-            SMAExtendedResults is list of SMAExtendedResult with providing useful helper methods.
+        `SMAAnalysisResults[SMAAnalysisResult]`
+            SMAAnalysisResults is list of SMAAnalysisResult with providing useful helper methods.
 
     See more:
-         - [SMA-extended Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Sma/#content)
+         - [SMA-analysis Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Sma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
     sma_extended_list = CsIndicator.GetSmaAnalysis[Quote](CsList(Quote, quotes), lookback_periods)
