@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -38,20 +35,20 @@ class HTTrendlineResult(ResultBase):
     """
 
     @property
-    def trendline(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Trendline)
+    def trendline(self) -> Optional[float]:
+        return self._csdata.Trendline
 
     @trendline.setter
     def trendline(self, value):
-        self._csdata.Trendline = CsDecimal(value)
+        self._csdata.Trendline = value
 
     @property
-    def smooth_price(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.SmoothPrice)
+    def smooth_price(self) -> Optional[float]:
+        return self._csdata.SmoothPrice
 
     @smooth_price.setter
     def smooth_price(self, value):
-        self._csdata.SmoothPrice = CsDecimal(value)
+        self._csdata.SmoothPrice = value
 
 
 _T = TypeVar("_T", bound=HTTrendlineResult)
