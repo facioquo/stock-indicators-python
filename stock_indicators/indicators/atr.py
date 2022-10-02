@@ -40,28 +40,28 @@ class ATRResult(ResultBase):
     """
 
     @property
-    def tr(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Tr)
+    def tr(self) -> Optional[float]:
+        return self._csdata.Tr
 
     @tr.setter
     def tr(self, value):
-        self._csdata.Tr = CsDecimal(value)
+        self._csdata.Tr = value
 
     @property
-    def atr(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Atr)
+    def atr(self) -> Optional[float]:
+        return self._csdata.Atr
 
     @atr.setter
     def atr(self, value):
-        self._csdata.Atr = CsDecimal(value)
+        self._csdata.Atr = value
 
     @property
-    def atrp(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Atrp)
+    def atrp(self) -> Optional[float]:
+        return self._csdata.Atrp
 
     @atrp.setter
     def atrp(self, value):
-        self._csdata.Atrp = CsDecimal(value)
+        self._csdata.Atrp = value
 
 
 _T = TypeVar("_T", bound=ATRResult)

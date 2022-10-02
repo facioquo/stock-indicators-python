@@ -1,10 +1,6 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
@@ -43,9 +39,9 @@ def get_macd(quotes: Iterable[Quote], fast_periods: int = 12,
          - [MACD Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Macd/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    macd_results = CsIndicator.GetMacd[Quote](CsList(Quote, quotes), fast_periods,
-                                              slow_periods, signal_periods,
-                                              candle_part.cs_value)
+    quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var. 
+    macd_results = CsIndicator.GetMacd(quotes, fast_periods,
+                                            slow_periods, signal_periods)
     return MACDResults(macd_results, MACDResult)
 
 
@@ -79,20 +75,20 @@ class MACDResult(ResultBase):
         self._csdata.Histogram = value
 
     @property
-    def fast_ema(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.FastEma)
+    def fast_ema(self) -> Optional[float]:
+        return self._csdata.FastEma
 
     @fast_ema.setter
     def fast_ema(self, value):
-        self._csdata.FastEma = CsDecimal(value)
+        self._csdata.FastEma = value
 
     @property
-    def slow_ema(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.SlowEma)
+    def slow_ema(self) -> Optional[float]:
+        return self._csdata.SlowEma
 
     @slow_ema.setter
     def slow_ema(self, value):
-        self._csdata.SlowEma = CsDecimal(value)
+        self._csdata.SlowEma = value
 
 
 _T = TypeVar("_T", bound=MACDResult)

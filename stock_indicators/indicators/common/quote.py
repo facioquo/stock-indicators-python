@@ -1,10 +1,14 @@
 from decimal import Decimal
+from typing import Iterable
 
 from stock_indicators._cslib import CsQuote
+from stock_indicators._cslib import CsQuoteUtility
+from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import DateTime as CsDateTime
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes.datetime import to_pydatetime
 from stock_indicators._cstypes.decimal import to_pydecimal
+from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common._contrib.type_resolver import generate_cs_inherited_class
 
 
@@ -78,5 +82,14 @@ class _Quote:
             close=csQuote.Close,
             volume=csQuote.Volume
         )
+
+    @classmethod
+    def use(cls, quotes: Iterable["Quote"], candle_part: CandlePart):
+        """
+        Optionally select which candle part to use in the calculation.
+        It returns C# Object.
+        """
+        return CsQuoteUtility.Use[Quote](CsList(Quote, quotes), candle_part.cs_value)
+
 
 Quote = generate_cs_inherited_class(_Quote, CsQuote)

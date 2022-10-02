@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar, overload
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -48,11 +45,11 @@ def get_parabolic_sar(quotes, acceleration_step = None,
         if acceleration_step is None: acceleration_step = 0.02
         if max_acceleration_factor is None: max_acceleration_factor = 0.2
 
-        results = CsIndicator.GetParabolicSar[Quote](CsList(Quote, quotes), CsDecimal(acceleration_step),
-                                                 CsDecimal(max_acceleration_factor))
+        results = CsIndicator.GetParabolicSar[Quote](CsList(Quote, quotes), acceleration_step,
+                                                 max_acceleration_factor)
     else:
-        results = CsIndicator.GetParabolicSar[Quote](CsList(Quote, quotes), CsDecimal(acceleration_step),
-                                                 CsDecimal(max_acceleration_factor), CsDecimal(initial_factor))
+        results = CsIndicator.GetParabolicSar[Quote](CsList(Quote, quotes), acceleration_step,
+                                                 max_acceleration_factor, initial_factor)
 
     return ParabolicSARResults(results, ParabolicSARResult)
 
@@ -63,12 +60,12 @@ class ParabolicSARResult(ResultBase):
     """
 
     @property
-    def sar(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Sar)
+    def sar(self) -> Optional[float]:
+        return self._csdata.Sar
 
     @sar.setter
     def sar(self, value):
-        self._csdata.Sar = CsDecimal(value)
+        self._csdata.Sar = value
 
     @property
     def is_reversal(self) -> Optional[bool]:

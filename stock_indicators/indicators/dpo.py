@@ -41,20 +41,20 @@ class DPOResult(ResultBase):
     """
 
     @property
-    def sma(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Sma)
+    def sma(self) -> Optional[float]:
+        return self._csdata.Sma
 
     @sma.setter
     def sma(self, value):
-        self._csdata.Sma = CsDecimal(value)
+        self._csdata.Sma = value
 
     @property
-    def dpo(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Dpo)
+    def dpo(self) -> Optional[float]:
+        return self._csdata.Dpo
 
     @dpo.setter
     def dpo(self, value):
-        self._csdata.Dpo = CsDecimal(value)
+        self._csdata.Dpo = value
 
 
 _T = TypeVar("_T", bound=DPOResult)

@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes.decimal import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -42,12 +39,12 @@ class EPMAResult(ResultBase):
     """
 
     @property
-    def epma(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Epma)
+    def epma(self) -> Optional[float]:
+        return self._csdata.Epma
 
     @epma.setter
     def epma(self, value):
-        self._csdata.Epma = CsDecimal(value)
+        self._csdata.Epma = value
 
 
 _T = TypeVar("_T", bound=EPMAResult)

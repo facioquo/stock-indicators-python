@@ -6,7 +6,7 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_prs(base_history: Iterable[Quote], eval_history: Iterable[Quote],
+def get_prs(eval_quotes: Iterable[Quote], base_quotes: Iterable[Quote],
             lookback_periods: Optional[int] = None, sma_periods: Optional[int] = None):
     """Get PRS calculated.
 
@@ -17,12 +17,12 @@ def get_prs(base_history: Iterable[Quote], eval_history: Iterable[Quote],
     change over the specified periods.
 
     Parameters:
-        `base_history` : Iterable[Quote]
+        `eval_quotes` : Iterable[Quote]
+            Historical price quotes for evaluation.
+
+        `base_quotes` : Iterable[Quote]
             This is usually market index data,
             but could be any baseline data that you might use for comparison.
-
-        `base_history` : Iterable[Quote]
-            Historical price quotes for evaluation.
 
         `lookback_periods` : int, optional
             Number of periods for % difference.
@@ -38,7 +38,7 @@ def get_prs(base_history: Iterable[Quote], eval_history: Iterable[Quote],
          - [PRS Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Prs/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    results = CsIndicator.GetPrs[Quote](CsList(Quote, base_history), CsList(Quote, eval_history),
+    results = CsIndicator.GetPrs[Quote](CsList(Quote, eval_quotes), CsList(Quote, base_quotes),
                                         lookback_periods, sma_periods)
     return PRSResults(results, PRSResult)
 

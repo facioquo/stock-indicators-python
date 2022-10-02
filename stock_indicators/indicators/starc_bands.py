@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -39,7 +36,7 @@ def get_starc_bands(quotes: Iterable[Quote], sma_periods: int = 20,
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
     results = CsIndicator.GetStarcBands[Quote](CsList(Quote, quotes), sma_periods,
-                                               CsDecimal(multiplier), atr_periods)
+                                               multiplier, atr_periods)
     return STARCBandsResults(results, STARCBandsResult)
 
 
@@ -49,28 +46,28 @@ class STARCBandsResult(ResultBase):
     """
 
     @property
-    def upper_band(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.UpperBand)
+    def upper_band(self) -> Optional[float]:
+        return self._csdata.UpperBand
 
     @upper_band.setter
     def upper_band(self, value):
-        self._csdata.UpperBand = CsDecimal(value)
+        self._csdata.UpperBand = value
 
     @property
-    def center_line(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Centerline)
+    def center_line(self) -> Optional[float]:
+        return self._csdata.Centerline
 
     @center_line.setter
     def center_line(self, value):
-        self._csdata.Centerline = CsDecimal(value)
+        self._csdata.Centerline = value
 
     @property
-    def lower_band(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.LowerBand)
+    def lower_band(self) -> Optional[float]:
+        return self._csdata.LowerBand
 
     @lower_band.setter
     def lower_band(self, value):
-        self._csdata.LowerBand = CsDecimal(value)
+        self._csdata.LowerBand = value
 
 
 _T = TypeVar("_T", bound=STARCBandsResult)

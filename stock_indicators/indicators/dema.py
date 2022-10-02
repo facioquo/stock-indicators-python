@@ -1,11 +1,8 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 from warnings import warn
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -46,12 +43,12 @@ class DEMAResult(ResultBase):
     """
 
     @property
-    def dema(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Dema)
+    def dema(self) -> Optional[float]:
+        return self._csdata.Dema
 
     @dema.setter
     def dema(self, value):
-        self._csdata.Dema = CsDecimal(value)
+        self._csdata.Dema = value
 
 
 _T = TypeVar("_T", bound=DEMAResult)

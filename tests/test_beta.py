@@ -4,7 +4,7 @@ from stock_indicators.indicators.common.enums import BetaType
 
 class TestBeta:
     def test_all(self, quotes, other_quotes):
-        results = indicators.get_beta(quotes, other_quotes, 20, BetaType.ALL)
+        results = indicators.get_beta(other_quotes, quotes, 20, BetaType.ALL)
         
         assert 502 == len(results)
         assert 482 == len(list(filter(lambda x: x.beta is not None, results)))
@@ -42,7 +42,7 @@ class TestBeta:
         assert 0.2316 == round(float(r.convexity), 4)
         
     def test_standard(self, quotes, other_quotes):
-        results = indicators.get_beta(quotes, other_quotes, 20, BetaType.STANDARD)
+        results = indicators.get_beta(other_quotes, quotes, 20, BetaType.STANDARD)
 
         assert 502 == len(results)
         assert 482 == len(list(filter(lambda x: x.beta is not None, results)))
@@ -51,7 +51,7 @@ class TestBeta:
         assert 1.5123 == round(float(r.beta), 4)
 
     def test_up(self, quotes, other_quotes):
-        results = indicators.get_beta(quotes, other_quotes, 20, BetaType.UP)
+        results = indicators.get_beta(other_quotes, quotes, 20, BetaType.UP)
         
         assert 502 == len(results)
         assert 482 == len(list(filter(lambda x: x.beta_up is not None, results)))
@@ -60,7 +60,7 @@ class TestBeta:
         assert 2.0721 == round(float(r.beta_up), 4)
         
     def test_down(self, quotes, other_quotes):
-        results = indicators.get_beta(quotes, other_quotes, 20, BetaType.DOWN)
+        results = indicators.get_beta(other_quotes, quotes, 20, BetaType.DOWN)
         
         assert 502 == len(results)
         assert 482 == len(list(filter(lambda x: x.beta_down is not None, results)))
@@ -91,7 +91,7 @@ class TestBeta:
     #     )
 
     def test_removed(self, quotes, other_quotes):
-        results = indicators.get_beta(quotes, other_quotes, 20).remove_warmup_periods()
+        results = indicators.get_beta(other_quotes, quotes, 20).remove_warmup_periods()
 
         assert 502 - 20 == len(results)
 
