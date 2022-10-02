@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.enums import ChandelierType
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
@@ -50,16 +47,16 @@ class ChandelierResult(ResultBase):
     """
 
     @property
-    def chandelier_exit(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.ChandelierExit)
+    def chandelier_exit(self) -> Optional[float]:
+        return self._csdata.ChandelierExit
 
     @chandelier_exit.setter
     def chandelier_exit(self, value):
-        self._csdata.ChandelierExit = CsDecimal(value)
+        self._csdata.ChandelierExit = value
 
 
 _T = TypeVar("_T", bound=ChandelierResult)
-class ChandelierResults(RemoveWarmupMixin,IndicatorResults[_T]):
+class ChandelierResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Chandelier Exit results.
     It is exactly same with built-in `list` except for that it provides
