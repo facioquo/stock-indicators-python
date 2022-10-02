@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -46,28 +43,28 @@ class StdevChannelsResult(ResultBase):
     """
 
     @property
-    def center_line(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Centerline)
+    def center_line(self) -> Optional[float]:
+        return self._csdata.Centerline
 
     @center_line.setter
     def center_line(self, value):
-        self._csdata.Centerline = CsDecimal(value)
+        self._csdata.Centerline = value
 
     @property
-    def upper_channel(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.UpperChannel)
+    def upper_channel(self) -> Optional[float]:
+        return self._csdata.UpperChannel
 
     @upper_channel.setter
     def upper_channel(self, value):
-        self._csdata.UpperChannel = CsDecimal(value)
+        self._csdata.UpperChannel = value
 
     @property
-    def lower_channel(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.LowerChannel)
+    def lower_channel(self) -> Optional[float]:
+        return self._csdata.LowerChannel
 
     @lower_channel.setter
     def lower_channel(self, value):
-        self._csdata.LowerChannel = CsDecimal(value)
+        self._csdata.LowerChannel = value
 
     @property
     def break_point(self) -> bool:
