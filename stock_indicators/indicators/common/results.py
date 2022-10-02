@@ -21,6 +21,7 @@ class ResultBase:
     def date(self, value):
         self._csdata.Date = CsDateTime(value)
 
+
 _T = TypeVar("_T", bound=ResultBase)
 class IndicatorResults(List[_T]):
     """
@@ -70,11 +71,11 @@ class IndicatorResults(List[_T]):
 
     @_verify_data
     def __add__(self, other: "IndicatorResults"):
-        return self.__class__(self._csdata.__add__(other._csdata), self._wrapper_class)
+        return self.__class__(list(self._csdata).__add__(list(other._csdata)), self._wrapper_class)
 
     @_verify_data
-    def __mul__(self, other: "IndicatorResults"):
-        return self.__class__(self._csdata.__mul__(other._csdata), self._wrapper_class)
+    def __mul__(self, value: int):
+        return self.__class__(list(self._csdata).__mul__(value), self._wrapper_class)
 
     @_verify_data
     def find(self, lookup_date: PyDateTime) -> _T:
