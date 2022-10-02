@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -41,12 +38,12 @@ class HMAResult(ResultBase):
     """
 
     @property
-    def hma(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Hma)
+    def hma(self) -> Optional[float]:
+        return self._csdata.Hma
 
     @hma.setter
     def hma(self, value):
-        self._csdata.Hma = CsDecimal(value)
+        self._csdata.Hma = value
 
 
 _T = TypeVar("_T", bound=HMAResult)
