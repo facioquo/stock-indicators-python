@@ -1,9 +1,6 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
@@ -47,12 +44,12 @@ class WMAResult(ResultBase):
     """
 
     @property
-    def wma(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Wma)
+    def wma(self) -> Optional[float]:
+        return self._csdata.Wma
 
     @wma.setter
     def wma(self, value):
-        self._csdata.Wma = CsDecimal(value)
+        self._csdata.Wma = value
 
 
 _T = TypeVar("_T", bound=WMAResult)
