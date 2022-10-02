@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -44,28 +41,28 @@ class BollingerBandsResult(ResultBase):
     """
 
     @property
-    def sma(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Sma)
+    def sma(self) -> Optional[float]:
+        return self._csdata.Sma
 
     @sma.setter
     def sma(self, value):
-        self._csdata.Sma = CsDecimal(value)
+        self._csdata.Sma = value
 
     @property
-    def upper_band(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.UpperBand)
+    def upper_band(self) -> Optional[float]:
+        return self._csdata.UpperBand
 
     @upper_band.setter
     def upper_band(self, value):
-        self._csdata.UpperBand = CsDecimal(value)
+        self._csdata.UpperBand = value
 
     @property
-    def lower_band(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.LowerBand)
+    def lower_band(self) -> Optional[float]:
+        return self._csdata.LowerBand
 
     @lower_band.setter
     def lower_band(self, value):
-        self._csdata.LowerBand = CsDecimal(value)
+        self._csdata.LowerBand = value
 
     @property
     def percent_b(self) -> Optional[float]:
