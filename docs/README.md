@@ -10,8 +10,8 @@ It can be used in any market analysis software using standard OHLCV price quotes
 
 Explore more information:
 
-- [Indicators and overlays]({{site.baseurl}}/indicators/#content)
 - [Guide and Pro tips]({{site.baseurl}}/guide/#content)
+- [Indicators and overlays]({{site.baseurl}}/indicators/#content)
 - [Utilities and Helpers]({{site.baseurl}}/utilities/#content)
 - [Demo site](https://stock-charts.azurewebsites.net) (a stock chart)
 - [Release notes]({{site.github.repository_url}}/releases)
