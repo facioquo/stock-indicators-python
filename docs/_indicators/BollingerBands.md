@@ -41,9 +41,9 @@ BollingerBandsResults[BollingerBandsResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `sma` | Decimal, Optional | Simple moving average (SMA) of Close price (center line)
-| `upper_band` | Decimal, Optional | Upper line is `D` standard deviations above the SMA
-| `lower_band` | Decimal, Optional | Lower line is `D` standard deviations below the SMA
+| `sma` | float, Optional | Simple moving average (SMA) of Close price (center line)
+| `upper_band` | float, Optional | Upper line is `D` standard deviations above the SMA
+| `lower_band` | float, Optional | Lower line is `D` standard deviations below the SMA
 | `percent_b` | float, Optional | `%B` is the location within the bands.  `(Price-lower_band)/(upper_band-lower_band)`
 | `z_score` | float, Optional | Z-Score of current Close price (number of standard deviations from mean)
 | `width` | float, Optional | Width as percent of SMA price.  `(upper_band-lower_band)/sma`
