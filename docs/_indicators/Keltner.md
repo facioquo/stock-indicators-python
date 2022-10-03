@@ -44,10 +44,10 @@ KeltnerResults[KeltnerResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `upper_band` | Decimal, Optional | Upper band of Keltner Channel
-| `center_line` | Decimal, Optional | EMA of Close price
-| `lower_band` | Decimal, Optional | Lower band of Keltner Channel
-| `width` | Decimal, Optional | Width as percent of Centerline price.  `(upper_band-lower_band)/center_line`
+| `upper_band` | float, Optional | Upper band of Keltner Channel
+| `center_line` | float, Optional | EMA of Close price
+| `lower_band` | float, Optional | Lower band of Keltner Channel
+| `width` | float, Optional | Width as percent of Centerline price.  `(upper_band-lower_band)/center_line`
 
 ### Utilities
 
