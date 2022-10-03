@@ -8,7 +8,10 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_fractal**(*quotes, window_span=2*)
+## **get_fractal**(*quotes, window_span=2, end_type = EndType.HIGH_LOW*)
+
+### More overloaded interfaces
+**get_fractal**(quotes, left_span, right_span, end_type)
 
 ## Parameters
 
@@ -16,8 +19,7 @@ layout: indicator
 | -- |-- |--
 | `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `window_span` | int, *default 2* | Evaluation window span width (`S`).  Must be at least 2.
-
-<!-- | `endType` | EndType | Determines whether `Close` or `High/Low` are used to find end points.  See [EndType options](#endtype-options) below.  Default is `EndType.HighLow`. -->
+| `end_type` | EndType | Determines whether `close` or `high/low` are used to find end points.  See [EndType options](#endtype-options) below.  Default is `EndType.HIGH_LOW`.
 
 The total evaluation window size is `2×S+1`, representing `±S` from the evalution date.
 
@@ -27,12 +29,16 @@ You must have at least `2×S+1` periods of `quotes` to cover the warmup periods;
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-<!-- ### EndType options
+### EndType options
+
+```python
+from stock_indicators.indicators.common.enums import EndType
+```
 
 | type | description
 |-- |--
-| `EndType.Close` | Chevron point identified from `Close` price
-| `EndType.HighLow` | Chevron point identified from `High` and `Low` price (default) -->
+| `CLOSE` | Chevron point identified from `close` price
+| `HIGH_LOW` | Chevron point identified from `high` and `low` price (default)
 
 ## Returns
 
