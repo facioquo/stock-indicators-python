@@ -6,6 +6,14 @@ tagline: "Send in historical price quotes and get back desired technical indicat
 # https://github.com/pages-themes/cayman
 remote_theme: pages-themes/cayman@v0.2.0
 
+# social media information
+image:
+  path: /assets/social-banner.png
+  height: 640
+  width: 1280
+
+logo: /assets/icons/android-chrome-192x192.png
+
 # override built-in github url because it does not fetch in build tests
 github:
   repository_url: "https://github.com/DaveSkender/Stock.Indicators.Python"
@@ -27,7 +35,7 @@ google_analytics: G-MNKJE3KS9Y
 exclude: [
   "*.json",
   "*.lock",
-  "*.yml", 
+  "*.yml",
   "*.pptx",
   ".offline",
   "GemFile",
