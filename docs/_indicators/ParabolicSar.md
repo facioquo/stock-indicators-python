@@ -20,7 +20,7 @@ layout: indicator
 | `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `acceleration_step` | float, *default 0.02* | Incremental step size for the Acceleration Factor.  Must be greater than 0.
 | `max_acceleration_factor` | float, *default 0.2* | Maximimum factor limit.  Must be greater than `acceleration_step`.
-| `initialFactor` | decimal | Initial Acceleration Factor.  Must be greater than 0.  Default is `acceleration_step`.
+| `initial_factor` | float | Initial Acceleration Factor.  Must be greater than 0.  Default is `acceleration_step`.
 
 ### Historical quotes requirements
 
