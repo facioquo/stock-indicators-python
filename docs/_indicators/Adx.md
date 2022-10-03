@@ -45,6 +45,7 @@ ADXResults[ADXResult]
 | `pdi` | float, Optional | Plus Directional Index (+DI) for `N` lookback periods
 | `mdi` | float, Optional | Minus Directional Index (-DI) for `N` lookback periods
 | `adx` | float, Optional | Average Directional Index (ADX) for `N` lookback periods
+| `adxr` | float, Optional | Average Directional Index Rating (ADXR) for `N` lookback periods
 
 ### Utilities
 
