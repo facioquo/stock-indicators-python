@@ -40,7 +40,7 @@ MFIResults[MFIResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `mfi` | Decimal, Optional | Money Flow Index
+| `mfi` | float, Optional | Money Flow Index
 
 ### Utilities
 
