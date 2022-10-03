@@ -53,7 +53,7 @@ ChandelierResults[ChandelierResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `chandelier_exit` | Decimal, Optional | Exit line
+| `chandelier_exit` | float, Optional | Exit line
 
 ### Utilities
 
