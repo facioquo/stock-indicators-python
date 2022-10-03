@@ -44,7 +44,7 @@ VWAPResults[VWAPResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `vwap` | Decimal, Optional | Volume Weighted Average Price
+| `vwap` | float, Optional | Volume Weighted Average Price
 
 ### Utilities
 
