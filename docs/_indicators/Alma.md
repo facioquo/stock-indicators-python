@@ -42,7 +42,7 @@ ALMAResults[ALMAResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `alma` | Decimal, Optional | Arnaud Legoux Moving Average
+| `alma` | float, Optional | Arnaud Legoux Moving Average
 
 ### Utilities
 
