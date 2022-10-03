@@ -41,7 +41,7 @@ EPMAResults[EPMAResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `epma` | Decimal, Optional | Endpoint moving average
+| `epma` | float, Optional | Endpoint moving average
 
 ### Utilities
 
