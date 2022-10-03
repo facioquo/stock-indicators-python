@@ -44,9 +44,9 @@ STARCBandsResults[STARCBandsResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `upper_band` | Decimal, Optional | Upper STARC band
-| `center_line` | Decimal, Optional | SMA of Close price
-| `lower_band` | Decimal, Optional | Lower STARC band
+| `upper_band` | float, Optional | Upper STARC band
+| `center_line` | float, Optional | SMA of Close price
+| `lower_band` | float, Optional | Lower STARC band
 
 ### Utilities
 
