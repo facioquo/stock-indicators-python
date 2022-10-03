@@ -3,4 +3,4 @@ pythonnet==3.0.0rc4
 typing_extensions>=4.0.0
 
 # temp version fix
-clr-loader==0.1.7
+clr-loader==0.2.3
