@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -46,20 +43,20 @@ class MAMAResult(ResultBase):
     """
 
     @property
-    def mama(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Mama)
+    def mama(self) -> Optional[float]:
+        return self._csdata.Mama
 
     @mama.setter
     def mama(self, value):
-        self._csdata.Mama = CsDecimal(value)
+        self._csdata.Mama = value
 
     @property
-    def fama(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Fama)
+    def fama(self) -> Optional[float]:
+        return self._csdata.Fama
 
     @fama.setter
     def fama(self, value):
-        self._csdata.Fama = CsDecimal(value)
+        self._csdata.Fama = value
 
 
 _T = TypeVar("_T", bound=MAMAResult)

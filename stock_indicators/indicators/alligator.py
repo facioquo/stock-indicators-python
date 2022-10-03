@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -63,28 +60,28 @@ class AlligatorResult(ResultBase):
     """
 
     @property
-    def jaw(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Jaw)
+    def jaw(self) -> Optional[float]:
+        return self._csdata.Jaw
 
     @jaw.setter
     def jaw(self, value):
-        self._csdata.Jaw = CsDecimal(value)
+        self._csdata.Jaw = value
 
     @property
-    def teeth(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Teeth)
+    def teeth(self) -> Optional[float]:
+        return self._csdata.Teeth
 
     @teeth.setter
     def teeth(self, value):
-        self._csdata.Teeth = CsDecimal(value)
+        self._csdata.Teeth = value
 
     @property
-    def lips(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Lips)
+    def lips(self) -> Optional[float]:
+        return self._csdata.Lips
 
     @lips.setter
     def lips(self, value):
-        self._csdata.Lips = CsDecimal(value)
+        self._csdata.Lips = value
 
 
 _T = TypeVar("_T", bound=AlligatorResult)

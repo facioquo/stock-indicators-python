@@ -1,4 +1,5 @@
 from typing import Iterable, Optional, TypeVar
+from warnings import warn
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -6,7 +7,7 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_prs(base_history: Iterable[Quote], eval_history: Iterable[Quote],
+def get_prs(eval_quotes: Iterable[Quote], base_quotes: Iterable[Quote],
             lookback_periods: Optional[int] = None, sma_periods: Optional[int] = None):
     """Get PRS calculated.
 
@@ -17,12 +18,12 @@ def get_prs(base_history: Iterable[Quote], eval_history: Iterable[Quote],
     change over the specified periods.
 
     Parameters:
-        `base_history` : Iterable[Quote]
+        `eval_quotes` : Iterable[Quote]
+            Historical price quotes for evaluation.
+
+        `base_quotes` : Iterable[Quote]
             This is usually market index data,
             but could be any baseline data that you might use for comparison.
-
-        `base_history` : Iterable[Quote]
-            Historical price quotes for evaluation.
 
         `lookback_periods` : int, optional
             Number of periods for % difference.
@@ -38,7 +39,10 @@ def get_prs(base_history: Iterable[Quote], eval_history: Iterable[Quote],
          - [PRS Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Prs/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    results = CsIndicator.GetPrs[Quote](CsList(Quote, base_history), CsList(Quote, eval_history),
+    warn('Eval and Base quotes have been reversed in v1! Ensure you swap parameter location. '
+         'This warning will be removed after v1.0.0', SyntaxWarning)
+
+    results = CsIndicator.GetPrs[Quote](CsList(Quote, eval_quotes), CsList(Quote, base_quotes),
                                         lookback_periods, sma_periods)
     return PRSResults(results, PRSResult)
 

@@ -4,17 +4,17 @@ from stock_indicators._cslib import CsDecimal
 
 class TestSMAExtended:
     def test_result_types(self, quotes):
-        results = indicators.get_sma_extended(quotes, 20)
+        results = indicators.get_sma_analysis(quotes, 20)
         
         # Sample value.
         r = results[501]
-        assert CsDecimal == type(r._csdata.Sma)
+        assert     float == type(r._csdata.Sma)
         assert     float == type(r._csdata.Mad)
         assert     float == type(r._csdata.Mse)
         assert     float == type(r._csdata.Mape)
 
     def test_extended(self, quotes):
-        results = indicators.get_sma_extended(quotes, 20)
+        results = indicators.get_sma_analysis(quotes, 20)
 
         # proper quantities.
         # should always be the same number of results as there is quotes.
@@ -29,13 +29,13 @@ class TestSMAExtended:
         assert 0.037637 == round(float(r.mape), 6)
 
     def test_bad_data(self, bad_quotes):
-        results = indicators.get_sma_extended(bad_quotes, 15)
+        results = indicators.get_sma_analysis(bad_quotes, 15)
 
         # Assertions 
         assert 502 == len(results)
 
     def test_removed(self, quotes):
-        results = indicators.get_sma_extended(quotes, 20).remove_warmup_periods()
+        results = indicators.get_sma_analysis(quotes, 20).remove_warmup_periods()
 
         # Assertions
         assert 502 - 19 == len(results)
@@ -44,4 +44,4 @@ class TestSMAExtended:
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
-            indicators.get_sma_extended(quotes, 0)
+            indicators.get_sma_analysis(quotes, 0)

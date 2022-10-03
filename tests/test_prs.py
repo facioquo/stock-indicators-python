@@ -3,7 +3,7 @@ from stock_indicators import indicators
 
 class TestPRS:
     def test_standard(self, quotes, other_quotes):
-        results = indicators.get_prs(quotes, other_quotes, 30, 10)
+        results = indicators.get_prs(other_quotes, quotes, 30, 10)
         
         assert 502 == len(results)
         assert 502 == len(list(filter(lambda x: x.prs is not None, results)))

@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -40,28 +37,28 @@ class AroonResult(ResultBase):
     """
 
     @property
-    def aroon_up(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.AroonUp)
+    def aroon_up(self) -> Optional[float]:
+        return self._csdata.AroonUp
 
     @aroon_up.setter
     def aroon_up(self, value):
-        self._csdata.AroonUp = CsDecimal(value)
+        self._csdata.AroonUp = value
 
     @property
-    def aroon_down(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.AroonDown)
+    def aroon_down(self) -> Optional[float]:
+        return self._csdata.AroonDown
 
     @aroon_down.setter
     def aroon_down(self, value):
-        self._csdata.AroonDown = CsDecimal(value)
+        self._csdata.AroonDown = value
 
     @property
-    def oscillator(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Oscillator)
+    def oscillator(self) -> Optional[float]:
+        return self._csdata.Oscillator
 
     @oscillator.setter
     def oscillator(self, value):
-        self._csdata.Oscillator = CsDecimal(value)
+        self._csdata.Oscillator = value
 
 
 _T = TypeVar("_T", bound=AroonResult)

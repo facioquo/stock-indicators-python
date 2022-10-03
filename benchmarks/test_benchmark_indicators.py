@@ -172,6 +172,9 @@ def test_benchmark_sma_extended(benchmark, quotes):
 def test_benchmark_sma(benchmark, quotes):
     benchmark(indicators.get_sma, quotes, 20)
 
+def test_benchmark_sma_longlong(benchmark, longish_quotes):
+    benchmark(indicators.get_sma, longish_quotes + longish_quotes, 20)
+
 def test_benchmark_smi(benchmark, quotes):
     benchmark(indicators.get_smi, quotes, 14, 20, 5, 3)
 

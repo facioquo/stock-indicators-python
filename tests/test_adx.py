@@ -9,6 +9,7 @@ class TestAdx:
         # should always be the same number of results as there is quotes
         assert 502 == len(results)
         assert 475 == len(list(filter(lambda x: x.adx is not None, results)))
+        assert 462 == len(list(filter(lambda x: x.adxr is not None, results)))
 
         # sample values
         r = results[19]
@@ -21,10 +22,17 @@ class TestAdx:
         assert 14.1658 == round(float(r.mdi), 4)
         assert 19.7949 == round(float(r.adx), 4)
 
+        r = results[39]
+        assert r.adxr is None
+
+        r = results[40]
+        assert 29.1062 == round(float(r.adxr), 4)
+
         r = results[248]
         assert 32.3167 == round(float(r.pdi), 4)
         assert 18.2471 == round(float(r.mdi), 4)
         assert 30.5903 == round(float(r.adx), 4)
+        assert 29.1252 == round(float(r.adxr), 4)
 
         r = results[501]
         assert 17.7565 == round(float(r.pdi), 4)

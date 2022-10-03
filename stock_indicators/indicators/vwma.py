@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -41,12 +38,12 @@ class VWMAResult(ResultBase):
     """
 
     @property
-    def vwma(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Vwma)
+    def vwma(self) -> Optional[float]:
+        return self._csdata.Vwma
 
     @vwma.setter
     def vwma(self, value):
-        self._csdata.Vwma = CsDecimal(value)
+        self._csdata.Vwma = value
 
 
 _T = TypeVar("_T", bound=VWMAResult)

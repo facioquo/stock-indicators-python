@@ -28,10 +28,10 @@ class TestAlligator:
         assert 225.60571 == round(float(results[99].jaw), 5)
         assert 260.98953 == round(float(results[501].jaw), 5)
 
-        assert 213.69938 == round(float(results[12].teeth), 5)
-        assert 213.80008 == round(float(results[13].teeth), 5)
-        assert 226.12157 == round(float(results[99].teeth), 5)
-        assert 253.53576 == round(float(results[501].teeth), 5)
+        assert 213.699375 == round(float(results[12].teeth), 6)
+        assert  213.80008 == round(float(results[13].teeth), 5)
+        assert  226.12157 == round(float(results[99].teeth), 5)
+        assert  253.53576 == round(float(results[501].teeth), 5)
 
         assert 213.63500 == round(float(results[7].lips), 5)
         assert 213.74900 == round(float(results[8].lips), 5)

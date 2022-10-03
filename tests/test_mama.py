@@ -17,8 +17,8 @@ class TestMAMA:
         assert 213.73 == round(float(r.fama), 2)
         
         r = results[6]
-        assert 213.7850 == round(float(r.mama), 4)
-        assert 213.7438 == round(float(r.fama), 4)
+        assert  213.7850 == round(float(r.mama), 4)
+        assert 213.74375 == round(float(r.fama), 5)
         
         r = results[25]
         assert 215.9524 == round(float(r.mama), 4)

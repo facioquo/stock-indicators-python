@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -40,28 +37,28 @@ class ElderRayResult(ResultBase):
     """
 
     @property
-    def ema(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Ema)
+    def ema(self) -> Optional[float]:
+        return self._csdata.Ema
 
     @ema.setter
     def ema(self, value):
-        self._csdata.Ema = CsDecimal(value)
+        self._csdata.Ema = value
 
     @property
-    def bull_power(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.BullPower)
+    def bull_power(self) -> Optional[float]:
+        return self._csdata.BullPower
 
     @bull_power.setter
     def bull_power(self, value):
-        self._csdata.BullPower = CsDecimal(value)
+        self._csdata.BullPower = value
 
     @property
-    def bear_power(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.BearPower)
+    def bear_power(self) -> Optional[float]:
+        return self._csdata.BearPower
 
     @bear_power.setter
     def bear_power(self, value):
-        self._csdata.BearPower = CsDecimal(value)
+        self._csdata.BearPower = value
 
 
 _T = TypeVar("_T", bound=ElderRayResult)

@@ -61,6 +61,14 @@ class ADXResult(ResultBase):
     def adx(self, value):
         self._csdata.Adx = value
 
+    @property
+    def adxr(self) -> Optional[float]:
+        return self._csdata.Adxr
+
+    @adxr.setter
+    def adxr(self, value):
+        self._csdata.Adxr = value
+
 
 _T = TypeVar("_T", bound=ADXResult)
 class ADXResults(RemoveWarmupMixin, IndicatorResults[_T]):

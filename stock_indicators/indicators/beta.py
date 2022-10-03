@@ -1,4 +1,5 @@
 from typing import Iterable, Optional, TypeVar
+from warnings import warn
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -8,18 +9,18 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_beta(market_history: Iterable[Quote], eval_history: Iterable[Quote],
+def get_beta(eval_quotes: Iterable[Quote], market_quotes: Iterable[Quote],
              lookback_periods: int, beta_type: BetaType = BetaType.STANDARD):
     """Get Beta calculated.
 
     Beta shows how strongly one stock responds to systemic volatility of the entire market.
 
     Parameters:
-        `market_history` : Iterable[Quote]
-            Historical price quotes for Market.
-
-        `eval_history` : Iterable[Quote]
+        `eval_quotes` : Iterable[Quote]
             Historical price quotes for Evaluation.
+
+        `market_quotes` : Iterable[Quote]
+            Historical price quotes for Market.
 
         `lookback_periods` : int
             Number of periods in the lookback window.
@@ -35,7 +36,10 @@ def get_beta(market_history: Iterable[Quote], eval_history: Iterable[Quote],
          - [Beta Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Beta/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    beta_results = CsIndicator.GetBeta[Quote](CsList(Quote, market_history), CsList(Quote, eval_history),
+    warn('Eval and Market quotes have been reversed in v1! Ensure you swap parameter location. '
+         'This warning will be removed after v1.0.0', SyntaxWarning)
+
+    beta_results = CsIndicator.GetBeta[Quote](CsList(Quote, eval_quotes), CsList(Quote, market_quotes),
                                               lookback_periods, beta_type.cs_value)
     return BetaResults(beta_results, BetaResult)
 

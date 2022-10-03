@@ -2,7 +2,7 @@
 Skender.Stock.Indicators
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-This module loads `Skender.Stock.Indicators.dll`(v1.23.1), which is a compiled library package
+This module loads `Skender.Stock.Indicators.dll`(v2.4.0), which is a compiled library package
 from <https://github.com/DaveSkender/Stock.Indicators>, written in C#.
 
 It is currently using `.NET 6.0`.
@@ -46,6 +46,7 @@ from System.Collections.Generic import List as CsList
 from Skender.Stock.Indicators import CandleProperties as CsCandleProperties
 from Skender.Stock.Indicators import Indicator as CsIndicator
 from Skender.Stock.Indicators import Quote as CsQuote
+from Skender.Stock.Indicators import QuoteUtility as CsQuoteUtility
 from Skender.Stock.Indicators import ResultBase as CsResultBase
 
 # Enums

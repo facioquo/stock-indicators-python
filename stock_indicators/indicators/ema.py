@@ -1,10 +1,6 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
@@ -35,8 +31,8 @@ def get_ema(quotes: Iterable[Quote], lookback_periods: int,
          - [EMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Ema/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    ema_list = CsIndicator.GetEma[Quote](CsList(Quote, quotes), lookback_periods,
-                                         candle_part.cs_value)
+    quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var. 
+    ema_list = CsIndicator.GetEma(quotes, lookback_periods)
     return EMAResults(ema_list, EMAResult)
 
 
@@ -46,12 +42,12 @@ class EMAResult(ResultBase):
     """
 
     @property
-    def ema(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Ema)
+    def ema(self) -> Optional[float]:
+        return self._csdata.Ema
 
     @ema.setter
     def ema(self, value):
-        self._csdata.Ema = CsDecimal(value)
+        self._csdata.Ema = value
 
 
 _T = TypeVar("_T", bound=EMAResult)

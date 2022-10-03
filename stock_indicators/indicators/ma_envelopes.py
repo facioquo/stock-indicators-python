@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.enums import MAType
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -49,28 +46,28 @@ class MAEnvelopeResult(ResultBase):
     """
 
     @property
-    def upper_envelope(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.UpperEnvelope)
+    def upper_envelope(self) -> Optional[float]:
+        return self._csdata.UpperEnvelope
 
     @upper_envelope.setter
     def upper_envelope(self, value):
-        self._csdata.UpperEnvelope = CsDecimal(value)
+        self._csdata.UpperEnvelope = value
 
     @property
-    def center_line(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Centerline)
+    def center_line(self) -> Optional[float]:
+        return self._csdata.Centerline
 
     @center_line.setter
     def center_line(self, value):
-        self._csdata.Centerline = CsDecimal(value)
+        self._csdata.Centerline = value
 
     @property
-    def lower_envelope(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.LowerEnvelope)
+    def lower_envelope(self) -> Optional[float]:
+        return self._csdata.LowerEnvelope
 
     @lower_envelope.setter
     def lower_envelope(self, value):
-        self._csdata.LowerEnvelope = CsDecimal(value)
+        self._csdata.LowerEnvelope = value
 
 
 _T = TypeVar("_T", bound=MAEnvelopeResult)

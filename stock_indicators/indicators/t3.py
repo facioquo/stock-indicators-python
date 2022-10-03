@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -46,12 +43,12 @@ class T3Result(ResultBase):
     """
 
     @property
-    def t3(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.T3)
+    def t3(self) -> Optional[float]:
+        return self._csdata.T3
 
     @t3.setter
     def t3(self, value):
-        self._csdata.T3 = CsDecimal(value)
+        self._csdata.T3 = value
 
 
 _T = TypeVar("_T", bound=T3Result)
