@@ -43,10 +43,10 @@ VolatilityStopResults[VolatilityStopResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `sar` | Decimal, Optional | Stop and Reverse value contains both Upper and Lower segments
+| `sar` | float, Optional | Stop and Reverse value contains both Upper and Lower segments
 | `is_stop` | bool, Optional | Indicates a trend reversal
-| `upper_band` | Decimal, Optional | Upper band only (bearish/red)
-| `lower_band` | Decimal, Optional | Lower band only (bullish/green)
+| `upper_band` | float, Optional | Upper band only (bearish/red)
+| `lower_band` | float, Optional | Lower band only (bullish/green)
 
 `upper_band` and `lower_band` values are provided to differentiate bullish vs bearish trends and to clearly demark trend reversal.  `sar` is the contiguous combination of both upper and lower line data.
 
