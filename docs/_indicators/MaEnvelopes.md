@@ -64,9 +64,9 @@ MAEnvelopeResults[MAEnvelopeResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `center_line` | Decimal, Optional | Moving average for `N` lookback periods
-| `upper_envelope` | Decimal, Optional | Upper envelope band
-| `lower_envelope` | Decimal, Optional | Lower envelope band
+| `center_line` | float, Optional | Moving average for `N` lookback periods
+| `upper_envelope` | float, Optional | Upper envelope band
+| `lower_envelope` | float, Optional | Lower envelope band
 
 The moving average `center_line` is based on the `ma_type` type specified.
 
