@@ -44,7 +44,7 @@ SMAResults[SMAResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `sma` | Decimal, Optional | Simple moving average
+| `sma` | float, Optional | Simple moving average
 
 ### Utilities
 
@@ -71,22 +71,22 @@ results = indicators.get_sma(quotes, 20, CandlePart.CLOSE)
 <hr>
 # Extended analysis
 
-An extended variant of this indicator includes additional analysis.
+This indicator has an extended version with more analysis.
 
-## **get_sma_extended**(*quotes, lookback_periods*)
+## **get_sma_analysis**(*quotes, lookback_periods*)
 
 ## Returns
 
 ```python
-SMAExtendedResults[SMAExtendedResult]
+SMAAnalysisResults[SMAAnalysisResult]
 ```
 
-### SMAExtendedResult
+### SMAAnalysisResult
 
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `sma` | Decimal, Optional | Simple moving average
+| `sma` | float, Optional | Simple moving average
 | `mad` | float, Optional | Mean absolute deviation
 | `mse` | float, Optional | Mean square error
 | `mape` | float, Optional | Mean absolute percentage error
@@ -95,7 +95,7 @@ SMAExtendedResults[SMAExtendedResult]
 
 ```python
 # usage
-results = indicators.get_sma_extended(quotes, lookback_periods)
+results = indicators.get_sma_analysis(quotes, lookback_periods)
 ```
 
 
