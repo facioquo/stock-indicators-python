@@ -45,8 +45,8 @@ SMIResults[SMIResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `smi` | Decimal, Optional | Stochastic Momentum Index (SMI)
-| `signal` | Decimal, Optional | Signal line: an Exponential Moving Average (EMA) of SMI
+| `smi` | float, Optional | Stochastic Momentum Index (SMI)
+| `signal` | float, Optional | Signal line: an Exponential Moving Average (EMA) of SMI
 
 ### Utilities
 
