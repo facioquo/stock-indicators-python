@@ -19,7 +19,6 @@ class TestRSI:
 
         r = results[501]
         assert 42.0773 == round(float(r.rsi), 4)
-        round(float(r.rsi), 4) == round(float(r.value), 4)
 
     def test_small_lookback(self, quotes):
         results = indicators.get_rsi(quotes, 1)
