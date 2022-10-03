@@ -43,9 +43,9 @@ TRIXResults[TRIXResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `ema3` | Decimal, Optional | 3 EMAs of the Close price
-| `trix` | Decimal, Optional | Rate of Change of 3 EMAs
-| `signal` | Decimal, Optional | SMA of `trix` based on `signal_periods` periods, if specified
+| `ema3` | float, Optional | 3 EMAs of the Close price
+| `trix` | float, Optional | Rate of Change of 3 EMAs
+| `signal` | float, Optional | SMA of `trix` based on `signal_periods` periods, if specified
 
 ### Utilities
 
