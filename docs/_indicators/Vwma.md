@@ -40,7 +40,7 @@ VWMAResults[VWMAResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `vwma` | Decimal, Optional | Volume Weighted Moving Average for `N` lookback periods
+| `vwma` | float, Optional | Volume Weighted Moving Average for `N` lookback periods
 
 ### Utilities
 
