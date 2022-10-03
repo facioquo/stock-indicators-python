@@ -43,9 +43,9 @@ StdevChannelsResults[StdevChannelsResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `center_line` | decimal, Optional | Linear regression line (center line)
-| `upper_channel` | decimal, Optional | Upper line is `D` standard deviations above the center line
-| `lower_channel` | decimal, Optional | Lower line is `D` standard deviations below the center line
+| `center_line` | float, Optional | Linear regression line (center line)
+| `upper_channel` | float, Optional | Upper line is `D` standard deviations above the center line
+| `lower_channel` | float, Optional | Lower line is `D` standard deviations below the center line
 | `break_point` | bool | Helper information.  Indicates first point in new window.
 
 ### Utilities
