@@ -43,8 +43,8 @@ MAMAResults[MAMAResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `mama` | Decimal, Optional | MESA adaptive moving average (MAMA)
-| `fama` | Decimal, Optional | Following adaptive moving average (FAMA)
+| `mama` | float, Optional | MESA adaptive moving average (MAMA)
+| `fama` | float, Optional | Following adaptive moving average (FAMA)
 
 ### Utilities
 
