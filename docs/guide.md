@@ -322,13 +322,13 @@ The `CandleProperties` class is an extended version of `Quote`, and contains add
 | `low` | Decimal | Low price
 | `close` | Decimal | Close price
 | `volume` | Decimal | Volume
-| `size` | Decimal | `high-low`
-| `body` | Decimal | `|open-close|`
-| `upper_wick` | Decimal | Upper wick size
-| `lower_wick` | Decimal | Lower wick size
-| `body_pct` | float | `body/size`
-| `upper_wick_pct` | float | `upper_wick/size`
-| `lower_wick_pct` | float | `lower_wick/size`
+| `size` | Decimal, Optional | `high-low`
+| `body` | Decimal, Optional | `|open-close|`
+| `upper_wick` | Decimal, Optional | Upper wick size
+| `lower_wick` | Decimal, Optional | Lower wick size
+| `body_pct` | float, Optional | `body/size`
+| `upper_wick_pct` | float, Optional | `upper_wick/size`
+| `lower_wick_pct` | float, Optional | `lower_wick/size`
 | `is_bullish` | bool | `close>open` direction
 | `is_bearish` | bool | `close<open` direction
 
