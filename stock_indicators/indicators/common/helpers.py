@@ -22,16 +22,3 @@ class RemoveWarmupMixin:
         removed_results = CsIndicator.RemoveWarmupPeriods(CsList(self._get_csdata_type(), self._csdata))
 
         return self.__class__(removed_results, self._wrapper_class)
-
-
-class ToQuotesMixin:
-    """Mixin for to_quotes()."""
-    @IndicatorResults._verify_data
-    def to_quotes(self) -> List[Quote]:
-        """Deprecated.
-        Convert indicator results into historical quotes."""
-        warn('The .to_quotes() method is deprecated.', DeprecationWarning, stacklevel=2)
-
-        quotes = CsIndicator.ConvertToQuotes(CsList(self._get_csdata_type(), self._csdata))
-
-        return [ Quote.from_csquote(q) for q in quotes ]
