@@ -33,7 +33,7 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int,
          - [SMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Sma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var. 
+    quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var.
     results = CsIndicator.GetSma(quotes, lookback_periods)
     return SMAResults(results, SMAResult)
 

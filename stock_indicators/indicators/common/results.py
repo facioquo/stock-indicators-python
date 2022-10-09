@@ -1,5 +1,5 @@
 from datetime import datetime as PyDateTime
-from typing import Iterable, List, Type, TypeVar
+from typing import Callable, Iterable, List, Type, TypeVar
 
 from stock_indicators._cslib import CsIndicator, CsResultBase
 from stock_indicators._cstypes import DateTime as CsDateTime
@@ -54,7 +54,7 @@ class IndicatorResults(List[_T]):
         """Get C# result object type."""
         return type(self[0]._csdata)
 
-    def _verify_data(func):
+    def _verify_data(func: Callable):
         """Check whether `_csdata` can be passed to helper method."""
         def verify_data(self, *args):
             if not isinstance(self._csdata, Iterable) or len(self) < 1:
