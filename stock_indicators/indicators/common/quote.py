@@ -92,4 +92,4 @@ class _Quote:
         return CsQuoteUtility.Use[Quote](CsList(Quote, quotes), candle_part.cs_value)
 
 
-Quote = generate_cs_inherited_class(_Quote, CsQuote)
+Quote = generate_cs_inherited_class(_Quote, CsQuote, "Quote")

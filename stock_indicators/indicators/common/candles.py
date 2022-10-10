@@ -71,7 +71,7 @@ class _CandleProperties(_Quote):
         return self.Close < self.Open
 
 
-CandleProperties = generate_cs_inherited_class(_CandleProperties, CsCandleProperties)
+CandleProperties = generate_cs_inherited_class(_CandleProperties, CsCandleProperties, "CandleProperties")
 
 
 class CandleResult(ResultBase):
