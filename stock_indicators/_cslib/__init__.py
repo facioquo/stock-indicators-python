@@ -9,20 +9,28 @@ It is currently using `.NET 6.0`.
 """
 
 import os
+import sys
+from pythonnet import load
+from clr_loader.util.find import find_dotnet_cli
 
 try:
-    from pythonnet import load
+    if sys.platform == "darwin":
+        if sys.maxsize > 2**32:
+            dotnet_root = find_dotnet_cli().resolve().parent
+        else:
+            dotnet_root = "/usr/local/share/dotnet"
+    else:
+        dotnet_root = None
     load(runtime="coreclr",
-        runtime_config=os.path.join(os.path.dirname(__file__), 'runtimeconfig.json'))
+        runtime_config=os.path.join(os.path.dirname(__file__), 'runtimeconfig.json'),
+        dotnet_root=dotnet_root)
     import clr
-
 except Exception as e:
     raise ImportError(("fail to import clr.\n"
     "Stock Indicators for Python has dependency on pythonnet, which uses CLR.\n"
     "Check that you have CLR installed. It's currently using .NET6.\n"
     ".NET:\n\t"
     "https://dotnet.microsoft.com/en-us/download/dotnet")) from e
-
 
 skender_stock_indicators_dll_path = os.path.join(
     os.path.dirname(__file__),

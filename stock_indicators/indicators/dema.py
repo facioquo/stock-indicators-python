@@ -1,5 +1,4 @@
 from typing import Iterable, Optional, TypeVar
-from warnings import warn
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -30,11 +29,6 @@ def get_dema(quotes: Iterable[Quote], lookback_periods: int):
     """
     results = CsIndicator.GetDema[Quote](CsList(Quote, quotes), lookback_periods)
     return DEMAResults(results, DEMAResult)
-
-
-def get_double_ema(quotes: Iterable[Quote], lookback_periods: int):
-    warn('This method is deprecated. Use get_dema() instead.', DeprecationWarning, stacklevel=2)
-    return get_dema(quotes, lookback_periods)
 
 
 class DEMAResult(ResultBase):
