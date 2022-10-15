@@ -2,6 +2,8 @@
 title: Performance benchmarks for v1.0.0
 permalink: /performance/
 layout: page
+noindex: true
+sitemap: false
 ---
 
 # {{ page.title }}

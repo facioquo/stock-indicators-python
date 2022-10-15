@@ -40,7 +40,7 @@ HMAResults[HMAResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `hma` | float, Optional | Hull moving average for `N` lookback periods
+| `hma` | float, Optional | Hull moving average
 
 ### Utilities
 

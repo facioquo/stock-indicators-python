@@ -42,7 +42,7 @@ CMFResults[CMFResult]
 | `date` | datetime | Date
 | `money_flow_multiplier` | float, Optional | Money Flow Multiplier
 | `money_flow_volume` | float, Optional | Money Flow Volume
-| `cmf` | float, Optional | Chaikin Money Flow = SMA of MFV for `N` lookback periods
+| `cmf` | float, Optional | Chaikin Money Flow = SMA of MFV
 
 :warning: **Warning**: absolute values in MFV and CMF are somewhat meaningless, so use with caution.
 

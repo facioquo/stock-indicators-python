@@ -64,7 +64,7 @@ MAEnvelopeResults[MAEnvelopeResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `center_line` | float, Optional | Moving average for `N` lookback periods
+| `center_line` | float, Optional | Moving average
 | `upper_envelope` | float, Optional | Upper envelope band
 | `lower_envelope` | float, Optional | Lower envelope band
 

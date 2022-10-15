@@ -42,10 +42,10 @@ ADXResults[ADXResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `pdi` | float, Optional | Plus Directional Index (+DI) for `N` lookback periods
-| `mdi` | float, Optional | Minus Directional Index (-DI) for `N` lookback periods
-| `adx` | float, Optional | Average Directional Index (ADX) for `N` lookback periods
-| `adxr` | float, Optional | Average Directional Index Rating (ADXR) for `N` lookback periods
+| `pdi` | float, Optional | Plus Directional Index (+DI)
+| `mdi` | float, Optional | Minus Directional Index (-DI)
+| `adx` | float, Optional | Average Directional Index (ADX)
+| `adxr` | float, Optional | Average Directional Index Rating (ADXR)
 
 ### Utilities
 
