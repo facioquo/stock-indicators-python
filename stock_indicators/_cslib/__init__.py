@@ -9,21 +9,10 @@ It is currently using `.NET 6.0`.
 """
 
 import os
-import sys
 from pythonnet import load
-from clr_loader.util.find import find_dotnet_cli
 
 try:
-    if sys.platform == "darwin":
-        if sys.maxsize > 2**32:
-            dotnet_root = find_dotnet_cli().resolve().parent
-        else:
-            dotnet_root = "/usr/local/share/dotnet"
-    else:
-        dotnet_root = None
-    load(runtime="coreclr",
-        runtime_config=os.path.join(os.path.dirname(__file__), 'runtimeconfig.json'),
-        dotnet_root=dotnet_root)
+    load(runtime="coreclr", runtime_config=os.path.join(os.path.dirname(__file__), 'runtimeconfig.json'))
     import clr
 except Exception as e:
     raise ImportError(("fail to import clr.\n"
