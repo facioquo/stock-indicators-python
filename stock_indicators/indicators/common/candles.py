@@ -28,38 +28,38 @@ class _CandleProperties(_Quote):
     It contains additional calculated properties.
     """
     @property
-    def size(self) -> Decimal:
+    def size(self) -> Optional[Decimal]:
         return to_pydecimal(self.high - self.low)
 
     @property
-    def body(self) -> Decimal:
+    def body(self) -> Optional[Decimal]:
         return to_pydecimal(self.open - self.close \
             if (self.open > self.close) \
             else self.close - self.open)
 
     @property
-    def upper_wick(self) -> Decimal:
+    def upper_wick(self) -> Optional[Decimal]:
         return to_pydecimal(self.high - (
             self.open \
             if self.open > self.close \
             else self.close))
 
     @property
-    def lower_wick(self) -> Decimal:
+    def lower_wick(self) -> Optional[Decimal]:
         return to_pydecimal((self.close \
             if self.open > self.close \
             else self.open) - self.low)
 
     @property
-    def body_pct(self) -> float:
+    def body_pct(self) -> Optional[float]:
         return float(self.body / self.size) if self.size != 0 else 1
 
     @property
-    def upper_wick_pct(self) -> float:
+    def upper_wick_pct(self) -> Optional[float]:
         return float(self.upper_wick / self.size) if self.size != 0 else 1
 
     @property
-    def lower_wick_pct(self) -> float:
+    def lower_wick_pct(self) -> Optional[float]:
         return float(self.lower_wick / self.size) if self.size != 0 else 1
 
     @property
@@ -71,7 +71,7 @@ class _CandleProperties(_Quote):
         return self.Close < self.Open
 
 
-CandleProperties = generate_cs_inherited_class(_CandleProperties, CsCandleProperties)
+CandleProperties = generate_cs_inherited_class(_CandleProperties, CsCandleProperties, "CandleProperties")
 
 
 class CandleResult(ResultBase):

@@ -1,5 +1,4 @@
 from typing import Iterable, Optional, TypeVar
-from warnings import warn
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -31,11 +30,6 @@ def get_tema(quotes: Iterable[Quote], lookback_periods: int):
     """
     results = CsIndicator.GetTema[Quote](CsList(Quote, quotes), lookback_periods)
     return TEMAResults(results, TEMAResult)
-
-
-def get_triple_ema(quotes: Iterable[Quote], lookback_periods: int):
-    warn('This method is deprecated. Use get_tema() instead.', DeprecationWarning, stacklevel=2)
-    return get_tema(quotes, lookback_periods)
 
 
 class TEMAResult(ResultBase):

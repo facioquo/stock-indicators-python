@@ -9,24 +9,17 @@ It is currently using `.NET 6.0`.
 """
 
 import os
+from pythonnet import load
 
 try:
-    from pythonnet import load
-    load(runtime="coreclr",
-        runtime_config=os.path.join(os.path.dirname(__file__), 'runtimeconfig.json'))
-
-finally:
-    try:
-        import clr
-
-    except:
-        raise ImportError(("fail to import clr.\n"
-        "Stock Indicators for Python has dependency on pythonnet, which uses CLR.\n"
-        "Check that you have CLR installed, such as .NET6.0+ or Mono.\n"
-        ".NET:\n\t"
-        "https://dotnet.microsoft.com/en-us/download/dotnet\n"
-        "Mono:\n\t"
-        "https://www.mono-project.com/download/stable/"))
+    load(runtime="coreclr", runtime_config=os.path.join(os.path.dirname(__file__), 'runtimeconfig.json'))
+    import clr
+except Exception as e:
+    raise ImportError(("fail to import clr.\n"
+    "Stock Indicators for Python has dependency on pythonnet, which uses CLR.\n"
+    "Check that you have CLR installed. It's currently using .NET6.\n"
+    ".NET:\n\t"
+    "https://dotnet.microsoft.com/en-us/download/dotnet")) from e
 
 skender_stock_indicators_dll_path = os.path.join(
     os.path.dirname(__file__),
