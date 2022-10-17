@@ -40,8 +40,8 @@ DPOResults[DPOResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `sma` | Decimal, Optional | Simple moving average offset by `N/2+1` periods
-| `dpo` | Decimal, Optional | Detrended Price Oscillator (DPO)
+| `sma` | float, Optional | Simple moving average offset by `N/2+1` periods
+| `dpo` | float, Optional | Detrended Price Oscillator (DPO)
 
 ### Utilities
 

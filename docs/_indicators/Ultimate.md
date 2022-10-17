@@ -42,7 +42,7 @@ UltimateResults[UltimateResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `ultimate` | float, Optional | Simple moving average for `N` lookback periods
+| `ultimate` | float, Optional | Simple moving average
 
 ### Utilities
 

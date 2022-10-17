@@ -45,7 +45,7 @@ EMAResults[EMAResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `ema` | Decimal, Optional | Exponential moving average
+| `ema` | float, Optional | Exponential moving average
 
 ### Utilities
 

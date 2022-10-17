@@ -43,7 +43,7 @@ SMMAResults[SMMAResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `smma` | Decimal, Optional | Smoothed moving average
+| `smma` | float, Optional | Smoothed moving average
 
 ### Utilities
 

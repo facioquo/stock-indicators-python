@@ -42,7 +42,7 @@ DEMAResults[DEMAResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `dema` | Decimal, Optional | Double exponential moving average
+| `dema` | float, Optional | Double exponential moving average
 
 ### Utilities
 

@@ -40,7 +40,7 @@ CCIResults[CCIResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `cci` | float, Optional | CCI value for `N` lookback periods
+| `cci` | float, Optional | Commodity Channel Index
 
 ### Utilities
 

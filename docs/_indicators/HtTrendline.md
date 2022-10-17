@@ -41,8 +41,8 @@ HTTrendlineResults[HTTrendlineResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `trendline` | Decimal, Optional | HT Trendline
-| `smooth_price` | Decimal, Optional | Weighted moving average of `(H+L)/2` price
+| `trendline` | float, Optional | HT Trendline
+| `smooth_price` | float, Optional | Weighted moving average of `(H+L)/2` price
 
 ### Utilities
 

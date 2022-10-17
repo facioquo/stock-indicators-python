@@ -43,7 +43,7 @@ WMAResults[WMAResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `wma` | Decimal, Optional | Weighted moving average for `N` lookback periods
+| `wma` | float, Optional | Weighted moving average
 
 ### Utilities
 

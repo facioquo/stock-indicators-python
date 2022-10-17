@@ -42,7 +42,7 @@ TEMAResults[TEMAResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `tema` | Decimal, Optional | Triple exponential moving average
+| `tema` | float, Optional | Triple exponential moving average
 
 ### Utilities
 

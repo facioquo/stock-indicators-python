@@ -40,7 +40,7 @@ WilliamsResults[WilliamsResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `williams_r` | Decimal, Optional | Oscillator over prior `N` lookback periods
+| `williams_r` | float, Optional | Oscillator over prior `N` lookback periods
 
 ### Utilities
 

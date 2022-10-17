@@ -9,14 +9,16 @@ layout: indicator
 # {{ page.title }}
 <hr>
 
-## **get_beta**(*market_history, eval_history, lookback_periods, beta_type=BetaType.STANDARD*)
+## **get_beta**(*eval_history, market_quotes, lookback_periods, beta_type=BetaType.STANDARD*)
+
+:warning: <code style='color: #d32f2f; important'>Eval and Market quotes have been reversed in v1! Ensure you swap parameter location. (The warning will be shown and it will be removed after v1.0.0')</code>
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `market_history` | Iterable[Quote] | Historical [market] Quotes data should be at any consistent frequency (day, hour, minute, etc).  This `market` quotes will be used to establish the baseline. <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
-| `eval_history` | Iterable[Quote] | Historical [evaluation stock] Quotes data should be at any consistent frequency (day, hour, minute, etc).
+| `eval_history` | Iterable[Quote] | Historical [evaluation stock] Quotes data should be at any consistent frequency (day, hour, minute, etc). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `market_history` | Iterable[Quote] | Historical [market] Quotes data should be at any consistent frequency (day, hour, minute, etc).  This `market` quotes will be used to establish the baseline.
 | `lookback_periods` | int | Number of periods (`N`) in the lookback period.  Must be greater than 0 to calculate; however we suggest a larger period for statistically appropriate sample size and especially when using Beta +/-.
 | `beta_type` | BetaType, *default BetaType.STANDARD* | Type of Beta to calculate.  See [BetaType options](#betatype-options) below.
 

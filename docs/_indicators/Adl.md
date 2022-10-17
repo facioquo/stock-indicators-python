@@ -39,8 +39,8 @@ ADLResults[ADLResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `money_flow_multiplier` | float | Money Flow Multiplier
-| `money_flow_volume` | float | Money Flow Volume
+| `money_flow_multiplier` | float, Optional | Money Flow Multiplier
+| `money_flow_volume` | float, Optional | Money Flow Volume
 | `adl` | float | Accumulation Distribution Line (ADL)
 | `adl_sma` | float, Optional | Moving average (SMA) of ADL based on `sma_periods` periods, if specified
 

@@ -47,9 +47,9 @@ AlligatorResults[AlligatorResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `jaw` | Decimal, Optional | Alligator's Jaw
-| `teeth` | Decimal, Optional | Alligator's Teeth
-| `lips` | Decimal, Optional | Alligator's Lips
+| `jaw` | float, Optional | Alligator's Jaw
+| `teeth` | float, Optional | Alligator's Teeth
+| `lips` | float, Optional | Alligator's Lips
 
 ### Utilities
 

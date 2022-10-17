@@ -43,9 +43,9 @@ ChaikinOscResults[ChaikinOscResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `money_flow_multiplier` | float | Money Flow Multiplier
-| `money_flow_volume` | float | Money Flow Volume
-| `adl` | float | Accumulation Distribution Line (ADL)
+| `money_flow_multiplier` | float, Optional | Money Flow Multiplier
+| `money_flow_volume` | float, Optional | Money Flow Volume
+| `adl` | float, Optional | Accumulation Distribution Line (ADL)
 | `oscillator` | float, Optional | Chaikin Oscillator
 
 :warning: **Warning**: absolute values in MFV, ADL, and Oscillator are somewhat meaningless, so use with caution.

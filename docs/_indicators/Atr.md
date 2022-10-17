@@ -42,9 +42,9 @@ ATRResults[ATRResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `tr` | Decimal, Optional  | True Range for current period
-| `atr` | Decimal, Optional  | Average True Range for `N` lookback periods
-| `atrp` | Decimal, Optional  | Average True Range Percent is `(atr/Close Price)*100`.  This normalizes so it can be compared to other stocks.
+| `tr` | float, Optional  | True Range for current period
+| `atr` | float, Optional  | Average True Range
+| `atrp` | float, Optional  | Average True Range Percent is `(atr/Close Price)*100`.  This normalizes so it can be compared to other stocks.
 
 ### Utilities
 

@@ -11,6 +11,12 @@ layout: indicator
 
 ## **get_ichimoku**(*quotes, tenkan_periods=9, kijun_periods=26, senkou_b_periods=52*)
 
+### More overloaded interfaces
+**get_ichimoku**(quotes, tenkan_periods, kijun_periods, senkou_b_periods,
+                 offset_periods)
+**get_ichimoku**(quotes, tenkan_periods, kijun_periods, senkou_b_periods,
+                 senkou_offset, chikou_offset)
+
 ## Parameters
 
 | name | type | notes
@@ -19,11 +25,9 @@ layout: indicator
 | `tenkan_periods` | int, *default 9* | Number of periods (`T`) in the Tenkan-sen midpoint evaluation.  Must be greater than 0.
 | `kijun_periods` | int, *default 26* | Number of periods (`K`) in the shorter Kijun-sen midpoint evaluation.  Must be greater than 0.
 | `senkou_b_periods` | int, *default 52* | Number of periods (`S`) in the longer Senkou leading span B midpoint evaluation.  Must be greater than `K`.
-
-<!-- 
-| `offsetPeriods` | int | Optional.  Number of periods to offset both `Senkou` and `Chikou` spans.  Must be non-negative.  Default is `kijunPeriods`.
-| `senkouOffset` | int | Optional.  Number of periods to offset the `Senkou` span.  Must be non-negative.  Default is `kijunPeriods`.
-| `chikouOffset` | int | Optional.  Number of periods to offset the `Chikou` span.  Must be non-negative.  Default is `kijunPeriods`. -->
+| `offset_periods` | int | Number of periods to offset both `Senkou` and `Chikou` spans.  Must be non-negative.  Default is `kijun_periods`.
+| `senkou_offset` | int | Number of periods to offset the `Senkou` span.  Must be non-negative.  Default is `kijun_periods`.
+| `chikou_offset` | int | Number of periods to offset the `Chikou` span.  Must be non-negative.  Default is `kijun_periods`.
 
 See overloads usage above to determine which parameters are relevant for each.  If you are customizing offsets, all parameter arguments must be specified.
 

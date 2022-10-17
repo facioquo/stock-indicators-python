@@ -17,15 +17,6 @@ layout: indicator
 | `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `lookback_periods` | int, *default 25* | Number of periods (`N`) for the lookback evaluation.  Must be greater than 0.
 
-<!-- 
-## Usage
-```python
-from stock_indicators import indicators
-
-results = indicators.get_aroon(quotes, lookback_periods)
-``` -->
-
-
 ### Historical quotes requirements
 
 You must have at least `N` periods of `quotes` to cover the warmup periods.
@@ -49,9 +40,9 @@ AroonResults[AroonResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `aroon_up` | Decimal, Optional | Based on last High price
-| `aroon_down` | Decimal, Optional | Based on last Low price
-| `oscillator` | Decimal, Optional | AroonUp - AroonDown
+| `aroon_up` | float, Optional | Based on last High price
+| `aroon_down` | float, Optional | Based on last Low price
+| `oscillator` | float, Optional | AroonUp - AroonDown
 
 ### Utilities
 

@@ -21,14 +21,15 @@ layout: page
 
 ### Installation and setup
 
+Stock Indicators for Python has dependency on [pythonnet](https://github.com/pythonnet/pythonnet), which uses CLR. 
+Check that you have CLR installed. We are currently using **.NET 6**. You can download via the link below.
+ - https://dotnet.microsoft.com/en-us/download/dotnet
+
 Find and install the **stock-indicators** Python package into your environment. See [more help](https://packaging.python.org/en/latest/tutorials/installing-packages/) for installing packages.
 
-```powershell
+```bash
 # pip example
 pip install stock-indicators
-
-# conda example (No plan yet.)
-# conda install stock-indicators
 ```
 
 ### Prerequisite data
@@ -321,13 +322,13 @@ The `CandleProperties` class is an extended version of `Quote`, and contains add
 | `low` | Decimal | Low price
 | `close` | Decimal | Close price
 | `volume` | Decimal | Volume
-| `size` | Decimal | `high-low`
-| `body` | Decimal | `|open-close|`
-| `upper_wick` | Decimal | Upper wick size
-| `lower_wick` | Decimal | Lower wick size
-| `body_pct` | float | `body/size`
-| `upper_wick_pct` | float | `upper_wick/size`
-| `lower_wick_pct` | float | `lower_wick/size`
+| `size` | Decimal, Optional | `high-low`
+| `body` | Decimal, Optional | `|open-close|`
+| `upper_wick` | Decimal, Optional | Upper wick size
+| `lower_wick` | Decimal, Optional | Lower wick size
+| `body_pct` | float, Optional | `body/size`
+| `upper_wick_pct` | float, Optional | `upper_wick/size`
+| `lower_wick_pct` | float, Optional | `lower_wick/size`
 | `is_bullish` | bool | `close>open` direction
 | `is_bearish` | bool | `close<open` direction
 
