@@ -6,7 +6,6 @@ from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.enums import EndType
-from stock_indicators.indicators.common.helpers import ToQuotesMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
@@ -126,7 +125,7 @@ class RenkoResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=RenkoResult)
-class RenkoResults(ToQuotesMixin, IndicatorResults[_T]):
+class RenkoResults(IndicatorResults[_T]):
     """
     A wrapper class for the list of Renko Chart results.
     It is exactly same with built-in `list` except for that it provides

@@ -49,10 +49,7 @@ def _set_volume(quote, value):
     quote.Volume = CsDecimal(value)
 
 class _Quote:
-    """
-    A base wrapper class for a single unit of historical quotes.
-    """
-
+    """A base wrapper class for a single unit of historical quotes."""
     date = property(_get_date, _set_date)
     open = property(_get_open, _set_open)
     high = property(_get_high, _set_high)
@@ -69,18 +66,15 @@ class _Quote:
         self.volume: Decimal = volume if volume else 0
 
     @classmethod
-    def from_csquote(cls, csQuote: CsQuote):
-        """
-        Constructs `Quote` instance from C# `Quote` instance.
-        """
-
+    def from_csquote(cls, cs_quote: CsQuote):
+        """Constructs `Quote` instance from C# `Quote` instance."""
         return cls(
-            date=to_pydatetime(csQuote.Date),
-            open=csQuote.Open,
-            high=csQuote.High,
-            low=csQuote.Low,
-            close=csQuote.Close,
-            volume=csQuote.Volume
+            date=to_pydatetime(cs_quote.Date),
+            open=cs_quote.Open,
+            high=cs_quote.High,
+            low=cs_quote.Low,
+            close=cs_quote.Close,
+            volume=cs_quote.Volume
         )
 
     @classmethod
@@ -92,4 +86,4 @@ class _Quote:
         return CsQuoteUtility.Use[Quote](CsList(Quote, quotes), candle_part.cs_value)
 
 
-Quote = generate_cs_inherited_class(_Quote, CsQuote)
+Quote = generate_cs_inherited_class(_Quote, CsQuote, "Quote")

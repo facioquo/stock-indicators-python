@@ -39,7 +39,7 @@ def get_macd(quotes: Iterable[Quote], fast_periods: int = 12,
          - [MACD Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Macd/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var. 
+    quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var.
     macd_results = CsIndicator.GetMacd(quotes, fast_periods,
                                             slow_periods, signal_periods)
     return MACDResults(macd_results, MACDResult)
