@@ -1,3 +1,5 @@
+next-version: 0.0.0
+
 mode: ContinuousDelivery
 
 commit-message-incrementing: Enabled
