@@ -1,7 +1,7 @@
 from functools import wraps
 from typing import Callable, Iterable, List, Optional
 
-from stock_indicators._cslib import CsIndicator, CsIReusableResult
+from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.quote import Quote
@@ -17,7 +17,7 @@ def chainable(is_chainable: bool, calc_func: Callable, wrap_func: Callable):
                 if is_chainable:
                     @wraps(interface_func)
                     def calculate_lazily(quotes, is_last: bool = False):
-                        indicator_params = interface_func(CsList(CsIReusableResult, quotes), *args, **kwargs)
+                        indicator_params = interface_func(quotes, *args, **kwargs)
                         results = calc_func(indicator_params, is_chaining)
                         if is_last:
                             return wrap_func(results)
