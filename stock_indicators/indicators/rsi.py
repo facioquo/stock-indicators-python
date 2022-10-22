@@ -2,11 +2,22 @@ from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
+from stock_indicators.indicators.common.chain import chainable
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
 
+def _wrap_results(results):
+    return RSIResults(results, RSIResult)
+
+def _calculate(indicator_params, is_chaining):
+    if is_chaining:
+        return CsIndicator.GetRsi(*indicator_params)
+    else:
+        return CsIndicator.GetRsi[Quote](*indicator_params)
+
+@chainable(is_chainable=True, calc_func=_calculate, wrap_func=_wrap_results)
 def get_rsi(quotes: Iterable[Quote], lookback_periods: int = 14):
     """Get RSI calculated.
 
@@ -28,8 +39,7 @@ def get_rsi(quotes: Iterable[Quote], lookback_periods: int = 14):
          - [RSI Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Rsi/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    rsi_list = CsIndicator.GetRsi[Quote](CsList(Quote, quotes), lookback_periods)
-    return RSIResults(rsi_list, RSIResult)
+    return (quotes, lookback_periods)
 
 
 class RSIResult(ResultBase):
