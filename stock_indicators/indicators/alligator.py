@@ -1,16 +1,27 @@
 from typing import Iterable, Optional, TypeVar
 
-from stock_indicators._cslib import CsIndicator
+from stock_indicators._cslib import CsIndicator, CsIReusableResult
 from stock_indicators._cstypes import List as CsList
+from stock_indicators.indicators.common.chain import chainable
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
 
+def _wrap_results(results):
+    return AlligatorResults(results, AlligatorResult)
+
+def _calculate(indicator_params, is_chaining):
+    if is_chaining:
+        return CsIndicator.GetAlligator(*indicator_params)
+    else:
+        return CsIndicator.GetAlligator[Quote](*indicator_params)
+
+@chainable(is_chainable=True, calc_func=_calculate, wrap_func=_wrap_results)
 def get_alligator(quotes: Iterable[Quote],
                   jaw_periods: int = 13, jaw_offset: int = 8,
                   teeth_periods: int = 8, teeth_offset: int = 5,
-                  lips_periods: int = 5, lips_offset: int = 3):
+                  lips_periods: int = 5, lips_offset: int = 3) -> "AlligatorResults[AlligatorResult]":
     """Get Williams Alligator calculated.
 
     Williams Alligator is an indicator that transposes multiple moving averages,
@@ -47,11 +58,7 @@ def get_alligator(quotes: Iterable[Quote],
          - [Williams Alligator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Alligator/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    alligator_results = CsIndicator.GetAlligator[Quote](CsList(Quote, quotes),
-                                                        jaw_periods, jaw_offset,
-                                                        teeth_periods, teeth_offset,
-                                                        lips_periods, lips_offset)
-    return AlligatorResults(alligator_results, AlligatorResult)
+    return (quotes, jaw_periods, jaw_offset, teeth_periods, teeth_offset, lips_periods, lips_offset)
 
 
 class AlligatorResult(ResultBase):
