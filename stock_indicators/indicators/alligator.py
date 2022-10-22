@@ -1,7 +1,6 @@
 from typing import Iterable, Optional, TypeVar
 
-from stock_indicators._cslib import CsIndicator, CsIReusableResult
-from stock_indicators._cstypes import List as CsList
+from stock_indicators._cslib import CsIndicator
 from stock_indicators.indicators.common.chain import chainable
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase

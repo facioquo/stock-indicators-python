@@ -1,7 +1,6 @@
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.chain import chainable
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
@@ -18,7 +17,7 @@ def _calculate(indicator_params, is_chaining):
         return CsIndicator.GetRsi[Quote](*indicator_params)
 
 @chainable(is_chainable=True, calc_func=_calculate, wrap_func=_wrap_results)
-def get_rsi(quotes: Iterable[Quote], lookback_periods: int = 14):
+def get_rsi(quotes: Iterable[Quote], lookback_periods: int = 14) -> "RSIResults[RSIResult]":
     """Get RSI calculated.
 
     Relative Strength Index (RSI) measures strength of the winning/losing streak over N lookback periods

@@ -65,7 +65,7 @@ class IndicatorChain:
                 results = last_indicator(results, is_last = True)
             except TypeError as e:
                 if idx < 1:
-                    raise ValueError((f"{self.chain[idx].__name__}(index:{idx}), must be generated"
+                    raise ValueError((f"{self.chain[idx].__name__}(index:{idx}) must be generated"
                                       "from quotes and cannot be generated from results of another chain-enabled"
                                       "indicator or method. See docs for more details.")) from e
                 else:
