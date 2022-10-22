@@ -35,6 +35,9 @@ from System import Enum as CsEnum
 from System.Globalization import CultureInfo
 from System.Collections.Generic import List as CsList
 
+# Interfaces
+from Skender.Stock.Indicators import IReusableResult as CsIReusableResult
+
 # Classes
 from Skender.Stock.Indicators import CandleProperties as CsCandleProperties
 from Skender.Stock.Indicators import Indicator as CsIndicator
