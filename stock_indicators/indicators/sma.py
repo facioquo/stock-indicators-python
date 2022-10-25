@@ -3,12 +3,24 @@ from warnings import warn
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
+from stock_indicators.indicators.common.chain import chainable
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
+def _wrap_results(results):
+    return SMAResults(results, SMAResult)
 
+def _calculate(indicator_params, is_chaining):
+    if is_chaining:
+        return CsIndicator.GetSma(*indicator_params)
+    else:
+        quotes, *params, candle_part = indicator_params
+        quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var.
+        return CsIndicator.GetSma(quotes, *params)
+
+@chainable(is_chainable=True, calc_func=_calculate, wrap_func=_wrap_results)
 def get_sma(quotes: Iterable[Quote], lookback_periods: int,
             candle_part: CandlePart = CandlePart.CLOSE):
     """Get SMA calculated.
@@ -33,9 +45,7 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int,
          - [SMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Sma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var.
-    results = CsIndicator.GetSma(quotes, lookback_periods)
-    return SMAResults(results, SMAResult)
+    return (quotes, lookback_periods, candle_part)
 
 def get_sma_analysis(quotes: Iterable[Quote], lookback_periods: int):
     """Get SMA calculated, with more analysis.
