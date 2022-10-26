@@ -1,63 +1,40 @@
-from typing import Iterable, Optional, TypeVar
+from typing import Callable, Iterable, Optional, TypeVar, overload
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators.indicators.common.chain import chainable
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.indicator import Indicator
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
 
-def _wrap_results(results):
-    return AlligatorResults(results, AlligatorResult)
-
-def _calculate(indicator_params, is_chaining):
-    if is_chaining:
-        return CsIndicator.GetAlligator(*indicator_params)
-    else:
-        return CsIndicator.GetAlligator[Quote](*indicator_params)
-
-@chainable(is_chainable=True, calc_func=_calculate, wrap_func=_wrap_results)
-def get_alligator(quotes: Iterable[Quote],
+class Alligator(Indicator):
+    is_chainable = True
+    is_chainee = True
+    is_chainor = True
+    
+    indicator_method = CsIndicator.GetAlligator[Quote]
+    chaining_method = CsIndicator.GetAlligator
+    
+    def __call__(self, quotes: Iterable[Quote],
                   jaw_periods: int = 13, jaw_offset: int = 8,
                   teeth_periods: int = 8, teeth_offset: int = 5,
                   lips_periods: int = 5, lips_offset: int = 3) -> "AlligatorResults[AlligatorResult]":
-    """Get Williams Alligator calculated.
+        """Get Williams Alligator calculated.
 
-    Williams Alligator is an indicator that transposes multiple moving averages,
-    showing chart patterns that creator Bill Williams compared to an alligator's
-    feeding habits when describing market movement.
+        Williams Alligator is an indicator that transposes multiple moving averages,
+        showing chart patterns that creator Bill Williams compared to an alligator's
+        feeding habits when describing market movement.
+        """
 
-    Parameters:
-        `quotes` : Iterable[Quote]
-            Historical price quotes.
+        return super().__call__(quotes, jaw_periods,
+                                jaw_offset, teeth_periods,
+                                teeth_offset, lips_periods, lips_offset)
 
-        `jaw_periods` : int, defaults 13
-            Lookback periods for the Jaw line
+    def _wrap_results(self, results):
+        return AlligatorResults(results, AlligatorResult)
 
-        `jaw_offset` : int, defaults 8
-            Offset periods for the Jaw line.
-
-        `teeth_periods` : int, defaults 8
-            Lookback periods for the Teeth line.
-
-        `teeth_offset` : int, defaults 5
-            Offset periods for the Teeth line.
-
-        `lips_periods` : int, defaults 5
-            Lookback periods for the Lips line.
-
-        `lips_offset` : int, defaults 3
-            Offset periods for the Lips line.
-
-    Returns:
-        `AlligatorResults[AlligatorResult]`
-            AlligatorResults is list of AlligatorResult with providing useful helper methods.
-
-    See more:
-         - [Williams Alligator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Alligator/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
-    """
-    return (quotes, jaw_periods, jaw_offset, teeth_periods, teeth_offset, lips_periods, lips_offset)
+get_alligator = Alligator().__call__
 
 
 class AlligatorResult(ResultBase):
