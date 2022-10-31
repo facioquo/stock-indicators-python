@@ -47,9 +47,9 @@ def get_base(quotes, candle_part):
     return (quotes, candle_part.cs_value)
 
 class IndicatorChain:
-    def __init__(self, quotes: Iterable, candle_part: CandlePart):
+    def __init__(self, quotes: Iterable[Quote], candle_part: CandlePart):
         self.chain: List[Callable] = []
-        self.quotes = CsList(Quote, quotes)
+        self.quotes = quotes
         self.last_indicator: Indicator = None
         if candle_part:
             # TODO: Add BaseQuote as a new indicator. And replace with using add().
@@ -88,7 +88,7 @@ class IndicatorChain:
         """Calculate all chained indicators."""
         results = None
         if self.chain:
-            results = self.quotes
+            results = CsList(Quote, self.quotes)
             
             # Impl 1
             last_indicator = self.chain.pop()
