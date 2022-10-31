@@ -38,8 +38,7 @@ See the [guide]({{site.baseurl}}/guide/#content) and the [full list of indicator
 
 ## Version supported
 
-- Python 3.8
-- Python 3.9
+- Python 3.8+ 
 
 ## License
 

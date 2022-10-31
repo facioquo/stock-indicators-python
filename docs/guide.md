@@ -129,6 +129,8 @@ Here's an example we'd like to suggest: **Use list comprehension**
 # 2     2018-12-27  238.06  243.68  234.52  243.46  189794032
 # ...          ...     ...     ...     ...     ...        ...
 
+from stock_indicators import Quote
+
 quotes_list = [
     Quote(d,o,h,l,c,v) 
     for d,o,h,l,c,v 
