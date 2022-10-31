@@ -1,4 +1,4 @@
-from functools import reduce, wraps
+from functools import wraps
 from typing import Callable, Iterable, List, Optional
 
 from stock_indicators._cslib import CsIndicator
@@ -89,22 +89,13 @@ class IndicatorChain:
         results = None
         if self.chain:
             results = CsList(Quote, self.quotes)
-            
-            # Impl 1
-            last_indicator = self.chain.pop()
-            idx = -1 
-            
-            for idx, indicator in enumerate(self.chain):
-                results = indicator(results, use_chaining = idx > 0)
-            
-            idx += 1    
-            results = last_indicator(results, use_chaining = idx > 0, is_last = True)
-            return results
 
-            # Impl 2
-            # return reduce(
-            #     lambda prev, cur: (prev[0]+1, cur(prev[1], prev[0] > 0, prev[0] == len(self.chain) - 1)),
-            #     self.chain,
-            #     (0, results))[1]
+            idx = 0
+            last_indicator = self.chain.pop()
+
+            for idx, indicator in enumerate(self.chain, 1):
+                results = indicator(results, use_chaining = idx > 1)
+
+            results = last_indicator(results, use_chaining = idx > 0, is_last = True)
 
         return results
