@@ -30,7 +30,6 @@ class RSIResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
 
 class RSI(Indicator):
-    is_chainable = True
     is_chainee = True
     is_chainor = True
     

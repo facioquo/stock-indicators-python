@@ -8,11 +8,6 @@ from stock_indicators.indicators.common.quote import Quote
 class Indicator(ABC):
     @property
     @abstractmethod
-    def is_chainable(self):
-        pass
-
-    @property
-    @abstractmethod
     def is_chainee(self):
         pass
 
@@ -40,6 +35,10 @@ class Indicator(ABC):
     @abstractmethod
     def unit_wrap_class(self):
         pass
+
+    @property
+    def is_chainable(self):
+        return self.is_chainee or self.is_chainor
 
     def __call__(self, quotes, *params):
         return self.wrap_results(self.calculate((CsList(Quote, quotes), *params)))

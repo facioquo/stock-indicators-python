@@ -31,7 +31,6 @@ class BasicQuoteResults(IndicatorResults[_T]):
 
 
 class BasicQuote(Indicator):
-    is_chainable = True
     is_chainee = False
     is_chainor = True
     
