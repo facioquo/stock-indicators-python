@@ -1,8 +1,8 @@
 from functools import wraps
 from typing import Callable, Iterable, List, Optional
 
-from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
+from stock_indicators.indicators.basic_quotes import get_basic_quote
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.indicator import Indicator
 from stock_indicators.indicators.common.quote import Quote
@@ -31,20 +31,6 @@ def calculate_indicator(indicator: Indicator):
         return calculate
     return decorator
 
-class BaseQuote(Indicator):
-    is_chainable = True
-    is_chainee = False
-    is_chainor = True
-    
-    indicator_method = CsIndicator.GetBaseQuote[Quote]
-    chaining_method = None
-    
-    list_wrap_class = None
-    unit_wrap_class = None
-    
-@calculate_indicator(indicator=BaseQuote())
-def get_base(quotes, candle_part):
-    return (quotes, candle_part.cs_value)
 
 class IndicatorChain:
     def __init__(self, quotes: Iterable[Quote], candle_part: CandlePart):
@@ -52,17 +38,14 @@ class IndicatorChain:
         self.quotes = quotes
         self.last_indicator: Indicator = None
         if candle_part:
-            # TODO: Add BaseQuote as a new indicator. And replace with using add().
-            self.add(get_base, candle_part)
-            # self.last_indicator = BaseQuote()
-            # self.quotes = CsIndicator.GetBaseQuote[Quote](self.quotes, candle_part.cs_value)
+            self.add(get_basic_quote, candle_part)
 
     @classmethod
     def use_quotes(cls, quotes: Iterable[Quote], candle_part: Optional[CandlePart] = None):
         """
         Provide quotes and optionally select which candle part to use in the calculation.
         
-        Note that if you specify `candle_part`, `quote` will be converted internally.
+        Note that if you specify `candle_part`, `quote` will be converted into `BasicQuote` internally.
         And it may affect some of the indicators that must start from `Quote`s.
         """
         instance = cls(quotes, candle_part)
