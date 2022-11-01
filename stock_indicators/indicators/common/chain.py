@@ -1,4 +1,3 @@
-from functools import wraps
 from typing import Callable, Iterable, List, Optional
 
 from stock_indicators._cstypes import List as CsList
@@ -7,29 +6,6 @@ from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.indicator import Indicator
 from stock_indicators.indicators.common.quote import Quote
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
-
-
-def calculate_indicator(indicator: Indicator):
-    def decorator(interface_func: Callable):
-        def calculate(*args, **kwargs):
-            is_chaining = kwargs.pop("is_chaining", False)
-
-            if is_chaining:
-                if indicator.is_chainable:
-                    @wraps(interface_func)
-                    def calculate_lazily(quotes, use_chaining = True, is_last = False):
-                        indicator_params = interface_func(quotes, *args, **kwargs)
-                        results = indicator.calculate(indicator_params, use_chaining)
-                        if is_last:
-                            return indicator.wrap_results(results)
-                        return results
-                    return indicator, calculate_lazily
-                else:
-                    raise ValueError(f"{interface_func.__name__} cannot be chained.")
-
-            return indicator.__call__(*interface_func(*args, **kwargs))
-        return calculate
-    return decorator
 
 
 class IndicatorChain:
