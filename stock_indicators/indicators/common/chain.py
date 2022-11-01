@@ -37,7 +37,7 @@ class IndicatorChain:
         self.chain: List[Callable] = []
         self.quotes = quotes
         self.last_indicator: Indicator = None
-        if candle_part:
+        if candle_part is not None:
             self.add(get_basic_quote, candle_part)
 
     @classmethod
