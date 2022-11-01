@@ -30,12 +30,12 @@ class IndicatorChain:
     def add(self, indicator_method: Callable, *args, **kwargs):
         """Add indicator method that calculates lazily."""
         if self.last_indicator and not self.last_indicator.is_chainor:
-            raise ValueError((f"{self.chain[-1].__name__} cannot be further chained with additional transforms. "
+            raise ValueError((f"{self.chain[-1].__name__}() cannot be further chained with additional transforms. "
                               "See docs for more details."))
 
         indicator_info, chaining_method = indicator_method(*args, **kwargs, is_chaining = True)
         if self.last_indicator and not indicator_info.is_chainee:
-            raise ValueError((f"{indicator_method.__name__} must be generated from quotes "
+            raise ValueError((f"{chaining_method.__name__}() must be generated from quotes "
                               "and cannot be generated from results of another chain-enabled"
                               "indicator or method. See docs for more details."))
         
