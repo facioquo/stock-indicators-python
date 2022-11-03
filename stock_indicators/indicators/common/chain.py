@@ -1,14 +1,16 @@
-from typing import Callable, Iterable, List, Optional
+from typing import Callable, Generic, Iterable, List, Optional, TypeVar, overload
 
 from stock_indicators._cstypes import List as CsList
-from stock_indicators.indicators.basic_quotes import get_basic_quote
+from stock_indicators.indicators.basic_quotes import BasicQuoteResult, BasicQuoteResults, get_basic_quote
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.indicator import Indicator
 from stock_indicators.indicators.common.quote import Quote
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
+from stock_indicators.indicators.common.results import IndicatorResults
 
 
-class IndicatorChain:
+_T = TypeVar("_T", bound=IndicatorResults)
+_U = TypeVar("_U", bound=IndicatorResults)
+class IndicatorChain(Generic[_T]):
     def __init__(self, quotes: Iterable[Quote], candle_part: CandlePart):
         self.chain: List[Callable] = []
         self.quotes = quotes
@@ -16,6 +18,12 @@ class IndicatorChain:
         if candle_part is not None:
             self.add(get_basic_quote, candle_part)
 
+    @overload
+    @classmethod
+    def use_quotes(cls, quotes: Iterable[Quote]) -> "IndicatorChain[None]": ...
+    @overload
+    @classmethod
+    def use_quotes(cls, quotes: Iterable[Quote], candle_part: CandlePart) -> "IndicatorChain[BasicQuoteResults[BasicQuoteResult]]": ...
     @classmethod
     def use_quotes(cls, quotes: Iterable[Quote], candle_part: Optional[CandlePart] = None):
         """
@@ -27,7 +35,7 @@ class IndicatorChain:
         instance = cls(quotes, candle_part)
         return instance
     
-    def add(self, indicator_method: Callable, *args, **kwargs):
+    def add(self, indicator_method: Callable[..., _U], *args, **kwargs) -> "IndicatorChain[_U]":
         """Add indicator method that calculates lazily."""
         if self.last_indicator and not self.last_indicator.is_chainor:
             raise ValueError((f"{self.chain[-1].__name__}() cannot be further chained with additional transforms. "
@@ -43,7 +51,7 @@ class IndicatorChain:
         self.last_indicator = indicator_info
         return self
 
-    def calc(self) -> Optional[IndicatorResults[ResultBase]]:
+    def calc(self) -> _T:
         """Calculate all chained indicators."""
         results = None
         if self.chain:

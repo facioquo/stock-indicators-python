@@ -61,7 +61,7 @@ class Alligator(Indicator):
 def get_alligator(quotes: Iterable[Quote],
                   jaw_periods: int = 13, jaw_offset: int = 8,
                   teeth_periods: int = 8, teeth_offset: int = 5,
-                  lips_periods: int = 5, lips_offset: int = 3):
+                  lips_periods: int = 5, lips_offset: int = 3) -> AlligatorResults[AlligatorResult]:
     """Get Williams Alligator calculated.
 
     Williams Alligator is an indicator that transposes multiple moving averages,
