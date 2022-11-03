@@ -17,7 +17,7 @@ class BasicQuoteResult(ResultBase):
         return self._csdata.Value
 
     @value.setter
-    def jaw(self, value):
+    def value(self, value):
         self._csdata.Value = value
 
 
