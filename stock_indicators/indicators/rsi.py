@@ -41,7 +41,7 @@ class RSI(Indicator):
 
 
 @calculate_indicator(indicator=RSI())
-def get_rsi(quotes: Iterable[Quote], lookback_periods: int = 14) -> "RSIResults[RSIResult]":
+def get_rsi(quotes: Iterable[Quote], lookback_periods: int = 14) -> RSIResults[RSIResult]:
     """Get RSI calculated.
 
     Relative Strength Index (RSI) measures strength of the winning/losing streak over N lookback periods

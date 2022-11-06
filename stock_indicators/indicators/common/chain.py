@@ -11,7 +11,7 @@ from stock_indicators.indicators.common.results import IndicatorResults
 _T = TypeVar("_T", bound=IndicatorResults)
 _U = TypeVar("_U", bound=IndicatorResults)
 class IndicatorChain(Generic[_T]):
-    def __init__(self, quotes: Iterable[Quote], candle_part: CandlePart):
+    def __init__(self, quotes: Iterable[Quote], candle_part: Optional[CandlePart] = None):
         self.chain: List[Callable] = []
         self.quotes = quotes
         self.last_indicator: Indicator = None
