@@ -43,9 +43,9 @@ class IndicatorChain(Generic[_T]):
 
         indicator_info, chaining_method = indicator_method(*args, **kwargs, is_chaining = True)
         if self.last_indicator and not indicator_info.is_chainee:
-            raise ValueError((f"{chaining_method.__name__}() must be generated from quotes "
-                              "and cannot be generated from results of another chain-enabled"
-                              "indicator or method. See docs for more details."))
+            raise ValueError((f"{chaining_method.__name__}() must be generated from quotes (without "
+                              "specifying candlePart) and cannot be generated from results of another "
+                              "chain-enabled indicator or method. See docs for more details."))
         
         self.chain.append(chaining_method)
         self.last_indicator = indicator_info
