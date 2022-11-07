@@ -1,7 +1,13 @@
 from datetime import datetime
+
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 from stock_indicators.indicators.common.enums import CandlePart
+from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.ema import get_ema
+from stock_indicators.indicators.rsi import get_rsi
+from stock_indicators.indicators.sma import get_sma
 
 class TestSMA:    
     def test_standard(self, quotes):
@@ -21,7 +27,7 @@ class TestSMA:
         assert 251.8600 == round(float(results[501].sma), 4)
 
     def test_open_candle_part(self, quotes):
-        results = indicators.get_sma(quotes, 20 , CandlePart.OPEN)
+        results = IndicatorChain.use_quotes(quotes, CandlePart.OPEN).add(get_sma, 20).calc()
         
         assert 502 == len(results)
         assert 483 == len(list(filter(lambda x: x.sma is not None, results)))
@@ -35,7 +41,7 @@ class TestSMA:
         assert 253.1725 == round(float(results[501].sma), 4)
 
     def test_volume_candle_part(self, quotes):
-        results = indicators.get_sma(quotes, 20 , CandlePart.VOLUME)
+        results = IndicatorChain.use_quotes(quotes, CandlePart.VOLUME).add(get_sma, 20).calc()
         
         assert 502 == len(results)
         assert 483 == len(list(filter(lambda x: x.sma is not None, results)))
@@ -50,6 +56,12 @@ class TestSMA:
         r = results[501]
         assert datetime(2018, 12, 31) == r.date
         assert 163695200 == round(float(r.sma), 0)
+        
+    def test_chainor(self, quotes):
+        results = IndicatorChain.use_quotes(quotes).add(get_sma, 10).add(get_ema, 10).calc()
+        
+        assert 502 == len(results)
+        assert 484 == len(list(filter(lambda x: x.ema is not None, results)))
 
     def test_bad_data(self, bad_quotes):
         results = indicators.get_sma(bad_quotes, 15)
