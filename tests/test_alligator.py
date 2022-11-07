@@ -1,5 +1,8 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.alligator import get_alligator
+from stock_indicators.indicators.common.chain import IndicatorChain
+from stock_indicators.indicators.sma import get_sma
 
 class TestAlligator:
     def test_standard(self, quotes):
@@ -37,6 +40,18 @@ class TestAlligator:
         assert 213.74900 == round(float(results[8].lips), 5)
         assert 226.35353 == round(float(results[99].lips), 5)
         assert 244.29591 == round(float(results[501].lips), 5)
+
+    def test_chainee(self, quotes):
+        results = IndicatorChain.use_quotes(quotes).add(get_sma, 2).add(get_alligator).calc()
+        
+        assert 502 == len(results)
+        assert 481 == len(list(filter(lambda x: x.jaw is not None, results)))
+        
+    def test_chain_sync(self, quotes):
+        results = IndicatorChain.use_quotes(quotes).add(get_sma, 3).add(get_alligator).calc()
+        
+        assert 502 == len(results)
+        assert 480 == len(list(filter(lambda x: x.jaw is not None, results)))
 
     def test_bad_data(self, bad_quotes):
         results = indicators.get_alligator(bad_quotes, 3, 3, 2, 1, 1, 1)
