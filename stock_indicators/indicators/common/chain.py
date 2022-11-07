@@ -1,7 +1,7 @@
-from typing import Callable, Generic, Iterable, List, Optional, TypeVar, overload
+from typing import Callable, Generic, Iterable, List, Optional, TypeVar
 
 from stock_indicators._cstypes import List as CsList
-from stock_indicators.indicators.basic_quotes import BasicQuoteResult, BasicQuoteResults, get_basic_quote
+from stock_indicators.indicators.basic_quotes import get_basic_quote
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.indicator import Indicator
 from stock_indicators.indicators.common.quote import Quote
@@ -18,12 +18,6 @@ class IndicatorChain(Generic[_T]):
         if candle_part is not None:
             self.add(get_basic_quote, candle_part)
 
-    @overload
-    @classmethod
-    def use_quotes(cls, quotes: Iterable[Quote]) -> "IndicatorChain[None]": ...
-    @overload
-    @classmethod
-    def use_quotes(cls, quotes: Iterable[Quote], candle_part: CandlePart) -> "IndicatorChain[BasicQuoteResults[BasicQuoteResult]]": ...
     @classmethod
     def use_quotes(cls, quotes: Iterable[Quote], candle_part: Optional[CandlePart] = None):
         """
