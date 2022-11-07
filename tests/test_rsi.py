@@ -1,5 +1,9 @@
+from audioop import add
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
+from stock_indicators.indicators.rsi import get_rsi
+from stock_indicators.indicators.sma import get_sma
 
 class TestRSI:
     def test_standard(self, quotes):
@@ -42,6 +46,24 @@ class TestRSI:
 
     #     last = results.pop()
     #     assert 42.0773 == round(float(to_pydecimal(last.Close)), 4)
+
+    def test_chainee(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(get_sma, 2)\
+            .add(get_rsi, 14)\
+            .calc()
+            
+        assert 502 == len(results)
+        assert 487 == len(list(filter(lambda x: x.rsi is not None, results)))
+        
+    def test_chainor(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(get_rsi, 14)\
+            .add(get_sma, 10)\
+            .calc()
+            
+        assert 502 == len(results)
+        assert 479 == len(list(filter(lambda x: x.sma is not None, results)))
 
     def test_bad_data(self, bad_quotes):
         r = indicators.get_rsi(bad_quotes, 20)
