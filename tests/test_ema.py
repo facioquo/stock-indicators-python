@@ -1,6 +1,9 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 from stock_indicators.indicators.common.enums import CandlePart
+from stock_indicators.indicators.ema import get_ema
+from stock_indicators.indicators.sma import get_sma
 
 class TestEMA:
     def test_standard(self, quotes):
@@ -32,6 +35,24 @@ class TestEMA:
 
         r = results[501]
         assert 249.9157 == round(float(r.ema), 4)
+
+    def test_chainee(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(get_sma, 2)\
+            .add(get_ema, 20)\
+            .calc()
+            
+        assert 502 == len(results)
+        assert 482 == len(list(filter(lambda x: x.ema is not None, results)))
+        
+    def test_chainor(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(get_ema, 20)\
+            .add(get_sma, 10)\
+            .calc()
+            
+        assert 502 == len(results)
+        assert 474 == len(list(filter(lambda x: x.sma is not None, results)))
 
     def test_bad_data(self, bad_quotes):
         r = indicators.get_ema(bad_quotes, 15)
