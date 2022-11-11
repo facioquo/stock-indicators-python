@@ -1,34 +1,10 @@
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.indicator import Indicator, calculate_indicator
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
-
-
-def get_aroon(quotes: Iterable[Quote], lookback_periods: int = 25):
-    """Get Aroon calculated.
-
-    Aroon is a simple oscillator view of how long the new high or low price occured over a lookback window.
-
-    Parameters:
-        `quotes` : Iterable[Quote]
-            Historical price quotes.
-
-        `lookback_periods` : int, defaults 25
-            Number of periods in the lookback window.
-
-    Returns:
-        `AroonResults[AroonResult]`
-            AroonResults is list of AroonResult with providing useful helper methods.
-
-    See more:
-         - [Aroon Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Aroon/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
-    """
-    aroon_results = CsIndicator.GetAroon[Quote](CsList(Quote, quotes), lookback_periods)
-    return AroonResults(aroon_results, AroonResult)
 
 
 class AroonResult(ResultBase):
@@ -68,3 +44,38 @@ class AroonResults(RemoveWarmupMixin, IndicatorResults[_T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
+
+
+class Aroon(Indicator):
+    is_chainee = False
+    is_chainor = True
+    
+    indicator_method = CsIndicator.GetAroon[Quote]
+    chaining_method = None
+    
+    list_wrap_class = AroonResults
+    unit_wrap_class = AroonResult
+
+
+@calculate_indicator(indicator=Aroon())
+def get_aroon(quotes: Iterable[Quote], lookback_periods: int = 25) -> AroonResults[AroonResult]:
+    """Get Aroon calculated.
+
+    Aroon is a simple oscillator view of how long the new high or low price occured over a lookback window.
+
+    Parameters:
+        `quotes` : Iterable[Quote]
+            Historical price quotes.
+
+        `lookback_periods` : int, defaults 25
+            Number of periods in the lookback window.
+
+    Returns:
+        `AroonResults[AroonResult]`
+            AroonResults is list of AroonResult with providing useful helper methods.
+
+    See more:
+         - [Aroon Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Aroon/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
+    return (quotes, lookback_periods)
