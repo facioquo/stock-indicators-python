@@ -1,5 +1,8 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.adl import get_adl
+from stock_indicators.indicators.common.chain import IndicatorChain
+from stock_indicators.indicators.sma import get_sma
 
 class TestADL:
     def test_standard(self, quotes):
@@ -22,22 +25,6 @@ class TestADL:
         assert 3439986548.42 == round(float(r2.adl),                   2)
         assert r2.adl_sma is None
 
-    # def test_convert_to_quotes(self, quotes):
-    #     new_quotes = indicators.get_adl(quotes).to_quotes()
-
-    #     assert 502 == len(new_quotes)
-
-    #     q1 = new_quotes[249]
-    #     assert 3266400865.74 == round(float(to_pydecimal(q1.Close)), 2)
-
-    #     q2 = new_quotes[501]
-    #     assert 3439986548.42 == round(float(to_pydecimal(q2.Close)), 2)
-
-    def test_bad_data(self, bad_quotes):
-        results = indicators.get_adl(bad_quotes)
-
-        assert 502 == len(results)
-    
     def test_with_sma(self, quotes):
         results = indicators.get_adl(quotes, 20)
 
@@ -52,6 +39,38 @@ class TestADL:
         assert 3439986548.42 == round(float(r.adl),                   2)
         assert 3595352721.16 == round(float(r.adl_sma),               2)
 
+    # def test_convert_to_quotes(self, quotes):
+    #     new_quotes = indicators.get_adl(quotes).to_quotes()
+
+    #     assert 502 == len(new_quotes)
+
+    #     q1 = new_quotes[249]
+    #     assert 3266400865.74 == round(float(to_pydecimal(q1.Close)), 2)
+
+    #     q2 = new_quotes[501]
+    #     assert 3439986548.42 == round(float(to_pydecimal(q2.Close)), 2)
+
+    def test_chainor(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(get_adl)\
+            .add(get_sma, 10)\
+            .calc()
+                
+        assert 502 == len(results)
+        assert 493 == len(list(filter(lambda x: x.sma is not None, results)))
+    
+    def test_chainee(self, quotes):
+        with pytest.raises(ValueError):
+            results = IndicatorChain.use_quotes(quotes)\
+            .add(get_sma)\
+            .add(get_adl)\
+            .calc()
+
+    def test_bad_data(self, bad_quotes):
+        results = indicators.get_adl(bad_quotes)
+
+        assert 502 == len(results)
+    
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException

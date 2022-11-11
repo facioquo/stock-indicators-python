@@ -1,33 +1,9 @@
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
+from stock_indicators.indicators.common.indicator import Indicator, calculate_indicator
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
-
-
-def get_adl(quotes: Iterable[Quote], sma_periods: Optional[int] = None):
-    """Get ADL calculated.
-
-    Accumulation/Distribution Line (ADL) is a rolling accumulation of Chaikin Money Flow Volume.
-
-    Parameters:
-        `quotes` : Iterable[Quote]
-            Historical price quotes.
-
-        `sma_periods` : int, optional
-            Number of periods in the moving average of ADL.
-
-    Returns:
-        `ADLResults[ADLResult]`
-            ADLResults is list of ADLResult with providing useful helper methods.
-
-    See more:
-         - [ADL Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Adl/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
-    """
-    adl_results = CsIndicator.GetAdl[Quote](CsList(Quote, quotes), sma_periods)
-    return ADLResults(adl_results, ADLResult)
 
 
 class ADLResult(ResultBase):
@@ -75,3 +51,38 @@ class ADLResults(IndicatorResults[_T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
+
+
+class Alligator(Indicator):
+    is_chainee = False
+    is_chainor = True
+    
+    indicator_method = CsIndicator.GetAdl[Quote]
+    chaining_method = None
+    
+    list_wrap_class = ADLResults
+    unit_wrap_class = ADLResult
+
+
+@calculate_indicator(indicator=Alligator())
+def get_adl(quotes: Iterable[Quote], sma_periods: Optional[int] = None):
+    """Get ADL calculated.
+
+    Accumulation/Distribution Line (ADL) is a rolling accumulation of Chaikin Money Flow Volume.
+
+    Parameters:
+        `quotes` : Iterable[Quote]
+            Historical price quotes.
+
+        `sma_periods` : int, optional
+            Number of periods in the moving average of ADL.
+
+    Returns:
+        `ADLResults[ADLResult]`
+            ADLResults is list of ADLResult with providing useful helper methods.
+
+    See more:
+         - [ADL Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Adl/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
+    return (quotes, sma_periods)
