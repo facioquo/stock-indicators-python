@@ -53,7 +53,7 @@ class ADLResults(IndicatorResults[_T]):
     """
 
 
-class Alligator(Indicator):
+class ADL(Indicator):
     is_chainee = False
     is_chainor = True
     
@@ -64,8 +64,8 @@ class Alligator(Indicator):
     unit_wrap_class = ADLResult
 
 
-@calculate_indicator(indicator=Alligator())
-def get_adl(quotes: Iterable[Quote], sma_periods: Optional[int] = None):
+@calculate_indicator(indicator=ADL())
+def get_adl(quotes: Iterable[Quote], sma_periods: Optional[int] = None) -> ADLResults[ADLResult]:
     """Get ADL calculated.
 
     Accumulation/Distribution Line (ADL) is a rolling accumulation of Chaikin Money Flow Volume.
