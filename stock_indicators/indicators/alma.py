@@ -1,13 +1,48 @@
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.indicator import Indicator, calculate_indicator
 from stock_indicators.indicators.common.quote import Quote
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_alma(quotes: Iterable[Quote], lookback_periods: int = 9, offset: float = .85, sigma : float = 6):
+class ALMAResult(ResultBase):
+    """
+    A wrapper class for a single unit of ALMA results.
+    """
+
+    @property
+    def alma(self) -> Optional[float]:
+        return self._csdata.Alma
+
+    @alma.setter
+    def alma(self, value):
+        self._csdata.Alma = value
+
+
+_T = TypeVar("_T", bound=ALMAResult)
+class ALMAResults(RemoveWarmupMixin, IndicatorResults[_T]):
+    """
+    A wrapper class for the list of ALMA(Arnaud Legoux Moving Average) results.
+    It is exactly same with built-in `list` except for that it provides
+    some useful helper methods written in CSharp implementation.
+    """
+
+
+class ALMA(Indicator):
+    is_chainee = True
+    is_chainor = True
+    
+    indicator_method = CsIndicator.GetAlma[Quote]
+    chaining_method = CsIndicator.GetAlma
+    
+    list_wrap_class = ALMAResults
+    unit_wrap_class = ALMAResult
+
+
+@calculate_indicator(indicator=ALMA())
+def get_alma(quotes: Iterable[Quote], lookback_periods: int = 9, offset: float = .85, sigma : float = 6) -> ALMAResults[ALMAResult]:
     """Get ALMA calculated.
 
     Arnaud Legoux Moving Average (ALMA) is a Gaussian distribution
@@ -34,28 +69,4 @@ def get_alma(quotes: Iterable[Quote], lookback_periods: int = 9, offset: float =
          - [ALMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Alma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    alma_results = CsIndicator.GetAlma[Quote](CsList(Quote, quotes), lookback_periods, offset, sigma)
-    return ALMAResults(alma_results, ALMAResult)
-
-
-class ALMAResult(ResultBase):
-    """
-    A wrapper class for a single unit of ALMA results.
-    """
-
-    @property
-    def alma(self) -> Optional[float]:
-        return self._csdata.Alma
-
-    @alma.setter
-    def alma(self, value):
-        self._csdata.Alma = value
-
-
-_T = TypeVar("_T", bound=ALMAResult)
-class ALMAResults(RemoveWarmupMixin, IndicatorResults[_T]):
-    """
-    A wrapper class for the list of ALMA(Arnaud Legoux Moving Average) results.
-    It is exactly same with built-in `list` except for that it provides
-    some useful helper methods written in CSharp implementation.
-    """
+    return (quotes, lookback_periods, offset, sigma)

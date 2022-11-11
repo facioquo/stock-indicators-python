@@ -1,5 +1,6 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 
 class TestALMA:
     def test_standard(self, quotes):
@@ -27,6 +28,24 @@ class TestALMA:
         r = results[501]
         assert 242.1871 == round(float(r.alma), 4)
 
+    def test_chainor(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_alma, 10, .85, 6)\
+            .add(indicators.get_sma, 10)\
+            .calc()
+                
+        assert 502 == len(results)
+        assert 484 == len(list(filter(lambda x: x.sma is not None, results)))
+    
+    def test_chainee(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_sma, 2)\
+            .add(indicators.get_alma, 10, .85, 6)\
+            .calc()
+        
+        assert 502 == len(results)
+        assert 492 == len(list(filter(lambda x: x.alma is not None, results)))
+    
     def test_bad_data(self, bad_quotes):
         r = indicators.get_alma(bad_quotes, 14, .5, 3)
 
