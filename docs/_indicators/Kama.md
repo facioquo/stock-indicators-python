@@ -15,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `er_periods` | int, *default 10* | Number of Efficiency Ratio (volatility) periods (`E`).  Must be greater than 0.
 | `fast_periods` | int, *default 2* | Number of Fast EMA periods.  Must be greater than 0.
 | `slow_periods` | int, *default 30* | Number of Slow EMA periods.  Must be greater than `fast_periods`.
@@ -70,7 +70,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_kama(quotes, 10,2,30)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Perry Kaufman, [KAMA](https://school.stockcharts.com/doku.php?id=technical_indicators:kaufman_s_adaptive_moving_average) is an volatility adaptive moving average of Close price over configurable lookback periods.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/210 "Community discussion about this indicator")

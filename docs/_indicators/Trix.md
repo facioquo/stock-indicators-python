@@ -15,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int | Number of periods (`N`) in each of the the exponential moving averages.  Must be greater than 0.
 | `signal_periods` | int, Optional | Number of periods in the moving average of TRIX.  Must be greater than 0, if specified.
 
@@ -68,7 +68,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_trix(quotes, 14)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Jack Hutson, [TRIX](https://en.wikipedia.org/wiki/Trix_(technical_analysis)) is the rate of change for a 3 EMA smoothing of the Close price over a lookback window.  TRIX is often confused with [TEMA](../Tema#content).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/234 "Community discussion about this indicator")

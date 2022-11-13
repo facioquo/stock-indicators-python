@@ -15,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `brick_size` | float | Brick size.  Must be greater than 0.
 | `end_type` | EndType, *default EndType.CLOSE* | See [EndType options](#endtype-options) below.
 
@@ -127,7 +127,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_renko_atr(quotes, atr_periods);
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 The [Renko Chart](https://en.m.wikipedia.org/wiki/Renko_chart) is a Japanese price transformed candlestick pattern that uses "bricks" to show a defined increment of change over a non-linear time series.  Transitions can use either `close` or `high/low` price values.  An [ATR variant](#atr-variant) is also provided where brick size is determined by Average True Range values.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/478 "Community discussion about this indicator")

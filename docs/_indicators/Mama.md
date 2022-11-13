@@ -15,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `fast_limit` | float, *default 0.5* | Fast limit threshold.  Must be greater than `slowLimit` and less than 1.
 | `slow_limit` | float, *default 0.05* | Slow limit threshold.  Must be greater than 0.
 
@@ -67,7 +67,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_mama(quotes, 0.5,0.05)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by John Ehlers, the [MAMA](http://mesasoftware.com/papers/MAMA.pdf) indicator is a 5-period adaptive moving average of high/low price.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/211 "Community discussion about this indicator")

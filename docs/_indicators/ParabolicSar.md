@@ -19,7 +19,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `acceleration_step` | float, *default 0.02* | Incremental step size for the Acceleration Factor.  Must be greater than 0.
 | `max_acceleration_factor` | float, *default 0.2* | Maximum factor limit.  Must be greater than `acceleration_step`.
 | `initial_factor` | float | Initial Acceleration Factor.  Must be greater than 0.  Default is `acceleration_step`.
@@ -70,7 +70,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_parabolic_sar(quotes, 0.02, 0.2)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by J. Welles Wilder, [Parabolic SAR](https://en.wikipedia.org/wiki/Parabolic_SAR) (stop and reverse) is a price-time based indicator used to determine trend direction and reversals.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/245 "Community discussion about this indicator")

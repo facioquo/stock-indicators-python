@@ -15,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int | Number of periods (`N`) in the lookback window.  Must be greater than 0.
 | `candle_part` | CandlePart, *default CandlePart.CLOSE* | Specify candle part to evaluate.  See [CandlePart options](#candlepart-options) below.
 
@@ -97,7 +97,7 @@ SMAAnalysisResults[SMAAnalysisResult]
 results = indicators.get_sma_analysis(quotes, lookback_periods)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 [Simple Moving Average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average) is the average price over a lookback window.  The extended analysis option includes mean absolute deviation (MAD), mean square error (MSE), and mean absolute percentage error (MAPE).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/240 "Community discussion about this indicator")

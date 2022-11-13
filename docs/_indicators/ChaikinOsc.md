@@ -15,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `fast_periods` | int, *default 3* | Number of periods (`F`) in the ADL fast EMA.  Must be greater than 0 and smaller than `S`.
 | `slow_periods` | int, *default 10* | Number of periods (`S`) in the ADL slow EMA.  Must be greater `F`.
 
@@ -71,7 +71,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_chaikin_osc(quotes, 20)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Marc Chaikin, the [Chaikin Oscillator](https://en.wikipedia.org/wiki/Chaikin_Analytics#Chaikin_Oscillator) is the difference between fast and slow Exponential Moving Averages (EMA) of the [Accumulation/Distribution Line](../Adl#content) (ADL).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/264 "Community discussion about this indicator")

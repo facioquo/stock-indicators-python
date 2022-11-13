@@ -69,7 +69,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_gator(quotes)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Bill Williams, the Gator Oscillator is an expanded view of [Williams Alligator](../Alligator#content).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/385 "Community discussion about this indicator")

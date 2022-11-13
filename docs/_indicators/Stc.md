@@ -15,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `cycle_periods` | int, *default 10* | Number of periods (`C`) for the Trend Cycle.  Must be greater than or equal to 0.
 | `fast_periods` | int, *default 23* | Number of periods (`F`) for the faster moving average.  Must be greater than 0.
 | `slow_periods` | int, *default 50* | Number of periods (`S`) for the slower moving average.  Must be greater than `fast_periods`.
@@ -67,7 +67,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_stc(quotes, 10, 23, 50)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Doug Schaff, [Schaff Trend Cycle](https://www.investopedia.com/articles/forex/10/schaff-trend-cycle-indicator.asp) is a stochastic oscillator view of two converging/diverging exponential moving averages (a.k.a MACD).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/570 "Community discussion about this indicator")

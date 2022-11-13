@@ -15,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int | Lookback period (`N`) for the stochastic.  Must be greater than 0.
 | `first_smooth_periods` | int | First smoothing factor lookback.  Must be greater than 0.
 | `second_smooth_periods` | int | Second smoothing factor lookback.  Must be greater than 0.
@@ -69,7 +69,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_smi(quotes, 14, 20, 5, 3)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by William Blau, the Stochastic Momentum Index (SMI) is a double-smoothed variant of the [Stochastic Oscillator](../Stoch/#content) on a scale from -100 to 100.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/625 "Community discussion about this indicator")

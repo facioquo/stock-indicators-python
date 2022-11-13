@@ -19,7 +19,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `window_span` | int, *default 2* | Evaluation window span width (`S`).  Must be at least 2.
 | `end_type` | EndType | Determines whether `close` or `high/low` are used to find end points.  See [EndType options](#endtype-options) below.  Default is `EndType.HIGH_LOW`.
 
@@ -83,7 +83,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_fractal(quotes, 5)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Larry Williams, [Fractal](https://www.investopedia.com/terms/f/fractal.asp) is a retrospective price pattern that identifies a central high or low point.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/255 "Community discussion about this indicator")

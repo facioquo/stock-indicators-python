@@ -15,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `left_span` | int, *default 2* | Left evaluation window span width (`L`).  Must be at least 2.
 | `right_span` | int, *default 2* | Right evaluation window span width (`R`).  Must be at least 2.
 | `max_trend_periods` | int, *default 20* | Number of periods (`N`) in evaluation window.  Must be greater than `leftSpan`.
@@ -99,7 +99,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_pivots(quotes, 2, 2, 20, EndType.HIGH_LOW);
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Pivots is an extended version of [Williams Fractal](../Fractal#content) that includes identification of Higher High, Lower Low, Higher Low, and Lower Low trends between pivots in a lookback window.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/436 "Community discussion about this indicator")

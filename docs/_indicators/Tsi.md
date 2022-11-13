@@ -15,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int, *default 25* | Number of periods (`N`) for the first EMA.  Must be greater than 0.
 | `smooth_periods` | int, *default 13* | Number of periods (`M`) for the second smoothing.  Must be greater than 0.
 | `signal_periods` | int, *default 7* | Number of periods (`S`) in the TSI moving average.  Must be greater than or equal to 0.
@@ -69,7 +69,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_tsi(quotes, 25, 13, 7)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by William Blau, the [True Strength Index](https://en.wikipedia.org/wiki/True_strength_index) is a momentum oscillator that depicts trends in price changes.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/300 "Community discussion about this indicator")

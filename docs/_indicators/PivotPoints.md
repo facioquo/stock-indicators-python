@@ -15,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `window_size` | PeriodSize | Size of the lookback window. See [PeriodSize options](#periodsize-options-for-window_size) below.
 | `point_type` | PivotPointType, *default PivotPointType.STANDARD* | Type of Pivot Point. See [PivotPointType options](#pivotpointtype-options) below.
 
@@ -102,7 +102,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_pivot_points(quotes, PeriodSize.MONTH, PivotPointType.WOODIE);
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 [Pivot Points](https://en.wikipedia.org/wiki/Pivot_point_(technical_analysis)) depict support and resistance levels, based on the prior lookback window.  You can specify window size (e.g. month, week, day, etc).
 See also the alternative [Rolling Pivot Points](../RollingPivots#content) variant for a modern update that uses a rolling window.

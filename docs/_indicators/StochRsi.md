@@ -15,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `rsi_periods` | int | Number of periods (`R`) in the lookback period.  Must be greater than 0.  Standard is 14.
 | `stoch_periods` | int | Number of periods (`S`) in the lookback period.  Must be greater than 0.  Typically the same value as `rsi_periods`.
 | `signal_periods` | int | Number of periods (`G`) in the signal line (SMA of the StochRSI).  Must be greater than 0.  Typically 3-5.
@@ -71,7 +71,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_stoch_rsi(quotes, 14, 14, 1, 1)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by by Tushar Chande and Stanley Kroll, [Stochastic RSI](https://school.stockcharts.com/doku.php?id=technical_indicators:stochrsi) is a Stochastic interpretation of the Relative Strength Index.  It is different from, and often confused with the more traditional [Stochastic Oscillator](../Stoch#content).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/236 "Community discussion about this indicator")
