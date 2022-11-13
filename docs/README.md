@@ -20,7 +20,7 @@ Explore more information:
 
 ## Samples
 
-![image](https://raw.githubusercontent.com/DaveSkender/Stock.Indicators/main/docs/examples.png)
+![image](https://raw.githubusercontent.com/DaveSkender/Stock.Indicators/main/docs/examples.webp)
 
 ### Example usage
 
@@ -38,11 +38,11 @@ See the [guide]({{site.baseurl}}/guide/#content) and the [full list of indicator
 
 ## Version supported
 
-- Python 3.8+ 
+- Python 3.8+
 
 ## License
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square)](https://opensource.org/licenses/Apache-2.0)
 
 This repository uses the standard Apache 2.0 open-source license.  Please review the [license](https://opensource.org/licenses/Apache-2.0) before using or contributing to the software.
 
