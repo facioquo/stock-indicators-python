@@ -1,7 +1,7 @@
 [![image](https://raw.githubusercontent.com/DaveSkender/Stock.Indicators.Python/main/docs/assets/social-banner.png)](https://daveskender.github.io/Stock.Indicators.Python/)
 
 [![PyPI](https://img.shields.io/pypi/v/stock-indicators?color=blue&label=PyPI)](https://badge.fury.io/py/stock-indicators)
-[![code coverage](https://img.shields.io/azure-devops/coverage/skender/stock.indicators/26/main?logo=AzureDevOps&label=Code%20Coverage)](https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=26&branchName=main&view=codecoverage-tab)
+[![code coverage](https://img.shields.io/azure-devops/coverage/skender/stock.indicators/26/main?logo=AzureDevOps&label=Test%20Coverage)](https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=26&branchName=main&view=codecoverage-tab)
 [![Language grade](https://img.shields.io/lgtm/grade/python/g/DaveSkender/Stock.Indicators.Python.svg?logo=lgtm&logoWidth=18&label=code%20quality)](https://lgtm.com/projects/g/DaveSkender/Stock.Indicators.Python)
 
 # Stock Indicators for Python
