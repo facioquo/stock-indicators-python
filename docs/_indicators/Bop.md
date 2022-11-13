@@ -7,6 +7,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_bop**(*quotes, smooth_periods=14*)

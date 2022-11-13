@@ -6,10 +6,11 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_vwma**(*quotes, lookback_periods*)
-    
+
 ## Parameters
 
 | name | type | notes

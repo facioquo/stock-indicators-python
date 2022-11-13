@@ -7,10 +7,11 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_epma**(*quotes, lookback_periods*)
-    
+
 ## Parameters
 
 | name | type | notes

@@ -7,6 +7,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_hurst**(*quotes, lookback_periods=100*)

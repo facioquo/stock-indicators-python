@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_slope**(*quotes, lookback_periods*)
@@ -35,7 +36,7 @@ SlopeResults[SlopeResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values for `slope` since there's not enough data to calculate.
 
-:paintbrush: **Repaint Warning**: the `line` will be continuously repainted since it is based on the last quote and lookback period.
+> :paintbrush: **Repaint Warning**: the `line` will be continuously repainted since it is based on the last quote and lookback period.
 
 ### SlopeResult
 

@@ -6,10 +6,11 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_cmf**(*quotes, lookback_periods=20*)
-    
+
 ## Parameters
 
 | name | type | notes
@@ -44,7 +45,7 @@ CMFResults[CMFResult]
 | `money_flow_volume` | float, Optional | Money Flow Volume
 | `cmf` | float, Optional | Chaikin Money Flow = SMA of MFV
 
-:warning: **Warning**: absolute values in MFV and CMF are somewhat meaningless, so use with caution.
+> :warning: **Warning**: absolute values in MFV and CMF are somewhat meaningless.  Use with caution.
 
 ### Utilities
 

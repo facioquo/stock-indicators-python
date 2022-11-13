@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_prs**(*eval_history, base_history, lookback_periods=None, sma_periods=None*)

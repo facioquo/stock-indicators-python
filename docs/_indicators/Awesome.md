@@ -7,6 +7,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_awesome**(*quotes, fast_periods=5, slow_periods=34*)

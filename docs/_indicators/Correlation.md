@@ -7,6 +7,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_correlation**(*quotes_a, quotes_b, lookback_periods*)

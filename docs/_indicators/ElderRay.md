@@ -7,6 +7,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_elder_ray**(*quotes, lookback_periods=13*)
@@ -36,7 +37,7 @@ ElderRayResults[ElderRayResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` indicator values since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### ElderRayResult
 
@@ -55,7 +56,6 @@ ElderRayResults[ElderRayResult]
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
-
 ## Example
 
 ```python
@@ -68,7 +68,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_elder_ray(quotes, 13)
 ```
 
-## {{ page.title }}
+## About: {{ page.title }}
 
 Created by Alexander Elder, the [Elder-ray Index](https://www.investopedia.com/terms/e/elderray.asp), also known as Bull and Bear Power, depicts buying and selling pressure.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/378 "Community discussion about this indicator")

@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_obv**(*quotes, sma_periods=None*)
@@ -43,7 +44,7 @@ OBVResults[OBVResult]
 | `obv` | float | On-balance Volume
 | `obv_sma` | float, Optional | Moving average (SMA) of OBV based on `sma_periods` periods, if specified
 
-:warning: **Warning**: absolute values in OBV are somewhat meaningless, so use with caution.
+> :warning: **Warning**: absolute values in OBV are somewhat meaningless. Use with caution.
 
 ### Utilities
 

@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_bollinger_bands**(*quotes, lookback_periods=20, standard_deviations=2*)

@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_alma**(*quotes, lookback_periods=9, offset=0.85, sigma=6*)
@@ -51,7 +52,6 @@ ALMAResults[ALMAResult]
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
-
 
 ## Example
 

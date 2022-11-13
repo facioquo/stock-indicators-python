@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_volatility_stop**(*quotes, lookback_periods=7, multiplier=3*)

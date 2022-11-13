@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_stoch_rsi**(*quotes, rsi_periods, stoch_periods, signal_periods, smooth_periods=1*)
@@ -20,7 +21,7 @@ layout: indicator
 | `signal_periods` | int | Number of periods (`G`) in the signal line (SMA of the StochRSI).  Must be greater than 0.  Typically 3-5.
 | `smooth_periods` | int, *default 1* | Smoothing periods (`M`) for the Stochastic.  Must be greater than 0.
 
-The original Stochasic RSI formula uses a the Fast variant of the Stochastic calculation (`smooth_periods=1`).  For a standard period of 14, the original formula would be `indicators.get_stoch_rsi(quotes, 14, 14, 3, 1)`.  The "3" here is just for the Signal (%D), which is not present in the original formula, but useful for additional smoothing and analysis.
+The original Stochastic RSI formula uses a the Fast variant of the Stochastic calculation (`smooth_periods=1`).  For a standard period of 14, the original formula would be `indicators.get_stoch_rsi(quotes, 14, 14, 3, 1)`.  The "3" here is just for the Signal (%D), which is not present in the original formula, but useful for additional smoothing and analysis.
 
 ### Historical quotes requirements
 
@@ -40,7 +41,7 @@ StochRSIResults[StochRSIResult]
 - It does not return a single incremental indicator value.
 - The first `R+S+M` periods will have `None` values for `stoch_rsi` since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `10×R` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.  We recommend pruning at least `R+S+M+100` initial values.
+> :hourglass: **Convergence warning**: The first `10×R` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.  We recommend pruning at least `R+S+M+100` initial values.
 
 ### StochRSIResult
 

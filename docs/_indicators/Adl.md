@@ -1,11 +1,12 @@
 ---
-title: Accumulation/Distribution Line (ADL)
+title: Accumulation / Distribution Line (ADL)
 permalink: /indicators/Adl/
 type: volume-based
 layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_adl**(*quotes, sma_periods=None*)
@@ -44,7 +45,7 @@ ADLResults[ADLResult]
 | `adl` | float | Accumulation Distribution Line (ADL)
 | `adl_sma` | float, Optional | Moving average (SMA) of ADL based on `sma_periods` periods, if specified
 
-:warning: **Warning**: absolute values in ADL and MFV are somewhat meaningless, so use with caution.
+> :warning: **Warning**: absolute values in ADL and MFV are somewhat meaningless.  Use with caution.
 
 ### Utilities
 

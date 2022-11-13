@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_ht_trendline**(*quotes*)
@@ -34,7 +35,7 @@ HTTrendlineResults[HTTrendlineResult]
 - It does not return a single incremental indicator value.
 - The first `6` periods will have `None` values for `smooth_price` since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### HTTrendlineResult
 

@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_macd**(*quotes, fast_periods=12, slow_periods=26, signal_periods=9*)
@@ -40,7 +41,7 @@ MACDResults[MACDResult]
 - It does not return a single incremental indicator value.
 - The first `S-1` slow periods will have `None` values since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `S+P+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `S+P+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### MACDResult
 
@@ -60,7 +61,6 @@ MACDResults[MACDResult]
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
-
 
 ## Example
 

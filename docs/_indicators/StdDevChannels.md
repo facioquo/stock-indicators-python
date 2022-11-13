@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_stdev_channels**(*quotes, lookback_periods=20, standard_deviations=2*)
@@ -36,7 +37,7 @@ StdevChannelsResults[StdevChannelsResult]
 - It does not return a single incremental indicator value.
 - Up to `N-1` periods will have `None` values since there's not enough data to calculate.
 
-:paintbrush: **Repaint Warning**: Historical results are a function of the current period window position and will fluctuate over time.  Recommended for visualization; not recommended for backtesting.
+> :paintbrush: **Repaint warning**: Historical results are a function of the current period window position and will fluctuate over time.  Recommended for visualization; not recommended for backtesting.
 
 ### StdevChannelsResult
 

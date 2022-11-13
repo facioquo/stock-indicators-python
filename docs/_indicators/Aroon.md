@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_aroon**(*quotes, lookback_periods=25*)
@@ -65,7 +66,7 @@ results = indicators.get_aroon(quotes, lookback_periods)
 
 ## About: {{ page.title }}
 
-Created by Tushar Chande, [Aroon](https://school.stockcharts.com/doku.php?id=technical_indicators:aroon) is a oscillator view of how long ago the new high or low price occured over a lookback window.
+Created by Tushar Chande, [Aroon](https://school.stockcharts.com/doku.php?id=technical_indicators:aroon) is a oscillator view of how long ago the new high or low price occurred over a lookback window.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/266 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Aroon.png)

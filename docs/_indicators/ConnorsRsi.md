@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_connors_rsi**(*quotes, rsi_periods=3, streak_periods=2, rank_periods=100*)
@@ -37,7 +38,7 @@ ConnorsRSIResults[ConnorsRSIResult]
 - It does not return a single incremental indicator value.
 - The first `MAX(R,S,P)-1` periods will have `None` values since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `N` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `N` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### ConnorsRSIResult
 

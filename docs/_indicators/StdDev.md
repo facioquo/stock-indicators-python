@@ -7,6 +7,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_stdev**(*quotes, lookback_periods, sma_periods=None*)

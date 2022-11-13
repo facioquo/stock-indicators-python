@@ -7,11 +7,13 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_ichimoku**(*quotes, tenkan_periods=9, kijun_periods=26, senkou_b_periods=52*)
 
 ### More overloaded interfaces
+
 **get_ichimoku**(quotes, tenkan_periods, kijun_periods, senkou_b_periods,
                  offset_periods)
 **get_ichimoku**(quotes, tenkan_periods, kijun_periods, senkou_b_periods,

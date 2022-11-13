@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_stc**(*quotes, cycle_periods=10, fast_periods=23, slow_periods=50*)
@@ -37,7 +38,7 @@ STCResults[STCResult]
 - It does not return a single incremental indicator value.
 - The first `S+C` slow periods will have `None` values since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `S+C+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `S+C+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### STCResult
 
@@ -53,7 +54,6 @@ STCResults[STCResult]
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
-
 
 ## Example
 

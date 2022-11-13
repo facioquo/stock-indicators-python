@@ -6,10 +6,11 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_rolling_pivots**(*quotes, window_periods, offset_periods, point_type=PivotPointType.STANDARD*)
-    
+
 ## Parameters
 
 | name | type | notes
@@ -89,7 +90,7 @@ results = indicators.get_rolling_pivots(quotes, 14, 0, PivotPointType.Woodie);
 
 ## About: {{ page.title }}
 
-Created by Dave Skender, Rolling Pivot Points is a modern update to traditional fixed calendar window [Pivot Points](../PivotPoints#content).  It depicts support and resistance levels, based on a defined _rolling_ window and offset.
+Created by Dave Skender, Rolling Pivot Points is a modern update to traditional fixed calendar window [Pivot Points](../PivotPoints#content).  It depicts support and resistance levels, based on a defined *rolling* window and offset.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/274 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/RollingPivots.png)

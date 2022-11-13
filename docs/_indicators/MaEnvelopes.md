@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_ma_envelopes**(*quotes, lookback_periods, percent_offset=2.5, ma_type=MAType.SMA*)
@@ -43,7 +44,7 @@ from stock_indicators.indicators.common.enums import MAType
 | `MAType.TEMA` | [Triple Exponential Moving Average](../Tema#content)
 | `MAType.WMA` | [Weighted Moving Average](../Wma#content)
 
-:warning: For ALMA, default values are used for `offset` and `sigma`.
+> :warning:  **Warning**: For ALMA, default values are used for `offset` and `sigma`.
 
 ## Return
 
@@ -57,7 +58,7 @@ MAEnvelopeResults[MAEnvelopeResult]
 - It does not return a single incremental indicator value.
 - The first periods will have `None` values since there's not enough data to calculate; the quantity will vary based on the `ma_type` specified.
 
-:hourglass: **Convergence Warning**: Some moving average variants have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.  See links in the supported [MAType options](#matype-options) section above for more information.
+> :hourglass: **Convergence Warning**: Some moving average variants have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.  See links in the supported [MAType options](#matype-options) section above for more information.
 
 ### MaEnvelopeResult
 
@@ -76,8 +77,6 @@ The moving average `center_line` is based on the `ma_type` type specified.
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
-
-## Example
 
 ## Example
 

@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_pvo**(*quotes, fast_periods=12, slow_periods=26, signal_periods=9*)
@@ -37,7 +38,7 @@ PVOResults[PVOResult]
 - It does not return a single incremental indicator value.
 - The first `S-1` slow periods will have `None` values since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `S+P+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `S+P+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### PVOResult
 

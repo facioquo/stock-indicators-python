@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_renko**(*quotes, brick_size, end_type=EndType.CLOSE*)
@@ -45,14 +46,7 @@ RenkoResults[RenkoResult]
 - `RenkoResults` is just a list of `RenkoResult`.
 - It does not return a single incremental indicator value.
 
-<!-- - `RenkoResult` is based on `IQuote`, so it can be used as a direct replacement for `quotes`.  In other words, you can use it as base quotes for other indicators. Example:
-
-  ```csharp
-  var renkoQuotes = quotes.GetRenko(..);
-  var renkoRsi = renkoQuotes.GetRsi(..);
-  ``` -->
-
-:warning: WARNING!  Unlike most indicators in this library, this indicator DOES NOT return the same number of elements as there are in the historical quotes.  Renko bricks are added to the results once the `brick_size` change is achieved.  For example, if it takes 3 days for a $2.50 price change to occur an entry is made on the third day while the first two are skipped.  If a period change occurs at multiples of `brick_size`, multiple bricks are drawn with the same `date`.  See [online documentation](https://www.investopedia.com/terms/r/renkochart.asp) for more information.
+> :warning: **Warning**: Unlike most indicators in this library, this indicator DOES NOT return the same number of elements as there are in the historical quotes.  Renko bricks are added to the results once the `brickSize` change is achieved.  For example, if it takes 3 days for a $2.50 price change to occur an entry is made on the third day while the first two are skipped.  If a period change occurs at multiples of `brickSize`, multiple bricks are drawn with the same `Date`.  See [online documentation](https://www.investopedia.com/terms/r/renkochart.asp) for more information.
 
 ### RenkoResult
 
@@ -68,7 +62,7 @@ Each result record represents one Renko brick.
 | `volume` | Decimal | Sum of Volume over elapsed quotes periods
 | `is_up` | bool | Direction of brick (true=up,false=down)
 
-:warning: WARNING! When multiple bricks are drawn from a single `quote` period, the extra information about `high` and `low` wicks and `volume` is potentially confusing to interpret.  `high` and `low` wicks will be the same across the multiple bricks; and `volume` is portioning evenly across the number of bricks.  For example, if within one `quote` period 3 bricks are drawn, the `volume` for each brick will be `(sum of quotes Volume since last brick) / 3`.
+> :warning: **Warning**: When multiple bricks are drawn from a single `quote` period, the extra information about `High` and `Low` wicks and `Volume` is potentially confusing to interpret.  `High` and `Low` wicks will be the same across the multiple bricks; and `Volume` is portioning evenly across the number of bricks.  For example, if within one `quote` period 3 bricks are drawn, the `Volume` for each brick will be `(sum of quotes Volume since last brick) / 3`.
 
 ### Utilities
 
@@ -119,9 +113,9 @@ RenkoResults[RenkoResult]
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 
-:paintbrush: **Repaint Warning**: When using the `get_renko_atr()` variant, the last [Average True Range (ATR)](../Atr/#content) value is used to set `brick_size`.  Since the ATR changes over time, historical bricks will be repainted as new periods are added or updated in `quotes`.
+> :paintbrush: **Repaint warning**: When using the `GetRenkoAtr()` variant, the last [Average True Range (ATR)]({{site.baseurl}}/indicators/Atr/#content) value is used to set `brickSize`.  Since the ATR changes over time, historical bricks will be repainted as new periods are added or updated in `quotes`.
 
-## Example
+## Example for ATR variant
 
 ```python
 from stock_indicators import indicators

@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_force_index**(*quotes, lookback_periods*)
@@ -35,7 +36,7 @@ ForceIndexResults[ForceIndexResult]
 - It does not return a single incremental indicator value.
 - The first `N` periods for will be `None` since they cannot be calculated.
 
-:hourglass: **Convergence Warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### ForceIndexResult
 

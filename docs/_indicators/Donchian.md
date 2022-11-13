@@ -7,10 +7,11 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_donchian**(*quotes, lookback_periods=20*)
-    
+
 ## Parameters
 
 | name | type | notes

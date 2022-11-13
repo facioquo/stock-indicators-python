@@ -7,6 +7,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_stoch**(*quotes, lookback_periods=14, signal_periods=3, smooth_periods=3*)
@@ -51,7 +52,7 @@ StochResults[StochResult]
 - It does not return a single incremental indicator value.
 - The first `N+S-2` periods will have `None` Oscillator values since there's not enough data to calculate.
 
-<!-- :hourglass: **Convergence Warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods when using `MAType.SMMA`.  Standard use of `MAType.SMA` does not have convergence-related precision errors. -->
+<!-- > :hourglass: **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods when using `MAType.SMMA`.  Standard use of `MAType.SMA` does not have convergence-related precision errors. -->
 
 ### StochResult
 
@@ -62,7 +63,7 @@ StochResults[StochResult]
 | `signal` or `d` | float, Optional | %D Simple moving average of Oscillator
 | `percent_j` or `j` | float, Optional | %J is the weighted divergence of %K and %D: `%J=kFactor×%K-dFactor×%D`
 
-Note: aliases of `k`, `d`, and `j` are also provided.  They can be used interchangably with the standard outputs.
+Note: aliases of `k`, `d`, and `j` are also provided.  They can be used interchangeably with the standard outputs.
 
 ### Utilities
 

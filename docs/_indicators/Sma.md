@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_sma**(*quotes, lookback_periods, candle_part=CandlePart.CLOSE*)
@@ -17,7 +18,6 @@ layout: indicator
 | `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
 | `lookback_periods` | int | Number of periods (`N`) in the lookback window.  Must be greater than 0.
 | `candle_part` | CandlePart, *default CandlePart.CLOSE* | Specify candle part to evaluate.  See [CandlePart options](#candlepart-options) below.
-
 
 ### Historical quotes requirements
 
@@ -67,7 +67,6 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_sma(quotes, 20, CandlePart.CLOSE)
 ```
 
-
 <hr>
 # Extended analysis
 
@@ -75,7 +74,7 @@ This indicator has an extended version with more analysis.
 
 ## **get_sma_analysis**(*quotes, lookback_periods*)
 
-## Returns
+## Return with analysis
 
 ```python
 SMAAnalysisResults[SMAAnalysisResult]
@@ -91,17 +90,16 @@ SMAAnalysisResults[SMAAnalysisResult]
 | `mse` | float, Optional | Mean square error
 | `mape` | float, Optional | Mean absolute percentage error
 
-## Example
+## Example for analysis
 
 ```python
 # usage
 results = indicators.get_sma_analysis(quotes, lookback_periods)
 ```
 
-
 ## About: {{ page.title }}
 
-[Simple Moving Average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average) is the average price over a lookback window.  An [extended analysis](#extended-analysis) option includes mean absolute deviation (MAD), mean square error (MSE), and mean absolute percentage error (MAPE).
+[Simple Moving Average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average) is the average price over a lookback window.  The extended analysis option includes mean absolute deviation (MAD), mean square error (MSE), and mean absolute percentage error (MAPE).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/240 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/Sma.png)
