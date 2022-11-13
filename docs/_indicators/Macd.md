@@ -1,5 +1,5 @@
 ---
-title: Moving Average Convergence/Divergence (MACD)
+title: Moving Average Convergence / Divergence (MACD)
 permalink: /indicators/Macd/
 type: price-trend
 layout: indicator

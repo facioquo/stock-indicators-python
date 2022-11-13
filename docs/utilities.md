@@ -1,5 +1,6 @@
 ---
-title: Utilities and Helpers
+title: Utilities and helpers
+description: The Stock Indicators for Python library includes utilities to help you use and transform indicator results.
 permalink: /utilities/
 relative_path: utilities.md
 layout: page
