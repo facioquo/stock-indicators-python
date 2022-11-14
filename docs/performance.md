@@ -1,12 +1,13 @@
 ---
-title: Performance benchmarks for v1.0.0
+title: Performance benchmarks
 permalink: /performance/
+relative_path: performance.md
 layout: page
 noindex: true
 sitemap: false
 ---
 
-# {{ page.title }}
+# {{ page.title }} for v1.0.0
 
 These are the execution times for the current indicators using two years of historical daily stock quotes (502 periods) with default or typical parameters.
 

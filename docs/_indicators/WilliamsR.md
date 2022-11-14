@@ -6,15 +6,16 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_williams_r**(*quotes, lookback_periods=14*)
-    
+
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int, *default 14* | Number of periods (`N`) in the lookback period.  Must be greater than 0.  Default is 14.
 
 ### Historical quotes requirements
@@ -62,7 +63,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_williams_r(quotes, 14)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Larry Williams, the [Williams %R](https://en.wikipedia.org/wiki/Williams_%25R) momentum indicator is a stochastic oscillator with scale of -100 to 0.  It is exactly the same as the Fast variant of [Stochastic Oscillator](../Stoch#content), but with a different scaling.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/229 "Community discussion about this indicator")

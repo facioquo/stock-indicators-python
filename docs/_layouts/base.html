@@ -1,10 +1,3 @@
-{% comment %}
-  JEKYLL SITE TEMPLATE OVERRIDE
-  Ref: https://jekyllrb.com/docs/usage/
-  Ref: https://github.com/pages-themes/cayman
-  Local dev: bundle exec jekyll serve
-{% endcomment %}
-
 <!DOCTYPE html>
 <html lang="en-US">
 
@@ -29,13 +22,13 @@
 <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/icons/apple-touch-icon.png' | relative_url }}">
 <link rel="mask-icon" href="{{ '/assets/icons/safari-pinned-tab.svg' | relative_url }}" color="#424242">
 
-{% if site.google_analytics and site.github.source.branch == 'main' %}
-<script async src="https://www.googletagmanager.com/gtag/js?id={{site.google_analytics}}"></script>
+{% if site.ga_tag and site.github.source.branch == 'main' %}
+<script async src="https://www.googletagmanager.com/gtag/js?id={{site.ga_tag}}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag() { dataLayer.push(arguments); }
   gtag('js', new Date());
-  gtag('config', '{{site.google_analytics}}');
+  gtag('config', '{{site.ga_tag}}');
 </script>{% endif %}
 </head>
 

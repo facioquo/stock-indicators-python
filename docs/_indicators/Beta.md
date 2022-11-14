@@ -7,6 +7,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_beta**(*eval_history, market_quotes, lookback_periods, beta_type=BetaType.STANDARD*)
@@ -17,12 +18,13 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `eval_history` | Iterable[Quote] | Historical [evaluation stock] Quotes data should be at any consistent frequency (day, hour, minute, etc). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `eval_history` | Iterable[Quote] | Historical [evaluation stock] Quotes data should be at any consistent frequency (day, hour, minute, etc). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `market_history` | Iterable[Quote] | Historical [market] Quotes data should be at any consistent frequency (day, hour, minute, etc).  This `market` quotes will be used to establish the baseline.
 | `lookback_periods` | int | Number of periods (`N`) in the lookback period.  Must be greater than 0 to calculate; however we suggest a larger period for statistically appropriate sample size and especially when using Beta +/-.
 | `beta_type` | BetaType, *default BetaType.STANDARD* | Type of Beta to calculate.  See [BetaType options](#betatype-options) below.
 
 ### Historical quotes requirements
+
 You must have at least `N` periods of quotes to cover the warmup periods.  You must have at least the same matching date elements of `market_history`.  Exception will be thrown if not matched.  Historical price quotes should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
 #### BetaType options
@@ -85,7 +87,7 @@ history_TSLA = get_history_from_feed("TSLA")
 results = indicators.get_beta(history_SPX, history_TSLA, 20, BetaType.STANDARD)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 [Beta](https://en.wikipedia.org/wiki/Beta_(finance)) shows how strongly one stock responds to systemic volatility of the entire market.  [Upside Beta](https://en.wikipedia.org/wiki/Upside_beta) (Beta+) and [Downside Beta](https://en.wikipedia.org/wiki/Downside_beta) (Beta-), [popularized by Harry M. Markowitz](https://www.jstor.org/stable/j.ctt1bh4c8h), are also included.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/268 "Community discussion about this indicator")

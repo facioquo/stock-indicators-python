@@ -7,6 +7,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_awesome**(*quotes, fast_periods=5, slow_periods=34*)
@@ -15,7 +16,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `fast_periods` | int, *default 5* | Number of periods (`F`) for the faster moving average.  Must be greater than 0.
 | `slow_periods` | int, *default 34* | Number of periods (`S`) for the slower moving average.  Must be greater than `fast_periods`.
 
@@ -65,7 +66,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_awesome(quotes, 5, 34)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Bill Williams, the Awesome Oscillator (aka Super AO) is a measure of the gap between a fast and slow period modified moving average.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/282 "Community discussion about this indicator")

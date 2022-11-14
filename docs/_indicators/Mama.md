@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_mama**(*quotes, fast_limit=0.5, slow_limit=0.05*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `fast_limit` | float, *default 0.5* | Fast limit threshold.  Must be greater than `slowLimit` and less than 1.
 | `slow_limit` | float, *default 0.05* | Slow limit threshold.  Must be greater than 0.
 
@@ -36,7 +37,7 @@ MAMAResults[MAMAResult]
 - It does not return a single incremental indicator value.
 - The first `5` periods will have `None` values for `Mama` since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `50` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `50` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### MAMAResult
 
@@ -66,7 +67,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_mama(quotes, 0.5,0.05)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by John Ehlers, the [MAMA](http://mesasoftware.com/papers/MAMA.pdf) indicator is a 5-period adaptive moving average of high/low price.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/211 "Community discussion about this indicator")

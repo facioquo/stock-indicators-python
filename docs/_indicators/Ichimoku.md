@@ -7,11 +7,13 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_ichimoku**(*quotes, tenkan_periods=9, kijun_periods=26, senkou_b_periods=52*)
 
 ### More overloaded interfaces
+
 **get_ichimoku**(quotes, tenkan_periods, kijun_periods, senkou_b_periods,
                  offset_periods)
 **get_ichimoku**(quotes, tenkan_periods, kijun_periods, senkou_b_periods,
@@ -21,7 +23,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `tenkan_periods` | int, *default 9* | Number of periods (`T`) in the Tenkan-sen midpoint evaluation.  Must be greater than 0.
 | `kijun_periods` | int, *default 26* | Number of periods (`K`) in the shorter Kijun-sen midpoint evaluation.  Must be greater than 0.
 | `senkou_b_periods` | int, *default 52* | Number of periods (`S`) in the longer Senkou leading span B midpoint evaluation.  Must be greater than `K`.
@@ -79,7 +81,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_ichimoku(quotes, 9, 26, 52)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Goichi Hosoda (細田悟一, Hosoda Goichi), [Ichimoku Cloud](https://en.wikipedia.org/wiki/Ichimoku_Kink%C5%8D_Hy%C5%8D), also known as Ichimoku Kinkō Hyō, is a collection of indicators that depict support and resistance, momentum, and trend direction.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/251 "Community discussion about this indicator")

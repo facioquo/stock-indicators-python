@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_ht_trendline**(*quotes*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 
 ## Historical quotes requirements
 
@@ -34,7 +35,7 @@ HTTrendlineResults[HTTrendlineResult]
 - It does not return a single incremental indicator value.
 - The first `6` periods will have `None` values for `smooth_price` since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### HTTrendlineResult
 
@@ -64,7 +65,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_ht_trendline(quotes)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by John Ehlers, the Hilbert Transform Instantaneous Trendline is a 5-period trendline of high/low price that uses signal processing to reduce noise.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/363 "Community discussion about this indicator")
