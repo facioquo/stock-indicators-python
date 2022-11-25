@@ -25,7 +25,7 @@ Currently, `.condense()` is only available on a select few indicators.  If you f
 
 ### Convert to quotes
 
-> :warning: WARNINGThe `.to_quotes()` method is deprecated. (since v0.8.0)
+> :warning: WARNING! The `.to_quotes()` method is deprecated. (since v0.8.0)
 
 `results.to_quotes()` will transform indicator results back into an `list[Quote]` so it can be re-used to generate an [indicator of indicators]({{site.baseurl}}/guide/#generating-indicator-of-indicators).
 
