@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_cci**(*quotes, lookback_periods=20*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int, *default 20* | Number of periods (`N`) in the moving average.  Must be greater than 0.
 
 ### Historical quotes requirements
@@ -62,7 +63,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_cci(quotes, 20)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Donald Lambert, the [Commodity Channel Index](https://en.wikipedia.org/wiki/Commodity_channel_index) is an oscillator depicting deviation from typical price range, often used to identify cyclical trends.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/265 "Community discussion about this indicator")

@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_pivot_points**(*quotes, window_size, point_type=PivotPointType.STANDARD*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `window_size` | PeriodSize | Size of the lookback window. See [PeriodSize options](#periodsize-options-for-window_size) below.
 | `point_type` | PivotPointType, *default PivotPointType.STANDARD* | Type of Pivot Point. See [PivotPointType options](#pivotpointtype-options) below.
 
@@ -63,9 +64,9 @@ PivotPointsResults[PivotPointsResult]
 - It does not return a single incremental indicator value.
 - The first window will have `None` values since there's not enough data to calculate.
 
-:warning: **Warning**: The second window may be innaccurate if the first window contains incomplete data.  For example, this can occur if you specify a `MONTH` window size and only provide 45 calendar days (1.5 months) of `quotes`.
-
-:paintbrush: **Repaint Warning**: the last window will be repainted if it does not contain a full window of data.
+> :warning: **Warning**: The second window may be inaccurate if the first window contains incomplete data.  For example, this can occur if you specify a `Month` window size and only provide 45 calendar days (1.5 months) of `quotes`.
+>
+> :paintbrush: **Repaint warning**: the last window will be repainted if it does not contain a full window of data.
 
 ### PivotPointsResult
 
@@ -101,7 +102,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_pivot_points(quotes, PeriodSize.MONTH, PivotPointType.WOODIE);
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 [Pivot Points](https://en.wikipedia.org/wiki/Pivot_point_(technical_analysis)) depict support and resistance levels, based on the prior lookback window.  You can specify window size (e.g. month, week, day, etc).
 See also the alternative [Rolling Pivot Points](../RollingPivots#content) variant for a modern update that uses a rolling window.

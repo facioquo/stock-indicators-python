@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_smi**(*quotes, lookback_periods, first_smooth_periods, second_smooth_periods, signal_periods=3*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int | Lookback period (`N`) for the stochastic.  Must be greater than 0.
 | `first_smooth_periods` | int | First smoothing factor lookback.  Must be greater than 0.
 | `second_smooth_periods` | int | Second smoothing factor lookback.  Must be greater than 0.
@@ -38,7 +39,7 @@ SMIResults[SMIResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` SMI values since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### SMIResult
 
@@ -68,7 +69,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_smi(quotes, 14, 20, 5, 3)
 ```
 
-# About: {{ page.title }}
+## About {{ page.title }}
 
 Created by William Blau, the Stochastic Momentum Index (SMI) is a double-smoothed variant of the [Stochastic Oscillator](../Stoch/#content) on a scale from -100 to 100.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/625 "Community discussion about this indicator")

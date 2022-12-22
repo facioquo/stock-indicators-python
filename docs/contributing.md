@@ -1,7 +1,8 @@
 ---
 title: Contributing guidelines
 permalink: /contributing/
-layout: default
+relative_path: contributing.md
+layout: page
 ---
 
 # Contributing guidelines
@@ -24,7 +25,7 @@ We are accepting these sorts of changes and requests:
 We are not accepting things that should be done in your own wrapper code:
 
 - Personal customizations and preferences
-- Modified or augmented outputs that are not instrinsic
+- Modified or augmented outputs that are not intrinsic
 
 ## Reporting bugs and feature requests
 
@@ -52,19 +53,19 @@ For new features, submit an issue with the `enhancement` label.
 
 - Read this first: [A Step by Step Guide to Making Your First GitHub Contribution](https://codeburst.io/a-step-by-step-guide-to-making-your-first-github-contribution-5302260a2940).  I also have a discussion [on Forking](https://github.com/DaveSkender/Stock.Indicators/discussions/503) if you have questions.
 - If you are adding a new indicator, the easiest way to do this is to copy the folder of an existing indicator and rename everything using the same naming conventions and taxonomy.  All new indicators should include unit and performance tests.
-- Do not comingle multiple contributions.  Please keep changes small and separate.
+- Do not commingle multiple contributions.  Please keep changes small and separate.
 
 ## Testing
 
 - We use [pytest](https://docs.pytest.org/en/6.2.x/) for testing.
 - Review the `tests` folder for examples of unit tests.  Just copy one of these.
 - New indicators should be tested against manually calculated, proven, accurate results.  It is helpful to include your manual calculations spreadsheet in the appropriate indicator folder when [submitting changes](#submitting-changes).
-- Historical Stock Quotes are automatically added as Pytest fixtures.  A `History.xlsx` Excel file is included in the `samples` folder that is an exact copy of what is used in the unit tests.  Use this for your manual calculations to ensure that it is correct.  Do not commit changes to this Excel file.
+- Historical Stock Quotes are automatically added as pytest fixtures.  A `History.xlsx` Excel file is included in the `samples` folder that is an exact copy of what is used in the unit tests.  Use this for your manual calculations to ensure that it is correct.  Do not commit changes to this Excel file.
 - We expect all unit tests to execute successfully and all Errors and Warning resolved before you submit your code.
 - Failed builds or unit testing will block acceptance of your Pull Request when submitting changes.
 
 ```bash
-# install pytest and other dependancies.
+# install pytest and other dependencies.
 pip install -r requirements-test.txt
 
 # run all tests.
@@ -76,7 +77,7 @@ pytest -svr A tests
 Running the commands below in your console will show performance data.  You can find the latest results [here]({{site.baseurl}}/performance/).
 
 ```bash
-# install pytest and other dependancies.
+# install pytest and other dependencies.
 pip install -r requirements-test.txt
 pip install pytest-benchmark
 

@@ -1,6 +1,8 @@
 ---
 title: Guide and Pro tips
+description: Learn how to use the Stock Indicators for Python PyPI library in your own software tools and platforms.  Whether you're just getting started or an advanced professional, this guide explains how to get setup, example usage code, and instructions on how to use historical price quotes, make custom quote classes, chain indicators of indicators, and create custom technical indicators.
 permalink: /guide/
+relative_path: guide.md
 layout: page
 ---
 
@@ -21,9 +23,9 @@ layout: page
 
 ### Installation and setup
 
-Stock Indicators for Python has dependency on [pythonnet](https://github.com/pythonnet/pythonnet), which uses CLR. 
+Stock Indicators for Python has dependency on [PythonNet](https://github.com/pythonnet/pythonnet), which uses CLR. 
 Check that you have CLR installed. We are currently using **.NET 6**. You can download via the link below.
- - https://dotnet.microsoft.com/en-us/download/dotnet
+ - [download .NET](https://dotnet.microsoft.com/en-us/download/dotnet)
 
 Find and install the **stock-indicators** Python package into your environment. See [more help](https://packaging.python.org/en/latest/tutorials/installing-packages/) for installing packages.
 
@@ -112,7 +114,7 @@ There are many places to get stock market data.  Check with your brokerage or ot
 
 Each indicator will need different amounts of price `quotes` to calculate.  You can find guidance on the individual indicator documentation pages for minimum requirements; however, **most use cases will require that you provide more than the minimum**.  As a general rule of thumb, you will be safe if you provide 750 points of historical quote data (e.g. 3 years of daily data).  A `BadQuotesException` will be thrown if you do not provide sufficient historical quotes to produce any results.
 
-:warning: IMPORTANT! Some indicators use a smoothing technique that converges to better precision over time.  While you can calculate these with the minimum amount of quote data, the precision to two decimal points often requires 250 or more preceding historical records.
+> :warning: IMPORTANT! Some indicators use a smoothing technique that converges to better precision over time.  While you can calculate these with the minimum amount of quote data, the precision to two decimal points often requires 250 or more preceding historical records.
 
 For example, if you are using daily data and want one year of precise EMA(250) data, you need to provide 3 years of historical quotes (1 extra year for the lookback period and 1 extra year for convergence); thereafter, you would discard or not use the first two years of results.  Occassionally, even more is required for optimal precision.
 
@@ -203,7 +205,6 @@ results = indicators.get_ema(quotes, 20)
 extended_results = [ ExtendedEMA(r._csdata) for r in results ]
 for r in extended_results:
     print(r)
-
 ```
 
 **Be aware that** If you want to use [helper functions]({{site.baseurl}}/utilities/#utilities-for-indicator-results), use wrapper class(e.g. `EMAResults`).<br>
@@ -215,9 +216,7 @@ extended_results = EMAResults[ExtendedEMA](results._csdata, ExtendedEMA)
 pruned_results = extended_results.remove_warmup_periods()
 for r in pruned_results:
     print(r)
-    
 ```
-
 
 <!-- ### Using nested results classes
 
@@ -295,7 +294,7 @@ sma_of_ema = indicators.get_sma(quotes_from_ema, 20)
 
 ### Match
 
-When a candlestick pattern is recognized, it produces a match.  In some cases, an intrinsic confirmation is also available.  In cases where previous bars were used to identify a pattern, they are indicates as the basis for the match. [Documentation for each candlestick pattern]({{site.baseurl}}/indicators/#candlestick-pattern) will indicate whether confirmation and/or basis information is produced.
+When a candlestick pattern is recognized, it produces a match.  In some cases, an intrinsic confirmation is also available.  In cases where previous bars were used to identify a pattern, they are indicated as the basis for the match. [Documentation for each candlestick pattern]({{site.baseurl}}/indicators/#candlestick-pattern) will indicate whether confirmation and/or basis information is produced.
 
 ```python
 from stock_indicators.indicators.common.enums import Match
@@ -336,4 +335,4 @@ The `CandleProperties` class is an extended version of `Quote`, and contains add
 
 ## Utilities
 
-See [Utilities and Helper functions]({{site.baseurl}}/utilities/#content) for additional tools.
+See [Utilities and helper functions]({{site.baseurl}}/utilities/#content) for additional tools.

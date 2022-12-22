@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_stc**(*quotes, cycle_periods=10, fast_periods=23, slow_periods=50*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `cycle_periods` | int, *default 10* | Number of periods (`C`) for the Trend Cycle.  Must be greater than or equal to 0.
 | `fast_periods` | int, *default 23* | Number of periods (`F`) for the faster moving average.  Must be greater than 0.
 | `slow_periods` | int, *default 50* | Number of periods (`S`) for the slower moving average.  Must be greater than `fast_periods`.
@@ -37,7 +38,7 @@ STCResults[STCResult]
 - It does not return a single incremental indicator value.
 - The first `S+C` slow periods will have `None` values since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `S+C+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `S+C+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### STCResult
 
@@ -54,7 +55,6 @@ STCResults[STCResult]
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
 
-
 ## Example
 
 ```python
@@ -67,7 +67,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_stc(quotes, 10, 23, 50)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Doug Schaff, [Schaff Trend Cycle](https://www.investopedia.com/articles/forex/10/schaff-trend-cycle-indicator.asp) is a stochastic oscillator view of two converging/diverging exponential moving averages (a.k.a MACD).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/570 "Community discussion about this indicator")

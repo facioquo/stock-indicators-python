@@ -6,15 +6,16 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_kvo**(*quotes, fast_periods=34, slow_periods=55, signal_periods=13*)
-    
+
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `fast_periods` | int, *default 34* | Number of lookback periods (`F`) for the short-term EMA.  Must be greater than 2.
 | `slow_periods` | int, *default 55* | Number of lookback periods (`L`) for the long-term EMA.  Must be greater than `F`.
 | `signal_periods` | int, *default 13* | Number of lookback periods for the signal line.  Must be greater than 0.
@@ -37,7 +38,7 @@ KVOResults[KVOResult]
 - It does not return a single incremental indicator value.
 - The first `L+1` periods will have `None` values since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `L+150` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `L+150` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### KVOResult
 
@@ -67,7 +68,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_kvo(quotes, 34, 55, 13)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Stephen Klinger, the [Klinger Volume Oscillator](https://www.investopedia.com/terms/k/klingeroscillator.asp) depicts volume-based trend reversal and divergence between short and long-term money flow.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/446 "Community discussion about this indicator")

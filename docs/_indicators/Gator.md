@@ -6,9 +6,11 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_gator**(*quotes: Iterable[Quote]*)
+
 ## **get_gator**(*quotes: Iterable[AlligatorResult]*)
 
 ## Parameters
@@ -35,7 +37,7 @@ GatorResults[GatorResult]
 - It does not return a single incremental indicator value.
 - The first 10-20 periods will have `None` values since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first 150 periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first 150 periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### GatorResult
 
@@ -67,7 +69,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_gator(quotes)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Bill Williams, the Gator Oscillator is an expanded view of [Williams Alligator](../Alligator#content).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/385 "Community discussion about this indicator")

@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_atr**(*quotes, lookback_periods=14*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int, *default 14* | Number of periods (`N`) to consider.  Must be greater than 1.
 
 ### Historical quotes requirements
@@ -35,7 +36,7 @@ ATRResults[ATRResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values for ATR since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### ATRResult
 
@@ -66,7 +67,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_atr(quotes, 14)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by J. Welles Wilder, [Average True Range](https://en.wikipedia.org/wiki/Average_true_range) is a measure of volatility that captures gaps and limits between periods.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/269 "Community discussion about this indicator")

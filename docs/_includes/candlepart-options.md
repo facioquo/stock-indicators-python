@@ -1,4 +1,4 @@
-### CandlePart options
+#### CandlePart options
 
 ```python
 from stock_indicators.indicators.common.enums import CandlePart

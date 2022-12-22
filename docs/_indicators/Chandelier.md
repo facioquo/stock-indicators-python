@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_chandelier**(*quotes, lookback_periods=22, multiplier=3.0, chandelier_type=ChandelierType.LONG*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int, *default 22* | Number of periods (`N`) for the lookback evaluation.
 | `multiplier` | float, *default 3.0* | Multiplier number must be a positive value.
 | `chandelier_type` | ChandelierType, *default ChandelierType.LONG* | Direction of exit.  See [ChandelierType options](#chandeliertype-options) below.
@@ -76,7 +77,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_chandelier(quotes, 22, 3, ChandelierType.LONG)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Charles Le Beau, the [Chandelier Exit](https://school.stockcharts.com/doku.php?id=technical_indicators:chandelier_exit) is typically used for stop-loss and can be computed for both long or short types.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/263 "Community discussion about this indicator")

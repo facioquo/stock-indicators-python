@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_volatility_stop**(*quotes, lookback_periods=7, multiplier=3*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int, *default 7* | Number of periods (`N`) ATR lookback window.  Must be greater than 1.
 | `multiplier` | float, *default 3* | ATR multiplier for the offset.  Must be greater than 0.
 
@@ -70,7 +71,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_volatility_stop(quotes, 20, 2.5)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by J. Welles Wilder, [Volatility Stop](https://archive.org/details/newconceptsintec00wild), also known his Volatility System, is an [ATR](../Atr/) based indicator used to determine trend direction, stops, and reversals.  It is similar to Wilder's [Parabolic SAR](../ParabolicSar/#content) and [SuperTrend](../SuperTrend/#content).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/564 "Community discussion about this indicator")
