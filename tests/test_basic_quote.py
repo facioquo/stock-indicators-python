@@ -1,6 +1,9 @@
 from datetime import datetime
 
+import pytest
+
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.quote import Quote
 
@@ -31,9 +34,19 @@ class TestBasicQuote:
         assert 245.1        ==  oc[-1].value
         assert 244.4433     ==  round(float(ohl[-1].value), 4)
         assert 244.6525     ==  ohlc[-1].value
-        
-    def test_use(self, quotes):
-        results = Quote.use(quotes, CandlePart.CLOSE)
-        results = list(results)
-        
+    
+    def test_chainor(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_basic_quote, CandlePart.CLOSE)\
+            .add(indicators.get_sma, 10)\
+            .calc()
+
         assert 502 == len(results)
+        assert 493 == len(list(filter(lambda x: x.sma is not None, results)))
+
+    def test_chainee(self, quotes):
+        with pytest.raises(ValueError):
+            results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_sma)\
+            .add(indicators.get_basic_quote)\
+            .calc()
