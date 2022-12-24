@@ -1,11 +1,10 @@
 from datetime import datetime
 
 import pytest
-
 from stock_indicators import indicators
 from stock_indicators.indicators.common.chain import IndicatorChain
 from stock_indicators.indicators.common.enums import CandlePart
-from stock_indicators.indicators.common.quote import Quote
+
 
 class TestBasicQuote:
     def test_standard(self, quotes):

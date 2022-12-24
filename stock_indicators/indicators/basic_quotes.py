@@ -42,7 +42,7 @@ class BasicQuote(Indicator):
 
 
 @calculate_indicator(indicator=BasicQuote())
-def get_basic_quote(quotes: Iterable[Quote], candle_part: CandlePart = CandlePart.CLOSE):
+def get_basic_quote(quotes: Iterable[Quote], candle_part: CandlePart = CandlePart.CLOSE) -> BasicQuoteResults[BasicQuoteResult]:
     """Get Basic Quote calculated.
 
     A simple quote transform (e.g. HL2, OHL3, etc.) and isolation of individual

@@ -1,47 +1,12 @@
 from typing import Iterable, Optional, TypeVar
-from warnings import warn
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.enums import BetaType
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.indicator import Indicator, calculate_indicator
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
-
-
-def get_beta(eval_quotes: Iterable[Quote], market_quotes: Iterable[Quote],
-             lookback_periods: int, beta_type: BetaType = BetaType.STANDARD):
-    """Get Beta calculated.
-
-    Beta shows how strongly one stock responds to systemic volatility of the entire market.
-
-    Parameters:
-        `eval_quotes` : Iterable[Quote]
-            Historical price quotes for Evaluation.
-
-        `market_quotes` : Iterable[Quote]
-            Historical price quotes for Market.
-
-        `lookback_periods` : int
-            Number of periods in the lookback window.
-
-        `beta_type` : BetaType
-            Type of Beta to calculate.
-
-    Returns:
-        `BetaResults[BetaResult]`
-            BetaResults is list of BetaResult with providing useful helper methods.
-
-    See more:
-         - [Beta Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Beta/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
-    """
-    warn('Eval and Market quotes have been reversed in v1! Ensure you swap parameter location. '
-         'This warning will be removed after v1.0.0', SyntaxWarning)
-
-    beta_results = CsIndicator.GetBeta[Quote](CsList(Quote, eval_quotes), CsList(Quote, market_quotes),
-                                              lookback_periods, beta_type.cs_value)
-    return BetaResults(beta_results, BetaResult)
 
 
 class BetaResult(ResultBase):
@@ -113,3 +78,45 @@ class BetaResults(RemoveWarmupMixin, IndicatorResults[_T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
+
+
+class Beta(Indicator):
+    is_chainee = True
+    is_chainor = True
+
+    indicator_method = CsIndicator.GetBeta[Quote]
+    chaining_method = CsIndicator.GetBeta
+
+    list_wrap_class = BetaResults
+    unit_wrap_class = BetaResult
+
+
+@calculate_indicator(indicator=Beta())
+def get_beta(eval_quotes: Iterable[Quote], market_quotes: Iterable[Quote],
+             lookback_periods: int, beta_type: BetaType = BetaType.STANDARD) -> BetaResults[BetaResult]:
+    """Get Beta calculated.
+
+    Beta shows how strongly one stock responds to systemic volatility of the entire market.
+
+    Parameters:
+        `eval_quotes` : Iterable[Quote]
+            Historical price quotes for Evaluation.
+
+        `market_quotes` : Iterable[Quote]
+            Historical price quotes for Market.
+
+        `lookback_periods` : int
+            Number of periods in the lookback window.
+
+        `beta_type` : BetaType
+            Type of Beta to calculate.
+
+    Returns:
+        `BetaResults[BetaResult]`
+            BetaResults is list of BetaResult with providing useful helper methods.
+
+    See more:
+         - [Beta Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Beta/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
+    return (eval_quotes, CsList(Quote, market_quotes), lookback_periods, beta_type.cs_value)
