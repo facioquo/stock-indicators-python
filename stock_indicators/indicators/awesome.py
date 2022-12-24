@@ -50,7 +50,8 @@ class Awesome(Indicator):
 
 
 @calculate_indicator(indicator=Awesome())
-def get_awesome(quotes: Iterable[Quote], fast_periods: int = 5, slow_periods: int = 34) -> AwesomeResults[AwesomeResult]:
+def get_awesome(quotes: Iterable[Quote], fast_periods: int = 5,
+                slow_periods: int = 34) -> AwesomeResults[AwesomeResult]:
     """Get Awesome Oscillator calculated.
 
     Awesome Oscillator (aka Super AO) is a measure of the gap

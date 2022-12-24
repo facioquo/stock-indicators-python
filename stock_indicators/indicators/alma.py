@@ -42,7 +42,8 @@ class ALMA(Indicator):
 
 
 @calculate_indicator(indicator=ALMA())
-def get_alma(quotes: Iterable[Quote], lookback_periods: int = 9, offset: float = .85, sigma : float = 6) -> ALMAResults[ALMAResult]:
+def get_alma(quotes: Iterable[Quote], lookback_periods: int = 9,
+             offset: float = .85, sigma : float = 6) -> ALMAResults[ALMAResult]:
     """Get ALMA calculated.
 
     Arnaud Legoux Moving Average (ALMA) is a Gaussian distribution
