@@ -33,10 +33,10 @@ class ALMAResults(RemoveWarmupMixin, IndicatorResults[_T]):
 class ALMA(Indicator):
     is_chainee = True
     is_chainor = True
-    
+
     indicator_method = CsIndicator.GetAlma[Quote]
     chaining_method = CsIndicator.GetAlma
-    
+
     list_wrap_class = ALMAResults
     unit_wrap_class = ALMAResult
 

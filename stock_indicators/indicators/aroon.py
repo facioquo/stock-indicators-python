@@ -49,10 +49,10 @@ class AroonResults(RemoveWarmupMixin, IndicatorResults[_T]):
 class Aroon(Indicator):
     is_chainee = False
     is_chainor = True
-    
+
     indicator_method = CsIndicator.GetAroon[Quote]
     chaining_method = None
-    
+
     list_wrap_class = AroonResults
     unit_wrap_class = AroonResult
 

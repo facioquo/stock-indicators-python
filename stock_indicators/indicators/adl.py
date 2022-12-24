@@ -56,10 +56,10 @@ class ADLResults(IndicatorResults[_T]):
 class ADL(Indicator):
     is_chainee = False
     is_chainor = True
-    
+
     indicator_method = CsIndicator.GetAdl[Quote]
     chaining_method = None
-    
+
     list_wrap_class = ADLResults
     unit_wrap_class = ADLResult
 

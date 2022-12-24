@@ -49,10 +49,10 @@ class AlligatorResults(RemoveWarmupMixin, IndicatorResults[_T]):
 class Alligator(Indicator):
     is_chainee = True
     is_chainor = False
-    
+
     indicator_method = CsIndicator.GetAlligator[Quote]
     chaining_method = CsIndicator.GetAlligator
-    
+
     list_wrap_class = AlligatorResults
     unit_wrap_class = AlligatorResult
 

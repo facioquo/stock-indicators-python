@@ -49,16 +49,16 @@ class ATRResults(RemoveWarmupMixin, IndicatorResults[_T]):
 class ATR(Indicator):
     is_chainee = False
     is_chainor = True
-    
+
     indicator_method = CsIndicator.GetAtr[Quote]
     chaining_method = None
-    
+
     list_wrap_class = ATRResults
     unit_wrap_class = ATRResult
 
 
 @calculate_indicator(indicator=ATR())
-def get_atr(quotes: Iterable[Quote], lookback_periods: int = 14):
+def get_atr(quotes: Iterable[Quote], lookback_periods: int = 14) -> ATRResults[ATRResult]:
     """Get ATR calculated.
 
     Average True Range (ATR) is a measure of volatility that captures gaps and limits between periods.

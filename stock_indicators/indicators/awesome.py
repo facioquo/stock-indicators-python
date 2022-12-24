@@ -1,38 +1,10 @@
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.indicator import Indicator, calculate_indicator
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
-
-
-def get_awesome(quotes: Iterable[Quote], fast_periods: int = 5, slow_periods: int = 34):
-    """Get Awesome Oscillator calculated.
-
-    Awesome Oscillator (aka Super AO) is a measure of the gap
-    between a fast and slow period modified moving average.
-
-    Parameters:
-        `quotes` : Iterable[Quote]
-            Historical price quotes.
-
-        `fast_periods` : int, defaults 5
-            Number of periods in the Fast moving average.
-
-        `slow_periods` : int, defaults 34
-            Number of periods in the Slow moving average.
-
-    Returns:
-        `AwesomeResults[AwesomeResult]`
-            AwesomeResults is list of AwesomeResult with providing useful helper methods.
-
-    See more:
-         - [Awesome Oscillator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Awesome/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
-    """
-    awesome_results = CsIndicator.GetAwesome[Quote](CsList(Quote, quotes), fast_periods, slow_periods)
-    return AwesomeResults(awesome_results, AwesomeResult)
 
 
 class AwesomeResult(ResultBase):
@@ -64,3 +36,42 @@ class AwesomeResults(RemoveWarmupMixin, IndicatorResults[_T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
+
+
+class Awesome(Indicator):
+    is_chainee = True
+    is_chainor = True
+
+    indicator_method = CsIndicator.GetAwesome[Quote]
+    chaining_method = CsIndicator.GetAwesome
+
+    list_wrap_class = AwesomeResults
+    unit_wrap_class = AwesomeResult
+
+
+@calculate_indicator(indicator=Awesome())
+def get_awesome(quotes: Iterable[Quote], fast_periods: int = 5, slow_periods: int = 34) -> AwesomeResults[AwesomeResult]:
+    """Get Awesome Oscillator calculated.
+
+    Awesome Oscillator (aka Super AO) is a measure of the gap
+    between a fast and slow period modified moving average.
+
+    Parameters:
+        `quotes` : Iterable[Quote]
+            Historical price quotes.
+
+        `fast_periods` : int, defaults 5
+            Number of periods in the Fast moving average.
+
+        `slow_periods` : int, defaults 34
+            Number of periods in the Slow moving average.
+
+    Returns:
+        `AwesomeResults[AwesomeResult]`
+            AwesomeResults is list of AwesomeResult with providing useful helper methods.
+
+    See more:
+         - [Awesome Oscillator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Awesome/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
+    return (quotes, fast_periods, slow_periods)

@@ -57,10 +57,10 @@ class ADXResults(RemoveWarmupMixin, IndicatorResults[_T]):
 class ADX(Indicator):
     is_chainee = False
     is_chainor = True
-    
+
     indicator_method = CsIndicator.GetAdx[Quote]
     chaining_method = None
-    
+
     list_wrap_class = ADXResults
     unit_wrap_class = ADXResult
 
