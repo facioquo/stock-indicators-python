@@ -1,5 +1,6 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 
 class TestBollingerBands:
     def test_standard(self, quotes):
@@ -29,6 +30,23 @@ class TestBollingerBands:
         assert -0.602552 == round(float(r.z_score), 6)
         assert 0.173433  == round(float(r.width), 6)
 
+    def test_chainor(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_bollinger_bands)\
+            .add(indicators.get_sma, 10)\
+            .calc()
+                
+        assert 502 == len(results)
+        assert 474 == len(list(filter(lambda x: x.sma is not None, results)))
+    
+    def test_chainee(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_sma, 2)\
+            .add(indicators.get_bollinger_bands)\
+            .calc()
+
+        assert 502 == len(results)
+        assert 482 == len(list(filter(lambda x: x.upper_band is not None, results)))
 
     def test_bad_data(self, bad_quotes):
         r = indicators.get_bollinger_bands(bad_quotes, 15, 3)
