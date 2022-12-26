@@ -83,5 +83,5 @@ Created by Gerald Appel, [MACD](https://en.wikipedia.org/wiki/MACD) is a simple 
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Macd/Macd.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/Macd/Macd.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/macd.py)

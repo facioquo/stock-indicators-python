@@ -86,5 +86,5 @@ Created by Charles Le Beau, the [Chandelier Exit](https://school.stockcharts.com
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Chandelier/Chandelier.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Chandelier/Chandelier.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/chandelier.py)

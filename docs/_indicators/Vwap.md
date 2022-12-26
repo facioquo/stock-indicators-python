@@ -76,5 +76,5 @@ The [Volume Weighted Average Price](https://en.wikipedia.org/wiki/Volume-weighte
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Vwap/Vwap.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/Vwap/Vwap.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/vwap.py)

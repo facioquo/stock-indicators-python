@@ -78,5 +78,5 @@ Created by John Bollinger, [Bollinger Bands](https://en.wikipedia.org/wiki/Bolli
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/BollingerBands/BollingerBands.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/BollingerBands/BollingerBands.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/bollinger_bands.py)

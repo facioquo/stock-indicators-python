@@ -80,5 +80,5 @@ Created by J. Welles Wilder, [Volatility Stop](https://archive.org/details/newco
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/VolatilityStop/VolatilityStop.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/VolatilityStop/VolatilityStop.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/volatility_stop.py)

@@ -110,5 +110,5 @@ ROCWBResults[ROCWBResult]
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Roc/Roc.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/Roc/Roc.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/roc.py)

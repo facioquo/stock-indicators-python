@@ -79,5 +79,5 @@ results = indicators.get_correlation(quotes_spx, quotes_tsla, 20)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Correlation/Correlation.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Correlation/Correlation.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/correlation.py)

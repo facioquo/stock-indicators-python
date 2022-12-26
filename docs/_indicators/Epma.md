@@ -73,5 +73,5 @@ Endpoint Moving Average (EPMA), also known as Least Squares Moving Average (LSMA
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Epma/Epma.cs)
+- [C# core]({{site.base_sourceurl}}/e-k/Epma/Epma.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/epma.py)

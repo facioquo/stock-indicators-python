@@ -76,5 +76,5 @@ See related [EMA](../Ema#content) and [Triple EMA](../Tema#content).
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Dema/Dema.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Dema/Dema.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/double_ema.py)

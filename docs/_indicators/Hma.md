@@ -72,5 +72,5 @@ Created by Alan Hull, the [Hull Moving Average](https://alanhull.com/hull-moving
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Hma/Hma.cs)
+- [C# core]({{site.base_sourceurl}}/e-k/Hma/Hma.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/hma.py)

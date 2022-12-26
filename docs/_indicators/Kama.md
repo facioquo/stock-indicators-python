@@ -79,5 +79,5 @@ Created by Perry Kaufman, [KAMA](https://school.stockcharts.com/doku.php?id=tech
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Kama/Kama.cs)
+- [C# core]({{site.base_sourceurl}}/e-k/Kama/Kama.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/kama.py)

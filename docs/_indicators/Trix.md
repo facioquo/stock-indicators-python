@@ -77,5 +77,5 @@ Created by Jack Hutson, [TRIX](https://en.wikipedia.org/wiki/Trix_(technical_ana
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Trix/Trix.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/Trix/Trix.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/trix.py)

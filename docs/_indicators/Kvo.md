@@ -77,5 +77,5 @@ Created by Stephen Klinger, the [Klinger Volume Oscillator](https://www.investop
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Kvo/Kvo.cs)
+- [C# core]({{site.base_sourceurl}}/e-k/Kvo/Kvo.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/kvo.py)

@@ -75,5 +75,5 @@ Created by J. Welles Wilder, the [Relative Strength Index](https://en.wikipedia.
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Rsi/Rsi.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/Rsi/Rsi.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/rsi.py)

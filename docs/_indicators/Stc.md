@@ -76,5 +76,5 @@ Created by Doug Schaff, [Schaff Trend Cycle](https://www.investopedia.com/articl
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Stc/Stc.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/Stc/Stc.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/stc.py)

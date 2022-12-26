@@ -136,5 +136,5 @@ The [Renko Chart](https://en.m.wikipedia.org/wiki/Renko_chart) is a Japanese pri
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Renko/Renko.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/Renko/Renko.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/renko.py)

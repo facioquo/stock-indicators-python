@@ -80,5 +80,5 @@ See also related [Double EMA](../Dema#content) and [Triple EMA](../Tema#content)
 
 #### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Ema/Ema.cs)
+- [C# core]({{site.base_sourceurl}}/e-k/Ema/Ema.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/ema.py)

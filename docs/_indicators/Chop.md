@@ -71,5 +71,5 @@ Created by E.W. Dreiss, the Choppiness Index measures the trendiness or choppine
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Chop/Chop.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Chop/Chop.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/chop.py)
