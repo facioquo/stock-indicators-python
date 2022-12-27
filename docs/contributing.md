@@ -65,7 +65,10 @@ For new features, submit an issue with the `enhancement` label.
 - Failed builds or unit testing will block acceptance of your Pull Request when submitting changes.
 
 ```bash
-# install pytest and other dependencies.
+# install core dependencies
+pip install -r requirements.txt
+
+# install test dependencies
 pip install -r requirements-test.txt
 
 # run all tests.
