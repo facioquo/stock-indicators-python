@@ -69,5 +69,5 @@ results = indicators.get_marubozu(quotes);
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Marubozu/Marubozu.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/Marubozu/Marubozu.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/marubozu.py)

@@ -23,9 +23,10 @@ layout: page
 
 ### Installation and setup
 
-Stock Indicators for Python has dependency on [PythonNet](https://github.com/pythonnet/pythonnet), which uses CLR. 
-Check that you have CLR installed. We are currently using **.NET 6**. You can download via the link below.
- - [download .NET](https://dotnet.microsoft.com/en-us/download/dotnet)
+Stock Indicators for Python has dependency on [PythonNet](https://github.com/pythonnet/pythonnet), which uses CLR.
+Check that you have CLR installed. We are currently using **.NET 6**.
+
+- [download and install .NET 6.0](https://dotnet.microsoft.com/en-us/download/dotnet)
 
 Find and install the **stock-indicators** Python package into your environment. See [more help](https://packaging.python.org/en/latest/tutorials/installing-packages/) for installing packages.
 
@@ -40,7 +41,7 @@ Most indicators require that you provide historical quote data and additional co
 
 You must get historical quotes from your own market data provider.  For clarification, the `get_history_from_feed()` method shown in the example below and throughout our documentation **is not part of this library**, but rather an example to represent your own acquisition of historical quotes.
 
-Historical price data can be provided as an `Iterable`(such as `List` or an object having `__iter__()`) of the `Quote` class or its sub-class ([see below](#historical-quotes)); Be aware that you **have to** inherit `Quote` class when you [make custom quote class](#using-custom-quote-classes). 
+Historical price data can be provided as an `Iterable`(such as `List` or an object having `__iter__()`) of the `Quote` class or its sub-class ([see below](#historical-quotes)); Be aware that you **have to** inherit `Quote` class when you [make custom quote class](#using-custom-quote-classes).
 
 <!-- however, it can also be supplied as a generic [custom TQuote type](#using-custom-quote-classes) if you prefer to use your own quote model. -->
 
@@ -102,7 +103,8 @@ from stock_indicators.indicators.common.quote import Quote
 | close | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Close price
 | volume | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Volume
 
-**Note that** 
+**Note that**
+
 1. `date` is always required, while each ohlcv values are optional.
 2. ohlcv can be provided by `float`, `Decimal` and `str` representing number, but these are always stored as `Decimal`.
 
@@ -123,6 +125,7 @@ For example, if you are using daily data and want one year of precise EMA(250) d
 If you are using `Pandas.Dataframe` to hold quote data, you have to convert it into our `Quote` instance. That means you must iterate them row by row. There's [an awesome article](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) that introduces the best-efficiency way to iterate `Dataframe`.
 
 Here's an example we'd like to suggest: **Use list comprehension**
+
 ```python
 # Suppose that you have dataframe like the below.
 #             date    open    high     low   close     volume
@@ -141,7 +144,6 @@ quotes_list = [
 ```
 
 You can also use `numpy.vectorize()`, its gain is too slight and hard to apply in this case.
-
 
 ### Using custom quote classes
 
@@ -168,7 +170,7 @@ results = indicators.get_sma(quotes, 20);
 
 #### Using custom quote property names
 
-If you have a model that has different properties names, but the same meaning, you only need to map them. Each properties is `property` object, so you can just reference them. 
+If you have a model that has different properties names, but the same meaning, you only need to map them. Each properties is `property` object, so you can just reference them.
 
 Suppose your class has a property called `close_date` instead of `date`, it could be represented like this:
 
@@ -181,7 +183,6 @@ class MyCustomQuote(Quote):
 ```
 
 Note that the property `date` now can be accessed by both `close_date` and `date`.
-
 
 ## Using derived results classes
 
@@ -208,6 +209,7 @@ for r in extended_results:
 ```
 
 **Be aware that** If you want to use [helper functions]({{site.baseurl}}/utilities/#utilities-for-indicator-results), use wrapper class(e.g. `EMAResults`).<br>
+
 ```python
 # 2. use wrapper for helper function
 from stock_indicators.indicators.ema import EMAResults

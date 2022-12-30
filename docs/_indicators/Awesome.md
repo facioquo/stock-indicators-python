@@ -75,5 +75,5 @@ Created by Bill Williams, the Awesome Oscillator (aka Super AO) is a measure of 
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Awesome/Awesome.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Awesome/Awesome.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/awesome.py)

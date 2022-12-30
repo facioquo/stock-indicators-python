@@ -74,5 +74,5 @@ Created by Arnaud Legoux and Dimitrios Kouzis-Loukas, [ALMA]({{site.github.base_
 
 #### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Alma/Alma.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Alma/Alma.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/alma.py)

@@ -72,5 +72,5 @@ Created by Quong and Soudack, the [Money Flow Index](https://en.wikipedia.org/wi
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Mfi/Mfi.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/Mfi/Mfi.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/mfi.py)

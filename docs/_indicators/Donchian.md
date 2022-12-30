@@ -76,5 +76,5 @@ Created by Richard Donchian, [Donchian Channels](https://en.wikipedia.org/wiki/D
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Donchian/Donchian.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Donchian/Donchian.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/donchian.py)

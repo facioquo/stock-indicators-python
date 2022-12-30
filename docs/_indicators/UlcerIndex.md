@@ -72,5 +72,5 @@ Created by Peter Martin, the [Ulcer Index](https://en.wikipedia.org/wiki/Ulcer_i
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/UlcerIndex/UlcerIndex.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/UlcerIndex/UlcerIndex.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/ulcer_index.py)

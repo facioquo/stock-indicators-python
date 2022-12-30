@@ -73,5 +73,5 @@ results = indicators.get_dpo(quotes, 14)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Dpo/Dpo.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Dpo/Dpo.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/dpo.py)

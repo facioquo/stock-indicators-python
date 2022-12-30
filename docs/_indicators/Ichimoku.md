@@ -90,5 +90,5 @@ Created by Goichi Hosoda (細田悟一, Hosoda Goichi), [Ichimoku Cloud](https:/
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Ichimoku/Ichimoku.cs)
+- [C# core]({{site.base_sourceurl}}/e-k/Ichimoku/Ichimoku.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/ichimoku.py)

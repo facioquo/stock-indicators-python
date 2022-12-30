@@ -74,5 +74,5 @@ Created by Larry Williams, the [Ultimate Oscillator](https://en.wikipedia.org/wi
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Ultimate/Ultimate.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/Ultimate/Ultimate.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/ultimate.py)

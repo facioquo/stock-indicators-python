@@ -79,5 +79,5 @@ Created by Laurence Connors, the [ConnorsRSI](https://alvarezquanttrading.com/wp
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/ConnorsRsi/ConnorsRsi.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/ConnorsRsi/ConnorsRsi.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/connors_rsi.py)

@@ -72,5 +72,5 @@ Volume Weighted Moving Average is the volume adjusted average price over a lookb
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Vwma/Vwma.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/Vwma/Vwma.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/vwma.py)

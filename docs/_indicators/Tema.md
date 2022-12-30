@@ -77,5 +77,5 @@ See related [EMA](../Ema#content) and [Double EMA](../Dema#content).
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Tema/Tema.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/Tema/Tema.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/tema.py)

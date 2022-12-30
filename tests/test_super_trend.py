@@ -6,20 +6,20 @@ class TestSuperTrend:
         results = indicators.get_super_trend(quotes, 14, 3)
 
         assert 502 == len(results)
-        assert 489 == len(list(filter(lambda x: x.super_trend is not None, results)))
+        assert 488 == len(list(filter(lambda x: x.super_trend is not None, results)))
 
-        r = results[12]
+        r = results[13]
         assert r.super_trend is None
         assert r.upper_band is None
         assert r.lower_band is None
 
-        r = results[13]
-        assert 209.5436 == round(float(r.super_trend), 4)
-        assert r.upper_band is None 
+        r = results[14]
+        assert 210.6157 == round(float(r.super_trend), 4)
+        assert r.upper_band is None
         assert r.super_trend == r.lower_band
 
         r = results[151]
-        assert 232.8519 == round(float(r.super_trend), 4)
+        assert 232.8520 == round(float(r.super_trend), 4)
         assert r.upper_band is None
         assert r.super_trend == r.lower_band
 
@@ -54,7 +54,7 @@ class TestSuperTrend:
     def test_removed(self, quotes):
         results = indicators.get_super_trend(quotes, 14, 3).remove_warmup_periods()
 
-        assert 489 == len(results)
+        assert 488 == len(results)
 
         last = results.pop()
         assert 250.7954 == round(float(last.super_trend), 4)

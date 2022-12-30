@@ -112,5 +112,5 @@ See also the alternative [Rolling Pivot Points](../RollingPivots#content) varian
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/PivotPoints/PivotPoints.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/PivotPoints/PivotPoints.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/pivot_points.py)

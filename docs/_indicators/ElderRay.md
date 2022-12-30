@@ -77,5 +77,5 @@ Created by Alexander Elder, the [Elder-ray Index](https://www.investopedia.com/t
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/ElderRay/ElderRay.cs)
+- [C# core]({{site.base_sourceurl}}/e-k/ElderRay/ElderRay.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/elder_ray.py)

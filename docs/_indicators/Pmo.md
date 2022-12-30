@@ -75,5 +75,5 @@ Created by Carl Swenlin, the DecisionPoint [Price Momentum Oscillator](https://s
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Pmo/Pmo.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/Pmo/Pmo.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/pmo.py)

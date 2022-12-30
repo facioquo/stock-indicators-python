@@ -79,5 +79,5 @@ Created by J. Welles Wilder, [Parabolic SAR](https://en.wikipedia.org/wiki/Parab
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/ParabolicSar/ParabolicSar.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/ParabolicSar/ParabolicSar.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/parabolic_sar.py)

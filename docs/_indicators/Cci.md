@@ -72,5 +72,5 @@ Created by Donald Lambert, the [Commodity Channel Index](https://en.wikipedia.or
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Cci/Cci.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Cci/Cci.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/cci.py)

@@ -75,5 +75,5 @@ Created by Munehisa Homma, [Heikin-Ashi](https://en.wikipedia.org/wiki/Candlesti
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/HeikinAshi/HeikinAshi.cs)
+- [C# core]({{site.base_sourceurl}}/e-k/HeikinAshi/HeikinAshi.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/heikin_ashi.py)

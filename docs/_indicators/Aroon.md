@@ -73,5 +73,5 @@ Created by Tushar Chande, [Aroon](https://school.stockcharts.com/doku.php?id=tec
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Aroon/Aroon.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Aroon/Aroon.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/aroon.py)

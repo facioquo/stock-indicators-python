@@ -1,11 +1,9 @@
 # MAIN BUILD
 trigger:
   - main
-  - V0.8
 
 pr:
   - main
-  - V0.8
 
 jobs:
   - job: Build
@@ -27,7 +25,7 @@ jobs:
       - task: UsePythonVersion@0
         inputs:
           versionSpec: "$(PythonVersion)"
-      
+
       - task: gitversion/setup@0
         displayName: Use GitVersion
         inputs:
@@ -38,7 +36,7 @@ jobs:
         inputs:
           useConfigFile: true
           configFilePath: 'gitversion.yml'
-      
+
       - powershell: |
           echo "Current version: $(GitVersion.SemVer)"
         displayName: Shows GitVersion

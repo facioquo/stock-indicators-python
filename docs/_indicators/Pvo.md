@@ -78,5 +78,5 @@ The [Percentage Volume Oscillator](https://school.stockcharts.com/doku.php?id=te
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Pvo/Pvo.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/Pvo/Pvo.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/pvo.py)

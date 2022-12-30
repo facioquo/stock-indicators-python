@@ -79,5 +79,5 @@ Created by Chester W. Keltner, [Keltner Channels](https://en.wikipedia.org/wiki/
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Keltner/Keltner.cs)
+- [C# core]({{site.base_sourceurl}}/e-k/Keltner/Keltner.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/keltner.py)

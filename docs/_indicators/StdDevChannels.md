@@ -84,5 +84,5 @@ Standard Deviation Channels are based on an linear regression centerline and sta
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/StdDevChannels/StdDevChannels.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/StdDevChannels/StdDevChannels.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/stdev_channels.py)

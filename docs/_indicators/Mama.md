@@ -76,5 +76,5 @@ Created by John Ehlers, the [MAMA](http://mesasoftware.com/papers/MAMA.pdf) indi
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Mama/Mama.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/Mama/Mama.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/mama.py)

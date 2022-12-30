@@ -78,5 +78,5 @@ Created by William Blau, the [True Strength Index](https://en.wikipedia.org/wiki
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Tsi/Tsi.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/Tsi/Tsi.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/tsi.py)

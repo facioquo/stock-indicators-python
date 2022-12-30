@@ -81,5 +81,5 @@ Created by Bill Williams, Alligator is a depiction of three smoothed moving aver
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Alligator/Alligator.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Alligator/Alligator.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/alligator.py)
