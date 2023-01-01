@@ -6,15 +6,16 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_wma**(*quotes, lookback_periods, candle_part=CandlePart.CLOSE*)
-    
+
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int | Number of periods (`N`) in the moving average.  Must be greater than 0.
 | `candle_part` | CandlePart, *default CandlePart.CLOSE* | Specify candle part to evaluate.  See [CandlePart options](#candlepart-options) below.
 
@@ -43,7 +44,7 @@ WMAResults[WMAResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `wma` | Decimal, Optional | Weighted moving average for `N` lookback periods
+| `wma` | float, Optional | Weighted moving average
 
 ### Utilities
 
@@ -66,7 +67,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_wma(quotes, 20, CandlePart.CLOSE)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 [Weighted Moving Average](https://en.wikipedia.org/wiki/Moving_average#Weighted_moving_average) is the linear weighted average of `close` price over `N` lookback periods.  This also called Linear Weighted Moving Average (LWMA).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/227 "Community discussion about this indicator")
@@ -75,5 +76,5 @@ results = indicators.get_wma(quotes, 20, CandlePart.CLOSE)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Wma/Wma.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/Wma/Wma.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/wma.py)

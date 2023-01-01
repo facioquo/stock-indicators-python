@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_tsi**(*quotes, lookback_periods=25,smooth_periods=13, signal_periods=7*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int, *default 25* | Number of periods (`N`) for the first EMA.  Must be greater than 0.
 | `smooth_periods` | int, *default 13* | Number of periods (`M`) for the second smoothing.  Must be greater than 0.
 | `signal_periods` | int, *default 7* | Number of periods (`S`) in the TSI moving average.  Must be greater than or equal to 0.
@@ -38,7 +39,7 @@ TSIResults[TSIResult]
 - The first `N+M-1` periods will have `None` values since there's not enough data to calculate.
 - `signal` will be `None` for all periods if `signal_periods=0`.
 
-:hourglass: **Convergence Warning**: The first `N+M+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `N+M+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### TSIResult
 
@@ -68,7 +69,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_tsi(quotes, 25, 13, 7)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by William Blau, the [True Strength Index](https://en.wikipedia.org/wiki/True_strength_index) is a momentum oscillator that depicts trends in price changes.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/300 "Community discussion about this indicator")
@@ -77,5 +78,5 @@ Created by William Blau, the [True Strength Index](https://en.wikipedia.org/wiki
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Tsi/Tsi.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/Tsi/Tsi.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/tsi.py)

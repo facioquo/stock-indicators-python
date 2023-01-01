@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_alligator**(*quotes, jaw_periods==13, jaw_offset=8, teeth_periods=8, teeth_offset=5, lips_periods=5, lips_offset=3*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- | -- | --
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `jaw_periods` | int, *default 13* | Number of periods (`JP`) for the Jaw moving average.  Must be greater than `teeth_periods`.
 | `jaw_offset` | int, *default 8* | Number of periods (`JO`) for the Jaw offset.  Must be greater than 0.
 | `teeth_periods` | int, *default 8* | Number of periods (`TP`) for the Teeth moving average.  Must be greater than `lips_periods`.
@@ -40,16 +41,16 @@ AlligatorResults[AlligatorResult]
 - It does not return a single incremental indicator value.
 - The first 10-20 periods will have `None` values since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first 150 periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `JP+JO+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### AlligatorResult
 
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `jaw` | Decimal, Optional | Alligator's Jaw
-| `teeth` | Decimal, Optional | Alligator's Teeth
-| `lips` | Decimal, Optional | Alligator's Lips
+| `jaw` | float, Optional | Alligator's Jaw
+| `teeth` | float, Optional | Alligator's Teeth
+| `lips` | float, Optional | Alligator's Lips
 
 ### Utilities
 
@@ -71,7 +72,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_alligator(quotes)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Bill Williams, Alligator is a depiction of three smoothed moving averages of median price, showing chart patterns that compared to an alligator's feeding habits when describing market movement. The moving averages are known as the Jaw, Teeth, and Lips, which are calculated using specific lookback and offset periods.  See also the [Gator Oscillator](../Gator#content).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/385 "Community discussion about this indicator")
@@ -80,5 +81,5 @@ Created by Bill Williams, Alligator is a depiction of three smoothed moving aver
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Alligator/Alligator.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Alligator/Alligator.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/alligator.py)

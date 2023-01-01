@@ -6,20 +6,24 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
-## **get_fractal**(*quotes, window_span=2*)
+## **get_fractal**(*quotes, window_span=2, end_type = EndType.HIGH_LOW*)
+
+### More overloaded interfaces
+
+**get_fractal**(quotes, left_span, right_span, end_type)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `window_span` | int, *default 2* | Evaluation window span width (`S`).  Must be at least 2.
+| `end_type` | EndType | Determines whether `close` or `high/low` are used to find end points.  See [EndType options](#endtype-options) below.  Default is `EndType.HIGH_LOW`.
 
-<!-- | `endType` | EndType | Determines whether `Close` or `High/Low` are used to find end points.  See [EndType options](#endtype-options) below.  Default is `EndType.HighLow`. -->
-
-The total evaluation window size is `2×S+1`, representing `±S` from the evalution date.
+The total evaluation window size is `2×S+1`, representing `±S` from the evaluation date.
 
 ### Historical quotes requirements
 
@@ -27,12 +31,16 @@ You must have at least `2×S+1` periods of `quotes` to cover the warmup periods;
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-<!-- ### EndType options
+### EndType options
+
+```python
+from stock_indicators.indicators.common.enums import EndType
+```
 
 | type | description
 |-- |--
-| `EndType.Close` | Chevron point identified from `Close` price
-| `EndType.HighLow` | Chevron point identified from `High` and `Low` price (default) -->
+| `CLOSE` | Chevron point identified from `close` price
+| `HIGH_LOW` | Chevron point identified from `high` and `low` price (default)
 
 ## Returns
 
@@ -46,7 +54,7 @@ FractalResults[FractalResult]
 - It does not return a single incremental indicator value.
 - The first and last `S` periods in `quotes` are unable to be calculated since there's not enough prior/following data.
 
-:paintbrush: **Repaint Warning**: this price pattern looks forward and backward in the historical quotes so it will never identify a `fractal` in the last `S` periods of `quotes`.  Fractals are retroactively identified.
+> :paintbrush: **Repaint warning**: this price pattern uses future bars and will never identify a `fractal` in the last `S` periods of `quotes`.  Fractals are retroactively identified.
 
 ### FractalResult
 
@@ -75,7 +83,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_fractal(quotes, 5)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Larry Williams, [Fractal](https://www.investopedia.com/terms/f/fractal.asp) is a retrospective price pattern that identifies a central high or low point.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/255 "Community discussion about this indicator")
@@ -84,5 +92,5 @@ Created by Larry Williams, [Fractal](https://www.investopedia.com/terms/f/fracta
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Fractal/Fractal.cs)
+- [C# core]({{site.base_sourceurl}}/e-k/Fractal/Fractal.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/fractal.py)

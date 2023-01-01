@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_trix**(*quotes, lookback_periods, signal_periods=None*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int | Number of periods (`N`) in each of the the exponential moving averages.  Must be greater than 0.
 | `signal_periods` | int, Optional | Number of periods in the moving average of TRIX.  Must be greater than 0, if specified.
 
@@ -36,16 +37,16 @@ TRIXResults[TRIXResult]
 - It does not return a single incremental indicator value.
 - The first `3×N-3` periods will have `None` values since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `3×N+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `3×N+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### TRIXResult
 
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `ema3` | Decimal, Optional | 3 EMAs of the Close price
-| `trix` | Decimal, Optional | Rate of Change of 3 EMAs
-| `signal` | Decimal, Optional | SMA of `trix` based on `signal_periods` periods, if specified
+| `ema3` | float, Optional | 3 EMAs of the Close price
+| `trix` | float, Optional | Rate of Change of 3 EMAs
+| `signal` | float, Optional | SMA of `trix` based on `signal_periods` periods, if specified
 
 ### Utilities
 
@@ -67,7 +68,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_trix(quotes, 14)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Jack Hutson, [TRIX](https://en.wikipedia.org/wiki/Trix_(technical_analysis)) is the rate of change for a 3 EMA smoothing of the Close price over a lookback window.  TRIX is often confused with [TEMA](../Tema#content).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/234 "Community discussion about this indicator")
@@ -76,5 +77,5 @@ Created by Jack Hutson, [TRIX](https://en.wikipedia.org/wiki/Trix_(technical_ana
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Trix/Trix.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/Trix/Trix.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/trix.py)

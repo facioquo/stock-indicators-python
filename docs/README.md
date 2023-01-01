@@ -1,8 +1,7 @@
 # Stock Indicators for Python
 
 [![PyPI](https://img.shields.io/pypi/v/stock-indicators?color=blue&label=PyPI)](https://badge.fury.io/py/stock-indicators)
-[![code coverage](https://img.shields.io/azure-devops/coverage/skender/stock.indicators/26/main?logo=AzureDevOps&label=Code%20Coverage)](https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=26&branchName=main&view=codecoverage-tab)
-[![Language grade](https://img.shields.io/lgtm/grade/python/g/DaveSkender/Stock.Indicators.Python.svg?logo=lgtm&logoWidth=18&label=code%20quality)](https://lgtm.com/projects/g/DaveSkender/Stock.Indicators.Python)
+[![code coverage](https://img.shields.io/azure-devops/coverage/skender/stock.indicators/26/main?logo=AzureDevOps&label=Test%20Coverage)](https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=26&branchName=main&view=codecoverage-tab)
 
 **Stock Indicators for Python** is a library that produces financial market technical indicators.  Send in historical price quotes and get back desired indicators such as moving averages, Relative Strength Index, Stochastic Oscillator, Parabolic SAR, etc.  Nothing more.
 
@@ -10,8 +9,8 @@ It can be used in any market analysis software using standard OHLCV price quotes
 
 Explore more information:
 
-- [Indicators and overlays]({{site.baseurl}}/indicators/#content)
 - [Guide and Pro tips]({{site.baseurl}}/guide/#content)
+- [Indicators and overlays]({{site.baseurl}}/indicators/#content)
 - [Utilities and Helpers]({{site.baseurl}}/utilities/#content)
 - [Demo site](https://stock-charts.azurewebsites.net) (a stock chart)
 - [Release notes]({{site.github.repository_url}}/releases)
@@ -20,7 +19,7 @@ Explore more information:
 
 ## Samples
 
-![image](https://raw.githubusercontent.com/DaveSkender/Stock.Indicators/main/docs/examples.png)
+![image](https://raw.githubusercontent.com/DaveSkender/Stock.Indicators/main/docs/examples.webp)
 
 ### Example usage
 
@@ -38,12 +37,11 @@ See the [guide]({{site.baseurl}}/guide/#content) and the [full list of indicator
 
 ## Version supported
 
-- Python 3.8
-- Python 3.9
+- Python 3.8+
 
 ## License
 
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg?style=flat-square)](https://opensource.org/licenses/Apache-2.0)
 
 This repository uses the standard Apache 2.0 open-source license.  Please review the [license](https://opensource.org/licenses/Apache-2.0) before using or contributing to the software.
 

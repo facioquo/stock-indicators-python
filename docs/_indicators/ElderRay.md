@@ -7,6 +7,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_elder_ray**(*quotes, lookback_periods=13*)
@@ -15,7 +16,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int, *default 13*  | Number of periods (`N`) for the underlying EMA evaluation.  Must be greater than 0.
 
 ### Historical quotes requirements
@@ -36,16 +37,16 @@ ElderRayResults[ElderRayResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` indicator values since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### ElderRayResult
 
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `ema` | Decimal, Optional | Exponential moving average of Close price
-| `bull_power` | Decimal, Optional | Bull Power
-| `bear_power` | Decimal, Optional | Bear Power
+| `ema` | float, Optional | Exponential moving average of Close price
+| `bull_power` | float, Optional | Bull Power
+| `bear_power` | float, Optional | Bear Power
 
 ### Utilities
 
@@ -54,7 +55,6 @@ ElderRayResults[ElderRayResult]
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
-
 
 ## Example
 
@@ -68,7 +68,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_elder_ray(quotes, 13)
 ```
 
-## {{ page.title }}
+## About {{ page.title }}
 
 Created by Alexander Elder, the [Elder-ray Index](https://www.investopedia.com/terms/e/elderray.asp), also known as Bull and Bear Power, depicts buying and selling pressure.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/378 "Community discussion about this indicator")
@@ -77,5 +77,5 @@ Created by Alexander Elder, the [Elder-ray Index](https://www.investopedia.com/t
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/ElderRay/ElderRay.cs)
+- [C# core]({{site.base_sourceurl}}/e-k/ElderRay/ElderRay.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/elder_ray.py)

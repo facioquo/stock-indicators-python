@@ -1,6 +1,8 @@
 ---
 title: Guide and Pro tips
+description: Learn how to use the Stock Indicators for Python PyPI library in your own software tools and platforms.  Whether you're just getting started or an advanced professional, this guide explains how to get setup, example usage code, and instructions on how to use historical price quotes, make custom quote classes, chain indicators of indicators, and create custom technical indicators.
 permalink: /guide/
+relative_path: guide.md
 layout: page
 ---
 
@@ -21,14 +23,16 @@ layout: page
 
 ### Installation and setup
 
+Stock Indicators for Python has dependency on [PythonNet](https://github.com/pythonnet/pythonnet), which uses CLR.
+Check that you have CLR installed. We are currently using **.NET 6**.
+
+- [download and install .NET 6.0](https://dotnet.microsoft.com/en-us/download/dotnet)
+
 Find and install the **stock-indicators** Python package into your environment. See [more help](https://packaging.python.org/en/latest/tutorials/installing-packages/) for installing packages.
 
-```powershell
+```bash
 # pip example
 pip install stock-indicators
-
-# conda example (No plan yet.)
-# conda install stock-indicators
 ```
 
 ### Prerequisite data
@@ -37,7 +41,7 @@ Most indicators require that you provide historical quote data and additional co
 
 You must get historical quotes from your own market data provider.  For clarification, the `get_history_from_feed()` method shown in the example below and throughout our documentation **is not part of this library**, but rather an example to represent your own acquisition of historical quotes.
 
-Historical price data can be provided as an `Iterable`(such as `List` or an object having `__iter__()`) of the `Quote` class or its sub-class ([see below](#historical-quotes)); Be aware that you **have to** inherit `Quote` class when you [make custom quote class](#using-custom-quote-classes). 
+Historical price data can be provided as an `Iterable`(such as `List` or an object having `__iter__()`) of the `Quote` class or its sub-class ([see below](#historical-quotes)); Be aware that you **have to** inherit `Quote` class when you [make custom quote class](#using-custom-quote-classes).
 
 <!-- however, it can also be supplied as a generic [custom TQuote type](#using-custom-quote-classes) if you prefer to use your own quote model. -->
 
@@ -99,7 +103,8 @@ from stock_indicators.indicators.common.quote import Quote
 | close | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Close price
 | volume | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Volume
 
-**Note that** 
+**Note that**
+
 1. `date` is always required, while each ohlcv values are optional.
 2. ohlcv can be provided by `float`, `Decimal` and `str` representing number, but these are always stored as `Decimal`.
 
@@ -111,7 +116,7 @@ There are many places to get stock market data.  Check with your brokerage or ot
 
 Each indicator will need different amounts of price `quotes` to calculate.  You can find guidance on the individual indicator documentation pages for minimum requirements; however, **most use cases will require that you provide more than the minimum**.  As a general rule of thumb, you will be safe if you provide 750 points of historical quote data (e.g. 3 years of daily data).  A `BadQuotesException` will be thrown if you do not provide sufficient historical quotes to produce any results.
 
-:warning: IMPORTANT! Some indicators use a smoothing technique that converges to better precision over time.  While you can calculate these with the minimum amount of quote data, the precision to two decimal points often requires 250 or more preceding historical records.
+> :warning: IMPORTANT! Some indicators use a smoothing technique that converges to better precision over time.  While you can calculate these with the minimum amount of quote data, the precision to two decimal points often requires 250 or more preceding historical records.
 
 For example, if you are using daily data and want one year of precise EMA(250) data, you need to provide 3 years of historical quotes (1 extra year for the lookback period and 1 extra year for convergence); thereafter, you would discard or not use the first two years of results.  Occassionally, even more is required for optimal precision.
 
@@ -120,6 +125,7 @@ For example, if you are using daily data and want one year of precise EMA(250) d
 If you are using `Pandas.Dataframe` to hold quote data, you have to convert it into our `Quote` instance. That means you must iterate them row by row. There's [an awesome article](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) that introduces the best-efficiency way to iterate `Dataframe`.
 
 Here's an example we'd like to suggest: **Use list comprehension**
+
 ```python
 # Suppose that you have dataframe like the below.
 #             date    open    high     low   close     volume
@@ -127,6 +133,8 @@ Here's an example we'd like to suggest: **Use list comprehension**
 # 1     2018-12-28  244.94  246.73  241.87  243.15  155998912
 # 2     2018-12-27  238.06  243.68  234.52  243.46  189794032
 # ...          ...     ...     ...     ...     ...        ...
+
+from stock_indicators import Quote
 
 quotes_list = [
     Quote(d,o,h,l,c,v) 
@@ -136,7 +144,6 @@ quotes_list = [
 ```
 
 You can also use `numpy.vectorize()`, its gain is too slight and hard to apply in this case.
-
 
 ### Using custom quote classes
 
@@ -163,7 +170,7 @@ results = indicators.get_sma(quotes, 20);
 
 #### Using custom quote property names
 
-If you have a model that has different properties names, but the same meaning, you only need to map them. Each properties is `property` object, so you can just reference them. 
+If you have a model that has different properties names, but the same meaning, you only need to map them. Each properties is `property` object, so you can just reference them.
 
 Suppose your class has a property called `close_date` instead of `date`, it could be represented like this:
 
@@ -176,7 +183,6 @@ class MyCustomQuote(Quote):
 ```
 
 Note that the property `date` now can be accessed by both `close_date` and `date`.
-
 
 ## Using derived results classes
 
@@ -200,10 +206,10 @@ results = indicators.get_ema(quotes, 20)
 extended_results = [ ExtendedEMA(r._csdata) for r in results ]
 for r in extended_results:
     print(r)
-
 ```
 
 **Be aware that** If you want to use [helper functions]({{site.baseurl}}/utilities/#utilities-for-indicator-results), use wrapper class(e.g. `EMAResults`).<br>
+
 ```python
 # 2. use wrapper for helper function
 from stock_indicators.indicators.ema import EMAResults
@@ -212,9 +218,7 @@ extended_results = EMAResults[ExtendedEMA](results._csdata, ExtendedEMA)
 pruned_results = extended_results.remove_warmup_periods()
 for r in pruned_results:
     print(r)
-    
 ```
-
 
 <!-- ### Using nested results classes
 
@@ -292,7 +296,7 @@ sma_of_ema = indicators.get_sma(quotes_from_ema, 20)
 
 ### Match
 
-When a candlestick pattern is recognized, it produces a match.  In some cases, an intrinsic confirmation is also available.  In cases where previous bars were used to identify a pattern, they are indicates as the basis for the match. [Documentation for each candlestick pattern]({{site.baseurl}}/indicators/#candlestick-pattern) will indicate whether confirmation and/or basis information is produced.
+When a candlestick pattern is recognized, it produces a match.  In some cases, an intrinsic confirmation is also available.  In cases where previous bars were used to identify a pattern, they are indicated as the basis for the match. [Documentation for each candlestick pattern]({{site.baseurl}}/indicators/#candlestick-pattern) will indicate whether confirmation and/or basis information is produced.
 
 ```python
 from stock_indicators.indicators.common.enums import Match
@@ -321,16 +325,16 @@ The `CandleProperties` class is an extended version of `Quote`, and contains add
 | `low` | Decimal | Low price
 | `close` | Decimal | Close price
 | `volume` | Decimal | Volume
-| `size` | Decimal | `high-low`
-| `body` | Decimal | `|open-close|`
-| `upper_wick` | Decimal | Upper wick size
-| `lower_wick` | Decimal | Lower wick size
-| `body_pct` | float | `body/size`
-| `upper_wick_pct` | float | `upper_wick/size`
-| `lower_wick_pct` | float | `lower_wick/size`
+| `size` | Decimal, Optional | `high-low`
+| `body` | Decimal, Optional | `|open-close|`
+| `upper_wick` | Decimal, Optional | Upper wick size
+| `lower_wick` | Decimal, Optional | Lower wick size
+| `body_pct` | float, Optional | `body/size`
+| `upper_wick_pct` | float, Optional | `upper_wick/size`
+| `lower_wick_pct` | float, Optional | `lower_wick/size`
 | `is_bullish` | bool | `close>open` direction
 | `is_bearish` | bool | `close<open` direction
 
 ## Utilities
 
-See [Utilities and Helper functions]({{site.baseurl}}/utilities/#content) for additional tools.
+See [Utilities and helper functions]({{site.baseurl}}/utilities/#content) for additional tools.

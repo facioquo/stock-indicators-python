@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_connors_rsi**(*quotes, rsi_periods=3, streak_periods=2, rank_periods=100*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `rsi_periods` | int, *default 3* | Lookback period (`R`) for the close price RSI.  Must be greater than 1.
 | `streak_periods` | int, *default 2* | Lookback period (`S`) for the streak RSI.  Must be greater than 1.
 | `rank_periods` | int, *default 100* | Lookback period (`P`) for the Percentile Rank.  Must be greater than 1.
@@ -37,7 +38,7 @@ ConnorsRSIResults[ConnorsRSIResult]
 - It does not return a single incremental indicator value.
 - The first `MAX(R,S,P)-1` periods will have `None` values since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `N` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `N` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### ConnorsRSIResult
 
@@ -69,7 +70,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_connors_rsi(quotes, 3, 2, 100)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Laurence Connors, the [ConnorsRSI](https://alvarezquanttrading.com/wp-content/uploads/2016/05/ConnorsRSIGuidebook.pdf) is a composite oscillator that incorporates RSI, winning/losing streaks, and percentile gain metrics on scale of 0 to 100.  See [analysis](https://alvarezquanttrading.com/blog/connorsrsi-analysis).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/260 "Community discussion about this indicator")
@@ -78,5 +79,5 @@ Created by Laurence Connors, the [ConnorsRSI](https://alvarezquanttrading.com/wp
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/ConnorsRsi/ConnorsRsi.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/ConnorsRsi/ConnorsRsi.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/connors_rsi.py)

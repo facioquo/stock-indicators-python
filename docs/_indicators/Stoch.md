@@ -7,6 +7,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_stoch**(*quotes, lookback_periods=14, signal_periods=3, smooth_periods=3*)
@@ -15,7 +16,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int, *default 14* | Lookback period (`N`) for the oscillator (%K).  Must be greater than 0.
 | `signal_periods` | int, *default 3* | Smoothing period for the signal (%D).  Must be greater than 0.
 | `smooth_periods` | int, *default 3* | Smoothing period (`S`) for the Oscillator (%K).  "Slow" stochastic uses 3, "Fast" stochastic uses 1.  Must be greater than 0.
@@ -51,7 +52,7 @@ StochResults[StochResult]
 - It does not return a single incremental indicator value.
 - The first `N+S-2` periods will have `None` Oscillator values since there's not enough data to calculate.
 
-<!-- :hourglass: **Convergence Warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods when using `MAType.SMMA`.  Standard use of `MAType.SMA` does not have convergence-related precision errors. -->
+<!-- > :hourglass: **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods when using `MAType.SMMA`.  Standard use of `MAType.SMA` does not have convergence-related precision errors. -->
 
 ### StochResult
 
@@ -62,7 +63,7 @@ StochResults[StochResult]
 | `signal` or `d` | float, Optional | %D Simple moving average of Oscillator
 | `percent_j` or `j` | float, Optional | %J is the weighted divergence of %K and %D: `%J=kFactor×%K-dFactor×%D`
 
-Note: aliases of `k`, `d`, and `j` are also provided.  They can be used interchangably with the standard outputs.
+Note: aliases of `k`, `d`, and `j` are also provided.  They can be used interchangeably with the standard outputs.
 
 ### Utilities
 
@@ -84,7 +85,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_stoch(quotes, 14, 3, 3)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by George Lane, the [Stochastic Oscillator](https://en.wikipedia.org/wiki/Stochastic_oscillator) is a momentum indicator that looks back `N` periods to produce a scale of 0 to 100.  %J is also included for the KDJ Index extension.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/237 "Community discussion about this indicator")
@@ -93,5 +94,5 @@ Created by George Lane, the [Stochastic Oscillator](https://en.wikipedia.org/wik
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Stoch/Stoch.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/Stoch/Stoch.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/stoch.py)

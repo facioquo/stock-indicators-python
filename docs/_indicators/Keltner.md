@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_keltner**(*quotes, ema_periods=20, multiplier=2.0, atr_periods=10*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `ema_periods` | int, *default 20* | Number of lookback periods (`E`) for the center line moving average.  Must be greater than 1 to calculate.
 | `multiplier` | float, *default 2.0* | ATR Multiplier. Must be greater than 0.
 | `atr_periods` | int, *default 10* | Number of lookback periods (`A`) for the Average True Range.  Must be greater than 1 to calculate.
@@ -37,17 +38,17 @@ KeltnerResults[KeltnerResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `N+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `N+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### KeltnerResult
 
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `upper_band` | Decimal, Optional | Upper band of Keltner Channel
-| `center_line` | Decimal, Optional | EMA of Close price
-| `lower_band` | Decimal, Optional | Lower band of Keltner Channel
-| `width` | Decimal, Optional | Width as percent of Centerline price.  `(upper_band-lower_band)/center_line`
+| `upper_band` | float, Optional | Upper band of Keltner Channel
+| `center_line` | float, Optional | EMA of Close price
+| `lower_band` | float, Optional | Lower band of Keltner Channel
+| `width` | float, Optional | Width as percent of Centerline price.  `(upper_band-lower_band)/center_line`
 
 ### Utilities
 
@@ -69,7 +70,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_keltner(quotes, 20,2.0,10)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Chester W. Keltner, [Keltner Channels](https://en.wikipedia.org/wiki/Keltner_channel) are based on an EMA centerline and ATR band widths.  See also [STARC Bands](../StarcBands#content) for an SMA centerline equivalent.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/249 "Community discussion about this indicator")
@@ -78,5 +79,5 @@ Created by Chester W. Keltner, [Keltner Channels](https://en.wikipedia.org/wiki/
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Keltner/Keltner.cs)
+- [C# core]({{site.base_sourceurl}}/e-k/Keltner/Keltner.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/keltner.py)

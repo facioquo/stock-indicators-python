@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_zig_zag**(*quotes, end_type=EndType.CLOSE, percent_change=5*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `end_type` | EndType, *default EndType.CLOSE* | Determines whether `close` or `high/low` are used to measure percent change.  See [EndType options](#endtype-options) below.
 | `percent_change` | float,  *default 5* | Percent change required to establish a line endpoint.  Example: 3.5% would be entered as 3.5 (not 0.035).  Must be greater than 0.  Typical values range from 3 to 10.
 
@@ -49,9 +50,9 @@ ZigZagResults[ZigZagResult]
 - The first line segment starts after the first confirmed point; ZigZag values before the first confirmed point will be `None`.
 - The last line segment is an approximation as the direction is indeterminate.
 
-:warning: **Warning**:  depending on the specified `end_type`, the indicator cannot be initialized if the first `Quote` in `quotes` has a `high`,`low`, or `close` value of 0 (zero).
-
-:paintbrush: **Repaint Warning**: the last line segement will always be redrawn back to the last known pivot.  Do not attempt to calculate incremental values since previous values may change based on newer quotes.
+> :warning: **Warning**: depending on the specified `endType`, the indicator cannot be initialized if the first `Quote` in `quotes` has a `High`,`Low`, or `Close` value of 0 (zero).
+>
+> :paintbrush: **Repaint warning**: the last line segment will always be redrawn back to the last known pivot.  Do not attempt to calculate incremental values since previous values may change based on newer quotes.
 
 ### ZigZagResult
 
@@ -83,15 +84,14 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_zig_zag(quotes, EndType.CLOSE, 3);
 ```
 
-
-### About: {{ page.title }}
+## About {{ page.title }}
 
 [Zig Zag](https://school.stockcharts.com/doku.php?id=technical_indicators:zigzag) is a price chart overlay that simplifies the up and down movements and transitions based on a percent change smoothing threshold.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/226 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/ZigZag.png)
 
-#### Sources
+### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/ZigZag/ZigZag.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/ZigZag/ZigZag.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/zig_zag.py)

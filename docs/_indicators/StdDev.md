@@ -7,6 +7,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_stdev**(*quotes, lookback_periods, sma_periods=None*)
@@ -15,7 +16,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int | Number of periods (`N`) in the lookback period.  Must be greater than 1 to calculate; however we suggest a larger period for statistically appropriate sample size.
 | `sma_periods` | int, Optional | Number of periods in the moving average of `Stdev`.  Must be greater than 0, if specified.
 
@@ -67,7 +68,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_stdev(quotes, 10)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 [Standard Deviation](https://en.wikipedia.org/wiki/Standard_deviation) of Close price over a rolling lookback window.  Also known as Historical Volatility (HV).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/239 "Community discussion about this indicator")
@@ -76,5 +77,5 @@ results = indicators.get_stdev(quotes, 10)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/StdDev/StdDev.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/StdDev/StdDev.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/stdev.py)

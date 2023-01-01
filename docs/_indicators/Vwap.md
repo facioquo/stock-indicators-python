@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_vwap**(*quotes, start=None*)
@@ -16,7 +17,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `start` | datetime, Optional | The anchor date used to start the VWAP accumulation.  The earliest date in `quotes` is used when not provided.
 | `year`, `month`, `day`, `hour`, `minute`| int, Optional | The anchor date used to start the VWAP accumulation.  The earliest date in `quotes` is used when not provided.
 
@@ -44,7 +45,7 @@ VWAPResults[VWAPResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `vwap` | Decimal, Optional | Volume Weighted Average Price
+| `vwap` | float, Optional | Volume Weighted Average Price
 
 ### Utilities
 
@@ -66,7 +67,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_vwap(quotes);
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 The [Volume Weighted Average Price](https://en.wikipedia.org/wiki/Volume-weighted_average_price) is a Volume weighted average of Close price, typically used on intraday data.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/310 "Community discussion about this indicator")
@@ -75,5 +76,5 @@ The [Volume Weighted Average Price](https://en.wikipedia.org/wiki/Volume-weighte
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Vwap/Vwap.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/Vwap/Vwap.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/vwap.py)

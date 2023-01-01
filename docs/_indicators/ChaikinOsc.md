@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_chaikin_osc**(*quotes, fast_periods=3, slow_periods=10*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `fast_periods` | int, *default 3* | Number of periods (`F`) in the ADL fast EMA.  Must be greater than 0 and smaller than `S`.
 | `slow_periods` | int, *default 10* | Number of periods (`S`) in the ADL slow EMA.  Must be greater `F`.
 
@@ -36,19 +37,19 @@ ChaikinOscResults[ChaikinOscResult]
 - It does not return a single incremental indicator value.
 - The first `S-1` periods will have `None` values for `Oscillator` since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `S+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `S+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### ChaikinOscResult
 
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `money_flow_multiplier` | float | Money Flow Multiplier
-| `money_flow_volume` | float | Money Flow Volume
-| `adl` | float | Accumulation Distribution Line (ADL)
+| `money_flow_multiplier` | float, Optional | Money Flow Multiplier
+| `money_flow_volume` | float, Optional | Money Flow Volume
+| `adl` | float, Optional | Accumulation Distribution Line (ADL)
 | `oscillator` | float, Optional | Chaikin Oscillator
 
-:warning: **Warning**: absolute values in MFV, ADL, and Oscillator are somewhat meaningless, so use with caution.
+> :warning: **Warning**: absolute values in MFV, ADL, and Oscillator are somewhat meaningless.  Use with caution.
 
 ### Utilities
 
@@ -70,7 +71,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_chaikin_osc(quotes, 20)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Marc Chaikin, the [Chaikin Oscillator](https://en.wikipedia.org/wiki/Chaikin_Analytics#Chaikin_Oscillator) is the difference between fast and slow Exponential Moving Averages (EMA) of the [Accumulation/Distribution Line](../Adl#content) (ADL).
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/264 "Community discussion about this indicator")
@@ -79,5 +80,5 @@ Created by Marc Chaikin, the [Chaikin Oscillator](https://en.wikipedia.org/wiki/
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/ChaikinOsc/ChaikinOsc.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/ChaikinOsc/ChaikinOsc.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/chaikin_oscillator.py)

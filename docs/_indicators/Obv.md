@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_obv**(*quotes, sma_periods=None*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `sma_periods` | int, Optional | Number of periods (`N`) in the moving average of OBV.  Must be greater than 0, if specified.
 
 ### Historical quotes requirements
@@ -43,7 +44,7 @@ OBVResults[OBVResult]
 | `obv` | float | On-balance Volume
 | `obv_sma` | float, Optional | Moving average (SMA) of OBV based on `sma_periods` periods, if specified
 
-:warning: **Warning**: absolute values in OBV are somewhat meaningless, so use with caution.
+> :warning: **Warning**: absolute values in OBV are somewhat meaningless. Use with caution.
 
 ### Utilities
 
@@ -65,7 +66,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_obv(quotes)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Popularized by Joseph Granville, [On-balance Volume](https://en.wikipedia.org/wiki/On-balance_volume) is a rolling accumulation of volume based on Close price direction.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/246 "Community discussion about this indicator")
@@ -74,5 +75,5 @@ Popularized by Joseph Granville, [On-balance Volume](https://en.wikipedia.org/wi
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Obv/Obv.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/Obv/Obv.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/obv.py)

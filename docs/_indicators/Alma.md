@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_alma**(*quotes, lookback_periods=9, offset=0.85, sigma=6*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int, *default 9* | Number of periods (`N`) in the moving average.  Must be greater than 1, but is typically in the 5-20 range.
 | `offset` | float, *default 0.85* | Adjusts smoothness versus responsiveness on a scale from 0 to 1; where 1 is max responsiveness.
 | `sigma` | float, *default 6* | Defines the width of the Gaussian [normal distribution](https://en.wikipedia.org/wiki/Normal_distribution).  Must be greater than 0.
@@ -42,7 +43,7 @@ ALMAResults[ALMAResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `alma` | Decimal, Optional | Arnaud Legoux Moving Average
+| `alma` | float, Optional | Arnaud Legoux Moving Average
 
 ### Utilities
 
@@ -51,7 +52,6 @@ ALMAResults[ALMAResult]
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
-
 
 ## Example
 
@@ -65,7 +65,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_alma(quotes, 10, 0.5, 6)
 ```
 
-### About: {{ page.title }}
+### About {{ page.title }}
 
 Created by Arnaud Legoux and Dimitrios Kouzis-Loukas, [ALMA]({{site.github.base_repository_url}}/files/5654531/ALMA-Arnaud-Legoux-Moving-Average.pdf) is a Gaussian distribution weighted moving average of Close price over a lookback window.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/209 "Community discussion about this indicator")
@@ -74,5 +74,5 @@ Created by Arnaud Legoux and Dimitrios Kouzis-Loukas, [ALMA]({{site.github.base_
 
 #### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Alma/Alma.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Alma/Alma.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/alma.py)

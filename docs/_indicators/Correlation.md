@@ -7,6 +7,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_correlation**(*quotes_a, quotes_b, lookback_periods*)
@@ -15,7 +16,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes_a` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes_a` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `quotes_b` | Iterable[Quote] | Historical quotes (B) must have at least the same matching date elements of `quotes_a`.
 | `lookback_periods` | int | Number of periods (`N`) in the lookback period.  Must be greater than 0 to calculate; however we suggest a larger period for statistically appropriate sample size.
 
@@ -69,7 +70,7 @@ quotes_tsla = get_history_from_feed("TSLA")
 results = indicators.get_correlation(quotes_spx, quotes_tsla, 20)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 [Correlation Coefficient](https://en.wikipedia.org/wiki/Correlation_coefficient) between two quote histories, based on Close price.  R-Squared (R&sup2;), Variance, and Covariance are also output.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/259 "Community discussion about this indicator")
@@ -78,5 +79,5 @@ results = indicators.get_correlation(quotes_spx, quotes_tsla, 20)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Correlation/Correlation.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Correlation/Correlation.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/correlation.py)

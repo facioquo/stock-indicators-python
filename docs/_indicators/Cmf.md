@@ -6,15 +6,16 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_cmf**(*quotes, lookback_periods=20*)
-    
+
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int, *default 20* | Number of periods (`N`) in the moving average.  Must be greater than 0.
 
 ### Historical quotes requirements
@@ -40,11 +41,11 @@ CMFResults[CMFResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `money_flow_multiplier` | float | Money Flow Multiplier
-| `money_flow_volume` | float | Money Flow Volume
-| `cmf` | float, Optional | Chaikin Money Flow = SMA of MFV for `N` lookback periods
+| `money_flow_multiplier` | float, Optional | Money Flow Multiplier
+| `money_flow_volume` | float, Optional | Money Flow Volume
+| `cmf` | float, Optional | Chaikin Money Flow = SMA of MFV
 
-:warning: **Warning**: absolute values in MFV and CMF are somewhat meaningless, so use with caution.
+> :warning: **Warning**: absolute values in MFV and CMF are somewhat meaningless.  Use with caution.
 
 ### Utilities
 
@@ -66,7 +67,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_cmf(quotes, 20)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Marc Chaikin, [Chaikin Money Flow](https://en.wikipedia.org/wiki/Chaikin_Analytics#Chaikin_Money_Flow) is the simple moving average of the Money Flow Volume.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/261 "Community discussion about this indicator")
@@ -75,5 +76,5 @@ Created by Marc Chaikin, [Chaikin Money Flow](https://en.wikipedia.org/wiki/Chai
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Cmf/Cmf.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Cmf/Cmf.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/cmf.py)

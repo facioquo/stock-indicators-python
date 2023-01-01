@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_chop**(*quotes, lookback_periods=14*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int, *default 14* | Number of periods (`N`) for the lookback evaluation.  Must be greater than 1.
 
 ### Historical quotes requirements
@@ -62,7 +63,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_chop(quotes, 14)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by E.W. Dreiss, the Choppiness Index measures the trendiness or choppiness on a scale of 0 to 100, to depict steady trends versus conditions of choppiness.  [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/357 "Community discussion about this indicator")
 
@@ -70,5 +71,5 @@ Created by E.W. Dreiss, the Choppiness Index measures the trendiness or choppine
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Chop/Chop.cs)
+- [C# core]({{site.base_sourceurl}}/a-d/Chop/Chop.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/chop.py)

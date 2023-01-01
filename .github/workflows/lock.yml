@@ -3,7 +3,7 @@ name: "Lock Closed Threads"
 
 on:
   schedule:
-    - cron: "0 7 * * *"
+    - cron: "0 7 * * 3"
 
 concurrency:
   group: lock

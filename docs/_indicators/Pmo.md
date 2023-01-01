@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_pmo**(*quotes, time_periods=35*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `time_periods` | int, *default 35* | Number of periods (`T`) for ROC EMA smoothing.  Must be greater than 1.
 
 ### Historical quotes requirements
@@ -35,7 +36,7 @@ PMOResults[PMOResult]
 - It does not return a single incremental indicator value.
 - The first `T+S-1` periods will have `None` values for PMO since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `T+S+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `T+S+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### PMOResult
 
@@ -65,7 +66,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_pmo(quotes, 35,20,10)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Carl Swenlin, the DecisionPoint [Price Momentum Oscillator](https://school.stockcharts.com/doku.php?id=technical_indicators:dppmo) is double-smoothed ROC based momentum indicator.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/244 "Community discussion about this indicator")
@@ -74,5 +75,5 @@ Created by Carl Swenlin, the DecisionPoint [Price Momentum Oscillator](https://s
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Pmo/Pmo.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/Pmo/Pmo.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/pmo.py)

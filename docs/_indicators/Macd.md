@@ -1,11 +1,12 @@
 ---
-title: Moving Average Convergence/Divergence (MACD)
+title: Moving Average Convergence / Divergence (MACD)
 permalink: /indicators/Macd/
 type: price-trend
 layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_macd**(*quotes, fast_periods=12, slow_periods=26, signal_periods=9*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `fast_periods` | int, *default 12* | Number of periods (`F`) for the faster moving average.  Must be greater than 0.
 | `slow_periods` | int, *default 26* | Number of periods (`S`) for the slower moving average.  Must be greater than `fast_periods`.
 | `signal_periods` | int, *default 9* | Number of periods (`P`) for the moving average of MACD.  Must be greater than or equal to 0.
@@ -40,7 +41,7 @@ MACDResults[MACDResult]
 - It does not return a single incremental indicator value.
 - The first `S-1` slow periods will have `None` values since there's not enough data to calculate.
 
-:hourglass: **Convergence Warning**: The first `S+P+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `S+P+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### MACDResult
 
@@ -50,8 +51,8 @@ MACDResults[MACDResult]
 | `macd` | float, Optional | The MACD line is the difference between slow and fast moving averages (`macd = fast_ema - slow_ema`)
 | `signal` | float, Optional | Moving average of the `macd` line
 | `histogram` | float, Optional | Gap between of the `macd` and `signal` line
-| `fast_ema` | Decimal, Optional | Fast Exponential Moving Average
-| `slow_ema` | Decimal, Optional | Slow Exponential Moving Average
+| `fast_ema` | float, Optional | Fast Exponential Moving Average
+| `slow_ema` | float, Optional | Slow Exponential Moving Average
 
 ### Utilities
 
@@ -60,7 +61,6 @@ MACDResults[MACDResult]
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
-
 
 ## Example
 
@@ -74,7 +74,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_macd(quotes, 12, 26, 9)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Gerald Appel, [MACD](https://en.wikipedia.org/wiki/MACD) is a simple oscillator view of two converging/diverging exponential moving averages.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/248 "Community discussion about this indicator")
@@ -83,5 +83,5 @@ Created by Gerald Appel, [MACD](https://en.wikipedia.org/wiki/MACD) is a simple 
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Macd/Macd.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/Macd/Macd.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/macd.py)

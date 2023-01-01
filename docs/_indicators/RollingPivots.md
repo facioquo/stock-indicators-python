@@ -6,15 +6,16 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_rolling_pivots**(*quotes, window_periods, offset_periods, point_type=PivotPointType.STANDARD*)
-    
+
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `window_periods` | int | Number of periods (`W`) in the evaluation window.  Must be greater than 0 to calculate; but is typically specified in the 5-20 range.
 | `offset_periods` | int | Number of periods (`F`) to offset the window from the current period.  Must be greater than or equal to 0 and is typically less than or equal to `W`.
 | `point_type` | PivotPointType, *default PivotPointType.STANDARD* | Type of Pivot Point. See [PivotPointType options](#pivotpointtype-options) below.
@@ -87,14 +88,14 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_rolling_pivots(quotes, 14, 0, PivotPointType.Woodie);
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
-Created by Dave Skender, Rolling Pivot Points is a modern update to traditional fixed calendar window [Pivot Points](../PivotPoints#content).  It depicts support and resistance levels, based on a defined _rolling_ window and offset.
+Created by Dave Skender, Rolling Pivot Points is a modern update to traditional fixed calendar window [Pivot Points](../PivotPoints#content).  It depicts support and resistance levels, based on a defined *rolling* window and offset.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/274 "Community discussion about this indicator")
 
 ![image]({{site.charturl}}/RollingPivots.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/RollingPivots/RollingPivots.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/RollingPivots/RollingPivots.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/rolling_pivots.py)

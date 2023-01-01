@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_tema**(*quotes, lookback_periods*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int | Number of periods (`N`) in the moving average.  Must be greater than 0.
 
 ### Historical quotes requirements
@@ -35,14 +36,14 @@ TEMAResults[TEMAResult]
 - It does not return a single incremental indicator value.
 - The first `3×N-2` periods will have `None` values since there's not enough data to calculate.  Also note that we are using the proper [weighted variant](https://en.wikipedia.org/wiki/Triple_exponential_moving_average) for TEMA.  If you prefer the unweighted raw 3 EMAs value, please use the `Ema3` output from the [TRIX](../Trix#content) oscillator instead.
 
-:hourglass: **Convergence Warning**: The first `3×N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> :hourglass: **Convergence warning**: The first `3×N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### TEMAResult
 
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `tema` | Decimal, Optional | Triple exponential moving average
+| `tema` | float, Optional | Triple exponential moving average
 
 ### Utilities
 
@@ -64,7 +65,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_tema(quotes, 20)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 [Triple exponential moving average](https://en.wikipedia.org/wiki/Triple_exponential_moving_average) of the Close price over a lookback window.
 Note: TEMA is often confused with the alternative [TRIX](../Trix#content) oscillator.
@@ -76,5 +77,5 @@ See related [EMA](../Ema#content) and [Double EMA](../Dema#content).
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Tema/Tema.cs)
+- [C# core]({{site.base_sourceurl}}/s-z/Tema/Tema.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/tema.py)

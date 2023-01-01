@@ -6,20 +6,23 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_parabolic_sar**(*quotes, acceleration_step=0.02, max_acceleration_factor=0.2*)
+
+### More overloaded interfaces
+
+**get_parabolic_sar**(quotes, acceleration_step, max_acceleration_factor, initial_factor)
 
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `acceleration_step` | float, *default 0.02* | Incremental step size for the Acceleration Factor.  Must be greater than 0.
-| `max_acceleration_factor` | float, *default 0.2* | Maximimum factor limit.  Must be greater than `acceleration_step`.
-
-
-<!-- | `initialFactor` | decimal | Optional.  Initial Acceleration Factor.  Must be greater than 0.  Default is `acceleration_step`. -->
+| `max_acceleration_factor` | float, *default 0.2* | Maximum factor limit.  Must be greater than `acceleration_step`.
+| `initial_factor` | float | Initial Acceleration Factor.  Must be greater than 0.  Default is `acceleration_step`.
 
 ### Historical quotes requirements
 
@@ -44,7 +47,7 @@ ParabolicSARResults[ParabolicSARResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `sar` | Decimal, Optional | Stop and Reverse value
+| `sar` | float, Optional | Stop and Reverse value
 | `is_reversal` | bool, Optional | Indicates a trend reversal
 
 ### Utilities
@@ -67,7 +70,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_parabolic_sar(quotes, 0.02, 0.2)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by J. Welles Wilder, [Parabolic SAR](https://en.wikipedia.org/wiki/Parabolic_SAR) (stop and reverse) is a price-time based indicator used to determine trend direction and reversals.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/245 "Community discussion about this indicator")
@@ -76,5 +79,5 @@ Created by J. Welles Wilder, [Parabolic SAR](https://en.wikipedia.org/wiki/Parab
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/ParabolicSar/ParabolicSar.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/ParabolicSar/ParabolicSar.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/parabolic_sar.py)

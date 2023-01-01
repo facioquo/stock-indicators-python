@@ -6,6 +6,7 @@ layout: indicator
 ---
 
 # {{ page.title }}
+
 <hr>
 
 ## **get_mfi**(*quotes, lookback_periods=14*)
@@ -14,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Got in trouble with Pandas.dataframe?]({{site.baseurl}}/guide/#using-pandasdataframe) </span>
+| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
 | `lookback_periods` | int, *default 14* | Number of periods (`N`) in the lookback period.  Must be greater than 1.
 
 ### Historical quotes requirements
@@ -40,7 +41,7 @@ MFIResults[MFIResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
-| `mfi` | Decimal, Optional | Money Flow Index
+| `mfi` | float, Optional | Money Flow Index
 
 ### Utilities
 
@@ -62,7 +63,7 @@ quotes = get_history_from_feed("SPY")
 results = indicators.get_mfi(quotes, 14)
 ```
 
-## About: {{ page.title }}
+## About {{ page.title }}
 
 Created by Quong and Soudack, the [Money Flow Index](https://en.wikipedia.org/wiki/Money_flow_index) is a price-volume oscillator that shows buying and selling momentum.
 [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/247 "Community discussion about this indicator")
@@ -71,5 +72,5 @@ Created by Quong and Soudack, the [Money Flow Index](https://en.wikipedia.org/wi
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Mfi/Mfi.cs)
+- [C# core]({{site.base_sourceurl}}/m-r/Mfi/Mfi.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/mfi.py)
