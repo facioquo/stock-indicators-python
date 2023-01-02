@@ -1,38 +1,10 @@
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.indicator import Indicator, calculate_indicator
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
-
-
-def get_chaikin_osc(quotes: Iterable[Quote], fast_periods: int = 3, slow_periods: int = 10):
-    """Get Chaikin Oscillator calculated.
-
-    Chaikin Oscillator is the difference between fast and slow
-    Exponential Moving Averages (EMA) of the Accumulation/Distribution Line (ADL).
-
-    Parameters:
-        `quotes` : Iterable[Quote]
-            Historical price quotes.
-
-        `fast_periods` : int, defaults 3
-            Number of periods for the ADL fast EMA.
-
-        `slow_periods` : int, defaults 10
-            Number of periods for the ADL slow EMA.
-
-    Returns:
-        `ChaikinOscResults[ChaikinOscResult]`
-            ChaikinOscResults is list of ChaikinOscResult with providing useful helper methods.
-
-    See more:
-         - [Chaikin Oscillator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/ChaikinOsc/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
-    """
-    results = CsIndicator.GetChaikinOsc[Quote](CsList(Quote, quotes), fast_periods, slow_periods)
-    return ChaikinOscResults(results, ChaikinOscResult)
 
 
 class ChaikinOscResult(ResultBase):
@@ -80,3 +52,43 @@ class ChaikinOscResults(RemoveWarmupMixin, IndicatorResults[_T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in CSharp implementation.
     """
+
+
+class ChaikinOsc(Indicator):
+    is_chainee = False
+    is_chainor = True
+
+    indicator_method = CsIndicator.GetChaikinOsc[Quote]
+    chaining_method = None
+
+    list_wrap_class = ChaikinOscResults
+    unit_wrap_class = ChaikinOscResult
+
+
+@calculate_indicator(indicator=ChaikinOsc())
+def get_chaikin_osc(quotes: Iterable[Quote], fast_periods: int = 3,
+                    slow_periods: int = 10) -> ChaikinOscResults[ChaikinOscResult]:
+    """Get Chaikin Oscillator calculated.
+
+    Chaikin Oscillator is the difference between fast and slow
+    Exponential Moving Averages (EMA) of the Accumulation/Distribution Line (ADL).
+
+    Parameters:
+        `quotes` : Iterable[Quote]
+            Historical price quotes.
+
+        `fast_periods` : int, defaults 3
+            Number of periods for the ADL fast EMA.
+
+        `slow_periods` : int, defaults 10
+            Number of periods for the ADL slow EMA.
+
+    Returns:
+        `ChaikinOscResults[ChaikinOscResult]`
+            ChaikinOscResults is list of ChaikinOscResult with providing useful helper methods.
+
+    See more:
+         - [Chaikin Oscillator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/ChaikinOsc/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
+    return (quotes, fast_periods, slow_periods)

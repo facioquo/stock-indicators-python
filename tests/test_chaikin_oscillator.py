@@ -1,5 +1,6 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 
 class TestChaikinOsc:
     def test_standard(self, quotes):
@@ -16,7 +17,23 @@ class TestChaikinOsc:
         assert        0.8052 == round(float(r.money_flow_multiplier), 4)
         assert  118396116.25 == round(float(r.money_flow_volume), 2)
         assert  -19135200.72 == round(float(r.oscillator), 2)
-        
+
+    def test_chainor(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_chaikin_osc, 3, 10)\
+            .add(indicators.get_sma, 10)\
+            .calc()
+
+        assert 502 == len(results)
+        assert 484 == len(list(filter(lambda x: x.sma is not None, results)))
+
+    def test_chainee(self, quotes):
+        with pytest.raises(ValueError):
+            results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_sma)\
+            .add(indicators.get_chaikin_osc)\
+            .calc()
+
     def test_bad_data(self, bad_quotes):
         r = indicators.get_chaikin_osc(bad_quotes, 5, 15)
         assert 502 == len(r)
