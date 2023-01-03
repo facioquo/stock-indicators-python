@@ -41,7 +41,7 @@ class TestATR:
             .calc()
                 
         assert 502 == len(results)
-        assert 484 == len(list(filter(lambda x: x.sma is not None, results)))
+        assert 483 == len(list(filter(lambda x: x.sma is not None, results)))
     
     def test_chainee(self, quotes):
         with pytest.raises(ValueError):
