@@ -119,4 +119,14 @@ def get_beta(eval_quotes: Iterable[Quote], market_quotes: Iterable[Quote],
          - [Beta Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Beta/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    return (eval_quotes, CsList(Quote, market_quotes), lookback_periods, beta_type.cs_value)
+    if not market_quotes or isinstance(market_quotes[0], Quote):
+        market_values = CsList(Quote, market_quotes)
+    else:
+        # Get C# IReusable objects for chaining method.
+        if isinstance(market_quotes, IndicatorResults):
+            market_quotes.reload()
+            market_values = market_quotes._csdata
+        else:
+            market_values = [ q._csdata for q in market_quotes ]
+
+    return (eval_quotes, market_values, lookback_periods, beta_type.cs_value)

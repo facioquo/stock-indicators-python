@@ -80,8 +80,8 @@ class TestBeta:
     
     def test_chainee(self, quotes, other_quotes):
         results = IndicatorChain.use_quotes(quotes)\
-            .add(indicators.get_sma, 10)\
-            .add(indicators.get_beta, other_quotes, 20)\
+            .add(indicators.get_sma, 2)\
+            .add(indicators.get_beta, indicators.get_sma(2), 20)\
             .calc()
 
         # TODO: Need to fix test.
