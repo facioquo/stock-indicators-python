@@ -81,12 +81,11 @@ class TestBeta:
     def test_chainee(self, quotes, other_quotes):
         results = IndicatorChain.use_quotes(quotes)\
             .add(indicators.get_sma, 2)\
-            .add(indicators.get_beta, indicators.get_sma(2), 20)\
+            .add(indicators.get_beta, indicators.get_sma(other_quotes, 2), 20)\
             .calc()
 
-        # TODO: Need to fix test.
         assert 502 == len(results)
-        assert 468 == len(list(filter(lambda x: x.beta is not None, results)))
+        assert 481 == len(list(filter(lambda x: x.beta is not None, results)))
 
     def test_bad_data(self, bad_quotes):
         r = indicators.get_beta(bad_quotes, bad_quotes, 15, BetaType.STANDARD)
