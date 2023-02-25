@@ -1,7 +1,7 @@
 from datetime import datetime as PyDateTime
 from typing import Callable, Iterable, List, Type, TypeVar
 
-from stock_indicators._cslib import CsIndicator, CsResultBase
+from stock_indicators._cslib import CsResultBase, CsPruning, CsSeeking
 from stock_indicators._cstypes import DateTime as CsDateTime
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import to_pydatetime
@@ -85,7 +85,7 @@ class IndicatorResults(List[_T]):
                 "lookup_date must be an instance of datetime.datetime."
             )
 
-        result = CsIndicator.Find[CsResultBase](
+        result = CsSeeking.Find[CsResultBase](
             CsList(self._get_csdata_type(), self._csdata), CsDateTime(lookup_date)
         )
         return self._wrapper_class(result)
@@ -100,7 +100,7 @@ class IndicatorResults(List[_T]):
                 "remove_periods must be an integer."
             )
 
-        removed_results = CsIndicator.RemoveWarmupPeriods[CsResultBase](
+        removed_results = CsPruning.RemoveWarmupPeriods[CsResultBase](
             CsList(self._get_csdata_type(), self._csdata), remove_periods
         )
         return self.__class__(removed_results, self._wrapper_class)
