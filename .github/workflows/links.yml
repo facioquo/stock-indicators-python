@@ -43,7 +43,7 @@ jobs:
       - name: Replace "python.stockindicators.dev"
         uses: jacobtomlinson/gha-find-replace@v3
         with:
-          find: "python.stockindicators.dev"
+          find: "https://python.stockindicators.dev"
           replace: "http://127.0.0.1:4000"
           regex: false
 
