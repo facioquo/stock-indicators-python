@@ -68,7 +68,7 @@ results = indicators.get_smma(quotes, 20)
 
 ## About {{ page.title }}
 
-[Smoothed Moving Average](https://en.wikipedia.org/wiki/Moving_average#Modified_moving_average) is the average of Close price over a lookback window using a smoothing method.  SMMA is also known as modified moving average (MMA) and running moving average (RMA).
+[Smoothed Moving Average](https://en.wikipedia.org/wiki/Moving_average) is the average of Close price over a lookback window using a smoothing method.  SMMA is also known as modified moving average (MMA) and running moving average (RMA).
 [[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/375 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Smma.png)
