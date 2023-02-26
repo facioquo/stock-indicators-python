@@ -30,35 +30,37 @@ ga_tag: G-MNKJE3KS9Y
 
 plugins:
   - jemoji
+  - jekyll-github-metadata
   - jekyll-remote-theme
   - jekyll-sitemap
   - jekyll-last-modified-at
   - jekyll-redirect-from
 
-exclude: [
-  "*.json",
-  "*.lock",
-  "*.yml",
-  "*.pptx",
-  ".offline",
-  "GemFile",
-  "node_modules",
-  "vendor"
-]
+exclude:
+  [
+    "*.json",
+    "*.lock",
+    "*.yml",
+    "*.pptx",
+    ".offline",
+    "GemFile",
+    "node_modules",
+    "vendor",
+  ]
 
-include: [
-  "contributing.md",
-  "guide.md",
-  "indicators.html",
-  "performance.md",
-  "utilities.md"
-]
+include:
+  [
+    "contributing.md",
+    "guide.md",
+    "indicators.html",
+    "performance.md",
+    "utilities.md",
+  ]
 
 permalink: pretty
 
 defaults:
-  -
-    scope:
+  - scope:
       path: "" # an empty string here means all files in the project
     values:
       layout: "base"
@@ -68,5 +70,5 @@ defaults:
 collections:
   indicators:
     output: true
-    permalink: /:path/
+    permalink: /:path
     sort_by: "title"
