@@ -110,7 +110,7 @@ from stock_indicators.indicators.common.quote import Quote
 
 ### Where can I get historical quote data?
 
-There are many places to get stock market data.  Check with your brokerage or other commercial sites.  If you're looking for a free developer API, see our ongoing [discussion on market data]({{site.github.base_repository_url}}/discussions/579) for ideas.
+There are many places to get stock market data.  Check with your brokerage or other commercial sites.  If you're looking for a free developer API, see our ongoing [discussion on market data]({{site.dotnet.repo}}/discussions/579) for ideas.
 
 ### How much historical quote data do I need?
 

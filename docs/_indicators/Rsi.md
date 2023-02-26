@@ -69,11 +69,11 @@ results = indicators.get_rsi(quotes, 14)
 ## About {{ page.title }}
 
 Created by J. Welles Wilder, the [Relative Strength Index](https://en.wikipedia.org/wiki/Relative_strength_index) measures strength of the winning/losing streak over `N` lookback periods on a scale of 0 to 100, to depict overbought and oversold conditions.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/224 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/224 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Rsi.png)
+![image]({{site.dotnet.charts}}/Rsi.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Rsi/Rsi.Series.cs)
+- [C# core]({{site.dotnet.src}}/m-r/Rsi/Rsi.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/rsi.py)

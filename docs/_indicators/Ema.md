@@ -72,13 +72,13 @@ results = indicators.get_ema(quotes, 20, CandlePart.CLOSE)
 ### About {{ page.title }}
 
 [Exponentially weighted moving average](https://en.wikipedia.org/wiki/Moving_average#Exponential_moving_average) price over a lookback window.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/256 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/256 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Ema.png)
+![image]({{site.dotnet.charts}}/Ema.png)
 
 See also related [Double EMA](../Dema#content) and [Triple EMA](../Tema#content).
 
 #### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Ema/Ema.Series.cs)
+- [C# core]({{site.dotnet.src}}/e-k/Ema/Ema.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/ema.py)

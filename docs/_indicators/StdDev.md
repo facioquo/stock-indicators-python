@@ -71,11 +71,11 @@ results = indicators.get_stdev(quotes, 10)
 ## About {{ page.title }}
 
 [Standard Deviation](https://en.wikipedia.org/wiki/Standard_deviation) of Close price over a rolling lookback window.  Also known as Historical Volatility (HV).
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/239 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/239 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/StdDev.png)
+![image]({{site.dotnet.charts}}/StdDev.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/StdDev/StdDev.Series.cs)
+- [C# core]({{site.dotnet.src}}/s-z/StdDev/StdDev.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/stdev.py)

@@ -68,11 +68,11 @@ results = indicators.get_ht_trendline(quotes)
 ## About {{ page.title }}
 
 Created by John Ehlers, the Hilbert Transform Instantaneous Trendline is a 5-period trendline of high/low price that uses signal processing to reduce noise.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/363 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/363 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/HtTrendline.png)
+![image]({{site.dotnet.charts}}/HtTrendline.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/HtTrendline/HtTrendline.Series.cs)
+- [C# core]({{site.dotnet.src}}/e-k/HtTrendline/HtTrendline.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/ht_trendline.py)

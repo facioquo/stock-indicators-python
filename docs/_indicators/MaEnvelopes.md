@@ -94,11 +94,11 @@ results = indicators.get_ma_envelopes(quotes, 20, 2.5, MAType.SMA);
 ## About {{ page.title }}
 
 [Moving Average Envelopes](https://en.wikipedia.org/wiki/Moving_average_envelope) is a price band overlay that is offset from the moving average of Close price over a lookback window.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/288 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/288 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/MaEnvelopes.png)
+![image]({{site.dotnet.charts}}/MaEnvelopes.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/MaEnvelopes/MaEnvelopes.Series.cs)
+- [C# core]({{site.dotnet.src}}/m-r/MaEnvelopes/MaEnvelopes.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/ma_envelopes.py)

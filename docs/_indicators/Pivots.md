@@ -102,11 +102,11 @@ results = indicators.get_pivots(quotes, 2, 2, 20, EndType.HIGH_LOW);
 ## About {{ page.title }}
 
 Pivots is an extended version of [Williams Fractal](../Fractal#content) that includes identification of Higher High, Lower Low, Higher Low, and Lower Low trends between pivots in a lookback window.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/436 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/436 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Pivots.png)
+![image]({{site.dotnet.charts}}/Pivots.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Pivots/Pivots.Series.cs)
+- [C# core]({{site.dotnet.src}}/m-r/Pivots/Pivots.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/pivots.py)

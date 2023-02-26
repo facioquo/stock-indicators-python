@@ -72,11 +72,11 @@ results = indicators.get_starc_bands(quotes, 20, 2.0, 10)
 ## About {{ page.title }}
 
 Created by Manning Stoller, [Stoller Average Range Channel (STARC) Bands](https://www.investopedia.com/terms/s/starc.asp), are based on an SMA centerline and ATR band widths.  See also [Keltner Channels](../Keltner#content) for an EMA centerline equivalent.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/292 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/292 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/StarcBands.png)
+![image]({{site.dotnet.charts}}/StarcBands.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/StarcBands/StarcBands.Series.cs)
+- [C# core]({{site.dotnet.src}}/s-z/StarcBands/StarcBands.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/starc_bands.py)
