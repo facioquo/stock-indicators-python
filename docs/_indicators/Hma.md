@@ -66,11 +66,11 @@ results = indicators.get_hma(quotes, 20)
 ## About {{ page.title }}
 
 Created by Alan Hull, the [Hull Moving Average](https://alanhull.com/hull-moving-average) is a modified weighted average of `close` price over `N` lookback periods that reduces lag.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/252 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/252 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Hma.png)
+![image]({{site.dotnet.charts}}/Hma.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Hma/Hma.Series.cs)
+- [C# core]({{site.dotnet.src}}/e-k/Hma/Hma.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/hma.py)

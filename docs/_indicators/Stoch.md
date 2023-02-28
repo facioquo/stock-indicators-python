@@ -88,11 +88,11 @@ results = indicators.get_stoch(quotes, 14, 3, 3)
 ## About {{ page.title }}
 
 Created by George Lane, the [Stochastic Oscillator](https://en.wikipedia.org/wiki/Stochastic_oscillator) is a momentum indicator that looks back `N` periods to produce a scale of 0 to 100.  %J is also included for the KDJ Index extension.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/237 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/237 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Stoch.png)
+![image]({{site.dotnet.charts}}/Stoch.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Stoch/Stoch.Series.cs)
+- [C# core]({{site.dotnet.src}}/s-z/Stoch/Stoch.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/stoch.py)

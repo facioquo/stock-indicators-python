@@ -65,11 +65,11 @@ results = indicators.get_chop(quotes, 14)
 
 ## About {{ page.title }}
 
-Created by E.W. Dreiss, the Choppiness Index measures the trendiness or choppiness on a scale of 0 to 100, to depict steady trends versus conditions of choppiness.  [[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/357 "Community discussion about this indicator")
+Created by E.W. Dreiss, the Choppiness Index measures the trendiness or choppiness on a scale of 0 to 100, to depict steady trends versus conditions of choppiness.  [[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/357 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Chop.png)
+![image]({{site.dotnet.charts}}/Chop.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Chop/Chop.Series.cs)
+- [C# core]({{site.dotnet.src}}/a-d/Chop/Chop.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/chop.py)

@@ -72,11 +72,11 @@ results = indicators.get_bollinger_bands(quotes, 20, 2)
 ## About {{ page.title }}
 
 Created by John Bollinger, [Bollinger Bands](https://en.wikipedia.org/wiki/Bollinger_Bands) depict volatility as standard deviation boundary lines from a moving average of Close price.  Bollinger Bands&#174; is a registered trademark of John A. Bollinger.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/267 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/267 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/BollingerBands.png)
+![image]({{site.dotnet.charts}}/BollingerBands.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/BollingerBands/BollingerBands.Series.cs)
+- [C# core]({{site.dotnet.src}}/a-d/BollingerBands/BollingerBands.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/bollinger_bands.py)

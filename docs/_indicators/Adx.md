@@ -71,11 +71,11 @@ results = indicators.get_adx(quotes, lookback_periods)
 ## About {{ page.title }}
 
 Created by J. Welles Wilder, the [Average Directional Movement Index](https://en.wikipedia.org/wiki/Average_directional_movement_index) is a measure of price directional movement.  It includes upward and downward indicators, and is often used to measure strength of trend.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/270 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/270 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/AdIndex.png)
+![image]({{site.dotnet.charts}}/AdIndex.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Adx/Adx.Series.cs)
+- [C# core]({{site.dotnet.src}}/a-d/Adx/Adx.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/adx.py)

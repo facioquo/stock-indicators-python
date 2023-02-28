@@ -74,11 +74,11 @@ results = indicators.get_super_trend(quotes, 14, 3)
 
 Created by Oliver Seban, the SuperTrend indicator attempts to determine the primary trend of Close prices by using [Average True Range (ATR)](../Atr#content) band thresholds.
 It can indicate a buy/sell signal or a trailing stop when the trend changes.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/235 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/235 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/SuperTrend.png)
+![image]({{site.dotnet.charts}}/SuperTrend.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/SuperTrend/SuperTrend.Series.cs)
+- [C# core]({{site.dotnet.src}}/s-z/SuperTrend/SuperTrend.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/super_trend.py)

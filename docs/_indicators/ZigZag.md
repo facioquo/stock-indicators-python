@@ -87,11 +87,11 @@ results = indicators.get_zig_zag(quotes, EndType.CLOSE, 3);
 ## About {{ page.title }}
 
 [Zig Zag](https://school.stockcharts.com/doku.php?id=technical_indicators:zigzag) is a price chart overlay that simplifies the up and down movements and transitions based on a percent change smoothing threshold.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/226 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/226 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/ZigZag.png)
+![image]({{site.dotnet.charts}}/ZigZag.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/ZigZag/ZigZag.Series.cs)
+- [C# core]({{site.dotnet.src}}/s-z/ZigZag/ZigZag.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/zig_zag.py)

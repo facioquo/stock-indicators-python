@@ -71,11 +71,11 @@ results = indicators.get_trix(quotes, 14)
 ## About {{ page.title }}
 
 Created by Jack Hutson, [TRIX](https://en.wikipedia.org/wiki/Trix_(technical_analysis)) is the rate of change for a 3 EMA smoothing of the Close price over a lookback window.  TRIX is often confused with [TEMA](../Tema#content).
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/234 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/234 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Trix.png)
+![image]({{site.dotnet.charts}}/Trix.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Trix/Trix.Series.cs)
+- [C# core]({{site.dotnet.src}}/s-z/Trix/Trix.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/trix.py)

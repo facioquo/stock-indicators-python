@@ -66,11 +66,11 @@ results = indicators.get_williams_r(quotes, 14)
 ## About {{ page.title }}
 
 Created by Larry Williams, the [Williams %R](https://en.wikipedia.org/wiki/Williams_%25R) momentum indicator is a stochastic oscillator with scale of -100 to 0.  It is exactly the same as the Fast variant of [Stochastic Oscillator](../Stoch#content), but with a different scaling.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/229 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/229 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/WilliamsR.png)
+![image]({{site.dotnet.charts}}/WilliamsR.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/WilliamsR/WilliamsR.Series.cs)
+- [C# core]({{site.dotnet.src}}/s-z/WilliamsR/WilliamsR.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/williams_r.py)

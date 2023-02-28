@@ -86,11 +86,11 @@ results = indicators.get_fractal(quotes, 5)
 ## About {{ page.title }}
 
 Created by Larry Williams, [Fractal](https://www.investopedia.com/terms/f/fractal.asp) is a retrospective price pattern that identifies a central high or low point.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/255 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/255 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Fractal.png)
+![image]({{site.dotnet.charts}}/Fractal.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Fractal/Fractal.Series.cs)
+- [C# core]({{site.dotnet.src}}/e-k/Fractal/Fractal.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/fractal.py)

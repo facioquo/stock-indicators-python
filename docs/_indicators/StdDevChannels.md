@@ -73,16 +73,16 @@ results = indicators.get_stdev_channels(quotes, 20,2)
 
 If you specify `None` for the `lookback_periods`, you will get a regression line over the entire provided `quotes`.
 
-![image]({{site.charturl}}/StdDevChannelsFull.png)
+![image]({{site.dotnet.charts}}/StdDevChannelsFull.png)
 
 ## About {{ page.title }}
 
 Standard Deviation Channels are based on an linear regression centerline and standard deviations band widths.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/368 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/368 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/StdDevChannels.png)
+![image]({{site.dotnet.charts}}/StdDevChannels.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/StdDevChannels/StdDevChannels.Series.cs)
+- [C# core]({{site.dotnet.src}}/s-z/StdDevChannels/StdDevChannels.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/stdev_channels.py)

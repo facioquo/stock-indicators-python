@@ -69,13 +69,13 @@ results = indicators.get_tema(quotes, 20)
 
 [Triple exponential moving average](https://en.wikipedia.org/wiki/Triple_exponential_moving_average) of the Close price over a lookback window.
 Note: TEMA is often confused with the alternative [TRIX](../Trix#content) oscillator.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/256 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/256 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Tema.png)
+![image]({{site.dotnet.charts}}/Tema.png)
 
 See related [EMA](../Ema#content) and [Double EMA](../Dema#content).
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Tema/Tema.Series.cs)
+- [C# core]({{site.dotnet.src}}/s-z/Tema/Tema.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/tema.py)

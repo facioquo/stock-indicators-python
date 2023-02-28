@@ -130,11 +130,11 @@ results = indicators.get_renko_atr(quotes, atr_periods);
 ## About {{ page.title }}
 
 The [Renko Chart](https://en.m.wikipedia.org/wiki/Renko_chart) is a Japanese price transformed candlestick pattern that uses "bricks" to show a defined increment of change over a non-linear time series.  Transitions can use either `close` or `high/low` price values.  An [ATR variant](#atr-variant) is also provided where brick size is determined by Average True Range values.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/478 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/478 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Renko.png)
+![image]({{site.dotnet.charts}}/Renko.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Renko/Renko.Series.cs)
+- [C# core]({{site.dotnet.src}}/m-r/Renko/Renko.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/renko.py)

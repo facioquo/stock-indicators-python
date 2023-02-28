@@ -72,11 +72,11 @@ results = indicators.get_tsi(quotes, 25, 13, 7)
 ## About {{ page.title }}
 
 Created by William Blau, the [True Strength Index](https://en.wikipedia.org/wiki/True_strength_index) is a momentum oscillator that depicts trends in price changes.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/300 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/300 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Tsi.png)
+![image]({{site.dotnet.charts}}/Tsi.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Tsi/Tsi.Series.cs)
+- [C# core]({{site.dotnet.src}}/s-z/Tsi/Tsi.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/tsi.py)
