@@ -2,6 +2,7 @@ from datetime import datetime
 
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 
 class TestIndicatorResults:
     def test_add_results(self, quotes):
@@ -45,6 +46,18 @@ class TestIndicatorResults:
         r2 = results * 2
         
         assert len(r2) == len(results) * 2
+        
+    def test_reloaded_results_as_argument(self, quotes, other_quotes):
+        sma_results = indicators.get_sma(other_quotes, 2).done()
+        sma_results.reload()
+        
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_sma, 2)\
+            .add(indicators.get_correlation, sma_results, 20)\
+            .calc()
+        
+        assert 502 == len(results)
+        assert 482 == len(list(filter(lambda x: x.correlation is not None, results)))
         
     def test_find(self, quotes):
         results = indicators.get_sma(quotes, 20)

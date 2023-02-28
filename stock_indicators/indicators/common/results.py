@@ -38,8 +38,12 @@ class IndicatorResults(List[_T]):
         Reload a C# array of the results to perform more operations.
         It is usually called after `done()`
         """
+        if len(self) < 1:
+            raise ValueError(f"Cannot reload() an empty result.")
+
         if self._csdata is None:
-            self._csdata = [ _._csdata for _ in self ]
+            self._csdata = CsList(self._get_csdata_type(), [ _._csdata for _ in self ])
+
         return self
 
     def done(self):
@@ -81,9 +85,7 @@ class IndicatorResults(List[_T]):
     def find(self, lookup_date: PyDateTime) -> _T:
         """Find indicator values on a specific date."""
         if not isinstance(lookup_date, PyDateTime):
-            raise TypeError(
-                "lookup_date must be an instance of datetime.datetime."
-            )
+            raise TypeError("lookup_date must be an instance of datetime.datetime.")
 
         result = CsSeeking.Find[CsResultBase](
             CsList(self._get_csdata_type(), self._csdata), CsDateTime(lookup_date)
@@ -92,13 +94,9 @@ class IndicatorResults(List[_T]):
 
     @_verify_data
     def remove_warmup_periods(self, remove_periods: int):
-        """
-        Remove a specific quantity of results from the beginning of the results list.
-        """
+        """Remove a specific quantity of results from the beginning of the results list."""
         if not isinstance(remove_periods, int):
-            raise TypeError(
-                "remove_periods must be an integer."
-            )
+            raise TypeError("remove_periods must be an integer.")
 
         removed_results = CsPruning.RemoveWarmupPeriods[CsResultBase](
             CsList(self._get_csdata_type(), self._csdata), remove_periods
