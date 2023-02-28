@@ -1,5 +1,6 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 
 class TestConnorsRSI:
     def test_standard(self, quotes):
@@ -26,6 +27,24 @@ class TestConnorsRSI:
         assert 52.7386 == round(float(r.rsi_streak), 4)
         assert 90.0000 == round(float(r.percent_rank), 4)
         assert 61.6053 == round(float(r.connors_rsi), 4)
+        
+    def test_chainor(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_connors_rsi)\
+            .add(indicators.get_sma, 10)\
+            .calc()
+
+        assert 502 == len(results)
+        assert 392 == len(list(filter(lambda x: x.sma is not None, results)))
+
+    def test_chainee(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_sma, 2)\
+            .add(indicators.get_connors_rsi)\
+            .calc()
+        
+        assert 502 == len(results)
+        assert 400 == len(list(filter(lambda x: x.connors_rsi is not None, results)))
         
     def test_bad_data(self, bad_quotes):
         r = indicators.get_connors_rsi(bad_quotes, 4, 3, 25)

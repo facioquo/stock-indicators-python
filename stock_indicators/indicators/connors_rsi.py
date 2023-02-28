@@ -1,43 +1,10 @@
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.indicator import Indicator, calculate_indicator
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
-
-
-def get_connors_rsi(quotes: Iterable[Quote], rsi_periods: int = 3,
-                    streak_periods: int = 2, rank_periods: int = 100):
-    """Get Connors RSI calculated.
-
-    Connors RSI is a composite oscillator that incorporates
-    RSI, winning/losing streaks, and percentile gain metrics on scale of 0 to 100.
-
-    Parameters:
-        `quotes` : Iterable[Quote]
-            Historical price quotes.
-
-        `rsi_periods` : int, defaults 3
-            Number of periods in the RSI.
-
-        `streak_periods` : int, defaults 2
-            Number of periods for streak RSI.
-
-        `rank_periods` : int, defaults 100
-            Number of periods for the percentile ranking.
-
-    Returns:
-        `ConnorsRSIResults[ConnorsRSIResult]`
-            ConnorsRSIResults is list of ConnorsRSIResult with providing useful helper methods.
-
-    See more:
-         - [Connors RSI Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/ConnorsRsi/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
-    """
-    results = CsIndicator.GetConnorsRsi[Quote](CsList(Quote, quotes), rsi_periods,
-                                               streak_periods, rank_periods)
-    return ConnorsRSIResults(results, ConnorsRSIResult)
 
 
 class ConnorsRSIResult(ResultBase):
@@ -87,3 +54,46 @@ class ConnorsRSIResults(RemoveWarmupMixin, IndicatorResults[_T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in CSharp implementation.
     """
+
+
+class ConnorsRSI(Indicator):
+    is_chainee = True
+    is_chainor = True
+
+    indicator_method = CsIndicator.GetConnorsRsi[Quote]
+    chaining_method = CsIndicator.GetConnorsRsi
+
+    list_wrap_class = ConnorsRSIResults
+    unit_wrap_class = ConnorsRSIResult
+
+
+@calculate_indicator(indicator=ConnorsRSI())
+def get_connors_rsi(quotes: Iterable[Quote], rsi_periods: int = 3,
+                    streak_periods: int = 2, rank_periods: int = 100) -> ConnorsRSIResults[ConnorsRSIResult]:
+    """Get Connors RSI calculated.
+
+    Connors RSI is a composite oscillator that incorporates
+    RSI, winning/losing streaks, and percentile gain metrics on scale of 0 to 100.
+
+    Parameters:
+        `quotes` : Iterable[Quote]
+            Historical price quotes.
+
+        `rsi_periods` : int, defaults 3
+            Number of periods in the RSI.
+
+        `streak_periods` : int, defaults 2
+            Number of periods for streak RSI.
+
+        `rank_periods` : int, defaults 100
+            Number of periods for the percentile ranking.
+
+    Returns:
+        `ConnorsRSIResults[ConnorsRSIResult]`
+            ConnorsRSIResults is list of ConnorsRSIResult with providing useful helper methods.
+
+    See more:
+         - [Connors RSI Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/ConnorsRsi/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
+    return  (quotes, rsi_periods, streak_periods, rank_periods)
