@@ -17,48 +17,50 @@ logo: /assets/icons/android-chrome-192x192.png
 # https://github.com/pages-themes/cayman
 remote_theme: pages-themes/cayman@v0.2.0
 
-# override built-in github url because it does not fetch in build tests
-github:
-  repository_url: "https://github.com/DaveSkender/Stock.Indicators.Python"
-  base_repository_url: "https://github.com/DaveSkender/Stock.Indicators"
+# .NET site URL refs
+dotnet:
+  repo: "https://github.com/DaveSkender/Stock.Indicators"
+  src: "https://github.com/DaveSkender/Stock.Indicators/blob/main/src"
+  charts: "https://raw.githubusercontent.com/DaveSkender/Stock.Indicators/main/docs/assets/charts"
 
+# this site URL refs
 sourceurl: "https://github.com/DaveSkender/Stock.Indicators.Python/blob/main/stock_indicators/indicators"
-base_sourceurl: "https://github.com/DaveSkender/Stock.Indicators/blob/main/src"
-charturl: "https://raw.githubusercontent.com/DaveSkender/Stock.Indicators/main/docs/assets/charts"
 
 ga_tag: G-MNKJE3KS9Y
 
 plugins:
   - jemoji
+  - jekyll-github-metadata
   - jekyll-remote-theme
   - jekyll-sitemap
   - jekyll-last-modified-at
   - jekyll-redirect-from
 
-exclude: [
-  "*.json",
-  "*.lock",
-  "*.yml",
-  "*.pptx",
-  ".offline",
-  "GemFile",
-  "node_modules",
-  "vendor"
-]
+exclude:
+  [
+    "*.json",
+    "*.lock",
+    "*.yml",
+    "*.pptx",
+    ".offline",
+    "GemFile",
+    "node_modules",
+    "vendor",
+  ]
 
-include: [
-  "contributing.md",
-  "guide.md",
-  "indicators.html",
-  "performance.md",
-  "utilities.md"
-]
+include:
+  [
+    "contributing.md",
+    "guide.md",
+    "indicators.html",
+    "performance.md",
+    "utilities.md",
+  ]
 
 permalink: pretty
 
 defaults:
-  -
-    scope:
+  - scope:
       path: "" # an empty string here means all files in the project
     values:
       layout: "base"
@@ -68,5 +70,5 @@ defaults:
 collections:
   indicators:
     output: true
-    permalink: /:path/
+    permalink: /:path
     sort_by: "title"

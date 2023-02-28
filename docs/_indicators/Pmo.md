@@ -69,11 +69,11 @@ results = indicators.get_pmo(quotes, 35,20,10)
 ## About {{ page.title }}
 
 Created by Carl Swenlin, the DecisionPoint [Price Momentum Oscillator](https://school.stockcharts.com/doku.php?id=technical_indicators:dppmo) is double-smoothed ROC based momentum indicator.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/244 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/244 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Pmo.png)
+![image]({{site.dotnet.charts}}/Pmo.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Pmo/Pmo.Series.cs)
+- [C# core]({{site.dotnet.src}}/m-r/Pmo/Pmo.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/pmo.py)

@@ -72,11 +72,11 @@ results = indicators.get_gator(quotes)
 ## About {{ page.title }}
 
 Created by Bill Williams, the Gator Oscillator is an expanded view of [Williams Alligator](../Alligator#content).
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/385 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/385 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Gator.png)
+![image]({{site.dotnet.charts}}/Gator.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Gator/Gator.Series.cs)
+- [C# core]({{site.dotnet.src}}/e-k/Gator/Gator.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/gator.py)

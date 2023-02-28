@@ -70,11 +70,11 @@ results = indicators.get_adl(quotes)
 ## About {{ page.title }}
 
 Created by Marc Chaikin, the [Accumulation/Distribution Line/Index](https://en.wikipedia.org/wiki/Accumulation/distribution_index) is a rolling accumulation of Chaikin Money Flow Volume.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/271 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/271 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Adl.png)
+![image]({{site.dotnet.charts}}/Adl.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Adl/Adl.Series.cs)
+- [C# core]({{site.dotnet.src}}/a-d/Adl/Adl.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/adl.py)

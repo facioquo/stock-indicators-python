@@ -68,13 +68,13 @@ results = indicators.get_dema(quotes, 20)
 ## About {{ page.title }}
 
 [Double exponential moving average](https://en.wikipedia.org/wiki/Double_exponential_moving_average) of the Close price over a lookback window.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/256 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/256 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Dema.png)
+![image]({{site.dotnet.charts}}/Dema.png)
 
 See related [EMA](../Ema#content) and [Triple EMA](../Tema#content).
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Dema/Dema.Series.cs)
+- [C# core]({{site.dotnet.src}}/a-d/Dema/Dema.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/dema.py)

@@ -73,11 +73,11 @@ results = indicators.get_kama(quotes, 10,2,30)
 ## About {{ page.title }}
 
 Created by Perry Kaufman, [KAMA](https://school.stockcharts.com/doku.php?id=technical_indicators:kaufman_s_adaptive_moving_average) is an volatility adaptive moving average of Close price over configurable lookback periods.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/210 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/210 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Kama.png)
+![image]({{site.dotnet.charts}}/Kama.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Kama/Kama.Series.cs)
+- [C# core]({{site.dotnet.src}}/e-k/Kama/Kama.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/kama.py)

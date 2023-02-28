@@ -100,15 +100,15 @@ ROCWBResults[ROCWBResult]
 ## About {{ page.title }}
 
 [Rate of Change](https://en.wikipedia.org/wiki/Momentum_(technical_analysis)), also known as Momentum Oscillator, is the percent change of Close price over a lookback window.  A [Rate of Change with Bands](#roc-with-bands) variant, created by Vitali Apirine, is also included.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/242 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/242 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Roc.png)
+![image]({{site.dotnet.charts}}/Roc.png)
 
 ### ROC with Bands variant
 
-![image]({{site.charturl}}/RocWb.png)
+![image]({{site.dotnet.charts}}/RocWb.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Roc/Roc.Series.cs)
+- [C# core]({{site.dotnet.src}}/m-r/Roc/Roc.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/roc.py)

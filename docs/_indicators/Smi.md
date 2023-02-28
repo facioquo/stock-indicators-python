@@ -72,11 +72,11 @@ results = indicators.get_smi(quotes, 14, 20, 5, 3)
 ## About {{ page.title }}
 
 Created by William Blau, the Stochastic Momentum Index (SMI) is a double-smoothed variant of the [Stochastic Oscillator](../Stoch/#content) on a scale from -100 to 100.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/625 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/625 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Smi.png)
+![image]({{site.dotnet.charts}}/Smi.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Smi/Smi.Series.cs)
+- [C# core]({{site.dotnet.src}}/s-z/Smi/Smi.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/smi.py)

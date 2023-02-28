@@ -68,11 +68,11 @@ results = indicators.get_force_index(quotes, 13)
 ## About {{ page.title }}
 
 Created by Alexander Elder, the [Force Index](https://en.wikipedia.org/wiki/Force_index) depicts volume-based buying and selling pressure.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/382 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/382 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/ForceIndex.png)
+![image]({{site.dotnet.charts}}/ForceIndex.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/ForceIndex/ForceIndex.Series.cs)
+- [C# core]({{site.dotnet.src}}/e-k/ForceIndex/ForceIndex.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/force_index.py)

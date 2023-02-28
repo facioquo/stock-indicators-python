@@ -70,11 +70,11 @@ results = indicators.get_donchian(quotes, 20)
 ## About {{ page.title }}
 
 Created by Richard Donchian, [Donchian Channels](https://en.wikipedia.org/wiki/Donchian_channel), also called Price Channels, are derived from highest High and lowest Low values over a lookback window.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/257 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/257 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Donchian.png)
+![image]({{site.dotnet.charts}}/Donchian.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Donchian/Donchian.Series.cs)
+- [C# core]({{site.dotnet.src}}/a-d/Donchian/Donchian.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/donchian.py)

@@ -74,11 +74,11 @@ results = indicators.get_fisher_transform(quotes, 10)
 ## About {{ page.title }}
 
 Created by John Ehlers, the [Fisher Transform](https://www.investopedia.com/terms/f/fisher-transform.asp) converts prices into a Gaussian normal distribution.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/409 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/409 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/FisherTransform.png)
+![image]({{site.dotnet.charts}}/FisherTransform.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/FisherTransform/FisherTransform.Series.cs)
+- [C# core]({{site.dotnet.src}}/e-k/FisherTransform/FisherTransform.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/fisher_transform.py)

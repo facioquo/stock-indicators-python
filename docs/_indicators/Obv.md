@@ -69,11 +69,11 @@ results = indicators.get_obv(quotes)
 ## About {{ page.title }}
 
 Popularized by Joseph Granville, [On-balance Volume](https://en.wikipedia.org/wiki/On-balance_volume) is a rolling accumulation of volume based on Close price direction.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/246 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/246 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Obv.png)
+![image]({{site.dotnet.charts}}/Obv.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Obv/Obv.Series.cs)
+- [C# core]({{site.dotnet.src}}/m-r/Obv/Obv.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/obv.py)

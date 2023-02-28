@@ -74,11 +74,11 @@ results = indicators.get_chaikin_osc(quotes, 20)
 ## About {{ page.title }}
 
 Created by Marc Chaikin, the [Chaikin Oscillator](https://en.wikipedia.org/wiki/Chaikin_Analytics#Chaikin_Oscillator) is the difference between fast and slow Exponential Moving Averages (EMA) of the [Accumulation/Distribution Line](../Adl#content) (ADL).
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/264 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/264 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/ChaikinOsc.png)
+![image]({{site.dotnet.charts}}/ChaikinOsc.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/ChaikinOsc/ChaikinOsc.Series.cs)
+- [C# core]({{site.dotnet.src}}/a-d/ChaikinOsc/ChaikinOsc.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/chaikin_oscillator.py)

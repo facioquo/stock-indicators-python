@@ -66,11 +66,11 @@ results = indicators.get_cci(quotes, 20)
 ## About {{ page.title }}
 
 Created by Donald Lambert, the [Commodity Channel Index](https://en.wikipedia.org/wiki/Commodity_channel_index) is an oscillator depicting deviation from typical price range, often used to identify cyclical trends.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/265 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/265 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Cci.png)
+![image]({{site.dotnet.charts}}/Cci.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Cci/Cci.Series.cs)
+- [C# core]({{site.dotnet.src}}/a-d/Cci/Cci.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/cci.py)

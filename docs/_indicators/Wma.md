@@ -70,11 +70,11 @@ results = indicators.get_wma(quotes, 20, CandlePart.CLOSE)
 ## About {{ page.title }}
 
 [Weighted Moving Average](https://en.wikipedia.org/wiki/Moving_average#Weighted_moving_average) is the linear weighted average of `close` price over `N` lookback periods.  This also called Linear Weighted Moving Average (LWMA).
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/227 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/227 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Wma.png)
+![image]({{site.dotnet.charts}}/Wma.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Wma/Wma.Series.cs)
+- [C# core]({{site.dotnet.src}}/s-z/Wma/Wma.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/wma.py)

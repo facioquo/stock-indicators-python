@@ -19,7 +19,7 @@ layout: page
 results = quotes.get_marubozu(quotes).condense();
 ```
 
-Currently, `.condense()` is only available on a select few indicators.  If you find an indicator that is a good candidate for this utility, please [submit an Issue]({{site.github.base_repository_url}}/issues).
+Currently, `.condense()` is only available on a select few indicators.  If you find an indicator that is a good candidate for this utility, please [submit an Issue]({{site.dotnet.repo}}/issues).
 
 > :warning: WARNING! In all cases, `.condense()` will remove non-essential results and will produce fewer records than are in `quotes`.
 

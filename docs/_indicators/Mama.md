@@ -70,11 +70,11 @@ results = indicators.get_mama(quotes, 0.5,0.05)
 ## About {{ page.title }}
 
 Created by John Ehlers, the [MAMA](http://mesasoftware.com/papers/MAMA.pdf) indicator is a 5-period adaptive moving average of high/low price.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/211 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/211 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Mama.png)
+![image]({{site.dotnet.charts}}/Mama.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/Mama/Mama.Series.cs)
+- [C# core]({{site.dotnet.src}}/m-r/Mama/Mama.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/mama.py)

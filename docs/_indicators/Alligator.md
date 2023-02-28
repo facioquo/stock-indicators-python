@@ -75,11 +75,11 @@ results = indicators.get_alligator(quotes)
 ## About {{ page.title }}
 
 Created by Bill Williams, Alligator is a depiction of three smoothed moving averages of median price, showing chart patterns that compared to an alligator's feeding habits when describing market movement. The moving averages are known as the Jaw, Teeth, and Lips, which are calculated using specific lookback and offset periods.  See also the [Gator Oscillator](../Gator#content).
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/385 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/385 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Alligator.png)
+![image]({{site.dotnet.charts}}/Alligator.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Alligator/Alligator.Series.cs)
+- [C# core]({{site.dotnet.src}}/a-d/Alligator/Alligator.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/alligator.py)

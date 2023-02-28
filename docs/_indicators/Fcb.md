@@ -69,11 +69,11 @@ results = indicators.get_fcb(quotes, 14)
 ## About {{ page.title }}
 
 Created by Edward William Dreiss, Fractal Chaos Bands outline high and low price channels to depict broad less-chaotic price movements.  FCB is a channelized depiction of [Williams Fractal](../Fractal#content).
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/347 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/347 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Fcb.png)
+![image]({{site.dotnet.charts}}/Fcb.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Fcb/Fcb.Series.cs)
+- [C# core]({{site.dotnet.src}}/e-k/Fcb/Fcb.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/fcb.py)

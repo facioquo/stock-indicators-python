@@ -74,11 +74,11 @@ results = indicators.get_volatility_stop(quotes, 20, 2.5)
 ## About {{ page.title }}
 
 Created by J. Welles Wilder, [Volatility Stop](https://archive.org/details/newconceptsintec00wild), also known his Volatility System, is an [ATR](../Atr/) based indicator used to determine trend direction, stops, and reversals.  It is similar to Wilder's [Parabolic SAR](../ParabolicSar/#content) and [SuperTrend](../SuperTrend/#content).
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/564 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/564 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/VolatilityStop.png)
+![image]({{site.dotnet.charts}}/VolatilityStop.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/VolatilityStop/VolatilityStop.Series.cs)
+- [C# core]({{site.dotnet.src}}/s-z/VolatilityStop/VolatilityStop.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/volatility_stop.py)
