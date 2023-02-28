@@ -2,6 +2,7 @@ from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
+from stock_indicators.indicators.common._contrib.result_param import get_results_as_argument
 from stock_indicators.indicators.common.enums import BetaType
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.indicator import Indicator, calculate_indicator
@@ -119,14 +120,5 @@ def get_beta(eval_quotes: Iterable[Quote], market_quotes: Iterable[Quote],
          - [Beta Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Beta/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    if not market_quotes or isinstance(market_quotes[0], Quote):
-        market_values = CsList(Quote, market_quotes)
-    else:
-        # Get C# IReusable objects for chaining method.
-        if isinstance(market_quotes, IndicatorResults):
-            market_quotes.reload()
-            market_values = market_quotes._csdata
-        else:
-            market_values = [ q._csdata for q in market_quotes ]
-
-    return (eval_quotes, market_values, lookback_periods, beta_type.cs_value)
+    market_quotes = get_results_as_argument(market_quotes)
+    return (eval_quotes, market_quotes, lookback_periods, beta_type.cs_value)
