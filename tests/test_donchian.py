@@ -1,5 +1,6 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 
 class TestDonchian:
     def test_standard(self, quotes):
@@ -40,7 +41,21 @@ class TestDonchian:
         assert 273.5900 == round(float(r.upper_band), 4)
         assert 229.4200 == round(float(r.lower_band), 4)
         assert 0.175623 == round(float(r.width), 6)
-        
+
+    def test_chainor(self, quotes):
+        with pytest.raises(ValueError):
+            results = IndicatorChain.use_quotes(quotes)\
+                .add(indicators.get_donchian)\
+                .add(indicators.get_sma, 10)\
+                .calc()
+
+    def test_chainee(self, quotes):
+        with pytest.raises(ValueError):
+            results = IndicatorChain.use_quotes(quotes)\
+                .add(indicators.get_sma, 2)\
+                .add(indicators.get_donchian)\
+                .calc()
+
     def test_bad_data(self, bad_quotes):
         r = indicators.get_donchian(bad_quotes, 20)
         assert 502 == len(r)

@@ -2,36 +2,12 @@ from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.indicator import Indicator, calculate_indicator
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
-
-
-def get_donchian(quotes: Iterable[Quote], lookback_periods: int = 20):
-    """Get Donchian Channels calculated.
-
-    Donchian Channels, also called Price Channels, are derived from highest High and lowest Low values over a lookback window.
-
-    Parameters:
-        `quotes` : Iterable[Quote]
-            Historical price quotes.
-
-        `lookback_periods` : int, defaults 22
-            Number of periods in the lookback window.
-
-    Returns:
-        `DonchianResults[DonchianResult]`
-            DonchianResults is list of DonchianResult with providing useful helper methods.
-
-    See more:
-         - [Donchian Channels Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Donchian/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
-    """
-    results = CsIndicator.GetDonchian[Quote](CsList(Quote, quotes), lookback_periods)
-    return DonchianResults(results, DonchianResult)
 
 
 class DonchianResult(ResultBase):
@@ -79,3 +55,38 @@ class DonchianResults(RemoveWarmupMixin, IndicatorResults[_T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
+
+
+class Donchian(Indicator):
+    is_chainee = False
+    is_chainor = False
+
+    indicator_method = CsIndicator.GetDonchian[Quote]
+    chaining_method = None
+
+    list_wrap_class = DonchianResults
+    unit_wrap_class = DonchianResult
+
+
+@calculate_indicator(indicator=Donchian())
+def get_donchian(quotes: Iterable[Quote], lookback_periods: int = 20) -> DonchianResults[DonchianResult]:
+    """Get Donchian Channels calculated.
+
+    Donchian Channels, also called Price Channels, are derived from highest High and lowest Low values over a lookback window.
+
+    Parameters:
+        `quotes` : Iterable[Quote]
+            Historical price quotes.
+
+        `lookback_periods` : int, defaults 22
+            Number of periods in the lookback window.
+
+    Returns:
+        `DonchianResults[DonchianResult]`
+            DonchianResults is list of DonchianResult with providing useful helper methods.
+
+    See more:
+         - [Donchian Channels Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Donchian/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
+    return (quotes, lookback_periods)
