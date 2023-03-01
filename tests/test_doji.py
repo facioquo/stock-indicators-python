@@ -1,5 +1,6 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 from stock_indicators.indicators.common.enums import Match
 
 class TestDoji:
@@ -36,6 +37,20 @@ class TestDoji:
         r = results[477]
         assert 256.86 == round(float(r.price), 2)
         assert Match.NEUTRAL == r.match
+ 
+    def test_chainor(self, quotes):
+        with pytest.raises(ValueError):
+            results = IndicatorChain.use_quotes(quotes)\
+                .add(indicators.get_doji)\
+                .add(indicators.get_sma, 10)\
+                .calc()
+
+    def test_chainee(self, quotes):
+        with pytest.raises(ValueError):
+            results = IndicatorChain.use_quotes(quotes)\
+                .add(indicators.get_sma, 2)\
+                .add(indicators.get_doji)\
+                .calc()
 
     def test_bad_data(self, bad_quotes):
         r = indicators.get_doji(bad_quotes)
