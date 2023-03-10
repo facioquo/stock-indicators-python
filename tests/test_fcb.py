@@ -1,5 +1,6 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 
 class TestFCB:
     def test_standard(self, quotes):
@@ -32,7 +33,21 @@ class TestFCB:
         r = results[501]
         assert 262.47 == round(float(r.upper_band), 2)
         assert 229.42 == round(float(r.lower_band), 2)
-        
+
+    def test_chainor(self, quotes):
+        with pytest.raises(ValueError):
+            results = IndicatorChain.use_quotes(quotes)\
+                .add(indicators.get_fcb)\
+                .add(indicators.get_sma, 10)\
+                .calc()
+
+    def test_chainee(self, quotes):
+        with pytest.raises(ValueError):
+            results = IndicatorChain.use_quotes(quotes)\
+                .add(indicators.get_sma, 2)\
+                .add(indicators.get_fcb)\
+                .calc()
+
     def test_bad_data(self, bad_quotes):
         r = indicators.get_fcb(bad_quotes)
         
