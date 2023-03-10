@@ -1,5 +1,6 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 
 class TestElderRay:
     def test_standard(self, quotes):
@@ -38,6 +39,22 @@ class TestElderRay:
         assert 246.0129 == round(float(r.ema), 4)
         assert -00.4729 == round(float(r.bull_power), 4)
         assert  -3.1429 == round(float(r.bear_power), 4)
+
+    def test_chainor(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_elder_ray, 13)\
+            .add(indicators.get_sma, 10)\
+            .calc()
+
+        assert 502 == len(results)
+        assert 481 == len(list(filter(lambda x: x.sma is not None, results)))
+
+    def test_chainee(self, quotes):
+        with pytest.raises(ValueError):
+            results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_sma)\
+            .add(indicators.get_elder_ray)\
+            .calc()
 
     def test_bad_data(self, bad_quotes):
         r = indicators.get_elder_ray(bad_quotes)
