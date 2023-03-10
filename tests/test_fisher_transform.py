@@ -1,5 +1,6 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 
 class TestFisherTransform:
     def test_standard(self, quotes):
@@ -47,7 +48,25 @@ class TestFisherTransform:
         r = results[501]
         assert -1.2876 == round(float(r.fisher), 4)
         assert -2.0071 == round(float(r.trigger), 4)
+
+    def test_chainor(self, quotes, other_quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_fisher_transform, 10)\
+            .add(indicators.get_sma, 10)\
+            .calc()
+
+        assert 502 == len(results)
+        assert 493 == len(list(filter(lambda x: x.sma is not None, results)))
+
+    def test_chainee(self, quotes, other_quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_sma, 2)\
+            .add(indicators.get_fisher_transform, 10)\
+            .calc()
         
+        assert 502 == len(results)
+        assert 501 == len(list(filter(lambda x: x.fisher is not None, results)))
+
     def test_bad_data(self, bad_quotes):
         r = indicators.get_fisher_transform(bad_quotes, 9)
         assert 502 == len(r)
