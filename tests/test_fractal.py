@@ -1,5 +1,6 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 from stock_indicators.indicators.common.enums import EndType
 
 class TestFractal:
@@ -65,6 +66,20 @@ class TestFractal:
         r = results[500]
         assert r.fractal_bear is None
         assert r.fractal_bull is None
+
+    def test_chainor(self, quotes):
+        with pytest.raises(ValueError):
+            results = IndicatorChain.use_quotes(quotes)\
+                .add(indicators.get_fractal)\
+                .add(indicators.get_sma, 10)\
+                .calc()
+
+    def test_chainee(self, quotes):
+        with pytest.raises(ValueError):
+            results = IndicatorChain.use_quotes(quotes)\
+                .add(indicators.get_sma, 2)\
+                .add(indicators.get_fractal)\
+                .calc()
 
     def test_no_data(self, quotes):
         r = indicators.get_fractal([])
