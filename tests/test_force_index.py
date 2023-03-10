@@ -1,5 +1,6 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 
 class TestForceIndex:
     def test_standard(self, quotes):
@@ -15,7 +16,23 @@ class TestForceIndex:
         assert   7598218.196 == round(float(r[149].force_index), 3)
         assert  23612118.994 == round(float(r[249].force_index), 3)
         assert -16824018.428 == round(float(r[501].force_index), 3)
-        
+
+    def test_chainor(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_force_index, 13)\
+            .add(indicators.get_sma, 10)\
+            .calc()
+
+        assert 502 == len(results)
+        assert 480 == len(list(filter(lambda x: x.sma is not None, results)))
+
+    def test_chainee(self, quotes):
+        with pytest.raises(ValueError):
+            results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_sma)\
+            .add(indicators.get_force_index, 10)\
+            .calc()
+
     def test_bad_data(self, bad_quotes):
         r = indicators.get_force_index(bad_quotes, 2)
         assert 502 == len(r)
