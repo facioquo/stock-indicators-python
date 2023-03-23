@@ -1,45 +1,10 @@
-from typing import Iterable, Optional, TypeVar, overload
+from typing import Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
-from stock_indicators.indicators.alligator import AlligatorResult
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.indicator import Indicator, calculate_indicator
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
-
-@overload
-def get_gator(quotes: Iterable[Quote]) -> "GatorResults[GatorResult]": ...
-@overload
-def get_gator(quotes: Iterable[AlligatorResult]) -> "GatorResults[GatorResult]": ...
-def get_gator(quotes):
-    """Get Gator Oscillator calculated.
-
-    Gator Oscillator is an expanded view of Williams Alligator.
-
-    Parameters:
-        `quotes` : Iterable[Quote] or Iterable[AlligatorResult]
-            Historical price quotes.
-
-    Returns:
-        `GatorResults[GatorResult]`
-            GatorResults is list of GatorResult with providing useful helper methods.
-
-    See more:
-         - [Gator Oscillator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Gator/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
-    """
-    if not quotes or isinstance(quotes[0], Quote):
-        results = CsIndicator.GetGator[Quote](CsList(Quote, quotes))
-    else:
-        # Get C# objects.
-        if isinstance(quotes, IndicatorResults):
-            quotes.reload()
-            cs_results = quotes._csdata
-        else:
-            cs_results = [ q._csdata for q in quotes ]
-
-        results = CsIndicator.GetGator(CsList(type(cs_results[0]), cs_results))
-    return GatorResults(results, GatorResult)
 
 
 class GatorResult(ResultBase):
@@ -87,3 +52,34 @@ class GatorResults(RemoveWarmupMixin, IndicatorResults[_T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in C# implementation.
     """
+
+class Gator(Indicator):
+    is_chainee = True
+    is_chainor = False
+
+    indicator_method = CsIndicator.GetGator[Quote]
+    chaining_method = CsIndicator.GetGator
+
+    list_wrap_class = GatorResults
+    unit_wrap_class = GatorResult
+
+
+@calculate_indicator(indicator=Gator())
+def get_gator(quotes) -> GatorResults[GatorResult]:
+    """Get Gator Oscillator calculated.
+
+    Gator Oscillator is an expanded view of Williams Alligator.
+
+    Parameters:
+        `quotes` : Iterable[Quote] or Iterable[AlligatorResult]
+            Historical price quotes.
+
+    Returns:
+        `GatorResults[GatorResult]`
+            GatorResults is list of GatorResult with providing useful helper methods.
+
+    See more:
+         - [Gator Oscillator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Gator/#content)
+         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+    """
+    return (quotes,)

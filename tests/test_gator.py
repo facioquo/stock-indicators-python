@@ -1,4 +1,6 @@
+import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.chain import IndicatorChain
 
 class TestGator:
     def test_standard(self, quotes):
@@ -63,13 +65,30 @@ class TestGator:
         assert -9.2399 == round(float(r.lower), 4)
         assert r.is_upper_expanding == True
         assert r.is_lower_expanding == True
-        
+
+    @pytest.mark.skip(reason="AlligatorResults not allowed in this implementation.")
     def test_gator_with_alligator(self, quotes):
         alligator_results = indicators.get_alligator(quotes)
         alligator_results.done()
         
         results = indicators.get_gator(alligator_results)
         assert 502 == len(results)
+
+    def test_chainor(self, quotes):
+        with pytest.raises(ValueError):
+            results = IndicatorChain.use_quotes(quotes)\
+                .add(indicators.get_gator)\
+                .add(indicators.get_sma, 10)\
+                .calc()
+                
+    def test_chainee(self, quotes):
+        results = IndicatorChain.use_quotes(quotes)\
+            .add(indicators.get_sma, 2)\
+            .add(indicators.get_gator)\
+            .calc()
+            
+        assert 502 == len(results)
+        assert 481 == len(list(filter(lambda x: x.upper is not None, results)))
 
     def test_bad_data(self, bad_quotes):
         r = indicators.get_gator(bad_quotes)

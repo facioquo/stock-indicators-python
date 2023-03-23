@@ -1,7 +1,6 @@
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common._contrib.result_param import get_results_as_argument
 from stock_indicators.indicators.common.enums import BetaType
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
