@@ -1,8 +1,7 @@
 import os
 from datetime import datetime
 from decimal import Decimal as PyDecimal
-import pytest
-from openpyxl import load_workbook
+import pytest 
 from stock_indicators.indicators.common import Quote
 
 dir = os.path.dirname(__file__)
