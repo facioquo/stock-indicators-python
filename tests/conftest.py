@@ -12,7 +12,7 @@ def load_data_from_csv(sheet):
     with open(data_path ,"r") as f:
         data = f.readlines()
         data = [d.replace("\n","").split(",") for d in data] # parse csv
-    return data[1:] # skips the first row, these are headers
+    return data[1:] # skips the first row, those are headers
 
 @pytest.fixture(scope='session')
 def quotes(days: int = 502):
