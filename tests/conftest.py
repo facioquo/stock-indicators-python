@@ -1,9 +1,9 @@
 import os
 from datetime import datetime
-from decimal import Decimal as PyDecimal
+from decimal import Decimal, DecimalException
 import pytest 
 from stock_indicators.indicators.common import Quote
-from dateutil.parser import parse
+from dateutil.parser import parse, ParserError
 
 dir = os.path.dirname(__file__)
 
@@ -13,6 +13,12 @@ def get_data_from_csv(sheet):
         data = f.readlines()
         data = [d.replace("\n","").split(",") for d in data] # parse csv
     return data[1:] # skips the first row, those are headers
+
+def parse_decimal(value):
+    try:
+        return '{:f}'.format(Decimal(value))
+    except DecimalException:
+        return None
 
 @pytest.fixture(scope='session')
 def quotes(days: int = 502):
@@ -38,15 +44,18 @@ def bad_quotes(days: int = 502):
 
     h = []
     for row in rows: 
+        ans=None
+        if type(row[1])== str and len(row[1])>0:
+            ans = parse(row[1])
         h.append(Quote(
             # Quoto.date cannot be null.
-            parse(row[1]) or datetime.now(),
+            ans or datetime.now(),
             # Keep micro values.
-            '{:f}'.format(PyDecimal(row[2])) if row[2] is not None else None,
-            '{:f}'.format(PyDecimal(row[3])) if row[3] is not None else None,
-            '{:f}'.format(PyDecimal(row[4])) if row[4] is not None else None,
-            '{:f}'.format(PyDecimal(row[5])) if row[5] is not None else None,
-            '{:f}'.format(PyDecimal(row[6])) if row[6] is not None else None,
+            parse_decimal(row[2]),
+            parse_decimal(row[3]),
+            parse_decimal(row[4]),
+            parse_decimal(row[5]),
+            parse_decimal(row[6]),
         ))
 
     h.reverse()
@@ -59,7 +68,7 @@ def big_quotes(days: int = 1246):
     h = []
     for row in rows:
         h.append(Quote(
-            row[1],
+            parse(row[1]),
             row[2],
             row[3],
             row[4],
@@ -77,7 +86,7 @@ def other_quotes(days: int = 502):
     h = []
     for row in rows:
         h.append(Quote(
-            row[2],
+            parse(row[2]),
             row[3],
             row[4],
             row[5],
@@ -95,7 +104,7 @@ def bitcoin_quotes(days: int = 1246):
     h = []
     for row in rows:
         h.append(Quote(
-            row[1],
+            parse(row[1]),
             row[2],
             row[3],
             row[4],
@@ -113,7 +122,7 @@ def mismatch_quotes(days: int = 502):
     h = []
     for row in rows:
         h.append(Quote(
-            row[0],
+            parse(row[0]),
             row[1],
             row[2],
             row[3],
@@ -131,7 +140,7 @@ def intraday_quotes(days: int = 1564):
     h = []
     for row in rows:
         h.append(Quote(
-            row[1],
+            parse(row[1]),
             row[2],
             row[3],
             row[4],
@@ -149,7 +158,7 @@ def longish_quotes(days: int = 5285):
     h = []
     for row in rows:
         h.append(Quote(
-            row[2],
+            parse(row[2]),
             row[3],
             row[4],
             row[5],
@@ -167,7 +176,7 @@ def longest_quotes():
     h = []
     for row in rows:
         h.append(Quote(
-            row[2],
+            parse(row[2]),
             row[3],
             row[4],
             row[5],
@@ -184,7 +193,7 @@ def penny_quotes():
     h = []
     for row in rows:
         h.append(Quote(
-            row[1],
+            parse(row[1]),
             row[2],
             row[3],
             row[4],
@@ -201,7 +210,7 @@ def zigzag_quotes(days: int = 342):
     h = []
     for row in rows:
         h.append(Quote(
-            row[0],
+            parse(row[0]),
             row[1],
             row[2],
             row[3],
@@ -219,7 +228,7 @@ def spx_quotes(days: int = 8111):
     h = []
     for row in rows:
         h.append(Quote(
-            row[0],
+            parse(row[0]),
             row[1],
             row[2],
             row[3],
@@ -237,7 +246,7 @@ def msft_quotes(days: int = 8111):
     h = []
     for row in rows:
         h.append(Quote(
-            row[0],
+            parse(row[0]),
             row[1],
             row[2],
             row[3],
