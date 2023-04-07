@@ -37,8 +37,7 @@ def bad_quotes(days: int = 502):
     rows = get_data_from_csv('Bad')
 
     h = []
-    for row in rows:
-        print(row[1])
+    for row in rows: 
         h.append(Quote(
             # Quoto.date cannot be null.
             parse(row[1]) or datetime.now(),
