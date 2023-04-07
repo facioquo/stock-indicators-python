@@ -6,7 +6,7 @@ from stock_indicators.indicators.common import Quote
 
 dir = os.path.dirname(__file__)
 
-def load_data_from_csv(sheet):
+def get_data_from_csv(sheet):
     data_path = os.path.join(dir, f"../samples/quotes/{sheet}.csv")
     with open(data_path ,"r") as f:
         data = f.readlines()
@@ -15,7 +15,7 @@ def load_data_from_csv(sheet):
 
 @pytest.fixture(scope='session')
 def quotes(days: int = 502):
-    rows = load_data_from_csv('Default')
+    rows = get_data_from_csv('Default')
 
     h = []
     for row in rows:
@@ -33,7 +33,7 @@ def quotes(days: int = 502):
 
 @pytest.fixture(scope='session')
 def bad_quotes(days: int = 502):
-    rows = load_data_from_csv('Bad')
+    rows = get_data_from_csv('Bad')
 
     h = []
     for row in rows:
@@ -53,7 +53,7 @@ def bad_quotes(days: int = 502):
 
 @pytest.fixture(scope='session')
 def big_quotes(days: int = 1246):
-    rows = load_data_from_csv('TooBig')
+    rows = get_data_from_csv('TooBig')
 
     h = []
     for row in rows:
@@ -71,7 +71,7 @@ def big_quotes(days: int = 1246):
 
 @pytest.fixture(scope='session')
 def other_quotes(days: int = 502):
-    rows = load_data_from_csv('Compare')
+    rows = get_data_from_csv('Compare')
 
     h = []
     for row in rows:
@@ -89,7 +89,7 @@ def other_quotes(days: int = 502):
 
 @pytest.fixture(scope='session')
 def bitcoin_quotes(days: int = 1246):
-    rows = load_data_from_csv('Bitcoin')
+    rows = get_data_from_csv('Bitcoin')
 
     h = []
     for row in rows:
@@ -107,7 +107,7 @@ def bitcoin_quotes(days: int = 1246):
 
 @pytest.fixture(scope='session')
 def mismatch_quotes(days: int = 502):
-    rows = load_data_from_csv('Mismatch')
+    rows = get_data_from_csv('Mismatch')
 
     h = []
     for row in rows:
@@ -125,7 +125,7 @@ def mismatch_quotes(days: int = 502):
 
 @pytest.fixture(scope='session')
 def intraday_quotes(days: int = 1564):
-    rows = load_data_from_csv('Intraday')
+    rows = get_data_from_csv('Intraday')
 
     h = []
     for row in rows:
@@ -143,7 +143,7 @@ def intraday_quotes(days: int = 1564):
 
 @pytest.fixture(scope='session')
 def longish_quotes(days: int = 5285):
-    rows = load_data_from_csv('Longish')
+    rows = get_data_from_csv('Longish')
 
     h = []
     for row in rows:
@@ -161,7 +161,7 @@ def longish_quotes(days: int = 5285):
 
 @pytest.fixture(scope='session')
 def longest_quotes():
-    rows = load_data_from_csv('Longest')
+    rows = get_data_from_csv('Longest')
 
     h = []
     for row in rows:
@@ -178,7 +178,7 @@ def longest_quotes():
 
 @pytest.fixture(scope='session')
 def penny_quotes():
-    rows = load_data_from_csv('Penny')
+    rows = get_data_from_csv('Penny')
 
     h = []
     for row in rows:
@@ -195,7 +195,7 @@ def penny_quotes():
 
 @pytest.fixture(scope='session')
 def zigzag_quotes(days: int = 342):
-    rows = load_data_from_csv('ZigZag')
+    rows = get_data_from_csv('ZigZag')
 
     h = []
     for row in rows:
@@ -213,7 +213,7 @@ def zigzag_quotes(days: int = 342):
 
 @pytest.fixture(scope='session')
 def spx_quotes(days: int = 8111):
-    rows = load_data_from_csv('SPX')
+    rows = get_data_from_csv('SPX')
 
     h = []
     for row in rows:
@@ -231,7 +231,7 @@ def spx_quotes(days: int = 8111):
 
 @pytest.fixture(scope='session')
 def msft_quotes(days: int = 8111):
-    rows = load_data_from_csv('MSFT')
+    rows = get_data_from_csv('MSFT')
 
     h = []
     for row in rows:
