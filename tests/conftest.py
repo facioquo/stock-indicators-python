@@ -3,6 +3,7 @@ from datetime import datetime
 from decimal import Decimal as PyDecimal
 import pytest 
 from stock_indicators.indicators.common import Quote
+from dateutil.parser import parse
 
 dir = os.path.dirname(__file__)
 
@@ -20,7 +21,7 @@ def quotes(days: int = 502):
     h = []
     for row in rows:
         h.append(Quote(
-            row[1],
+            parse(row[1]),
             row[2],
             row[3],
             row[4],
@@ -37,9 +38,10 @@ def bad_quotes(days: int = 502):
 
     h = []
     for row in rows:
+        print(row[1])
         h.append(Quote(
             # Quoto.date cannot be null.
-            row[1] or datetime.now(),
+            parse(row[1]) or datetime.now(),
             # Keep micro values.
             '{:f}'.format(PyDecimal(row[2])) if row[2] is not None else None,
             '{:f}'.format(PyDecimal(row[3])) if row[3] is not None else None,
