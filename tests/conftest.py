@@ -6,22 +6,27 @@ from openpyxl import load_workbook
 from stock_indicators.indicators.common import Quote
 
 dir = os.path.dirname(__file__)
-data_path = os.path.join(dir, "../samples/quotes/History.xlsx")
-wb = load_workbook(data_path, data_only=True)
+
+def load_data_from_csv(sheet):
+    data_path = os.path.join(dir, f"../samples/quotes/{sheet}.csv")
+    with open(data_path ,"r") as f:
+        data = f.readlines()
+        data = [d.replace("\n","").split(",") for d in data] # parse csv
+    return data[1:] # skips the first row, these are headers
 
 @pytest.fixture(scope='session')
 def quotes(days: int = 502):
-    rows = list(wb['Default'])[1:]
+    rows = load_data_from_csv('Default')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
+            row[1],
+            row[2],
+            row[3],
+            row[4],
+            row[5],
+            row[6],
         ))
 
     h.reverse()
@@ -29,19 +34,19 @@ def quotes(days: int = 502):
 
 @pytest.fixture(scope='session')
 def bad_quotes(days: int = 502):
-    rows = list(wb['Bad'])[1:]
+    rows = load_data_from_csv('Bad')
 
     h = []
     for row in rows:
         h.append(Quote(
             # Quoto.date cannot be null.
-            row[1].value or datetime.now(),
+            row[1] or datetime.now(),
             # Keep micro values.
-            '{:f}'.format(PyDecimal(row[2].value)) if row[2].value is not None else None,
-            '{:f}'.format(PyDecimal(row[3].value)) if row[3].value is not None else None,
-            '{:f}'.format(PyDecimal(row[4].value)) if row[4].value is not None else None,
-            '{:f}'.format(PyDecimal(row[5].value)) if row[5].value is not None else None,
-            '{:f}'.format(PyDecimal(row[6].value)) if row[6].value is not None else None,
+            '{:f}'.format(PyDecimal(row[2])) if row[2] is not None else None,
+            '{:f}'.format(PyDecimal(row[3])) if row[3] is not None else None,
+            '{:f}'.format(PyDecimal(row[4])) if row[4] is not None else None,
+            '{:f}'.format(PyDecimal(row[5])) if row[5] is not None else None,
+            '{:f}'.format(PyDecimal(row[6])) if row[6] is not None else None,
         ))
 
     h.reverse()
@@ -49,17 +54,17 @@ def bad_quotes(days: int = 502):
 
 @pytest.fixture(scope='session')
 def big_quotes(days: int = 1246):
-    rows = list(wb['TooBig'])[1:]
+    rows = load_data_from_csv('TooBig')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
+            row[1],
+            row[2],
+            row[3],
+            row[4],
+            row[5],
+            row[6],
         ))
 
     h.reverse()
@@ -67,17 +72,17 @@ def big_quotes(days: int = 1246):
 
 @pytest.fixture(scope='session')
 def other_quotes(days: int = 502):
-    rows = list(wb['Compare'])[1:]
+    rows = load_data_from_csv('Compare')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
-            row[7].value,
+            row[2],
+            row[3],
+            row[4],
+            row[5],
+            row[6],
+            row[7],
         ))
 
     h.reverse()
@@ -85,17 +90,17 @@ def other_quotes(days: int = 502):
 
 @pytest.fixture(scope='session')
 def bitcoin_quotes(days: int = 1246):
-    rows = list(wb['Bitcoin'])[1:]
+    rows = load_data_from_csv('Bitcoin')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
+            row[1],
+            row[2],
+            row[3],
+            row[4],
+            row[5],
+            row[6],
         ))
 
     h.reverse()
@@ -103,17 +108,17 @@ def bitcoin_quotes(days: int = 1246):
 
 @pytest.fixture(scope='session')
 def mismatch_quotes(days: int = 502):
-    rows = list(wb['Mismatch'])[1:]
+    rows = load_data_from_csv('Mismatch')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[0].value,
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
+            row[0],
+            row[1],
+            row[2],
+            row[3],
+            row[4],
+            row[5],
         ))
 
     h.reverse()
@@ -121,17 +126,17 @@ def mismatch_quotes(days: int = 502):
 
 @pytest.fixture(scope='session')
 def intraday_quotes(days: int = 1564):
-    rows = list(wb['Intraday'])[1:]
+    rows = load_data_from_csv('Intraday')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
+            row[1],
+            row[2],
+            row[3],
+            row[4],
+            row[5],
+            row[6],
         ))
 
     h.reverse()
@@ -139,17 +144,17 @@ def intraday_quotes(days: int = 1564):
 
 @pytest.fixture(scope='session')
 def longish_quotes(days: int = 5285):
-    rows = list(wb['Longish'])[1:]
+    rows = load_data_from_csv('Longish')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
-            row[7].value,
+            row[2],
+            row[3],
+            row[4],
+            row[5],
+            row[6],
+            row[7],
         ))
 
     h.reverse()
@@ -157,51 +162,51 @@ def longish_quotes(days: int = 5285):
 
 @pytest.fixture(scope='session')
 def longest_quotes():
-    rows = list(wb['Longest'])[1:]
+    rows = load_data_from_csv('Longest')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
-            row[7].value,
+            row[2],
+            row[3],
+            row[4],
+            row[5],
+            row[6],
+            row[7],
         ))
 
     return h
 
 @pytest.fixture(scope='session')
 def penny_quotes():
-    rows = list(wb['Penny'])[1:]
+    rows = load_data_from_csv('Penny')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
+            row[1],
+            row[2],
+            row[3],
+            row[4],
+            row[5],
+            row[6],
         ))
 
     return h
 
 @pytest.fixture(scope='session')
 def zigzag_quotes(days: int = 342):
-    rows = list(wb['ZigZag'])[1:]
+    rows = load_data_from_csv('ZigZag')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[0].value,
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
+            row[0],
+            row[1],
+            row[2],
+            row[3],
+            row[4],
+            row[5],
         ))
 
     h.reverse()
@@ -209,17 +214,17 @@ def zigzag_quotes(days: int = 342):
 
 @pytest.fixture(scope='session')
 def spx_quotes(days: int = 8111):
-    rows = list(wb['SPX'])[1:]
+    rows = load_data_from_csv('SPX')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[0].value,
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
+            row[0],
+            row[1],
+            row[2],
+            row[3],
+            row[4],
+            row[5],
         ))
 
     h.reverse()
@@ -227,17 +232,17 @@ def spx_quotes(days: int = 8111):
 
 @pytest.fixture(scope='session')
 def msft_quotes(days: int = 8111):
-    rows = list(wb['MSFT'])[1:]
+    rows = load_data_from_csv('MSFT')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[0].value,
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
+            row[0],
+            row[1],
+            row[2],
+            row[3],
+            row[4],
+            row[5],
         ))
 
     h.reverse()
