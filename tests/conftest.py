@@ -7,18 +7,25 @@ from dateutil.parser import parse, ParserError
 
 dir = os.path.dirname(__file__)
 
-def get_data_from_csv(sheet):
-    data_path = os.path.join(dir, f"../samples/quotes/{sheet}.csv")
-    with open(data_path,"r") as f:
+
+def get_data_from_csv(filename):
+    """Read from CSV file."""
+
+    data_path = os.path.join(dir, f"../samples/quotes/{filename}.csv")
+    with open(data_path, "r") as f:
         data = f.readlines()
-        data = [d.replace("\n", "").split(",") for d in data] # parse csv
-    return data[1:] # skips the first row, those are headers
+        data = [d.replace("\n", "").split(",") for d in data]  # parse csv
+    return data[1:]  # skips the first row, those are headers
+
 
 def parse_decimal(value):
+    """Parse decimal value."""
+
     try:
         return '{:f}'.format(Decimal(value))
     except DecimalException:
         return None
+
 
 @pytest.fixture(scope='session')
 def quotes(days: int = 502):
@@ -38,19 +45,20 @@ def quotes(days: int = 502):
     h.reverse()
     return h[:days]
 
+
 @pytest.fixture(scope='session')
 def bad_quotes(days: int = 502):
     rows = get_data_from_csv('Bad')
 
     h = []
     for row in rows:
-        ans=None
+        ans = None
         try:
             ans = parse(row[1])
         except ParserError:
-            ans=None
+            ans = None
         h.append(Quote(
-            # Quoto.date cannot be null.
+            # Quote.date cannot be null.
             ans or datetime.now(),
             # Keep micro values.
             parse_decimal(row[2]),
@@ -62,6 +70,7 @@ def bad_quotes(days: int = 502):
 
     h.reverse()
     return h[:days]
+
 
 @pytest.fixture(scope='session')
 def big_quotes(days: int = 1246):
@@ -81,6 +90,7 @@ def big_quotes(days: int = 1246):
     h.reverse()
     return h[:days]
 
+
 @pytest.fixture(scope='session')
 def other_quotes(days: int = 502):
     rows = get_data_from_csv('Compare')
@@ -98,6 +108,7 @@ def other_quotes(days: int = 502):
 
     h.reverse()
     return h[:days]
+
 
 @pytest.fixture(scope='session')
 def bitcoin_quotes(days: int = 1246):
@@ -117,6 +128,7 @@ def bitcoin_quotes(days: int = 1246):
     h.reverse()
     return h[:days]
 
+
 @pytest.fixture(scope='session')
 def mismatch_quotes(days: int = 502):
     rows = get_data_from_csv('Mismatch')
@@ -134,6 +146,7 @@ def mismatch_quotes(days: int = 502):
 
     h.reverse()
     return h[:days]
+
 
 @pytest.fixture(scope='session')
 def intraday_quotes(days: int = 1564):
@@ -153,6 +166,7 @@ def intraday_quotes(days: int = 1564):
     h.reverse()
     return h[:days]
 
+
 @pytest.fixture(scope='session')
 def longish_quotes(days: int = 5285):
     rows = get_data_from_csv('Longish')
@@ -171,6 +185,7 @@ def longish_quotes(days: int = 5285):
     h.reverse()
     return h[:days]
 
+
 @pytest.fixture(scope='session')
 def longest_quotes():
     rows = get_data_from_csv('Longest')
@@ -188,6 +203,7 @@ def longest_quotes():
 
     return h
 
+
 @pytest.fixture(scope='session')
 def penny_quotes():
     rows = get_data_from_csv('Penny')
@@ -204,6 +220,7 @@ def penny_quotes():
         ))
 
     return h
+
 
 @pytest.fixture(scope='session')
 def zigzag_quotes(days: int = 342):
@@ -223,6 +240,7 @@ def zigzag_quotes(days: int = 342):
     h.reverse()
     return h[:days]
 
+
 @pytest.fixture(scope='session')
 def spx_quotes(days: int = 8111):
     rows = get_data_from_csv('SPX')
@@ -241,6 +259,7 @@ def spx_quotes(days: int = 8111):
     h.reverse()
     return h[:days]
 
+
 @pytest.fixture(scope='session')
 def msft_quotes(days: int = 8111):
     rows = get_data_from_csv('MSFT')
@@ -258,6 +277,7 @@ def msft_quotes(days: int = 8111):
 
     h.reverse()
     return h[:days]
+
 
 @pytest.fixture(scope='session')
 def converge_quantities():
