@@ -36,8 +36,6 @@ def get_beta(eval_quotes: Iterable[Quote], market_quotes: Iterable[Quote],
          - [Beta Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Beta/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    warn('Eval and Market quotes have been reversed in v1! Ensure you swap parameter location. '
-         'This warning will be removed after v1.0.0', SyntaxWarning)
 
     beta_results = CsIndicator.GetBeta[Quote](CsList(Quote, eval_quotes), CsList(Quote, market_quotes),
                                               lookback_periods, beta_type.cs_value)
@@ -107,6 +105,8 @@ class BetaResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=BetaResult)
+
+
 class BetaResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Beta results.
