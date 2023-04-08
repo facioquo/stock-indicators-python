@@ -1,7 +1,7 @@
 import os
 from datetime import datetime
 from decimal import Decimal, DecimalException
-import pytest 
+import pytest
 from stock_indicators.indicators.common import Quote
 from dateutil.parser import parse, ParserError
 
@@ -9,9 +9,9 @@ dir = os.path.dirname(__file__)
 
 def get_data_from_csv(sheet):
     data_path = os.path.join(dir, f"../samples/quotes/{sheet}.csv")
-    with open(data_path ,"r") as f:
+    with open(data_path,"r") as f:
         data = f.readlines()
-        data = [d.replace("\n","").split(",") for d in data] # parse csv
+        data = [d.replace("\n", "").split(",") for d in data] # parse csv
     return data[1:] # skips the first row, those are headers
 
 def parse_decimal(value):
@@ -43,10 +43,12 @@ def bad_quotes(days: int = 502):
     rows = get_data_from_csv('Bad')
 
     h = []
-    for row in rows: 
+    for row in rows:
         ans=None
-        if type(row[1])== str and len(row[1])>0:
+        try:
             ans = parse(row[1])
+        except ParserError:
+            ans=None
         h.append(Quote(
             # Quoto.date cannot be null.
             ans or datetime.now(),
