@@ -1,5 +1,4 @@
 from typing import Iterable, Optional, TypeVar
-from warnings import warn
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
