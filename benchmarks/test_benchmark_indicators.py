@@ -166,9 +166,6 @@ def test_benchmark_rsi(benchmark, quotes):
 def test_benchmark_slope(benchmark, quotes):
     benchmark(indicators.get_slope, quotes, 20)
 
-def test_benchmark_sma_extended(benchmark, quotes):
-    benchmark(indicators.get_sma_extended, quotes, 20)
-
 def test_benchmark_sma(benchmark, quotes):
     benchmark(indicators.get_sma, quotes, 20)
 
