@@ -12,8 +12,6 @@ layout: indicator
 
 ## **get_beta**(*eval_history, market_quotes, lookback_periods, beta_type=BetaType.STANDARD*)
 
-:warning: <code style='color: #d32f2f; important'>Eval and Market quotes have been reversed in v1! Ensure you swap parameter location. (The warning will be shown and it will be removed after v1.0.0')</code>
-
 ## Parameters
 
 | name | type | notes

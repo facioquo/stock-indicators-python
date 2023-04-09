@@ -1,5 +1,4 @@
 from typing import Iterable, Optional, TypeVar
-from warnings import warn
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -33,9 +32,11 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int,
          - [SMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Sma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var.
+    quotes = Quote.use(
+        quotes, candle_part)  # Error occurs if not assigned to local var.
     results = CsIndicator.GetSma(quotes, lookback_periods)
     return SMAResults(results, SMAResult)
+
 
 def get_sma_analysis(quotes: Iterable[Quote], lookback_periods: int):
     """Get SMA calculated, with more analysis.
@@ -59,12 +60,9 @@ def get_sma_analysis(quotes: Iterable[Quote], lookback_periods: int):
          - [SMA-analysis Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Sma/#content)
          - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
     """
-    sma_extended_list = CsIndicator.GetSmaAnalysis[Quote](CsList(Quote, quotes), lookback_periods)
+    sma_extended_list = CsIndicator.GetSmaAnalysis[Quote](
+        CsList(Quote, quotes), lookback_periods)
     return SMAAnalysisResults(sma_extended_list, SMAAnalysisResult)
-
-def get_sma_extended(quotes: Iterable[Quote], lookback_periods: int):
-    warn('This method is deprecated. Use get_sma_analysis() instead.', DeprecationWarning, stacklevel=2)
-    return get_sma_analysis(quotes, lookback_periods)
 
 
 class SMAResult(ResultBase):
@@ -82,6 +80,8 @@ class SMAResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=SMAResult)
+
+
 class SMAResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of SMA(Simple Moving Average) results.
@@ -121,6 +121,8 @@ class SMAAnalysisResult(SMAResult):
 
 
 _T = TypeVar("_T", bound=SMAAnalysisResult)
+
+
 class SMAAnalysisResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of SMA Analysis results.
