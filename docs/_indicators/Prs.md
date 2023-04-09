@@ -11,8 +11,6 @@ layout: indicator
 
 ## **get_prs**(*eval_history, base_history, lookback_periods=None, sma_periods=None*)
 
-:warning: <code style='color: #d32f2f; important'>Eval and Base quotes have been reversed in v1! Ensure you swap parameter location. (The warning will be shown and it will be removed after v1.0.0')</code>
-
 ## Parameters
 
 | name | type | notes
