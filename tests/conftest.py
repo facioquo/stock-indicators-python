@@ -3,6 +3,8 @@ from datetime import datetime
 from decimal import Decimal, DecimalException
 import pytest
 from stock_indicators.indicators.common import Quote
+import csv
+
 
 dir = os.path.dirname(__file__)
 
@@ -11,9 +13,9 @@ def get_data_from_csv(filename):
     """Read from CSV file."""
 
     data_path = os.path.join(dir, f"../samples/quotes/{filename}.csv")
-    with open(data_path, "r") as f:
-        data = f.readlines()
-        data = [d.replace("\n", "").split(",") for d in data]  # parse csv
+    with open(data_path, 'r', newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        data = list(reader)
     return data[1:]  # skips the first row, those are headers
 
 
