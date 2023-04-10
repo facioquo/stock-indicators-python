@@ -61,6 +61,7 @@ def bad_quotes(days: int = 502):
 
     h = []
     for row in rows:
+        h.append(Quote(
             # Quote.date cannot be null.
             parse_date(row[1]),
             # Keep micro values.
