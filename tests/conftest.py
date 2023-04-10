@@ -29,9 +29,11 @@ def parse_decimal(value):
 
 
 def parse_date(date_str):
-    """Parse date value."""
-
-    return datetime.strptime(date_str, '%Y-%m-%d')
+    """Parse date value. Input format must be '%Y-%m-%d' """
+    try:
+        return datetime.strptime(date_str, '%Y-%m-%d')
+    except ValueError:
+        return datetime.now()
 
 
 @pytest.fixture(scope='session')
@@ -59,14 +61,8 @@ def bad_quotes(days: int = 502):
 
     h = []
     for row in rows:
-        ans = None
-        try:
-            ans = parse_date(row[1])
-        except ParserError:
-            ans = None
-        h.append(Quote(
             # Quote.date cannot be null.
-            ans or datetime.now(),
+            parse_date(row[1]),
             # Keep micro values.
             parse_decimal(row[2]),
             parse_decimal(row[3]),
