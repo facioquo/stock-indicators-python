@@ -29,6 +29,8 @@ def parse_decimal(value):
 
 
 def parse_date(date_str):
+    """Parse date value."""
+
     return datetime.strptime(date_str, '%Y-%m-%d')
 
 
@@ -39,7 +41,7 @@ def quotes(days: int = 502):
     h = []
     for row in rows:
         h.append(Quote(
-            parse(row[1]),
+            parse_date(row[1]),
             row[2],
             row[3],
             row[4],
@@ -59,7 +61,7 @@ def bad_quotes(days: int = 502):
     for row in rows:
         ans = None
         try:
-            ans = parse(row[1])
+            ans = parse_date(row[1])
         except ParserError:
             ans = None
         h.append(Quote(
@@ -84,7 +86,7 @@ def big_quotes(days: int = 1246):
     h = []
     for row in rows:
         h.append(Quote(
-            parse(row[1]),
+            parse_date(row[1]),
             row[2],
             row[3],
             row[4],
@@ -103,7 +105,7 @@ def other_quotes(days: int = 502):
     h = []
     for row in rows:
         h.append(Quote(
-            parse(row[2]),
+            parse_date(row[2]),
             row[3],
             row[4],
             row[5],
@@ -122,7 +124,7 @@ def bitcoin_quotes(days: int = 1246):
     h = []
     for row in rows:
         h.append(Quote(
-            parse(row[1]),
+            parse_date(row[1]),
             row[2],
             row[3],
             row[4],
@@ -141,7 +143,7 @@ def mismatch_quotes(days: int = 502):
     h = []
     for row in rows:
         h.append(Quote(
-            parse(row[0]),
+            parse_date(row[0]),
             row[1],
             row[2],
             row[3],
@@ -160,7 +162,7 @@ def intraday_quotes(days: int = 1564):
     h = []
     for row in rows:
         h.append(Quote(
-            parse(row[1]),
+            parse_date(row[1]),
             row[2],
             row[3],
             row[4],
@@ -179,7 +181,7 @@ def longish_quotes(days: int = 5285):
     h = []
     for row in rows:
         h.append(Quote(
-            parse(row[2]),
+            parse_date(row[2]),
             row[3],
             row[4],
             row[5],
@@ -198,7 +200,7 @@ def longest_quotes():
     h = []
     for row in rows:
         h.append(Quote(
-            parse(row[2]),
+            parse_date(row[2]),
             row[3],
             row[4],
             row[5],
@@ -216,7 +218,7 @@ def penny_quotes():
     h = []
     for row in rows:
         h.append(Quote(
-            parse(row[1]),
+            parse_date(row[1]),
             row[2],
             row[3],
             row[4],
@@ -234,7 +236,7 @@ def zigzag_quotes(days: int = 342):
     h = []
     for row in rows:
         h.append(Quote(
-            parse(row[0]),
+            parse_date(row[0]),
             row[1],
             row[2],
             row[3],
@@ -253,7 +255,7 @@ def spx_quotes(days: int = 8111):
     h = []
     for row in rows:
         h.append(Quote(
-            parse(row[0]),
+            parse_date(row[0]),
             row[1],
             row[2],
             row[3],
@@ -272,7 +274,7 @@ def msft_quotes(days: int = 8111):
     h = []
     for row in rows:
         h.append(Quote(
-            parse(row[0]),
+            parse_date(row[0]),
             row[1],
             row[2],
             row[3],
