@@ -3,7 +3,6 @@ from datetime import datetime
 from decimal import Decimal, DecimalException
 import pytest
 from stock_indicators.indicators.common import Quote
-from dateutil.parser import parse, ParserError
 
 dir = os.path.dirname(__file__)
 
@@ -25,6 +24,10 @@ def parse_decimal(value):
         return '{:f}'.format(Decimal(value))
     except DecimalException:
         return None
+
+
+def parse_date(date_str):
+    return datetime.strptime(date_str, '%Y-%m-%d')
 
 
 @pytest.fixture(scope='session')
