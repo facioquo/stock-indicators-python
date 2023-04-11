@@ -31,7 +31,7 @@ def parse_decimal(value):
 def parse_date(date_str):
     """Parse date value. Input format must be '%Y-%m-%d' """
     try:
-        if len(date_str)==10:
+        if len(date_str)<=10:
             return datetime.strptime(date_str, '%Y-%m-%d ')
         return datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S')
     except ValueError:
