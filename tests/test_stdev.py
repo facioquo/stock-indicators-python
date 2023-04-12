@@ -22,12 +22,6 @@ class TestStdev:
         assert -0.525917 == round(float(r.z_score), 6)
         assert r.stdev_sma is None
         
-        r = results[9]
-        assert    0.5020 == round(float(r.stdev), 4)
-        assert  214.0140 == round(float(r.mean), 4)
-        assert -0.525917 == round(float(r.z_score), 6)
-        assert r.stdev_sma is None
-        
         r = results[249]
         assert   0.9827 == round(float(r.stdev), 4)
         assert 257.2200 == round(float(r.mean), 4)
