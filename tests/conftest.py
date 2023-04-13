@@ -1,247 +1,290 @@
 import os
+import csv
 from datetime import datetime
-from decimal import Decimal as PyDecimal
+from decimal import Decimal, DecimalException
 import pytest
-from openpyxl import load_workbook
 from stock_indicators.indicators.common import Quote
 
+
 dir = os.path.dirname(__file__)
-data_path = os.path.join(dir, "../samples/quotes/History.xlsx")
-wb = load_workbook(data_path, data_only=True)
+
+
+def get_data_from_csv(filename):
+    """Read from CSV file."""
+
+    data_path = os.path.join(dir, f"../samples/quotes/{filename}.csv")
+    with open(data_path, 'r', newline='') as csvfile:
+        reader = csv.reader(csvfile)
+        data = list(reader)
+    return data[1:]  # skips the first row, those are headers
+
+
+def parse_decimal(value):
+    """Parse decimal value."""
+
+    try:
+        return '{:f}'.format(Decimal(value))
+    except DecimalException:
+        return None
+
+
+def parse_date(date_str):
+    """Parse date value. Input format must be '%Y-%m-%d' """
+
+    try:
+        if len(date_str) <= 10:
+            return datetime.strptime(date_str, '%Y-%m-%d')
+        return datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S')
+    except ValueError:
+        return datetime.now()
+
 
 @pytest.fixture(scope='session')
 def quotes(days: int = 502):
-    rows = list(wb['Default'])[1:]
+    rows = get_data_from_csv('Default')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
+            parse_date(row[1]),
+            row[2],
+            row[3],
+            row[4],
+            row[5],
+            row[6],
         ))
 
     h.reverse()
     return h[:days]
+
 
 @pytest.fixture(scope='session')
 def bad_quotes(days: int = 502):
-    rows = list(wb['Bad'])[1:]
+    rows = get_data_from_csv('Bad')
 
     h = []
     for row in rows:
         h.append(Quote(
-            # Quoto.date cannot be null.
-            row[1].value or datetime.now(),
+            # Quote.date cannot be null.
+            parse_date(row[1]),
             # Keep micro values.
-            '{:f}'.format(PyDecimal(row[2].value)) if row[2].value is not None else None,
-            '{:f}'.format(PyDecimal(row[3].value)) if row[3].value is not None else None,
-            '{:f}'.format(PyDecimal(row[4].value)) if row[4].value is not None else None,
-            '{:f}'.format(PyDecimal(row[5].value)) if row[5].value is not None else None,
-            '{:f}'.format(PyDecimal(row[6].value)) if row[6].value is not None else None,
+            parse_decimal(row[2]),
+            parse_decimal(row[3]),
+            parse_decimal(row[4]),
+            parse_decimal(row[5]),
+            parse_decimal(row[6]),
         ))
 
     h.reverse()
     return h[:days]
+
 
 @pytest.fixture(scope='session')
 def big_quotes(days: int = 1246):
-    rows = list(wb['TooBig'])[1:]
+    rows = get_data_from_csv('TooBig')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
+            parse_date(row[1]),
+            row[2],
+            row[3],
+            row[4],
+            row[5],
+            row[6],
         ))
 
     h.reverse()
     return h[:days]
+
 
 @pytest.fixture(scope='session')
 def other_quotes(days: int = 502):
-    rows = list(wb['Compare'])[1:]
+    rows = get_data_from_csv('Compare')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
-            row[7].value,
+            parse_date(row[2]),
+            row[3],
+            row[4],
+            row[5],
+            row[6],
+            row[7],
         ))
 
     h.reverse()
     return h[:days]
+
 
 @pytest.fixture(scope='session')
 def bitcoin_quotes(days: int = 1246):
-    rows = list(wb['Bitcoin'])[1:]
+    rows = get_data_from_csv('Bitcoin')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
+            parse_date(row[1]),
+            row[2],
+            row[3],
+            row[4],
+            row[5],
+            row[6],
         ))
 
     h.reverse()
     return h[:days]
+
 
 @pytest.fixture(scope='session')
 def mismatch_quotes(days: int = 502):
-    rows = list(wb['Mismatch'])[1:]
+    rows = get_data_from_csv('Mismatch')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[0].value,
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
+            parse_date(row[0]),
+            row[1],
+            row[2],
+            row[3],
+            row[4],
+            row[5],
         ))
 
     h.reverse()
     return h[:days]
+
 
 @pytest.fixture(scope='session')
 def intraday_quotes(days: int = 1564):
-    rows = list(wb['Intraday'])[1:]
+    rows = get_data_from_csv('Intraday')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
+            parse_date(row[1]),
+            row[2],
+            row[3],
+            row[4],
+            row[5],
+            row[6],
         ))
 
     h.reverse()
     return h[:days]
+
 
 @pytest.fixture(scope='session')
 def longish_quotes(days: int = 5285):
-    rows = list(wb['Longish'])[1:]
+    rows = get_data_from_csv('Longish')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
-            row[7].value,
+            parse_date(row[2]),
+            row[3],
+            row[4],
+            row[5],
+            row[6],
+            row[7],
         ))
 
     h.reverse()
     return h[:days]
+
 
 @pytest.fixture(scope='session')
 def longest_quotes():
-    rows = list(wb['Longest'])[1:]
+    rows = get_data_from_csv('Longest')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
-            row[7].value,
+            parse_date(row[2]),
+            row[3],
+            row[4],
+            row[5],
+            row[6],
+            row[7],
         ))
 
     return h
+
 
 @pytest.fixture(scope='session')
 def penny_quotes():
-    rows = list(wb['Penny'])[1:]
+    rows = get_data_from_csv('Penny')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
-            row[6].value,
+            parse_date(row[1]),
+            row[2],
+            row[3],
+            row[4],
+            row[5],
+            row[6],
         ))
 
     return h
 
+
 @pytest.fixture(scope='session')
 def zigzag_quotes(days: int = 342):
-    rows = list(wb['ZigZag'])[1:]
+    rows = get_data_from_csv('ZigZag')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[0].value,
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
+            parse_date(row[0]),
+            row[1],
+            row[2],
+            row[3],
+            row[4],
+            row[5],
         ))
 
     h.reverse()
     return h[:days]
+
 
 @pytest.fixture(scope='session')
 def spx_quotes(days: int = 8111):
-    rows = list(wb['SPX'])[1:]
+    rows = get_data_from_csv('SPX')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[0].value,
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
+            parse_date(row[0]),
+            row[1],
+            row[2],
+            row[3],
+            row[4],
+            row[5],
         ))
 
     h.reverse()
     return h[:days]
+
 
 @pytest.fixture(scope='session')
 def msft_quotes(days: int = 8111):
-    rows = list(wb['MSFT'])[1:]
+    rows = get_data_from_csv('MSFT')
 
     h = []
     for row in rows:
         h.append(Quote(
-            row[0].value,
-            row[1].value,
-            row[2].value,
-            row[3].value,
-            row[4].value,
-            row[5].value,
+            parse_date(row[0]),
+            row[1],
+            row[2],
+            row[3],
+            row[4],
+            row[5],
         ))
 
     h.reverse()
     return h[:days]
+
 
 @pytest.fixture(scope='session')
 def converge_quantities():
