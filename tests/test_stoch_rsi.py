@@ -1,5 +1,5 @@
-import pytest
 from datetime import datetime, timezone, timedelta
+import pytest
 from stock_indicators import indicators
 
 class TestStochRSI:
