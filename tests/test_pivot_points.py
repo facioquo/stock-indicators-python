@@ -1,6 +1,5 @@
 import pytest
 from stock_indicators import indicators
-from stock_indicators.indicators.common import results
 from stock_indicators.indicators.common.enums import PeriodSize, PivotPointType
 
 class TestPivotPoints:
