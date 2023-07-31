@@ -1,4 +1,5 @@
 import pytest
+from datetime import datetime, timezone, timedelta
 from stock_indicators import indicators
 
 class TestADL:
@@ -65,7 +66,7 @@ class TestADL:
     def test_date_tz_aware(self, tz_aware_quotes):
         results = indicators.get_adl(tz_aware_quotes, 20)
 
-        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
+        assert datetime(2022,6,9,12,3,tzinfo=timezone(timedelta(hours=-4))) == results.pop().date
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException

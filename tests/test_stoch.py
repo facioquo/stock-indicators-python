@@ -1,4 +1,5 @@
 import pytest
+from datetime import datetime, timezone, timedelta
 from stock_indicators import indicators
 
 class TestStoch:
@@ -80,7 +81,7 @@ class TestStoch:
 
     def test_date_tz_aware(self, tz_aware_quotes):
         results = indicators.get_stoch(tz_aware_quotes, 11, 8, 4)
-        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
+        assert datetime(2022,6,9,12,3,tzinfo=timezone(timedelta(hours=-4))) == results.pop().date
 
     def test_removed(self, quotes):
         results = indicators.get_stoch(quotes, 14, 3, 3).remove_warmup_periods()
@@ -96,7 +97,7 @@ class TestStoch:
         results = indicators.get_stoch(tz_aware_quotes, 20, 8, 3).remove_warmup_periods()
 
         assert len(tz_aware_quotes) - (20 + 3 - 2) == len(results)
-        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
+        assert datetime(2022,6,9,12,3,tzinfo=timezone(timedelta(hours=-4))) == results.pop().date
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException

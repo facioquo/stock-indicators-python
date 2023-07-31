@@ -1,4 +1,5 @@
 import pytest
+from datetime import datetime, timezone, timedelta
 from stock_indicators import indicators
 from stock_indicators.indicators.common.enums import PivotPointType
 
@@ -333,7 +334,7 @@ class TestPivotPoints:
 
     def test_date_tz_aware(self, tz_aware_quotes):
         results = indicators.get_rolling_pivots(tz_aware_quotes, 15, 5, PivotPointType.DEMARK)
-        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
+        assert datetime(2022,6,9,12,3,tzinfo=timezone(timedelta(hours=-4))) == results.pop().date
 
     def test_removed(self, quotes):
         window_periods = 11
@@ -361,7 +362,7 @@ class TestPivotPoints:
         results = results.remove_warmup_periods()
 
         assert len(tz_aware_quotes) - (window_periods + offset_periods) == len(results)
-        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
+        assert datetime(2022,6,9,12,3,tzinfo=timezone(timedelta(hours=-4))) == results.pop().date
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException

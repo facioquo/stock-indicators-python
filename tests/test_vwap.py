@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone, timedelta
 import pytest
 from stock_indicators import indicators
 
@@ -79,7 +79,7 @@ class TestVWAP:
 
     def test_date_tz_aware(self, tz_aware_quotes):
         results = indicators.get_vwap(tz_aware_quotes)
-        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
+        assert datetime(2022,6,9,12,3,tzinfo=timezone(timedelta(hours=-4))) == results.pop().date
 
     def test_removed(self, intraday_quotes):
         intraday_quotes.sort(key=lambda x: x.date)
