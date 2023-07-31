@@ -1,3 +1,6 @@
 # _cslib
 pythonnet==3.0.1
 typing_extensions>=4.0.0
+
+# _cstypes
+python-dateutil

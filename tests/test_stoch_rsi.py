@@ -63,6 +63,18 @@ class TestStochRSI:
         
         assert 502 == len(r)
 
+    def test_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_stoch_rsi(tz_aware_quotes, 15, 20, 3, 2)
+        assert len(tz_aware_quotes) == len(results)
+
+    def test_date(self, quotes):
+        results = indicators.get_stoch_rsi(quotes, 8, 11, 3, 3)
+        assert '2018-12-31' == results.pop().date.strftime('%Y-%m-%d')
+
+    def test_date_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_stoch_rsi(tz_aware_quotes, 8, 20, 4, 6)
+        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
+
     def test_removed(self, quotes):
         rsi_periods = 14
         stoch_periods = 14
@@ -78,6 +90,19 @@ class TestStochRSI:
         last = results.pop()
         assert 89.8385 == round(float(last.stoch_rsi), 4)
         assert 73.4176 == round(float(last.signal), 4)
+
+    def test_removed_tz_aware(self, tz_aware_quotes):
+        rsi_periods = 14
+        stoch_periods = 14
+        signal_periods = 3
+        smooth_periods = 3
+
+        results = indicators.get_stoch_rsi(tz_aware_quotes, rsi_periods, stoch_periods, signal_periods, smooth_periods)\
+            .remove_warmup_periods()
+
+        removed_qty = rsi_periods + stoch_periods + smooth_periods + 100
+        assert len(tz_aware_quotes) - removed_qty == len(results)
+        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException

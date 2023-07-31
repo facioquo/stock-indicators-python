@@ -35,6 +35,25 @@ class TestBollingerBands:
 
         assert 502 == len(r)
 
+
+    def test_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_bollinger_bands(tz_aware_quotes)
+
+        assert len(tz_aware_quotes) == len(results)
+
+
+    def test_date(self, quotes):
+        results = indicators.get_bollinger_bands(quotes)
+
+        assert '2018-12-31' == results.pop().date.strftime('%Y-%m-%d')
+
+
+    def test_date_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_bollinger_bands(tz_aware_quotes)
+
+        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
+
+
     def test_removed(self, quotes):
         results = indicators.get_bollinger_bands(quotes, 20, 2).remove_warmup_periods()
 
@@ -47,6 +66,14 @@ class TestBollingerBands:
         assert 0.349362  == round(float(last.percent_b), 6)
         assert -0.602552 == round(float(last.z_score), 6)
         assert 0.173433  == round(float(last.width), 6)
+
+
+    def test_removed_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_bollinger_bands(tz_aware_quotes).remove_warmup_periods()
+
+        assert len(tz_aware_quotes) - 19 == len(results)
+        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
+
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException

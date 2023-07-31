@@ -29,12 +29,23 @@ def parse_decimal(value):
 
 
 def parse_date(date_str):
-    """Parse date value. Input format must be '%Y-%m-%d' """
+    """Parse date value.
+
+    Input format must be one of the following:
+        '%Y-%m-%d',
+        '%Y-%m-%d %H:%M:%S', or
+        '%Y-%m-%d %H:%M:%S%z' where %z is the UTC offset for a timezone aware datetime.
+
+    If UTC offset is provided it must be in the format '±HHMM[SS[.ffffff]]'.
+    Reference: https://docs.python.org/3/library/datetime.html#strftime-and-strptime-format-codes
+    """
 
     try:
         if len(date_str) <= 10:
             return datetime.strptime(date_str, '%Y-%m-%d')
-        return datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S')
+        elif len(date_str) <= 19:
+            return datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S')
+        return datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S%z')
     except ValueError:
         return datetime.now()
 
@@ -284,6 +295,25 @@ def msft_quotes(days: int = 8111):
 
     h.reverse()
     return h[:days]
+
+
+@pytest.fixture(scope='session')
+def tz_aware_quotes(minutes: int = 2000):
+    rows = get_data_from_csv('TZAware')
+
+    h = []
+    for row in rows:
+        h.append(Quote(
+            parse_date(row[1]),
+            row[2],
+            row[3],
+            row[4],
+            row[5],
+            row[6],
+        ))
+
+    h.reverse()
+    return h[:minutes]
 
 
 @pytest.fixture(scope='session')

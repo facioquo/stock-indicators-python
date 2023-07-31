@@ -70,6 +70,18 @@ class TestStoch:
         r = indicators.get_stoch(bad_quotes, 15)
         assert 502 == len(r)
 
+    def test_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_stoch(tz_aware_quotes, 8)
+        assert len(tz_aware_quotes) == len(results)
+
+    def test_date(self, quotes):
+        results = indicators.get_stoch(quotes, 20)
+        assert '2018-12-31' == results.pop().date.strftime('%Y-%m-%d')
+
+    def test_date_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_stoch(tz_aware_quotes, 11, 8, 4)
+        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
+
     def test_removed(self, quotes):
         results = indicators.get_stoch(quotes, 14, 3, 3).remove_warmup_periods()
 
@@ -79,6 +91,12 @@ class TestStoch:
         assert 43.1353 == round(float(last.oscillator), 4)
         assert 35.5674 == round(float(last.signal), 4)
         assert 58.2712 == round(float(last.percent_j), 4)
+
+    def test_removed_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_stoch(tz_aware_quotes, 20, 8, 3).remove_warmup_periods()
+
+        assert len(tz_aware_quotes) - (20 + 3 - 2) == len(results)
+        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException

@@ -1,5 +1,6 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common import results
 from stock_indicators.indicators.common.enums import PeriodSize, PivotPointType
 
 class TestPivotPoints:
@@ -334,6 +335,18 @@ class TestPivotPoints:
         r = indicators.get_pivot_points(quotes[:1], PeriodSize.WEEK)
         assert 1 == len(r)
         
+    def test_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_pivot_points(tz_aware_quotes, PeriodSize.DAY, PivotPointType.CAMARILLA)
+        assert len(tz_aware_quotes) == len(results)
+
+    def test_date(self, quotes):
+        results = indicators.get_pivot_points(quotes, PeriodSize.MONTH, PivotPointType.DEMARK)
+        assert '2018-12-31' == results.pop().date.strftime('%Y-%m-%d')
+
+    def test_date_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_pivot_points(tz_aware_quotes, PeriodSize.DAY, PivotPointType.FIBONACCI)
+        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
+
     def test_removed(self, quotes):
         results = indicators.get_pivot_points(quotes, PeriodSize.MONTH, PivotPointType.STANDARD)
         results = results.remove_warmup_periods()
@@ -350,7 +363,7 @@ class TestPivotPoints:
         assert 284.3867 == round(float(last.r2), 4)
         assert 294.3833 == round(float(last.r3), 4)
         assert last.r4 is None
-           
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

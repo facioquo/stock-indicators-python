@@ -323,6 +323,18 @@ class TestPivotPoints:
         r = indicators.get_rolling_pivots(quotes[:1], 5, 2)
         assert 1 == len(r)
         
+    def test_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_rolling_pivots(tz_aware_quotes, 15, 5, PivotPointType.FIBONACCI)
+        assert len(tz_aware_quotes) == len(results)
+
+    def test_date(self, quotes):
+        results = indicators.get_rolling_pivots(quotes, 20, 8, PivotPointType.STANDARD)
+        assert '2018-12-31' == results.pop().date.strftime('%Y-%m-%d')
+
+    def test_date_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_rolling_pivots(tz_aware_quotes, 15, 5, PivotPointType.DEMARK)
+        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
+
     def test_removed(self, quotes):
         window_periods = 11
         offset_periods = 9
@@ -341,7 +353,16 @@ class TestPivotPoints:
         assert 281.2767 == round(float(last.r2), 4)
         assert 288.9633 == round(float(last.r3), 4)
         assert last.r4 is None
-           
+
+    def test_removed_tz_aware(self, tz_aware_quotes):
+        window_periods = 11
+        offset_periods = 8
+        results = indicators.get_rolling_pivots(tz_aware_quotes, window_periods, offset_periods, PivotPointType.STANDARD)
+        results = results.remove_warmup_periods()
+
+        assert len(tz_aware_quotes) - (window_periods + offset_periods) == len(results)
+        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

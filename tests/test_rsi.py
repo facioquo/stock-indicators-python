@@ -48,6 +48,18 @@ class TestRSI:
 
         assert 502 == len(r)
 
+    def test_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_rsi(tz_aware_quotes)
+        assert len(tz_aware_quotes) == len(results)
+
+    def test_date(self, quotes):
+        results = indicators.get_rsi(quotes)
+        assert '2018-12-31' == results.pop().date.strftime('%Y-%m-%d')
+
+    def test_date_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_rsi(tz_aware_quotes)
+        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
+
     def test_removed(self, quotes):
         results = indicators.get_rsi(quotes, 14).remove_warmup_periods()
 
@@ -55,6 +67,12 @@ class TestRSI:
 
         last = results.pop()
         assert 42.0773 == round(float(last.rsi), 4)
+
+    def test_removed_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_rsi(tz_aware_quotes, 14).remove_warmup_periods()
+
+        assert len(tz_aware_quotes) - (10 * 14) == len(results)
+        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException

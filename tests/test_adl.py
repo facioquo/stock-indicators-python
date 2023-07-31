@@ -52,6 +52,20 @@ class TestADL:
         assert 3439986548.42 == round(float(r.adl),                   2)
         assert 3595352721.16 == round(float(r.adl_sma),               2)
 
+    def test_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_adl(tz_aware_quotes, 20)
+
+        assert len(tz_aware_quotes) == len(results)
+
+    def test_date(self, quotes):
+        results = indicators.get_adl(quotes, 20)
+
+        assert '2018-12-31' == results.pop().date.strftime('%Y-%m-%d')
+
+    def test_date_tz_aware(self, tz_aware_quotes):
+        results = indicators.get_adl(tz_aware_quotes, 20)
+
+        assert '2022-06-09 12:03:00-0400' == results.pop().date.strftime('%Y-%m-%d %H:%M:%S%z')
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
