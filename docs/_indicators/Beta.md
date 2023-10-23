@@ -12,8 +12,6 @@ layout: indicator
 
 ## **get_beta**(*eval_history, market_quotes, lookback_periods, beta_type=BetaType.STANDARD*)
 
-:warning: <code style='color: #d32f2f; important'>Eval and Market quotes have been reversed in v1! Ensure you swap parameter location. (The warning will be shown and it will be removed after v1.0.0')</code>
-
 ## Parameters
 
 | name | type | notes
@@ -90,11 +88,11 @@ results = indicators.get_beta(history_SPX, history_TSLA, 20, BetaType.STANDARD)
 ## About {{ page.title }}
 
 [Beta](https://en.wikipedia.org/wiki/Beta_(finance)) shows how strongly one stock responds to systemic volatility of the entire market.  [Upside Beta](https://en.wikipedia.org/wiki/Upside_beta) (Beta+) and [Downside Beta](https://en.wikipedia.org/wiki/Downside_beta) (Beta-), [popularized by Harry M. Markowitz](https://www.jstor.org/stable/j.ctt1bh4c8h), are also included.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/268 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/268 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Beta.png)
+![image]({{site.dotnet.charts}}/Beta.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Beta/Beta.Series.cs)
+- [C# core]({{site.dotnet.src}}/a-d/Beta/Beta.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/beta.py)

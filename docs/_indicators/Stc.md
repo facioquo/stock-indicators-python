@@ -70,11 +70,11 @@ results = indicators.get_stc(quotes, 10, 23, 50)
 ## About {{ page.title }}
 
 Created by Doug Schaff, [Schaff Trend Cycle](https://www.investopedia.com/articles/forex/10/schaff-trend-cycle-indicator.asp) is a stochastic oscillator view of two converging/diverging exponential moving averages (a.k.a MACD).
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/570 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/570 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Stc.png)
+![image]({{site.dotnet.charts}}/Stc.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Stc/Stc.Series.cs)
+- [C# core]({{site.dotnet.src}}/s-z/Stc/Stc.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/stc.py)

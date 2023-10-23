@@ -71,11 +71,11 @@ results = indicators.get_kvo(quotes, 34, 55, 13)
 ## About {{ page.title }}
 
 Created by Stephen Klinger, the [Klinger Volume Oscillator](https://www.investopedia.com/terms/k/klingeroscillator.asp) depicts volume-based trend reversal and divergence between short and long-term money flow.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/446 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/446 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Kvo.png)
+![image]({{site.dotnet.charts}}/Kvo.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/Kvo/Kvo.Series.cs)
+- [C# core]({{site.dotnet.src}}/e-k/Kvo/Kvo.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/kvo.py)

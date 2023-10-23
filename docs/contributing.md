@@ -45,7 +45,7 @@ For new features, submit an issue with the `enhancement` label.
 
 ## Project management
 
-- Planned work is managed in [the backlog](https://github.com/DaveSkender/Stock.Indicators.Python/projects/1).
+- Planned work is managed in [the backlog](https://github.com/users/DaveSkender/projects/2).
 - Work items are primarily [entered as Notes](https://docs.github.com/issues/organizing-your-work-with-project-boards/tracking-work-with-project-boards/adding-notes-to-a-project-board) (not Issues), except where an issue or feature is user reported.  With that said, Notes can be converted to Issues if in-progress and collaborative discussion is needed.
 - Use the [Discussions](https://github.com/DaveSkender/Stock.Indicators/discussions) area for general ideation and unrelated questions.
 
@@ -60,7 +60,7 @@ For new features, submit an issue with the `enhancement` label.
 - We use [pytest](https://docs.pytest.org/en/6.2.x/) for testing.
 - Review the `tests` folder for examples of unit tests.  Just copy one of these.
 - New indicators should be tested against manually calculated, proven, accurate results.  It is helpful to include your manual calculations spreadsheet in the appropriate indicator folder when [submitting changes](#submitting-changes).
-- Historical Stock Quotes are automatically added as pytest fixtures.  A `History.xlsx` Excel file is included in the `samples` folder that is an exact copy of what is used in the unit tests.  Use this for your manual calculations to ensure that it is correct.  Do not commit changes to this Excel file.
+- Historical Stock Quotes are automatically added as pytest fixtures. The various `.csv` files in the `samples` folder are used in the unit tests. See `tests/conftest.py` for their usage. A `History.xlsx` Excel file is also included in the `samples` folder that contains the same information but separated by sheets. Use this for your manual calculations to ensure that it is correct.  Do not commit changes to this Excel file.
 - We expect all unit tests to execute successfully and all Errors and Warning resolved before you submit your code.
 - Failed builds or unit testing will block acceptance of your Pull Request when submitting changes.
 

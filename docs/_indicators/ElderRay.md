@@ -71,11 +71,11 @@ results = indicators.get_elder_ray(quotes, 13)
 ## About {{ page.title }}
 
 Created by Alexander Elder, the [Elder-ray Index](https://www.investopedia.com/terms/e/elderray.asp), also known as Bull and Bear Power, depicts buying and selling pressure.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/378 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/378 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/ElderRay.png)
+![image]({{site.dotnet.charts}}/ElderRay.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/e-k/ElderRay/ElderRay.Series.cs)
+- [C# core]({{site.dotnet.src}}/e-k/ElderRay/ElderRay.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/elder_ray.py)

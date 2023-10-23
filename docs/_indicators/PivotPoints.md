@@ -106,11 +106,11 @@ results = indicators.get_pivot_points(quotes, PeriodSize.MONTH, PivotPointType.W
 
 [Pivot Points](https://en.wikipedia.org/wiki/Pivot_point_(technical_analysis)) depict support and resistance levels, based on the prior lookback window.  You can specify window size (e.g. month, week, day, etc).
 See also the alternative [Rolling Pivot Points](../RollingPivots#content) variant for a modern update that uses a rolling window.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/274 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/274 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/PivotPoints.png)
+![image]({{site.dotnet.charts}}/PivotPoints.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/m-r/PivotPoints/PivotPoints.Series.cs)
+- [C# core]({{site.dotnet.src}}/m-r/PivotPoints/PivotPoints.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/pivot_points.py)

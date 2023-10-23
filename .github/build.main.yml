@@ -42,7 +42,7 @@ jobs:
         displayName: Shows GitVersion
 
       - script: |
-          python -m pip install --upgrade pip setuptools wheel build
+          python -m pip install --upgrade pip "setuptools<66" wheel build
         displayName: "Install dependencies"
 
       - task: CmdLine@2

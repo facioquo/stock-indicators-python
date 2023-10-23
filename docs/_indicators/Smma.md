@@ -68,12 +68,12 @@ results = indicators.get_smma(quotes, 20)
 
 ## About {{ page.title }}
 
-[Smoothed Moving Average](https://en.wikipedia.org/wiki/Moving_average#Modified_moving_average) is the average of Close price over a lookback window using a smoothing method.  SMMA is also known as modified moving average (MMA) and running moving average (RMA).
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/375 "Community discussion about this indicator")
+[Smoothed Moving Average](https://en.wikipedia.org/wiki/Moving_average) is the average of Close price over a lookback window using a smoothing method.  SMMA is also known as modified moving average (MMA) and running moving average (RMA).
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/375 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Smma.png)
+![image]({{site.dotnet.charts}}/Smma.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/s-z/Smma/Smma.Series.cs)
+- [C# core]({{site.dotnet.src}}/s-z/Smma/Smma.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/smma.py)

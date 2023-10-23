@@ -70,11 +70,11 @@ results = indicators.get_cmf(quotes, 20)
 ## About {{ page.title }}
 
 Created by Marc Chaikin, [Chaikin Money Flow](https://en.wikipedia.org/wiki/Chaikin_Analytics#Chaikin_Money_Flow) is the simple moving average of the Money Flow Volume.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/261 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/261 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Cmf.png)
+![image]({{site.dotnet.charts}}/Cmf.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Cmf/Cmf.Series.cs)
+- [C# core]({{site.dotnet.src}}/a-d/Cmf/Cmf.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/cmf.py)

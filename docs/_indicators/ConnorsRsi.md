@@ -73,11 +73,11 @@ results = indicators.get_connors_rsi(quotes, 3, 2, 100)
 ## About {{ page.title }}
 
 Created by Laurence Connors, the [ConnorsRSI](https://alvarezquanttrading.com/wp-content/uploads/2016/05/ConnorsRSIGuidebook.pdf) is a composite oscillator that incorporates RSI, winning/losing streaks, and percentile gain metrics on scale of 0 to 100.  See [analysis](https://alvarezquanttrading.com/blog/connorsrsi-analysis).
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/260 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/260 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/ConnorsRsi.png)
+![image]({{site.dotnet.charts}}/ConnorsRsi.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/ConnorsRsi/ConnorsRsi.Series.cs)
+- [C# core]({{site.dotnet.src}}/a-d/ConnorsRsi/ConnorsRsi.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/connors_rsi.py)

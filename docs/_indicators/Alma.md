@@ -67,12 +67,12 @@ results = indicators.get_alma(quotes, 10, 0.5, 6)
 
 ### About {{ page.title }}
 
-Created by Arnaud Legoux and Dimitrios Kouzis-Loukas, [ALMA]({{site.github.base_repository_url}}/files/5654531/ALMA-Arnaud-Legoux-Moving-Average.pdf) is a Gaussian distribution weighted moving average of Close price over a lookback window.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/209 "Community discussion about this indicator")
+Created by Arnaud Legoux and Dimitrios Kouzis-Loukas, [ALMA]({{site.dotnet.repo}}/files/5654531/ALMA-Arnaud-Legoux-Moving-Average.pdf) is a Gaussian distribution weighted moving average of Close price over a lookback window.
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/209 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Alma.png)
+![image]({{site.dotnet.charts}}/Alma.png)
 
 #### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Alma/Alma.Series.cs)
+- [C# core]({{site.dotnet.src}}/a-d/Alma/Alma.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/alma.py)

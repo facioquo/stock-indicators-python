@@ -6,13 +6,13 @@ class TestT3:
         results = indicators.get_t3(quotes, 5, 0.7)
         
         assert 502 == len(results)
-        assert 478 == len(list(filter(lambda x: x.t3 is not None, results)))
+        assert 502 == len(list(filter(lambda x: x.t3 is not None, results)))
         
-        r = results[23]
-        assert r.t3 is None
+        r = results[5]
+        assert 213.9654 == round(float(r.t3), 4)
         
         r = results[24]
-        assert 215.9343 == round(float(r.t3), 4)
+        assert 215.9481 == round(float(r.t3), 4)
         
         r = results[44]
         assert 224.9412 == round(float(r.t3), 4)
@@ -36,14 +36,6 @@ class TestT3:
         
         r = indicators.get_t3(quotes[:1])
         assert 1 == len(r)
-        
-    def test_removed(self, quotes):
-        results = indicators.get_t3(quotes).remove_warmup_periods()
-        
-        assert 502 - ((6 * (5 - 1)) + 250) == len(results)
-        
-        last = results.pop()
-        assert 238.9308 == round(float(last.t3), 4)
         
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException

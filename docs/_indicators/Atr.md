@@ -70,11 +70,11 @@ results = indicators.get_atr(quotes, 14)
 ## About {{ page.title }}
 
 Created by J. Welles Wilder, [Average True Range](https://en.wikipedia.org/wiki/Average_true_range) is a measure of volatility that captures gaps and limits between periods.
-[[Discuss] :speech_balloon:]({{site.github.base_repository_url}}/discussions/269 "Community discussion about this indicator")
+[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/269 "Community discussion about this indicator")
 
-![image]({{site.charturl}}/Atr.png)
+![image]({{site.dotnet.charts}}/Atr.png)
 
 ### Sources
 
-- [C# core]({{site.base_sourceurl}}/a-d/Atr/Atr.Series.cs)
+- [C# core]({{site.dotnet.src}}/a-d/Atr/Atr.Series.cs)
 - [Python wrapper]({{site.sourceurl}}/atr.py)
