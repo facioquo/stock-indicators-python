@@ -25,6 +25,7 @@ dotnet:
 
 # this site URL refs
 baseurl: ""
+repository: https://github.com/DaveSkender/Stock.Indicators.Python
 sourceurl: "https://github.com/DaveSkender/Stock.Indicators.Python/blob/main/stock_indicators/indicators"
 
 ga_tag: G-MNKJE3KS9Y
