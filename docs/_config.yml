@@ -57,6 +57,7 @@ include:
     "indicators.html",
     "performance.md",
     "utilities.md",
+    "README.md"
   ]
 
 permalink: pretty
