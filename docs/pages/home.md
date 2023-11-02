@@ -7,7 +7,7 @@ layout: base
 lazy-images: true
 ---
 
-# Stock Indicators for Python
+<h1 style="display:none;">{{ page.title }}</h1>
 
 [![PyPI](https://img.shields.io/pypi/v/stock-indicators?color=blue&label=PyPI)](https://badge.fury.io/py/stock-indicators)
 [![code coverage](https://img.shields.io/azure-devops/coverage/skender/stock.indicators/26/main?logo=AzureDevOps&label=Test%20Coverage)](https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=26&branchName=main&view=codecoverage-tab)
