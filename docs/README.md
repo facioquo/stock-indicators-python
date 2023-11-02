@@ -62,10 +62,12 @@ This NuGet package is an open-source project.  If you want to report bugs or con
 
 Special thanks to all of our community code contributors!
 
-<ul class="list-style-none">
+<!-- <ul class="list-style-none">
 {% for contributor in site.github.contributors %}
   <li class="d-inline-block">
      <a href="{{ contributor.html_url }}"><img src="{{ contributor.avatar_url }}" width="75" height="75" class="circle" alt="{{ contributor.login }}" /></a>
   </li>
 {% endfor %}
-</ul>
+</ul> -->
+
+{{site.github}}
