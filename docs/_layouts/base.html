@@ -9,7 +9,7 @@
 <link rel="preconnect" href="https://github.githubassets.com">
 <link rel="preconnect" href="https://img.shields.io">
 
-{% if site.github.source.branch != "main" or page.noindex == true %}
+{% if jekyll.environment != 'production' or page.noindex == true %}
 <!-- exclude from search indexing -->
 <meta name="robots" content="noindex, nofollow">
 {% endif %}
@@ -27,7 +27,7 @@
 <link rel="apple-touch-icon" sizes="180x180" href="{{ '/assets/icons/apple-touch-icon.png' | relative_url }}">
 <link rel="mask-icon" href="{{ '/assets/icons/safari-pinned-tab.svg' | relative_url }}" color="#424242">
 
-{% if site.ga_tag and site.github.source.branch == 'main' %}
+{% if site.ga_tag and jekyll.environment == 'production' %}
 <script async src="https://www.googletagmanager.com/gtag/js?id={{site.ga_tag}}"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
