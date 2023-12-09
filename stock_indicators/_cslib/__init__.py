@@ -2,22 +2,22 @@
 Skender.Stock.Indicators
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-This module loads `Skender.Stock.Indicators.dll`(v2.4.10), which is a compiled library package
+This module loads `Skender.Stock.Indicators.dll`(v2.5.0), which is a compiled library package
 from <https://github.com/DaveSkender/Stock.Indicators>, written in C#.
 
-It is currently using `.NET 6.0`.
+The target framework of dll is `.NET 6.0`.
 """
 
 import os
 from pythonnet import load
 
 try:
-    load(runtime="coreclr", runtime_config=os.path.join(os.path.dirname(__file__), 'runtimeconfig.json'))
+    load(runtime="coreclr")
     import clr
 except Exception as e:
     raise ImportError(("fail to import clr.\n"
     "Stock Indicators for Python has dependency on pythonnet, which uses CLR.\n"
-    "Check that you have CLR installed. It's currently using .NET6.\n"
+    "Check that you have CLR installed. It supports .NET 6.0 or above.\n"
     ".NET:\n\t"
     "https://dotnet.microsoft.com/en-us/download/dotnet")) from e
 
