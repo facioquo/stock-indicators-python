@@ -24,6 +24,9 @@ dotnet:
   charts: "https://raw.githubusercontent.com/DaveSkender/Stock.Indicators/main/docs/assets/charts"
 
 # this site URL refs
+baseurl: ""
+url: "https://python.stockindicators.dev"
+repository: DaveSkender/Stock.Indicators.Python
 sourceurl: "https://github.com/DaveSkender/Stock.Indicators.Python/blob/main/stock_indicators/indicators"
 
 ga_tag: G-MNKJE3KS9Y
@@ -43,18 +46,10 @@ exclude:
     "*.yml",
     "*.pptx",
     ".offline",
+    "docs/README.md",
     "GemFile",
     "node_modules",
     "vendor",
-  ]
-
-include:
-  [
-    "contributing.md",
-    "guide.md",
-    "indicators.html",
-    "performance.md",
-    "utilities.md",
   ]
 
 permalink: pretty

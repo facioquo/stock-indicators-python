@@ -11,7 +11,6 @@ if sys.argv[-1].startswith(PREFIX_VERSION):
 else:
     version = DEFAULT_VERSION
 
-
 # Build.
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
@@ -58,7 +57,7 @@ setuptools.setup(
     },
     python_requires=">=3.7",
     install_requires=[
-        'pythonnet==3.0.2',
+        'pythonnet==3.0.3',
         'typing_extensions>=4.0.0',
     ],
 )

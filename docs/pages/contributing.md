@@ -1,7 +1,7 @@
 ---
 title: Contributing guidelines
 permalink: /contributing/
-relative_path: contributing.md
+relative_path: pages/contributing.md
 layout: page
 ---
 
