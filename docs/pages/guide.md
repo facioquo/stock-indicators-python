@@ -24,9 +24,9 @@ layout: page
 ### Installation and setup
 
 Stock Indicators for Python has dependency on [PythonNet](https://github.com/pythonnet/pythonnet), which uses [CLR(Common Language Runtime)](https://learn.microsoft.com/dotnet/standard/clr).
-Check that you have CLR installed. It currently supports **.NET 6 or above**.
+Check that you have CLR installed. It currently supports **.NET 6 or above**. Note that, the latest CLR has better performance on it.
 
-- [download and install .NET](https://dotnet.microsoft.com/download/dotnet)
+- [download and install the latest .NET](https://dotnet.microsoft.com/download/dotnet)
 
 Find and install the **stock-indicators** Python package into your environment. See [more help](https://packaging.python.org/en/latest/tutorials/installing-packages/) for installing packages.
 
