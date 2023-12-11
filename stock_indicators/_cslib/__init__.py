@@ -19,7 +19,7 @@ except Exception as e:
     "Stock Indicators for Python has dependency on pythonnet, which uses CLR.\n"
     "Check that you have CLR installed. It supports .NET 6.0 or above.\n"
     ".NET:\n\t"
-    "https://dotnet.microsoft.com/en-us/download/dotnet")) from e
+    "https://dotnet.microsoft.com/download/dotnet")) from e
 
 skender_stock_indicators_dll_path = os.path.join(
     os.path.dirname(__file__),
