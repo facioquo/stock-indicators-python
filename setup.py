@@ -11,7 +11,6 @@ if sys.argv[-1].startswith(PREFIX_VERSION):
 else:
     version = DEFAULT_VERSION
 
-
 # Build.
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
