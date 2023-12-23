@@ -35,8 +35,8 @@ def get_prs(eval_quotes: Iterable[Quote], base_quotes: Iterable[Quote],
             PRSResults is list of PRSResult with providing useful helper methods.
 
     See more:
-         - [PRS Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Prs/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [PRS Reference](https://python.stockindicators.dev/indicators/Prs/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
 
     results = CsIndicator.GetPrs[Quote](CsList(Quote, eval_quotes), CsList(Quote, base_quotes),

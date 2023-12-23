@@ -25,8 +25,8 @@ def get_mfi(quotes: Iterable[Quote], lookback_periods: int = 14):
             MFIResults is list of MFIResult with providing useful helper methods.
 
     See more:
-         - [MFI Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Mfi/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [MFI Reference](https://python.stockindicators.dev/indicators/Mfi/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetMfi[Quote](CsList(Quote, quotes), lookback_periods)
     return MFIResults(results, MFIResult)

@@ -25,8 +25,8 @@ def get_fisher_transform(quotes: Iterable[Quote], lookback_periods: int = 10):
             FisherTransformResult with providing useful helper methods.
 
     See more:
-         - [Fisher Transform Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/FisherTransform/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Fisher Transform Reference](https://python.stockindicators.dev/indicators/FisherTransform/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetFisherTransform[Quote](CsList(Quote, quotes), lookback_periods)
     return FisherTransformResults(results, FisherTransformResult)

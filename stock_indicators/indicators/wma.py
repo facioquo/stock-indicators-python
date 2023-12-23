@@ -30,8 +30,8 @@ def get_wma(quotes: Iterable[Quote], lookback_periods: int,
             WMAResults is list of WMAResult with providing useful helper methods.
 
     See more:
-         - [WMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Wma/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [WMA Reference](https://python.stockindicators.dev/indicators/Wma/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var.
     results = CsIndicator.GetWma(quotes, lookback_periods)

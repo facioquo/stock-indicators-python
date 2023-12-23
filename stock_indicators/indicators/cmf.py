@@ -25,8 +25,8 @@ def get_cmf(quotes: Iterable[Quote], lookback_periods: int = 20):
             CMFResults is list of CMFResult with providing useful helper methods.
 
     See more:
-         - [CMF Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Cmf/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [CMF Reference](https://python.stockindicators.dev/indicators/Cmf/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetCmf[Quote](CsList(Quote, quotes), lookback_periods)
     return CMFResults(results, CMFResult)

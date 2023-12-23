@@ -32,8 +32,8 @@ def get_super_trend(quotes: Iterable[Quote], lookback_periods: int = 10, multipl
             SuperTrendResults is list of SuperTrendResult with providing useful helper methods.
 
     See more:
-         - [SuperTrend Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/SuperTrend/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [SuperTrend Reference](https://python.stockindicators.dev/indicators/SuperTrend/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     super_trend_results = CsIndicator.GetSuperTrend[Quote](CsList(Quote, quotes), lookback_periods, multiplier)
     return SuperTrendResults(super_trend_results, SuperTrendResult)

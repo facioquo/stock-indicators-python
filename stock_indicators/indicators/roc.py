@@ -28,8 +28,8 @@ def get_roc(quotes: Iterable[Quote], lookback_periods: int, sma_periods: int = N
             ROCResults is list of ROCResult with providing useful helper methods.
 
     See more:
-         - [ROC Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Roc/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [ROC Reference](https://python.stockindicators.dev/indicators/Roc/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetRoc[Quote](CsList(Quote, quotes), lookback_periods, sma_periods)
     return ROCResults(results, ROCResult)
@@ -58,8 +58,8 @@ def get_roc_with_band(quotes: Iterable[Quote], lookback_periods: int, ema_period
             ROCWBResults is list of ROCWBResult with providing useful helper methods.
 
     See more:
-         - [ROCWB Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Roc/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [ROCWB Reference](https://python.stockindicators.dev/indicators/Roc/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetRocWb[Quote](CsList(Quote, quotes), lookback_periods, ema_periods, std_dev_periods)
     return ROCWBResults(results, ROCWBResult)

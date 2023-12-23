@@ -29,8 +29,8 @@ def get_volatility_stop(quotes: Iterable[Quote], lookback_periods: int = 7,
             VolatilityStopResults is list of VolatilityStopResult with providing useful helper methods.
 
     See more:
-         - [Volatility Stop Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/VolatilityStop/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Volatility Stop Reference](https://python.stockindicators.dev/indicators/VolatilityStop/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetVolatilityStop[Quote](CsList(Quote, quotes), lookback_periods,
                                                    multiplier)

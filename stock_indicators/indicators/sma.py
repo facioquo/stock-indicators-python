@@ -29,8 +29,8 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int,
             SMAResults is list of SMAResult with providing useful helper methods.
 
     See more:
-         - [SMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Sma/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [SMA Reference](https://python.stockindicators.dev/indicators/Sma/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     quotes = Quote.use(
         quotes, candle_part)  # Error occurs if not assigned to local var.
@@ -57,8 +57,8 @@ def get_sma_analysis(quotes: Iterable[Quote], lookback_periods: int):
             SMAAnalysisResults is list of SMAAnalysisResult with providing useful helper methods.
 
     See more:
-         - [SMA-analysis Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Sma/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [SMA-analysis Reference](https://python.stockindicators.dev/indicators/Sma/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     sma_extended_list = CsIndicator.GetSmaAnalysis[Quote](
         CsList(Quote, quotes), lookback_periods)

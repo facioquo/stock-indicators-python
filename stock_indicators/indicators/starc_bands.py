@@ -32,8 +32,8 @@ def get_starc_bands(quotes: Iterable[Quote], sma_periods: int = 20,
             STARCBandsResults is list of STARCBandsResult with providing useful helper methods.
 
     See more:
-         - [STARC Bands Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/StarcBands/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [STARC Bands Reference](https://python.stockindicators.dev/indicators/StarcBands/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetStarcBands[Quote](CsList(Quote, quotes), sma_periods,
                                                multiplier, atr_periods)

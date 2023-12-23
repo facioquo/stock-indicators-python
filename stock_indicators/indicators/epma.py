@@ -26,8 +26,8 @@ def get_epma(quotes: Iterable[Quote], lookback_periods: int):
             EPMAResults is list of EPMAResult with providing useful helper methods.
 
     See more:
-         - [EPMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Epma/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [EPMA Reference](https://python.stockindicators.dev/indicators/Epma/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetEpma[Quote](CsList(Quote, quotes), lookback_periods)
     return EPMAResults(results, EPMAResult)

@@ -32,8 +32,8 @@ def get_stoch(quotes: Iterable[Quote], lookback_periods: int = 14, signal_period
             StochResults is list of StochResult with providing useful helper methods.
 
     See more:
-         - [Stochastic Oscillator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Stoch/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Stochastic Oscillator Reference](https://python.stockindicators.dev/indicators/Stoch/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     stoch_results = CsIndicator.GetStoch[Quote](CsList(Quote, quotes), lookback_periods, signal_periods, smooth_periods)
     return StochResults(stoch_results, StochResult)

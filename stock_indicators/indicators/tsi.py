@@ -32,8 +32,8 @@ def get_tsi(quotes: Iterable[Quote], lookback_periods: int = 25,
             TSIResults is list of TSIResult with providing useful helper methods.
 
     See more:
-         - [TSI Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Tsi/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [TSI Reference](https://python.stockindicators.dev/indicators/Tsi/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetTsi[Quote](CsList(Quote, quotes), lookback_periods,
                                        smooth_periods, signal_periods)
