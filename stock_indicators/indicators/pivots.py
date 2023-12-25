@@ -40,8 +40,8 @@ def get_pivots(quotes: Iterable[Quote], left_span: int = 2,
             PivotsResults is list of PivotsResult with providing useful helper methods.
 
     See more:
-         - [Pivots Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Pivots/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Pivots Reference](https://python.stockindicators.dev/indicators/Pivots/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetPivots[Quote](CsList(Quote, quotes), left_span,
                                            right_span, max_trend_periods,

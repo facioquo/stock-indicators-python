@@ -25,8 +25,8 @@ def get_rsi(quotes: Iterable[Quote], lookback_periods: int = 14):
             RSIResults is list of RSIResult with providing useful helper methods.
 
     See more:
-         - [RSI Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Rsi/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [RSI Reference](https://python.stockindicators.dev/indicators/Rsi/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     rsi_list = CsIndicator.GetRsi[Quote](CsList(Quote, quotes), lookback_periods)
     return RSIResults(rsi_list, RSIResult)

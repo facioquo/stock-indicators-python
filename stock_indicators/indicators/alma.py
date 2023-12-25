@@ -31,8 +31,8 @@ def get_alma(quotes: Iterable[Quote], lookback_periods: int = 9, offset: float =
             ALMAResults is list of ALMAResult with providing useful helper methods.
 
     See more:
-         - [ALMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Alma/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [ALMA Reference](https://python.stockindicators.dev/indicators/Alma/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     alma_results = CsIndicator.GetAlma[Quote](CsList(Quote, quotes), lookback_periods, offset, sigma)
     return ALMAResults(alma_results, ALMAResult)

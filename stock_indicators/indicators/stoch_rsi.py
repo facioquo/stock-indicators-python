@@ -33,8 +33,8 @@ def get_stoch_rsi(quotes: Iterable[Quote], rsi_periods: int, stoch_periods: int,
             StochRSIResults is list of StochRSIResult with providing useful helper methods.
 
     See more:
-         - [Stochastic RSI Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/StochRsi/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Stochastic RSI Reference](https://python.stockindicators.dev/indicators/StochRsi/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     stoch_rsi_results = CsIndicator.GetStochRsi[Quote](CsList(Quote, quotes), rsi_periods, stoch_periods, signal_periods, smooth_periods)
     return StochRSIResults(stoch_rsi_results, StochRSIResult)

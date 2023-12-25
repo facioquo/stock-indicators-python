@@ -32,8 +32,8 @@ def get_keltner(quotes: Iterable[Quote], ema_periods: int = 20,
             KeltnerResults is list of KeltnerResult with providing useful helper methods.
 
     See more:
-         - [Keltner Channels Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Keltner/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Keltner Channels Reference](https://python.stockindicators.dev/indicators/Keltner/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetKeltner[Quote](CsList(Quote, quotes), ema_periods,
                                             multiplier, atr_periods)

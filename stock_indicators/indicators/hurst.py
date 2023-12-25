@@ -25,8 +25,8 @@ def get_hurst(quotes: Iterable[Quote], lookback_periods: int = 100):
             HurstResults is list of HurstResult with providing useful helper methods.
 
     See more:
-         - [Hurst Exponent Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Hurst/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Hurst Exponent Reference](https://python.stockindicators.dev/indicators/Hurst/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetHurst[Quote](CsList(Quote, quotes), lookback_periods)
     return HurstResults(results, HurstResult)

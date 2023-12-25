@@ -22,8 +22,8 @@ def get_ht_trendline(quotes: Iterable[Quote]):
             HTTrendlineResults is list of HTTrendlineResult with providing useful helper methods.
 
     See more:
-         - [HTL Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/HtTrendline/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [HTL Reference](https://python.stockindicators.dev/indicators/HtTrendline/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetHtTrendline[Quote](CsList(Quote, quotes))
     return HTTrendlineResults(results, HTTrendlineResult)

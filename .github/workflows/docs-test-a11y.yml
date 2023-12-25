@@ -1,16 +1,17 @@
-name: test docs
+name: Website
 on:
   pull_request:
     branches: [main]
     paths:
       - 'docs/**'
+      - ".github/workflows/docs-test-a11y.yml"
 
 env:
   JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   testing:
-    name: a11y
+    name: test a11y
     runs-on: ubuntu-latest
 
     steps:

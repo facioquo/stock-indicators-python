@@ -25,8 +25,8 @@ def get_ulcer_index(quotes: Iterable[Quote], lookback_periods: int = 14):
             UlcerIndexResults is list of UlcerIndexResult with providing useful helper methods.
 
     See more:
-         - [Ulcer Index Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/UlcerIndex/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Ulcer Index Reference](https://python.stockindicators.dev/indicators/UlcerIndex/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetUlcerIndex[Quote](CsList(Quote, quotes), lookback_periods)
     return UlcerIndexResults(results, UlcerIndexResult)

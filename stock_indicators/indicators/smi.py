@@ -36,8 +36,8 @@ def get_smi(quotes: Iterable[Quote], lookback_periods: int,
             SMIResults is list of SMIResult with providing useful helper methods.
 
     See more:
-         - [SMI Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Smi/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [SMI Reference](https://python.stockindicators.dev/indicators/Smi/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetSmi[Quote](CsList(Quote, quotes), lookback_periods,
                                         first_smooth_periods, second_smooth_periods,

@@ -32,8 +32,8 @@ def get_pvo(quotes: Iterable[Quote], fast_periods: int = 12,
             PVOResults is list of PVOResult with providing useful helper methods.
 
     See more:
-         - [PVO Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Pvo/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [PVO Reference](https://python.stockindicators.dev/indicators/Pvo/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetPvo[Quote](CsList(Quote, quotes), fast_periods,
                                            slow_periods, signal_periods)

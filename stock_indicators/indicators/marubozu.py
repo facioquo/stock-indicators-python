@@ -25,8 +25,8 @@ def get_marubozu(quotes: Iterable[Quote], min_body_percent: float = 95):
             CandleResults is list of CandleResult with providing useful helper methods.
 
     See more:
-         - [Marubozu Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Marubozu/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Marubozu Reference](https://python.stockindicators.dev/indicators/Marubozu/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetMarubozu[Quote](CsList(Quote, quotes), min_body_percent)
     return CandleResults(results, CandleResult)

@@ -25,8 +25,8 @@ def get_gator(quotes):
             GatorResults is list of GatorResult with providing useful helper methods.
 
     See more:
-         - [Gator Oscillator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Gator/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Gator Oscillator Reference](https://python.stockindicators.dev/indicators/Gator/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     if not quotes or isinstance(quotes[0], Quote):
         results = CsIndicator.GetGator[Quote](CsList(Quote, quotes))

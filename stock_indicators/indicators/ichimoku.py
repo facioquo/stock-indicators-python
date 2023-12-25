@@ -56,8 +56,8 @@ def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = None,
             IchimokuResults is list of IchimokuResult with providing useful helper methods.
 
     See more:
-         - [Ichimoku Cloud Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Ichimoku/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Ichimoku Cloud Reference](https://python.stockindicators.dev/indicators/Ichimoku/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     if chikou_offset is None:
         if senkou_offset is None:

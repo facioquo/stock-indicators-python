@@ -25,8 +25,8 @@ def get_vwma(quotes: Iterable[Quote], lookback_periods: int):
             VWMAResults is list of VWMAResult with providing useful helper methods.
 
     See more:
-         - [VWMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Vwma/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [VWMA Reference](https://python.stockindicators.dev/indicators/Vwma/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetVwma[Quote](CsList(Quote, quotes), lookback_periods)
     return VWMAResults(results, VWMAResult)
