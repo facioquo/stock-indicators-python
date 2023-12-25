@@ -25,8 +25,8 @@ def get_tema(quotes: Iterable[Quote], lookback_periods: int):
             TEMAResults is list of TEMAResult with providing useful helper methods.
 
     See more:
-         - [TEMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/TripleEma/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [TEMA Reference](https://python.stockindicators.dev/indicators/TripleEma/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetTema[Quote](CsList(Quote, quotes), lookback_periods)
     return TEMAResults(results, TEMAResult)

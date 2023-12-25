@@ -28,8 +28,8 @@ def get_chaikin_osc(quotes: Iterable[Quote], fast_periods: int = 3, slow_periods
             ChaikinOscResults is list of ChaikinOscResult with providing useful helper methods.
 
     See more:
-         - [Chaikin Oscillator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/ChaikinOsc/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Chaikin Oscillator Reference](https://python.stockindicators.dev/indicators/ChaikinOsc/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetChaikinOsc[Quote](CsList(Quote, quotes), fast_periods, slow_periods)
     return ChaikinOscResults(results, ChaikinOscResult)

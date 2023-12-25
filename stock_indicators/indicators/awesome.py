@@ -28,8 +28,8 @@ def get_awesome(quotes: Iterable[Quote], fast_periods: int = 5, slow_periods: in
             AwesomeResults is list of AwesomeResult with providing useful helper methods.
 
     See more:
-         - [Awesome Oscillator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Awesome/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Awesome Oscillator Reference](https://python.stockindicators.dev/indicators/Awesome/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     awesome_results = CsIndicator.GetAwesome[Quote](CsList(Quote, quotes), fast_periods, slow_periods)
     return AwesomeResults(awesome_results, AwesomeResult)

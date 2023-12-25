@@ -32,8 +32,8 @@ def get_connors_rsi(quotes: Iterable[Quote], rsi_periods: int = 3,
             ConnorsRSIResults is list of ConnorsRSIResult with providing useful helper methods.
 
     See more:
-         - [Connors RSI Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/ConnorsRsi/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Connors RSI Reference](https://python.stockindicators.dev/indicators/ConnorsRsi/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetConnorsRsi[Quote](CsList(Quote, quotes), rsi_periods,
                                                streak_periods, rank_periods)

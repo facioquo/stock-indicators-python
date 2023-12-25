@@ -25,8 +25,8 @@ def get_chop(quotes: Iterable[Quote], lookback_periods: int = 14):
             ChopResults is list of ChopResult with providing useful helper methods.
 
     See more:
-         - [Choppiness Index Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Chop/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Choppiness Index Reference](https://python.stockindicators.dev/indicators/Chop/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetChop[Quote](CsList(Quote, quotes), lookback_periods)
     return ChopResults(results, ChopResult)

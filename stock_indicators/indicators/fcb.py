@@ -29,8 +29,8 @@ def get_fcb(quotes: Iterable[Quote], window_span: int = 2):
             FCBResults is list of FCBResult with providing useful helper methods.
 
     See more:
-         - [FCB Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Fcb/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [FCB Reference](https://python.stockindicators.dev/indicators/Fcb/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetFcb[Quote](CsList(Quote, quotes), window_span)
     return FCBResults(results, FCBResult)

@@ -14,7 +14,7 @@ lazy-images: true
 
 **Stock Indicators for Python** is a library that produces financial market technical indicators.  Send in historical price quotes and get back desired indicators such as moving averages, Relative Strength Index, Stochastic Oscillator, Parabolic SAR, etc.  Nothing more.
 
-It can be used in any market analysis software using standard OHLCV price quotes for equities, commodities, forex, cryptocurrencies, and others.  We had private trading algorithms, machine learning, and charting systems in mind when originally creating this community library.  [Stock Indicators for .NET](https://daveskender.github.io/Stock.Indicators) is also available.
+It can be used in any market analysis software using standard OHLCV price quotes for equities, commodities, forex, cryptocurrencies, and others.  We had private trading algorithms, machine learning, and charting systems in mind when originally creating this community library.  [Stock Indicators for .NET](https://dotnet.stockindicators.dev) is also available.
 
 Explore more information:
 

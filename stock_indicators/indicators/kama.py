@@ -35,8 +35,8 @@ def get_kama(quotes: Iterable[Quote], er_periods: int = 10,
             KAMAResults is list of KAMAResult with providing useful helper methods.
 
     See more:
-         - [KAMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Kama/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [KAMA Reference](https://python.stockindicators.dev/indicators/Kama/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetKama[Quote](CsList(Quote, quotes), er_periods,
                                          fast_periods, slow_periods)

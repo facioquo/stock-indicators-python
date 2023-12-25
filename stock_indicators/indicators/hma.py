@@ -25,8 +25,8 @@ def get_hma(quotes: Iterable[Quote], lookback_periods: int):
             HMAResults is list of HMAResult with providing useful helper methods.
 
     See more:
-         - [HMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Hma/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [HMA Reference](https://python.stockindicators.dev/indicators/Hma/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetHma[Quote](CsList(Quote, quotes), lookback_periods)
     return HMAResults(results, HMAResult)

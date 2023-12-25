@@ -26,8 +26,8 @@ def get_williams_r(quotes: Iterable[Quote], lookback_periods: int = 14):
             WilliamsResults is list of WilliamsResult with providing useful helper methods.
 
     See more:
-         - [Williams %R Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/WilliamsR/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Williams %R Reference](https://python.stockindicators.dev/indicators/WilliamsR/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetWilliamsR[Quote](CsList(Quote, quotes), lookback_periods)
     return WilliamsResults(results, WilliamsResult)

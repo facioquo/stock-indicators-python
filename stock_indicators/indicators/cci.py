@@ -25,8 +25,8 @@ def get_cci(quotes: Iterable[Quote], lookback_periods: int = 20):
             CCIResults is list of CCIResult with providing useful helper methods.
 
     See more:
-         - [CCI Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Cci/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [CCI Reference](https://python.stockindicators.dev/indicators/Cci/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetCci[Quote](CsList(Quote, quotes), lookback_periods)
     return CCIResults(results, CCIResult)

@@ -24,8 +24,8 @@ def get_dpo(quotes: Iterable[Quote], lookback_periods: int):
             DPOResults is list of DPOResult with providing useful helper methods.
 
     See more:
-         - [DPO Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Dpo/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [DPO Reference](https://python.stockindicators.dev/indicators/Dpo/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetDpo[Quote](CsList(Quote, quotes), lookback_periods)
     return DPOResults(results, DPOResult)
