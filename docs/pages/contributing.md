@@ -137,7 +137,8 @@ Minor | `-.x.-` | A new feature, usually new non-breaking change, such as adding
 Patch | `-.-.x` | A small bug fix, chore, or documentation change.
 Increment | `-.-.-+x` | Intermediate commits between releases.
 
-After creating `git tag` with version number for the latest release, deployment workflow will be triggered, no any other actions required.
+After creating `git tag` with version number for the latest release, deployment workflow will be triggered.
+Then, publish the release note manually using [automatically generated release notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes) feature.
 
 ## License
 
