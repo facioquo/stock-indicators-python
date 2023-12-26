@@ -32,8 +32,8 @@ def get_stc(quotes: Iterable[Quote], cycle_periods: int = 10,
             STCResults is list of STCResult with providing useful helper methods.
 
     See more:
-         - [STC Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Stc/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [STC Reference](https://python.stockindicators.dev/indicators/Stc/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetStc[Quote](CsList(Quote, quotes), cycle_periods,
                                         fast_periods, slow_periods)

@@ -32,8 +32,8 @@ def get_pmo(quotes: Iterable[Quote], time_periods: int = 35,
             PMOResults is list of PMOResult with providing useful helper methods.
 
     See more:
-         - [PMO Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Pmo/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [PMO Reference](https://python.stockindicators.dev/indicators/Pmo/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetPmo[Quote](CsList(Quote, quotes), time_periods,
                                         smooth_periods, signal_periods)

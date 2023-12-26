@@ -32,8 +32,8 @@ def get_kvo(quotes: Iterable[Quote], fast_periods: int = 34,
             KVOResults is list of KVOResult with providing useful helper methods.
 
     See more:
-         - [KVO Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Kvo/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [KVO Reference](https://python.stockindicators.dev/indicators/Kvo/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetKvo[Quote](CsList(Quote, quotes), fast_periods,
                                         slow_periods, signal_periods)

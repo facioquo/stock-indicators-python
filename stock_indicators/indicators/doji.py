@@ -25,8 +25,8 @@ def get_doji(quotes: Iterable[Quote], max_price_change_percent: float = 0.1):
             CandleResults is list of CandleResult with providing useful helper methods.
 
     See more:
-         - [Doji Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Doji/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Doji Reference](https://python.stockindicators.dev/indicators/Doji/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetDoji[Quote](CsList(Quote, quotes), max_price_change_percent)
     return CandleResults(results, CandleResult)

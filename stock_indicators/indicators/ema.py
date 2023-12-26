@@ -28,8 +28,8 @@ def get_ema(quotes: Iterable[Quote], lookback_periods: int,
             EMAResults is list of EMAResult with providing useful helper methods.
 
     See more:
-         - [EMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Ema/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [EMA Reference](https://python.stockindicators.dev/indicators/Ema/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var.
     ema_list = CsIndicator.GetEma(quotes, lookback_periods)

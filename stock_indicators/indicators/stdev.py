@@ -28,8 +28,8 @@ def get_stdev(quotes: Iterable[Quote], lookback_periods: int,
             StdevResults is list of StdevResult with providing useful helper methods.
 
     See more:
-         - [Stdev Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/StdDev/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Stdev Reference](https://python.stockindicators.dev/indicators/StdDev/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetStdDev[Quote](CsList(Quote, quotes), lookback_periods, sma_periods)
     return StdevResults(results, StdevResult)

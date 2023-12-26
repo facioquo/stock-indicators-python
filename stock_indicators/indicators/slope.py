@@ -28,8 +28,8 @@ def get_slope(quotes: Iterable[Quote], lookback_periods: int):
             SlopeResults is list of SlopeResult with providing useful helper methods.
 
     See more:
-         - [Slope Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Slope/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Slope Reference](https://python.stockindicators.dev/indicators/Slope/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetSlope[Quote](CsList(Quote, quotes), lookback_periods)
     return SlopeResults(results, SlopeResult)

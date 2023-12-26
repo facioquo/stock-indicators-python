@@ -33,8 +33,8 @@ def get_chandelier(quotes: Iterable[Quote], lookback_periods: int = 22,
             ChandelierResults is list of ChandelierResult with providing useful helper methods.
 
     See more:
-         - [Chandelier Exit Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Chandelier/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Chandelier Exit Reference](https://python.stockindicators.dev/indicators/Chandelier/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetChandelier[Quote](CsList(Quote, quotes), lookback_periods,
                                                multiplier, chandelier_type.cs_value)

@@ -24,8 +24,8 @@ def get_dema(quotes: Iterable[Quote], lookback_periods: int):
             DEMAResults is list of DEMAResult with providing useful helper methods.
 
     See more:
-         - [DEMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/DoubleEma/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [DEMA Reference](https://python.stockindicators.dev/indicators/DoubleEma/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetDema[Quote](CsList(Quote, quotes), lookback_periods)
     return DEMAResults(results, DEMAResult)

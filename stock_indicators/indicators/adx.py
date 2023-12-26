@@ -25,8 +25,8 @@ def get_adx(quotes: Iterable[Quote], lookback_periods: int = 14):
             ADXResults is list of ADXResult with providing useful helper methods.
 
     See more:
-         - [ADX Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Adx/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [ADX Reference](https://python.stockindicators.dev/indicators/Adx/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     adx_results = CsIndicator.GetAdx[Quote](CsList(Quote, quotes), lookback_periods)
     return ADXResults(adx_results, ADXResult)

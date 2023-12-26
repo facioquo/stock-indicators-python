@@ -32,8 +32,8 @@ def get_zig_zag(quotes: Iterable[Quote], end_type: EndType = EndType.CLOSE,
             ZigZagResults is list of ZigZagResult with providing useful helper methods.
 
     See more:
-         - [Zig Zag Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/ZigZag/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Zig Zag Reference](https://python.stockindicators.dev/indicators/ZigZag/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetZigZag[Quote](CsList(Quote, quotes), end_type.cs_value,
                                            CsDecimal(percent_change))

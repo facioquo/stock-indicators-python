@@ -24,8 +24,8 @@ def get_force_index(quotes: Iterable[Quote], lookback_periods: int):
             ForceIndexResults is list of ForceIndexResult with providing useful helper methods.
 
     See more:
-         - [Force Index Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/ForceIndex/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Force Index Reference](https://python.stockindicators.dev/indicators/ForceIndex/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetForceIndex[Quote](CsList(Quote, quotes), lookback_periods)
     return ForceIndexResults(results, ForceIndexResult)
