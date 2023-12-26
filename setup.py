@@ -1,4 +1,3 @@
-import sys
 import setuptools
 
 # Build.
@@ -7,8 +6,6 @@ with open("README.md", "r", encoding="utf-8") as fh:
 
 setuptools.setup(
     name="stock-indicators",
-    use_scm_version=True,
-    setup_requires=['setuptools_scm'],
     author="Dave Skender",
     maintainer="Dong-Geon Lee",
     description="Stock Indicators for Python.  Send in historical price quotes and get back desired technical indicators such as Stochastic RSI, Average True Range, Parabolic SAR, etc.  Nothing more.",

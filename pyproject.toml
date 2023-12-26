@@ -1,0 +1,10 @@
+[build-system]
+requires = ["setuptools>=64", "setuptools_scm>=8"]
+build-backend = "setuptools.build_meta"
+
+# [project]
+# dynamic = ["version"]
+
+# can be empty if no extra settings are needed, presence enables setuptools_scm
+[tool.setuptools_scm]
+local_scheme = "no-local-version"
