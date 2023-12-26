@@ -66,13 +66,6 @@ jobs:
     - name: Publish distribution 📦 to PyPI
       uses: pypa/gh-action-pypi-publish@release/v1
 
-    - name: Tag and draft release note
-      uses: ncipollo/release-action@v1
-      with:
-        body: "We’ve released a new Stock Indicators for Python.  See [stock-indicators @ PyPI.org](${{ vars.PYPI_DOWNLOAD_PREFIX }}${{ github.ref_name }}) for more information."
-        generateReleaseNotes: true
-        draft: true
-
 
   # This will be triggered everytime when commit is pushed on main branch
   publish-to-testpypi:
