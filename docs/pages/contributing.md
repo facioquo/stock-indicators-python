@@ -128,7 +128,7 @@ If you want to contribute administratively, do code reviews, or provide general 
 
 ## Versioning
 
-We use the `GitVersion` tool for [semantic versioning](https://semver.org).  It is mostly auto generated in the [Azure DevOps build](https://dev.azure.com/skender/Stock.Indicators/_build?definitionId=26).
+We use the `setuptools_scm` tool for [semantic versioning](https://semver.org).  It detects the version number from `git tag` in the [GitHub Actions build](https://github.com/DaveSkender/Stock.Indicators.Python/deployments/pypi).
 
 Type | Format | Description
 ------------ | ------ | -----------
@@ -137,13 +137,7 @@ Minor | `-.x.-` | A new feature, usually new non-breaking change, such as adding
 Patch | `-.-.x` | A small bug fix, chore, or documentation change.
 Increment | `-.-.-+x` | Intermediate commits between releases.
 
-This only needs to be done on the merge to `main` when the Pull Request is committed, so your feature branch does not need to include this as it will get squashed anyway.
-
-- Adding `+semver: major` as a PR merge commit message will increment the major x.-.- element
-- Adding `+semver: minor` as a PR merge commit message will increment the minor -.x.- element
-- Adding `+semver: patch` as a PR merge commit message will increment the minor -.-.x element.  Patch element auto-increments, so you'd only need to do this to override the next value.
-
-A Git `tag`, in accordance with the above schema, is introduced automatically after deploying to PyPI and is reflected in the [Releases](https://github.com/DaveSkender/Stock.Indicators.Python/releases).
+After creating `git tag` with version number for the latest release, deployment workflow will be triggered, no any other actions required.
 
 ## License
 
