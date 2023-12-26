@@ -30,8 +30,8 @@ def get_stdev_channels(quotes: Iterable[Quote],
             StdevChannelsResults is list of StdevChannelsResult with providing useful helper methods.
 
     See more:
-         - [Stdev Channels Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/StdDevChannels/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Stdev Channels Reference](https://python.stockindicators.dev/indicators/StdDevChannels/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetStdDevChannels[Quote](CsList(Quote, quotes), lookback_periods, standard_deviations)
     return StdevChannelsResults(results, StdevChannelsResult)

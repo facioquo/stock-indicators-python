@@ -41,8 +41,8 @@ def get_fractal(quotes, left_span = None, right_span = EndType.HIGH_LOW, end_typ
             FractalResults is list of FractalResult with providing useful helper methods.
 
     See more:
-         - [Williams Fractal Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Fractal/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Williams Fractal Reference](https://python.stockindicators.dev/indicators/Fractal/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     if isinstance(right_span, EndType):
         if left_span is None: left_span = 2

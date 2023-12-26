@@ -32,4 +32,4 @@ def to_pydatetime(cs_datetime):
         cs_datetime : `System.DateTime` of C#.
     """
     if isinstance(cs_datetime, CsDateTime):
-        return PyDateTime.fromisoformat(cs_datetime.ToString("o", CultureInfo.InvariantCulture)[:-1])
+        return PyDateTime.fromisoformat(cs_datetime.ToString("s", CultureInfo.InvariantCulture))

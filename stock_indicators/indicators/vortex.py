@@ -26,8 +26,8 @@ def get_vortex(quotes: Iterable[Quote], lookback_periods: int):
             VortexResults is list of VortexResult with providing useful helper methods.
 
     See more:
-         - [Vortex Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Vortex/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Vortex Reference](https://python.stockindicators.dev/indicators/Vortex/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetVortex[Quote](CsList(Quote, quotes), lookback_periods)
     return VortexResults(results, VortexResult)

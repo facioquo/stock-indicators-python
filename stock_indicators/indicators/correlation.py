@@ -28,8 +28,8 @@ def get_correlation(quotes_a: Iterable[Quote], quotes_b: Iterable[Quote],
             CorrelationResults is list of CorrelationResult with providing useful helper methods.
 
     See more:
-         - [Correlation Coefficient Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Correlation/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Correlation Coefficient Reference](https://python.stockindicators.dev/indicators/Correlation/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetCorrelation[Quote](CsList(Quote, quotes_a), CsList(Quote, quotes_b),
                                                 lookback_periods)

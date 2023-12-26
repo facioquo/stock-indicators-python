@@ -14,10 +14,10 @@ setuptools.setup(
     description="Stock Indicators for Python.  Send in historical price quotes and get back desired technical indicators such as Stochastic RSI, Average True Range, Parabolic SAR, etc.  Nothing more.",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://daveskender.github.io/Stock.Indicators.Python",
+    url="https://python.stockindicators.dev",
     project_urls={
         "Bug Tracker": "https://github.com/DaveSkender/Stock.Indicators.Python/issues",
-        "Documentation": "https://daveskender.github.io/Stock.Indicators.Python",
+        "Documentation": "https://python.stockindicators.dev",
         "Source Code": "https://github.com/DaveSkender/Stock.Indicators.Python/tree/main",
     },
     license="Apache 2.0",

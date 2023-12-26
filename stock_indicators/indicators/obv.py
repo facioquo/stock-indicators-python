@@ -24,8 +24,8 @@ def get_obv(quotes: Iterable[Quote], sma_periods: Optional[int] = None):
             OBVResults is list of OBVResult with providing useful helper methods.
 
     See more:
-         - [OBV Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Obv/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [OBV Reference](https://python.stockindicators.dev/indicators/Obv/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetObv[Quote](CsList(Quote, quotes), sma_periods)
     return OBVResults(results, OBVResult)

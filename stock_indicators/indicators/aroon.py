@@ -24,8 +24,8 @@ def get_aroon(quotes: Iterable[Quote], lookback_periods: int = 25):
             AroonResults is list of AroonResult with providing useful helper methods.
 
     See more:
-         - [Aroon Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Aroon/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Aroon Reference](https://python.stockindicators.dev/indicators/Aroon/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     aroon_results = CsIndicator.GetAroon[Quote](CsList(Quote, quotes), lookback_periods)
     return AroonResults(aroon_results, AroonResult)

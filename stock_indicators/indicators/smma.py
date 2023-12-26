@@ -25,8 +25,8 @@ def get_smma(quotes: Iterable[Quote], lookback_periods: int):
             SMMAResults is list of SMMAResult with providing useful helper methods.
 
     See more:
-         - [SMMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Smma/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [SMMA Reference](https://python.stockindicators.dev/indicators/Smma/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetSmma[Quote](CsList(Quote, quotes), lookback_periods)
     return SMMAResults(results, SMMAResult)

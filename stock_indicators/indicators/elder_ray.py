@@ -24,8 +24,8 @@ def get_elder_ray(quotes: Iterable[Quote], lookback_periods: int = 13):
             ElderRayResults is list of ElderRayResult with providing useful helper methods.
 
     See more:
-         - [Elder-ray Index Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/ElderRay/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Elder-ray Index Reference](https://python.stockindicators.dev/indicators/ElderRay/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetElderRay[Quote](CsList(Quote, quotes), lookback_periods)
     return ElderRayResults(results, ElderRayResult)

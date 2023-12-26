@@ -25,8 +25,8 @@ def get_bop(quotes: Iterable[Quote], smooth_periods: int = 14):
             BOPResults is list of BOPResult with providing useful helper methods.
 
     See more:
-         - [BOP Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Bop/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [BOP Reference](https://python.stockindicators.dev/indicators/Bop/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetBop[Quote](CsList(Quote, quotes), smooth_periods)
     return BOPResults(results, BOPResult)

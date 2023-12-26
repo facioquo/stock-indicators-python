@@ -32,8 +32,8 @@ def get_ultimate(quotes: Iterable[Quote], short_periods: int = 7,
             UltimateResults is list of UltimateResult with providing useful helper methods.
 
     See more:
-         - [Ultimate Oscillator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Ultimate/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Ultimate Oscillator Reference](https://python.stockindicators.dev/indicators/Ultimate/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetUltimate[Quote](CsList(Quote, quotes), short_periods,
                                              middle_periods, long_periods)

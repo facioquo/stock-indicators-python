@@ -36,8 +36,8 @@ def get_vwap(quotes, start = None, month = 1, day = 1, hour = 0, minute = 0):
             VWAPResults is list of VWAPResult with providing useful helper methods.
 
     See more:
-         - [VWAP Fractal Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Vwap/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [VWAP Fractal Reference](https://python.stockindicators.dev/indicators/Vwap/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     if isinstance(start, int):
         start = datetime(start, month, day, hour, minute)

@@ -36,8 +36,8 @@ def get_macd(quotes: Iterable[Quote], fast_periods: int = 12,
             MACDResults is list of MACDResult with providing useful helper methods.
 
     See more:
-         - [MACD Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Macd/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [MACD Reference](https://python.stockindicators.dev/indicators/Macd/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var.
     macd_results = CsIndicator.GetMacd(quotes, fast_periods,

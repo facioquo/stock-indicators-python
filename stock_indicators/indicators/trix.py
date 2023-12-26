@@ -28,8 +28,8 @@ def get_trix(quotes: Iterable[Quote], lookback_periods: int, signal_periods: Opt
             TRIXResults is list of TRIXResult with providing useful helper methods.
 
     See more:
-         - [TRIX Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Trix/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [TRIX Reference](https://python.stockindicators.dev/indicators/Trix/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetTrix[Quote](CsList(Quote, quotes), lookback_periods, signal_periods)
     return TRIXResults(results, TRIXResult)

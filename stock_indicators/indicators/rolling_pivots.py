@@ -36,8 +36,8 @@ def get_rolling_pivots(quotes: Iterable[Quote], window_periods: int,
             RollingPivotsResults is list of RollingPivotsResult with providing useful helper methods.
 
     See more:
-         - [Rolling Pivot Points Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/RollingPivots/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Rolling Pivot Points Reference](https://python.stockindicators.dev/indicators/RollingPivots/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetRollingPivots[Quote](CsList(Quote, quotes), window_periods,
                                                  offset_periods, point_type.cs_value)
