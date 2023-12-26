@@ -1,4 +1,5 @@
 name: Website
+
 on:
   pull_request:
     branches: [main]
@@ -10,18 +11,13 @@ env:
   JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  testing:
+  test:
     name: test a11y
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v2
-
-      - name: Install Node
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
+        uses: actions/checkout@v4
 
       - name: Install Ruby
         uses: ruby/setup-ruby@v1

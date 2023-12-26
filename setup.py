@@ -1,23 +1,14 @@
 import sys
 import setuptools
 
-# Set semver.
-PREFIX_VERSION = "semver:"
-DEFAULT_VERSION = "0.0.0.dev0"
-
-if sys.argv[-1].startswith(PREFIX_VERSION):
-    version = sys.argv[-1].split(':')[1]
-    sys.argv.pop()
-else:
-    version = DEFAULT_VERSION
-
 # Build.
 with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setuptools.setup(
     name="stock-indicators",
-    version=version,
+    use_scm_version=True,
+    setup_requires=['setuptools_scm'],
     author="Dave Skender",
     maintainer="Dong-Geon Lee",
     description="Stock Indicators for Python.  Send in historical price quotes and get back desired technical indicators such as Stochastic RSI, Average True Range, Parabolic SAR, etc.  Nothing more.",
