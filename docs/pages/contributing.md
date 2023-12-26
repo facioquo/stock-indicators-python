@@ -98,7 +98,8 @@ See [GitHub Pages documentation](https://docs.github.com/en/pages/setting-up-a-g
 bundle install
 bundle exec jekyll serve
 
-# then open site on http://127.0.0.1:4000
+# then open site on http://127.0.0.1:4000,
+# or use `bundle exec jekyll serve -o -l` to auto-open, livereload
 ```
 
 When adding or updating indicators:
@@ -135,10 +136,10 @@ Type | Format | Description
 Major | `x.-.-` | A significant deviation with major breaking changes.
 Minor | `-.x.-` | A new feature, usually new non-breaking change, such as adding an indicator.  Minor breaking changes may occur here and are denoted in the [release notes](https://github.com/DaveSkender/Stock.Indicators.Python/releases).
 Patch | `-.-.x` | A small bug fix, chore, or documentation change.
-Increment | `-.-.-+x` | Intermediate commits between releases.
 
-After creating `git tag` with version number for the latest release, deployment workflow will be triggered.
-Then, publish the release note manually using [automatically generated release notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes) feature.
+After one of our repository administrators creates a `git tag` on the `main` branch,
+reflecting the new version number, the `PyPI` deployment workflow will start.
+After the new package is published, they'll publicly post the [release record](https://github.com/DaveSkender/Stock.Indicators.Python/releases) with [automatically generated notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes) and other information.
 
 ## License
 
