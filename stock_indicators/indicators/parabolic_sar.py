@@ -38,8 +38,8 @@ def get_parabolic_sar(quotes, acceleration_step = None,
             ParabolicSARResults is list of ParabolicSARResult with providing useful helper methods.
 
     See more:
-         - [Parabolic SAR Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/ParabolicSar/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Parabolic SAR Reference](https://python.stockindicators.dev/indicators/ParabolicSar/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     if initial_factor is None:
         if acceleration_step is None: acceleration_step = 0.02

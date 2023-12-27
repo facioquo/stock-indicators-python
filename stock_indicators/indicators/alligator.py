@@ -44,8 +44,8 @@ def get_alligator(quotes: Iterable[Quote],
             AlligatorResults is list of AlligatorResult with providing useful helper methods.
 
     See more:
-         - [Williams Alligator Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Alligator/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Williams Alligator Reference](https://python.stockindicators.dev/indicators/Alligator/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     alligator_results = CsIndicator.GetAlligator[Quote](CsList(Quote, quotes),
                                                         jaw_periods, jaw_offset,

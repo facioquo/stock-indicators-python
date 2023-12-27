@@ -27,8 +27,8 @@ def get_donchian(quotes: Iterable[Quote], lookback_periods: int = 20):
             DonchianResults is list of DonchianResult with providing useful helper methods.
 
     See more:
-         - [Donchian Channels Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Donchian/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Donchian Channels Reference](https://python.stockindicators.dev/indicators/Donchian/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetDonchian[Quote](CsList(Quote, quotes), lookback_periods)
     return DonchianResults(results, DonchianResult)

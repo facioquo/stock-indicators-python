@@ -24,8 +24,8 @@ def get_atr(quotes: Iterable[Quote], lookback_periods: int = 14):
             ATRResults is list of ATRResult with providing useful helper methods.
 
     See more:
-         - [ATR Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Atr/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [ATR Reference](https://python.stockindicators.dev/indicators/Atr/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     atr_results = CsIndicator.GetAtr[Quote](CsList(Quote, quotes), lookback_periods)
     return ATRResults(atr_results, ATRResult)

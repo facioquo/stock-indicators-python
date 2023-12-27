@@ -32,8 +32,8 @@ def get_ma_envelopes(quotes: Iterable[Quote], lookback_periods: int,
             MAEnvelopeResults is list of MAEnvelopeResult with providing useful helper methods.
 
     See more:
-         - [Moving Average Envelopes Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/MaEnvelopes/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Moving Average Envelopes Reference](https://python.stockindicators.dev/indicators/MaEnvelopes/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetMaEnvelopes[Quote](CsList(Quote, quotes), lookback_periods,
                                             percent_offset, ma_type.cs_value)
