@@ -29,8 +29,8 @@ def get_mama(quotes: Iterable[Quote], fast_limit: float = 0.5,
             MAMAResults is list of MAMAResult with providing useful helper methods.
 
     See more:
-         - [MAMA Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Mama/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [MAMA Reference](https://python.stockindicators.dev/indicators/Mama/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetMama[Quote](CsList(Quote, quotes), fast_limit,
                                          slow_limit)

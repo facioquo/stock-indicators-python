@@ -28,8 +28,8 @@ def get_t3(quotes: Iterable[Quote], lookback_periods: int = 5,
             T3Results is list of T3Result with providing useful helper methods.
 
     See more:
-         - [T3 Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/T3/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [T3 Reference](https://python.stockindicators.dev/indicators/T3/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetT3[Quote](CsList(Quote, quotes), lookback_periods,
                                        volume_factor)

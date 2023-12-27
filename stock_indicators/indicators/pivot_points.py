@@ -34,8 +34,8 @@ def get_pivot_points(quotes, window_size: PeriodSize,
             PivotPointsResults is list of PivotPointsResult with providing useful helper methods.
 
     See more:
-         - [Pivot Points Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/PivotPoints/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Pivot Points Reference](https://python.stockindicators.dev/indicators/PivotPoints/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetPivotPoints[Quote](CsList(Quote, quotes), window_size.cs_value,
                                                  point_type.cs_value)

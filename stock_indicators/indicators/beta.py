@@ -32,8 +32,8 @@ def get_beta(eval_quotes: Iterable[Quote], market_quotes: Iterable[Quote],
             BetaResults is list of BetaResult with providing useful helper methods.
 
     See more:
-         - [Beta Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/Beta/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Beta Reference](https://python.stockindicators.dev/indicators/Beta/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
 
     beta_results = CsIndicator.GetBeta[Quote](CsList(Quote, eval_quotes), CsList(Quote, market_quotes),

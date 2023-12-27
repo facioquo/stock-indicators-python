@@ -25,8 +25,8 @@ def get_basic_quote(quotes: Iterable[Quote], candle_part: CandlePart = CandlePar
             BasicQuoteResults is list of BasicQuoteResult with providing useful helper methods.
 
     See more:
-         - [Basic Quote Reference](https://daveskender.github.io/Stock.Indicators.Python/indicators/BasicQuote/#content)
-         - [Helper Methods](https://daveskender.github.io/Stock.Indicators.Python/utilities/#content)
+         - [Basic Quote Reference](https://python.stockindicators.dev/indicators/BasicQuote/#content)
+         - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     results = CsIndicator.GetBaseQuote[Quote](CsList(Quote, quotes), candle_part.cs_value)
     return BasicQuoteResults(results, BasicQuoteResult)

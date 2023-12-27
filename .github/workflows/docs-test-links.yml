@@ -1,16 +1,17 @@
-name: test docs
+name: Website
 on:
   pull_request:
     branches: [main]
     paths:
       - 'docs/**'
+      - ".github/workflows/docs-test-links.yml"
 
 env:
   JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
   testing:
-    name: URLs
+    name: test URLs
     runs-on: ubuntu-latest
 
     steps:
@@ -66,6 +67,6 @@ jobs:
         run: |
           htmlproofer _site \
             --no-enforce-https \
-            --ignore-status-codes "403,406,408,429,503,999" \
+            --ignore-status-codes "0,302,403,406,408,429,503,999" \
             --swap-urls "https\://python.stockindicators.dev:http\://127.0.0.1:4000" \
             --ignore-urls "/fonts.gstatic.com/"

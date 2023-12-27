@@ -98,7 +98,8 @@ See [GitHub Pages documentation](https://docs.github.com/en/pages/setting-up-a-g
 bundle install
 bundle exec jekyll serve
 
-# then open site on http://127.0.0.1:4000
+# then open site on http://127.0.0.1:4000,
+# or use `bundle exec jekyll serve -o -l` to auto-open, livereload
 ```
 
 When adding or updating indicators:
@@ -128,22 +129,17 @@ If you want to contribute administratively, do code reviews, or provide general 
 
 ## Versioning
 
-We use the `GitVersion` tool for [semantic versioning](https://semver.org).  It is mostly auto generated in the [Azure DevOps build](https://dev.azure.com/skender/Stock.Indicators/_build?definitionId=26).
+We use the `setuptools_scm` tool for [semantic versioning](https://semver.org).  It detects the version number from `git tag` in the [GitHub Actions build](https://github.com/DaveSkender/Stock.Indicators.Python/deployments/pypi).
 
 Type | Format | Description
 ------------ | ------ | -----------
 Major | `x.-.-` | A significant deviation with major breaking changes.
 Minor | `-.x.-` | A new feature, usually new non-breaking change, such as adding an indicator.  Minor breaking changes may occur here and are denoted in the [release notes](https://github.com/DaveSkender/Stock.Indicators.Python/releases).
 Patch | `-.-.x` | A small bug fix, chore, or documentation change.
-Increment | `-.-.-+x` | Intermediate commits between releases.
 
-This only needs to be done on the merge to `main` when the Pull Request is committed, so your feature branch does not need to include this as it will get squashed anyway.
-
-- Adding `+semver: major` as a PR merge commit message will increment the major x.-.- element
-- Adding `+semver: minor` as a PR merge commit message will increment the minor -.x.- element
-- Adding `+semver: patch` as a PR merge commit message will increment the minor -.-.x element.  Patch element auto-increments, so you'd only need to do this to override the next value.
-
-A Git `tag`, in accordance with the above schema, is introduced automatically after deploying to PyPI and is reflected in the [Releases](https://github.com/DaveSkender/Stock.Indicators.Python/releases).
+After one of our repository administrators creates a `git tag` on the `main` branch,
+reflecting the new version number, the `PyPI` deployment workflow will start.
+After the new package is published, they'll publicly post the [release record](https://github.com/DaveSkender/Stock.Indicators.Python/releases) with [automatically generated notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes) and other information.
 
 ## License
 
@@ -153,7 +149,7 @@ This repository uses a standard Apache 2.0 open-source license.  It enables open
 
 ## Contact info
 
-[Start a new discussion, ask a question](https://github.com/DaveSkender/Stock.Indicators/discussions), or [submit an issue](https://daveskender.github.io/Stock.Indicators.Python/contributing/#reporting-bugs-and-feature-requests) if it is publicly relevant.  You can also direct message [@daveskender](https://twitter.com/messages/compose?recipient_id=27475431).
+[Start a new discussion, ask a question](https://github.com/DaveSkender/Stock.Indicators/discussions), or [submit an issue](https://python.stockindicators.dev/contributing/#reporting-bugs-and-feature-requests) if it is publicly relevant.  You can also direct message [@daveskender](https://twitter.com/messages/compose?recipient_id=27475431).
 
 Thanks,
 Dave Skender
