@@ -55,8 +55,8 @@ Documentation = "https://python.stockindicators.dev"
 "Source Code" = "https://github.com/DaveSkender/Stock.Indicators.Python/tree/main"
 "Release Notes" = "https://github.com/DaveSkender/Stock.Indicators.Python/releases"
 
-[tool.setuptools]
-packages=["stock_indicators"]
+[tool.setuptools.packages.find]
+exclude = ["tests*", "benchmarks*", "samples*", "docs*"]
 
 # can be empty if no extra settings are needed, presence enables setuptools_scm
 [tool.setuptools_scm]
