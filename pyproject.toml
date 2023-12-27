@@ -32,7 +32,7 @@ dependencies = [
     "typing_extensions>=4.0.0"
 ]
 keywords = [
-"Indicators", "Stock", "Market", "Technical", "Analysis", "Algorithmic", "Trading", "Trade", "Trend",
+"Stock Indicators", "Technical Indicators", "Market", "Technical Analysis", "Algorithmic", "Trading", "Trade",
 "Momentum", "Finance", "Algorithm", "Algo", "AlgoTrading", "Financial", "Strategy", "Chart", "Charting",
 "Oscillator", "Overlay", "Equity", "Bitcoin", "Crypto", "Cryptocurrency", "Forex", "Quantitative",
 "Historical", "Quotes", "Accumulation", "Distribution", "ADL", "Aroon", "True Range", "ATR",
