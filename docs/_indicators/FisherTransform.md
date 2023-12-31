@@ -81,4 +81,4 @@ Created by John Ehlers, the [Fisher Transform](https://www.investopedia.com/term
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/e-k/FisherTransform/FisherTransform.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/fisher_transform.py)
+- [Python wrapper]({{site.python.src}}/fisher_transform.py)

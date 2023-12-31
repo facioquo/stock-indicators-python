@@ -79,4 +79,4 @@ Created by John Bollinger, [Bollinger Bands](https://en.wikipedia.org/wiki/Bolli
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/BollingerBands/BollingerBands.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/bollinger_bands.py)
+- [Python wrapper]({{site.python.src}}/bollinger_bands.py)

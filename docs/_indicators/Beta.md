@@ -95,4 +95,4 @@ results = indicators.get_beta(history_SPX, history_TSLA, 20, BetaType.STANDARD)
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/Beta/Beta.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/beta.py)
+- [Python wrapper]({{site.python.src}}/beta.py)

@@ -93,4 +93,4 @@ Created by Larry Williams, [Fractal](https://www.investopedia.com/terms/f/fracta
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/e-k/Fractal/Fractal.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/fractal.py)
+- [Python wrapper]({{site.python.src}}/fractal.py)

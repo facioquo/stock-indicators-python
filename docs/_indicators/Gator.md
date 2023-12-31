@@ -79,4 +79,4 @@ Created by Bill Williams, the Gator Oscillator is an expanded view of [Williams 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/e-k/Gator/Gator.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/gator.py)
+- [Python wrapper]({{site.python.src}}/gator.py)

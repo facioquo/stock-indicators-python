@@ -80,4 +80,4 @@ Created by Chester W. Keltner, [Keltner Channels](https://en.wikipedia.org/wiki/
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/e-k/Keltner/Keltner.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/keltner.py)
+- [Python wrapper]({{site.python.src}}/keltner.py)

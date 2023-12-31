@@ -109,4 +109,4 @@ Pivots is an extended version of [Williams Fractal](../Fractal#content) that inc
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/Pivots/Pivots.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/pivots.py)
+- [Python wrapper]({{site.python.src}}/pivots.py)

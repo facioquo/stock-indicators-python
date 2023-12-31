@@ -77,4 +77,4 @@ Created by J. Welles Wilder, [Average True Range](https://en.wikipedia.org/wiki/
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/Atr/Atr.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/atr.py)
+- [Python wrapper]({{site.python.src}}/atr.py)

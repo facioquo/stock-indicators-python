@@ -78,4 +78,4 @@ Created by J. Welles Wilder, the [Average Directional Movement Index](https://en
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/Adx/Adx.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/adx.py)
+- [Python wrapper]({{site.python.src}}/adx.py)

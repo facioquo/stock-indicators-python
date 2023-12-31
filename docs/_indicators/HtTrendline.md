@@ -75,4 +75,4 @@ Created by John Ehlers, the Hilbert Transform Instantaneous Trendline is a 5-per
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/e-k/HtTrendline/HtTrendline.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/ht_trendline.py)
+- [Python wrapper]({{site.python.src}}/ht_trendline.py)

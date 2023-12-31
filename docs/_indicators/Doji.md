@@ -70,4 +70,4 @@ results = indicators.get_doji(quotes);
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/Doji/Doji.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/doji.py)
+- [Python wrapper]({{site.python.src}}/doji.py)

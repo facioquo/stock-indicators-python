@@ -80,4 +80,4 @@ results = indicators.get_correlation(quotes_spx, quotes_tsla, 20)
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/Correlation/Correlation.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/correlation.py)
+- [Python wrapper]({{site.python.src}}/correlation.py)

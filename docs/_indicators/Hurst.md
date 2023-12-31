@@ -75,4 +75,4 @@ The [Hurst Exponent](https://en.wikipedia.org/wiki/Hurst_exponent) is a [random-
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/e-k/Hurst/Hurst.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/hurst.py)
+- [Python wrapper]({{site.python.src}}/hurst.py)

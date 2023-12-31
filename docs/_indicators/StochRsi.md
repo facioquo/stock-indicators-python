@@ -81,4 +81,4 @@ Created by by Tushar Chande and Stanley Kroll, [Stochastic RSI](https://school.s
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/StochRsi/StochRsi.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/stoch_rsi.py)
+- [Python wrapper]({{site.python.src}}/stoch_rsi.py)

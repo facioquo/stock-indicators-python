@@ -94,4 +94,4 @@ results = indicators.get_zig_zag(quotes, EndType.CLOSE, 3);
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/ZigZag/ZigZag.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/zig_zag.py)
+- [Python wrapper]({{site.python.src}}/zig_zag.py)

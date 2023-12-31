@@ -78,4 +78,4 @@ Created by Alexander Elder, the [Elder-ray Index](https://www.investopedia.com/t
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/e-k/ElderRay/ElderRay.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/elder_ray.py)
+- [Python wrapper]({{site.python.src}}/elder_ray.py)

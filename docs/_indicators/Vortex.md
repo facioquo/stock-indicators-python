@@ -74,4 +74,4 @@ Created by Etienne Botes and Douglas Siepman, the [Vortex Indicator](https://en.
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Vortex/Vortex.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/vortex.py)
+- [Python wrapper]({{site.python.src}}/vortex.py)

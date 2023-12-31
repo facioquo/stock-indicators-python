@@ -76,4 +76,4 @@ Created by Edward William Dreiss, Fractal Chaos Bands outline high and low price
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/e-k/Fcb/Fcb.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/fcb.py)
+- [Python wrapper]({{site.python.src}}/fcb.py)

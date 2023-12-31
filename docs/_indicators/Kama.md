@@ -80,4 +80,4 @@ Created by Perry Kaufman, [KAMA](https://school.stockcharts.com/doku.php?id=tech
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/e-k/Kama/Kama.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/kama.py)
+- [Python wrapper]({{site.python.src}}/kama.py)

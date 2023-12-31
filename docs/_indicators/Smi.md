@@ -79,4 +79,4 @@ Created by William Blau, the Stochastic Momentum Index (SMI) is a double-smoothe
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Smi/Smi.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/smi.py)
+- [Python wrapper]({{site.python.src}}/smi.py)

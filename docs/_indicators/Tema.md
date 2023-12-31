@@ -78,4 +78,4 @@ See related [EMA](../Ema#content) and [Double EMA](../Dema#content).
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Tema/Tema.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/tema.py)
+- [Python wrapper]({{site.python.src}}/tema.py)

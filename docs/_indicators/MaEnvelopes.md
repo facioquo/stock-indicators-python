@@ -101,4 +101,4 @@ results = indicators.get_ma_envelopes(quotes, 20, 2.5, MAType.SMA);
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/MaEnvelopes/MaEnvelopes.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/ma_envelopes.py)
+- [Python wrapper]({{site.python.src}}/ma_envelopes.py)

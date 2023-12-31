@@ -76,4 +76,4 @@ Popularized by Joseph Granville, [On-balance Volume](https://en.wikipedia.org/wi
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/Obv/Obv.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/obv.py)
+- [Python wrapper]({{site.python.src}}/obv.py)

@@ -81,4 +81,4 @@ Created by Marc Chaikin, the [Chaikin Oscillator](https://en.wikipedia.org/wiki/
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/ChaikinOsc/ChaikinOsc.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/chaikin_oscillator.py)
+- [Python wrapper]({{site.python.src}}/chaikin_oscillator.py)

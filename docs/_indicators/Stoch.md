@@ -95,4 +95,4 @@ Created by George Lane, the [Stochastic Oscillator](https://en.wikipedia.org/wik
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Stoch/Stoch.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/stoch.py)
+- [Python wrapper]({{site.python.src}}/stoch.py)

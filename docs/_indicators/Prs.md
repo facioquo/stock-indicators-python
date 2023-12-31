@@ -77,4 +77,4 @@ results = indicators.get_prs(history_SPX, history_TSLA, 14)
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/Prs/Prs.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/prs.py)
+- [Python wrapper]({{site.python.src}}/prs.py)

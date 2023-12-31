@@ -75,4 +75,4 @@ Created by Arnaud Legoux and Dimitrios Kouzis-Loukas, [ALMA]({{site.dotnet.repo}
 #### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/Alma/Alma.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/alma.py)
+- [Python wrapper]({{site.python.src}}/alma.py)

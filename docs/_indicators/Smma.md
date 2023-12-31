@@ -76,4 +76,4 @@ results = indicators.get_smma(quotes, 20)
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Smma/Smma.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/smma.py)
+- [Python wrapper]({{site.python.src}}/smma.py)

@@ -81,4 +81,4 @@ It can indicate a buy/sell signal or a trailing stop when the trend changes.
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/SuperTrend/SuperTrend.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/super_trend.py)
+- [Python wrapper]({{site.python.src}}/super_trend.py)

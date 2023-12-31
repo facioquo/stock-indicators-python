@@ -78,4 +78,4 @@ Created by Jack Hutson, [TRIX](https://en.wikipedia.org/wiki/Trix_(technical_ana
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Trix/Trix.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/trix.py)
+- [Python wrapper]({{site.python.src}}/trix.py)

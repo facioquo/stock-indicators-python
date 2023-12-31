@@ -113,4 +113,4 @@ See also the alternative [Rolling Pivot Points](../RollingPivots#content) varian
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/PivotPoints/PivotPoints.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/pivot_points.py)
+- [Python wrapper]({{site.python.src}}/pivot_points.py)

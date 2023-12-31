@@ -80,4 +80,4 @@ Created by Laurence Connors, the [ConnorsRSI](https://alvarezquanttrading.com/wp
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/ConnorsRsi/ConnorsRsi.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/connors_rsi.py)
+- [Python wrapper]({{site.python.src}}/connors_rsi.py)

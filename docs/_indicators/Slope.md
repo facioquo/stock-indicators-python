@@ -79,4 +79,4 @@ results = indicators.get_slope(quotes, 20)
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Slope/Slope.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/slope.py)
+- [Python wrapper]({{site.python.src}}/slope.py)

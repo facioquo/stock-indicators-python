@@ -79,4 +79,4 @@ Created by Manning Stoller, [Stoller Average Range Channel (STARC) Bands](https:
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/StarcBands/StarcBands.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/starc_bands.py)
+- [Python wrapper]({{site.python.src}}/starc_bands.py)

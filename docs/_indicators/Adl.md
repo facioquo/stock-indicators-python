@@ -77,4 +77,4 @@ Created by Marc Chaikin, the [Accumulation/Distribution Line/Index](https://en.w
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/Adl/Adl.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/adl.py)
+- [Python wrapper]({{site.python.src}}/adl.py)

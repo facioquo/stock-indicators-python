@@ -91,4 +91,4 @@ Created by Goichi Hosoda (細田悟一, Hosoda Goichi), [Ichimoku Cloud](https:/
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/e-k/Ichimoku/Ichimoku.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/ichimoku.py)
+- [Python wrapper]({{site.python.src}}/ichimoku.py)

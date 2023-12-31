@@ -77,4 +77,4 @@ Created by Marc Chaikin, [Chaikin Money Flow](https://en.wikipedia.org/wiki/Chai
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/Cmf/Cmf.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/cmf.py)
+- [Python wrapper]({{site.python.src}}/cmf.py)

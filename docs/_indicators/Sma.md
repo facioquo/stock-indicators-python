@@ -107,4 +107,4 @@ results = indicators.get_sma_analysis(quotes, lookback_periods)
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Sma/Sma.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/sma.py)
+- [Python wrapper]({{site.python.src}}/sma.py)

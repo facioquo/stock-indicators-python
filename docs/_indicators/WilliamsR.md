@@ -73,4 +73,4 @@ Created by Larry Williams, the [Williams %R](https://en.wikipedia.org/wiki/Willi
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/WilliamsR/WilliamsR.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/williams_r.py)
+- [Python wrapper]({{site.python.src}}/williams_r.py)

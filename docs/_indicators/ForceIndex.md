@@ -75,4 +75,4 @@ Created by Alexander Elder, the [Force Index](https://en.wikipedia.org/wiki/Forc
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/e-k/ForceIndex/ForceIndex.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/force_index.py)
+- [Python wrapper]({{site.python.src}}/force_index.py)

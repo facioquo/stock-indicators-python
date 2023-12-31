@@ -70,4 +70,4 @@ results = indicators.get_marubozu(quotes);
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/Marubozu/Marubozu.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/marubozu.py)
+- [Python wrapper]({{site.python.src}}/marubozu.py)

@@ -74,4 +74,4 @@ Created by Igor Levshin, the [Balance of Power](https://school.stockcharts.com/d
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/Bop/Bop.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/bop.py)
+- [Python wrapper]({{site.python.src}}/bop.py)

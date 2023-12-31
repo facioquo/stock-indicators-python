@@ -77,4 +77,4 @@ results = indicators.get_wma(quotes, 20, CandlePart.CLOSE)
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Wma/Wma.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/wma.py)
+- [Python wrapper]({{site.python.src}}/wma.py)

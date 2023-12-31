@@ -98,4 +98,4 @@ Created by Dave Skender, Rolling Pivot Points is a modern update to traditional 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/RollingPivots/RollingPivots.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/rolling_pivots.py)
+- [Python wrapper]({{site.python.src}}/rolling_pivots.py)
