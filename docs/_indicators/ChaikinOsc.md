@@ -35,7 +35,7 @@ ChaikinOscResults[ChaikinOscResult]
 - It does not return a single incremental indicator value.
 - The first `S-1` periods will have `None` values for `Oscillator` since there's not enough data to calculate.
 
-> &#9886; **Convergence warning**: The first `S+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+>&#9886; **Convergence warning**: The first `S+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### ChaikinOscResult
 
@@ -47,7 +47,7 @@ ChaikinOscResults[ChaikinOscResult]
 | `adl` | float, Optional | Accumulation Distribution Line (ADL)
 | `oscillator` | float, Optional | Chaikin Oscillator
 
-> &#128681; **Warning**: absolute values in MFV, ADL, and Oscillator are somewhat meaningless.  Use with caution.
+>&#128681; **Warning**: absolute values in MFV, ADL, and Oscillator are somewhat meaningless.  Use with caution.
 
 ### Utilities
 

@@ -35,7 +35,7 @@ StdevChannelsResults[StdevChannelsResult]
 - It does not return a single incremental indicator value.
 - Up to `N-1` periods will have `None` values since there's not enough data to calculate.
 
-> &#128073; **Repaint warning**: Historical results are a function of the current period window position and will fluctuate over time.  Recommended for visualization; not recommended for backtesting.
+>&#128073; **Repaint warning**: Historical results are a function of the current period window position and will fluctuate over time.  Recommended for visualization; not recommended for backtesting.
 
 ### StdevChannelsResult
 

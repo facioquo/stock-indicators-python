@@ -34,7 +34,7 @@ SlopeResults[SlopeResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values for `slope` since there's not enough data to calculate.
 
-> &#128073; **Repaint warning**: the `line` will be continuously repainted since it is based on the last quote and lookback period.
+>&#128073; **Repaint warning**: the `line` will be continuously repainted since it is based on the last quote and lookback period.
 
 ### SlopeResult
 

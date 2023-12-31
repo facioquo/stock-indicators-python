@@ -50,7 +50,7 @@ PivotsResults[PivotsResult]
 - It does not return a single incremental indicator value.
 - The first `L` and last `R` periods in `quotes` are unable to be calculated since there's not enough prior/following data.
 
-> &#128073; **Repaint warning**: this price pattern looks forward and backward in the historical quotes so it will never identify a pivot in the last `R` periods of `quotes`.  Fractals are retroactively identified.
+>&#128073; **Repaint warning**: this price pattern looks forward and backward in the historical quotes so it will never identify a pivot in the last `R` periods of `quotes`.  Fractals are retroactively identified.
 
 ### PivotsResult
 

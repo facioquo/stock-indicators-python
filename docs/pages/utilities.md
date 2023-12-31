@@ -21,11 +21,11 @@ results = quotes.get_marubozu(quotes).condense();
 
 Currently, `.condense()` is only available on a select few indicators.  If you find an indicator that is a good candidate for this utility, please [submit an Issue]({{site.dotnet.repo}}/issues).
 
-> &#128681; **Warning**: In all cases, `.condense()` will remove non-essential results and will produce fewer records than are in `quotes`.
+>&#128681; **Warning**: In all cases, `.condense()` will remove non-essential results and will produce fewer records than are in `quotes`.
 
 ### Convert to quotes
 
-> &#128681; **Warning**: The `.to_quotes()` method is deprecated. (since v0.8.0)
+>&#128681; **Warning**: The `.to_quotes()` method is deprecated. (since v0.8.0)
 
 `results.to_quotes()` will transform indicator results back into an `list[Quote]` so it can be re-used to generate an [indicator of indicators]({{site.baseurl}}/guide/#generating-indicator-of-indicators).
 
@@ -38,7 +38,7 @@ sma_of_rsi = indicators.get_sma(quotes_from_rsi, 20)
 
 Currently, `.to_quotes()` is only available on a select few indicators.  If you find an indicator that is a good candidate for this utility, please [submit an Issue]({{site.baseurl}}/contributing/#reporting-bugs-and-feature-requests).
 
-> &#128681; **Warning**: In many cases, `.to_quotes()` will remove any `None` results -- this will produce fewer historical `quotes` than were originally provided.
+>&#128681; **Warning**: In many cases, `.to_quotes()` will remove any `None` results -- this will produce fewer historical `quotes` than were originally provided.
 
 ### Find indicator result by date
 
@@ -72,6 +72,6 @@ results = indicators.get_ema(quotes, 20).remove_warmup_periods(10)
 
 See [individual indicator pages]({{site.baseurl}}/indicators/#content) for information on recommended pruning quantities.
 
-> &#128681; **Note**: `.remove_warmup_periods()` is not available on indicators that do not have any recommended pruning; however, you can still do a custom pruning by using the customizable `.remove_warmup_periods(remove_periods)`.
+>&#128681; **Note**: `.remove_warmup_periods()` is not available on indicators that do not have any recommended pruning; however, you can still do a custom pruning by using the customizable `.remove_warmup_periods(remove_periods)`.
 >
-> &#128681; **Warning**: `.remove_warmup_periods()` will reverse-engineer some parameters in determing the recommended pruning amount.  Consequently, on rare occassions when there are unusual results, there can be an erroneous increase in the amount of pruning.  If you want more certainty, use the `.remove_warmup_periods(remove_periods)` with a specific number of `remove_periods`.
+>&#128681; **Warning**: `.remove_warmup_periods()` will reverse-engineer some parameters in determing the recommended pruning amount.  Consequently, on rare occassions when there are unusual results, there can be an erroneous increase in the amount of pruning.  If you want more certainty, use the `.remove_warmup_periods(remove_periods)` with a specific number of `remove_periods`.

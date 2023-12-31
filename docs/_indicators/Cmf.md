@@ -43,7 +43,7 @@ CMFResults[CMFResult]
 | `money_flow_volume` | float, Optional | Money Flow Volume
 | `cmf` | float, Optional | Chaikin Money Flow = SMA of MFV
 
-> &#128681; **Warning**: absolute values in MFV and CMF are somewhat meaningless.  Use with caution.
+>&#128681; **Warning**: absolute values in MFV and CMF are somewhat meaningless.  Use with caution.
 
 ### Utilities
 

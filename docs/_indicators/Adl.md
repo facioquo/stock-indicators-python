@@ -43,7 +43,7 @@ ADLResults[ADLResult]
 | `adl` | float | Accumulation Distribution Line (ADL)
 | `adl_sma` | float, Optional | Moving average (SMA) of ADL based on `sma_periods` periods, if specified
 
-> &#128681; **Warning**: absolute values in ADL and MFV are somewhat meaningless.  Use with caution.
+>&#128681; **Warning**: absolute values in ADL and MFV are somewhat meaningless.  Use with caution.
 
 ### Utilities
 

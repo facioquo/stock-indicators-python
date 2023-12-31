@@ -39,7 +39,7 @@ StochRSIResults[StochRSIResult]
 - It does not return a single incremental indicator value.
 - The first `R+S+M` periods will have `None` values for `stoch_rsi` since there's not enough data to calculate.
 
-> &#9886; **Convergence warning**: The first `10×R` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.  We recommend pruning at least `R+S+M+100` initial values.
+>&#9886; **Convergence warning**: The first `10×R` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.  We recommend pruning at least `R+S+M+100` initial values.
 
 ### StochRSIResult
 

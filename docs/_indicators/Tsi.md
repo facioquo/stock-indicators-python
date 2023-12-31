@@ -37,7 +37,7 @@ TSIResults[TSIResult]
 - The first `N+M-1` periods will have `None` values since there's not enough data to calculate.
 - `signal` will be `None` for all periods if `signal_periods=0`.
 
-> &#9886; **Convergence warning**: The first `N+M+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+>&#9886; **Convergence warning**: The first `N+M+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### TSIResult
 

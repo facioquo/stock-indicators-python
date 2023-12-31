@@ -42,7 +42,7 @@ OBVResults[OBVResult]
 | `obv` | float | On-balance Volume
 | `obv_sma` | float, Optional | Moving average (SMA) of OBV based on `sma_periods` periods, if specified
 
-> &#128681; **Warning**: absolute values in OBV are somewhat meaningless. Use with caution.
+>&#128681; **Warning**: absolute values in OBV are somewhat meaningless. Use with caution.
 
 ### Utilities
 
