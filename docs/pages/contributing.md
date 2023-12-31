@@ -83,7 +83,6 @@ Running the commands below in your console will show performance data.  You can 
 ```bash
 # install pytest and other dependencies
 pip install -r requirements-test.txt
-pip install openpyxl
 pip install pytest-benchmark
 
 # run benchmarks
