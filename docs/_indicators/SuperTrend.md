@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_super_trend**(*quotes, lookback_periods=10, multiplier=3*)
+><span class="indicator-syntax">**get_super_trend**(*quotes, lookback_periods=10, multiplier=3*)</span>
 
 ## Parameters
 
@@ -37,7 +35,7 @@ SuperTrendResults[SuperTrendResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` SuperTrend values since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: the line segment before the first reversal and the first `N+100` periods are unreliable due to an initial guess of trend direction and precision convergence for the underlying ATR values.
+>&#9886; **Convergence warning**: the line segment before the first reversal and the first `N+100` periods are unreliable due to an initial guess of trend direction and precision convergence for the underlying ATR values.
 
 ### SuperTrendResult
 
@@ -74,11 +72,11 @@ results = indicators.get_super_trend(quotes, 14, 3)
 
 Created by Oliver Seban, the SuperTrend indicator attempts to determine the primary trend of Close prices by using [Average True Range (ATR)](../Atr#content) band thresholds.
 It can indicate a buy/sell signal or a trailing stop when the trend changes.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/235 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/235 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/SuperTrend.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/SuperTrend/SuperTrend.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/super_trend.py)
+- [Python wrapper]({{site.python.src}}/super_trend.py)

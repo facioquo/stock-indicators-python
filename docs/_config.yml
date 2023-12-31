@@ -1,10 +1,12 @@
 # Ref: https://jekyllrb.com/docs/usage/
-# Ref: https://github.com/pages-themes/cayman
-# Local dev: bundle exec jekyll serve -o -l
+# Local dev: bundle exec jekyll serve --livereload
 
-title: "Stock Indicators for Python"
-tagline: "Send in historical price quotes and get back desired technical indicators.  Nothing more."
+title: Stock Indicators for Python
+tagline: "Transform price quotes into trading insights."
+repository: DaveSkender/Stock.Indicators.Python
 locale: en_US
+baseurl: ""
+url: "https://python.stockindicators.dev"
 
 # social media information
 image:
@@ -14,30 +16,26 @@ image:
 
 logo: /assets/icons/android-chrome-192x192.png
 
-# https://github.com/pages-themes/cayman
-remote_theme: pages-themes/cayman@v0.2.0
-
 # .NET site URL refs
 dotnet:
   repo: "https://github.com/DaveSkender/Stock.Indicators"
   src: "https://github.com/DaveSkender/Stock.Indicators/blob/main/src"
   charts: "https://raw.githubusercontent.com/DaveSkender/Stock.Indicators/main/docs/assets/charts"
 
-# this site URL refs
-baseurl: ""
-url: "https://python.stockindicators.dev"
-repository: DaveSkender/Stock.Indicators.Python
-sourceurl: "https://github.com/DaveSkender/Stock.Indicators.Python/blob/main/stock_indicators/indicators"
+ # this site URL refs
+python:
+  src: "https://github.com/DaveSkender/Stock.Indicators.Python/blob/main/stock_indicators/indicators"
 
-ga_tag: G-MNKJE3KS9Y
+clarity: false
 
+# site plugins and settings
 plugins:
-  - jemoji
   - jekyll-github-metadata
-  - jekyll-remote-theme
+  - jekyll-seo-tag
   - jekyll-sitemap
   - jekyll-last-modified-at
   - jekyll-redirect-from
+  - jekyll-minifier
 
 exclude:
   [

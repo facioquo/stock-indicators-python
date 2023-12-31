@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_renko**(*quotes, brick_size, end_type=EndType.CLOSE*)
+><span class="indicator-syntax">**get_renko**(*quotes, brick_size, end_type=EndType.CLOSE*)</span>
 
 ## Parameters
 
@@ -46,7 +44,7 @@ RenkoResults[RenkoResult]
 - `RenkoResults` is just a list of `RenkoResult`.
 - It does not return a single incremental indicator value.
 
-> :warning: **Warning**: Unlike most indicators in this library, this indicator DOES NOT return the same number of elements as there are in the historical quotes.  Renko bricks are added to the results once the `brickSize` change is achieved.  For example, if it takes 3 days for a $2.50 price change to occur an entry is made on the third day while the first two are skipped.  If a period change occurs at multiples of `brickSize`, multiple bricks are drawn with the same `Date`.  See [online documentation](https://www.investopedia.com/terms/r/renkochart.asp) for more information.
+>&#128681; **Warning**: Unlike most indicators in this library, this indicator DOES NOT return the same number of elements as there are in the historical quotes.  Renko bricks are added to the results once the `brickSize` change is achieved.  For example, if it takes 3 days for a $2.50 price change to occur an entry is made on the third day while the first two are skipped.  If a period change occurs at multiples of `brickSize`, multiple bricks are drawn with the same `Date`.  See [online documentation](https://www.investopedia.com/terms/r/renkochart.asp) for more information.
 
 ### RenkoResult
 
@@ -62,7 +60,7 @@ Each result record represents one Renko brick.
 | `volume` | Decimal | Sum of Volume over elapsed quotes periods
 | `is_up` | bool | Direction of brick (true=up,false=down)
 
-> :warning: **Warning**: When multiple bricks are drawn from a single `quote` period, the extra information about `High` and `Low` wicks and `Volume` is potentially confusing to interpret.  `High` and `Low` wicks will be the same across the multiple bricks; and `Volume` is portioning evenly across the number of bricks.  For example, if within one `quote` period 3 bricks are drawn, the `Volume` for each brick will be `(sum of quotes Volume since last brick) / 3`.
+>&#128681; **Warning**: When multiple bricks are drawn from a single `quote` period, the extra information about `High` and `Low` wicks and `Volume` is potentially confusing to interpret.  `High` and `Low` wicks will be the same across the multiple bricks; and `Volume` is portioning evenly across the number of bricks.  For example, if within one `quote` period 3 bricks are drawn, the `Volume` for each brick will be `(sum of quotes Volume since last brick) / 3`.
 
 ### Utilities
 
@@ -87,7 +85,7 @@ results = indicators.get_renko(quotes, 2.5, EndType.CLOSE);
 
 ## ATR Variant
 
-## **get_renko_atr**(*quotes, atr_periods, end_type=EndType.CLOSE*)
+><span class="indicator-syntax">**get_renko_atr**(*quotes, atr_periods, end_type=EndType.CLOSE*)</span>
 
 ### Parameters for ATR
 
@@ -113,7 +111,7 @@ RenkoResults[RenkoResult]
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 
-> :paintbrush: **Repaint warning**: When using the `GetRenkoAtr()` variant, the last [Average True Range (ATR)]({{site.baseurl}}/indicators/Atr/#content) value is used to set `brickSize`.  Since the ATR changes over time, historical bricks will be repainted as new periods are added or updated in `quotes`.
+>&#128073; **Repaint warning**: When using the `GetRenkoAtr()` variant, the last [Average True Range (ATR)]({{site.baseurl}}/indicators/Atr/#content) value is used to set `brickSize`.  Since the ATR changes over time, historical bricks will be repainted as new periods are added or updated in `quotes`.
 
 ## Example for ATR variant
 
@@ -130,11 +128,11 @@ results = indicators.get_renko_atr(quotes, atr_periods);
 ## About {{ page.title }}
 
 The [Renko Chart](https://en.m.wikipedia.org/wiki/Renko_chart) is a Japanese price transformed candlestick pattern that uses "bricks" to show a defined increment of change over a non-linear time series.  Transitions can use either `close` or `high/low` price values.  An [ATR variant](#atr-variant) is also provided where brick size is determined by Average True Range values.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/478 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/478 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Renko.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/Renko/Renko.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/renko.py)
+- [Python wrapper]({{site.python.src}}/renko.py)

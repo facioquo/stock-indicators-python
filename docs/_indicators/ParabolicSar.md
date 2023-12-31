@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_parabolic_sar**(*quotes, acceleration_step=0.02, max_acceleration_factor=0.2*)
+><span class="indicator-syntax">**get_parabolic_sar**(*quotes, acceleration_step=0.02, max_acceleration_factor=0.2*)</span>
 
 ### More overloaded interfaces
 
@@ -73,11 +71,11 @@ results = indicators.get_parabolic_sar(quotes, 0.02, 0.2)
 ## About {{ page.title }}
 
 Created by J. Welles Wilder, [Parabolic SAR](https://en.wikipedia.org/wiki/Parabolic_SAR) (stop and reverse) is a price-time based indicator used to determine trend direction and reversals.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/245 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/245 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/ParabolicSar.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/ParabolicSar/ParabolicSar.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/parabolic_sar.py)
+- [Python wrapper]({{site.python.src}}/parabolic_sar.py)

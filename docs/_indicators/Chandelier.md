@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_chandelier**(*quotes, lookback_periods=22, multiplier=3.0, chandelier_type=ChandelierType.LONG*)
+><span class="indicator-syntax">**get_chandelier**(*quotes, lookback_periods=22, multiplier=3.0, chandelier_type=ChandelierType.LONG*)</span>
 
 ## Parameters
 
@@ -80,11 +78,11 @@ results = indicators.get_chandelier(quotes, 22, 3, ChandelierType.LONG)
 ## About {{ page.title }}
 
 Created by Charles Le Beau, the [Chandelier Exit](https://school.stockcharts.com/doku.php?id=technical_indicators:chandelier_exit) is typically used for stop-loss and can be computed for both long or short types.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/263 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/263 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Chandelier.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/Chandelier/Chandelier.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/chandelier.py)
+- [Python wrapper]({{site.python.src}}/chandelier.py)

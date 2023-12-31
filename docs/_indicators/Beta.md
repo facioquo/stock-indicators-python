@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_beta**(*eval_history, market_quotes, lookback_periods, beta_type=BetaType.STANDARD*)
+><span class="indicator-syntax">**get_beta**(*eval_history, market_quotes, lookback_periods, beta_type=BetaType.STANDARD*)</span>
 
 ## Parameters
 
@@ -88,11 +86,11 @@ results = indicators.get_beta(history_SPX, history_TSLA, 20, BetaType.STANDARD)
 ## About {{ page.title }}
 
 [Beta](https://en.wikipedia.org/wiki/Beta_(finance)) shows how strongly one stock responds to systemic volatility of the entire market.  [Upside Beta](https://en.wikipedia.org/wiki/Upside_beta) (Beta+) and [Downside Beta](https://en.wikipedia.org/wiki/Downside_beta) (Beta-), [popularized by Harry M. Markowitz](https://www.jstor.org/stable/j.ctt1bh4c8h), are also included.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/268 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/268 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Beta.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/Beta/Beta.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/beta.py)
+- [Python wrapper]({{site.python.src}}/beta.py)

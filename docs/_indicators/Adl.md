@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_adl**(*quotes, sma_periods=None*)
+><span class="indicator-syntax">**get_adl**(*quotes, sma_periods=None*)</span>
 
 ## Parameters
 
@@ -45,7 +43,7 @@ ADLResults[ADLResult]
 | `adl` | float | Accumulation Distribution Line (ADL)
 | `adl_sma` | float, Optional | Moving average (SMA) of ADL based on `sma_periods` periods, if specified
 
-> :warning: **Warning**: absolute values in ADL and MFV are somewhat meaningless.  Use with caution.
+>&#128681; **Warning**: absolute values in ADL and MFV are somewhat meaningless.  Use with caution.
 
 ### Utilities
 
@@ -70,11 +68,11 @@ results = indicators.get_adl(quotes)
 ## About {{ page.title }}
 
 Created by Marc Chaikin, the [Accumulation/Distribution Line/Index](https://en.wikipedia.org/wiki/Accumulation/distribution_index) is a rolling accumulation of Chaikin Money Flow Volume.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/271 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/271 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Adl.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/Adl/Adl.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/adl.py)
+- [Python wrapper]({{site.python.src}}/adl.py)

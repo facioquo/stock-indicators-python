@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_obv**(*quotes, sma_periods=None*)
+><span class="indicator-syntax">**get_obv**(*quotes, sma_periods=None*)</span>
 
 ## Parameters
 
@@ -44,7 +42,7 @@ OBVResults[OBVResult]
 | `obv` | float | On-balance Volume
 | `obv_sma` | float, Optional | Moving average (SMA) of OBV based on `sma_periods` periods, if specified
 
-> :warning: **Warning**: absolute values in OBV are somewhat meaningless. Use with caution.
+>&#128681; **Warning**: absolute values in OBV are somewhat meaningless. Use with caution.
 
 ### Utilities
 
@@ -69,11 +67,11 @@ results = indicators.get_obv(quotes)
 ## About {{ page.title }}
 
 Popularized by Joseph Granville, [On-balance Volume](https://en.wikipedia.org/wiki/On-balance_volume) is a rolling accumulation of volume based on Close price direction.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/246 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/246 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Obv.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/Obv/Obv.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/obv.py)
+- [Python wrapper]({{site.python.src}}/obv.py)

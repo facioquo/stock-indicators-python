@@ -30,6 +30,7 @@ GEM
     commonmarker (0.23.10)
     concurrent-ruby (1.2.2)
     connection_pool (2.4.1)
+    cssminify2 (2.0.1)
     dnsruby (1.70.0)
       simpleidn (~> 0.2.1)
     drb (2.2.0)
@@ -104,6 +105,7 @@ GEM
     html-pipeline (2.14.3)
       activesupport (>= 2)
       nokogiri (>= 1.4)
+    htmlcompressor (0.4.0)
     http_parser.rb (0.8.0)
     i18n (1.14.1)
       concurrent-ruby (~> 1.0)
@@ -149,6 +151,12 @@ GEM
     jekyll-mentions (1.6.0)
       html-pipeline (~> 2.3)
       jekyll (>= 3.7, < 5.0)
+    jekyll-minifier (0.1.10)
+      cssminify2 (~> 2.0)
+      htmlcompressor (~> 0.4)
+      jekyll (>= 3.5)
+      json-minify (~> 0.0.3)
+      uglifier (~> 4.1)
     jekyll-optional-front-matter (0.3.2)
       jekyll (>= 3.0, < 5.0)
     jekyll-paginate (1.1.0)
@@ -218,6 +226,9 @@ GEM
       gemoji (~> 3.0)
       html-pipeline (~> 2.2)
       jekyll (>= 3.0, < 5.0)
+    json (2.7.1)
+    json-minify (0.0.3)
+      json (> 0)
     kramdown (2.3.2)
       rexml
     kramdown-parser-gfm (1.1.0)
@@ -234,7 +245,7 @@ GEM
       jekyll-seo-tag (~> 2.1)
     minitest (5.20.0)
     mutex_m (0.2.0)
-    nokogiri (1.15.5)
+    nokogiri (1.16.0)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
     octokit (4.25.1)
@@ -269,6 +280,8 @@ GEM
       ethon (>= 0.9.0)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    uglifier (4.2.0)
+      execjs (>= 0.3.0, < 3)
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.9.1)
@@ -287,10 +300,10 @@ DEPENDENCIES
   github-pages
   jekyll-github-metadata
   jekyll-last-modified-at
+  jekyll-minifier
   jekyll-redirect-from
-  jekyll-remote-theme
+  jekyll-seo-tag
   jekyll-sitemap
-  jemoji
   wdm (>= 0.1.1)
   webrick
 

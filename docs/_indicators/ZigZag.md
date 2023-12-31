@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_zig_zag**(*quotes, end_type=EndType.CLOSE, percent_change=5*)
+><span class="indicator-syntax">**get_zig_zag**(*quotes, end_type=EndType.CLOSE, percent_change=5*)</span>
 
 ## Parameters
 
@@ -50,9 +48,9 @@ ZigZagResults[ZigZagResult]
 - The first line segment starts after the first confirmed point; ZigZag values before the first confirmed point will be `None`.
 - The last line segment is an approximation as the direction is indeterminate.
 
-> :warning: **Warning**: depending on the specified `endType`, the indicator cannot be initialized if the first `Quote` in `quotes` has a `High`,`Low`, or `Close` value of 0 (zero).
+>&#128681; **Warning**: depending on the specified `endType`, the indicator cannot be initialized if the first `Quote` in `quotes` has a `High`,`Low`, or `Close` value of 0 (zero).
 >
-> :paintbrush: **Repaint warning**: the last line segment will always be redrawn back to the last known pivot.  Do not attempt to calculate incremental values since previous values may change based on newer quotes.
+>&#128073; **Repaint warning**: the last line segment will always be redrawn back to the last known pivot.  Do not attempt to calculate incremental values since previous values may change based on newer quotes.
 
 ### ZigZagResult
 
@@ -87,11 +85,11 @@ results = indicators.get_zig_zag(quotes, EndType.CLOSE, 3);
 ## About {{ page.title }}
 
 [Zig Zag](https://school.stockcharts.com/doku.php?id=technical_indicators:zigzag) is a price chart overlay that simplifies the up and down movements and transitions based on a percent change smoothing threshold.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/226 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/226 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/ZigZag.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/ZigZag/ZigZag.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/zig_zag.py)
+- [Python wrapper]({{site.python.src}}/zig_zag.py)

@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_macd**(*quotes, fast_periods=12, slow_periods=26, signal_periods=9*)
+><span class="indicator-syntax">**get_macd**(*quotes, fast_periods=12, slow_periods=26, signal_periods=9*)</span>
 
 ## Parameters
 
@@ -41,7 +39,7 @@ MACDResults[MACDResult]
 - It does not return a single incremental indicator value.
 - The first `S-1` slow periods will have `None` values since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `S+P+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+>&#9886; **Convergence warning**: The first `S+P+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### MACDResult
 
@@ -77,11 +75,11 @@ results = indicators.get_macd(quotes, 12, 26, 9)
 ## About {{ page.title }}
 
 Created by Gerald Appel, [MACD](https://en.wikipedia.org/wiki/MACD) is a simple oscillator view of two converging/diverging exponential moving averages.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/248 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/248 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Macd.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/Macd/Macd.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/macd.py)
+- [Python wrapper]({{site.python.src}}/macd.py)

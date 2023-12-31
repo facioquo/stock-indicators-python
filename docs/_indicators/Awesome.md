@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_awesome**(*quotes, fast_periods=5, slow_periods=34*)
+><span class="indicator-syntax">**get_awesome**(*quotes, fast_periods=5, slow_periods=34*)</span>
 
 ## Parameters
 
@@ -69,11 +67,11 @@ results = indicators.get_awesome(quotes, 5, 34)
 ## About {{ page.title }}
 
 Created by Bill Williams, the Awesome Oscillator (aka Super AO) is a measure of the gap between a fast and slow period modified moving average.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/282 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/282 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Awesome.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/Awesome/Awesome.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/awesome.py)
+- [Python wrapper]({{site.python.src}}/awesome.py)

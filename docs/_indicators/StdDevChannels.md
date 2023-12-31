@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_stdev_channels**(*quotes, lookback_periods=20, standard_deviations=2*)
+><span class="indicator-syntax">**get_stdev_channels**(*quotes, lookback_periods=20, standard_deviations=2*)</span>
 
 ## Parameters
 
@@ -37,7 +35,7 @@ StdevChannelsResults[StdevChannelsResult]
 - It does not return a single incremental indicator value.
 - Up to `N-1` periods will have `None` values since there's not enough data to calculate.
 
-> :paintbrush: **Repaint warning**: Historical results are a function of the current period window position and will fluctuate over time.  Recommended for visualization; not recommended for backtesting.
+>&#128073; **Repaint warning**: Historical results are a function of the current period window position and will fluctuate over time.  Recommended for visualization; not recommended for backtesting.
 
 ### StdevChannelsResult
 
@@ -78,11 +76,11 @@ If you specify `None` for the `lookback_periods`, you will get a regression line
 ## About {{ page.title }}
 
 Standard Deviation Channels are based on an linear regression centerline and standard deviations band widths.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/368 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/368 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/StdDevChannels.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/StdDevChannels/StdDevChannels.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/stdev_channels.py)
+- [Python wrapper]({{site.python.src}}/stdev_channels.py)

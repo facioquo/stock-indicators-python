@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_roc**(*quotes, lookback_periods, sma_periods=None*)
+><span class="indicator-syntax">**get_roc**(*quotes, lookback_periods, sma_periods=None*)</span>
 
 ## Parameters
 
@@ -68,9 +66,7 @@ results = indicators.get_roc(quotes, 20)
 
 # ROC with Bands
 
-<hr>
-
-## **get_roc_with_band**(*quotes, lookback_periods, ema_periods, std_dev_periods*)
+><span class="indicator-syntax">**get_roc_with_band**(*quotes, lookback_periods, ema_periods, std_dev_periods*)</span>
 
 ## Parameters with Bands
 
@@ -100,7 +96,7 @@ ROCWBResults[ROCWBResult]
 ## About {{ page.title }}
 
 [Rate of Change](https://en.wikipedia.org/wiki/Momentum_(technical_analysis)), also known as Momentum Oscillator, is the percent change of Close price over a lookback window.  A [Rate of Change with Bands](#roc-with-bands) variant, created by Vitali Apirine, is also included.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/242 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/242 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Roc.png)
 
@@ -111,4 +107,4 @@ ROCWBResults[ROCWBResult]
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/Roc/Roc.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/roc.py)
+- [Python wrapper]({{site.python.src}}/roc.py)

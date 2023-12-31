@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_rsi**(*quotes, lookback_periods=14*)
+><span class="indicator-syntax">**get_rsi**(*quotes, lookback_periods=14*)</span>
 
 ## Parameters
 
@@ -36,7 +34,7 @@ RSIResults[RSIResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `10×N` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+>&#9886; **Convergence warning**: The first `10×N` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### RSIResult
 
@@ -69,11 +67,11 @@ results = indicators.get_rsi(quotes, 14)
 ## About {{ page.title }}
 
 Created by J. Welles Wilder, the [Relative Strength Index](https://en.wikipedia.org/wiki/Relative_strength_index) measures strength of the winning/losing streak over `N` lookback periods on a scale of 0 to 100, to depict overbought and oversold conditions.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/224 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/224 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Rsi.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/Rsi/Rsi.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/rsi.py)
+- [Python wrapper]({{site.python.src}}/rsi.py)

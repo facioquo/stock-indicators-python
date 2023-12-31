@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_stdev**(*quotes, lookback_periods, sma_periods=None*)
+><span class="indicator-syntax">**get_stdev**(*quotes, lookback_periods, sma_periods=None*)</span>
 
 ## Parameters
 
@@ -71,11 +69,11 @@ results = indicators.get_stdev(quotes, 10)
 ## About {{ page.title }}
 
 [Standard Deviation](https://en.wikipedia.org/wiki/Standard_deviation) of Close price over a rolling lookback window.  Also known as Historical Volatility (HV).
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/239 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/239 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/StdDev.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/StdDev/StdDev.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/stdev.py)
+- [Python wrapper]({{site.python.src}}/stdev.py)

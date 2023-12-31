@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_ultimate**(*quotes, short_periods=7, middle_periods=14, long_periods=28*)
+><span class="indicator-syntax">**get_ultimate**(*quotes, short_periods=7, middle_periods=14, long_periods=28*)</span>
 
 ## Parameters
 
@@ -68,11 +66,11 @@ results = indicators.get_ultimate(quotes, 7, 14, 28)
 ## About {{ page.title }}
 
 Created by Larry Williams, the [Ultimate Oscillator](https://en.wikipedia.org/wiki/Ultimate_oscillator) uses several lookback periods to weigh buying power against true range price to produce on oversold / overbought oscillator.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/231 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/231 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Ultimate.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Ultimate/Ultimate.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/ultimate.py)
+- [Python wrapper]({{site.python.src}}/ultimate.py)
