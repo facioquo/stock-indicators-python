@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_donchian**(*quotes, lookback_periods=20*)
+><span class="indicator-syntax">**get_donchian**(*quotes, lookback_periods=20*)</span>
 
 ## Parameters
 
@@ -70,11 +68,11 @@ results = indicators.get_donchian(quotes, 20)
 ## About {{ page.title }}
 
 Created by Richard Donchian, [Donchian Channels](https://en.wikipedia.org/wiki/Donchian_channel), also called Price Channels, are derived from highest High and lowest Low values over a lookback window.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/257 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/257 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Donchian.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/Donchian/Donchian.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/donchian.py)
+- [Python wrapper]({{site.python.src}}/donchian.py)

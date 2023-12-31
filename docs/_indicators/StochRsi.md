@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_stoch_rsi**(*quotes, rsi_periods, stoch_periods, signal_periods, smooth_periods=1*)
+><span class="indicator-syntax">**get_stoch_rsi**(*quotes, rsi_periods, stoch_periods, signal_periods, smooth_periods=1*)</span>
 
 ## Parameters
 
@@ -41,7 +39,7 @@ StochRSIResults[StochRSIResult]
 - It does not return a single incremental indicator value.
 - The first `R+S+M` periods will have `None` values for `stoch_rsi` since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `10×R` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.  We recommend pruning at least `R+S+M+100` initial values.
+>&#9886; **Convergence warning**: The first `10×R` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.  We recommend pruning at least `R+S+M+100` initial values.
 
 ### StochRSIResult
 
@@ -74,11 +72,11 @@ results = indicators.get_stoch_rsi(quotes, 14, 14, 1, 1)
 ## About {{ page.title }}
 
 Created by by Tushar Chande and Stanley Kroll, [Stochastic RSI](https://school.stockcharts.com/doku.php?id=technical_indicators:stochrsi) is a Stochastic interpretation of the Relative Strength Index.  It is different from, and often confused with the more traditional [Stochastic Oscillator](../Stoch#content).
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/236 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/236 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/StochRsi.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/StochRsi/StochRsi.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/stoch_rsi.py)
+- [Python wrapper]({{site.python.src}}/stoch_rsi.py)

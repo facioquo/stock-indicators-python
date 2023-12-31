@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_trix**(*quotes, lookback_periods, signal_periods=None*)
+><span class="indicator-syntax">**get_trix**(*quotes, lookback_periods, signal_periods=None*)</span>
 
 ## Parameters
 
@@ -37,7 +35,7 @@ TRIXResults[TRIXResult]
 - It does not return a single incremental indicator value.
 - The first `3×N-3` periods will have `None` values since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `3×N+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+>&#9886; **Convergence warning**: The first `3×N+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### TRIXResult
 
@@ -71,11 +69,11 @@ results = indicators.get_trix(quotes, 14)
 ## About {{ page.title }}
 
 Created by Jack Hutson, [TRIX](https://en.wikipedia.org/wiki/Trix_(technical_analysis)) is the rate of change for a 3 EMA smoothing of the Close price over a lookback window.  TRIX is often confused with [TEMA](../Tema#content).
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/234 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/234 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Trix.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Trix/Trix.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/trix.py)
+- [Python wrapper]({{site.python.src}}/trix.py)

@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_ulcer_index**(*quotes, lookback_periods=14*)
+><span class="indicator-syntax">**get_ulcer_index**(*quotes, lookback_periods=14*)</span>
 
 ## Parameters
 
@@ -66,11 +64,11 @@ results = indicators.get_ulcer_index(quotes, 14)
 ## About {{ page.title }}
 
 Created by Peter Martin, the [Ulcer Index](https://en.wikipedia.org/wiki/Ulcer_index) is a measure of downside Close price volatility over a lookback window.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/232 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/232 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/UlcerIndex.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/UlcerIndex/UlcerIndex.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/ulcer_index.py)
+- [Python wrapper]({{site.python.src}}/ulcer_index.py)

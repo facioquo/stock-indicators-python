@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_prs**(*eval_history, base_history, lookback_periods=None, sma_periods=None*)
+><span class="indicator-syntax">**get_prs**(*eval_history, base_history, lookback_periods=None, sma_periods=None*)</span>
 
 ## Parameters
 
@@ -70,11 +68,11 @@ results = indicators.get_prs(history_SPX, history_TSLA, 14)
 ## About {{ page.title }}
 
 [Price Relative Strength (PRS)](https://en.wikipedia.org/wiki/Relative_strength), also called Comparative Relative Strength, shows the ratio of two quote histories, based on Close price.  It is often used to compare against a market index or sector ETF.  When using the optional `lookback_periods`, this also returns relative percent change over the specified periods.  This is not the same as the more prevalent [Relative Strength Index (RSI)](../Rsi#content).
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/243 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/243 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Prs.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/Prs/Prs.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/prs.py)
+- [Python wrapper]({{site.python.src}}/prs.py)

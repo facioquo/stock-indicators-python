@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_kama**(*quotes, er_periods=10, fast_periods=2, slow_periods=30*)
+><span class="indicator-syntax">**get_kama**(*quotes, er_periods=10, fast_periods=2, slow_periods=30*)</span>
 
 ## Parameters
 
@@ -38,7 +36,7 @@ KAMAResults[KAMAResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `10×E` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+>&#9886; **Convergence warning**: The first `10×E` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### KAMAResult
 
@@ -73,11 +71,11 @@ results = indicators.get_kama(quotes, 10,2,30)
 ## About {{ page.title }}
 
 Created by Perry Kaufman, [KAMA](https://school.stockcharts.com/doku.php?id=technical_indicators:kaufman_s_adaptive_moving_average) is an volatility adaptive moving average of Close price over configurable lookback periods.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/210 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/210 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Kama.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/e-k/Kama/Kama.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/kama.py)
+- [Python wrapper]({{site.python.src}}/kama.py)

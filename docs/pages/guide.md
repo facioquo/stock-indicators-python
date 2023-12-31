@@ -23,17 +23,27 @@ layout: page
 
 ### Installation and setup
 
-Stock Indicators for Python has dependency on [PythonNet](https://github.com/pythonnet/pythonnet), which uses CLR.
-Check that you have CLR installed. We are currently using **.NET 6**.
+1. Install prerequisite framework dependencies
 
-- [download and install .NET 6.0](https://dotnet.microsoft.com/en-us/download/dotnet)
+    Stock Indicators for Python has dependency on [PythonNet](https://github.com/pythonnet/pythonnet), which uses [CLR(Common Language Runtime)](https://learn.microsoft.com/dotnet/standard/clr).  Check that you've installed the following prerequisite software:
 
-Find and install the **stock-indicators** Python package into your environment. See [more help](https://packaging.python.org/en/latest/tutorials/installing-packages/) for installing packages.
+    > Use the latest **Python** and **.NET SDK** for best performance.
 
-```bash
-# pip example
-pip install stock-indicators
-```
+    | Installer | Min | Latest | Download |
+    |---| :---: | :---: | --- |
+    | Python | 3.8 | 3.12 | [@python.org](https://www.python.org/downloads/) |
+    | .NET SDK | 6.0 | 8.0 | [@microsoft.com](https://dotnet.microsoft.com/en-us/download) |
+
+    Note: we do not support the open source [Mono .NET Framework](https://www.mono-project.com).
+
+2. Find and install the **stock-indicators** Python package into your environment.
+
+    ```bash
+    # pip example
+    pip install stock-indicators
+    ```
+
+    > See [Python documentation](https://packaging.python.org/en/latest/tutorials/installing-packages/) for more help with installing packages.
 
 ### Prerequisite data
 
@@ -116,7 +126,7 @@ There are many places to get stock market data.  Check with your brokerage or ot
 
 Each indicator will need different amounts of price `quotes` to calculate.  You can find guidance on the individual indicator documentation pages for minimum requirements; however, **most use cases will require that you provide more than the minimum**.  As a general rule of thumb, you will be safe if you provide 750 points of historical quote data (e.g. 3 years of daily data).  A `BadQuotesException` will be thrown if you do not provide sufficient historical quotes to produce any results.
 
-> :warning: IMPORTANT! Some indicators use a smoothing technique that converges to better precision over time.  While you can calculate these with the minimum amount of quote data, the precision to two decimal points often requires 250 or more preceding historical records.
+>&#128681; IMPORTANT! Some indicators use a smoothing technique that converges to better precision over time.  While you can calculate these with the minimum amount of quote data, the precision to two decimal points often requires 250 or more preceding historical records.
 
 For example, if you are using daily data and want one year of precise EMA(250) data, you need to provide 3 years of historical quotes (1 extra year for the lookback period and 1 extra year for convergence); thereafter, you would discard or not use the first two years of results.  Occassionally, even more is required for optimal precision.
 
@@ -220,56 +230,9 @@ for r in pruned_results:
     print(r)
 ```
 
-<!-- ### Using nested results classes
-
-If you prefer nested classes, here's an alternative method for customizing your results:<br>
-(Wrapper class is not available for nested result class.)
-
-```python
-from stock_indicators import indicators
-
-class NestedEMA:
-    def __init__(self, ema_result):
-        self.id = "123"
-        self.result = ema_result
-    
-    def __str__(self):
-        return f"EMA on {self.result.date.date()} was ${self.result.ema or 0:.4f}"
-
-# compute indicator
-quotes = get_history_from_feed("MSFT")
-results = indicators.get_ema(quotes, 20)
-
-nested_results = [ NestedEMA(r) for r in results ]
-for r in nested_results:
-    print(r)
-
-``` -->
-
 ## Generating indicator of indicators
 
 If you want to compute an indicator of indicators, such as an SMA of an ADX or an [RSI of an OBV](https://medium.com/@robswc/this-is-what-happens-when-you-combine-the-obv-and-rsi-indicators-6616d991773d), all you need to do is to take the results of one, reformat into a synthetic historical quotes, and send it through to another indicator.
-
-<!-- MEMO: This example is for to_quotes(), deprecated. -->
-<!-- Here's an example of SMA of RSI:
-
-```python
-from stock_indicators import indicators
-
-# fetch historical quotes from your feed (your method)
-quotes = get_history_from_feed("MSFT")
-
-# calculate SMA of RSI
-results = indicators.get_rsi(quotes)
-quotes_from_rsi = results.to_quotes()
-sma_of_rsi = indicators.get_sma(quotes_from_rsi, 20)
-
-``` -->
-
-~~See [.to_quotes()]({{site.baseurl}}/utilities/#convert-to-quotes) for more information.~~
-The .to_quotes() method is deprecated. (since v0.8.0)
-
-A workaround is to convert yourself.
 
 ```python
 from stock_indicators import indicators

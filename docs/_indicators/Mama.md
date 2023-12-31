@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_mama**(*quotes, fast_limit=0.5, slow_limit=0.05*)
+><span class="indicator-syntax">**get_mama**(*quotes, fast_limit=0.5, slow_limit=0.05*)</span>
 
 ## Parameters
 
@@ -37,7 +35,7 @@ MAMAResults[MAMAResult]
 - It does not return a single incremental indicator value.
 - The first `5` periods will have `None` values for `Mama` since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `50` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+>&#9886; **Convergence warning**: The first `50` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### MAMAResult
 
@@ -70,11 +68,11 @@ results = indicators.get_mama(quotes, 0.5,0.05)
 ## About {{ page.title }}
 
 Created by John Ehlers, the [MAMA](http://mesasoftware.com/papers/MAMA.pdf) indicator is a 5-period adaptive moving average of high/low price.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/211 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/211 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Mama.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/Mama/Mama.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/mama.py)
+- [Python wrapper]({{site.python.src}}/mama.py)
