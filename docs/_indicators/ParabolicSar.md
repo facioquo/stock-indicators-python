@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_parabolic_sar**(*quotes, acceleration_step=0.02, max_acceleration_factor=0.2*)
+><span class="indicator-syntax">**get_parabolic_sar**(*quotes, acceleration_step=0.02, max_acceleration_factor=0.2*)</span>
 
 ### More overloaded interfaces
 

@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_super_trend**(*quotes, lookback_periods=10, multiplier=3*)
+><span class="indicator-syntax">**get_super_trend**(*quotes, lookback_periods=10, multiplier=3*)</span>
 
 ## Parameters
 

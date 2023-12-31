@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_fisher_transform**(*quotes, lookback_periods=10*)
+><span class="indicator-syntax">**get_fisher_transform**(*quotes, lookback_periods=10*)</span>
 
 ## Parameters
 

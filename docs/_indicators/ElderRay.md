@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_elder_ray**(*quotes, lookback_periods=13*)
+><span class="indicator-syntax">**get_elder_ray**(*quotes, lookback_periods=13*)</span>
 
 ## Parameters
 

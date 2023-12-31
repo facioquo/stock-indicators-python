@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_ma_envelopes**(*quotes, lookback_periods, percent_offset=2.5, ma_type=MAType.SMA*)
+><span class="indicator-syntax">**get_ma_envelopes**(*quotes, lookback_periods, percent_offset=2.5, ma_type=MAType.SMA*)</span>
 
 ## Parameters
 

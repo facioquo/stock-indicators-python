@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_rolling_pivots**(*quotes, window_periods, offset_periods, point_type=PivotPointType.STANDARD*)
+><span class="indicator-syntax">**get_rolling_pivots**(*quotes, window_periods, offset_periods, point_type=PivotPointType.STANDARD*)</span>
 
 ## Parameters
 

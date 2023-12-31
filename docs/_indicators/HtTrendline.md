@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_ht_trendline**(*quotes*)
+><span class="indicator-syntax">**get_ht_trendline**(*quotes*)</span>
 
 ## Parameters
 

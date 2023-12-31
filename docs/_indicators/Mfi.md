@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_mfi**(*quotes, lookback_periods=14*)
+><span class="indicator-syntax">**get_mfi**(*quotes, lookback_periods=14*)</span>
 
 ## Parameters
 

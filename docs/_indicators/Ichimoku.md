@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_ichimoku**(*quotes, tenkan_periods=9, kijun_periods=26, senkou_b_periods=52*)
+><span class="indicator-syntax">**get_ichimoku**(*quotes, tenkan_periods=9, kijun_periods=26, senkou_b_periods=52*)</span>
 
 ### More overloaded interfaces
 

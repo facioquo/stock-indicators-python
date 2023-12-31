@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_chaikin_osc**(*quotes, fast_periods=3, slow_periods=10*)
+><span class="indicator-syntax">**get_chaikin_osc**(*quotes, fast_periods=3, slow_periods=10*)</span>
 
 ## Parameters
 

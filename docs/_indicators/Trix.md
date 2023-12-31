@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_trix**(*quotes, lookback_periods, signal_periods=None*)
+><span class="indicator-syntax">**get_trix**(*quotes, lookback_periods, signal_periods=None*)</span>
 
 ## Parameters
 

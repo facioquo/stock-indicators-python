@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_aroon**(*quotes, lookback_periods=25*)
+><span class="indicator-syntax">**get_aroon**(*quotes, lookback_periods=25*)</span>
 
 ## Parameters
 

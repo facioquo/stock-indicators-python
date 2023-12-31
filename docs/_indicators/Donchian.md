@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_donchian**(*quotes, lookback_periods=20*)
+><span class="indicator-syntax">**get_donchian**(*quotes, lookback_periods=20*)</span>
 
 ## Parameters
 

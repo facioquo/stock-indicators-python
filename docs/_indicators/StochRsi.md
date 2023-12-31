@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_stoch_rsi**(*quotes, rsi_periods, stoch_periods, signal_periods, smooth_periods=1*)
+><span class="indicator-syntax">**get_stoch_rsi**(*quotes, rsi_periods, stoch_periods, signal_periods, smooth_periods=1*)</span>
 
 ## Parameters
 

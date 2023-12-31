@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_connors_rsi**(*quotes, rsi_periods=3, streak_periods=2, rank_periods=100*)
+><span class="indicator-syntax">**get_connors_rsi**(*quotes, rsi_periods=3, streak_periods=2, rank_periods=100*)</span>
 
 ## Parameters
 

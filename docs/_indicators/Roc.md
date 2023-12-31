@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_roc**(*quotes, lookback_periods, sma_periods=None*)
+><span class="indicator-syntax">**get_roc**(*quotes, lookback_periods, sma_periods=None*)</span>
 
 ## Parameters
 
@@ -68,9 +66,7 @@ results = indicators.get_roc(quotes, 20)
 
 # ROC with Bands
 
-<hr>
-
-## **get_roc_with_band**(*quotes, lookback_periods, ema_periods, std_dev_periods*)
+><span class="indicator-syntax">**get_roc_with_band**(*quotes, lookback_periods, ema_periods, std_dev_periods*)</span>
 
 ## Parameters with Bands
 

@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_kvo**(*quotes, fast_periods=34, slow_periods=55, signal_periods=13*)
+><span class="indicator-syntax">**get_kvo**(*quotes, fast_periods=34, slow_periods=55, signal_periods=13*)</span>
 
 ## Parameters
 

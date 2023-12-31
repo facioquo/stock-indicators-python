@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_sma**(*quotes, lookback_periods, candle_part=CandlePart.CLOSE*)
+><span class="indicator-syntax">**get_sma**(*quotes, lookback_periods, candle_part=CandlePart.CLOSE*)</span>
 
 ## Parameters
 
@@ -72,7 +70,7 @@ results = indicators.get_sma(quotes, 20, CandlePart.CLOSE)
 
 This indicator has an extended version with more analysis.
 
-## **get_sma_analysis**(*quotes, lookback_periods*)
+><span class="indicator-syntax">**get_sma_analysis**(*quotes, lookback_periods*)</span>
 
 ## Return with analysis
 

@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_smma**(*quotes, lookback_periods*)
+><span class="indicator-syntax">**get_smma**(*quotes, lookback_periods*)</span>
 
 ## Parameters
 

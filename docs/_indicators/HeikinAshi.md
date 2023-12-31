@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_heikin_ashi**(*quotes*)
+><span class="indicator-syntax">**get_heikin_ashi**(*quotes*)</span>
 
 ## Parameters
 

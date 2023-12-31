@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_slope**(*quotes, lookback_periods*)
+><span class="indicator-syntax">**get_slope**(*quotes, lookback_periods*)</span>
 
 ## Parameters
 

@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_zig_zag**(*quotes, end_type=EndType.CLOSE, percent_change=5*)
+><span class="indicator-syntax">**get_zig_zag**(*quotes, end_type=EndType.CLOSE, percent_change=5*)</span>
 
 ## Parameters
 

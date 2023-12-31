@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_pivots**(*quotes, left_span=2, right_span=2, max_trend_periods=20, end_type=EndType.HIGH_LOW*)
+><span class="indicator-syntax">**get_pivots**(*quotes, left_span=2, right_span=2, max_trend_periods=20, end_type=EndType.HIGH_LOW*)</span>
 
 ## Parameters
 

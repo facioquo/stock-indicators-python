@@ -7,11 +7,9 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
+><span class="indicator-syntax">**get_gator**(*quotes: Iterable[Quote]*)</span>
 
-## **get_gator**(*quotes: Iterable[Quote]*)
-
-## **get_gator**(*quotes: Iterable[AlligatorResult]*)
+><span class="indicator-syntax">**get_gator**(*quotes: Iterable[AlligatorResult]*)</span>
 
 ## Parameters
 

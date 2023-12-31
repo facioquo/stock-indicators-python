@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_renko**(*quotes, brick_size, end_type=EndType.CLOSE*)
+><span class="indicator-syntax">**get_renko**(*quotes, brick_size, end_type=EndType.CLOSE*)</span>
 
 ## Parameters
 
@@ -87,7 +85,7 @@ results = indicators.get_renko(quotes, 2.5, EndType.CLOSE);
 
 ## ATR Variant
 
-## **get_renko_atr**(*quotes, atr_periods, end_type=EndType.CLOSE*)
+><span class="indicator-syntax">**get_renko_atr**(*quotes, atr_periods, end_type=EndType.CLOSE*)</span>
 
 ### Parameters for ATR
 

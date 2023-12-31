@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_obv**(*quotes, sma_periods=None*)
+><span class="indicator-syntax">**get_obv**(*quotes, sma_periods=None*)</span>
 
 ## Parameters
 

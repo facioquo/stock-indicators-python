@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_tsi**(*quotes, lookback_periods=25,smooth_periods=13, signal_periods=7*)
+><span class="indicator-syntax">**get_tsi**(*quotes, lookback_periods=25,smooth_periods=13, signal_periods=7*)</span>
 
 ## Parameters
 

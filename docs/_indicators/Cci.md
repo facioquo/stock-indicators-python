@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_cci**(*quotes, lookback_periods=20*)
+><span class="indicator-syntax">**get_cci**(*quotes, lookback_periods=20*)</span>
 
 ## Parameters
 

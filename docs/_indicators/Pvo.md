@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_pvo**(*quotes, fast_periods=12, slow_periods=26, signal_periods=9*)
+><span class="indicator-syntax">**get_pvo**(*quotes, fast_periods=12, slow_periods=26, signal_periods=9*)</span>
 
 ## Parameters
 

@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_stdev_channels**(*quotes, lookback_periods=20, standard_deviations=2*)
+><span class="indicator-syntax">**get_stdev_channels**(*quotes, lookback_periods=20, standard_deviations=2*)</span>
 
 ## Parameters
 

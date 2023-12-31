@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_dpo**(*quotes, lookback_periods*)
+><span class="indicator-syntax">**get_dpo**(*quotes, lookback_periods*)</span>
 
 ## Parameters
 

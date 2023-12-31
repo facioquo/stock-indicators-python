@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_alma**(*quotes, lookback_periods=9, offset=0.85, sigma=6*)
+><span class="indicator-syntax">**get_alma**(*quotes, lookback_periods=9, offset=0.85, sigma=6*)</span>
 
 ## Parameters
 

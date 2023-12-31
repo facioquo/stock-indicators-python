@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_awesome**(*quotes, fast_periods=5, slow_periods=34*)
+><span class="indicator-syntax">**get_awesome**(*quotes, fast_periods=5, slow_periods=34*)</span>
 
 ## Parameters
 

@@ -7,11 +7,9 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
+><span class="indicator-syntax">**get_vwap**(*quotes, start=None*)</span>
 
-## **get_vwap**(*quotes, start=None*)
-
-## **get_vwap**(*quotes, year, month=1, day=1, hour=0, minute=0*)
+><span class="indicator-syntax">**get_vwap**(*quotes, year, month=1, day=1, hour=0, minute=0*)</span>
 
 ## Parameters
 

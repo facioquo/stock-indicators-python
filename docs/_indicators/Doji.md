@@ -7,9 +7,7 @@ type: candlestick-pattern
 
 # {{ page.title }}
 
-<hr>
-
-## **get_doji**(*quotes, max_price_change_percent=0.1*)
+><span class="indicator-syntax">**get_doji**(*quotes, max_price_change_percent=0.1*)</span>
 
 ## Parameters
 

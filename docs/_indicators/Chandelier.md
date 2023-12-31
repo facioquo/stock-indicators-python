@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_chandelier**(*quotes, lookback_periods=22, multiplier=3.0, chandelier_type=ChandelierType.LONG*)
+><span class="indicator-syntax">**get_chandelier**(*quotes, lookback_periods=22, multiplier=3.0, chandelier_type=ChandelierType.LONG*)</span>
 
 ## Parameters
 

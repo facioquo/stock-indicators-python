@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_fractal**(*quotes, window_span=2, end_type = EndType.HIGH_LOW*)
+><span class="indicator-syntax">**get_fractal**(*quotes, window_span=2, end_type = EndType.HIGH_LOW*)</span>
 
 ### More overloaded interfaces
 

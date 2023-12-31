@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_keltner**(*quotes, ema_periods=20, multiplier=2.0, atr_periods=10*)
+><span class="indicator-syntax">**get_keltner**(*quotes, ema_periods=20, multiplier=2.0, atr_periods=10*)</span>
 
 ## Parameters
 

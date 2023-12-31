@@ -7,9 +7,7 @@ type: candlestick-pattern
 
 # {{ page.title }}
 
-<hr>
-
-## **get_marubozu**(*quotes, min_body_percent=95*)
+><span class="indicator-syntax">**get_marubozu**(*quotes, min_body_percent=95*)</span>
 
 ## Parameters
 

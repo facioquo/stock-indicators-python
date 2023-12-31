@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_kama**(*quotes, er_periods=10, fast_periods=2, slow_periods=30*)
+><span class="indicator-syntax">**get_kama**(*quotes, er_periods=10, fast_periods=2, slow_periods=30*)</span>
 
 ## Parameters
 

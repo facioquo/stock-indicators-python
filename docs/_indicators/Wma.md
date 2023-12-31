@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_wma**(*quotes, lookback_periods, candle_part=CandlePart.CLOSE*)
+><span class="indicator-syntax">**get_wma**(*quotes, lookback_periods, candle_part=CandlePart.CLOSE*)</span>
 
 ## Parameters
 

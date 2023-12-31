@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_beta**(*eval_history, market_quotes, lookback_periods, beta_type=BetaType.STANDARD*)
+><span class="indicator-syntax">**get_beta**(*eval_history, market_quotes, lookback_periods, beta_type=BetaType.STANDARD*)</span>
 
 ## Parameters
 

@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_stc**(*quotes, cycle_periods=10, fast_periods=23, slow_periods=50*)
+><span class="indicator-syntax">**get_stc**(*quotes, cycle_periods=10, fast_periods=23, slow_periods=50*)</span>
 
 ## Parameters
 

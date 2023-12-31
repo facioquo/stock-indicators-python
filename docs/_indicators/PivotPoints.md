@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_pivot_points**(*quotes, window_size, point_type=PivotPointType.STANDARD*)
+><span class="indicator-syntax">**get_pivot_points**(*quotes, window_size, point_type=PivotPointType.STANDARD*)</span>
 
 ## Parameters
 

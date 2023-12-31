@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_stdev**(*quotes, lookback_periods, sma_periods=None*)
+><span class="indicator-syntax">**get_stdev**(*quotes, lookback_periods, sma_periods=None*)</span>
 
 ## Parameters
 

@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_stoch**(*quotes, lookback_periods=14, signal_periods=3, smooth_periods=3*)
+><span class="indicator-syntax">**get_stoch**(*quotes, lookback_periods=14, signal_periods=3, smooth_periods=3*)</span>
 
 ## Parameters
 

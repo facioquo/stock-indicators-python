@@ -280,6 +280,12 @@ a {
     }
   }
 
+  // CUSTOM FOR PYTHON SITE
+  span.indicator-syntax {
+    font-size: 1.25rem;
+  }
+  // END CUSTOM
+
   pre {
     color: $code-text-color;
     background-color: $code-bg-color;

@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_hurst**(*quotes, lookback_periods=100*)
+><span class="indicator-syntax">**get_hurst**(*quotes, lookback_periods=100*)</span>
 
 ## Parameters
 

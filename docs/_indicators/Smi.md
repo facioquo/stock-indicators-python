@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_smi**(*quotes, lookback_periods, first_smooth_periods, second_smooth_periods, signal_periods=3*)
+><span class="indicator-syntax">**get_smi**(*quotes, lookback_periods, first_smooth_periods, second_smooth_periods, signal_periods=3*)</span>
 
 ## Parameters
 

@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_williams_r**(*quotes, lookback_periods=14*)
+><span class="indicator-syntax">**get_williams_r**(*quotes, lookback_periods=14*)</span>
 
 ## Parameters
 

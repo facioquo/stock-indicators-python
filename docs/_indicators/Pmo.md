@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_pmo**(*quotes, time_periods=35*)
+><span class="indicator-syntax">**get_pmo**(*quotes, time_periods=35*)</span>
 
 ## Parameters
 

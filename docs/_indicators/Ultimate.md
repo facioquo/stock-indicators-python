@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_ultimate**(*quotes, short_periods=7, middle_periods=14, long_periods=28*)
+><span class="indicator-syntax">**get_ultimate**(*quotes, short_periods=7, middle_periods=14, long_periods=28*)</span>
 
 ## Parameters
 

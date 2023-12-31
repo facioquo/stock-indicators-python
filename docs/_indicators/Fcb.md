@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_fcb**(*quotes, window_span=2*)
+><span class="indicator-syntax">**get_fcb**(*quotes, window_span=2*)</span>
 
 ## Parameters
 

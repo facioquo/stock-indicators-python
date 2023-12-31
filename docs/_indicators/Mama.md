@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_mama**(*quotes, fast_limit=0.5, slow_limit=0.05*)
+><span class="indicator-syntax">**get_mama**(*quotes, fast_limit=0.5, slow_limit=0.05*)</span>
 
 ## Parameters
 
