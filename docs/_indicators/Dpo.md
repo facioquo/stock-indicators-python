@@ -67,7 +67,7 @@ results = indicators.get_dpo(quotes, 14)
 ## About {{ page.title }}
 
 [Detrended Price Oscillator](https://en.wikipedia.org/wiki/Detrended_price_oscillator) depicts the difference between price and an offset simple moving average.  It is used to identify trend cycles and duration.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/551 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/551 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Dpo.png)
 

@@ -36,7 +36,7 @@ ATRResults[ATRResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values for ATR since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> &#9886; **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### ATRResult
 
@@ -70,7 +70,7 @@ results = indicators.get_atr(quotes, 14)
 ## About {{ page.title }}
 
 Created by J. Welles Wilder, [Average True Range](https://en.wikipedia.org/wiki/Average_true_range) is a measure of volatility that captures gaps and limits between periods.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/269 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/269 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Atr.png)
 

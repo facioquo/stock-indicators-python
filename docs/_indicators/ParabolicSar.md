@@ -73,7 +73,7 @@ results = indicators.get_parabolic_sar(quotes, 0.02, 0.2)
 ## About {{ page.title }}
 
 Created by J. Welles Wilder, [Parabolic SAR](https://en.wikipedia.org/wiki/Parabolic_SAR) (stop and reverse) is a price-time based indicator used to determine trend direction and reversals.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/245 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/245 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/ParabolicSar.png)
 

@@ -67,7 +67,7 @@ results = indicators.get_epma(quotes, 20)
 ## About {{ page.title }}
 
 Endpoint Moving Average (EPMA), also known as Least Squares Moving Average (LSMA), plots the projected last point of a linear regression lookback window.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/371 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/371 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Epma.png)
 

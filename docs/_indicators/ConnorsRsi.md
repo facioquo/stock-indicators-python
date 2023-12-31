@@ -38,7 +38,7 @@ ConnorsRSIResults[ConnorsRSIResult]
 - It does not return a single incremental indicator value.
 - The first `MAX(R,S,P)-1` periods will have `None` values since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `N` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> &#9886; **Convergence warning**: The first `N` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### ConnorsRSIResult
 
@@ -73,7 +73,7 @@ results = indicators.get_connors_rsi(quotes, 3, 2, 100)
 ## About {{ page.title }}
 
 Created by Laurence Connors, the [ConnorsRSI](https://alvarezquanttrading.com/wp-content/uploads/2016/05/ConnorsRSIGuidebook.pdf) is a composite oscillator that incorporates RSI, winning/losing streaks, and percentile gain metrics on scale of 0 to 100.  See [analysis](https://alvarezquanttrading.com/blog/connorsrsi-analysis).
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/260 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/260 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/ConnorsRsi.png)
 

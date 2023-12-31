@@ -41,7 +41,7 @@ AlligatorResults[AlligatorResult]
 - It does not return a single incremental indicator value.
 - The first 10-20 periods will have `None` values since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `JP+JO+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> &#9886; **Convergence warning**: The first `JP+JO+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### AlligatorResult
 
@@ -75,7 +75,7 @@ results = indicators.get_alligator(quotes)
 ## About {{ page.title }}
 
 Created by Bill Williams, Alligator is a depiction of three smoothed moving averages of median price, showing chart patterns that compared to an alligator's feeding habits when describing market movement. The moving averages are known as the Jaw, Teeth, and Lips, which are calculated using specific lookback and offset periods.  See also the [Gator Oscillator](../Gator#content).
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/385 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/385 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Alligator.png)
 

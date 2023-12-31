@@ -38,7 +38,7 @@ KeltnerResults[KeltnerResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `N+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> &#9886; **Convergence warning**: The first `N+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### KeltnerResult
 
@@ -73,7 +73,7 @@ results = indicators.get_keltner(quotes, 20,2.0,10)
 ## About {{ page.title }}
 
 Created by Chester W. Keltner, [Keltner Channels](https://en.wikipedia.org/wiki/Keltner_channel) are based on an EMA centerline and ATR band widths.  See also [STARC Bands](../StarcBands#content) for an SMA centerline equivalent.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/249 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/249 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Keltner.png)
 

@@ -66,7 +66,7 @@ results = indicators.get_mfi(quotes, 14)
 ## About {{ page.title }}
 
 Created by Quong and Soudack, the [Money Flow Index](https://en.wikipedia.org/wiki/Money_flow_index) is a price-volume oscillator that shows buying and selling momentum.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/247 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/247 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Mfi.png)
 

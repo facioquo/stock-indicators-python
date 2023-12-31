@@ -67,7 +67,7 @@ results = indicators.get_bop(quotes, 14)
 ## About {{ page.title }}
 
 Created by Igor Levshin, the [Balance of Power](https://school.stockcharts.com/doku.php?id=technical_indicators:balance_of_power) (aka Balance of Market Power) is a momentum oscillator that depicts the strength of buying and selling pressure.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/302 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/302 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Bop.png)
 

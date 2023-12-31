@@ -63,7 +63,7 @@ results = indicators.get_marubozu(quotes);
 ## About {{ page.title }}
 
 [Marubozu](https://en.wikipedia.org/wiki/Marubozu) is a single candlestick pattern that has no wicks, representing consistent directional movement.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/512 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/512 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Marubozu.png)
 

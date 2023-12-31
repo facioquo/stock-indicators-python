@@ -44,7 +44,7 @@ from stock_indicators.indicators.common.enums import MAType
 | `MAType.TEMA` | [Triple Exponential Moving Average](../Tema#content)
 | `MAType.WMA` | [Weighted Moving Average](../Wma#content)
 
-> :warning:  **Warning**: For ALMA, default values are used for `offset` and `sigma`.
+> &#128681;  **Warning**: For ALMA, default values are used for `offset` and `sigma`.
 
 ## Return
 
@@ -58,7 +58,7 @@ MAEnvelopeResults[MAEnvelopeResult]
 - It does not return a single incremental indicator value.
 - The first periods will have `None` values since there's not enough data to calculate; the quantity will vary based on the `ma_type` specified.
 
-> :hourglass: **Convergence Warning**: Some moving average variants have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.  See links in the supported [MAType options](#matype-options) section above for more information.
+> &#9886; **Convergence warning**: Some moving average variants have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.  See links in the supported [MAType options](#matype-options) section above for more information.
 
 ### MaEnvelopeResult
 
@@ -94,7 +94,7 @@ results = indicators.get_ma_envelopes(quotes, 20, 2.5, MAType.SMA);
 ## About {{ page.title }}
 
 [Moving Average Envelopes](https://en.wikipedia.org/wiki/Moving_average_envelope) is a price band overlay that is offset from the moving average of Close price over a lookback window.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/288 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/288 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/MaEnvelopes.png)
 

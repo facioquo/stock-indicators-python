@@ -38,7 +38,7 @@ STCResults[STCResult]
 - It does not return a single incremental indicator value.
 - The first `S+C` slow periods will have `None` values since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `S+C+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> &#9886; **Convergence warning**: The first `S+C+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### STCResult
 
@@ -70,7 +70,7 @@ results = indicators.get_stc(quotes, 10, 23, 50)
 ## About {{ page.title }}
 
 Created by Doug Schaff, [Schaff Trend Cycle](https://www.investopedia.com/articles/forex/10/schaff-trend-cycle-indicator.asp) is a stochastic oscillator view of two converging/diverging exponential moving averages (a.k.a MACD).
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/570 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/570 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Stc.png)
 

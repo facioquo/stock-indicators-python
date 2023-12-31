@@ -66,7 +66,7 @@ results = indicators.get_vwma(quotes, 10)
 ## About {{ page.title }}
 
 Volume Weighted Moving Average is the volume adjusted average price over a lookback window.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/657 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/657 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Vwma.png)
 

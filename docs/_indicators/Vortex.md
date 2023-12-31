@@ -67,7 +67,7 @@ results = indicators.get_vortex(quotes, 14);
 ## About {{ page.title }}
 
 Created by Etienne Botes and Douglas Siepman, the [Vortex Indicator](https://en.wikipedia.org/wiki/Vortex_indicator) is a measure of price directional movement.  It includes positive and negative indicators, and is often used to identify trends and reversals.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/339 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/339 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Vortex.png)
 

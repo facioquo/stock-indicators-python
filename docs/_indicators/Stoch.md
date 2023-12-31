@@ -52,7 +52,7 @@ StochResults[StochResult]
 - It does not return a single incremental indicator value.
 - The first `N+S-2` periods will have `None` Oscillator values since there's not enough data to calculate.
 
-<!-- > :hourglass: **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods when using `MAType.SMMA`.  Standard use of `MAType.SMA` does not have convergence-related precision errors. -->
+<!-- > &#9886; **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods when using `MAType.SMMA`.  Standard use of `MAType.SMA` does not have convergence-related precision errors. -->
 
 ### StochResult
 
@@ -88,7 +88,7 @@ results = indicators.get_stoch(quotes, 14, 3, 3)
 ## About {{ page.title }}
 
 Created by George Lane, the [Stochastic Oscillator](https://en.wikipedia.org/wiki/Stochastic_oscillator) is a momentum indicator that looks back `N` periods to produce a scale of 0 to 100.  %J is also included for the KDJ Index extension.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/237 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/237 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Stoch.png)
 

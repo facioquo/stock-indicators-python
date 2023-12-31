@@ -45,7 +45,7 @@ CMFResults[CMFResult]
 | `money_flow_volume` | float, Optional | Money Flow Volume
 | `cmf` | float, Optional | Chaikin Money Flow = SMA of MFV
 
-> :warning: **Warning**: absolute values in MFV and CMF are somewhat meaningless.  Use with caution.
+> &#128681; **Warning**: absolute values in MFV and CMF are somewhat meaningless.  Use with caution.
 
 ### Utilities
 
@@ -70,7 +70,7 @@ results = indicators.get_cmf(quotes, 20)
 ## About {{ page.title }}
 
 Created by Marc Chaikin, [Chaikin Money Flow](https://en.wikipedia.org/wiki/Chaikin_Analytics#Chaikin_Money_Flow) is the simple moving average of the Money Flow Volume.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/261 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/261 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Cmf.png)
 

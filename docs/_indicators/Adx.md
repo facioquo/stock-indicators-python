@@ -36,7 +36,7 @@ ADXResults[ADXResult]
 - It does not return a single incremental indicator value.
 - The first `2×N-1` periods will have `None` values for `Adx` since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `2×N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> &#9886; **Convergence warning**: The first `2×N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### ADXResult
 
@@ -71,7 +71,7 @@ results = indicators.get_adx(quotes, lookback_periods)
 ## About {{ page.title }}
 
 Created by J. Welles Wilder, the [Average Directional Movement Index](https://en.wikipedia.org/wiki/Average_directional_movement_index) is a measure of price directional movement.  It includes upward and downward indicators, and is often used to measure strength of trend.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/270 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/270 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/AdIndex.png)
 

@@ -35,7 +35,7 @@ HTTrendlineResults[HTTrendlineResult]
 - It does not return a single incremental indicator value.
 - The first `6` periods will have `None` values for `smooth_price` since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> &#9886; **Convergence warning**: The first `100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### HTTrendlineResult
 
@@ -68,7 +68,7 @@ results = indicators.get_ht_trendline(quotes)
 ## About {{ page.title }}
 
 Created by John Ehlers, the Hilbert Transform Instantaneous Trendline is a 5-period trendline of high/low price that uses signal processing to reduce noise.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/363 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/363 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/HtTrendline.png)
 

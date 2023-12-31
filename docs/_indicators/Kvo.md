@@ -38,7 +38,7 @@ KVOResults[KVOResult]
 - It does not return a single incremental indicator value.
 - The first `L+1` periods will have `None` values since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `L+150` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> &#9886; **Convergence warning**: The first `L+150` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### KVOResult
 
@@ -71,7 +71,7 @@ results = indicators.get_kvo(quotes, 34, 55, 13)
 ## About {{ page.title }}
 
 Created by Stephen Klinger, the [Klinger Volume Oscillator](https://www.investopedia.com/terms/k/klingeroscillator.asp) depicts volume-based trend reversal and divergence between short and long-term money flow.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/446 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/446 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Kvo.png)
 

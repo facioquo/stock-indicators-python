@@ -37,7 +37,7 @@ ElderRayResults[ElderRayResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` indicator values since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> &#9886; **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### ElderRayResult
 
@@ -71,7 +71,7 @@ results = indicators.get_elder_ray(quotes, 13)
 ## About {{ page.title }}
 
 Created by Alexander Elder, the [Elder-ray Index](https://www.investopedia.com/terms/e/elderray.asp), also known as Bull and Bear Power, depicts buying and selling pressure.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/378 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/378 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/ElderRay.png)
 

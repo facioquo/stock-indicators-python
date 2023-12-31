@@ -91,7 +91,7 @@ results = indicators.get_rolling_pivots(quotes, 14, 0, PivotPointType.Woodie);
 ## About {{ page.title }}
 
 Created by Dave Skender, Rolling Pivot Points is a modern update to traditional fixed calendar window [Pivot Points](../PivotPoints#content).  It depicts support and resistance levels, based on a defined *rolling* window and offset.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/274 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/274 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/RollingPivots.png)
 

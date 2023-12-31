@@ -26,6 +26,8 @@ dotnet:
 python:
   src: "https://github.com/DaveSkender/Stock.Indicators.Python/blob/main/stock_indicators/indicators"
 
+clarity: false
+
 # site plugins and settings
 plugins:
   - jekyll-github-metadata

@@ -36,7 +36,7 @@ PMOResults[PMOResult]
 - It does not return a single incremental indicator value.
 - The first `T+S-1` periods will have `None` values for PMO since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `T+S+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> &#9886; **Convergence warning**: The first `T+S+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### PMOResult
 
@@ -69,7 +69,7 @@ results = indicators.get_pmo(quotes, 35,20,10)
 ## About {{ page.title }}
 
 Created by Carl Swenlin, the DecisionPoint [Price Momentum Oscillator](https://school.stockcharts.com/doku.php?id=technical_indicators:dppmo) is double-smoothed ROC based momentum indicator.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/244 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/244 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Pmo.png)
 

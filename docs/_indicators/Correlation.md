@@ -73,7 +73,7 @@ results = indicators.get_correlation(quotes_spx, quotes_tsla, 20)
 ## About {{ page.title }}
 
 [Correlation Coefficient](https://en.wikipedia.org/wiki/Correlation_coefficient) between two quote histories, based on Close price.  R-Squared (R&sup2;), Variance, and Covariance are also output.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/259 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/259 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Correlation.png)
 

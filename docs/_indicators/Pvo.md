@@ -38,7 +38,7 @@ PVOResults[PVOResult]
 - It does not return a single incremental indicator value.
 - The first `S-1` slow periods will have `None` values since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `S+P+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> &#9886; **Convergence warning**: The first `S+P+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### PVOResult
 
@@ -72,7 +72,7 @@ results = indicators.get_pvo(quotes, 12, 26, 9);
 ## About {{ page.title }}
 
 The [Percentage Volume Oscillator](https://school.stockcharts.com/doku.php?id=technical_indicators:percentage_volume_oscillator_pvo) is a simple oscillator view of two converging/diverging exponential moving averages of Volume.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/305 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/305 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Pvo.png)
 

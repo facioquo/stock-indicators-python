@@ -36,7 +36,7 @@ ForceIndexResults[ForceIndexResult]
 - It does not return a single incremental indicator value.
 - The first `N` periods for will be `None` since they cannot be calculated.
 
-> :hourglass: **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> &#9886; **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### ForceIndexResult
 
@@ -68,7 +68,7 @@ results = indicators.get_force_index(quotes, 13)
 ## About {{ page.title }}
 
 Created by Alexander Elder, the [Force Index](https://en.wikipedia.org/wiki/Force_index) depicts volume-based buying and selling pressure.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/382 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/382 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/ForceIndex.png)
 

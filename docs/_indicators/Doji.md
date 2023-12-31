@@ -63,7 +63,7 @@ results = indicators.get_doji(quotes);
 ## About {{ page.title }}
 
 [Doji](https://en.wikipedia.org/wiki/Doji) is a single candlestick pattern where open and close price are virtually identical, representing market indecision.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/734 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/734 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Doji.png)
 

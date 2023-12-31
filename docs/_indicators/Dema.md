@@ -36,7 +36,7 @@ DEMAResults[DEMAResult]
 - It does not return a single incremental indicator value.
 - The first `2×N-1` periods will have `None` values since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `2×N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+> &#9886; **Convergence warning**: The first `2×N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### DEMAResult
 
@@ -68,7 +68,7 @@ results = indicators.get_dema(quotes, 20)
 ## About {{ page.title }}
 
 [Double exponential moving average](https://en.wikipedia.org/wiki/Double_exponential_moving_average) of the Close price over a lookback window.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/256 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/256 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Dema.png)
 

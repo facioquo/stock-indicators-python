@@ -84,7 +84,7 @@ results = indicators.get_ichimoku(quotes, 9, 26, 52)
 ## About {{ page.title }}
 
 Created by Goichi Hosoda (細田悟一, Hosoda Goichi), [Ichimoku Cloud](https://en.wikipedia.org/wiki/Ichimoku_Kink%C5%8D_Hy%C5%8D), also known as Ichimoku Kinkō Hyō, is a collection of indicators that depict support and resistance, momentum, and trend direction.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/251 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/251 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Ichimoku.png)
 

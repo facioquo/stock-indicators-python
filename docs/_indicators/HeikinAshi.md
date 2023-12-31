@@ -69,7 +69,7 @@ results = indicators.get_heikin_ashi(quotes)
 ## About {{ page.title }}
 
 Created by Munehisa Homma, [Heikin-Ashi](https://en.wikipedia.org/wiki/Candlestick_chart#Heikin-Ashi_candlesticks) is a modified candlestick pattern that uses prior day for smoothing.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/254 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/254 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/HeikinAshi.png)
 

@@ -100,7 +100,7 @@ results = indicators.get_sma_analysis(quotes, lookback_periods)
 ## About {{ page.title }}
 
 [Simple Moving Average](https://en.wikipedia.org/wiki/Moving_average#Simple_moving_average) is the average price over a lookback window.  The extended analysis option includes mean absolute deviation (MAD), mean square error (MSE), and mean absolute percentage error (MAPE).
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/240 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/240 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Sma.png)
 

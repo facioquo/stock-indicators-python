@@ -54,7 +54,7 @@ FractalResults[FractalResult]
 - It does not return a single incremental indicator value.
 - The first and last `S` periods in `quotes` are unable to be calculated since there's not enough prior/following data.
 
-> :paintbrush: **Repaint warning**: this price pattern uses future bars and will never identify a `fractal` in the last `S` periods of `quotes`.  Fractals are retroactively identified.
+> &#128073; **Repaint warning**: this price pattern uses future bars and will never identify a `fractal` in the last `S` periods of `quotes`.  Fractals are retroactively identified.
 
 ### FractalResult
 
@@ -86,7 +86,7 @@ results = indicators.get_fractal(quotes, 5)
 ## About {{ page.title }}
 
 Created by Larry Williams, [Fractal](https://www.investopedia.com/terms/f/fractal.asp) is a retrospective price pattern that identifies a central high or low point.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/255 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/255 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Fractal.png)
 

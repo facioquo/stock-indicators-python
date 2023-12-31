@@ -37,7 +37,7 @@ VolatilityStopResults[VolatilityStopResult]
 - It does not return a single incremental indicator value.
 - The first trend will have `None` values since it is not accurate and based on an initial guess.
 
-:hourglass: **Convergence Warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+&#9886; **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### VolatilityStopResult
 
@@ -74,7 +74,7 @@ results = indicators.get_volatility_stop(quotes, 20, 2.5)
 ## About {{ page.title }}
 
 Created by J. Welles Wilder, [Volatility Stop](https://archive.org/details/newconceptsintec00wild), also known his Volatility System, is an [ATR](../Atr/) based indicator used to determine trend direction, stops, and reversals.  It is similar to Wilder's [Parabolic SAR](../ParabolicSar/#content) and [SuperTrend](../SuperTrend/#content).
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/564 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/564 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/VolatilityStop.png)
 
