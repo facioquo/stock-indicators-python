@@ -23,21 +23,27 @@ layout: page
 
 ### Installation and setup
 
-Stock Indicators for Python has dependency on [PythonNet](https://github.com/pythonnet/pythonnet), which uses [CLR(Common Language Runtime)](https://learn.microsoft.com/dotnet/standard/clr).  Check that you've installed the following prerequisite software:
+1. Install prerequisite framework dependencies
 
-| Installer | Min | Latest | Download |
-|---| :---: | :---: | --- |
-| Python | 3.8 | 3.12 | [@python.org](https://www.python.org/downloads/) |
-| .NET SDK | 6.0 | 8.0 | [@microsoft.com](https://dotnet.microsoft.com/en-us/download) |
+    Stock Indicators for Python has dependency on [PythonNet](https://github.com/pythonnet/pythonnet), which uses [CLR(Common Language Runtime)](https://learn.microsoft.com/dotnet/standard/clr).  Check that you've installed the following prerequisite software:
 
-> Note: we do not support the open source [Mono .NET Framework](https://www.mono-project.com).  Use the latest **Python** and **.NET SDK** for best performance.
+    > Use the latest **Python** and **.NET SDK** for best performance.
 
-Find and install the **stock-indicators** Python package into your environment. See [more help](https://packaging.python.org/en/latest/tutorials/installing-packages/) for installing packages.
+    | Installer | Min | Latest | Download |
+    |---| :---: | :---: | --- |
+    | Python | 3.8 | 3.12 | [@python.org](https://www.python.org/downloads/) |
+    | .NET SDK | 6.0 | 8.0 | [@microsoft.com](https://dotnet.microsoft.com/en-us/download) |
 
-```bash
-# pip example
-pip install stock-indicators
-```
+    Note: we do not support the open source [Mono .NET Framework](https://www.mono-project.com).
+
+2. Find and install the **stock-indicators** Python package into your environment.
+
+    ```bash
+    # pip example
+    pip install stock-indicators
+    ```
+
+    > See [Python documentation](https://packaging.python.org/en/latest/tutorials/installing-packages/) for more help with installing packages.
 
 ### Prerequisite data
 

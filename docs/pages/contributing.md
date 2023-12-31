@@ -54,10 +54,11 @@ For new features, submit an issue with the `enhancement` label.
 - Read this first: [A Step by Step Guide to Making Your First GitHub Contribution](https://codeburst.io/a-step-by-step-guide-to-making-your-first-github-contribution-5302260a2940).  I also have a discussion [on Forking](https://github.com/DaveSkender/Stock.Indicators/discussions/503) if you have questions.
 - If you are adding a new indicator, the easiest way to do this is to copy the folder of an existing indicator and rename everything using the same naming conventions and taxonomy.  All new indicators should include unit and performance tests.
 - Do not commingle multiple contributions.  Please keep changes small and separate.
+- If you're just getting started, [install and setup](https://python.stockindicators.dev/guide/#installation-and-setup) language SDKs for Python and .NET.
 
 ## Testing
 
-- We use [pytest](https://docs.pytest.org/en/6.2.x/) for testing.
+- We use [pytest](https://docs.pytest.org) for testing.
 - Review the `tests` folder for examples of unit tests.  Just copy one of these.
 - New indicators should be tested against manually calculated, proven, accurate results.  It is helpful to include your manual calculations spreadsheet in the appropriate indicator folder when [submitting changes](#submitting-changes).
 - Historical Stock Quotes are automatically added as pytest fixtures. The various `.csv` files in the `samples` folder are used in the unit tests. See `tests/conftest.py` for their usage. A `History.xlsx` Excel file is also included in the `samples` folder that contains the same information but separated by sheets. Use this for your manual calculations to ensure that it is correct.  Do not commit changes to this Excel file.
@@ -80,11 +81,12 @@ pytest -svr A tests
 Running the commands below in your console will show performance data.  You can find the latest results [here]({{site.baseurl}}/performance/).
 
 ```bash
-# install pytest and other dependencies.
+# install pytest and other dependencies
 pip install -r requirements-test.txt
+pip install openpyxl
 pip install pytest-benchmark
 
-# run benchmarks.
+# run benchmarks
 pytest benchmarks
 ```
 
@@ -152,4 +154,5 @@ This repository uses a standard Apache 2.0 open-source license.  It enables open
 [Start a new discussion, ask a question](https://github.com/DaveSkender/Stock.Indicators/discussions), or [submit an issue](https://python.stockindicators.dev/contributing/#reporting-bugs-and-feature-requests) if it is publicly relevant.  You can also direct message [@daveskender](https://twitter.com/messages/compose?recipient_id=27475431).
 
 Thanks,
+Dong-Geon Lee
 Dave Skender
