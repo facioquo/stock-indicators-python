@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_mfi**(*quotes, lookback_periods=14*)
+><span class="indicator-syntax">**get_mfi**(*quotes, lookback_periods=14*)</span>
 
 ## Parameters
 
@@ -66,11 +64,11 @@ results = indicators.get_mfi(quotes, 14)
 ## About {{ page.title }}
 
 Created by Quong and Soudack, the [Money Flow Index](https://en.wikipedia.org/wiki/Money_flow_index) is a price-volume oscillator that shows buying and selling momentum.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/247 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/247 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Mfi.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/Mfi/Mfi.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/mfi.py)
+- [Python wrapper]({{site.python.src}}/mfi.py)

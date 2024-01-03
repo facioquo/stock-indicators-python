@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_tema**(*quotes, lookback_periods*)
+><span class="indicator-syntax">**get_tema**(*quotes, lookback_periods*)</span>
 
 ## Parameters
 
@@ -36,7 +34,7 @@ TEMAResults[TEMAResult]
 - It does not return a single incremental indicator value.
 - The first `3×N-2` periods will have `None` values since there's not enough data to calculate.  Also note that we are using the proper [weighted variant](https://en.wikipedia.org/wiki/Triple_exponential_moving_average) for TEMA.  If you prefer the unweighted raw 3 EMAs value, please use the `Ema3` output from the [TRIX](../Trix#content) oscillator instead.
 
-> :hourglass: **Convergence warning**: The first `3×N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+>&#9886; **Convergence warning**: The first `3×N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### TEMAResult
 
@@ -69,7 +67,7 @@ results = indicators.get_tema(quotes, 20)
 
 [Triple exponential moving average](https://en.wikipedia.org/wiki/Triple_exponential_moving_average) of the Close price over a lookback window.
 Note: TEMA is often confused with the alternative [TRIX](../Trix#content) oscillator.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/256 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/256 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Tema.png)
 
@@ -78,4 +76,4 @@ See related [EMA](../Ema#content) and [Double EMA](../Dema#content).
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Tema/Tema.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/tema.py)
+- [Python wrapper]({{site.python.src}}/tema.py)

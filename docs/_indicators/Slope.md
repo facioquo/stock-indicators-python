@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_slope**(*quotes, lookback_periods*)
+><span class="indicator-syntax">**get_slope**(*quotes, lookback_periods*)</span>
 
 ## Parameters
 
@@ -36,7 +34,7 @@ SlopeResults[SlopeResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values for `slope` since there's not enough data to calculate.
 
-> :paintbrush: **Repaint Warning**: the `line` will be continuously repainted since it is based on the last quote and lookback period.
+>&#128073; **Repaint warning**: the `line` will be continuously repainted since it is based on the last quote and lookback period.
 
 ### SlopeResult
 
@@ -72,11 +70,11 @@ results = indicators.get_slope(quotes, 20)
 ## About {{ page.title }}
 
 [Slope of the best fit line](https://school.stockcharts.com/doku.php?id=technical_indicators:slope) is determined by an [ordinary least-squares simple linear regression](https://en.wikipedia.org/wiki/Simple_linear_regression) on Close price.  It can be used to help identify trend strength and direction.  Standard Deviation, R&sup2;, and a best-fit `Line` (for last lookback segment) are also output.  See also [Standard Deviation Channels](../StdDevChannels#content) for an alternative depiction.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/241 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/241 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Slope.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Slope/Slope.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/slope.py)
+- [Python wrapper]({{site.python.src}}/slope.py)

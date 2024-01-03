@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_starc_bands**(*quotes, sma_periods=20, multiplier=2.0, atr_periods=10*)
+><span class="indicator-syntax">**get_starc_bands**(*quotes, sma_periods=20, multiplier=2.0, atr_periods=10*)</span>
 
 ## Parameters
 
@@ -38,7 +36,7 @@ STARCBandsResults[STARCBandsResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values since there's not enough data to calculate, where `N` is the greater of `S` or `A`.
 
-> :hourglass: **Convergence warning**: The first `A+150` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+>&#9886; **Convergence warning**: The first `A+150` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### STARCBandsResult
 
@@ -72,11 +70,11 @@ results = indicators.get_starc_bands(quotes, 20, 2.0, 10)
 ## About {{ page.title }}
 
 Created by Manning Stoller, [Stoller Average Range Channel (STARC) Bands](https://www.investopedia.com/terms/s/starc.asp), are based on an SMA centerline and ATR band widths.  See also [Keltner Channels](../Keltner#content) for an EMA centerline equivalent.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/292 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/292 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/StarcBands.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/StarcBands/StarcBands.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/starc_bands.py)
+- [Python wrapper]({{site.python.src}}/starc_bands.py)

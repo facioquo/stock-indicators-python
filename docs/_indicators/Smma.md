@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_smma**(*quotes, lookback_periods*)
+><span class="indicator-syntax">**get_smma**(*quotes, lookback_periods*)</span>
 
 ## Parameters
 
@@ -37,7 +35,7 @@ SMMAResults[SMMAResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` values since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+>&#9886; **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### SMMAResult
 
@@ -69,11 +67,11 @@ results = indicators.get_smma(quotes, 20)
 ## About {{ page.title }}
 
 [Smoothed Moving Average](https://en.wikipedia.org/wiki/Moving_average) is the average of Close price over a lookback window using a smoothing method.  SMMA is also known as modified moving average (MMA) and running moving average (RMA).
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/375 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/375 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Smma.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Smma/Smma.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/smma.py)
+- [Python wrapper]({{site.python.src}}/smma.py)

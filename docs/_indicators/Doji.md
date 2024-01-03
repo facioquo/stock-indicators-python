@@ -7,9 +7,7 @@ type: candlestick-pattern
 
 # {{ page.title }}
 
-<hr>
-
-## **get_doji**(*quotes, max_price_change_percent=0.1*)
+><span class="indicator-syntax">**get_doji**(*quotes, max_price_change_percent=0.1*)</span>
 
 ## Parameters
 
@@ -63,11 +61,11 @@ results = indicators.get_doji(quotes);
 ## About {{ page.title }}
 
 [Doji](https://en.wikipedia.org/wiki/Doji) is a single candlestick pattern where open and close price are virtually identical, representing market indecision.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/734 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/734 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Doji.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/Doji/Doji.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/doji.py)
+- [Python wrapper]({{site.python.src}}/doji.py)

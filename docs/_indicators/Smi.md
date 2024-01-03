@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_smi**(*quotes, lookback_periods, first_smooth_periods, second_smooth_periods, signal_periods=3*)
+><span class="indicator-syntax">**get_smi**(*quotes, lookback_periods, first_smooth_periods, second_smooth_periods, signal_periods=3*)</span>
 
 ## Parameters
 
@@ -39,7 +37,7 @@ SMIResults[SMIResult]
 - It does not return a single incremental indicator value.
 - The first `N-1` periods will have `None` SMI values since there's not enough data to calculate.
 
-> :hourglass: **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+>&#9886; **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### SMIResult
 
@@ -72,11 +70,11 @@ results = indicators.get_smi(quotes, 14, 20, 5, 3)
 ## About {{ page.title }}
 
 Created by William Blau, the Stochastic Momentum Index (SMI) is a double-smoothed variant of the [Stochastic Oscillator](../Stoch/#content) on a scale from -100 to 100.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/625 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/625 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Smi.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Smi/Smi.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/smi.py)
+- [Python wrapper]({{site.python.src}}/smi.py)

@@ -7,9 +7,7 @@ type: candlestick-pattern
 
 # {{ page.title }}
 
-<hr>
-
-## **get_marubozu**(*quotes, min_body_percent=95*)
+><span class="indicator-syntax">**get_marubozu**(*quotes, min_body_percent=95*)</span>
 
 ## Parameters
 
@@ -63,11 +61,11 @@ results = indicators.get_marubozu(quotes);
 ## About {{ page.title }}
 
 [Marubozu](https://en.wikipedia.org/wiki/Marubozu) is a single candlestick pattern that has no wicks, representing consistent directional movement.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/512 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/512 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Marubozu.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/Marubozu/Marubozu.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/marubozu.py)
+- [Python wrapper]({{site.python.src}}/marubozu.py)

@@ -7,11 +7,9 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
+><span class="indicator-syntax">**get_vwap**(*quotes, start=None*)</span>
 
-## **get_vwap**(*quotes, start=None*)
-
-## **get_vwap**(*quotes, year, month=1, day=1, hour=0, minute=0*)
+><span class="indicator-syntax">**get_vwap**(*quotes, year, month=1, day=1, hour=0, minute=0*)</span>
 
 ## Parameters
 
@@ -70,11 +68,11 @@ results = indicators.get_vwap(quotes);
 ## About {{ page.title }}
 
 The [Volume Weighted Average Price](https://en.wikipedia.org/wiki/Volume-weighted_average_price) is a Volume weighted average of Close price, typically used on intraday data.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/310 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/310 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Vwap.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Vwap/Vwap.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/vwap.py)
+- [Python wrapper]({{site.python.src}}/vwap.py)

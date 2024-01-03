@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_pivots**(*quotes, left_span=2, right_span=2, max_trend_periods=20, end_type=EndType.HIGH_LOW*)
+><span class="indicator-syntax">**get_pivots**(*quotes, left_span=2, right_span=2, max_trend_periods=20, end_type=EndType.HIGH_LOW*)</span>
 
 ## Parameters
 
@@ -52,7 +50,7 @@ PivotsResults[PivotsResult]
 - It does not return a single incremental indicator value.
 - The first `L` and last `R` periods in `quotes` are unable to be calculated since there's not enough prior/following data.
 
-> :paintbrush: **Repaint warning**: this price pattern looks forward and backward in the historical quotes so it will never identify a pivot in the last `R` periods of `quotes`.  Fractals are retroactively identified.
+>&#128073; **Repaint warning**: this price pattern looks forward and backward in the historical quotes so it will never identify a pivot in the last `R` periods of `quotes`.  Fractals are retroactively identified.
 
 ### PivotsResult
 
@@ -102,11 +100,11 @@ results = indicators.get_pivots(quotes, 2, 2, 20, EndType.HIGH_LOW);
 ## About {{ page.title }}
 
 Pivots is an extended version of [Williams Fractal](../Fractal#content) that includes identification of Higher High, Lower Low, Higher Low, and Lower Low trends between pivots in a lookback window.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/436 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/436 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Pivots.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/m-r/Pivots/Pivots.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/pivots.py)
+- [Python wrapper]({{site.python.src}}/pivots.py)

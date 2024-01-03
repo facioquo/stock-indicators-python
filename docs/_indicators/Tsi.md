@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_tsi**(*quotes, lookback_periods=25,smooth_periods=13, signal_periods=7*)
+><span class="indicator-syntax">**get_tsi**(*quotes, lookback_periods=25,smooth_periods=13, signal_periods=7*)</span>
 
 ## Parameters
 
@@ -39,7 +37,7 @@ TSIResults[TSIResult]
 - The first `N+M-1` periods will have `None` values since there's not enough data to calculate.
 - `signal` will be `None` for all periods if `signal_periods=0`.
 
-> :hourglass: **Convergence warning**: The first `N+M+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
+>&#9886; **Convergence warning**: The first `N+M+250` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
 ### TSIResult
 
@@ -72,11 +70,11 @@ results = indicators.get_tsi(quotes, 25, 13, 7)
 ## About {{ page.title }}
 
 Created by William Blau, the [True Strength Index](https://en.wikipedia.org/wiki/True_strength_index) is a momentum oscillator that depicts trends in price changes.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/300 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/300 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Tsi.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Tsi/Tsi.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/tsi.py)
+- [Python wrapper]({{site.python.src}}/tsi.py)

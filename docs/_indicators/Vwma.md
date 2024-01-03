@@ -7,9 +7,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_vwma**(*quotes, lookback_periods*)
+><span class="indicator-syntax">**get_vwma**(*quotes, lookback_periods*)</span>
 
 ## Parameters
 
@@ -66,11 +64,11 @@ results = indicators.get_vwma(quotes, 10)
 ## About {{ page.title }}
 
 Volume Weighted Moving Average is the volume adjusted average price over a lookback window.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/657 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/657 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Vwma.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/s-z/Vwma/Vwma.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/vwma.py)
+- [Python wrapper]({{site.python.src}}/vwma.py)

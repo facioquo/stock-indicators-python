@@ -8,9 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-<hr>
-
-## **get_hurst**(*quotes, lookback_periods=100*)
+><span class="indicator-syntax">**get_hurst**(*quotes, lookback_periods=100*)</span>
 
 ## Parameters
 
@@ -68,11 +66,11 @@ results = indicators.get_hurst(quotes, 20)
 ## About {{ page.title }}
 
 The [Hurst Exponent](https://en.wikipedia.org/wiki/Hurst_exponent) is a [random-walk](https://en.wikipedia.org/wiki/Random_walk) path analysis that measures trending and mean-reverting tendencies of incremental return values.  When `H` is greater than 0.5 it depicts trending.  When `H` is less than 0.5 it is is more likely to revert to the mean.  When `H` is around 0.5 it represents a random walk.
-[[Discuss] :speech_balloon:]({{site.dotnet.repo}}/discussions/477 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/477 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Hurst.png)
 
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/e-k/Hurst/Hurst.Series.cs)
-- [Python wrapper]({{site.sourceurl}}/hurst.py)
+- [Python wrapper]({{site.python.src}}/hurst.py)
