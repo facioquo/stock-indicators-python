@@ -6,34 +6,45 @@ class TestHTTrendline:
         
         assert 502 == len(results)
         assert 502 == len(list(filter(lambda x: x.trendline is not None, results)))
+        assert 495 == len(list(filter(lambda x: x.dc_periods is not None, results)))
         assert 496 == len(list(filter(lambda x: x.smooth_price is not None, results)))
         
         r = results[5]
         assert 214.205 == round(float(r.trendline), 3)
+        assert r.dc_periods is None
         assert r.smooth_price is None
         
         r = results[6]
         assert  213.84 == round(float(r.trendline), 2)
+        assert r.dc_periods is None
         assert 214.071 == round(float(r.smooth_price), 3)
+
+        r = results[7]
+        assert 1 == r.dc_periods
         
         r = results[11]
         assert 213.9502 == round(float(r.trendline), 4)
+        assert        3 == r.dc_periods
         assert 213.8460 == round(float(r.smooth_price), 4)
         
         r = results[25]
         assert 215.3948 == round(float(r.trendline), 4)
+        assert       14 == r.dc_periods
         assert 216.3365 == round(float(r.smooth_price), 4)
         
         r = results[149]
         assert 233.9410 == round(float(r.trendline), 4)
+        assert       24 == r.dc_periods
         assert 235.8570 == round(float(r.smooth_price), 4)
         
         r = results[249]
         assert 253.8788 == round(float(r.trendline), 4)
+        assert       25 == r.dc_periods
         assert 257.5825 == round(float(r.smooth_price), 4)
         
         r = results[501]
         assert 252.2172 == round(float(r.trendline), 4)
+        assert       20 == r.dc_periods
         assert 242.3435 == round(float(r.smooth_price), 4)
         
     def test_bad_data(self, bad_quotes):
