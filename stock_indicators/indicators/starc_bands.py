@@ -7,7 +7,7 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_starc_bands(quotes: Iterable[Quote], sma_periods: int = 20,
+def get_starc_bands(quotes: Iterable[Quote], sma_periods: int,
             multiplier: float = 2, atr_periods: int = 10):
     """Get STARC Bands calculated.
 
@@ -18,7 +18,7 @@ def get_starc_bands(quotes: Iterable[Quote], sma_periods: int = 20,
         `quotes` : Iterable[Quote]
             Historical price quotes.
 
-        `sma_periods` : int, defaults 20
+        `sma_periods` : int
             Number of periods for the centerline SMA.
 
         `multiplier` : float, defaults 2
