@@ -43,6 +43,14 @@ class HTTrendlineResult(ResultBase):
         self._csdata.Trendline = value
 
     @property
+    def dc_periods(self) -> Optional[int]:
+        return self._csdata.DcPeriods
+
+    @dc_periods.setter
+    def dc_periods(self, value):
+        self._csdata.DcPeriods = value
+
+    @property
     def smooth_price(self) -> Optional[float]:
         return self._csdata.SmoothPrice
 
