@@ -46,10 +46,10 @@ class TestSTARCBands:
         assert 502 == len(r)
 
     def test_no_quotes(self, quotes):
-        r = indicators.get_starc_bands([])
+        r = indicators.get_starc_bands([], 10)
         assert 0 == len(r)
 
-        r = indicators.get_starc_bands(quotes[:1])
+        r = indicators.get_starc_bands(quotes[:1], 10)
         assert 1 == len(r)
 
     def test_removed(self, quotes):

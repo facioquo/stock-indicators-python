@@ -179,7 +179,7 @@ def test_benchmark_smma(benchmark, quotes):
     benchmark(indicators.get_smma, quotes, 20)
 
 def test_benchmark_starc_bands(benchmark, quotes):
-    benchmark(indicators.get_starc_bands, quotes)
+    benchmark(indicators.get_starc_bands, quotes, 10)
 
 def test_benchmark_stc(benchmark, quotes):
     benchmark(indicators.get_stc, quotes)
