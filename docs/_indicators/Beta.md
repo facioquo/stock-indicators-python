@@ -14,7 +14,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `eval_history` | Iterable[Quote] | Historical [evaluation stock] Quotes data should be at any consistent frequency (day, hour, minute, etc). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
+| `eval_history` | Iterable[Quote] | Historical [evaluation stock] Quotes data should be at any consistent frequency (day, hour, minute, etc). <br><span class='qna-dataframe'> • [See here]({{site.baseurl}}/guide/#using-pandasdataframe) for usage with pandas.DataFrame</span>
 | `market_history` | Iterable[Quote] | Historical [market] Quotes data should be at any consistent frequency (day, hour, minute, etc).  This `market` quotes will be used to establish the baseline.
 | `lookback_periods` | int | Number of periods (`N`) in the lookback period.  Must be greater than 0 to calculate; however we suggest a larger period for statistically appropriate sample size and especially when using Beta +/-.
 | `beta_type` | BetaType, *default BetaType.STANDARD* | Type of Beta to calculate.  See [BetaType options](#betatype-options) below.

@@ -13,10 +13,10 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
-| `lookback_periods` | int | Lookback period (`N`) for the stochastic.  Must be greater than 0.
-| `first_smooth_periods` | int | First smoothing factor lookback.  Must be greater than 0.
-| `second_smooth_periods` | int | Second smoothing factor lookback.  Must be greater than 0.
+| `quotes` | Iterable[Quote] | Iterable of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [See here]({{site.baseurl}}/guide/#using-pandasdataframe) for usage with pandas.DataFrame</span>
+| `lookback_periods` | int, *default 13* | Lookback period (`N`) for the stochastic.  Must be greater than 0.
+| `first_smooth_periods` | int, *default 25* | First smoothing factor lookback.  Must be greater than 0.
+| `second_smooth_periods` | int, *default 2* | Second smoothing factor lookback.  Must be greater than 0.
 | `signal_periods` | int, *default 3* | EMA of SMI lookback periods.  Must be greater than 0.
 
 ### Historical quotes requirements

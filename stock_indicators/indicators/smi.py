@@ -7,8 +7,8 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_smi(quotes: Iterable[Quote], lookback_periods: int,
-            first_smooth_periods: int, second_smooth_periods: int,
+def get_smi(quotes: Iterable[Quote], lookback_periods: int = 13,
+            first_smooth_periods: int = 25, second_smooth_periods: int = 2,
             signal_periods: int = 3):
     """Get SMI calculated.
 
@@ -19,13 +19,13 @@ def get_smi(quotes: Iterable[Quote], lookback_periods: int,
         `quotes` : Iterable[Quote]
             Historical price quotes.
 
-        `lookback_periods` : int
+        `lookback_periods` : int, defaults 13
             Number of periods for the Stochastic lookback.
 
-        `first_smooth_periods` : int
+        `first_smooth_periods` : int, defaults 25
             Number of periods in the first smoothing.
 
-        `second_smooth_periods` : int
+        `second_smooth_periods` : int, defaults 2
             Number of periods in the second smoothing.
 
         `signal_periods` : int, defaults 3

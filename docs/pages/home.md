@@ -9,14 +9,17 @@ lazy-images: true
 
 <p style="text-align:center;">
 <a href="https://pypi.org/project/stock-indicators" aria-label="Get the PyPI package." class="not-mobile">
-  <img src="https://img.shields.io/pypi/v/stock-indicators?color=blue&label=PyPI&cacheSeconds=259200"
-  alt="" width="80" height="20" />
+  <img src="https://img.shields.io/pypi/v/stock-indicators?color=blue&label=PyPI&cacheSeconds=259200" alt="" />
 </a>
 <a href="https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=26&branchName=main&view=codecoverage-tab" aria-label="Read more about our code coverage." class="not-mobile">
-  <img src="https://img.shields.io/azure-devops/coverage/skender/stock.indicators/26/main?logo=AzureDevOps&label=Test%20Coverage&cacheSeconds=259200"
-  alt="" width=130 height="20" />
+  <img src="https://img.shields.io/azure-devops/coverage/skender/stock.indicators/26/main?logo=AzureDevOps&label=Test%20Coverage&cacheSeconds=259200" alt="" />
+</a>
+<a href="https://pypistats.org/packages/stock-indicators" aria-label="See PyPi download stats." class="not-mobile">
+  <img src="https://img.shields.io/pypi/dm/stock-indicators?style=flat&logo=Python&logoColor=white&label=Downloads&color=indigo&link=https%3A%2F%2Fpypistats.org%2Fpackages%2Fstock-indicators" alt="" />
 </a>
 </p>
+
+<h1 style="display:none;">{{ page.title }}</h1>
 
 **Stock Indicators for Python** is a library that produces financial market technical indicators.  Send in historical price quotes and get back desired indicators such as moving averages, Relative Strength Index, Stochastic Oscillator, Parabolic SAR, etc.  Nothing more.
 

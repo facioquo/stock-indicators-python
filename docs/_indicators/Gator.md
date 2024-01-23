@@ -15,7 +15,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] or Iterable[AlligatorResult] | Iterable(such as list or an object having `__iter__()`) of the [Quote]({{site.baseurl}}/guide/#historical-quotes) or [Alligator Result](../Alligator#content).
+| `quotes` | Iterable[Quote] or Iterable[AlligatorResult] | Iterable of the [Quote]({{site.baseurl}}/guide/#historical-quotes) or [Alligator Result](../Alligator#content). <br><span class='qna-dataframe'> • [See here]({{site.baseurl}}/guide/#using-pandasdataframe) for usage with pandas.DataFrame</span>
 
 ## Historical quotes requirements
 
