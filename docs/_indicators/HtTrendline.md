@@ -13,7 +13,7 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
+| `quotes` | Iterable[Quote] | Iterable of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [See here]({{site.baseurl}}/guide/#using-pandasdataframe) for usage with pandas.DataFrame</span>
 
 ## Historical quotes requirements
 
@@ -32,6 +32,7 @@ HTTrendlineResults[HTTrendlineResult]
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
 - The first `6` periods will have `None` values for `smooth_price` since there's not enough data to calculate.
+- The first `7` periods will have `None` values for `dc_periods` since there is not enough data to calculate; and are generally unreliable for the first ~25 periods.
 
 >&#9886; **Convergence warning**: The first `100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods.
 
@@ -41,6 +42,7 @@ HTTrendlineResults[HTTrendlineResult]
 | -- |-- |--
 | `date` | datetime | Date
 | `trendline` | float, Optional | HT Trendline
+| `dc_periods` | int, Optional | Dominant cycle periods (smoothed)
 | `smooth_price` | float, Optional | Weighted moving average of `(H+L)/2` price
 
 ### Utilities

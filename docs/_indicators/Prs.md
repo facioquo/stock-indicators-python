@@ -13,8 +13,8 @@ layout: indicator
 
 | name | type | notes
 | -- |-- |--
-| `eval_history` | Iterable[Quote] | Historical quotes for evaluation.  You must have the same number of periods as `base_history`. <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
-| `base_history` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
+| `eval_history` | Iterable[Quote] | Historical quotes for evaluation.  You must have the same number of periods as `base_history`. <br><span class='qna-dataframe'> • [See here]({{site.baseurl}}/guide/#using-pandasdataframe) for usage with pandas.DataFrame</span>
+| `base_history` | Iterable[Quote] | Iterable of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes).
 | `lookback_periods` | int, Optional | Number of periods (`N`) to lookback to compute % difference.  Must be greater than 0 if specified or `None`.
 | `sma_periods` | int, Optional | Number of periods (`S`) in the SMA lookback period for `prs`.  Must be greater than 0.
 

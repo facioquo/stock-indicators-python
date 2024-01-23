@@ -9,11 +9,16 @@ layout: indicator
 
 ><span class="indicator-syntax">**get_atr**(*quotes, lookback_periods=14*)</span>
 
+### Related interfaces
+
+For raw True Range (TR) only, use:
+>**get_tr**(quotes) -> TrResults[TrResult]
+
 ## Parameters
 
 | name | type | notes
 | -- |-- |--
-| `quotes` | Iterable[Quote] | Iterable(such as list or an object having `__iter__()`) of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [Need help with pandas.DataFrame?]({{site.baseurl}}/guide/#using-pandasdataframe)</span>
+| `quotes` | Iterable[Quote] | Iterable of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [See here]({{site.baseurl}}/guide/#using-pandasdataframe) for usage with pandas.DataFrame</span>
 | `lookback_periods` | int, *default 14* | Number of periods (`N`) to consider.  Must be greater than 1.
 
 ### Historical quotes requirements
