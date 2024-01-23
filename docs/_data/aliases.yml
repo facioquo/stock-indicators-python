@@ -2,6 +2,14 @@
   permalink: /indicators/ElderRay/
   type: price-characteristic
 
+- title: Dominant Cycle Periods
+  permalink: /indicators/HtTrendline/
+  type: price-characteristic
+
+- title: Directional Movement Index (DMI)
+  permalink: /indicators/Adx/
+  type: price-trend
+
 - title: Historical Volatility (HV)
   permalink: /indicators/StdDev/
   type: price-characteristic
@@ -58,10 +66,6 @@
   permalink: /indicators/Hurst/
   type: price-characteristic
 
-- title: ROC with Bands
-  permalink: /indicators/Roc/
-  type: oscillator
-
 - title: Running Moving Average (RMA)
   permalink: /indicators/Smma/
   type: moving-average
@@ -69,6 +73,10 @@
 - title: SuperTrend
   permalink: /indicators/SuperTrend/
   type: stop-and-reverse
+
+- title: True Range (TR)
+  permalink: /indicators/Atr/
+  type: price-characteristic
 
 - title: Z-Score
   permalink: /indicators/StdDev/
