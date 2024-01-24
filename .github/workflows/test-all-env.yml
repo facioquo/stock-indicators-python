@@ -3,12 +3,7 @@
 name: Run all tests
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-    branches:
-      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -17,10 +12,10 @@ jobs:
   test:
     runs-on: ${{ matrix.os }}
     strategy:
-      matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
-        python-version: ["3.8", "3.12"]
-        dotnet-version: ["6.0.x", "8.0.x"]
+        matrix:
+            os: [windows-latest, ubuntu-latest, macos-latest]
+            python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+            dotnet-version: ["6.0.x", "7.0.x", "8.0.x"]
 
     steps:
       - name: Checkout Repository
