@@ -90,7 +90,7 @@ See [individual indicator pages]({{site.baseurl}}/indicators/) for specific usag
 
 More examples available:
 
-- [Demo site](https://stock-charts.azurewebsites.net) (a stock chart)
+- [Demo site](https://charts.stockindicators.dev) (a stock chart)
 
 ## Historical quotes
 

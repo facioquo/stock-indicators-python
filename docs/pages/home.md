@@ -27,7 +27,7 @@ Explore more information:
 - [Guide and Pro tips]({{site.baseurl}}/guide/#content)
 - [Indicators and overlays]({{site.baseurl}}/indicators/#content)
 - [Utilities and Helpers]({{site.baseurl}}/utilities/#content)
-- [Demo site](https://stock-charts.azurewebsites.net) (a stock chart)
+- [Demo site](https://charts.stockindicators.dev) (a stock chart)
 - [Release notes]({{site.github.repository_url}}/releases)
 - [Discussions]({{site.dotnet.repo}}/discussions)
 - [Contributing guidelines]({{site.baseurl}}/contributing/#content)
