@@ -11,9 +11,6 @@ lazy-images: true
 <a href="https://pypi.org/project/stock-indicators" aria-label="Get the PyPI package." class="not-mobile">
   <img src="https://img.shields.io/pypi/v/stock-indicators?color=blue&label=PyPI&cacheSeconds=259200" alt="" />
 </a>
-<a href="https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=26&branchName=main&view=codecoverage-tab" aria-label="Read more about our code coverage." class="not-mobile">
-  <img src="https://img.shields.io/azure-devops/coverage/skender/stock.indicators/26/main?logo=AzureDevOps&label=Test%20Coverage&cacheSeconds=259200" alt="" />
-</a>
 <a href="https://pypistats.org/packages/stock-indicators" aria-label="See PyPi download stats." class="not-mobile">
   <img src="https://img.shields.io/pypi/dm/stock-indicators?style=flat&logo=Python&logoColor=white&label=Downloads&color=indigo&link=https%3A%2F%2Fpypistats.org%2Fpackages%2Fstock-indicators" alt="" />
 </a>

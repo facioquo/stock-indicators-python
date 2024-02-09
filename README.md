@@ -1,7 +1,6 @@
 [![image](https://raw.githubusercontent.com/DaveSkender/Stock.Indicators.Python/main/docs/assets/social-banner.png)](https://python.stockindicators.dev/)
 
 [![PyPI](https://img.shields.io/pypi/v/stock-indicators?color=blue&label=PyPI)](https://badge.fury.io/py/stock-indicators)
-[![code coverage](https://img.shields.io/azure-devops/coverage/skender/stock.indicators/26/main?logo=AzureDevOps&label=Test%20Coverage)](https://dev.azure.com/skender/Stock.Indicators/_build/latest?definitionId=26&branchName=main&view=codecoverage-tab)
 ![PyPI - Downloads](https://img.shields.io/pypi/dm/stock-indicators?style=flat&logo=Python&logoColor=white&label=Downloads&color=indigo&link=https%3A%2F%2Fpypistats.org%2Fpackages%2Fstock-indicators)
 
 # Stock Indicators for Python
