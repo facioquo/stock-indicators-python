@@ -31,7 +31,6 @@ HeikinAshiResults[HeikinAshiResult]
 - `HeikinAshiResults` is just a list of `HeikinAshiResult`.
 - It always returns the same number of elements as there are in the historical quotes.
 - It does not return a single incremental indicator value.
-- The first period will have `None` values since there's not enough data to calculate.
 
 ### HeikinAshiResult
 
