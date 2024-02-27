@@ -39,7 +39,6 @@ plugins:
 
 exclude:
   [
-    "*.json",
     "*.lock",
     "*.yml",
     "*.pptx",
