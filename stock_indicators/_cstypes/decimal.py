@@ -1,7 +1,7 @@
 from decimal import Decimal as PyDecimal
 
 from stock_indicators._cslib import CsDecimal
-from stock_indicators._cslib  import CsFormatException
+from stock_indicators._cslib import CsFormatException
 
 class Decimal:
     """
@@ -19,10 +19,12 @@ class Decimal:
     """
     def __new__(cls, decimal) -> CsDecimal:
         try:
+            decimal = 'test123'
             return CsDecimal.Parse(str(decimal))
         except CsFormatException as e:
-            raise ValueError("This may be a locale settings issue in your environment.\n"
-                             "Make sure you have correctly formatted decimal data that matches your locale settings.") from e
+            e.add_note("This may be a locale settings issue in your environment.\n"
+                       "Make sure you have correctly formatted decimal data that matches your locale settings.")
+            raise e
 
 
 def to_pydecimal(cs_decimal):
