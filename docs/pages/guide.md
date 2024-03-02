@@ -25,9 +25,11 @@ layout: page
 
 1. Install prerequisite framework dependencies
 
-    Stock Indicators for Python has dependency on [PythonNet](https://github.com/pythonnet/pythonnet), which uses [CLR(Common Language Runtime)](https://learn.microsoft.com/dotnet/standard/clr).  Check that you've installed the following prerequisite software:
+    Stock Indicators for Python has dependency on on the [Common Language Runtime (CLR)](https://learn.microsoft.com/dotnet/standard/clr).  You'll need to install the .NET SDK in your environment to get required CLR capability.
 
-    > Use the latest **Python** and **.NET SDK** for best performance.
+    Check that you've installed the following prerequisite software:
+
+    > Install the latest **Python** and **.NET SDK** for best performance.
 
     | Installer | Min | Latest | Download |
     |---| :---: | :---: | --- |
@@ -51,9 +53,7 @@ Most indicators require that you provide historical quote data and additional co
 
 You must get historical quotes from your own market data provider.  For clarification, the `get_history_from_feed()` method shown in the example below and throughout our documentation **is not part of this library**, but rather an example to represent your own acquisition of historical quotes.
 
-Historical price data can be provided as an `Iterable`(such as `List` or an object having `__iter__()`) of the `Quote` class or its sub-class ([see below](#historical-quotes)); Be aware that you **have to** inherit `Quote` class when you [make custom quote class](#using-custom-quote-classes).
-
-<!-- however, it can also be supplied as a generic [custom TQuote type](#using-custom-quote-classes) if you prefer to use your own quote model. -->
+Historical price data can be provided as an `Iterable`(such as `List` or an object having `__iter__()`) of the `Quote` class or its sub-class ([see below](#historical-quotes)); be aware that you **have to** inherit `Quote` class when you [make custom quote class](#using-custom-quote-classes).
 
 For additional configuration parameters, default values are provided when there is an industry standard.  You can, of course, override these and provide your own values.
 
@@ -104,22 +104,22 @@ from stock_indicators.indicators.common.quote import Quote
 **class Quote(date, open=None, high=None, low=None, close=None, volume=None)**
 [[source]](https://github.com/DaveSkender/Stock.Indicators.Python/blob/main/stock_indicators/indicators/common/quote.py)
 
-| name | type | notes
-| -- |-- |--
-| date | [`datetime.datetime`](https://docs.python.org/3.8/library/datetime.html#datetime.datetime) | Date
-| open | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Open price
-| high | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | High price
-| low | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Low price
-| close | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Close price
-| volume | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Volume
+| name | type | notes |
+| -- |-- |-- |
+| date | [`datetime.datetime`](https://docs.python.org/3.8/library/datetime.html#datetime.datetime) | Date |
+| open | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Open price |
+| high | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | High price |
+| low | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Low price |
+| close | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Close price |
+| volume | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Volume |
 
-**Note that**
+Note that:
 
 1. `date` is always required, while each ohlcv values are optional.
 2. ohlcv can be provided by `float`, `Decimal` and `str` representing number, but these are always stored as `Decimal`.
 
-> If you have any trouble with converting data into `Quote`, Checkout these issues for similar case.
-> [https://github.com/DaveSkender/Stock.Indicators/discussions/1165](https://github.com/DaveSkender/Stock.Indicators/discussions/1165)
+> If you have any trouble with converting data into `Quote` format, see our GitHub discussion on
+> [Converting Pandas DataFrame to iterable Quotes]({{site.dotnet.repo}}/discussions/1165) for more information and troubleshooting support.
 
 ### Where can I get historical quote data?
 
@@ -137,7 +137,7 @@ For example, if you are using daily data and want one year of precise EMA(250) d
 
 If you are using `Pandas.Dataframe` to hold quote data, you have to convert it into our `Quote` instance. That means you must iterate them row by row. There's [an awesome article](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) that introduces the best-efficiency way to iterate `Dataframe`.
 
-Here's an example we'd like to suggest: **Use list comprehension**
+Here's an example we'd like to suggest: **use list comprehension**
 
 ```python
 # Suppose that you have dataframe like the below.
@@ -160,7 +160,7 @@ You can also use `numpy.vectorize()`, its gain is too slight and hard to apply i
 
 ### Using custom quote classes
 
-If you would like to use your own custom `MyCustomQuote` _quote_ class, you **have to** inherit `Quote` class. The `Quote` class is a special class which converts OHLCV properties existing as Python objects to C# objects and which is concrete class of `IQuote` of C# implementation. It enables Pythonnet to work with our C# implementation using generics.
+If you would like to use your own custom `MyCustomQuote` _quote_ class, you **have to** inherit `Quote` class. The `Quote` class is a special class which converts OHLCV properties existing as Python objects to C# objects and which is concrete class of `IQuote` of C# implementation. It enables PythonNet to work with our C# implementation using generics.
 
 ```python
 from stock_indicators.indicators.common import Quote
@@ -221,7 +221,7 @@ for r in extended_results:
     print(r)
 ```
 
-**Be aware that** If you want to use [helper functions]({{site.baseurl}}/utilities/#utilities-for-indicator-results), use wrapper class(e.g. `EMAResults`).<br>
+**Be aware that** if you want to use [helper functions]({{site.baseurl}}/utilities/#utilities-for-indicator-results), use use the wrapper class (such as `EMAResults`).
 
 ```python
 # 2. use wrapper for helper function
@@ -268,38 +268,38 @@ When a candlestick pattern is recognized, it produces a match.  In some cases, a
 from stock_indicators.indicators.common.enums import Match
 ```
 
-| type | description
-|-- |:--
-| `Match.BULL_CONFIRMED` | Confirmation of a prior bull Match
-| `Match.BULL_SIGNAL` | Matching bullish pattern
-| `Match.BULL_BASIS` | Bars supporting a bullish Match
-| `Match.NEUTRAL` | Matching for non-directional patterns
-| `Match.NONE` | No match
-| `Match.BEAR_BASIS` | Bars supporting a bearish Match
-| `Match.BEAR_SIGNAL` | Matching bearish pattern
-| `Match.BEAR_CONFIRMED` | Confirmation of a prior bear Match
+| type | description |
+|-- |:-- |
+| `Match.BULL_CONFIRMED` | Confirmation of a prior bull Match |
+| `Match.BULL_SIGNAL` | Matching bullish pattern |
+| `Match.BULL_BASIS` | Bars supporting a bullish Match |
+| `Match.NEUTRAL` | Matching for non-directional patterns |
+| `Match.NONE` | No match |
+| `Match.BEAR_BASIS` | Bars supporting a bearish Match |
+| `Match.BEAR_SIGNAL` | Matching bearish pattern |
+| `Match.BEAR_CONFIRMED` | Confirmation of a prior bear Match |
 
 ### Candle
 
 The `CandleProperties` class is an extended version of `Quote`, and contains additional calculated properties.
 
-| name | type | notes
-| -- |-- |--
-| `date` | datetime | Date
-| `open` | Decimal | Open price
-| `high` | Decimal | High price
-| `low` | Decimal | Low price
-| `close` | Decimal | Close price
-| `volume` | Decimal | Volume
-| `size` | Decimal, Optional | `high-low`
-| `body` | Decimal, Optional | `|open-close|`
-| `upper_wick` | Decimal, Optional | Upper wick size
-| `lower_wick` | Decimal, Optional | Lower wick size
-| `body_pct` | float, Optional | `body/size`
-| `upper_wick_pct` | float, Optional | `upper_wick/size`
-| `lower_wick_pct` | float, Optional | `lower_wick/size`
-| `is_bullish` | bool | `close>open` direction
-| `is_bearish` | bool | `close<open` direction
+| name | type | notes |
+| -- |-- |-- |
+| `date` | datetime | Date |
+| `open` | Decimal | Open price |
+| `high` | Decimal | High price |
+| `low` | Decimal | Low price |
+| `close` | Decimal | Close price |
+| `volume` | Decimal | Volume |
+| `size` | Decimal, Optional | `high-low` |
+| `body` | Decimal, Optional | `|open-close|` |
+| `upper_wick` | Decimal, Optional | Upper wick size |
+| `lower_wick` | Decimal, Optional | Lower wick size |
+| `body_pct` | float, Optional | `body/size` |
+| `upper_wick_pct` | float, Optional | `upper_wick/size` |
+| `lower_wick_pct` | float, Optional | `lower_wick/size` |
+| `is_bullish` | bool | `close>open` direction |
+| `is_bearish` | bool | `close<open` direction |
 
 ## Utilities
 
