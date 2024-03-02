@@ -118,7 +118,7 @@ Note that:
 1. `date` is always required, while each ohlcv values are optional.
 2. ohlcv can be provided by `float`, `Decimal` and `str` representing number, but these are always stored as `Decimal`.
 
-> If you have any trouble with converting data into `Quote` format, see our GitHub discussion on
+> If you're having trouble converting into `Quote` format, see our GitHub discussion on
 > [Converting Pandas DataFrame to iterable Quotes]({{site.dotnet.repo}}/discussions/1165) for more information and troubleshooting support.
 
 ### Where can I get historical quote data?
