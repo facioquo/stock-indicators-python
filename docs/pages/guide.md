@@ -221,7 +221,7 @@ for r in extended_results:
     print(r)
 ```
 
-**Be aware that** if you want to use [helper functions]({{site.baseurl}}/utilities/#utilities-for-indicator-results), use use the wrapper class (such as `EMAResults`).
+**Be aware that** if you want to use [helper functions]({{site.baseurl}}/utilities/#utilities-for-indicator-results), use the wrapper class (such as `EMAResults`).
 
 ```python
 # 2. use wrapper for helper function
