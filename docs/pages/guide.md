@@ -118,6 +118,9 @@ from stock_indicators.indicators.common.quote import Quote
 1. `date` is always required, while each ohlcv values are optional.
 2. ohlcv can be provided by `float`, `Decimal` and `str` representing number, but these are always stored as `Decimal`.
 
+> If you have any trouble with converting data into `Quote`, Checkout these issues for similar case.
+> [https://github.com/DaveSkender/Stock.Indicators/discussions/1165](https://github.com/DaveSkender/Stock.Indicators/discussions/1165)
+
 ### Where can I get historical quote data?
 
 There are many places to get stock market data.  Check with your brokerage or other commercial sites.  If you're looking for a free developer API, see our ongoing [discussion on market data]({{site.dotnet.repo}}/discussions/579) for ideas.
