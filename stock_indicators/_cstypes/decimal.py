@@ -19,11 +19,10 @@ class Decimal:
     """
     def __new__(cls, decimal) -> CsDecimal:
         try:
-            decimal = 'test123'
             return CsDecimal.Parse(str(decimal))
         except CsFormatException as e:
-            e.add_note("This may be a locale settings issue in your environment.\n"
-                       "Make sure you have correctly formatted decimal data that matches your locale settings.")
+            e.add_note("You may be using numeric data that is incompatible with your locale environment settings.\n"
+                       "For example, you may be using decimal points instead of commas.")
             raise e
 
 
