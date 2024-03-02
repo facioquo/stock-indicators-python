@@ -15,11 +15,9 @@ try:
     load(runtime="coreclr")
     import clr
 except Exception as e:
-    raise ImportError(("fail to import clr.\n"
-    "Stock Indicators for Python has dependency on pythonnet, which uses CLR.\n"
-    "Check that you have CLR installed. It supports .NET 6.0 or above.\n"
-    ".NET:\n\t"
-    "https://dotnet.microsoft.com/download/dotnet")) from e
+    e.add_note("Stock Indicators for Python has a dependency on CLR.\n"
+               "Install .NET SDK 6.0 (or newer) in your environment to add the required CLR capability.")
+    raise e
 
 skender_stock_indicators_dll_path = os.path.join(
     os.path.dirname(__file__),
@@ -54,3 +52,6 @@ from Skender.Stock.Indicators import PeriodSize as CsPeriodSize
 from Skender.Stock.Indicators import PivotPointType as CsPivotPointType
 from Skender.Stock.Indicators import PivotTrend as CsPivotTrend
 from Skender.Stock.Indicators import Match as CsMatch
+
+# Exceptions
+from System import FormatException as CsFormatException
