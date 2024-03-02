@@ -15,8 +15,8 @@ try:
     load(runtime="coreclr")
     import clr
 except Exception as e:
-    e.add_note("Stock Indicators for Python has dependency on pythonnet, which uses CLR.\n"
-               "Check that you have CLR installed. It supports .NET 6.0 or above.")
+    e.add_note("Stock Indicators for Python has a dependency on CLR.\n"
+               "Install .NET SDK 6.0 (or newer) in your environment to add the required CLR capability.")
     raise e
 
 skender_stock_indicators_dll_path = os.path.join(
