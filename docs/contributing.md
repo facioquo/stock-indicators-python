@@ -7,6 +7,9 @@ layout: page
 
 # Contributing guidelines
 
+[![Codacy quality grade](https://app.codacy.com/project/badge/Grade/2b48204b1e304e3bac977fbc92b19c14)](https://app.codacy.com/gh/DaveSkender/Stock.Indicators.Python/dashboard)
+[![Codacy code coverage](https://app.codacy.com/project/badge/Coverage/2b48204b1e304e3bac977fbc92b19c14)](https://app.codacy.com/gh/DaveSkender/Stock.Indicators.Python/dashboard)
+
 **Thanks for taking the time to contribute!**
 
 This project is simpler than most, so it's a good place to start contributing to the open source community, even if you're a newbie.
