@@ -6,14 +6,22 @@ class TestROC:
         results = indicators.get_roc(quotes, 20)
         
         assert 502 == len(results)
+        assert 482 == len(list(filter(lambda x: x.momentum is not None, results)))
         assert 482 == len(list(filter(lambda x: x.roc is not None, results)))
         assert 000 == len(list(filter(lambda x: x.roc_sma is not None, results)))
         
+        r = results[49]
+        assert   4.96 == round(float(r.momentum), 4)
+        assert 2.2465 == round(float(r.roc), 4)
+        assert r.roc_sma is None
+
         r = results[249]
+        assert   6.25 == round(float(r.momentum), 4)
         assert 2.4827 == round(float(r.roc), 4)
         assert r.roc_sma is None
         
         r = results[501]
+        assert  -22.05 == round(float(r.momentum), 4)
         assert -8.2482 == round(float(r.roc), 4)
         assert r.roc_sma is None
         
