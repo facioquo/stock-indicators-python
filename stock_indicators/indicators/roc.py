@@ -71,6 +71,14 @@ class ROCResult(ResultBase):
     """
 
     @property
+    def momentum(self) -> Optional[float]:
+        return self._csdata.Momentum
+
+    @momentum.setter
+    def momentum(self, value):
+        self._csdata.Momentum = value
+
+    @property
     def roc(self) -> Optional[float]:
         return self._csdata.Roc
 
