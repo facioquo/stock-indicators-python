@@ -23,10 +23,6 @@ class CondenseMixin:
 
 
 class _CandleProperties(_Quote):
-    """
-    A wrapper class for `CsCandleProperties`, which is an extended version of `Quote`.
-    It contains additional calculated properties.
-    """
     @property
     def size(self) -> Optional[Decimal]:
         return to_pydecimal(self.high - self.low)
@@ -71,7 +67,12 @@ class _CandleProperties(_Quote):
         return self.Close < self.Open
 
 
-CandleProperties = generate_cs_inherited_class(_CandleProperties, CsCandleProperties, "CandleProperties")
+class CandleProperties(generate_cs_inherited_class(_CandleProperties, CsCandleProperties)):
+    """
+    A wrapper class for `CsCandleProperties`, which is an extended version of `Quote`.
+    It contains additional calculated properties.
+    """
+    pass
 
 
 class CandleResult(ResultBase):
