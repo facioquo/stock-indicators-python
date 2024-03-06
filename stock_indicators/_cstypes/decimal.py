@@ -21,9 +21,8 @@ class Decimal:
         try:
             return CsDecimal.Parse(str(decimal))
         except CsFormatException as e:
-            e.add_note("You may be using numeric data that is incompatible with your locale environment settings.\n"
-                       "For example, you may be using decimal points instead of commas.")
-            raise e
+            raise ValueError("You may be using numeric data that is incompatible with your locale environment settings.\n"
+                             "For example, you may be using decimal points instead of commas.") from e
 
 
 def to_pydecimal(cs_decimal):

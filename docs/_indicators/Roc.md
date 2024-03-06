@@ -41,6 +41,7 @@ ROCResults[ROCResult]
 | name | type | notes
 | -- |-- |--
 | `date` | datetime | Date
+| `momentum` | float, Optional | Raw change in price over `N` periods
 | `roc` | float, Optional | Rate of Change over `N` lookback periods (%, not decimal)
 | `roc_sma` | float, Optional | Moving average (SMA) of ROC based on `sma_periods` periods, if specified
 
@@ -95,7 +96,7 @@ ROCWBResults[ROCWBResult]
 
 ## About {{ page.title }}
 
-[Rate of Change](https://en.wikipedia.org/wiki/Momentum_(technical_analysis)), also known as Momentum Oscillator, is the percent change of Close price over a lookback window.  A [Rate of Change with Bands](#roc-with-bands) variant, created by Vitali Apirine, is also included.
+[Rate of Change](https://en.wikipedia.org/wiki/Momentum_(technical_analysis)), also known as Momentum Oscillator, is the percent change of Close price over a lookback window.  Momentum is the raw price change equivalent. A [Rate of Change with Bands](#roc-with-bands) variant, created by Vitali Apirine, is also available.
 [[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/242 "Community discussion about this indicator")
 
 ![image]({{site.dotnet.charts}}/Roc.png)
