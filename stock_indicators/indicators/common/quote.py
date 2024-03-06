@@ -86,5 +86,5 @@ class _Quote:
 
 
 class Quote(generate_cs_inherited_class(_Quote, CsQuote)):
-    """A base wrapper class for a single unit of historical quotes."""
+    """A single dated quote containing OHLCV elements."""
     pass

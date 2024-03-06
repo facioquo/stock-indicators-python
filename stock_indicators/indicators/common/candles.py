@@ -68,10 +68,7 @@ class _CandleProperties(_Quote):
 
 
 class CandleProperties(generate_cs_inherited_class(_CandleProperties, CsCandleProperties)):
-    """
-    A wrapper class for `CsCandleProperties`, which is an extended version of `Quote`.
-    It contains additional calculated properties.
-    """
+    """An extended version of Quote that contains additional calculated properties."""
     pass
 
 
