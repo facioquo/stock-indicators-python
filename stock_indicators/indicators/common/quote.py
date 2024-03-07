@@ -49,7 +49,6 @@ def _set_volume(quote, value):
     quote.Volume = CsDecimal(value)
 
 class _Quote:
-    """A base wrapper class for a single unit of historical quotes."""
     date = property(_get_date, _set_date)
     open = property(_get_open, _set_open)
     high = property(_get_high, _set_high)
@@ -86,4 +85,6 @@ class _Quote:
         return CsQuoteUtility.Use[Quote](CsList(Quote, quotes), candle_part.cs_value)
 
 
-Quote = generate_cs_inherited_class(_Quote, CsQuote, "Quote")
+class Quote(generate_cs_inherited_class(_Quote, CsQuote)):
+    """A single dated quote containing OHLCV elements."""
+    pass
