@@ -59,11 +59,11 @@ jobs:
           --junitxml=test-results.xml
           --cov=stock_indicators
           --cov-report term
-          --cov-report xml:coverage.xml
+          --cov-report xml:test-coverage.xml
 
       - name: Post test summary
         uses: MishaKav/pytest-coverage-comment@main
         if: env.IS_PRIMARY == 'true'
         with:
-          pytest-xml-coverage-path: coverage.xml
           junitxml-path: test-results.xml
+          pytest-xml-coverage-path: test-coverage.xml
