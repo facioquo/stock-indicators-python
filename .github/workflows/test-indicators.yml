@@ -58,7 +58,7 @@ jobs:
       - name: Convert test file
         if: env.IS_PRIMARY == 'true'
         run: |
-          dotnet tool install trx2junit
+          dotnet tool install --global trx2junit
           trx2junit test-results.xml --junit2trx
 
       - name: Post test summary
