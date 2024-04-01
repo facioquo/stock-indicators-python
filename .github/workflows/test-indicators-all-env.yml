@@ -36,7 +36,7 @@ jobs:
           cache: "pip"
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Dependencies
+      - name: Setup Dependencies
         run: |
           pip install -r requirements.txt
           pip install -r requirements-test.txt

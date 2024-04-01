@@ -1,6 +1,6 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Test code coverage
+name: Indicators
 
 on: ["push"]
 
@@ -9,6 +9,7 @@ permissions:
 
 jobs:
   test:
+    name: code coverage
     runs-on: ubuntu-latest
 
     steps:
@@ -25,12 +26,12 @@ jobs:
         with:
           python-version: 3.12
 
-      - name: Install Dependencies
+      - name: Install dependencies
         run: |
           pip install -r requirements.txt
           pip install -r requirements-test.txt
 
-      - name: Run Tests
+      - name: Run tests
         run: |
           coverage run -m --source=stock_indicators pytest -svr A tests
           coverage xml

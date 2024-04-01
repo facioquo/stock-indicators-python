@@ -1,20 +1,20 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Run all tests
+name: Indicators
 
 on:
   push:
-    branches:
-      - main
+    branches: ["main"]
+
   pull_request:
-    branches:
-      - main
+    branches: ["main"]
 
 permissions:
   contents: read
 
 jobs:
   test:
+    name: unit tests
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
@@ -38,11 +38,12 @@ jobs:
           cache: "pip"
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Dependencies
+      - name: Install pip packages
         run: |
           pip install -r requirements.txt
           pip install -r requirements-test.txt
 
       - name: Run Tests
+        id: test-library
         run: |
           pytest -vr A tests
