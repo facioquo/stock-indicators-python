@@ -54,6 +54,6 @@ jobs:
 
       - name: Post test summary
         uses: MishaKav/pytest-coverage-comment@main
-        if: env.IS_PRIMARY
+        if: env.IS_PRIMARY == 'true'
         with:
           junitxml-path: pytest.xml
