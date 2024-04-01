@@ -39,7 +39,6 @@ jobs:
 
       - name: Post test summary
         uses: MishaKav/pytest-coverage-comment@main
-        if: ${{ github.event_name == 'pull_request' && always() }}
         with:
           pytest-xml-coverage-path: coverage.xml
           junitxml-path: pytest.xml
