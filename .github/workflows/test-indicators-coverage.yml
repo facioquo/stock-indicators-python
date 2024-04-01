@@ -6,6 +6,7 @@ on: ["push"]
 
 permissions:
   contents: read
+  pull-requests: write
 
 jobs:
   test:
@@ -36,7 +37,13 @@ jobs:
           coverage run -m --source=stock_indicators pytest -svr A tests
           coverage xml
 
-      - name: Post coverage to Codacy
+      - name: Post test summary
+        uses: MishaKav/pytest-coverage-comment@main
+        if: always()
+        with:
+          pytest-xml-coverage-path: coverage.xml
+
+      - name: Publish coverage to Codacy
         uses: codacy/codacy-coverage-reporter-action@v1
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
