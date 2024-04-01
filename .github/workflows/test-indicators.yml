@@ -46,16 +46,14 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install -r requirements-test.txt
-          pip install pytest-cov
 
       - name: Test indicators
         id: test-library
-        run: |
-          pytest -vr A tests pytest-cov --junitxml=pytest.xml
+        run: >
+          pytest -vr A tests --junitxml=pytest.xml
 
       - name: Post test summary
         uses: MishaKav/pytest-coverage-comment@main
         if: ${{ env.IS_PRIMARY }}
         with:
-          pytest-coverage-path: coverage.txt
           junitxml-path: pytest.xml
