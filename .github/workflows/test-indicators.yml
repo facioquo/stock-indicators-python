@@ -46,14 +46,23 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install -r requirements-test.txt
+          pip install pytest-cov
 
       - name: Test indicators
-        id: test-library
+        if: env.IS_PRIMARY == 'false'
+        run: pytest -vr A tests
+
+      - name: Test indicators with coverage
+        if: env.IS_PRIMARY == 'true'
         run: >
-          pytest -vr A tests --junitxml=pytest.xml
+          pytest -vr A tests
+          --junitxml=pytest.xml
+          --cov-report term
+          --cov=stock_indicators pytest-coverage.txt
 
       - name: Post test summary
         uses: MishaKav/pytest-coverage-comment@main
         if: env.IS_PRIMARY == 'true'
         with:
+          pytest-coverage-path: pytest-coverage.txt
           junitxml-path: pytest.xml
