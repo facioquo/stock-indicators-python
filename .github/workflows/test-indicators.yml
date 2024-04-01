@@ -46,6 +46,7 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install -r requirements-test.txt
+          pip install pytest-cov
 
       - name: Test indicators
         id: test-library
