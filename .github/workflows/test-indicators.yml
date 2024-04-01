@@ -46,7 +46,6 @@ jobs:
         run: |
           pip install -r requirements.txt
           pip install -r requirements-test.txt
-          pip install pytest-cov
 
       - name: Test indicators
         if: env.IS_PRIMARY == 'false'
@@ -54,17 +53,12 @@ jobs:
 
       - name: Test indicators with coverage
         if: env.IS_PRIMARY == 'true'
-        run: >
-          pytest -vr A tests
-          --junitxml=test-results.xml
-          --cov=stock_indicators
-          --cov-report term
-          --cov-report xml:test-coverage.xml
+        run: pytest -vr A tests --junitxml=test-results.xml
 
       - name: Convert test file
         if: env.IS_PRIMARY == 'true'
         run: |
-          dotnet tool install -g trx2junit
+          dotnet tool install trx2junit
           trx2junit test-results.xml --junit2trx
 
       - name: Post test summary
@@ -74,5 +68,3 @@ jobs:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           comment-title: ""
           results-path:  test-results.trx
-          # coverage-path: test-coverage.xml
-          # coverage-type: cobertura
