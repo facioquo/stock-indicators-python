@@ -56,13 +56,14 @@ jobs:
         if: env.IS_PRIMARY == 'true'
         run: >
           pytest -vr A tests
-          --junitxml=pytest.xml
+          --junitxml=test-results.xml
+          --cov=stock_indicators
           --cov-report term
-          --cov=stock_indicators pytest-coverage.txt
+          --cov-report xml:coverage.xml
 
       - name: Post test summary
         uses: MishaKav/pytest-coverage-comment@main
         if: env.IS_PRIMARY == 'true'
         with:
-          pytest-coverage-path: pytest-coverage.txt
-          junitxml-path: pytest.xml
+          pytest-xml-coverage-path: coverage.xml
+          junitxml-path: test-results.xml
