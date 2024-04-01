@@ -61,16 +61,10 @@ jobs:
           --cov-report term
           --cov-report xml:test-coverage.xml
 
-      - name: Setup Node
-        uses: actions/setup-node@v4
-        if: env.IS_PRIMARY == 'true'
-        with:
-          node-version: latest
-
       - name: Convert test file
         if: env.IS_PRIMARY == 'true'
         run: |
-          npm install trx2junit
+          dotnet tool install -g trx2junit
           trx2junit test-results.xml --junit2trx
 
       - name: Post test summary
