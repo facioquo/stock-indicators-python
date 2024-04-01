@@ -34,14 +34,15 @@ jobs:
 
       - name: Test indicators
         run: |
-          coverage run -m --source=stock_indicators pytest -svr A tests
+          coverage run -m --source=stock_indicators pytest -svr A tests --junitxml=pytest.xml
           coverage xml
 
       - name: Post test summary
         uses: MishaKav/pytest-coverage-comment@main
-        if: always()
+        if: ${{ github.event_name == 'pull_request' && always() }}
         with:
           pytest-xml-coverage-path: coverage.xml
+          junitxml-path: pytest.xml
 
       - name: Publish coverage to Codacy
         uses: codacy/codacy-coverage-reporter-action@v1
