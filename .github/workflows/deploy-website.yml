@@ -1,6 +1,6 @@
 name: Deploy website
 
-on: [workflow_dispatch]
+on: workflow_dispatch
 
 concurrency:
   group: docs-website
@@ -20,7 +20,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Install Ruby
+      - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           working-directory: docs
@@ -38,7 +38,7 @@ jobs:
           replace: "${{ steps.tag.outputs.version }}"
           regex: false
 
-      - name: Install GEMs
+      - name: Setup GEMs
         working-directory: docs
         env:
           BUNDLE_GEMFILE: ${{github.workspace}}/docs/GemFile

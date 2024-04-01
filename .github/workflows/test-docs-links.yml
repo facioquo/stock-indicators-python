@@ -1,4 +1,5 @@
 name: Website
+
 on:
   pull_request:
     branches: [main]
@@ -10,15 +11,15 @@ env:
   JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
 jobs:
-  testing:
+  test:
     name: test URLs
     runs-on: ubuntu-latest
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v2
+        uses: actions/checkout@v4
 
-      - name: Install Ruby
+      - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           working-directory: docs
@@ -33,7 +34,7 @@ jobs:
           pwd
           bundle install
 
-      - name: Install HTML Proofer
+      - name: Setup HTML Proofer
         run: gem install html-proofer
 
       - name: Replace "data-src"
@@ -70,3 +71,7 @@ jobs:
             --ignore-status-codes "0,302,403,406,408,429,503,999" \
             --swap-urls "https\://python.stockindicators.dev:http\://127.0.0.1:4000" \
             --ignore-urls "/fonts.gstatic.com/"
+
+      - name: Kill site (failsafe)
+        if: always()
+        run: pkill -f jekyll

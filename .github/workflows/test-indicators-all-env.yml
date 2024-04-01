@@ -1,9 +1,12 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Run all tests
+name: Test all environments
 
 on:
   workflow_dispatch:
+
+  push:
+    branches: ["main"]
 
 permissions:
   contents: read
@@ -15,14 +18,14 @@ jobs:
         matrix:
             os: [windows-latest, ubuntu-latest, macos-latest]
             python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
-            dotnet-version: ["6.0.x", "7.0.x", "8.0.x"]
+            dotnet-version: ["6.x", "7.x", "8.x"]
 
     steps:
-      - name: Checkout Repository
-        uses: actions/checkout@v2
+      - name: Checkout source
+        uses: actions/checkout@v4
 
-      - name: Setup .NET SDK
-        uses: actions/setup-dotnet@v3
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
           dotnet-quality: "ga"
@@ -33,11 +36,11 @@ jobs:
           cache: "pip"
           python-version: ${{ matrix.python-version }}
 
-      - name: Install Dependencies
+      - name: Install requirements
         run: |
           pip install -r requirements.txt
           pip install -r requirements-test.txt
 
-      - name: Run Tests
+      - name: Test indicators
         run: |
           pytest -vr A tests
