@@ -19,7 +19,7 @@ jobs:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
         python-version: ["3.8", "3.12"]
-        dotnet-version: ["6.0.x", "8.0.x"]
+        dotnet-version: ["6.x", "8.x"]
 
     env:
 
