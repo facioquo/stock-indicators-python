@@ -8,16 +8,23 @@ on:
 
 permissions:
   contents: read
+  pull-requests: write
 
 jobs:
   test:
     name: unit tests
     runs-on: ${{ matrix.os }}
+
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
         python-version: ["3.8", "3.12"]
         dotnet-version: ["6.0.x", "8.0.x"]
+
+    env:
+
+      # identifying primary configuration so only one reports coverage
+      IS_PRIMARY: ${{ matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12' && matrix.dotnet-version == '8.x' }}
 
     steps:
       - name: Checkout source
@@ -43,4 +50,11 @@ jobs:
       - name: Test indicators
         id: test-library
         run: |
-          pytest -vr A tests
+          pytest -vr A tests pytest-cov --junitxml=pytest.xml
+
+      - name: Post test summary
+        uses: MishaKav/pytest-coverage-comment@main
+        if: ${{ env.IS_PRIMARY }}
+        with:
+          pytest-coverage-path: coverage.txt
+          junitxml-path: pytest.xml
