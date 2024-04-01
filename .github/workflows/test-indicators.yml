@@ -69,7 +69,9 @@ jobs:
 
       - name: Convert to TRX
         if: env.IS_PRIMARY == 'true'
-        run: npx jest-junit convert test-results.xml test-results.trx
+        run: |
+          npm install jest-junit
+          jest-junit convert test-results.xml test-results.trx
 
       - name: Post test summary
         uses: bibipkins/dotnet-test-reporter@v1.4.1
