@@ -21,10 +21,10 @@ jobs:
             dotnet-version: ["6.x", "7.x", "8.x"]
 
     steps:
-      - name: Checkout Repository
+      - name: Checkout source
         uses: actions/checkout@v4
 
-      - name: Setup .NET SDK
+      - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
@@ -36,11 +36,11 @@ jobs:
           cache: "pip"
           python-version: ${{ matrix.python-version }}
 
-      - name: Setup Dependencies
+      - name: Install requirements
         run: |
           pip install -r requirements.txt
           pip install -r requirements-test.txt
 
-      - name: Run Tests
+      - name: Test indicators
         run: |
           pytest -vr A tests
