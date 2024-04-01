@@ -67,7 +67,7 @@ jobs:
         with:
           node-version: latest
 
-      - name: Convert to TRX
+      - name: Convert test file
         if: env.IS_PRIMARY == 'true'
         run: |
           npm install jest-junit
