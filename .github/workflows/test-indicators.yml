@@ -61,9 +61,16 @@ jobs:
           --cov-report term
           --cov-report xml:test-coverage.xml
 
-      - name: Post test summary
-        uses: MishaKav/pytest-coverage-comment@main
+      - name: Convert to TRX
         if: env.IS_PRIMARY == 'true'
+        run: npx jest-junit convert test-results.xml test-results.trx
+
+      - name: Post test summary
+        uses: bibipkins/dotnet-test-reporter@v1.4.1
+        if: env.IS_PRIMARY == 'true' && always()
         with:
-          junitxml-path: test-results.xml
-          pytest-xml-coverage-path: test-coverage.xml
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          comment-title: ""
+          results-path:  test-results.trx
+          coverage-path: test-coverage.xml
+          coverage-type: cobertura
