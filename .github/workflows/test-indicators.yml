@@ -70,8 +70,8 @@ jobs:
       - name: Convert test file
         if: env.IS_PRIMARY == 'true'
         run: |
-          npm install jest-junit
-          jest-junit convert test-results.xml test-results.trx
+          npm install trx2junit
+          trx2junit test-results.xml --junit2trx
 
       - name: Post test summary
         uses: bibipkins/dotnet-test-reporter@v1.4.1
