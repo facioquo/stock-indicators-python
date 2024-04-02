@@ -158,7 +158,7 @@ quotes_list = [
 ]
 ```
 
-You can also use experiment with `numpy.vectorize()`, but we don't like it much.  Its small performance gains aren't worth the added code complexity in this use case.
+You can also experiment with `numpy.vectorize()`, but we don't like it much.  Its small performance gains aren't worth the added code complexity in this use case.
 
 For a quickstart that includes converting quotes from **Pandas DataFrame**, see our online _ReplIt_ code example for the [Williams Fractal indicator](https://replit.com/@daveskender/Stock-Indicators-for-Python-Williams-Fractal).
 
