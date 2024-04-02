@@ -29,7 +29,7 @@ layout: page
 
     Check that you've installed the following prerequisite software:
 
-    > Install the latest **Python** and **.NET SDK** for best performance.
+    > Install **Python** and the **.NET SDK**.  Use the latest versions for better performance.
 
     | Installer | Min | Latest | Download |
     |---| :---: | :---: | --- |
@@ -41,14 +41,16 @@ layout: page
 2. Find and install the **stock-indicators** Python package into your environment.
 
     ```bash
-    # pip example
+    # bash CLI command
     pip install stock-indicators
     ```
 
     > See [Python documentation](https://packaging.python.org/en/latest/tutorials/installing-packages/) for more help with installing packages.
-
-> [!NOTE]
-> If you're still having trouble getting started, see our [QuickStart guide](https://github.com/DaveSkender/Stock.Indicators.Python.QuickStart#readme) for step-by-step instructions for setting up your environment and for calculating your first indicator using this library.
+    >
+    > **More help**: if you're still having trouble getting started, see our
+    > **[QuickStart guide](https://github.com/DaveSkender/Stock.Indicators.Python.QuickStart#readme)**
+    > for step-by-step instructions to setup up your environment,
+    > and for calculating your first indicator using this library.
 
 ### Prerequisite data
 
