@@ -46,11 +46,11 @@ layout: page
     ```
 
     > See [Python documentation](https://packaging.python.org/en/latest/tutorials/installing-packages/) for more help with installing packages.
-    >
-    > **More help**: if you're still having trouble getting started, see our
-    > **[QuickStart guide](https://github.com/DaveSkender/Stock.Indicators.Python.QuickStart#readme)**
-    > for step-by-step instructions to setup up your environment,
-    > and for calculating your first indicator using this library.
+
+> **More help**: if you're still having trouble getting started, see our
+> **[QuickStart guide](https://github.com/DaveSkender/Stock.Indicators.Python.QuickStart#readme)**
+> for step-by-step instructions to setup up your environment,
+> and for calculating your first indicator using this library.
 
 ### Prerequisite data
 
@@ -123,9 +123,6 @@ Note that:
 1. `date` is always required, while each ohlcv values are optional.
 2. ohlcv can be provided by `float`, `Decimal` and `str` representing number, but these are always stored as `Decimal`.
 
-> If you're having trouble converting into `Quote` format, see our GitHub discussion on
-> [Converting Pandas DataFrame to iterable Quotes]({{site.dotnet.repo}}/discussions/1165) for more information and troubleshooting support.
-
 ### Where can I get historical quote data?
 
 There are many places to get stock market data.  Check with your brokerage or other commercial sites.  If you're looking for a free developer API, see our ongoing [discussion on market data]({{site.dotnet.repo}}/discussions/579) for ideas.
@@ -161,7 +158,12 @@ quotes_list = [
 ]
 ```
 
-You can also use `numpy.vectorize()`, its gain is too slight and hard to apply in this case.
+You can also use experiment with `numpy.vectorize()`, but we don't like it much.  It's performance gains are small in comparison to the added code complexity.
+
+For a quickstart that includes converting quotes from **Pandas DataFrame**, see our online _ReplIt_ code example for the [Williams Fractal indicator](https://replit.com/@daveskender/Stock-Indicators-for-Python-Williams-Fractal).
+
+> If you're still having trouble converting into `Quote` format, see our GitHub discussion on
+> [Converting Pandas DataFrame to iterable Quotes]({{site.dotnet.repo}}/discussions/1165) for more community discussion and troubleshooting support.
 
 ### Using custom quote classes
 
