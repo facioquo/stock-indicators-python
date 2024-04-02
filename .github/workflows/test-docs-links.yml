@@ -63,6 +63,13 @@ jobs:
           BUNDLE_GEMFILE: ${{github.workspace}}/docs/GemFile
         run: bundle exec jekyll serve --detach
 
+      - name: HTML Proofer help
+        working-directory: docs
+        run: htmlproofer --help
+
+        # reminder, to get args info:
+        # gem install html-proofer
+        # htmlproofer --help
       - name: Test for broken URLs
         working-directory: docs
         run: |
