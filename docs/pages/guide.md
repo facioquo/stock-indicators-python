@@ -47,7 +47,8 @@ layout: page
 
     > See [Python documentation](https://packaging.python.org/en/latest/tutorials/installing-packages/) for more help with installing packages.
 
->&#128681; If you're still having trouble getting started, see our [QuickStart guide](https://github.com/DaveSkender/Stock.Indicators.Python.QuickStart#readme) for step-by-step instructions for setting up your environment and for calculating your first indicator using this library.
+> [!INFO]
+> If you're still having trouble getting started, see our [QuickStart guide](https://github.com/DaveSkender/Stock.Indicators.Python.QuickStart#readme) for step-by-step instructions for setting up your environment and for calculating your first indicator using this library.
 
 ### Prerequisite data
 
