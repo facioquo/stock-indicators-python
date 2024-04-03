@@ -156,10 +156,10 @@ quotes_list = [
 ]
 ```
 
-If you need a working example of converting quotes from **pandas.DataFrame**, see our online _ReplIt_ for the [Williams Fractal indicator](https://replit.com/@daveskender/Stock-Indicators-for-Python-Williams-Fractal).
-
-> If you're still having trouble converting into `Quote` format, see our GitHub discussion on
-> [Converting pandas.DataFrame to iterable Quotes]({{site.dotnet.repo}}/discussions/1165) for more community discussion and troubleshooting support.
+> If you need a working example of converting quotes from **pandas.DataFrame**, see our online _ReplIt_ for the [Williams Fractal indicator](https://replit.com/@daveskender/Stock-Indicators-for-Python-Williams-Fractal).
+>
+> _For more help_, see our GitHub community discussion on
+> [Converting pandas.DataFrame to iterable Quotes]({{site.dotnet.repo}}/discussions/1165).
 
 ### Using custom quote classes
 
