@@ -61,8 +61,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 from stock_indicators import indicators
 
 # This method is NOT a part of the library.
-quotes_spx = get_history_from_feed("SPX")
-quotes_tsla = get_history_from_feed("TSLA")
+quotes_spx = get_historical_quotes("SPX")
+quotes_tsla = get_historical_quotes("TSLA")
 
 # Calculate 20-period Correlation
 results = indicators.get_correlation(quotes_spx, quotes_tsla, 20)

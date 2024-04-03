@@ -61,7 +61,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 from stock_indicators import indicators
 
 # This method is NOT a part of the library.
-quotes = get_history_from_feed("SPY")
+quotes = get_historical_quotes("SPY")
 
 # Calculate StarcBands(20)
 results = indicators.get_starc_bands(quotes, 20, 2.0, 10)

@@ -91,7 +91,7 @@ from stock_indicators import indicators
 from stock_indicators import EndType     # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
-quotes = get_history_from_feed("SPY")
+quotes = get_historical_quotes("SPY")
 
 # Calculate Pivots(2,2,20) using High/Low values
 results = indicators.get_pivots(quotes, 2, 2, 20, EndType.HIGH_LOW);

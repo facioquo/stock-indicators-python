@@ -25,9 +25,7 @@ layout: page
 
 1. Install prerequisite framework dependencies
 
-    Stock Indicators for Python has dependency on on the [Common Language Runtime (CLR)](https://learn.microsoft.com/dotnet/standard/clr).  You'll need to install the .NET SDK in your environment to get required CLR capability.
-
-    Check that you've installed the following prerequisite software:
+    Stock Indicators for Python has dependency on on the [Common Language Runtime (CLR)](https://learn.microsoft.com/dotnet/standard/clr).  You'll need to install the .NET SDK in your environment to get required CLR capability. Check that you've installed the following prerequisite software:
 
     > Install **Python** and the **.NET SDK**.  Use the latest versions for better performance.
 
@@ -38,7 +36,7 @@ layout: page
 
     Note: we do not support the open source [Mono .NET Framework](https://www.mono-project.com).
 
-2. Find and install the **stock-indicators** Python package into your environment.
+2. Install the **stock-indicators** Python package into your environment.
 
     ```bash
     # bash CLI command
@@ -47,16 +45,11 @@ layout: page
 
     > See [Python documentation](https://packaging.python.org/en/latest/tutorials/installing-packages/) for more help with installing packages.
 
-> **More help**: if you're still having trouble getting started, see our
-> **[QuickStart guide](https://github.com/DaveSkender/Stock.Indicators.Python.QuickStart#readme)**
-> for step-by-step instructions to setup up your environment,
-> and for calculating your first indicator using this library.
-
 ### Prerequisite data
 
 Most indicators require that you provide historical quote data and additional configuration parameters.
 
-You must get historical quotes from your own market data provider.  For clarification, the `get_history_from_feed()` method shown in the example below and throughout our documentation **is not part of this library**, but rather an example to represent your own acquisition of historical quotes.
+You must get historical quotes from your own market data provider.  For clarification, the `get_historical_quotes()` method shown in the example below and throughout our documentation **is not part of this library**, but rather an example to represent your own acquisition of historical quotes.
 
 Historical price data can be provided as an `Iterable`(such as `List` or an object having `__iter__()`) of the `Quote` class or its sub-class ([see below](#historical-quotes)); be aware that you **have to** inherit `Quote` class when you [make custom quote class](#using-custom-quote-classes).
 
@@ -93,9 +86,12 @@ SMA on 2018-04-26 was $255.9705
 
 See [individual indicator pages]({{site.baseurl}}/indicators/) for specific usage guidance.
 
-More examples available:
-
-- [Demo site](https://charts.stockindicators.dev) (a stock chart)
+> **More help**: if you're having trouble getting started, see our
+> **[QuickStart guide](https://github.com/DaveSkender/Stock.Indicators.Python.QuickStart#readme)**
+> for step-by-step instructions to setup up your environment,
+> and for calculating your first indicator using this library.
+>
+> We also have a [demo site](https://charts.stockindicators.dev) (a stock chart) where you can visualize and experiment with different indicator settings.
 
 ## Historical quotes
 
@@ -178,7 +174,7 @@ class MyCustomQuote(Quote):
 from stock_indicators import indicators
 
 # fetch historical quotes from your favorite feed
-quotes: Iterable[MyCustomQuote] = get_history_from_feed("MSFT");
+quotes: Iterable[MyCustomQuote] = get_historical_quotes("MSFT");
 
 # example: get 20-period simple moving average
 results = indicators.get_sma(quotes, 20);
@@ -215,7 +211,7 @@ class ExtendedEMA(EMAResult):
         return f"EMA on {self.date.date()} was ${self.ema or 0:.4f}"
     
 # compute indicator
-quotes = get_history_from_feed("MSFT")
+quotes = get_historical_quotes("MSFT")
 results = indicators.get_ema(quotes, 20)
 
 # 1. list[ExtendedEMA]
@@ -244,7 +240,7 @@ If you want to compute an indicator of indicators, such as an SMA of an ADX or a
 from stock_indicators import indicators
 
 # fetch historical quotes from your feed (your method)
-quotes = get_history_from_feed("MSFT")
+quotes = get_historical_quotes("MSFT")
 
 # calculate EMA
 results = indicators.get_ema(quotes, 20)

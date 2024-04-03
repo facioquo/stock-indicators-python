@@ -62,7 +62,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 from stock_indicators import indicators
 
 # This method is NOT a part of the library.
-quotes = get_history_from_feed("SPY")
+quotes = get_historical_quotes("SPY")
 
 # calculate ParabolicSar(0.02,0.2)
 results = indicators.get_parabolic_sar(quotes, 0.02, 0.2)

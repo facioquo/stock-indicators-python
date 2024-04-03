@@ -76,8 +76,8 @@ from stock_indicators import indicators
 from stock_indicators import BetaType      # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
-history_SPX = get_history_from_feed("SPX")
-history_TSLA = get_history_from_feed("TSLA")
+history_SPX = get_historical_quotes("SPX")
+history_TSLA = get_historical_quotes("TSLA")
 
 # calculate 20-period Beta coefficient
 results = indicators.get_beta(history_SPX, history_TSLA, 20, BetaType.STANDARD)

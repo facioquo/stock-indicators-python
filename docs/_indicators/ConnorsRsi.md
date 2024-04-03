@@ -62,7 +62,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 from stock_indicators import indicators
 
 # This method is NOT a part of the library.
-quotes = get_history_from_feed("SPY")
+quotes = get_historical_quotes("SPY")
 
 # Calculate ConnorsRsi(3,2.100)
 results = indicators.get_connors_rsi(quotes, 3, 2, 100)

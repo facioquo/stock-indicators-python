@@ -59,7 +59,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 from stock_indicators import indicators
 
 # This method is NOT a part of the library.
-quotes = get_history_from_feed("SPY")
+quotes = get_historical_quotes("SPY")
 
 # Calculate Mama(0.5,0.05)
 results = indicators.get_mama(quotes, 0.5,0.05)

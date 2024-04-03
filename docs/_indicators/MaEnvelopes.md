@@ -83,7 +83,7 @@ from stock_indicators import indicators
 from stock_indicators import MAType     # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
-quotes = get_history_from_feed("SPY")
+quotes = get_historical_quotes("SPY")
 
 # Calculate 20-period SMA envelopes with 2.5% offset
 results = indicators.get_ma_envelopes(quotes, 20, 2.5, MAType.SMA);
