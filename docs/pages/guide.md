@@ -135,9 +135,9 @@ Each indicator will need different amounts of price `quotes` to calculate.  You 
 
 For example, if you are using daily data and want one year of precise EMA(250) data, you need to provide 3 years of historical quotes (1 extra year for the lookback period and 1 extra year for convergence); thereafter, you would discard or not use the first two years of results.  Occassionally, even more is required for optimal precision.
 
-### Using Pandas.Dataframe
+### Using pandas.DataFrame
 
-If you are using `Pandas.Dataframe` to hold quote data, you have to convert it into our `Quote` instance. That means you must iterate them row by row. There's [an awesome article](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) that introduces the best-efficiency way to iterate `Dataframe`.
+If you are using `pandas.DataFrame` to hold quote data, you have to convert it into our `Quote` instance. That means you must iterate them row by row. There's [an awesome article](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) that introduces the best-efficiency way to iterate `Dataframe`.
 
 Here's an example we'd like to suggest: **use list comprehension**
 
@@ -160,10 +160,10 @@ quotes_list = [
 
 You can also experiment with `numpy.vectorize()`, but we don't like it much.  Its small performance gains aren't worth the added code complexity in this use case.
 
-For a quickstart that includes converting quotes from **Pandas DataFrame**, see our online _ReplIt_ code example for the [Williams Fractal indicator](https://replit.com/@daveskender/Stock-Indicators-for-Python-Williams-Fractal).
+For a quickstart that includes converting quotes from **pandas.DataFrame**, see our online _ReplIt_ code example for the [Williams Fractal indicator](https://replit.com/@daveskender/Stock-Indicators-for-Python-Williams-Fractal).
 
 > If you're still having trouble converting into `Quote` format, see our GitHub discussion on
-> [Converting Pandas DataFrame to iterable Quotes]({{site.dotnet.repo}}/discussions/1165) for more community discussion and troubleshooting support.
+> [Converting pandas.DataFrame to iterable Quotes]({{site.dotnet.repo}}/discussions/1165) for more community discussion and troubleshooting support.
 
 ### Using custom quote classes
 
