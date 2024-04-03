@@ -137,9 +137,9 @@ For example, if you are using daily data and want one year of precise EMA(250) d
 
 ### Using pandas.DataFrame
 
-If you are using `pandas.DataFrame` to hold quote data, you have to convert it into our `Quote` instance. That means you must iterate them row by row. There's [an awesome article](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) that introduces the best-efficiency way to iterate `Dataframe`.
+If you are using `pandas.DataFrame` to hold quote data, you have to convert it into our `Quote` instance. That means you must iterate them row by row. There's [an good article](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) that descrices an efficiency way to iterate `Dataframe`.
 
-Here's an example we'd like to suggest: **use list comprehension**
+Here's an example using _list comprehension_.
 
 ```python
 # Suppose that you have dataframe like the below.
@@ -158,9 +158,7 @@ quotes_list = [
 ]
 ```
 
-You can also experiment with `numpy.vectorize()`, but we don't like it much.  Its small performance gains aren't worth the added code complexity in this use case.
-
-For a quickstart that includes converting quotes from **pandas.DataFrame**, see our online _ReplIt_ code example for the [Williams Fractal indicator](https://replit.com/@daveskender/Stock-Indicators-for-Python-Williams-Fractal).
+If you need a working example of converting quotes from **pandas.DataFrame**, see our online _ReplIt_ for the [Williams Fractal indicator](https://replit.com/@daveskender/Stock-Indicators-for-Python-Williams-Fractal).
 
 > If you're still having trouble converting into `Quote` format, see our GitHub discussion on
 > [Converting pandas.DataFrame to iterable Quotes]({{site.dotnet.repo}}/discussions/1165) for more community discussion and troubleshooting support.
