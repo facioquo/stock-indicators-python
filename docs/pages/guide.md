@@ -137,9 +137,7 @@ For example, if you are using daily data and want one year of precise EMA(250) d
 
 ### Using pandas.DataFrame
 
-If you are using `pandas.DataFrame` to hold quote data, you have to convert it into our `Quote` instance. That means you must iterate them row by row. There's [an good article](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) that describes an efficiency way to iterate `Dataframe`.
-
-Here's an example using _list comprehension_.
+If you are using `pandas.DataFrame` to hold quote data, you have to convert it into an iterable `Quote` list. Here's [an efficient way](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) to iterate `Dataframe` using _list comprehension_.
 
 ```python
 # Suppose that you have dataframe like the below.
