@@ -46,7 +46,7 @@ Currently, `.to_quotes()` is only available on a select few indicators.  If you 
 
 ```python
 # fetch historical quotes from your favorite feed
-quotes = get_history_from_feed("MSFT")
+quotes = get_historical_quotes("MSFT")
 
 # calculate indicator series
 results = indicators.get_ema(quotes, 20)

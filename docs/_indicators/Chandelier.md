@@ -69,7 +69,7 @@ from stock_indicators import indicators
 from stock_indicators import ChandelierType     # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
-quotes = get_history_from_feed("SPY")
+quotes = get_historical_quotes("SPY")
 
 # calculate Chandelier(22,3)
 results = indicators.get_chandelier(quotes, 22, 3, ChandelierType.LONG)

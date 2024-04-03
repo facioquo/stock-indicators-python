@@ -58,8 +58,8 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 from stock_indicators import indicators
 
 # This method is NOT a part of the library.
-history_SPX = get_history_from_feed("SPX")
-history_TSLA = get_history_from_feed("TSLA")
+history_SPX = get_historical_quotes("SPX")
+history_TSLA = get_historical_quotes("TSLA")
 
 # Calculate 14-period PRS
 results = indicators.get_prs(history_SPX, history_TSLA, 14)

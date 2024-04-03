@@ -77,7 +77,7 @@ from stock_indicators import indicators
 from stock_indicators import EndType     # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
-quotes = get_history_from_feed("SPY")
+quotes = get_historical_quotes("SPY")
 
 # Calculate
 results = indicators.get_renko(quotes, 2.5, EndType.CLOSE);
@@ -119,7 +119,7 @@ RenkoResults[RenkoResult]
 from stock_indicators import indicators
 
 # This method is NOT a part of the library.
-quotes = get_history_from_feed("SPY")
+quotes = get_historical_quotes("SPY")
 
 # Calculate
 results = indicators.get_renko_atr(quotes, atr_periods);

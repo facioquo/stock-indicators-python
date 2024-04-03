@@ -64,7 +64,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 from stock_indicators import indicators
 
 # This method is NOT a part of the library.
-quotes = get_history_from_feed("SPY")
+quotes = get_historical_quotes("SPY")
 
 # calculate 14-period ATR
 results = indicators.get_atr(quotes, 14)

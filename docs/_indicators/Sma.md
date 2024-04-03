@@ -59,7 +59,7 @@ from stock_indicators import indicators
 from stock_indicators import CandlePart     # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
-quotes = get_history_from_feed("SPY")
+quotes = get_historical_quotes("SPY")
 
 # calculate 20-period SMA
 results = indicators.get_sma(quotes, 20, CandlePart.CLOSE)

@@ -80,7 +80,7 @@ from stock_indicators import indicators
 from stock_indicators import PivotPointType     # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
-quotes = get_history_from_feed("SPY")
+quotes = get_historical_quotes("SPY")
 
 # Calculate Woodie-style 14 period Rolling Pivot Points
 results = indicators.get_rolling_pivots(quotes, 14, 0, PivotPointType.Woodie);
