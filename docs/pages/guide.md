@@ -135,11 +135,9 @@ Each indicator will need different amounts of price `quotes` to calculate.  You 
 
 For example, if you are using daily data and want one year of precise EMA(250) data, you need to provide 3 years of historical quotes (1 extra year for the lookback period and 1 extra year for convergence); thereafter, you would discard or not use the first two years of results.  Occassionally, even more is required for optimal precision.
 
-### Using Pandas.Dataframe
+### Using pandas.DataFrame
 
-If you are using `Pandas.Dataframe` to hold quote data, you have to convert it into our `Quote` instance. That means you must iterate them row by row. There's [an awesome article](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) that introduces the best-efficiency way to iterate `Dataframe`.
-
-Here's an example we'd like to suggest: **use list comprehension**
+If you are using `pandas.DataFrame` to hold quote data, you have to convert it into an iterable `Quote` list. Here's [an efficient way](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) to iterate `Dataframe` using _list comprehension_.
 
 ```python
 # Suppose that you have dataframe like the below.
@@ -158,16 +156,14 @@ quotes_list = [
 ]
 ```
 
-You can also experiment with `numpy.vectorize()`, but we don't like it much.  Its small performance gains aren't worth the added code complexity in this use case.
-
-For a quickstart that includes converting quotes from **Pandas DataFrame**, see our online _ReplIt_ code example for the [Williams Fractal indicator](https://replit.com/@daveskender/Stock-Indicators-for-Python-Williams-Fractal).
-
-> If you're still having trouble converting into `Quote` format, see our GitHub discussion on
-> [Converting Pandas DataFrame to iterable Quotes]({{site.dotnet.repo}}/discussions/1165) for more community discussion and troubleshooting support.
+> For a quickstart that uses **pandas.DataFrame**, see our online _ReplIt_ code example for the [Williams Fractal indicator](https://replit.com/@daveskender/Stock-Indicators-for-Python-Williams-Fractal).
+>
+> _For more help_, see our GitHub community discussion on
+> [Converting pandas.DataFrame to iterable Quotes]({{site.dotnet.repo}}/discussions/1165).
 
 ### Using custom quote classes
 
-If you would like to use your own custom `MyCustomQuote` _quote_ class, you **have to** inherit `Quote` class. The `Quote` class is a special class which converts OHLCV properties existing as Python objects to C# objects and which is concrete class of `IQuote` of C# implementation. It enables PythonNet to work with our C# implementation using generics.
+If you would like to use your own custom `MyCustomQuote` _quote_ class, you **have to** inherit `Quote` class. The `Quote` class is a special class which converts OHLCV properties existing as Python objects to C# objects and which is concrete class of `IQuote` of C# implementation. It enables Python.Net to work with our C# implementation using generics.
 
 ```python
 from stock_indicators.indicators.common import Quote
