@@ -137,7 +137,7 @@ For example, if you are using daily data and want one year of precise EMA(250) d
 
 ### Using pandas.DataFrame
 
-If you are using `pandas.DataFrame` to hold quote data, you have to convert it into our `Quote` instance. That means you must iterate them row by row. There's [an good article](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) that descrices an efficiency way to iterate `Dataframe`.
+If you are using `pandas.DataFrame` to hold quote data, you have to convert it into our `Quote` instance. That means you must iterate them row by row. There's [an good article](https://towardsdatascience.com/efficiently-iterating-over-rows-in-a-pandas-dataframe-7dd5f9992c01) that describes an efficiency way to iterate `Dataframe`.
 
 Here's an example using _list comprehension_.
 
@@ -165,7 +165,7 @@ If you need a working example of converting quotes from **pandas.DataFrame**, se
 
 ### Using custom quote classes
 
-If you would like to use your own custom `MyCustomQuote` _quote_ class, you **have to** inherit `Quote` class. The `Quote` class is a special class which converts OHLCV properties existing as Python objects to C# objects and which is concrete class of `IQuote` of C# implementation. It enables PythonNet to work with our C# implementation using generics.
+If you would like to use your own custom `MyCustomQuote` _quote_ class, you **have to** inherit `Quote` class. The `Quote` class is a special class which converts OHLCV properties existing as Python objects to C# objects and which is concrete class of `IQuote` of C# implementation. It enables Python.Net to work with our C# implementation using generics.
 
 ```python
 from stock_indicators.indicators.common import Quote
