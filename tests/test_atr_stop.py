@@ -2,7 +2,7 @@ import pytest
 from stock_indicators import indicators
 from stock_indicators.indicators.common.enums import EndType
 
-class TestDynamic:
+class TestAtrStop:
     def test_standard(self, quotes):
         results = indicators.get_atr_stop(quotes, 21, 3, EndType.CLOSE)
         
