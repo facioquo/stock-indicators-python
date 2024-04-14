@@ -1,5 +1,6 @@
 import pytest
 from stock_indicators import indicators
+from stock_indicators.indicators.common.enums import MAType
 
 class TestStoch:
     def test_standard(self, quotes):
@@ -34,6 +35,43 @@ class TestStoch:
         assert 35.5674 == round(float(r.signal), 4)
         assert 58.2712 == round(float(r.percent_j), 4)
 
+    def test_extended(self, quotes):
+        results = indicators.get_stoch(quotes, 9, 3, 3, 5, 4, MAType.SMMA)
+        
+        assert 502 == len(results)
+        assert 494 == len(list(filter(lambda x: x.k is not None, results)))
+        assert 494 == len(list(filter(lambda x: x.d is not None, results)))
+
+        r = results[7]
+        assert r.k is None
+        assert r.d is None
+        assert r.j is None
+
+        r = results[8]
+        assert 81.9178 == round(float(r.k), 4)
+        assert 81.9178 == round(float(r.d), 4)
+        assert 81.9178 == round(float(r.j), 4)
+
+        r = results[17]
+        assert  82.5181 == round(float(r.k), 4)
+        assert  76.2603 == round(float(r.d), 4)
+        assert 107.5491 == round(float(r.j), 4)
+
+        r = results[149]
+        assert 77.1571 == round(float(r.k), 4)
+        assert 72.8206 == round(float(r.d), 4)
+        assert 94.5030 == round(float(r.j), 4)
+
+        r = results[249]
+        assert 74.3652 == round(float(r.k), 4)
+        assert 75.5660 == round(float(r.d), 4)
+        assert 69.5621 == round(float(r.j), 4)
+
+        r = results[501]
+        assert  46.9807 == round(float(r.k), 4)
+        assert  32.0413 == round(float(r.d), 4)
+        assert 106.7382 == round(float(r.j), 4)
+
     def test_no_signal(self, quotes):
         results = indicators.get_stoch(quotes, 5, 1, 3)
 
@@ -56,7 +94,6 @@ class TestStoch:
         assert 91.6233 == round(float(r.oscillator), 4)
         assert 36.0608 == round(float(r.signal), 4)
 
-
     def test_fast_small(self, quotes):
         results = indicators.get_stoch(quotes, 1, 10, 1)
 
@@ -69,6 +106,20 @@ class TestStoch:
     def test_bad_data(self, bad_quotes):
         r = indicators.get_stoch(bad_quotes, 15)
         assert 502 == len(r)
+
+    def test_no_quotes(self, quotes):
+        r = indicators.get_stoch([])
+        assert 0 == len(r)
+        
+        r = indicators.get_stoch(quotes[:1])
+        assert 1 == len(r)
+        
+    def test_boundary(self, quotes):
+        results = indicators.get_stoch(quotes, 14, 3, 3)
+        
+        assert 0 == len(list(filter(lambda x: x.k is not None and (x.k < 0 or x.k > 100), results)))
+        assert 0 == len(list(filter(lambda x: x.d is not None and (x.d < 0 or x.d > 100), results)))
+        assert 0 == len(list(filter(lambda x: x.j is not None and (x.d < 0 or x.d > 100), results)))
 
     def test_removed(self, quotes):
         results = indicators.get_stoch(quotes, 14, 3, 3).remove_warmup_periods()

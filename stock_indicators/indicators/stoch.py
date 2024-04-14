@@ -2,12 +2,14 @@ from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
+from stock_indicators.indicators.common.enums import MAType
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_stoch(quotes: Iterable[Quote], lookback_periods: int = 14, signal_periods: int = 3, smooth_periods: int = 3):
+def get_stoch(quotes: Iterable[Quote], lookback_periods: int = 14, signal_periods: int = 3, smooth_periods: int = 3,
+              k_factor: float = 3, d_factor: float = 2, ma_type: MAType = MAType.SMA):
     """Get Stochastic Oscillator calculated, with KDJ indexes.
 
     Stochastic Oscillatoris a momentum indicator that looks back N periods to produce a scale of 0 to 100.
@@ -27,6 +29,16 @@ def get_stoch(quotes: Iterable[Quote], lookback_periods: int = 14, signal_period
             Smoothing period for the %K Oscillator.
             Use 3 for Slow or 1 for Fast.
 
+        `k_factor` : float, defaults 3
+            Weight of %K in the %J calculation.
+
+        `d_factor` : float, defaults 2
+            Weight of %K in the %J calculation.
+
+        `ma_type` : MAType, defaults MAType.SMA
+            Type of moving average to use.
+            See docs for instructions and options.
+
     Returns:
         `StochResults[StochResult]`
             StochResults is list of StochResult with providing useful helper methods.
@@ -35,7 +47,8 @@ def get_stoch(quotes: Iterable[Quote], lookback_periods: int = 14, signal_period
          - [Stochastic Oscillator Reference](https://python.stockindicators.dev/indicators/Stoch/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    stoch_results = CsIndicator.GetStoch[Quote](CsList(Quote, quotes), lookback_periods, signal_periods, smooth_periods)
+    stoch_results = CsIndicator.GetStoch[Quote](CsList(Quote, quotes), lookback_periods, signal_periods, smooth_periods,
+                                                    k_factor, d_factor, ma_type.cs_value)
     return StochResults(stoch_results, StochResult)
 
 
