@@ -1,7 +1,7 @@
 from datetime import datetime as PyDateTime
-from typing import Callable, Iterable, List, Type, TypeVar
+from typing import Callable, Iterable, List, Optional, Type, TypeVar
 
-from stock_indicators._cslib import CsResultBase, CsPruning, CsSeeking
+from stock_indicators._cslib import CsResultBase, CsPruning
 from stock_indicators._cstypes import DateTime as CsDateTime
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import to_pydatetime
@@ -77,18 +77,14 @@ class IndicatorResults(List[_T]):
     def __mul__(self, value: int):
         return self.__class__(list(self._csdata).__mul__(value), self._wrapper_class)
 
-    @_verify_data
-    def find(self, lookup_date: PyDateTime) -> _T:
-        """Find indicator values on a specific date."""
+    def find(self, lookup_date: PyDateTime) -> Optional[_T]:
+        """Find indicator values on a specific date. It returns `None` if no result found."""
         if not isinstance(lookup_date, PyDateTime):
             raise TypeError(
                 "lookup_date must be an instance of datetime.datetime."
             )
-
-        result = CsSeeking.Find[CsResultBase](
-            CsList(self._get_csdata_type(), self._csdata), CsDateTime(lookup_date)
-        )
-        return self._wrapper_class(result)
+            
+        return next((r for r in self if r.date == lookup_date), None)
 
     @_verify_data
     def remove_warmup_periods(self, remove_periods: int):
