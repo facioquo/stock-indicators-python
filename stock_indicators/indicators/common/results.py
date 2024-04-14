@@ -77,7 +77,6 @@ class IndicatorResults(List[_T]):
     def __mul__(self, value: int):
         return self.__class__(list(self._csdata).__mul__(value), self._wrapper_class)
 
-    @_verify_data
     def find(self, lookup_date: PyDateTime) -> Optional[_T]:
         """Find indicator values on a specific date. It returns `None` if no result found."""
         if not isinstance(lookup_date, PyDateTime):
