@@ -49,9 +49,16 @@ class TestIndicatorResults:
     def test_find(self, quotes):
         results = indicators.get_sma(quotes, 20)
         
-        # r[18]
-        r = results.find(datetime(2017, 1, 30))
-        assert r.sma is None
+        # r[19]
+        r = results.find(datetime(2017, 1, 31))
+        assert 214.5250 == round(float(r.sma), 4)
+
+    def test_not_found(self, quotes):
+        results = indicators.get_sma(quotes, 20)
+        
+        # returns None
+        r = results.find(datetime(1996, 10, 12))
+        assert r is None
 
     def test_remove_with_period(self, quotes):
         results = indicators.get_sma(quotes, 20)
