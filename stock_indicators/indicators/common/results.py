@@ -1,9 +1,8 @@
 from datetime import datetime as PyDateTime
 from typing import Callable, Iterable, List, Optional, Type, TypeVar
 
-from stock_indicators._cslib import CsResultBase, CsPruning
+from stock_indicators._cslib import CsResultBase
 from stock_indicators._cstypes import DateTime as CsDateTime
-from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import to_pydatetime
 
 
@@ -77,26 +76,17 @@ class IndicatorResults(List[_T]):
     def __mul__(self, value: int):
         return self.__class__(list(self._csdata).__mul__(value), self._wrapper_class)
 
+    @_verify_data
+    def remove_warmup_periods(self, remove_periods: int):
+        """Remove a specific quantity of results from the beginning of the results list."""
+        if not isinstance(remove_periods, int):
+            raise TypeError("remove_periods must be an integer.")
+
+        return self.__class__(list(self._csdata)[remove_periods:], self._wrapper_class)
+
     def find(self, lookup_date: PyDateTime) -> Optional[_T]:
         """Find indicator values on a specific date. It returns `None` if no result found."""
         if not isinstance(lookup_date, PyDateTime):
-            raise TypeError(
-                "lookup_date must be an instance of datetime.datetime."
-            )
-            
+            raise TypeError("lookup_date must be an instance of datetime.datetime.")
+
         return next((r for r in self if r.date == lookup_date), None)
-
-    @_verify_data
-    def remove_warmup_periods(self, remove_periods: int):
-        """
-        Remove a specific quantity of results from the beginning of the results list.
-        """
-        if not isinstance(remove_periods, int):
-            raise TypeError(
-                "remove_periods must be an integer."
-            )
-
-        removed_results = CsPruning.RemoveWarmupPeriods[CsResultBase](
-            CsList(self._get_csdata_type(), self._csdata), remove_periods
-        )
-        return self.__class__(removed_results, self._wrapper_class)
