@@ -7,8 +7,8 @@ layout: page
 
 # Contributing guidelines
 
-[![Codacy quality grade](https://app.codacy.com/project/badge/Grade/2b48204b1e304e3bac977fbc92b19c14)](https://app.codacy.com/gh/facioquo/stock-indicators-python/dashboard)
-[![Codacy code coverage](https://app.codacy.com/project/badge/Coverage/2b48204b1e304e3bac977fbc92b19c14)](https://app.codacy.com/gh/facioquo/stock-indicators-python/dashboard)
+[![Codacy quality grade](https://app.codacy.com/project/badge/Grade/3f55a14f5dc14a0eba41f86006c1185b)](https://app.codacy.com/gh/facioquo/stock-indicators-python/dashboard)
+[![Codacy code coverage](https://app.codacy.com/project/badge/Coverage/3f55a14f5dc14a0eba41f86006c1185b)](https://app.codacy.com/gh/facioquo/stock-indicators-python/dashboard)
 
 **Thanks for taking the time to contribute!**
 
