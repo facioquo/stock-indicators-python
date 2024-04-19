@@ -50,10 +50,10 @@ dynamic = ["version"]
 
 [project.urls]
 Homepage = "https://python.stockindicators.dev"
-"Bug Tracker" = "https://github.com/DaveSkender/Stock.Indicators.Python/issues"
+"Bug Tracker" = "https://github.com/facioquo/stock-indicators-python/issues"
 Documentation = "https://python.stockindicators.dev"
-"Source Code" = "https://github.com/DaveSkender/Stock.Indicators.Python/tree/main"
-"Release Notes" = "https://github.com/DaveSkender/Stock.Indicators.Python/releases"
+"Source Code" = "https://github.com/facioquo/stock-indicators-python/tree/main"
+"Release Notes" = "https://github.com/facioquo/stock-indicators-python/releases"
 
 [tool.setuptools.packages.find]
 exclude = ["tests*", "benchmarks*", "samples*", "docs*"]

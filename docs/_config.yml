@@ -3,7 +3,7 @@
 
 title: Stock Indicators for Python
 tagline: "Transform price quotes into trading insights."
-repository: DaveSkender/Stock.Indicators.Python
+repository: facioquo/stock-indicators-python
 locale: en_US
 baseurl: ""
 url: "https://python.stockindicators.dev"
@@ -24,7 +24,7 @@ dotnet:
 
  # this site URL refs
 python:
-  src: "https://github.com/DaveSkender/Stock.Indicators.Python/blob/main/stock_indicators/indicators"
+  src: "https://github.com/facioquo/stock-indicators-python/blob/main/stock_indicators/indicators"
 
 clarity: false
 
