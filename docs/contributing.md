@@ -7,8 +7,8 @@ layout: page
 
 # Contributing guidelines
 
-[![Codacy quality grade](https://app.codacy.com/project/badge/Grade/2b48204b1e304e3bac977fbc92b19c14)](https://app.codacy.com/gh/DaveSkender/Stock.Indicators.Python/dashboard)
-[![Codacy code coverage](https://app.codacy.com/project/badge/Coverage/2b48204b1e304e3bac977fbc92b19c14)](https://app.codacy.com/gh/DaveSkender/Stock.Indicators.Python/dashboard)
+[![Codacy quality grade](https://app.codacy.com/project/badge/Grade/2b48204b1e304e3bac977fbc92b19c14)](https://app.codacy.com/gh/facioquo/stock-indicators-python/dashboard)
+[![Codacy code coverage](https://app.codacy.com/project/badge/Coverage/2b48204b1e304e3bac977fbc92b19c14)](https://app.codacy.com/gh/facioquo/stock-indicators-python/dashboard)
 
 **Thanks for taking the time to contribute!**
 
@@ -34,13 +34,13 @@ We have different places to take issues by its category.
 
 If you are reporting a bug or suspect a problem, please submit an issue with a detailed description of the problem + include steps to reproduce, code samples, and any reference materials.  
 
-🔧 [Report bugs](https://github.com/DaveSkender/Stock.Indicators.Python/issues/new?labels=bug&template=bug_report.md)
+🔧 [Report bugs](https://github.com/facioquo/stock-indicators-python/issues/new?labels=bug&template=bug_report.md)
 
 ### Feature Request
 
 For new features, submit an issue with the `enhancement` label.
 
-💡 [Request features](https://github.com/DaveSkender/Stock.Indicators.Python/issues/new?labels=enhancement&template=feature_request.md)
+💡 [Request features](https://github.com/facioquo/stock-indicators-python/issues/new?labels=enhancement&template=feature_request.md)
 
 ## Project management
 
@@ -129,17 +129,17 @@ If you want to contribute administratively, do code reviews, or provide general 
 
 ## Versioning
 
-We use the `setuptools_scm` tool for [semantic versioning](https://semver.org).  It detects the version number from `git tag` in the [GitHub Actions build](https://github.com/DaveSkender/Stock.Indicators.Python/deployments/pypi).
+We use the `setuptools_scm` tool for [semantic versioning](https://semver.org).  It detects the version number from `git tag` in the [GitHub Actions build](https://github.com/facioquo/stock-indicators-python/deployments/pypi).
 
 Type | Format | Description
 ------------ | ------ | -----------
 Major | `x.-.-` | A significant deviation with major breaking changes.
-Minor | `-.x.-` | A new feature, usually new non-breaking change, such as adding an indicator.  Minor breaking changes may occur here and are denoted in the [release notes](https://github.com/DaveSkender/Stock.Indicators.Python/releases).
+Minor | `-.x.-` | A new feature, usually new non-breaking change, such as adding an indicator.  Minor breaking changes may occur here and are denoted in the [release notes](https://github.com/facioquo/stock-indicators-python/releases).
 Patch | `-.-.x` | A small bug fix, chore, or documentation change.
 
 After one of our repository administrators creates a `git tag` on the `main` branch,
 reflecting the new version number, the `PyPI` deployment workflow will start.
-After the new package is published, they'll publicly post the [release record](https://github.com/DaveSkender/Stock.Indicators.Python/releases) with [automatically generated notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes) and other information.
+After the new package is published, they'll publicly post the [release record](https://github.com/facioquo/stock-indicators-python/releases) with [automatically generated notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes) and other information.
 
 ## License
 

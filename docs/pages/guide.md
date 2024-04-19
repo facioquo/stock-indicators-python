@@ -87,7 +87,7 @@ SMA on 2018-04-26 was $255.9705
 See [individual indicator pages]({{site.baseurl}}/indicators/) for specific usage guidance.
 
 > **More help**: if you're having trouble getting started, see our
-> **[QuickStart guide](https://github.com/DaveSkender/Stock.Indicators.Python.QuickStart#readme)**
+> **[QuickStart guide](https://github.com/facioquo/stock-indicators-python.QuickStart#readme)**
 > for step-by-step instructions to setup up your environment,
 > and for calculating your first indicator using this library.
 >
@@ -103,7 +103,7 @@ from stock_indicators.indicators.common.quote import Quote
 ```
 
 **class Quote(date, open=None, high=None, low=None, close=None, volume=None)**
-[[source]](https://github.com/DaveSkender/Stock.Indicators.Python/blob/main/stock_indicators/indicators/common/quote.py)
+[[source]](https://github.com/facioquo/stock-indicators-python/blob/main/stock_indicators/indicators/common/quote.py)
 
 | name | type | notes |
 | -- |-- |-- |
