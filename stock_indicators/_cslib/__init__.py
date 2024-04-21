@@ -38,6 +38,9 @@ from Skender.Stock.Indicators import Indicator as CsIndicator
 from Skender.Stock.Indicators import Quote as CsQuote
 from Skender.Stock.Indicators import QuoteUtility as CsQuoteUtility
 from Skender.Stock.Indicators import ResultBase as CsResultBase
+from Skender.Stock.Indicators import ResultUtility as CsResultUtility
+from Skender.Stock.Indicators import CandleResult as CsCandleResult
+from Skender.Stock.Indicators import Candlesticks as CsCandlesticks
 
 # Enums
 from Skender.Stock.Indicators import BetaType as CsBetaType
