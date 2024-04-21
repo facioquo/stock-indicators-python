@@ -30,6 +30,7 @@ from System import DateTime as CsDateTime
 from System import Decimal as CsDecimal
 from System import Enum as CsEnum
 from System.Globalization import CultureInfo
+from System.Collections.Generic import IEnumerable as CsIEnumerable
 from System.Collections.Generic import List as CsList
 
 # Classes
