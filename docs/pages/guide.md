@@ -87,7 +87,7 @@ SMA on 2018-04-26 was $255.9705
 See [individual indicator pages]({{site.baseurl}}/indicators/) for specific usage guidance.
 
 > **More help**: if you're having trouble getting started, see our
-> **[QuickStart guide](https://github.com/facioquo/stock-indicators-python.QuickStart#readme)**
+> **[QuickStart guide](https://github.com/facioquo/stock-indicators-python-quickstart#readme)**
 > for step-by-step instructions to setup up your environment,
 > and for calculating your first indicator using this library.
 >
