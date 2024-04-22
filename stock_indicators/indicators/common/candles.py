@@ -1,5 +1,6 @@
 from decimal import Decimal
 from typing import Optional, TypeVar
+from typing_extensions import override
 
 from stock_indicators._cslib import CsCandleProperties
 from stock_indicators._cstypes import Decimal as CsDecimal
@@ -104,3 +105,7 @@ class CandleResults(CondenseMixin, IndicatorResults[_T]):
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in CSharp implementation.
     """
+
+    @override
+    def condense(self):
+        return self.__class__(filter(lambda x: x.match != Match.NONE, self), self._wrapper_class)
