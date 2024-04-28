@@ -1,9 +1,8 @@
 from datetime import datetime as PyDateTime
 from typing import Callable, Iterable, List, Optional, Type, TypeVar
 
-from stock_indicators._cslib import CsResultBase, CsResultUtility
+from stock_indicators._cslib import CsResultBase
 from stock_indicators._cstypes import DateTime as CsDateTime
-from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import to_pydatetime
 
 
