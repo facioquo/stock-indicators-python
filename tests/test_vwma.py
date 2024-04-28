@@ -45,7 +45,15 @@ class TestVWMA:
         
         last = results.pop()
         assert 242.101548 == round(float(last.vwma), 6)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_vwma(quotes, 10).condense()
+
+        assert 493 == len(results)
+
+        last = results.pop()
+        assert 242.101548 == round(float(last.vwma), 6)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

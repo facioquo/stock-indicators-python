@@ -40,6 +40,14 @@ class TestALMA:
         last = results.pop()
         assert 242.1871 == round(float(last.alma), 4)
 
+    def test_condense(self, quotes):
+        results = indicators.get_alma(quotes, 10, .85, 6).condense()
+
+        assert 493 == len(results)
+
+        r = results[-1]
+        assert 242.1871 == round(float(r.alma), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

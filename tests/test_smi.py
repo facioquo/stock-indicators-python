@@ -80,7 +80,16 @@ class TestSMI:
         last = results.pop()
         assert -52.6560 == round(float(last.smi), 4)
         assert -54.1903 == round(float(last.signal), 4)
-           
+
+    def test_condense(self, quotes):
+        results = indicators.get_smi(quotes, 14, 20, 5, 3).condense()
+
+        assert 489 == len(results)
+
+        last = results.pop()
+        assert -52.6560 == round(float(last.smi), 4)
+        assert -54.1903 == round(float(last.signal), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

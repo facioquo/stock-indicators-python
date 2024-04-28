@@ -32,7 +32,15 @@ class TestHMA:
         
         last = results.pop()
         assert 235.6972 == round(float(last.hma), 4)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_hma(quotes, 20).condense()
+
+        assert 480 == len(results)
+
+        last = results.pop()
+        assert 235.6972 == round(float(last.hma), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

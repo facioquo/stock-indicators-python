@@ -34,7 +34,17 @@ class TestPRS:
         
         r = indicators.get_prs(quotes[:1], quotes[:1])
         assert 1 == len(r)
-        
+
+    def test_condense(self, quotes, other_quotes):
+        results = indicators.get_prs(other_quotes, quotes, 30, 10).condense()
+
+        assert 502 == len(results)
+
+        last = results.pop()
+        assert 1.356817 == round(float(last.prs), 6)
+        assert 1.343445 == round(float(last.prs_sma), 6)
+        assert 0.037082 == round(float(last.prs_percent), 6) 
+
     def test_exceptions(self, quotes, other_quotes, mismatch_quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

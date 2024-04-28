@@ -36,7 +36,15 @@ class TestT3:
         
         r = indicators.get_t3(quotes[:1])
         assert 1 == len(r)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_t3(quotes, 5, 0.7).condense()
+
+        assert 502 == len(results)
+
+        last = results.pop()
+        assert 238.9308 == round(float(last.t3), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

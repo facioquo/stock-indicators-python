@@ -36,7 +36,16 @@ class TestPMO:
         last = results.pop()
         assert -2.7016 == round(float(last.pmo), 4)
         assert -2.3117 == round(float(last.signal), 4)
-           
+
+    def test_condense(self, quotes):
+        results = indicators.get_pmo(quotes, 35, 20, 10).condense()
+
+        assert 448 == len(results)
+
+        last = results.pop()
+        assert -2.7016 == round(float(last.pmo), 4)
+        assert -2.3117 == round(float(last.signal), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

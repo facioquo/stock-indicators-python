@@ -78,6 +78,15 @@ class TestFractal:
 
         assert 502 == len(r)
 
+    def test_condense(self, quotes):
+        results = indicators.get_fractal(quotes).condense()
+
+        assert 129 == len(results)
+
+        last = results.pop()
+        assert 229.42 == round(float(last.fractal_bull), 2)
+        assert last.fractal_bear is None
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

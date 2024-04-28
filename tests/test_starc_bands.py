@@ -69,6 +69,16 @@ class TestSTARCBands:
         assert 264.1595 == round(float(last.upper_band), 4)
         assert 239.5605 == round(float(last.lower_band), 4)
 
+    def test_condense(self, quotes):
+        results = indicators.get_starc_bands(quotes, 20, 2, 14).condense()
+
+        assert 483 == len(results)
+
+        last = results.pop()
+        assert 251.8600 == round(float(last.center_line), 4)
+        assert 264.1595 == round(float(last.upper_band), 4)
+        assert 239.5605 == round(float(last.lower_band), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

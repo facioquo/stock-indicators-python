@@ -22,7 +22,15 @@ class TestCCI:
         
         last = results.pop()
         assert -52.9946 == round(float(last.cci), 4)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_cci(quotes, 20).condense()
+
+        assert 483 == len(results)
+
+        last = results.pop()
+        assert -52.9946 == round(float(last.cci), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

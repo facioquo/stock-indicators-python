@@ -48,6 +48,16 @@ class TestATR:
         assert 6.1497 == round(float(last.atr), 4)
         assert 2.5072 == round(float(last.atrp), 4)
 
+    def test_condense(self, quotes):
+        results = indicators.get_atr(quotes, 14).condense()
+
+        assert 488 == len(results)
+
+        last = results.pop()
+        assert 2.6700 == round(float(last.tr), 4)
+        assert 6.1497 == round(float(last.atr), 4)
+        assert 2.5072 == round(float(last.atrp), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

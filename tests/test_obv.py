@@ -51,7 +51,16 @@ class TestOBV:
         
         r = indicators.get_obv(quotes[:1])
         assert 1 == len(r)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_obv(quotes).condense()
+
+        assert 502 == len(results)
+
+        last = results.pop()
+        assert 539843504 == last.obv
+        assert last.obv_sma is None
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

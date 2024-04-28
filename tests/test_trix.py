@@ -39,6 +39,16 @@ class TestTRIX:
         assert -0.230742 == round(float(last.trix), 6)
         assert -0.204536 == round(float(last.signal), 6)
 
+    def test_condense(self, quotes):
+        results = indicators.get_trix(quotes, 20, 5).condense()
+
+        assert 482 == len(results)
+
+        last = results.pop()
+        assert  263.3216 == round(float(last.ema3), 4)
+        assert -0.230742 == round(float(last.trix), 6)
+        assert -0.204536 == round(float(last.signal), 6)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

@@ -56,6 +56,14 @@ class TestRSI:
         last = results.pop()
         assert 42.0773 == round(float(last.rsi), 4)
 
+    def test_condense(self, quotes):
+        results = indicators.get_rsi(quotes, 14).condense()
+
+        assert 488 == len(results)
+
+        last = results.pop()
+        assert 42.0773 == round(float(last.rsi), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

@@ -59,7 +59,17 @@ class TestAlligator:
         assert 260.98953 == round(float(r.jaw), 5)
         assert 253.53576 == round(float(r.teeth), 5)
         assert 244.29591 == round(float(r.lips), 5)
-    
+
+    def test_condense(self, quotes):
+        results = indicators.get_alligator(quotes).condense()
+
+        assert 495 == len(results)
+
+        r = results[-1]
+        assert 260.98953 == round(float(r.jaw), 5)
+        assert  253.53576 == round(float(r.teeth), 5)
+        assert 244.29591 == round(float(r.lips), 5)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

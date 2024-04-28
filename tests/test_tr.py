@@ -38,3 +38,11 @@ class TestTr:
         
         r = indicators.get_tr(quotes[:1])
         assert 1 == len(r)
+
+    def test_condense(self, quotes):
+        results = indicators.get_tr(quotes).condense()
+
+        assert 501 == len(results)
+
+        last = results.pop()
+        assert 2.67 == round(float(last.tr), 2)

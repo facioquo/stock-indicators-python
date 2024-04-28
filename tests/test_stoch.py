@@ -131,6 +131,16 @@ class TestStoch:
         assert 35.5674 == round(float(last.signal), 4)
         assert 58.2712 == round(float(last.percent_j), 4)
 
+    def test_condense(self, quotes):
+        results = indicators.get_stoch(quotes, 14, 3, 3).condense()
+
+        assert 487 == len(results)
+
+        last = results.pop()
+        assert 43.1353 == round(float(last.oscillator), 4)
+        assert 35.5674 == round(float(last.signal), 4)
+        assert 58.2712 == round(float(last.percent_j), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

@@ -40,7 +40,17 @@ class TestCMF:
         assert       0.8052 == round(float(last.money_flow_multiplier), 4)
         assert 118396116.25 == round(float(last.money_flow_volume), 2)
         assert    -0.123754 == round(float(last.cmf), 6)
-   
+
+    def test_condense(self, quotes):
+        results = indicators.get_cmf(quotes, 20).condense()
+
+        assert 483 == len(results)
+
+        last = results.pop()
+        assert       0.8052 == round(float(last.money_flow_multiplier), 4)
+        assert 118396116.25 == round(float(last.money_flow_volume), 2)
+        assert    -0.123754 == round(float(last.cmf), 6)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

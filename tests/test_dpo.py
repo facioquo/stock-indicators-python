@@ -32,7 +32,16 @@ class TestDPO:
         r = indicators.get_dpo(bad_quotes, 5)
         
         assert 502 == len(r)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_dpo(quotes, 14).condense()
+
+        assert 489 == len(results)
+
+        last = results.pop()
+        assert   2.1821 == round(float(last.dpo), 4)
+        assert 246.7079 == round(float(last.sma), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

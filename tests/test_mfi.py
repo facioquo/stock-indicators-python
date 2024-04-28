@@ -44,7 +44,15 @@ class TestMFI:
         
         last = results.pop()
         assert 39.9494 == round(float(last.mfi), 4)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_mfi(quotes, 14).condense()
+
+        assert 488 == len(results)
+
+        last = results.pop()
+        assert 39.9494 == round(float(last.mfi), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

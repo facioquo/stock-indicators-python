@@ -34,7 +34,15 @@ class TestForceIndex:
         
         last = results.pop()
         assert -16824018.428 == round(float(last.force_index), 3)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_force_index(quotes, 13).condense()
+
+        assert 489 == len(results)
+
+        last = results.pop()
+        assert -16824018.428 == round(float(last.force_index), 3)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

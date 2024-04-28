@@ -59,7 +59,16 @@ class TestHTTrendline:
         last = results.pop()
         assert 252.2172 == round(float(last.trendline), 4)
         assert 242.3435 == round(float(last.smooth_price), 4)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_ht_trendline(quotes).condense()
+
+        assert 502 == len(results)
+
+        last = results.pop()
+        assert 252.2172 == round(float(last.trendline), 4)
+        assert 242.3435 == round(float(last.smooth_price), 4)
+
     def test_penny_data(self, penny_quotes):
         results = indicators.get_ht_trendline(penny_quotes)
         assert 533 == len(results)

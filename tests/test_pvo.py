@@ -60,7 +60,17 @@ class TestPVO:
         assert 10.4395 == float(round(last.pvo, 4))
         assert 12.2681 == float(round(last.signal, 4))
         assert -1.8286 == float(round(last.histogram, 4))
-                
+
+    def test_condense(self, quotes):
+        results = indicators.get_pvo(quotes, 12, 26, 9).condense()
+
+        assert 477 == len(results)
+
+        last = results.pop()
+        assert 10.4395 == float(round(last.pvo, 4))
+        assert 12.2681 == float(round(last.signal, 4))
+        assert -1.8286 == float(round(last.histogram, 4))
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

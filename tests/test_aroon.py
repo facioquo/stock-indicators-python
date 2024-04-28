@@ -50,6 +50,16 @@ class TestAroon:
         assert +88 == float(last.aroon_down)
         assert -60 == float(last.oscillator)
 
+    def test_condense(self, quotes):
+        results = indicators.get_aroon(quotes, 25).condense()
+
+        assert 477 == len(results)
+
+        r = results[-1]
+        assert  28 == float(r.aroon_up)
+        assert  88 == float(r.aroon_down)
+        assert -60 == float(r.oscillator)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

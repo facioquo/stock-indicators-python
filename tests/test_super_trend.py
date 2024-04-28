@@ -61,6 +61,16 @@ class TestSuperTrend:
         assert last.super_trend == last.upper_band
         assert last.lower_band is None
 
+    def test_condense(self, quotes):
+        results = indicators.get_super_trend(quotes, 14, 3).condense()
+
+        assert 488 == len(results)
+
+        last = results.pop()
+        assert 250.7954 == round(float(last.super_trend), 4)
+        assert last.super_trend == last.upper_band
+        assert last.lower_band is None
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

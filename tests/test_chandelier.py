@@ -39,6 +39,14 @@ class TestChandelier:
         last = long_results.pop()
         assert 256.5860 == round(float(last.chandelier_exit), 4)
 
+    def test_condense(self, quotes):
+        long_results = indicators.get_chandelier(quotes, 22, 3).condense()
+
+        assert 480 == len(long_results)
+
+        last = long_results.pop()
+        assert 256.5860 == round(float(last.chandelier_exit), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

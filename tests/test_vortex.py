@@ -40,15 +40,23 @@ class TestVortex:
         assert 1 == len(r)
         
     def test_removed(self, quotes):
-        results = indicators.get_vortex(quotes, 14)
-        results = results.remove_warmup_periods()
+        results = indicators.get_vortex(quotes, 14).remove_warmup_periods()
         
         assert 502 - 14 == len(results)
         
         last = results.pop()
         assert 0.8712 == round(float(last.pvi), 4)
         assert 1.1163 == round(float(last.nvi), 4)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_vortex(quotes, 14).condense()
+
+        assert 488 == len(results)
+
+        last = results.pop()
+        assert 0.8712 == round(float(last.pvi), 4)
+        assert 1.1163 == round(float(last.nvi), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

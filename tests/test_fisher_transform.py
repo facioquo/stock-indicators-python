@@ -58,7 +58,16 @@ class TestFisherTransform:
         
         r = indicators.get_fisher_transform(quotes[:1])
         assert 1 == len(r)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_fisher_transform(quotes, 10).condense()
+
+        assert 502 == len(results)
+
+        last = results.pop()
+        assert -1.2876 == round(float(last.fisher), 4)
+        assert -2.0071 == round(float(last.trigger), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
