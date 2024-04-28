@@ -2,7 +2,7 @@ from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators.indicators.common.enums import CandlePart
-from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
@@ -51,7 +51,7 @@ class EMAResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=EMAResult)
-class EMAResults(RemoveWarmupMixin, IndicatorResults[_T]):
+class EMAResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of EMA(Exponential Moving Average) results.
     It is exactly same with built-in `list` except for that it provides

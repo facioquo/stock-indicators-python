@@ -3,7 +3,7 @@ from typing import Iterable, Optional, TypeVar, overload
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.alligator import AlligatorResult
-from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
@@ -81,7 +81,7 @@ class GatorResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=GatorResult)
-class GatorResults(RemoveWarmupMixin, IndicatorResults[_T]):
+class GatorResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Gator Oscillator results.
     It is exactly same with built-in `list` except for that it provides
