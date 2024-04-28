@@ -85,15 +85,6 @@ class IndicatorResults(List[_T]):
 
         return self.__class__(list(self._csdata)[remove_periods:], self._wrapper_class)
 
-    @_verify_data
-    def condense(self):
-        """
-        Removes non-essential records containing null values with unique consideration for this indicator.
-        """
-        cs_results_type = self._get_csdata_type()
-        condensed_results = CsResultUtility.Condense[cs_results_type](CsList(cs_results_type, self._csdata))
-        return self.__class__(condensed_results, self._wrapper_class)
-
     def find(self, lookup_date: PyDateTime) -> Optional[_T]:
         """Find indicator values on a specific date. It returns `None` if no result found."""
         if not isinstance(lookup_date, PyDateTime):
