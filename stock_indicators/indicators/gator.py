@@ -32,8 +32,7 @@ def get_gator(quotes):
         results = CsIndicator.GetGator[Quote](CsList(Quote, quotes))
     else:
         # Get C# objects.
-        if isinstance(quotes, IndicatorResults):
-            quotes.reload()
+        if isinstance(quotes, IndicatorResults) and quotes._csdata is not None:
             cs_results = quotes._csdata
         else:
             cs_results = [ q._csdata for q in quotes ]
