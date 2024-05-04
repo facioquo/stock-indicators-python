@@ -36,8 +36,8 @@ from stock_indicators.indicators.common.enums import MAType
 
 | type | description
 |-- |--
-| `MAType.SMA` | [Simple Moving Average](../Sma#content) (default)
-| `MAType.SMMA` | [Smoothed Moving Average](../Smma#content)
+| `MAType.SMA` | [Simple Moving Average]({{site.baseurl}}/indicators/Sma#content) (default)
+| `MAType.SMMA` | [Smoothed Moving Average]({{site.baseurl}}/indicators/Smma#content)
 
 ## Returns
 
@@ -51,7 +51,7 @@ StochResults[StochResult]
 - It does not return a single incremental indicator value.
 - The first `N+S-2` periods will have `None` Oscillator values since there's not enough data to calculate.
 
-<!-- >&#9886; **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods when using `MAType.SMMA`.  Standard use of `MAType.SMA` does not have convergence-related precision errors. -->
+>&#9886; **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods when using `MAType.SMMA`.  Standard use of `MAType.SMA` does not have convergence-related precision errors.
 
 ### StochResult
 
