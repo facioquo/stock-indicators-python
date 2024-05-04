@@ -71,6 +71,7 @@ The moving average `center_line` is based on the `ma_type` type specified.
 
 ### Utilities
 
+- [.condense()]({{site.baseurl}}/utilities#condense)
 - [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 

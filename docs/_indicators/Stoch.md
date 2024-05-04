@@ -66,6 +66,7 @@ Note: aliases of `k`, `d`, and `j` are also provided.  They can be used intercha
 
 ### Utilities
 
+- [.condense()]({{site.baseurl}}/utilities#condense)
 - [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
 - [.remove_warmup_periods()]({{site.baseurl}}/utilities#remove-warmup-periods)
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
