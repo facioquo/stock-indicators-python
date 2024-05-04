@@ -2,6 +2,7 @@ from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
+from stock_indicators.indicators.common.helpers import CondenseMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
@@ -69,7 +70,7 @@ class ADLResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=ADLResult)
-class ADLResults(IndicatorResults[_T]):
+class ADLResults(CondenseMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of ADL(Accumulation/Distribution Line) results.
     It is exactly same with built-in `list` except for that it provides

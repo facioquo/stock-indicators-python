@@ -54,6 +54,16 @@ class TestAdx:
         assert 31.1510 == round(float(r.mdi), 4)
         assert 34.2987 == round(float(r.adx), 4)
 
+    def test_condense(self, quotes):
+        results = indicators.get_adx(quotes, 14).condense()
+
+        assert 475 == len(results)
+
+        r = results[-1]
+        assert 17.7565 == round(float(r.pdi), 4)
+        assert 31.1510 == round(float(r.mdi), 4)
+        assert 34.2987 == round(float(r.adx), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

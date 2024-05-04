@@ -46,7 +46,19 @@ class TestConnorsRSI:
         assert 67.4899 == round(float(last.rsi_streak), 4)
         assert 88.0000 == round(float(last.percent_rank), 4)
         assert 74.7662 == round(float(last.connors_rsi), 4)
+
+    def test_condense(self, quotes):
+        results = indicators.get_connors_rsi(quotes, 3, 2, 100)
+        results = results.condense()
         
+        assert 401 == len(results)
+
+        last = results.pop()
+        assert 68.8087 == round(float(last.rsi_close), 4)
+        assert 67.4899 == round(float(last.rsi_streak), 4)
+        assert 88.0000 == round(float(last.percent_rank), 4)
+        assert 74.7662 == round(float(last.connors_rsi), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

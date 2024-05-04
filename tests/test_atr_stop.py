@@ -98,6 +98,16 @@ class TestAtrStop:
         assert last.atr_stop == last.buy_stop
         assert last.sell_stop is None
 
+    def test_condense(self, quotes):
+        results = indicators.get_atr_stop(quotes, 21, 3).condense()
+
+        assert 481 == len(results)
+
+        r = results[-1]
+        assert 246.3232 == round(float(r.atr_stop), 4)
+        assert r.atr_stop == r.buy_stop
+        assert r.sell_stop is None
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

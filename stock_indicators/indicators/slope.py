@@ -5,7 +5,7 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
-from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
@@ -81,7 +81,7 @@ class SlopeResult(ResultBase):
         self._csdata.Line = CsDecimal(value)
 
 _T = TypeVar("_T", bound=SlopeResult)
-class SlopeResults(RemoveWarmupMixin, IndicatorResults[_T]):
+class SlopeResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Slope results.
     It is exactly same with built-in `list` except for that it provides

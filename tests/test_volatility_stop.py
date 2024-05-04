@@ -65,10 +65,18 @@ class TestVolatilityStop:
         assert 1 == len(r)
 
     def test_removed(self, quotes):
-        results = indicators.get_volatility_stop(quotes, 14, 3)
-        results = results.remove_warmup_periods()
+        results = indicators.get_volatility_stop(quotes, 14, 3).remove_warmup_periods()
 
         assert 402 == len(results)
+
+        last = results.pop()
+        assert 249.2423 == round(float(last.sar), 4)
+        assert last.is_stop is False
+
+    def test_condense(self, quotes):
+        results = indicators.get_volatility_stop(quotes, 14, 3).condense()
+
+        assert 448 == len(results)
 
         last = results.pop()
         assert 249.2423 == round(float(last.sar), 4)

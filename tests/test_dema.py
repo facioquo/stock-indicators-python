@@ -28,7 +28,15 @@ class TestDoubleEMA:
         
         last = results.pop()
         assert 241.1677 == round(float(last.dema), 4)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_dema(quotes, 20).condense()
+
+        assert 483 == len(results)
+
+        last = results.pop()
+        assert 241.1677 == round(float(last.dema), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

@@ -49,15 +49,23 @@ class TestTSI:
         assert 1 == len(r)
         
     def test_removed(self, quotes):
-        results = indicators.get_tsi(quotes, 25, 13, 7)
-        results = results.remove_warmup_periods()
+        results = indicators.get_tsi(quotes, 25, 13, 7).remove_warmup_periods()
         
         assert 502 - (25 + 13 + 250) == len(results)
         
         last = results.pop()
         assert -28.3513 == round(float(last.tsi), 4)
         assert -29.3597 == round(float(last.signal), 4)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_tsi(quotes, 25, 13, 7).condense()
+
+        assert 465 == len(results)
+
+        last = results.pop()
+        assert -28.3513 == round(float(last.tsi), 4)
+        assert -29.3597 == round(float(last.signal), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

@@ -88,7 +88,20 @@ class TestPivots:
         
         r = indicators.get_pivots(quotes[:1])
         assert 1 == len(r)
-    
+
+    def test_condense(self, quotes):
+        results = indicators.get_pivots(quotes, 4, 4, 20, EndType.HIGH_LOW).condense()
+
+        assert 67 == len(results)
+
+        r = results.pop()
+        assert r.high_point is None
+        assert r.high_trend is None
+        assert r.high_line is None
+        assert 252.34 == float(round(r.low_point, 2))
+        assert r.low_trend == PivotTrend.LL
+        assert 252.34 == float(round(r.low_line, 2))
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

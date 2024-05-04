@@ -48,15 +48,23 @@ class TestMAMA:
         assert 1 == len(r)
         
     def test_removed(self, quotes):
-        results = indicators.get_mama(quotes, 0.5, 0.05)
-        results = results.remove_warmup_periods()
+        results = indicators.get_mama(quotes, 0.5, 0.05).remove_warmup_periods()
         
         assert 502 - 50 == len(results)
         
         last = results.pop()        
         assert 244.1092 == round(float(last.mama), 4)
         assert 252.6139 == round(float(last.fama), 4)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_mama(quotes, 0.5, 0.05).condense()
+
+        assert 497 == len(results)
+
+        last = results.pop()        
+        assert 244.1092 == round(float(last.mama), 4)
+        assert 252.6139 == round(float(last.fama), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

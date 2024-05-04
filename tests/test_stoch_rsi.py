@@ -79,6 +79,15 @@ class TestStochRSI:
         assert 89.8385 == round(float(last.stoch_rsi), 4)
         assert 73.4176 == round(float(last.signal), 4)
 
+    def test_condense(self, quotes):
+        results = indicators.get_stoch_rsi(quotes, 14, 14, 3, 3).condense()
+
+        assert 473 == len(results)
+
+        last = results.pop()
+        assert 89.8385 == round(float(last.stoch_rsi), 4)
+        assert 73.4176 == round(float(last.signal), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

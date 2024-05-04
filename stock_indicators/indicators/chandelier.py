@@ -3,7 +3,7 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.enums import ChandelierType
-from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
@@ -56,7 +56,7 @@ class ChandelierResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=ChandelierResult)
-class ChandelierResults(RemoveWarmupMixin, IndicatorResults[_T]):
+class ChandelierResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Chandelier Exit results.
     It is exactly same with built-in `list` except for that it provides

@@ -3,7 +3,7 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.enums import CandlePart
-from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
@@ -80,9 +80,7 @@ class SMAResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=SMAResult)
-
-
-class SMAResults(RemoveWarmupMixin, IndicatorResults[_T]):
+class SMAResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of SMA(Simple Moving Average) results.
     It is exactly same with built-in `list` except for that it provides
@@ -121,9 +119,7 @@ class SMAAnalysisResult(SMAResult):
 
 
 _T = TypeVar("_T", bound=SMAAnalysisResult)
-
-
-class SMAAnalysisResults(RemoveWarmupMixin, IndicatorResults[_T]):
+class SMAAnalysisResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of SMA Analysis results.
     It is exactly same with built-in `list` except for that it provides

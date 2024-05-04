@@ -46,7 +46,16 @@ class TestFCB:
         last = results.pop()
         assert 262.47 == round(float(last.upper_band), 2)
         assert 229.42 == round(float(last.lower_band), 2)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_fcb(quotes, 2).condense()
+
+        assert 497 == len(results)
+
+        last = results.pop()
+        assert 262.47 == round(float(last.upper_band), 2)
+        assert 229.42 == round(float(last.lower_band), 2)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

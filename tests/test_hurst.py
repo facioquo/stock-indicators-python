@@ -42,6 +42,14 @@ class TestHurst:
         last  = results.pop()
         assert 0.483563 == round(float(last.hurst_exponent), 6)
 
+    def test_condense(self, longest_quotes):
+        results = indicators.get_hurst(longest_quotes, len(longest_quotes) - 1).condense()
+
+        assert 1 == len(results)
+
+        last  = results.pop()
+        assert 0.483563 == round(float(last.hurst_exponent), 6)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

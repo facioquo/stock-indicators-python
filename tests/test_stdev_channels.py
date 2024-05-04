@@ -91,7 +91,18 @@ class TestStdevChannels:
         assert 257.6536 == round(float(last.upper_channel), 4)
         assert 213.9727 == round(float(last.lower_channel), 4)
         assert last.break_point is False
-    
+
+    def test_condense(self, quotes):
+        results = indicators.get_stdev_channels(quotes, 20, 2).condense()
+
+        assert 500 == len(results)
+
+        last = results.pop()
+        assert 235.8131 == round(float(last.center_line), 4)
+        assert 257.6536 == round(float(last.upper_channel), 4)
+        assert 213.9727 == round(float(last.lower_channel), 4)
+        assert last.break_point is False
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

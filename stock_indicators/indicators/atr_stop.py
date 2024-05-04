@@ -6,7 +6,7 @@ from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.enums import EndType
-from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
@@ -75,7 +75,7 @@ class AtrStopResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=AtrStopResult)
-class AtrStopResults(RemoveWarmupMixin, IndicatorResults[_T]):
+class AtrStopResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of ATR Trailing Stop results.
     It is exactly same with built-in `list` except for that it provides

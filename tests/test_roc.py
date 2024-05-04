@@ -53,6 +53,15 @@ class TestROC:
         assert -8.2482 == round(float(last.roc), 4)
         assert last.roc_sma is None
 
+    def test_condense(self, quotes):
+        results = indicators.get_roc(quotes, 20).condense()
+
+        assert 482 == len(results)
+
+        last = results.pop()
+        assert -8.2482 == round(float(last.roc), 4)
+        assert last.roc_sma is None
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

@@ -2,7 +2,7 @@ from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
@@ -48,7 +48,7 @@ class BOPResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=BOPResult)
-class BOPResults(RemoveWarmupMixin, IndicatorResults[_T]):
+class BOPResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Balance of Power (aka Balance of Market Power) results.
     It is exactly same with built-in `list` except for that it provides

@@ -40,6 +40,14 @@ class TestCMO:
         last = results.pop()
         assert -26.7502 == round(float(last.cmo), 4)
 
+    def test_condense(self, quotes):
+        results = indicators.get_cmo(quotes, 14).condense()
+
+        assert 488 == len(results)
+
+        last = results.pop()
+        assert -26.7502 == round(float(last.cmo), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

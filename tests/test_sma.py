@@ -68,6 +68,12 @@ class TestSMA:
         assert 502 - 19 == len(results)
         assert 251.8600 == round(float(results[len(results)-1].sma), 4)
 
+    def test_condense(self, quotes):
+        results = indicators.get_sma(quotes, 20).condense()
+
+        assert 483 == len(results)
+        assert 251.8600 == round(float(results[len(results)-1].sma), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

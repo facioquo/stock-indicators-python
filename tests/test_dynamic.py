@@ -32,6 +32,14 @@ class TestDynamic:
         r = indicators.get_dynamic(quotes[:1], 14)
         assert 1 == len(r)
 
+    def test_condense(self, quotes):
+        results = indicators.get_dynamic(quotes, 14).condense()
+
+        assert 501 == len(results)
+
+        last = results.pop()
+        assert 245.7356 == round(float(last.dynamic), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

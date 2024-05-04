@@ -45,6 +45,16 @@ class TestMACD:
         assert -5.8569 == round(float(last.signal), 4)
         assert -0.3629 == round(float(last.histogram), 4)
 
+    def test_condense(self, quotes):
+        results = indicators.get_macd(quotes, 12, 26, 9).condense()
+
+        assert 477 == len(results)
+
+        last = results.pop()
+        assert -6.2198 == round(float(last.macd), 4)
+        assert -5.8569 == round(float(last.signal), 4)
+        assert -0.3629 == round(float(last.histogram), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

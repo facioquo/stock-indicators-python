@@ -45,7 +45,15 @@ class TestSTC:
         
         last = results.pop()
         assert 19.2544 == round(float(last.stc), 4)
-    
+
+    def test_condense(self, quotes):
+        results = indicators.get_stc(quotes, 9, 12, 26).condense()
+
+        assert 467 == len(results)
+
+        last = results.pop()
+        assert 19.2544 == round(float(last.stc), 4)
+
     def test_exceptions(self, quotes, other_quotes, mismatch_quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

@@ -57,7 +57,16 @@ class TestKVO:
         last = results.pop()
         assert  -539224047 == round(float(last.oscillator), 0)
         assert -1548306127 == round(float(last.signal), 0)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_kvo(quotes, 34, 55, 13).condense()
+
+        assert 446 == len(results)
+
+        last = results.pop()
+        assert  -539224047 == round(float(last.oscillator), 0)
+        assert -1548306127 == round(float(last.signal), 0)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

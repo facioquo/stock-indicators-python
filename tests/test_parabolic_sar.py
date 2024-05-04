@@ -67,7 +67,16 @@ class TestParabolicSAR:
         last = results.pop()
         assert 229.7662 == round(float(last.sar), 4)
         assert False == last.is_reversal
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_parabolic_sar(quotes, 0.02, 0.2).condense()
+
+        assert 488 == len(results)
+
+        last = results.pop()
+        assert 229.7662 == round(float(last.sar), 4)
+        assert False == last.is_reversal
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

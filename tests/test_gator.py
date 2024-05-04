@@ -92,3 +92,14 @@ class TestGator:
         assert -9.2399 == round(float(last.lower), 4)
         assert last.is_upper_expanding == True
         assert last.is_lower_expanding == True
+
+    def test_condense(self, quotes):
+        results = indicators.get_gator(quotes).condense()
+
+        assert 490 == len(results)
+
+        last = results.pop()
+        assert  7.4538 == round(float(last.upper), 4)
+        assert -9.2399 == round(float(last.lower), 4)
+        assert last.is_upper_expanding == True
+        assert last.is_lower_expanding == True

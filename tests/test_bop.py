@@ -34,7 +34,15 @@ class TestBOP:
         
         last = results.pop()
         assert -0.292788 == round(float(last.bop), 6)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_bop(quotes).condense()
+
+        assert 489 == len(results)
+
+        last = results.pop()
+        assert -0.292788 == round(float(last.bop), 6)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

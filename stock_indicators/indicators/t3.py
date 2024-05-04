@@ -2,6 +2,7 @@ from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
+from stock_indicators.indicators.common.helpers import CondenseMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
@@ -51,7 +52,7 @@ class T3Result(ResultBase):
 
 
 _T = TypeVar("_T", bound=T3Result)
-class T3Results(IndicatorResults[_T]):
+class T3Results(CondenseMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Tillson T3 results.
     It is exactly same with built-in `list` except for that it provides

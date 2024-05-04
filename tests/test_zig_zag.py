@@ -130,6 +130,17 @@ class TestZigZag:
         r = indicators.get_zig_zag(bad_quotes, EndType.HIGH_LOW)
         assert 502 == len(r)
 
+    def test_condense(self, quotes):
+        results = indicators.get_zig_zag(quotes, EndType.CLOSE, 3).condense()
+
+        assert 14 == len(results)
+
+        last = results.pop()
+        assert  229.99 == float(round(last.zig_zag, 2))
+        assert  251.33 == float(round(last.retrace_high, 2))
+        assert  229.99 == float(round(last.retrace_low, 2))
+        assert     "L" == last.point_type
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
