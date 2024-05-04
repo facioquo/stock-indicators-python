@@ -29,14 +29,21 @@ class TestUltimate:
         assert 1 == len(r)
         
     def test_removed(self, quotes):
-        results = indicators.get_ultimate(quotes, 7, 14, 28)
-        results = results.remove_warmup_periods()
+        results = indicators.get_ultimate(quotes, 7, 14, 28).remove_warmup_periods()
         
         assert 502 - 28 == len(results)
         
         last = results.pop()
         assert 49.5257 == round(float(last.ultimate), 4)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_ultimate(quotes, 7, 14, 28).condense()
+
+        assert 474 == len(results)
+
+        last = results.pop()
+        assert 49.5257 == round(float(last.ultimate), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

@@ -77,7 +77,18 @@ class TestStdev:
         assert 242.4100 == round(float(last.mean), 4)
         assert 0.524312 == round(float(last.z_score), 6)
         assert last.stdev_sma is None
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_stdev(quotes, 10).condense()
+
+        assert 493 == len(results)
+
+        last = results.pop()
+        assert   5.4738 == round(float(last.stdev), 4)
+        assert 242.4100 == round(float(last.mean), 4)
+        assert 0.524312 == round(float(last.z_score), 6)
+        assert last.stdev_sma is None
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

@@ -45,7 +45,19 @@ class TestSlope:
         assert 0000.7955 == round(float(last.r_squared), 4)
         assert   10.9202 == round(float(last.stdev), 4)
         assert  235.8131 == round(float(last.line), 4)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_slope(quotes, 20).condense()
+
+        assert 483 == len(results)
+
+        last = results.pop()
+        assert -1.689143 == round(float(last.slope), 6)
+        assert 1083.7629 == round(float(last.intercept), 4)
+        assert 0000.7955 == round(float(last.r_squared), 4)
+        assert   10.9202 == round(float(last.stdev), 4)
+        assert  235.8131 == round(float(last.line), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

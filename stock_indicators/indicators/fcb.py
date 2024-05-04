@@ -5,7 +5,7 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
-from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
+from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
@@ -59,7 +59,7 @@ class FCBResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=FCBResult)
-class FCBResults(RemoveWarmupMixin, IndicatorResults[_T]):
+class FCBResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Fractal Chaos Bands (FCB) results.
     It is exactly same with built-in `list` except for that it provides

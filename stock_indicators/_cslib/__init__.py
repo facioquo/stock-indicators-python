@@ -30,6 +30,7 @@ from System import DateTime as CsDateTime
 from System import Decimal as CsDecimal
 from System import Enum as CsEnum
 from System.Globalization import CultureInfo
+from System.Collections.Generic import IEnumerable as CsIEnumerable
 from System.Collections.Generic import List as CsList
 
 # Classes
@@ -38,6 +39,7 @@ from Skender.Stock.Indicators import Indicator as CsIndicator
 from Skender.Stock.Indicators import Quote as CsQuote
 from Skender.Stock.Indicators import QuoteUtility as CsQuoteUtility
 from Skender.Stock.Indicators import ResultBase as CsResultBase
+from Skender.Stock.Indicators import ResultUtility as CsResultUtility
 
 # Enums
 from Skender.Stock.Indicators import BetaType as CsBetaType

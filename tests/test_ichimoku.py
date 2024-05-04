@@ -55,6 +55,18 @@ class TestIchimoku:
         r = indicators.get_ichimoku(quotes[:1])
         assert 1 == len(r)
 
+    def test_condense(self, quotes):
+        results = indicators.get_ichimoku(quotes, 9, 26, 52).condense()
+
+        assert 502 == len(results)
+
+        last = results.pop()
+        assert 241.2600 == round(float(last.tenkan_sen), 4)
+        assert 251.5050 == round(float(last.kijun_sen), 4)
+        assert 264.7700 == round(float(last.senkou_span_a), 4)
+        assert 269.8200 == round(float(last.senkou_span_b), 4)
+        assert last.chikou_span is None
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

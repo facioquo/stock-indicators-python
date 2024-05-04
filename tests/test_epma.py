@@ -35,7 +35,14 @@ class TestEPMA:
         
         last = results.pop()
         assert 235.8131 == round(float(last.epma), 4)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_epma(quotes, 20).condense()
+
+        assert 483 == len(results)
+
+        last = results.pop()
+        assert 235.8131 == round(float(last.epma), 4)
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException

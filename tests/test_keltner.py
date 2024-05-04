@@ -58,7 +58,18 @@ class TestKeltner:
         assert 249.3519 == round(float(last.center_line), 4)
         assert 236.5165 == round(float(last.lower_band), 4)
         assert 0.102950 == round(float(last.width), 6)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_keltner(quotes, 20, 2, 10).condense()
+
+        assert 483 == len(results)
+
+        last = results.pop()
+        assert 262.1873 == round(float(last.upper_band), 4)
+        assert 249.3519 == round(float(last.center_line), 4)
+        assert 236.5165 == round(float(last.lower_band), 4)
+        assert 0.102950 == round(float(last.width), 6)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

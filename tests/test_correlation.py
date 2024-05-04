@@ -41,7 +41,16 @@ class TestCorrelation:
         last = results.pop()
         assert 0.8460 == round(float(last.correlation), 4)
         assert 0.7157 == round(float(last.r_squared), 4)
-        
+
+    def test_condense(self, quotes, other_quotes):
+        results = indicators.get_correlation(quotes, other_quotes, 20).condense()
+
+        assert 483 == len(results)
+
+        last = results.pop()
+        assert 0.8460 == round(float(last.correlation), 4)
+        assert 0.7157 == round(float(last.r_squared), 4)
+
     def test_exceptions(self, quotes, other_quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

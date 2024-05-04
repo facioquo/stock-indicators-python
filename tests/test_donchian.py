@@ -55,7 +55,18 @@ class TestDonchian:
         assert 273.5900 == round(float(last.upper_band), 4)
         assert 229.4200 == round(float(last.lower_band), 4)
         assert 0.175623 == round(float(last.width), 6)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_donchian(quotes, 20).condense()
+
+        assert 482 == len(results)
+
+        last = results.pop()
+        assert 251.5050 == round(float(last.center_line), 4)
+        assert 273.5900 == round(float(last.upper_band), 4)
+        assert 229.4200 == round(float(last.lower_band), 4)
+        assert 0.175623 == round(float(last.width), 6)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

@@ -29,6 +29,14 @@ class TestTripleEMA:
         last = results.pop()
         assert 238.7690 == round(float(last.tema), 4)
 
+    def test_condense(self, quotes):
+        results = indicators.get_tema(quotes, 20).condense()
+
+        assert 483 == len(results)
+
+        last = results.pop()
+        assert 238.7690 == round(float(last.tema), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

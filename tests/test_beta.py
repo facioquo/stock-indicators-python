@@ -34,7 +34,7 @@ class TestBeta:
         assert  3.1066 == round(float(r.ratio), 4)
         assert  0.6944 == round(float(r.convexity), 4)
         
-        r= results[501]
+        r = results[501]
         assert 1.5123 == round(float(r.beta), 4)
         assert 2.0721 == round(float(r.beta_up), 4)
         assert 1.5908 == round(float(r.beta_down), 4)
@@ -113,6 +113,18 @@ class TestBeta:
         
         r = indicators.get_beta(quotes[:1], quotes[:1], 5)
         assert 1 == len(r)
+
+    def test_condense(self, quotes, other_quotes):
+        results = indicators.get_beta(other_quotes, quotes, 20, BetaType.ALL).condense()
+
+        assert 482 == len(results)
+
+        r = results[-1]
+        assert 1.5123 == round(float(r.beta), 4)
+        assert 2.0721 == round(float(r.beta_up), 4)
+        assert 1.5908 == round(float(r.beta_down), 4)
+        assert 1.3026 == round(float(r.ratio), 4)
+        assert 0.2316 == round(float(r.convexity), 4)
 
     def test_exceptions(self, quotes, other_quotes):
         from System import ArgumentOutOfRangeException

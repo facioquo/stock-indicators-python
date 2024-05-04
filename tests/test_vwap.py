@@ -97,7 +97,18 @@ class TestVWAP:
         
         assert 368.2908 == round(float(last_d.vwap), 4)
         assert 368.2908 == round(float(last_i.vwap), 4)
+
+    def test_condense(self, intraday_quotes):
+        intraday_quotes.sort(key=lambda x: x.date)
         
+        results_int = indicators.get_vwap(intraday_quotes[:391], 2020, 12, 15, 10)
+        results_int = results_int.condense()
+        
+        assert 361 == len(results_int)
+        
+        last_i = results_int.pop()
+        assert 368.2908 == round(float(last_i.vwap), 4)
+
     def test_exceptions(self, quotes):
         start_date = datetime(2000, 12, 15)
         

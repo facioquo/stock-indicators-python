@@ -52,7 +52,17 @@ class TestElderRay:
         assert 246.0129 == round(float(last.ema), 4)
         assert -00.4729 == round(float(last.bull_power), 4)
         assert  -3.1429 == round(float(last.bear_power), 4)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_elder_ray(quotes, 13).condense()
+
+        assert 490 == len(results)
+
+        last = results.pop()
+        assert 246.0129 == round(float(last.ema), 4)
+        assert -00.4729 == round(float(last.bull_power), 4)
+        assert  -3.1429 == round(float(last.bear_power), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

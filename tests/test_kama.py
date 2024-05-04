@@ -59,7 +59,15 @@ class TestKAMA:
         assert 502 - max(er_periods + 100, er_periods * 10) == len(results)
         
         last = results.pop()
-        
+        assert   0.2214 == round(float(last.efficiency_ratio), 4)
+        assert 240.1138 == round(float(last.kama), 4)
+
+    def test_condense(self, quotes):
+        results = indicators.get_kama(quotes, 10, 2, 30).condense()
+
+        assert 493 == len(results)
+
+        last = results.pop()
         assert   0.2214 == round(float(last.efficiency_ratio), 4)
         assert 240.1138 == round(float(last.kama), 4)
 

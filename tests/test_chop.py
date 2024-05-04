@@ -37,7 +37,15 @@ class TestChop:
         
         last = results.pop()
         assert 38.6526 == round(float(last.chop), 4)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_chop(quotes, 14).condense()
+
+        assert 488 == len(results)
+
+        last = results.pop()
+        assert 38.6526 == round(float(last.chop), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

@@ -207,6 +207,16 @@ class TestMAEnvelopes:
         r = indicators.get_ma_envelopes(bad_quotes, 5, 2.5, MAType.WMA)
         assert 502 == len(r)
 
+    def test_condense(self, quotes):
+        results = indicators.get_ma_envelopes(quotes, 10, 2.5, MAType.ALMA).condense()
+
+        assert 493 == len(results)
+
+        last = results.pop()
+        assert 242.1871 == round(float(last.center_line), 4)
+        assert 248.2418 == round(float(last.upper_envelope), 4)
+        assert 236.1324 == round(float(last.lower_envelope), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

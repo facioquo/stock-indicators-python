@@ -53,6 +53,14 @@ class TestEMA:
         last = results.pop()
         assert 249.3519 == round(float(last.ema), 4)
 
+    def test_condense(self, quotes):
+        results = indicators.get_ema(quotes, 20).condense()
+
+        assert 483 == len(results)
+
+        last = results.pop()
+        assert 249.3519 == round(float(last.ema), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

@@ -34,7 +34,18 @@ class TestChaikinOsc:
         assert        0.8052 == round(float(last.money_flow_multiplier), 4)
         assert  118396116.25 == round(float(last.money_flow_volume), 2)
         assert  -19135200.72 == round(float(last.oscillator), 2)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_chaikin_osc(quotes, 3, 10).condense()
+
+        assert 493 == len(results)
+
+        last = results.pop()
+        assert 3439986548.42 == round(float(last.adl), 2)
+        assert        0.8052 == round(float(last.money_flow_multiplier), 4)
+        assert  118396116.25 == round(float(last.money_flow_volume), 2)
+        assert  -19135200.72 == round(float(last.oscillator), 2)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

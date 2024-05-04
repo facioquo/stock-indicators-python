@@ -3,6 +3,7 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.enums import MAType
+from stock_indicators.indicators.common.helpers import CondenseMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
@@ -71,7 +72,7 @@ class MAEnvelopeResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=MAEnvelopeResult)
-class MAEnvelopeResults(IndicatorResults[_T]):
+class MAEnvelopeResults(CondenseMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Moving Average Envelopes results.
     It is exactly same with built-in `list` except for that it provides

@@ -47,7 +47,15 @@ class TestSMMA:
         
         last = results.pop()
         assert 255.67462 == round(float(last.smma), 5)
-        
+
+    def test_condense(self, quotes):
+        results = indicators.get_smma(quotes, 20).condense()
+
+        assert 483 == len(results)
+
+        last = results.pop()
+        assert 255.67462 == round(float(last.smma), 5)
+
     def test_exceptions(self, quotes, other_quotes, mismatch_quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):

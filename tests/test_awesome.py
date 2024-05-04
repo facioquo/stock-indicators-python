@@ -38,6 +38,15 @@ class TestAwesome:
         assert -17.7692 == round(float(last.oscillator), 4)
         assert -7.2763  == round(float(last.normalized), 4)
 
+    def test_condense(self, quotes):
+        results = indicators.get_awesome(quotes, 5, 34).condense()
+
+        assert 469 == len(results)
+
+        last = results.pop()
+        assert -17.7692 == round(float(last.oscillator), 4)
+        assert -7.2763  == round(float(last.normalized), 4)
+
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
         with pytest.raises(ArgumentOutOfRangeException):
