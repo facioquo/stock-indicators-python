@@ -74,7 +74,7 @@ results = indicators.get_dynamic(quotes, 14)
 ## About {{ page.title }}
 
 Created by John R. McGinley, the [McGinley Dynamic](https://www.investopedia.com/terms/m/mcginley-dynamic.asp) is a more responsive variant of exponential moving average.
-[[Discuss] &#128172;]({{site.github.repository_url}}/discussions/866 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/866 "Community discussion about this indicator")
 
 ![chart for {{page.title}}]({{site.dotnet.charts}}/Dynamic.png)
 

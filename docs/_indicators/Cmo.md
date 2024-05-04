@@ -65,7 +65,7 @@ results = indicators.get_cmo(quotes, lookback_periods)
 ## About {{ page.title }}
 
 Created by Tushar Chande, the [Chande Momentum Oscillator](https://www.investopedia.com/terms/c/chandemomentumoscillator.asp) is a weighted percent of higher prices over a lookback window.
-[[Discuss] &#128172;]({{site.github.repository_url}}/discussions/892 "Community discussion about this indicator")
+[[Discuss] &#128172;]({{site.dotnet.repo}}/discussions/892 "Community discussion about this indicator")
 
 ![chart for {{page.title}}]({{site.dotnet.charts}}/Cmo.png)
 
