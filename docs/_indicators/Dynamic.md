@@ -2,7 +2,6 @@
 title: McGinley Dynamic
 description: Created by John R. McGinley, the McGinley Dynamic is a more responsive variant of exponential moving average.
 permalink: /indicators/Dynamic/
-image: /assets/charts/Dynamic.png
 type: moving-average
 layout: indicator
 ---
@@ -58,6 +57,18 @@ DynamicResults[DynamicResult]
 - [.RemoveWarmupPeriods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
 See [Utilities and helpers]({{site.baseurl}}/utilities#utilities-for-indicator-results) for more information.
+
+## Example
+
+```python
+from stock_indicators import indicators
+
+# This method is NOT a part of the library.
+quotes = get_historical_quotes("SPY")
+
+# calculate 14-period McGinley Dynamic
+results = indicators.get_dynamic(quotes, 14)
+```
 
 ## About {{ page.title }}
 
