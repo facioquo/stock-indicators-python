@@ -16,6 +16,9 @@ def test_benchmark_alma(benchmark, quotes):
 def test_benchmark_aroon(benchmark, quotes):
     benchmark(indicators.get_aroon, quotes)
 
+def test_benchmark_atr_stop(benchmark, quotes):
+    benchmark(indicators.get_atr_stop, quotes)
+
 def test_benchmark_atr(benchmark, quotes):
     benchmark(indicators.get_atr, quotes)
 
@@ -46,6 +49,9 @@ def test_benchmark_chop(benchmark, quotes):
 def test_benchmark_cmf(benchmark, quotes):
     benchmark(indicators.get_cmf, quotes)
 
+def test_benchmark_cmo(benchmark, quotes):
+    benchmark(indicators.get_cmo, quotes, 14)
+
 def test_benchmark_connors_rsi(benchmark, quotes):
     benchmark(indicators.get_connors_rsi, quotes)
 
@@ -63,6 +69,9 @@ def test_benchmark_dema(benchmark, quotes):
 
 def test_benchmark_dpo(benchmark, quotes):
     benchmark(indicators.get_dpo, quotes, 14)
+
+def test_benchmark_dynamic(benchmark, quotes):
+    benchmark(indicators.get_dynamic, quotes, 14)
 
 def test_benchmark_elder_ray(benchmark, quotes):
     benchmark(indicators.get_elder_ray, quotes)
