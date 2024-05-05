@@ -1,3 +1,4 @@
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/0f6df3e7f2394381a5d9204f54e733fb)](https://app.codacy.com/gh/facioquo/stock-indicators-python?utm_source=github.com&utm_medium=referral&utm_content=facioquo/stock-indicators-python&utm_campaign=Badge_Grade)
 [![image](https://raw.githubusercontent.com/facioquo/stock-indicators-python/main/docs/assets/social-banner.png)](https://python.stockindicators.dev/)
 
 [![PyPI](https://img.shields.io/pypi/v/stock-indicators?color=blue&label=PyPI)](https://badge.fury.io/py/stock-indicators)
