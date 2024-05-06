@@ -20,7 +20,7 @@ layout: indicator
 | `smooth_periods` | int, *default 3* | Smoothing period (`S`) for the Oscillator (%K).  "Slow" stochastic uses 3, "Fast" stochastic uses 1.  Must be greater than 0.
 | `k_factor` | int, *default 3* | Weight of %K in the %J calculation.  Must be greater than 0.
 | `d_factor` | int, *default 2* | Weight of %D in the %J calculation.  Must be greater than 0.
-| `ma_type` | MAType, *default MAType.SMA* | Type of moving average (SMA or SMMA) used for smoothing.  See [MAType options](#MAType-options) below.
+| `ma_type` | MAType, *default MAType.SMA* | Type of moving average (SMA or SMMA) used for smoothing.  See [MAType options](#matype-options) below.
 
 ### Historical quotes requirements
 
