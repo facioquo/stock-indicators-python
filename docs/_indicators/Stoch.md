@@ -8,7 +8,7 @@ layout: indicator
 
 # {{ page.title }}
 
-><span class="indicator-syntax">**get_stoch**(*quotes, lookback_periods=14, signal_periods=3, smooth_periods=3*)</span>
+><span class="indicator-syntax">**get_stoch**(*quotes, lookback_periods=14, signal_periods=3, smooth_periods=3, k_factor=3, d_factor=2, ma_type=MAType.SMA*)</span>
 
 ## Parameters
 
@@ -18,10 +18,9 @@ layout: indicator
 | `lookback_periods` | int, *default 14* | Lookback period (`N`) for the oscillator (%K).  Must be greater than 0.
 | `signal_periods` | int, *default 3* | Smoothing period for the signal (%D).  Must be greater than 0.
 | `smooth_periods` | int, *default 3* | Smoothing period (`S`) for the Oscillator (%K).  "Slow" stochastic uses 3, "Fast" stochastic uses 1.  Must be greater than 0.
-
-<!-- | `kFactor` | int | Optional. Weight of %K in the %J calculation.  Must be greater than 0. Default is 3.
-| `dFactor` | int | Optional. Weight of %D in the %J calculation.  Must be greater than 0. Default is 2.
-| `movingAverageType` | MAType | Optional. Type of moving average (SMA or SMMA) used for smoothing.  See [MAType options](#MAType-options) below.  Default is `MAType.SMA`. -->
+| `k_factor` | int, *default 3* | Weight of %K in the %J calculation.  Must be greater than 0.
+| `d_factor` | int, *default 2* | Weight of %D in the %J calculation.  Must be greater than 0.
+| `ma_type` | MAType, *default MAType.SMA* | Type of moving average (SMA or SMMA) used for smoothing.  See [MAType options](#matype-options) below.
 
 ### Historical quotes requirements
 
@@ -29,14 +28,16 @@ You must have at least `N+S` periods of `quotes` to cover the warmup periods.
 
 `quotes` is an `Iterable[Quote]` collection of historical price quotes.  It should have a consistent frequency (day, hour, minute, etc).  See [the Guide]({{site.baseurl}}/guide/#historical-quotes) for more information.
 
-<!-- ### MAType options
+### MAType options
 
-These are the supported moving average types:
+```python
+from stock_indicators.indicators.common.enums import MAType
+```
 
 | type | description
 |-- |--
-| `MAType.SMA` | [Simple Moving Average](../Sma#content) (default)
-| `MAType.SMMA` | [Smoothed Moving Average](../Smma#content) -->
+| `MAType.SMA` | [Simple Moving Average]({{site.baseurl}}/indicators/Sma#content) (default)
+| `MAType.SMMA` | [Smoothed Moving Average]({{site.baseurl}}/indicators/Smma#content)
 
 ## Returns
 
@@ -50,7 +51,7 @@ StochResults[StochResult]
 - It does not return a single incremental indicator value.
 - The first `N+S-2` periods will have `None` Oscillator values since there's not enough data to calculate.
 
-<!-- >&#9886; **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods when using `MAType.SMMA`.  Standard use of `MAType.SMA` does not have convergence-related precision errors. -->
+>&#9886; **Convergence warning**: The first `N+100` periods will have decreasing magnitude, convergence-related precision errors that can be as high as ~5% deviation in indicator values for earlier periods when using `MAType.SMMA`.  Standard use of `MAType.SMA` does not have convergence-related precision errors.
 
 ### StochResult
 
@@ -65,6 +66,7 @@ Note: aliases of `k`, `d`, and `j` are also provided.  They can be used intercha
 
 ### Utilities
 
+- [.condense()]({{site.baseurl}}/utilities#condense)
 - [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
 - [.remove_warmup_periods()]({{site.baseurl}}/utilities#remove-warmup-periods)
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)

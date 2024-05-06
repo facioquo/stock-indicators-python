@@ -64,6 +64,7 @@ ZigZagResults[ZigZagResult]
 
 ### Utilities
 
+- [.condense()]({{site.baseurl}}/utilities#condense)
 - [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 

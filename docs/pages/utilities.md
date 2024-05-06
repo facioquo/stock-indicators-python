@@ -19,11 +19,9 @@ layout: page
 results = quotes.get_marubozu(quotes).condense();
 ```
 
-Currently, `.condense()` is only available on a select few indicators.  If you find an indicator that is a good candidate for this utility, please [submit an Issue]({{site.dotnet.repo}}/issues).
-
 >&#128681; **Warning**: In all cases, `.condense()` will remove non-essential results and will produce fewer records than are in `quotes`.
 
-### Convert to quotes
+<!-- ### Convert to quotes
 
 >&#128681; **Warning**: The `.to_quotes()` method is deprecated. (since v0.8.0)
 
@@ -38,7 +36,7 @@ sma_of_rsi = indicators.get_sma(quotes_from_rsi, 20)
 
 Currently, `.to_quotes()` is only available on a select few indicators.  If you find an indicator that is a good candidate for this utility, please [submit an Issue]({{site.baseurl}}/contributing/#reporting-bugs-and-feature-requests).
 
->&#128681; **Warning**: In many cases, `.to_quotes()` will remove any `None` results -- this will produce fewer historical `quotes` than were originally provided.
+>&#128681; **Warning**: In many cases, `.to_quotes()` will remove any `None` results -- this will produce fewer historical `quotes` than were originally provided. -->
 
 ### Find indicator result by date
 

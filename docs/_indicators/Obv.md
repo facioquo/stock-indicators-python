@@ -46,7 +46,7 @@ OBVResults[OBVResult]
 
 ### Utilities
 
-- ~~[.to_quotes()]({{site.baseurl}}/utilities#convert-to-quotes)~~ <code style='color: #d32f2f; important'>[deprecated]</code>
+- [.condense()]({{site.baseurl}}/utilities#condense)
 - [.find(lookup_date)]({{site.baseurl}}/utilities#find-indicator-result-by-date)
 - [.remove_warmup_periods(qty)]({{site.baseurl}}/utilities#remove-warmup-periods)
 
