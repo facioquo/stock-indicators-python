@@ -15,26 +15,26 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 class _CandleProperties(_Quote):
     @property
     def size(self) -> Optional[Decimal]:
-        return to_pydecimal(self.high - self.low)
+        return to_pydecimal(self.High - self.Low)
 
     @property
     def body(self) -> Optional[Decimal]:
-        return to_pydecimal(self.open - self.close \
-            if (self.open > self.close) \
-            else self.close - self.open)
+        return to_pydecimal(self.Open - self.Close \
+            if (self.Open > self.Close) \
+            else self.Close - self.Open)
 
     @property
     def upper_wick(self) -> Optional[Decimal]:
-        return to_pydecimal(self.high - (
-            self.open \
-            if self.open > self.close \
-            else self.close))
+        return to_pydecimal(self.High - (
+            self.Open \
+            if self.Open > self.Close \
+            else self.Close))
 
     @property
     def lower_wick(self) -> Optional[Decimal]:
-        return to_pydecimal((self.close \
-            if self.open > self.close \
-            else self.open) - self.low)
+        return to_pydecimal((self.Close \
+            if self.Open > self.Close \
+            else self.Open) - self.Low)
 
     @property
     def body_pct(self) -> Optional[float]:
