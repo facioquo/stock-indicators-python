@@ -2,7 +2,7 @@ from decimal import Decimal as PyDecimal
 
 from stock_indicators._cslib import CsDecimal
 from stock_indicators._cslib import CsFormatException
-from stock_indicators._cslib import CultureInfo as CsCultureInfo
+from stock_indicators._cslib import CsCultureInfo
 
 class Decimal:
     """
