@@ -1,8 +1,10 @@
 from datetime import datetime
+from numbers import Number
+
 from stock_indicators._cstypes import DateTime as CsDateTime
 from stock_indicators._cstypes import to_pydatetime
 
-class TestCsTypes:
+class TestCsTypeConversion:
     def test_datetime_conversion(self):
         py_datetime = datetime.now()
         converted_datetime = to_pydatetime(CsDateTime(py_datetime))
@@ -29,3 +31,11 @@ class TestCsTypes:
         assert py_datetime.second == converted_datetime.second
         # Ignore microsecond.
         # assert py_datetime.microsecond == converted_datetime.microsecond
+
+    def test_auto_conversion_from_double_to_float(self):
+        from System import Double as CsDouble
+
+        cs_double = CsDouble.Parse('1996.1012')
+        assert isinstance(cs_double, Number)
+        assert isinstance(cs_double, float)
+        assert 1996.1012 == cs_double
