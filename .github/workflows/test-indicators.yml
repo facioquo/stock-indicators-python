@@ -49,8 +49,21 @@ jobs:
 
       - name: Test indicators
         if: env.IS_PRIMARY == 'false'
-        run: pytest -vr A tests
+        run: pytest -vr A tests -m "not locale_specific"
+
+      - if: runner.os == 'macOS'
+        name: Set locale to ru_RU
+        run: |
+          sed -i '' 's/export\ LC_ALL=en_US.UTF-8/export\ LC_ALL=ru_RU.UTF-8/g' ~/.bashrc
+          sed -i '' 's/export\ LANG=en_US.UTF-8/export\ LANG=ru_RU.UTF-8/g' ~/.bashrc
+          source ~/.bashrc
+          locale
+
+      - if: runner.os == 'macOS'
+        name: Test locale_specific
+        run: |
+          pytest -vr A tests -m locale_specific
 
       - name: Test indicators with coverage
         if: env.IS_PRIMARY == 'true'
-        run: pytest -vr A tests --junitxml=test-results.xml
+        run: pytest -vr A tests -m "not locale_specific" --junitxml=test-results.xml
