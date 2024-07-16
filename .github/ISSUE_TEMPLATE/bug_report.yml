@@ -6,7 +6,7 @@ body:
     attributes:
       value: |
         Thank you &#128150; for taking the time report a bug in the [`stock-indicators` PyPI library](https://pypi.org/project/stock-indicators)!
-        > Please review known [issues](https://github.com/facioquo/stock-indicators-python/issues?q=is%3Aissue), community [discussions](https://github.com/DaveSkender/Stock.Indicators/discussions), and [Help! Results don't match TradingView!](https://github.com/DaveSkender/Stock.Indicators/discussions/801) before submitting a new bug report.
+        > Before reporting, please review known [issues](https://github.com/facioquo/stock-indicators-python/issues?q=is%3Aissue), community [discussions](https://github.com/DaveSkender/Stock.Indicators/discussions), and [Help! Results don't match TradingView!](https://github.com/DaveSkender/Stock.Indicators/discussions/801).
   - type: textarea
     id: what-happened
     attributes:
