@@ -41,6 +41,14 @@ jobs:
           pip install -r requirements.txt
           pip install -r requirements-test.txt
 
-      - name: Test indicators
+      - name: Test indicators (not locale_specific)
+        if: runner.os != 'macOS'
+        run: pytest -vr A tests -m "not locale_specific"
+
+      - if: runner.os == 'macOS'
+        name: Test indicators, including locale_specific(ru_RU)
         run: |
+          sed -i '' 's/export\ LC_ALL=en_US.UTF-8/export\ LC_ALL=ru_RU.UTF-8/g' ~/.bashrc
+          source ~/.bashrc
+          locale
           pytest -vr A tests

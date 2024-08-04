@@ -1,6 +1,6 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Indicators
+name: PR unit test
 
 on:
   pull_request:
@@ -48,18 +48,13 @@ jobs:
           pip install -r requirements-test.txt
 
       - name: Test indicators (not locale_specific)
-        if: env.IS_PRIMARY == 'false'
+        if: runner.os != 'macOS'
         run: pytest -vr A tests -m "not locale_specific"
 
       - if: runner.os == 'macOS'
-        name: Test indicators (locale_specific ru_RU)
+        name: Test indicators, including locale_specific(ru_RU)
         run: |
           sed -i '' 's/export\ LC_ALL=en_US.UTF-8/export\ LC_ALL=ru_RU.UTF-8/g' ~/.bashrc
-          sed -i '' 's/export\ LANG=en_US.UTF-8/export\ LANG=ru_RU.UTF-8/g' ~/.bashrc
           source ~/.bashrc
           locale
-          pytest -vr A tests -m locale_specific
-
-      - name: Test indicators with coverage
-        if: env.IS_PRIMARY == 'true'
-        run: pytest -vr A tests -m "not locale_specific" --junitxml=test-results.xml
+          pytest -vr A tests $( $IS_PRIMARY && echo "--junitxml=test-results.xml" )
