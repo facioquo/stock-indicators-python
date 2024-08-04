@@ -1,6 +1,7 @@
 from datetime import datetime
 from numbers import Number
 
+from stock_indicators._cslib import CsCultureInfo
 from stock_indicators._cstypes import DateTime as CsDateTime
 from stock_indicators._cstypes import to_pydatetime
 
@@ -35,7 +36,7 @@ class TestCsTypeConversion:
     def test_auto_conversion_from_double_to_float(self):
         from System import Double as CsDouble
 
-        cs_double = CsDouble.Parse('1996.1012')
+        cs_double = CsDouble.Parse('1996.1012', CsCultureInfo.InvariantCulture)
         assert isinstance(cs_double, Number)
         assert isinstance(cs_double, float)
         assert 1996.1012 == cs_double
