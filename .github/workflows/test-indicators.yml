@@ -24,7 +24,7 @@ jobs:
     env:
 
       # identifying primary configuration so only one reports coverage
-      IS_PRIMARY: ${{ matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12' && matrix.dotnet-version == '8.x' }}
+      IS_PRIMARY: ${{ matrix.os == 'macos-latest' && matrix.python-version == '3.12' && matrix.dotnet-version == '8.x' }}
 
     steps:
       - name: Checkout source
@@ -47,12 +47,12 @@ jobs:
           pip install -r requirements.txt
           pip install -r requirements-test.txt
 
-      - name: Test indicators
+      - name: Test indicators (not locale_specific)
         if: env.IS_PRIMARY == 'false'
         run: pytest -vr A tests -m "not locale_specific"
 
       - if: runner.os == 'macOS'
-        name: Set locale to ru_RU
+        name: Test indicators (locale_specific ru_RU)
         run: |
           sed -i '' 's/export\ LC_ALL=en_US.UTF-8/export\ LC_ALL=ru_RU.UTF-8/g' ~/.bashrc
           sed -i '' 's/export\ LANG=en_US.UTF-8/export\ LANG=ru_RU.UTF-8/g' ~/.bashrc
