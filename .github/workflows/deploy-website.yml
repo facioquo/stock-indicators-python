@@ -14,7 +14,8 @@ jobs:
     runs-on: ubuntu-latest
 
     environment:
-      name: docs-website
+      name: stockindicators.dev
+      url: https://python.stockindicators.dev
 
     steps:
       - name: Checkout source
@@ -24,8 +25,7 @@ jobs:
         uses: ruby/setup-ruby@v1
         with:
           working-directory: docs
-          ruby-version: 3.2
-          bundler-cache: false
+          ruby-version: 3.3
 
       - name: Define tag
         id: tag
@@ -38,7 +38,7 @@ jobs:
           replace: "${{ steps.tag.outputs.version }}"
           regex: false
 
-      - name: Setup GEMs
+      - name: Install GEMs
         working-directory: docs
         env:
           BUNDLE_GEMFILE: ${{github.workspace}}/docs/GemFile
