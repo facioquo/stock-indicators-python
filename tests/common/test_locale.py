@@ -26,7 +26,7 @@ class TestLocale:
     def test_re_conversion_to_CSharp_decimal_with_comma_decimal_separator(self):
         # result value will be distorted
         # if CsDecimal is converted into CsDecimal again, since comma as a decimal separator would be ignored.
-        # Note: did not add validation logic to avoid performance loss.
+        # Note: did not add defensive logic to avoid performance loss.
         cs_decimal = CsDecimalConverter('1996,10.12')
         assert '199610,12' == str(cs_decimal)
         

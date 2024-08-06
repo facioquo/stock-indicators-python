@@ -23,7 +23,7 @@ jobs:
 
     env:
 
-      # identifying primary configuration so only one reports coverage
+      # identifying primary configuration so only one reports to console
       IS_PRIMARY: ${{ matrix.os == 'macos-latest' && matrix.python-version == '3.12' && matrix.dotnet-version == '8.x' }}
 
     steps:
