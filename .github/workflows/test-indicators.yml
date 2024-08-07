@@ -9,7 +9,7 @@ on:
 
 jobs:
   test:
-    name: unit tests
+    name: indicators
     runs-on: ${{ matrix.os }}
 
     permissions:

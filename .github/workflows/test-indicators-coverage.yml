@@ -1,6 +1,6 @@
 # For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Publish code coverage
+name: Test with code coverage
 
 on: ["push"]
 
@@ -9,7 +9,7 @@ permissions:
 
 jobs:
   test:
-    name: code coverage
+    name: indicators
     runs-on: macos-latest
 
     steps:
