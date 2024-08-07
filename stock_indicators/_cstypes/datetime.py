@@ -1,7 +1,7 @@
 from datetime import datetime as PyDateTime
 
 from stock_indicators._cslib import CsDateTime
-from stock_indicators._cslib import CultureInfo
+from stock_indicators._cslib import CsCultureInfo
 
 
 class DateTime:
@@ -32,4 +32,4 @@ def to_pydatetime(cs_datetime):
         cs_datetime : `System.DateTime` of C#.
     """
     if isinstance(cs_datetime, CsDateTime):
-        return PyDateTime.fromisoformat(cs_datetime.ToString("s", CultureInfo.InvariantCulture))
+        return PyDateTime.fromisoformat(cs_datetime.ToString("s", CsCultureInfo.InvariantCulture))

@@ -1,10 +1,7 @@
-from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -57,12 +54,12 @@ class KAMAResult(ResultBase):
         self._csdata.ER = value
 
     @property
-    def kama(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Kama)
+    def kama(self) -> Optional[float]:
+        return self._csdata.Kama
 
     @kama.setter
     def kama(self, value):
-        self._csdata.Kama = CsDecimal(value)
+        self._csdata.Kama = value
 
 
 _T = TypeVar("_T", bound=KAMAResult)

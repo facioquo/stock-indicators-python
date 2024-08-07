@@ -69,11 +69,11 @@ class _Quote:
         """Constructs `Quote` instance from C# `Quote` instance."""
         return cls(
             date=to_pydatetime(cs_quote.Date),
-            open=cs_quote.Open,
-            high=cs_quote.High,
-            low=cs_quote.Low,
-            close=cs_quote.Close,
-            volume=cs_quote.Volume
+            open=to_pydecimal(cs_quote.Open),
+            high=to_pydecimal(cs_quote.High),
+            low=to_pydecimal(cs_quote.Low),
+            close=to_pydecimal(cs_quote.Close),
+            volume=to_pydecimal(cs_quote.Volume)
         )
 
     @classmethod
