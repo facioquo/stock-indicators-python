@@ -44,7 +44,7 @@ KAMAResults[KAMAResult]
 | -- |-- |--
 | `date` | datetime | Date
 | `efficiency_ratio`   | float, Optional | Efficiency Ratio is the fractal efficiency of price changes
-| `kama` | Decimal, Optional | Kaufman's adaptive moving average
+| `kama` | float, Optional | Kaufman's adaptive moving average
 
 More about Efficiency Ratio(ER): ER fluctuates between 0 and 1, but these extremes are the exception, not the norm. ER would be 1 if prices moved up or down consistently over the `er_periods` periods. ER would be zero if prices are unchanged over the `er_periods` periods.
 
