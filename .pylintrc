@@ -8,8 +8,11 @@ ignore-imports=yes
 
 disable=
     C0103,
+    C0114,
+    C0115,
     C0116,  
     C0301,
+    C0321,
     C0413,
     E0401,
     W0212,
