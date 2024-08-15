@@ -9,7 +9,7 @@ class Decimal:
     Class for converting a number into C#'s `System.Decimal` class.
 
     Parameters:
-        decimal : `int`, `float` or any `object` that can be represented as a number.
+        decimal : `int`, `float` or any `object` that can be represented as a number string.
 
     Example:
         Constructing `System.Decimal` from `float` of Python.
@@ -22,7 +22,7 @@ class Decimal:
         return CsDecimal.Parse(str(decimal), CsCultureInfo.InvariantCulture)
 
 
-def to_pydecimal(cs_decimal):
+def to_pydecimal(cs_decimal: CsDecimal) -> PyDecimal:
     """
     Converts an object to a native Python decimal object.
 

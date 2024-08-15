@@ -1,5 +1,7 @@
+from datetime import datetime
 from decimal import Decimal
-from typing import Iterable
+from numbers import Number
+from typing import Iterable, Optional
 
 from stock_indicators._cslib import CsQuote
 from stock_indicators._cslib import CsQuoteUtility
@@ -56,7 +58,9 @@ class _Quote:
     close = property(_get_close, _set_close)
     volume = property(_get_volume, _set_volume)
 
-    def __init__(self, date, open = None, high = None, low = None, close = None, volume = None):
+    def __init__(self, date: datetime, open: Optional[Number] = None,
+                 high: Optional[Number] = None, low: Optional[Number] = None,
+                 close: Optional[Number] = None, volume: Optional[Number] = None):
         self.date = date
         self.open: Decimal = open if open else 0
         self.high: Decimal = high if high else 0
@@ -86,4 +90,7 @@ class _Quote:
 
 
 class Quote(generate_cs_inherited_class(_Quote, CsQuote)):
-    """A single dated quote containing OHLCV elements."""
+    """
+    A single dated quote containing OHLCV elements.
+    OHLCV values can be given as any object that can be represented as a number string.
+    """
