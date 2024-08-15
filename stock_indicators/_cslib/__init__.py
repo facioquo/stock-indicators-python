@@ -51,6 +51,3 @@ from Skender.Stock.Indicators import PeriodSize as CsPeriodSize
 from Skender.Stock.Indicators import PivotPointType as CsPivotPointType
 from Skender.Stock.Indicators import PivotTrend as CsPivotTrend
 from Skender.Stock.Indicators import Match as CsMatch
-
-# Exceptions
-from System import FormatException as CsFormatException

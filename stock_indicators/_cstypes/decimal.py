@@ -1,8 +1,8 @@
 from decimal import Decimal as PyDecimal
 
 from stock_indicators._cslib import CsDecimal
-from stock_indicators._cslib import CsFormatException
 from stock_indicators._cslib import CsCultureInfo
+
 
 class Decimal:
     """
@@ -19,11 +19,7 @@ class Decimal:
         2.5
     """
     def __new__(cls, decimal) -> CsDecimal:
-        try:
-            return CsDecimal.Parse(str(decimal), CsCultureInfo.InvariantCulture)
-        except CsFormatException as e:
-            raise ValueError("You may be using numeric data that is incompatible with your locale environment settings.\n"
-                             "For example, you may be using decimal points instead of commas.") from e
+        return CsDecimal.Parse(str(decimal), CsCultureInfo.InvariantCulture)
 
 
 def to_pydecimal(cs_decimal):
