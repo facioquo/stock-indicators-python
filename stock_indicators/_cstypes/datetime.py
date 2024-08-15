@@ -20,8 +20,7 @@ class DateTime:
         3/26/2021 10:02:22 PM
     """
     def __new__(cls, datetime) -> CsDateTime:
-        if isinstance(datetime, PyDateTime):
-            return CsDateTime.Parse(datetime.isoformat())
+        return CsDateTime.Parse(datetime.isoformat())
 
 
 def to_pydatetime(cs_datetime):
@@ -31,5 +30,4 @@ def to_pydatetime(cs_datetime):
     Parameter:
         cs_datetime : `System.DateTime` of C#.
     """
-    if isinstance(cs_datetime, CsDateTime):
-        return PyDateTime.fromisoformat(cs_datetime.ToString("s", CsCultureInfo.InvariantCulture))
+    return PyDateTime.fromisoformat(cs_datetime.ToString("s", CsCultureInfo.InvariantCulture))
