@@ -42,7 +42,7 @@ def get_vwap(quotes, start = None, month = 1, day = 1, hour = 0, minute = 0):
     if isinstance(start, int):
         start = datetime(start, month, day, hour, minute)
 
-    results = CsIndicator.GetVwap[Quote](CsList(Quote, quotes), CsDateTime(start))
+    results = CsIndicator.GetVwap[Quote](CsList(Quote, quotes), CsDateTime(start) if start else None)
     return VWAPResults(results, VWAPResult)
 
 

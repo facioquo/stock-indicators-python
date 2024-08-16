@@ -59,7 +59,6 @@ class _CandleProperties(_Quote):
 
 class CandleProperties(generate_cs_inherited_class(_CandleProperties, CsCandleProperties)):
     """An extended version of Quote that contains additional calculated properties."""
-    pass
 
 
 class CandleResult(ResultBase):
