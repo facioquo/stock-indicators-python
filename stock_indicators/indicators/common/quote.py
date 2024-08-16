@@ -1,13 +1,12 @@
+from datetime import datetime
 from decimal import Decimal
-from typing import Iterable
+from typing import Any, Iterable, Optional
 
-from stock_indicators._cslib import CsQuote
-from stock_indicators._cslib import CsQuoteUtility
+from stock_indicators._cslib import CsQuote, CsQuoteUtility
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import DateTime as CsDateTime
 from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes.datetime import to_pydatetime
-from stock_indicators._cstypes.decimal import to_pydecimal
+from stock_indicators._cstypes import to_pydatetime, to_pydecimal
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common._contrib.type_resolver import generate_cs_inherited_class
 
@@ -56,7 +55,9 @@ class _Quote:
     close = property(_get_close, _set_close)
     volume = property(_get_volume, _set_volume)
 
-    def __init__(self, date, open = None, high = None, low = None, close = None, volume = None):
+    def __init__(self, date: datetime, open: Optional[Any] = None,
+                 high: Optional[Any] = None, low: Optional[Any] = None,
+                 close: Optional[Any] = None, volume: Optional[Any] = None):
         self.date = date
         self.open: Decimal = open if open else 0
         self.high: Decimal = high if high else 0
@@ -86,4 +87,7 @@ class _Quote:
 
 
 class Quote(generate_cs_inherited_class(_Quote, CsQuote)):
-    """A single dated quote containing OHLCV elements."""
+    """
+    A single dated quote containing OHLCV elements.
+    OHLCV values can be given as any object that can be represented as a number string.
+    """

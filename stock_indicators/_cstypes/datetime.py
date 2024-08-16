@@ -19,11 +19,11 @@ class DateTime:
         >>> cs_now
         3/26/2021 10:02:22 PM
     """
-    def __new__(cls, datetime) -> CsDateTime:
+    def __new__(cls, datetime: PyDateTime) -> CsDateTime:
         return CsDateTime.Parse(datetime.isoformat())
 
 
-def to_pydatetime(cs_datetime):
+def to_pydatetime(cs_datetime: CsDateTime) -> PyDateTime:
     """
     Converts C#'s `System.DateTime` struct to a native Python datetime object.
 
