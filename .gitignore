@@ -133,3 +133,6 @@ dmypy.json
 
 # Jekyll site
 _site/
+
+# JetBrains
+.idea/
