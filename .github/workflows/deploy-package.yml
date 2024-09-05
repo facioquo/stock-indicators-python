@@ -40,7 +40,7 @@ jobs:
       with:
         name: python-package-distributions
         path: dist/
-
+        include-hidden-files: true
 
   # This will be triggered only when a tag is pushed
   publish-to-pypi:
