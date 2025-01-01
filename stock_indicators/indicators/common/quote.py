@@ -14,8 +14,9 @@ from stock_indicators.indicators.common._contrib.type_resolver import generate_c
 def _get_date(quote):
     return to_pydatetime(quote.Date)
 
-
 def _set_date(quote, value):
+    if value.tzinfo is not None:
+        value = value.astimezone(datetime.timezone.utc)
     quote.Date = CsDateTime(value)
 
 def _get_open(quote):

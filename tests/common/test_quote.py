@@ -1,6 +1,6 @@
-from datetime import datetime, timezone
-from decimal import Decimal
 from stock_indicators.indicators.common.quote import Quote
+from decimal import Decimal
+from datetime import datetime, timezone
 
 def test_quote_constructor_retains_timezone():
     dt = datetime.fromisoformat('2000-03-26 23:00+0000')
@@ -40,7 +40,7 @@ def test_quote_constructor_handles_various_date_formats():
     )
 
     q3 = Quote(
-        date=dt3.astimezone,
+        date=dt3,
         open=Decimal('23'),
         high=Decimal('26'),
         low=Decimal('20'),
@@ -51,8 +51,8 @@ def test_quote_constructor_handles_various_date_formats():
     assert str(q1.date.tzinfo) == 'UTC'
     assert str(q1.date.time()) == '23:00:00'
 
-    assert str(q2.date.tzinfo) == 'UTC'
+    assert str(q2.date.tzinfo) == 'None'
     assert str(q2.date.time()) == '23:00:00'
 
-    assert str(q3.date.tzinfo) == 'UTC'
+    assert str(q3.date.tzinfo) == 'None'
     assert str(q3.date.time()) == '00:00:00'

@@ -22,7 +22,6 @@ class DateTime:
     def __new__(cls, datetime: PyDateTime) -> CsDateTime:
         return CsDateTime.Parse(datetime.isoformat())
 
-
 def to_pydatetime(cs_datetime: CsDateTime) -> PyDateTime:
     """
     Converts C#'s `System.DateTime` struct to a native Python datetime object.
@@ -30,5 +29,4 @@ def to_pydatetime(cs_datetime: CsDateTime) -> PyDateTime:
     Parameter:
         cs_datetime : `System.DateTime` of C#.
     """
-    datetime_str = cs_datetime.ToString("o", CsCultureInfo.InvariantCulture)
-    return PyDateTime.fromisoformat(datetime_str)
+    return PyDateTime.fromisoformat(cs_datetime.ToString("s", CsCultureInfo.InvariantCulture))
