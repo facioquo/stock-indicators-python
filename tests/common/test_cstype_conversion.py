@@ -1,9 +1,11 @@
 from datetime import datetime
 from numbers import Number
+from decimal import Decimal
 
 from stock_indicators._cslib import CsCultureInfo
 from stock_indicators._cstypes import DateTime as CsDateTime
 from stock_indicators._cstypes import to_pydatetime
+from stock_indicators.indicators.common.quote import Quote
 
 class TestCsTypeConversion:
     def test_datetime_conversion(self):
@@ -40,3 +42,17 @@ class TestCsTypeConversion:
         assert isinstance(cs_double, Number)
         assert isinstance(cs_double, float)
         assert 1996.1012 == cs_double
+
+    def test_quote_constructor_retains_timezone(self):
+        dt = datetime.fromisoformat('2000-03-26 23:00+0000')
+        q = Quote(
+            date=dt,
+            open=Decimal('23'),
+            high=Decimal('26'),
+            low=Decimal('20'),
+            close=Decimal('25'),
+            volume=Decimal('323')
+        )
+
+        assert str(q.date.tzinfo) == 'UTC'
+        assert str(q.date.time()) == '23:00:00'
