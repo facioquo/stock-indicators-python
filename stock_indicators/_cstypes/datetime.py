@@ -32,4 +32,7 @@ def to_pydatetime(cs_datetime: CsDateTime) -> PyDateTime:
     Parameter:
         cs_datetime : `System.DateTime` of C#.
     """
-    return PyDateTime.fromisoformat(cs_datetime.ToString("o", CsCultureInfo.InvariantCulture))
+    py_datetime = PyDateTime.fromisoformat(cs_datetime.ToString("o", CsCultureInfo.InvariantCulture))
+    if py_datetime.tzinfo is not None:
+        py_datetime = py_datetime.astimezone(py_datetime.tzinfo)
+    return py_datetime
