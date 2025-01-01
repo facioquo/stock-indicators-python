@@ -15,8 +15,6 @@ def _get_date(quote):
     return to_pydatetime(quote.Date)
 
 def _set_date(quote, value):
-    if value.tzinfo is not None:
-        value = value.astimezone(timezone.utc)
     quote.Date = CsDateTime(value)
 
 def _get_open(quote):

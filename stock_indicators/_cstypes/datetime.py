@@ -20,8 +20,6 @@ class DateTime:
         3/26/2021 10:02:22 PM
     """
     def __new__(cls, datetime: PyDateTime) -> CsDateTime:
-        if datetime.tzinfo is not None:
-            datetime = datetime.astimezone(PyTimezone.utc)
         return CsDateTime.Parse(datetime.isoformat(timespec='seconds'))
 
 
@@ -33,8 +31,6 @@ def to_pydatetime(cs_datetime: CsDateTime) -> PyDateTime:
         cs_datetime : `System.DateTime` of C#.
     """
     py_datetime = PyDateTime.fromisoformat(cs_datetime.ToString("o", CsCultureInfo.InvariantCulture))
-    if py_datetime.tzinfo is not None:
-        py_datetime = py_datetime.astimezone(py_datetime.tzinfo)
     return py_datetime
 
 if not hasattr(PyDateTime, 'timezone'):
