@@ -5,7 +5,7 @@ from stock_indicators.indicators.common.quote import Quote
 def test_quote_constructor_retains_timezone():
     dt = datetime.fromisoformat('2000-03-26 23:00+0000')
     q = Quote(
-        date=dt.astimezone(timezone.utc),
+        date=dt,
         open=Decimal('23'),
         high=Decimal('26'),
         low=Decimal('20'),
@@ -22,7 +22,7 @@ def test_quote_constructor_handles_various_date_formats():
     dt3 = datetime.strptime('2000-03-26', '%Y-%m-%d')
 
     q1 = Quote(
-        date=dt1.astimezone(timezone.utc),
+        date=dt1,
         open=Decimal('23'),
         high=Decimal('26'),
         low=Decimal('20'),
@@ -31,7 +31,7 @@ def test_quote_constructor_handles_various_date_formats():
     )
 
     q2 = Quote(
-        date=dt2.astimezone(timezone.utc),
+        date=dt2,
         open=Decimal('23'),
         high=Decimal('26'),
         low=Decimal('20'),
@@ -40,7 +40,7 @@ def test_quote_constructor_handles_various_date_formats():
     )
 
     q3 = Quote(
-        date=dt3.astimezone(timezone.utc),
+        date=dt3.astimezone,
         open=Decimal('23'),
         high=Decimal('26'),
         low=Decimal('20'),
