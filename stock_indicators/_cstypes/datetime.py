@@ -1,4 +1,4 @@
-from datetime import datetime as PyDateTime
+from datetime import datetime as PyDateTime, timezone as PyTimezone
 
 from stock_indicators._cslib import CsDateTime
 from stock_indicators._cslib import CsCultureInfo
@@ -21,7 +21,7 @@ class DateTime:
     """
     def __new__(cls, datetime: PyDateTime) -> CsDateTime:
         if datetime.tzinfo is not None:
-            datetime = datetime.astimezone(PyDateTime.timezone.utc)
+            datetime = datetime.astimezone(PyTimezone.utc)
         return CsDateTime.Parse(datetime.isoformat(timespec='seconds'))
 
 
@@ -36,3 +36,6 @@ def to_pydatetime(cs_datetime: CsDateTime) -> PyDateTime:
     if py_datetime.tzinfo is not None:
         py_datetime = py_datetime.astimezone(py_datetime.tzinfo)
     return py_datetime
+
+if not hasattr(PyDateTime, 'timezone'):
+    PyDateTime.timezone = PyTimezone
