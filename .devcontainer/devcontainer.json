@@ -18,5 +18,9 @@
     "ms-vscode-remote.remote-containers"
   ],
   "postCreateCommand": "pip install -r requirements.txt -r requirements-test.txt",
-  "workspaceFolder": "/workspace"
+  "workspaceFolder": "/workspace",
+  "tasks": {
+    "build": "pip install -r requirements.txt && pip install -r requirements-test.txt",
+    "test": "pytest -vr A tests -m \"not locale_specific\""
+  }
 }
