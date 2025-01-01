@@ -46,7 +46,7 @@ class TestCsTypeConversion:
     def test_quote_constructor_retains_timezone(self):
         dt = datetime.fromisoformat('2000-03-26 23:00+0000')
         q = Quote(
-            date=dt,
+            date=dt.astimezone(datetime.timezone.utc),
             open=Decimal('23'),
             high=Decimal('26'),
             low=Decimal('20'),

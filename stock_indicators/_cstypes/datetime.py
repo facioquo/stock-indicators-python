@@ -20,6 +20,8 @@ class DateTime:
         3/26/2021 10:02:22 PM
     """
     def __new__(cls, datetime: PyDateTime) -> CsDateTime:
+        if datetime.tzinfo is not None:
+            datetime = datetime.astimezone(PyDateTime.timezone.utc)
         return CsDateTime.Parse(datetime.isoformat(timespec='seconds'))
 
 
