@@ -15,7 +15,8 @@
     "ms-vscode.cpptools",
     "eamodio.gitlens",
     "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint"
+    "dbaeumer.vscode-eslint",
+    "github.copilot"
   ],
   "postCreateCommand": "pip install -r requirements.txt -r requirements-test.txt"
 }
