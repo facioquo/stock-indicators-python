@@ -1,36 +1,26 @@
 {
-    "name": "Python 3",
-    "build": {
-        "dockerfile": "Dockerfile",
-        "context": "..",
-        "args": {
-            "VARIANT": "3.12"
-        }
-    },
-    "settings": {
-        "terminal.integrated.shell.linux": "/bin/bash"
-    },
-    "extensions": [
-        "ms-python.python",
-        "ms-python.vscode-pylance",
-        "github.copilot"
-    ],
-    "postCreateCommand": "pip install -r requirements-test.txt",
-    "remoteUser": "vscode",
-    "features": {
-        "ghcr.io/devcontainers/features/python:1": {
-            "version": "3.12"
-        }
-    },
-    "customizations": {
-        "vscode": {
-            "settings": {
-                "python.defaultInterpreterPath": "/usr/local/bin/python"
-            }
-        }
-    },
-    "tasks": {
-        "test": "pytest -vr A tests -m 'not locale_specific'",
-        "build": "pip install -r requirements.txt  && pip install -r requirements-test.txt"
-    }
+  "name": "Python Dev Container",
+  "image": "mcr.microsoft.com/vscode/devcontainers/python:3.9",
+  "settings": {
+    "terminal.integrated.shell.linux": "/bin/bash"
+  },
+  "extensions": [
+    "ms-python.python",
+    "ms-python.vscode-pylance",
+    "ms-python.flake8",
+    "ms-python.black-formatter",
+    "ms-python.isort",
+    "ms-toolsai.jupyter",
+    "eamodio.gitlens",
+    "esbenp.prettier-vscode",
+    "dbaeumer.vscode-eslint",
+    "github.copilot",
+    "ms-vscode-remote.remote-containers"
+  ],
+  "postCreateCommand": "pip install -r requirements.txt -r requirements-test.txt",
+  "workspaceFolder": "/workspace",
+  "tasks": {
+    "build": "pip install -r requirements.txt && pip install -r requirements-test.txt",
+    "test": "pytest -vr A tests -m \"not locale_specific\""
+  }
 }
