@@ -1,6 +1,35 @@
 {
-  "tasks": {
-    "test": "pytest -vr A tests -m \"not locale_specific\"",
-    "build": "pip install -r requirements.txt  && pip install -r requirements-test.txt"
-  }
+    "name": "Python 3",
+    "build": {
+        "dockerfile": "Dockerfile",
+        "context": "..",
+        "args": {
+            "VARIANT": "3.12"
+        }
+    },
+    "settings": {
+        "terminal.integrated.shell.linux": "/bin/bash"
+    },
+    "extensions": [
+        "ms-python.python",
+        "ms-python.vscode-pylance"
+    ],
+    "postCreateCommand": "pip install -r requirements-test.txt",
+    "remoteUser": "vscode",
+    "features": {
+        "ghcr.io/devcontainers/features/python:1": {
+            "version": "3.12"
+        }
+    },
+    "customizations": {
+        "vscode": {
+            "settings": {
+                "python.defaultInterpreterPath": "/usr/local/bin/python"
+            }
+        }
+    },
+    "tasks": {
+        "test": "pytest -vr A tests -m \"not locale_specific\"",
+        "build": "pip install -r requirements.txt  && pip install -r requirements-test.txt"
+    }
 }
