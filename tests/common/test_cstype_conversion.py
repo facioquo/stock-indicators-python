@@ -87,7 +87,7 @@ class TestCsTypeConversion:
         )
 
         q3 = Quote(
-            date=dt3,
+            date=dt3.astimezone,
             open=Decimal('23'),
             high=Decimal('26'),
             low=Decimal('20'),
@@ -98,8 +98,8 @@ class TestCsTypeConversion:
         assert str(q1.date.tzinfo) == 'UTC'
         assert str(q1.date.time()) == '23:00:00'
 
-        assert str(q2.date.tzinfo) == 'None'
+        assert str(q2.date.tzinfo) == 'UTC'
         assert str(q2.date.time()) == '23:00:00'
 
-        assert str(q3.date.tzinfo) == 'None'
+        assert str(q3.date.tzinfo) == 'UTC'
         assert str(q3.date.time()) == '00:00:00'
