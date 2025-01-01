@@ -44,8 +44,8 @@ class TestCsTypeConversion:
     def test_quote_constructor_retains_timezone(self):
         from stock_indicators.indicators.common.quote import Quote
         from decimal import Decimal
-        from datetime import datetime, timezone
-        
+        from datetime import datetime
+
         dt = datetime.fromisoformat('2000-03-26 23:00+0000')
         q = Quote(
             date=dt,
@@ -62,8 +62,8 @@ class TestCsTypeConversion:
     def test_quote_constructor_handles_various_date_formats(self):
         from stock_indicators.indicators.common.quote import Quote
         from decimal import Decimal
-        from datetime import datetime, timezone
-        
+        from datetime import datetime
+
         dt1 = datetime.fromisoformat('2000-03-26 23:00+0000')
         dt2 = datetime.strptime('2000-03-26 23:00:00', '%Y-%m-%d %H:%M:%S')
         dt3 = datetime.strptime('2000-03-26', '%Y-%m-%d')
