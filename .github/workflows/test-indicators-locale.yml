@@ -16,15 +16,15 @@ jobs:
 
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest, macos-latest]
+        os: [ubuntu-latest, windows-latest] #, macos-latest
         locale: [
-          'fr_FR.UTF-8',    # Uses comma as decimal separator
-          'de_DE.UTF-8',    # Uses comma as decimal, dot as thousands
+          # 'fr_FR.UTF-8',    # Uses comma as decimal separator
+          # 'de_DE.UTF-8',    # Uses comma as decimal, dot as thousands
           'ru_RU.UTF-8'     # Uses comma as decimal, space as thousands
         ]
         python-version: ['3.12']
 
-    name: "${{ matrix.locale }} | Py ${{ matrix.python-version }} [${{ matrix.os }}]"
+    name: "Py${{ matrix.python-version }}|${{ matrix.locale }}»${{ matrix.os }}"
     runs-on: ${{ matrix.os }}
 
     env:

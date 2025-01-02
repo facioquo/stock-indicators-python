@@ -18,7 +18,7 @@ jobs:
         dotnet-version: ["6.x", "7.x", "8.x"]
 
     runs-on: ${{ matrix.os }}
-    name: Py ${{ matrix.python-version }} | .NET ${{ matrix.dotnet-version }} [${{ matrix.os }}]
+    name: "Py${{ matrix.python-version }}|.NET${{ matrix.dotnet-version }}»${{ matrix.os }}"
 
     env:
 
