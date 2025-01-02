@@ -18,8 +18,7 @@ jobs:
       matrix:
         os: [ubuntu-latest, windows-latest] #, macos-latest
         locale: [
-          # 'fr_FR.UTF-8',    # Uses comma as decimal separator
-          # 'de_DE.UTF-8',    # Uses comma as decimal, dot as thousands
+          'fr_FR.UTF-8',    # Uses comma as decimal separator
           'ru_RU.UTF-8'     # Uses comma as decimal, space as thousands
         ]
         python-version: ['3.12']
@@ -57,19 +56,24 @@ jobs:
         if: runner.os == 'Linux'
         run: |
           # Install locale tools
-          sudo apt-get update
-          sudo apt-get install -y locales locales-all
+          sudo apt-get update && sudo apt-get install -y locales
 
-          # Generate required locale
-          sudo sed -i '/ru_RU.UTF-8/s/^# //g' /etc/locale.gen
+          # Extract locale without .UTF-8
+          LOCALE_NAME=$(echo "${{ matrix.locale }}" | cut -d. -f1)
+          
+          # Enable the locale in locale.gen
+          sudo sed -i "s/^# *\($LOCALE_NAME\.UTF-8\)/\1/" /etc/locale.gen
           sudo locale-gen
-
-          # Set the locale
-          sudo update-locale LANG=ru_RU.UTF-8 LC_ALL=ru_RU.UTF-8 LC_NUMERIC=ru_RU.UTF-8 LC_MONETARY=ru_RU.UTF-8
-
-          # Verify locale settings
-          locale -a
+          
+          # Set system locale
+          sudo update-locale LANG=${{ matrix.locale }} \
+                           LC_ALL=${{ matrix.locale }} \
+                           LC_NUMERIC=${{ matrix.locale }} \
+                           LC_MONETARY=${{ matrix.locale }}
+          
+          # Verify locale was set correctly
           locale
+          echo "Current locale settings:"
           echo "LANG=$LANG"
           echo "LC_ALL=$LC_ALL"
 
@@ -84,14 +88,29 @@ jobs:
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
-          $locale = "${{ matrix.locale }}".Split('.')[0]
-          Set-WinSystemLocale $locale
-          Set-WinUserLanguageList $locale -Force
-
-          # Ensure proper number formatting
-          Set-Culture $locale
-          [System.Threading.Thread]::CurrentThread.CurrentCulture = [System.Globalization.CultureInfo]::GetCultureInfo($locale)
-          [System.Threading.Thread]::CurrentThread.CurrentUICulture = [System.Globalization.CultureInfo]::GetCultureInfo($locale)
+          # Convert locale format (e.g., fr_FR.UTF-8 to fr-FR)
+          $locale = "${{ matrix.locale }}".Split('.')[0].Replace('_', '-')
+          
+          try {
+            # Set system locale
+            Set-WinSystemLocale -SystemLocale $locale
+            
+            # Create and set language list
+            $langList = New-WinUserLanguageList $locale
+            Set-WinUserLanguageList -LanguageList $langList -Force
+            
+            # Set thread culture
+            [System.Threading.Thread]::CurrentThread.CurrentCulture = [System.Globalization.CultureInfo]::GetCultureInfo($locale)
+            [System.Threading.Thread]::CurrentThread.CurrentUICulture = [System.Globalization.CultureInfo]::GetCultureInfo($locale)
+            
+            # Verify settings
+            Write-Host "Current Culture: $([System.Threading.Thread]::CurrentThread.CurrentCulture.Name)"
+            Write-Host "Current UI Culture: $([System.Threading.Thread]::CurrentThread.CurrentUICulture.Name)"
+          }
+          catch {
+            Write-Error "Failed to set locale: $_"
+            throw
+          }
 
       - name: Install dependencies
         run: |
