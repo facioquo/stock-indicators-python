@@ -1,9 +1,12 @@
 from datetime import datetime
+
 import pytest
+
 from stock_indicators import indicators
 from stock_indicators.indicators.common.enums import CandlePart
 
-class TestSMA:    
+
+class TestSMA:
     def test_standard(self, quotes):
         results = indicators.get_sma(quotes, 20)
 
@@ -21,8 +24,8 @@ class TestSMA:
         assert 251.8600 == round(float(results[501].sma), 4)
 
     def test_open_candle_part(self, quotes):
-        results = indicators.get_sma(quotes, 20 , CandlePart.OPEN)
-        
+        results = indicators.get_sma(quotes, 20, CandlePart.OPEN)
+
         assert 502 == len(results)
         assert 483 == len(list(filter(lambda x: x.sma is not None, results)))
 
@@ -35,30 +38,30 @@ class TestSMA:
         assert 253.1725 == round(float(results[501].sma), 4)
 
     def test_volume_candle_part(self, quotes):
-        results = indicators.get_sma(quotes, 20 , CandlePart.VOLUME)
-        
+        results = indicators.get_sma(quotes, 20, CandlePart.VOLUME)
+
         assert 502 == len(results)
         assert 483 == len(list(filter(lambda x: x.sma is not None, results)))
 
         # sample values
         r = results[24]
         assert 77293768.2 == round(float(r.sma), 1)
-        
+
         r = results[290]
         assert 157958070.8 == round(float(r.sma), 1)
-        
+
         r = results[501]
         assert datetime(2018, 12, 31) == r.date
         assert 163695200 == round(float(r.sma), 0)
 
-    def test_bad_data(self, bad_quotes):
-        results = indicators.get_sma(bad_quotes, 15)
+    def test_bad_data(self, quotes_bad):
+        results = indicators.get_sma(quotes_bad, 15)
         assert 502 == len(results)
 
-    def test_no_quotes(self, quotes):
+    def test_quotes_no(self, quotes):
         r = indicators.get_sma([], 5)
         assert 0 == len(r)
-        
+
         r = indicators.get_sma(quotes[:1], 5)
         assert 1 == len(r)
 
@@ -66,15 +69,16 @@ class TestSMA:
         results = indicators.get_sma(quotes, 20).remove_warmup_periods()
 
         assert 502 - 19 == len(results)
-        assert 251.8600 == round(float(results[len(results)-1].sma), 4)
+        assert 251.8600 == round(float(results[len(results) - 1].sma), 4)
 
     def test_condense(self, quotes):
         results = indicators.get_sma(quotes, 20).condense()
 
         assert 483 == len(results)
-        assert 251.8600 == round(float(results[len(results)-1].sma), 4)
+        assert 251.8600 == round(float(results[len(results) - 1].sma), 4)
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_sma(quotes, 0)

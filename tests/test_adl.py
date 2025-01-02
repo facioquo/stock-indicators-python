@@ -33,11 +33,11 @@ class TestADL:
     #     q2 = new_quotes[501]
     #     assert 3439986548.42 == round(float(to_pydecimal(q2.Close)), 2)
 
-    def test_bad_data(self, bad_quotes):
-        results = indicators.get_adl(bad_quotes)
+    def test_bad_data(self, quotes_bad):
+        results = indicators.get_adl(quotes_bad)
 
         assert 502 == len(results)
-    
+
     def test_with_sma(self, quotes):
         results = indicators.get_adl(quotes, 20)
 

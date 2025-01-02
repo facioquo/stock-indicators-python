@@ -1,5 +1,7 @@
 import pytest
+
 from stock_indicators import indicators
+
 
 class TestStochRSI:
     def test_fast_rsi(self, quotes):
@@ -8,7 +10,9 @@ class TestStochRSI:
         signal_periods = 3
         smooth_periods = 1
 
-        results = indicators.get_stoch_rsi(quotes, rsi_periods, stoch_periods, signal_periods, smooth_periods)
+        results = indicators.get_stoch_rsi(
+            quotes, rsi_periods, stoch_periods, signal_periods, smooth_periods
+        )
 
         assert 502 == len(results)
         assert 475 == len(list(filter(lambda x: x.stoch_rsi is not None, results)))
@@ -36,7 +40,9 @@ class TestStochRSI:
         signal_periods = 3
         smooth_periods = 3
 
-        results = indicators.get_stoch_rsi(quotes, rsi_periods, stoch_periods, signal_periods, smooth_periods)
+        results = indicators.get_stoch_rsi(
+            quotes, rsi_periods, stoch_periods, signal_periods, smooth_periods
+        )
 
         assert 502 == len(results)
         assert 473 == len(list(filter(lambda x: x.stoch_rsi is not None, results)))
@@ -58,9 +64,9 @@ class TestStochRSI:
         assert 89.8385 == round(float(r.stoch_rsi), 4)
         assert 73.4176 == round(float(r.signal), 4)
 
-    def test_bad_data(self, bad_quotes):
-        r = indicators.get_stoch_rsi(bad_quotes, 15, 20, 3, 2)
-        
+    def test_bad_data(self, quotes_bad):
+        r = indicators.get_stoch_rsi(quotes_bad, 15, 20, 3, 2)
+
         assert 502 == len(r)
 
     def test_removed(self, quotes):
@@ -69,8 +75,9 @@ class TestStochRSI:
         signal_periods = 3
         smooth_periods = 3
 
-        results = indicators.get_stoch_rsi(quotes, rsi_periods, stoch_periods, signal_periods, smooth_periods)\
-            .remove_warmup_periods()
+        results = indicators.get_stoch_rsi(
+            quotes, rsi_periods, stoch_periods, signal_periods, smooth_periods
+        ).remove_warmup_periods()
 
         removed_qty = rsi_periods + stoch_periods + smooth_periods + 100
         assert 502 - removed_qty == len(results)
@@ -90,6 +97,7 @@ class TestStochRSI:
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_stoch_rsi(quotes, 0, 14, 3, 1)
 
