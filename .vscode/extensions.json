@@ -1,0 +1,18 @@
+{
+  "recommendations": [
+    "codacy-app.codacy",
+    "donjayamanne.python-extension-pack",
+    "GitHub.codespaces",
+    "GitHub.copilot",
+    "github.vscode-github-actions",
+    "ms-azuretools.vscode-docker",
+    "ms-python.black-formatter",
+    "ms-python.debugpy",
+    "ms-python.python",
+    "ms-python.pylint",
+    "ms-python.vscode-pylance",
+    "ms-vscode-remote.remote-containers",
+    "redhat.vscode-yaml",
+    "ginfuru.ginfuru-vscode-jekyll-syntax"
+  ]
+}

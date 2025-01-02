@@ -1,0 +1,26 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "pip install -r requirements.txt && pip install -r requirements-test.txt && pip install pytest-benchmark",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "test",
+      "type": "shell",
+      "command": "pytest -vr A tests -m \"not locale_specific\"",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "benchmark",
+      "type": "shell",
+      "command": "pytest --benchmark-only -svr A tests",
+      "group": "none",
+      "problemMatcher": []
+    }
+  ]
+}
