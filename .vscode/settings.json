@@ -24,7 +24,8 @@
     "MD033": {                // Allow specific HTML elements
       "allowed_elements": [
         "details",
-        "summary"
+        "summary",
+        "h1"                  // we use h1 as a Jekyll-y page title
       ]
     },
     "MD041": false            // Allow content before first heading

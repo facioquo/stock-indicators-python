@@ -6,6 +6,7 @@ permalink: /
 layout: base
 lazy-images: true
 ---
+<!-- markdownlint-disable MD033 -->
 
 <p style="text-align:center;">
 <a href="https://pypi.org/project/stock-indicators" aria-label="Get the PyPI package." class="not-mobile">
