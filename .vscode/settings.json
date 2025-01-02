@@ -1,40 +1,16 @@
 {
-  "black-formatter.args": ["--line-length", "88"],
   "editor.codeActionsOnSave": {
-    "source.fixAll": "always",
-    "source.organizeImports": "always"
+    "source.fixAll": "always",                       // default: "never"
+    "source.organizeImports": "always"               // default: "never"
   },
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": true,                       // default: false
 
-  "extensions.ignoreRecommendations": false,
-  "extensions.showWelcomePage": false,
+  "isort.args": ["--profile", "black"],              // default: []
+  "isort.importStrategy": "fromEnvironment",         // default: "useBundled"
 
-  "json.format.enable": true,
-  "json.format.keepLines": false,
-
-  "isort.args": ["--profile","black"],
-  "isort.check": true,
-  "isort.importStrategy": "fromEnvironment",
-
-  "pylint.args": ["--rcfile","${workspaceFolder}/.pylintrc"],
-  "pylint.enabled": true,
-  "pylint.importStrategy": "fromEnvironment",
-
-  "[json]": {
-    "editor.defaultFormatter": "vscode.json-language-features",
-    "editor.formatOnSave": true
-  },
-  "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features",
-    "editor.formatOnSave": true
-  },
+  "pylint.importStrategy": "fromEnvironment",        // default: "useBundled"
 
   "[python]": {
-    "editor.codeActionsOnSave": {
-      "source.fixAll": "always",
-      "source.organizeImports": "always"
-    },
-    "editor.defaultFormatter": "ms-python.black-formatter",
-    "editor.formatOnSave": true
+    "editor.defaultFormatter": "ms-python.black-formatter" // default: null
   }
 }

@@ -68,5 +68,8 @@
       ]
     }
   },
-  "postCreateCommand": "python -m ensurepip --upgrade && pip install -r requirements.txt -r requirements-test.txt"
+  // Runs after the container is created
+  "postCreateCommand": "chmod +x .devcontainer/install-dependencies.sh && .devcontainer/install-dependencies.sh",
+  // Runs every time the container starts
+  "postStartCommand": "echo 'Container started'"
 }

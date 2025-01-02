@@ -68,10 +68,10 @@ For new features, submit an issue with the `enhancement` label.
 # install core dependencies
 pip install -r requirements.txt
 
-# install test dependencies
+# install dependencies
 pip install -r requirements-test.txt
 
-# run all tests.
+# run all tests
 pytest -svr A tests
 ```
 
@@ -80,9 +80,8 @@ pytest -svr A tests
 Running the commands below in your console will show performance data.  You can find the latest results [here]({{site.baseurl}}/performance/).
 
 ```bash
-# install pytest and other dependencies
+# install dependencies
 pip install -r requirements-test.txt
-pip install pytest-benchmark
 
 # run benchmarks
 pytest benchmarks

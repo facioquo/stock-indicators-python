@@ -1,3 +1,4 @@
 # These packages are needed for testing.
 pytest
 pytest-cov
+pytest-benchmark
