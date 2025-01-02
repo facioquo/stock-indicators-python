@@ -1,8 +1,14 @@
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+# For more information see:
+# https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Test with code coverage
+name: Test code coverage
 
-on: ["push"]
+on:
+  push:
+    branches: ["main"]
+
+  pull_request:
+    branches: ["*"]
 
 permissions:
   contents: read
@@ -10,7 +16,7 @@ permissions:
 jobs:
   test:
     name: indicators
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout source
@@ -27,17 +33,14 @@ jobs:
         with:
           python-version: 3.12
 
-      - name: Install requirements
+      - name: Install dependencies
         run: |
           pip install -r requirements.txt
           pip install -r requirements-test.txt
 
       - name: Test indicators
         run: |
-          sed -i '' 's/export\ LC_ALL=en_US.UTF-8/export\ LC_ALL=ru_RU.UTF-8/g' ~/.bashrc
-          source ~/.bashrc
-          locale
-          coverage run -m --source=stock_indicators pytest -svr A tests
+          coverage run -m --source=stock_indicators pytest
           coverage xml
 
       - name: Publish coverage to Codacy
