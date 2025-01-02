@@ -6,21 +6,21 @@
       "type": "shell",
       "command": "pip install -r requirements.txt && pip install -r requirements-test.txt && pip install pytest-benchmark",
       "group": "build",
-      "problemMatcher": []
+      "problemMatcher": [ ]
     },
     {
       "label": "test",
       "type": "shell",
       "command": "pytest -vr A tests -m \"not locale_specific\"",
       "group": "test",
-      "problemMatcher": []
+      "problemMatcher": [ ]
     },
     {
       "label": "benchmark",
       "type": "shell",
       "command": "pytest --benchmark-only -svr A tests",
       "group": "none",
-      "problemMatcher": []
+      "problemMatcher": [ ]
     }
   ]
 }

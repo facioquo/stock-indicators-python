@@ -5,17 +5,35 @@
     "source.organizeImports": "always"
   },
   "editor.formatOnSave": true,
+
   "extensions.ignoreRecommendations": false,
+  "extensions.showWelcomePage": false,
+
+  "json.format.enable": true,
+  "json.format.keepLines": false,
+
   "isort.args": ["--profile","black"],
   "isort.check": true,
-  "pylint.args":["--rcfile","${workspaceFolder}/.pylintrc"],
+  "isort.importStrategy": "fromEnvironment",
+
+  "pylint.args": ["--rcfile","${workspaceFolder}/.pylintrc"],
   "pylint.enabled": true,
   "pylint.importStrategy": "fromEnvironment",
+
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": true
+  },
+  "[jsonc]": {
+    "editor.defaultFormatter": "vscode.json-language-features",
+    "editor.formatOnSave": true
+  },
+
   "[python]": {
     "editor.codeActionsOnSave": {
       "source.fixAll": "always",
       "source.organizeImports": "always"
-      },
+    },
     "editor.defaultFormatter": "ms-python.black-formatter",
     "editor.formatOnSave": true
   }

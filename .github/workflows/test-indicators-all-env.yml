@@ -16,10 +16,10 @@ jobs:
     name: indicators
     runs-on: ${{ matrix.os }}
     strategy:
-        matrix:
-            os: [windows-latest, ubuntu-latest, macos-latest]
-            python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
-            dotnet-version: ["6.x", "7.x", "8.x"]
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        dotnet-version: ["6.x", "7.x", "8.x"]
 
     steps:
       - name: Checkout source

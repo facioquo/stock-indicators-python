@@ -1,10 +1,20 @@
 {
+  "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug",
+      "name": "Python: Debug File",
       "type": "debugpy",
       "request": "launch",
-      "program": "${workspaceFolder}/${input:programPath}"
+      "program": "${file}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Python: Run Tests",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/tests",
+      "console": "integratedTerminal",
+      "args": ["-m", "pytest", "-vrA"]
     }
   ],
   "inputs": [

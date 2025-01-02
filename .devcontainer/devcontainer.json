@@ -10,7 +10,7 @@
 {
   "name": "Stock Indicators for Python",
   "image": "mcr.microsoft.com/devcontainers/python:3.12",
-  "forwardPorts": [],
+  "forwardPorts": [ ],
   "remoteUser": "vscode",
   "features": {
     "ghcr.io/devcontainers/features/git:1": {
@@ -54,18 +54,19 @@
       // also see .vscode/extensions.json
       // for recommended extensions
       "extensions": [
-       "donjayamanne.python-extension-pack",
-       "EditorConfig.EditorConfig",
-       "ms-azuretools.vscode-docker",
-       "ms-dotnettools.vscode-dotnet-runtime",
-       "ms-python.black-formatter",
-       "ms-python.debugpy",
-       "ms-python.python",
-       "ms-python.pylint",
-       "ms-python.vscode-pylance",
-       "ms-vscode-remote.remote-containers"
+        "donjayamanne.python-extension-pack",
+        "EditorConfig.EditorConfig",
+        "ms-azuretools.vscode-docker",
+        "ms-dotnettools.vscode-dotnet-runtime",
+        "ms-python.black-formatter",
+        "ms-python.debugpy",
+        "ms-python.isort",
+        "ms-python.python",
+        "ms-python.pylint",
+        "ms-python.vscode-pylance",
+        "ms-vscode-remote.remote-containers"
       ]
     }
   },
   "postCreateCommand": "python -m ensurepip --upgrade && pip install -r requirements.txt -r requirements-test.txt"
-} 
+}
