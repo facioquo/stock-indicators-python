@@ -3,10 +3,9 @@
 name: Unit tests (full matrix)
 
 on:
-  workflow_dispatch:
-
   push:
     branches: ["main"]
+  workflow_dispatch:
 
 jobs:
   test:

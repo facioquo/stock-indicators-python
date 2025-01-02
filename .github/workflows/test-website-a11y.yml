@@ -6,6 +6,7 @@ on:
     paths:
       - docs/**
       - .github/workflows/test-website-a11y.yml
+  workflow_dispatch:
 
 # Prevent multiple concurrent runs
 concurrency:

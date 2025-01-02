@@ -6,12 +6,9 @@ name: Test code coverage
 on:
   push:
     branches: ["main"]
-
   pull_request:
     branches: ["*"]
-
-permissions:
-  contents: read
+  workflow_dispatch:
 
 jobs:
   test:
