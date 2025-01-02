@@ -17,21 +17,26 @@ jobs:
     strategy:
       matrix:
         os: [ubuntu-latest, windows-latest, macos-latest]
-        locale: ['fr_FR.UTF-8', 'de_DE.UTF-8']
-        python-version: ['3.8', '3.12']
+        locale: [
+          'fr_FR.UTF-8',    # Uses comma as decimal separator
+          'de_DE.UTF-8',    # Uses comma as decimal, dot as thousands
+          'ru_RU.UTF-8'     # Uses comma as decimal, space as thousands
+        ]
+        python-version: ['3.12']
 
     name: "${{ matrix.locale }} | Py ${{ matrix.python-version }} [${{ matrix.os }}]"
     runs-on: ${{ matrix.os }}
 
-    steps:
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+      # Force Python to use locale's number formatting
+      LC_NUMERIC: ${{ matrix.locale }}
+      LC_MONETARY: ${{ matrix.locale }}
+      LANG: ${{ matrix.locale }}
+      LC_ALL: ${{ matrix.locale }}
+      PYTHONIOENCODING: utf-8
 
-      - name: Change locale to ${{ matrix.locale }}
-        run: |
-          sudo apt-get update && sudo apt-get install -y locales
-          sudo locale-gen ${{ matrix.locale }}
-          sudo update-locale LANG=${{ matrix.locale }}
-          export LANG=${{ matrix.locale }}
-          export LC_ALL=${{ matrix.locale }}
+    steps:
 
       - name: Checkout source
         uses: actions/checkout@v4
@@ -48,35 +53,34 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
 
-      - name: Setup Locale (Linux)
+      - name: Set Linux locale to ${{ matrix.locale }}
         if: runner.os == 'Linux'
         run: |
+          sudo apt-get update && sudo apt-get install -y locales
           sudo locale-gen ${{ matrix.locale }}
-          sudo update-locale LANG=${{ matrix.locale }}
+          sudo update-locale LANG=${{ matrix.locale }} LC_NUMERIC=${{ matrix.locale }} LC_MONETARY=${{ matrix.locale }}
+          locale -a
+          locale
 
       - name: Set macOS locale to ${{ matrix.locale }}
         if: runner.os == 'macOS'
         run: |
-          sudo languagesetup -langspec ${{ matrix.locale }}
-          export LANG=${{ matrix.locale }}
-          export LC_ALL=${{ matrix.locale }}
+          sudo languagesetup -langspec $(echo ${{ matrix.locale }} | cut -d. -f1)
+          locale -a
+          locale
 
       - name: Set Windows locale to ${{ matrix.locale }}
         if: runner.os == 'Windows'
-        run: |
-          chcp 65001
-          set PYTHONIOENCODING=utf-8
-          set LANG=${{ matrix.locale }}
-
-      - name: Set Windows locale to ${{ matrix.locale }} (PS)
-        if: runner.os == 'Windows'
         shell: pwsh
         run: |
-          Set-WinSystemLocale ${{ matrix.locale }}
-          Set-WinUserLanguageList ${{ matrix.locale }} -Force
-          $env:LANG = '${{ matrix.locale }}'
-          $env:LC_ALL = '${{ matrix.locale }}'
-          $env:PYTHONIOENCODING = 'utf-8'
+          $locale = "${{ matrix.locale }}".Split('.')[0]
+          Set-WinSystemLocale $locale
+          Set-WinUserLanguageList $locale -Force
+
+          # Ensure proper number formatting
+          Set-Culture $locale
+          [System.Threading.Thread]::CurrentThread.CurrentCulture = [System.Globalization.CultureInfo]::GetCultureInfo($locale)
+          [System.Threading.Thread]::CurrentThread.CurrentUICulture = [System.Globalization.CultureInfo]::GetCultureInfo($locale)
 
       - name: Install dependencies
         run: |
@@ -85,10 +89,16 @@ jobs:
 
       - name: Test indicators
         env:
+          LC_NUMERIC: ${{ matrix.locale }}
+          LC_MONETARY: ${{ matrix.locale }}
           LANG: ${{ matrix.locale }}
           LC_ALL: ${{ matrix.locale }}
           PYTHONIOENCODING: utf-8
-        run: pytest -m "localization" -vr A tests --junitxml=test-results.xml
+        run: |
+          python -c "import locale; print(f'Locale: {locale.getlocale()}')"
+          python -c "import locale; print(f'Currency: {locale.currency(1234.56)}')"
+          python -c "import locale; print(f'Number: {locale.format_string(\"%.2f\", 1234.56)}')"
+          pytest -m "localization" -vr A tests --junitxml=test-results.xml
 
       - name: Post test summary
         uses: test-summary/action@v2
