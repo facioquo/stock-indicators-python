@@ -11,12 +11,10 @@ on:
   workflow_dispatch:
 
 jobs:
-
   localization:
-
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest] #, macos-latest
+        os: [ubuntu-latest, windows-latest]  # macOS removed due to locale issues
         locale: [
           'fr_FR.UTF-8',    # Uses comma as decimal separator
           'ru_RU.UTF-8'     # Uses comma as decimal, space as thousands
@@ -28,7 +26,6 @@ jobs:
 
     env:
       PYTHONPATH: ${{ github.workspace }}
-      # Force Python to use locale's number formatting
       LC_NUMERIC: ${{ matrix.locale }}
       LC_MONETARY: ${{ matrix.locale }}
       LANG: ${{ matrix.locale }}
@@ -36,102 +33,50 @@ jobs:
       PYTHONIOENCODING: utf-8
 
     steps:
+      - uses: actions/checkout@v4
 
-      - name: Checkout source
-        uses: actions/checkout@v4
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v4
         with:
           dotnet-version: 8.x
           dotnet-quality: "ga"
 
-      - name: Setup Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
 
-      - name: Set Linux locale to ${{ matrix.locale }}
+      - name: Configure Linux locale
         if: runner.os == 'Linux'
         run: |
-          # Install locale tools
           sudo apt-get update && sudo apt-get install -y locales
-
-          # Extract locale without .UTF-8
           LOCALE_NAME=$(echo "${{ matrix.locale }}" | cut -d. -f1)
-          
-          # Enable the locale in locale.gen
-          sudo sed -i "s/^# *\($LOCALE_NAME\.UTF-8\)/\1/" /etc/locale.gen
-          sudo locale-gen
-          
-          # Set system locale
-          sudo update-locale LANG=${{ matrix.locale }} \
-                           LC_ALL=${{ matrix.locale }} \
-                           LC_NUMERIC=${{ matrix.locale }} \
-                           LC_MONETARY=${{ matrix.locale }}
-          
-          # Verify locale was set correctly
-          locale
-          echo "Current locale settings:"
-          echo "LANG=$LANG"
-          echo "LC_ALL=$LC_ALL"
-
-      - name: Set macOS locale to ${{ matrix.locale }}
-        if: runner.os == 'macOS'
-        run: |
-          sudo languagesetup -langspec $(echo ${{ matrix.locale }} | cut -d. -f1)
-          locale -a
+          sudo locale-gen ${{ matrix.locale }}
+          sudo update-locale LANG=${{ matrix.locale }} LC_ALL=${{ matrix.locale }}
           locale
 
-      - name: Set Windows locale to ${{ matrix.locale }}
+      - name: Configure Windows locale
         if: runner.os == 'Windows'
         shell: pwsh
         run: |
-          # Convert locale format (e.g., fr_FR.UTF-8 to fr-FR)
           $locale = "${{ matrix.locale }}".Split('.')[0].Replace('_', '-')
-          
-          try {
-            # Set system locale
-            Set-WinSystemLocale -SystemLocale $locale
-            
-            # Create and set language list
-            $langList = New-WinUserLanguageList $locale
-            Set-WinUserLanguageList -LanguageList $langList -Force
-            
-            # Set thread culture
-            [System.Threading.Thread]::CurrentThread.CurrentCulture = [System.Globalization.CultureInfo]::GetCultureInfo($locale)
-            [System.Threading.Thread]::CurrentThread.CurrentUICulture = [System.Globalization.CultureInfo]::GetCultureInfo($locale)
-            
-            # Verify settings
-            Write-Host "Current Culture: $([System.Threading.Thread]::CurrentThread.CurrentCulture.Name)"
-            Write-Host "Current UI Culture: $([System.Threading.Thread]::CurrentThread.CurrentUICulture.Name)"
-          }
-          catch {
-            Write-Error "Failed to set locale: $_"
-            throw
-          }
+          [System.Threading.Thread]::CurrentThread.CurrentCulture = [System.Globalization.CultureInfo]::GetCultureInfo($locale)
+          [System.Threading.Thread]::CurrentThread.CurrentUICulture = [System.Globalization.CultureInfo]::GetCultureInfo($locale)
 
       - name: Install dependencies
         run: |
           pip install -r requirements.txt
           pip install -r requirements-test.txt
 
-      - name: Test indicators
-        env:
-          LC_NUMERIC: ${{ matrix.locale }}
-          LC_MONETARY: ${{ matrix.locale }}
-          LANG: ${{ matrix.locale }}
-          LC_ALL: ${{ matrix.locale }}
-          PYTHONIOENCODING: utf-8
+      - name: Verify locale
         run: |
           python -c "import locale; print(f'Locale: {locale.getlocale()}')"
           python -c "import locale; print(f'Currency: {locale.currency(1234.56)}')"
           python -c "import locale; print(f'Number: {locale.format_string(\"%.2f\", 1234.56)}')"
-          pytest -m "localization" -vr A tests --junitxml=test-results.xml
 
-      - name: Post test summary
-        uses: test-summary/action@v2
+      - name: Run locale tests
+        run: pytest -m "localization" -vr A tests --junitxml=test-results.xml
+
+      - uses: test-summary/action@v2
         if: always()
         with:
           paths: test-results.xml
