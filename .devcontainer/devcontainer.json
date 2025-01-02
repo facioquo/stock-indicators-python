@@ -4,6 +4,8 @@
  * » https://github.com/devcontainers/features/tree/main/src
  * » https://code.visualstudio.com/docs/remote/containers
  * » https://github.com/devcontainers/images/blob/main/src/python
+ *
+ * » F1 > Dev Containers: Rebuild Container
  */
 {
   "name": "Stock Indicators for Python",
@@ -52,16 +54,18 @@
       // also see .vscode/extensions.json
       // for recommended extensions
       "extensions": [
-        "donjayamanne.python-extension-pack",
-        "ms-azuretools.vscode-docker",
-        "ms-python.black-formatter",
-        "ms-python.debugpy",
-        "ms-python.python",
-        "ms-python.pylint",
-        "ms-python.vscode-pylance",
-        "ms-vscode-remote.remote-containers"
+       "donjayamanne.python-extension-pack",
+       "EditorConfig.EditorConfig",
+       "ms-azuretools.vscode-docker",
+       "ms-dotnettools.vscode-dotnet-runtime",
+       "ms-python.black-formatter",
+       "ms-python.debugpy",
+       "ms-python.python",
+       "ms-python.pylint",
+       "ms-python.vscode-pylance",
+       "ms-vscode-remote.remote-containers"
       ]
     }
   },
-  "postCreateCommand": "pip install --upgrade pip && pip install -r requirements.txt -r requirements-test.txt"
-}
+  "postCreateCommand": "python -m ensurepip --upgrade && pip install -r requirements.txt -r requirements-test.txt"
+} 

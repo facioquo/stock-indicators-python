@@ -1,6 +1,5 @@
 {
   "configurations": [
-
     {
       "name": "Debug",
       "type": "debugpy",

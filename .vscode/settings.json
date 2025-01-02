@@ -1,15 +1,22 @@
 {
-  "editor.formatOnSave": true,
+  "black-formatter.args": ["--line-length", "88"],
   "editor.codeActionsOnSave": {
     "source.fixAll": "always",
     "source.organizeImports": "always"
   },
+  "editor.formatOnSave": true,
+  "extensions.ignoreRecommendations": false,
+  "isort.args": ["--profile","black"],
+  "isort.check": true,
+  "pylint.args":["--rcfile","${workspaceFolder}/.pylintrc"],
   "pylint.enabled": true,
   "pylint.importStrategy": "fromEnvironment",
-  "python.linting.enabled": true,
-  "python.linting.lintOnSave": true,
-  "python.linting.pylintEnabled": true,
-  "python.linting.pylintArgs": ["--rcfile=.pylintrc"],
-  "python.formatting.provider": "black",
-  "python.sortImports.args": ["--profile", "black"]
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.fixAll": "always",
+      "source.organizeImports": "always"
+      },
+    "editor.defaultFormatter": "ms-python.black-formatter",
+    "editor.formatOnSave": true
+  }
 }
