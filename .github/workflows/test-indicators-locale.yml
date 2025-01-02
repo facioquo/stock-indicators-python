@@ -12,17 +12,26 @@ on:
 
 jobs:
 
-  Ubuntu:
-    runs-on: ubuntu-latest
+  localization:
+
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macos-latest]
+        locale: ['fr_FR.UTF-8', 'de_DE.UTF-8']
+        python-version: ['3.8', '3.12']
+
+    name: "${{ matrix.locale }} | Py ${{ matrix.python-version }} [${{ matrix.os }}]"
+    runs-on: ${{ matrix.os }}
 
     steps:
 
-      - name: Change locale to ru_RU.UTF-8
+      - name: Change locale to ${{ matrix.locale }}
         run: |
           sudo apt-get update && sudo apt-get install -y locales
-          sudo locale-gen ru_RU.UTF-8
-          export LANG=ru_RU.UTF-8
-          export LC_ALL=ru_RU.UTF-8
+          sudo locale-gen ${{ matrix.locale }}
+          sudo update-locale LANG=${{ matrix.locale }}
+          export LANG=${{ matrix.locale }}
+          export LC_ALL=${{ matrix.locale }}
 
       - name: Checkout source
         uses: actions/checkout@v4
@@ -36,42 +45,38 @@ jobs:
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.12
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
 
-      - name: Install dependencies
+      - name: Setup Locale (Linux)
+        if: runner.os == 'Linux'
         run: |
-          pip install -r requirements.txt
-          pip install -r requirements-test.txt
+          sudo locale-gen ${{ matrix.locale }}
+          sudo update-locale LANG=${{ matrix.locale }}
 
-      - name: Test indicators
-        run: pytest -m "localization"
+      - name: Set macOS locale to ${{ matrix.locale }}
+        if: runner.os == 'macOS'
+        run: |
+          sudo languagesetup -langspec ${{ matrix.locale }}
+          export LANG=${{ matrix.locale }}
+          export LC_ALL=${{ matrix.locale }}
 
-  Windows:
-    runs-on: windows-latest
+      - name: Set Windows locale to ${{ matrix.locale }}
+        if: runner.os == 'Windows'
+        run: |
+          chcp 65001
+          set PYTHONIOENCODING=utf-8
+          set LANG=${{ matrix.locale }}
 
-    steps:
-
-      - name: Change locale to ru_RU.UTF-8
+      - name: Set Windows locale to ${{ matrix.locale }} (PS)
+        if: runner.os == 'Windows'
         shell: pwsh
         run: |
-          Set-WinSystemLocale ru-RU
-          Set-WinUserLanguageList ru-RU -Force
-          $env:LANG = 'ru_RU.UTF-8'
-          $env:LC_ALL = 'ru_RU.UTF-8'
-
-      - name: Checkout source
-        uses: actions/checkout@v4
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
-        with:
-          dotnet-version: 8.x
-          dotnet-quality: "ga"
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.12
+          Set-WinSystemLocale ${{ matrix.locale }}
+          Set-WinUserLanguageList ${{ matrix.locale }} -Force
+          $env:LANG = '${{ matrix.locale }}'
+          $env:LC_ALL = '${{ matrix.locale }}'
+          $env:PYTHONIOENCODING = 'utf-8'
 
       - name: Install dependencies
         run: |
@@ -79,37 +84,14 @@ jobs:
           pip install -r requirements-test.txt
 
       - name: Test indicators
-        run: pytest -m "localization"
+        env:
+          LANG: ${{ matrix.locale }}
+          LC_ALL: ${{ matrix.locale }}
+          PYTHONIOENCODING: utf-8
+        run: pytest -m "localization" -vr A tests --junitxml=test-results.xml
 
-  macOS:
-    runs-on: macos-latest
-
-    steps:
-
-      - name: Change locale to ru_RU.UTF-8
-        run: |
-          sudo languagesetup -langspec ru
-          export LANG=ru_RU.UTF-8
-          export LC_ALL=ru_RU.UTF-8
-
-      - name: Checkout source
-        uses: actions/checkout@v4
-
-      - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+      - name: Post test summary
+        uses: test-summary/action@v2
+        if: always()
         with:
-          dotnet-version: 8.x
-          dotnet-quality: "ga"
-
-      - name: Setup Python
-        uses: actions/setup-python@v5
-        with:
-          python-version: 3.12
-
-      - name: Install dependencies
-        run: |
-          pip install -r requirements.txt
-          pip install -r requirements-test.txt
-
-      - name: Test indicators
-        run: pytest -m "localization"
+          paths: test-results.xml

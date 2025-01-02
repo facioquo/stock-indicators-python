@@ -1,0 +1,57 @@
+# For more information see:
+# https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Unit tests (CI)
+
+on:
+  pull_request:
+    branches: ["*"]
+
+jobs:
+  test:
+
+    strategy:
+      matrix:
+        os: [windows-latest, ubuntu-latest, macos-latest]
+        python-version: ["3.8", "3.12"]
+        dotnet-version: ["6.x", "8.x"]
+
+    runs-on: ${{ matrix.os }}
+    name: Py ${{ matrix.python-version }} | .NET ${{ matrix.dotnet-version }} [${{ matrix.os }}]
+
+    env:
+
+      # identifying primary configuration so only one reports to console
+      IS_PRIMARY: ${{ matrix.os == 'macos-latest' && matrix.python-version == '3.12' && matrix.dotnet-version == '8.x' }}
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+          dotnet-quality: "ga"
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: Install requirements
+        run: |
+          pip install -r requirements.txt
+          pip install -r requirements-test.txt
+
+      - name: Test indicators
+        run: pytest -vr A tests --junitxml=test-results.xml
+
+      # results only needed from one primary instance
+
+      - name: Post test summary
+        uses: test-summary/action@v2
+        if: env.IS_PRIMARY == 'true' && always()
+        with:
+          paths: test-results.xml
