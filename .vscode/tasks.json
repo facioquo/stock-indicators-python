@@ -4,23 +4,30 @@
     {
       "label": "build",
       "type": "shell",
-      "command": "pip install -r requirements.txt && pip install -r requirements-test.txt && pip install pytest-benchmark",
+      "command": "pip install -r requirements.txt && pip install requirements-test.txt",
       "group": "build",
-      "problemMatcher": [ ]
+      "problemMatcher": []
     },
     {
-      "label": "test",
+      "label": "Test: Unit (default)",
       "type": "shell",
-      "command": "pytest -vr A tests -m \"not locale_specific\"",
+      "command": "pytest -vr A",
       "group": "test",
-      "problemMatcher": [ ]
+      "problemMatcher": []
     },
     {
-      "label": "benchmark",
+      "label": "Test: Performance",
       "type": "shell",
-      "command": "pytest --benchmark-only -svr A tests",
+      "command": "pytest benchmarks",
       "group": "none",
-      "problemMatcher": [ ]
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: Localization",
+      "type": "shell",
+      "command": "pytest -m localization -vr A",
+      "group": "none",
+      "problemMatcher": []
     }
   ]
 }

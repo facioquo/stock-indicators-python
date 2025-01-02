@@ -55,8 +55,8 @@
       // for recommended extensions
       "extensions": [
         "donjayamanne.python-extension-pack",
+        "DavidAnson.vscode-markdownlint",
         "EditorConfig.EditorConfig",
-        "ms-azuretools.vscode-docker",
         "ms-dotnettools.vscode-dotnet-runtime",
         "ms-python.black-formatter",
         "ms-python.debugpy",

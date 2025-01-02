@@ -1,13 +1,13 @@
 {
   "recommendations": [
     "codacy-app.codacy",
+    "DavidAnson.vscode-markdownlint",
     "donjayamanne.python-extension-pack",
     "EditorConfig.EditorConfig",
     "ginfuru.ginfuru-vscode-jekyll-syntax",
     "GitHub.codespaces",
     "GitHub.copilot",
     "github.vscode-github-actions",
-    "ms-azuretools.vscode-docker",
     "ms-dotnettools.vscode-dotnet-runtime",
     "ms-python.black-formatter",
     "ms-python.debugpy",

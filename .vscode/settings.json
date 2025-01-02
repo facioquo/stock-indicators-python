@@ -1,16 +1,36 @@
 {
   "editor.codeActionsOnSave": {
-    "source.fixAll": "always",                       // default: "never"
-    "source.organizeImports": "always"               // default: "never"
+    "source.fixAll": "always",                // default: "never"
+    "source.organizeImports": "always"        // default: "never"
   },
-  "editor.formatOnSave": true,                       // default: false
+  "editor.formatOnSave": true,                // default: false
+  "isort.args": ["--profile", "black"],
+  "isort.check": true,
+  "isort.importStrategy": "fromEnvironment",  // default: "useBundled"
+  "pylint.importStrategy": "fromEnvironment", // default: "useBundled"
 
-  "isort.args": ["--profile", "black"],              // default: []
-  "isort.importStrategy": "fromEnvironment",         // default: "useBundled"
-
-  "pylint.importStrategy": "fromEnvironment",        // default: "useBundled"
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "editor.formatOnSave": true,
+    "editor.rulers": [
+      80
+    ],
+    "files.trimTrailingWhitespace": true
+  },
+  "markdownlint.config": {
+    "default": true,          // Enable all default rules
+    "MD013": false,           // Disable line length checking entirely
+    "MD025": false,           // Allow multiple top level headers in the same document
+    "MD033": {                // Allow specific HTML elements
+      "allowed_elements": [
+        "details",
+        "summary"
+      ]
+    },
+    "MD041": false            // Allow content before first heading
+  },
 
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter" // default: null
+    "editor.defaultFormatter": "ms-python.black-formatter"
   }
 }
