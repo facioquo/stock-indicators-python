@@ -1,5 +1,7 @@
 import pytest
+
 from stock_indicators import indicators
+
 
 class TestATR:
     def test_standard(self, quotes):
@@ -33,8 +35,8 @@ class TestATR:
         assert 6.1497 == round(float(r.atr), 4)
         assert 2.5072 == round(float(r.atrp), 4)
 
-    def test_bad_data(self, bad_quotes):
-        r = indicators.get_atr(bad_quotes, 20)
+    def test_bad_data(self, quotes_bad):
+        r = indicators.get_atr(quotes_bad, 20)
 
         assert 502 == len(r)
 
@@ -60,5 +62,6 @@ class TestATR:
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_atr(quotes, 1)

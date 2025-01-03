@@ -1,5 +1,7 @@
 import pytest
+
 from stock_indicators import indicators
+
 
 class TestAlligator:
     def test_standard(self, quotes):
@@ -29,24 +31,24 @@ class TestAlligator:
         assert 260.98953 == round(float(results[501].jaw), 5)
 
         assert 213.699375 == round(float(results[12].teeth), 6)
-        assert  213.80008 == round(float(results[13].teeth), 5)
-        assert  226.12157 == round(float(results[99].teeth), 5)
-        assert  253.53576 == round(float(results[501].teeth), 5)
+        assert 213.80008 == round(float(results[13].teeth), 5)
+        assert 226.12157 == round(float(results[99].teeth), 5)
+        assert 253.53576 == round(float(results[501].teeth), 5)
 
         assert 213.63500 == round(float(results[7].lips), 5)
         assert 213.74900 == round(float(results[8].lips), 5)
         assert 226.35353 == round(float(results[99].lips), 5)
         assert 244.29591 == round(float(results[501].lips), 5)
 
-    def test_bad_data(self, bad_quotes):
-        results = indicators.get_alligator(bad_quotes, 3, 3, 2, 1, 1, 1)
+    def test_bad_data(self, quotes_bad):
+        results = indicators.get_alligator(quotes_bad, 3, 3, 2, 1, 1, 1)
 
         assert 502 == len(results)
 
-    def test_no_quotes(self, quotes):
+    def test_quotes_no(self, quotes):
         r = indicators.get_alligator([])
         assert 0 == len(r)
-        
+
         r = indicators.get_alligator(quotes[:1])
         assert 1 == len(r)
 
@@ -55,7 +57,7 @@ class TestAlligator:
 
         assert 502 - 21 - 250 == len(results)
 
-        r = results[len(results)-1]
+        r = results[len(results) - 1]
         assert 260.98953 == round(float(r.jaw), 5)
         assert 253.53576 == round(float(r.teeth), 5)
         assert 244.29591 == round(float(r.lips), 5)
@@ -67,31 +69,32 @@ class TestAlligator:
 
         r = results[-1]
         assert 260.98953 == round(float(r.jaw), 5)
-        assert  253.53576 == round(float(r.teeth), 5)
+        assert 253.53576 == round(float(r.teeth), 5)
         assert 244.29591 == round(float(r.lips), 5)
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_alligator(quotes, 13, 8, 13, 5, 5, 3)
-            
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_alligator(quotes, 13, 8, 8, 5, 8, 3)
-        
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_alligator(quotes, 13, 8, 8, 5, 0, 3)
-        
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_alligator(quotes, 13, 0, 8, 5, 5, 3)
-        
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_alligator(quotes, 13, 8, 8, 0, 5, 3)
-        
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_alligator(quotes, 13, 8, 8, 5, 5, 0)
-        
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_alligator(quotes, 13, 8, 12, 11, 5, 3)
-        
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_alligator(quotes, 13, 8, 8, 5, 7, 7)

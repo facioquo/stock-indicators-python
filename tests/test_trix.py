@@ -25,8 +25,8 @@ class TestTRIX:
         assert -0.230742 == round(float(r.trix), 6)
         assert -0.204536 == round(float(r.signal), 6)
 
-    def test_bad_data(self, bad_quotes):
-        r = indicators.get_trix(bad_quotes, 15, 2)
+    def test_bad_data(self, quotes_bad):
+        r = indicators.get_trix(quotes_bad, 15, 2)
         assert 502 == len(r)
 
     def test_removed(self, quotes):

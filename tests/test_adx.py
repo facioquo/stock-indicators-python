@@ -1,5 +1,7 @@
 import pytest
+
 from stock_indicators import indicators
+
 
 class TestAdx:
     def test_standard(self, quotes):
@@ -17,7 +19,7 @@ class TestAdx:
         assert 25.0124 == round(float(r.mdi), 4)
         assert r.adx is None
 
-        r  = results[29]
+        r = results[29]
         assert 37.9719 == round(float(r.pdi), 4)
         assert 14.1658 == round(float(r.mdi), 4)
         assert 19.7949 == round(float(r.adx), 4)
@@ -39,8 +41,8 @@ class TestAdx:
         assert 31.1510 == round(float(r.mdi), 4)
         assert 34.2987 == round(float(r.adx), 4)
 
-    def test_bad_data(self, bad_quotes):
-        results = indicators.get_adx(bad_quotes, 20)
+    def test_bad_data(self, quotes_bad):
+        results = indicators.get_adx(quotes_bad, 20)
 
         assert 502 == len(results)
 
@@ -49,7 +51,7 @@ class TestAdx:
 
         assert 502 - (2 * 14 + 100) == len(results)
 
-        r = results[len(results)-1]
+        r = results[len(results) - 1]
         assert 17.7565 == round(float(r.pdi), 4)
         assert 31.1510 == round(float(r.mdi), 4)
         assert 34.2987 == round(float(r.adx), 4)
@@ -66,5 +68,6 @@ class TestAdx:
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_adx(quotes, 1)

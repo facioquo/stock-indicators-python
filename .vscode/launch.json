@@ -1,0 +1,27 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Python: Debug File",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${file}",
+      "console": "integratedTerminal"
+    },
+    {
+      "name": "Python: Run Tests",
+      "type": "debugpy",
+      "request": "launch",
+      "program": "${workspaceFolder}/tests",
+      "console": "integratedTerminal",
+      "args": ["-m", "pytest", "-vrA"]
+    }
+  ],
+  "inputs": [
+    {
+      "type": "promptString",
+      "id": "programPath",
+      "description": "Path to the Python file you want to debug"
+    }
+  ]
+}
