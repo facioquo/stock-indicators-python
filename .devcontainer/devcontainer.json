@@ -10,7 +10,7 @@
 {
   "name": "Stock Indicators for Python",
   "image": "mcr.microsoft.com/devcontainers/python:3.12",
-  "forwardPorts": [ ],
+  "forwardPorts": [],
   "remoteUser": "vscode",
   "features": {
     "ghcr.io/devcontainers/features/git:1": {
@@ -41,22 +41,23 @@
       "version": "latest"
     }
   },
+  // Use 'settings' to set *default* container specific settings.json
+  // values on container create.
   "customizations": {
     "vscode": {
       // container overrides only
       // otherwise use .vscode/settings.json
       "settings": {
-        "pylint.enabled": true,
         "pylint.importStrategy": "fromEnvironment",
-        "python.defaultInterpreterPath": "/usr/local/bin/python",
-        "terminal.integrated.defaultProfile.linux": "bash"
+        "python.defaultInterpreterPath": "/usr/local/bin/python"
       },
-      // also see .vscode/extensions.json
-      // for recommended extensions
+      // required extensions
+      // for recommended, see .vscode/extensions.json
       "extensions": [
         "donjayamanne.python-extension-pack",
         "DavidAnson.vscode-markdownlint",
         "EditorConfig.EditorConfig",
+        "ms-azuretools.vscode-docker",
         "ms-dotnettools.vscode-dotnet-runtime",
         "ms-python.black-formatter",
         "ms-python.debugpy",
@@ -64,12 +65,13 @@
         "ms-python.python",
         "ms-python.pylint",
         "ms-python.vscode-pylance",
-        "ms-vscode-remote.remote-containers"
+        "ms-vscode-remote.remote-containers",
+        "SanjulaGanepola.github-local-actions"
       ]
     }
   },
   // Runs after the container is created
-  "postCreateCommand": "chmod +x .devcontainer/install-dependencies.sh && .devcontainer/install-dependencies.sh",
+  "postCreateCommand": "chmod +x .devcontainer/setup.sh && .devcontainer/setup.sh",
   // Runs every time the container starts
   "postStartCommand": "echo 'Container started'"
 }

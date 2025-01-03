@@ -47,6 +47,7 @@ exclude:
     "*.pptx",
     ".offline",
     "docs/README.md",
+    "docs/dx-*.md",
     "Gemfile",
     "node_modules",
     "vendor",
