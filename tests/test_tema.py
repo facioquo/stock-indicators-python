@@ -1,5 +1,7 @@
 import pytest
+
 from stock_indicators import indicators
+
 
 class TestTripleEMA:
     def test_standard(self, quotes):
@@ -17,8 +19,8 @@ class TestTripleEMA:
         r = results[501]
         assert 238.7690 == round(float(r.tema), 4)
 
-    def test_bad_data(self, bad_quotes):
-        r = indicators.get_tema(bad_quotes, 15)
+    def test_bad_data(self, quotes_bad):
+        r = indicators.get_tema(quotes_bad, 15)
         assert 502 == len(r)
 
     def test_removed(self, quotes):
@@ -39,5 +41,6 @@ class TestTripleEMA:
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_tema(quotes, 0)

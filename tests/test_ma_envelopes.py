@@ -1,6 +1,8 @@
 import pytest
+
 from stock_indicators import indicators
 from stock_indicators.indicators.common.enums import MAType
+
 
 class TestMAEnvelopes:
     def test_alma(self, quotes):
@@ -182,29 +184,29 @@ class TestMAEnvelopes:
         assert 252.6738 == round(float(r.upper_envelope), 4)
         assert 240.3483 == round(float(r.lower_envelope), 4)
 
-    def test_bad_data(self, bad_quotes):
-        r = indicators.get_ma_envelopes(bad_quotes, 5, 2.5, MAType.ALMA)
+    def test_bad_data(self, quotes_bad):
+        r = indicators.get_ma_envelopes(quotes_bad, 5, 2.5, MAType.ALMA)
         assert 502 == len(r)
 
-        r = indicators.get_ma_envelopes(bad_quotes, 5, 2.5, MAType.DEMA)
+        r = indicators.get_ma_envelopes(quotes_bad, 5, 2.5, MAType.DEMA)
         assert 502 == len(r)
 
-        r = indicators.get_ma_envelopes(bad_quotes, 5, 2.5, MAType.EPMA)
+        r = indicators.get_ma_envelopes(quotes_bad, 5, 2.5, MAType.EPMA)
         assert 502 == len(r)
 
-        r = indicators.get_ma_envelopes(bad_quotes, 5, 2.5, MAType.EMA)
+        r = indicators.get_ma_envelopes(quotes_bad, 5, 2.5, MAType.EMA)
         assert 502 == len(r)
 
-        r = indicators.get_ma_envelopes(bad_quotes, 5, 2.5, MAType.HMA)
+        r = indicators.get_ma_envelopes(quotes_bad, 5, 2.5, MAType.HMA)
         assert 502 == len(r)
 
-        r = indicators.get_ma_envelopes(bad_quotes, 5, 2.5, MAType.SMA)
+        r = indicators.get_ma_envelopes(quotes_bad, 5, 2.5, MAType.SMA)
         assert 502 == len(r)
 
-        r = indicators.get_ma_envelopes(bad_quotes, 5, 2.5, MAType.TEMA)
+        r = indicators.get_ma_envelopes(quotes_bad, 5, 2.5, MAType.TEMA)
         assert 502 == len(r)
 
-        r = indicators.get_ma_envelopes(bad_quotes, 5, 2.5, MAType.WMA)
+        r = indicators.get_ma_envelopes(quotes_bad, 5, 2.5, MAType.WMA)
         assert 502 == len(r)
 
     def test_condense(self, quotes):
@@ -219,6 +221,7 @@ class TestMAEnvelopes:
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_ma_envelopes(quotes, 14, 0)
 

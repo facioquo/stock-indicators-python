@@ -1,6 +1,8 @@
 import pytest
+
 from stock_indicators import indicators
 from stock_indicators.indicators.common.enums import Match
+
 
 class TestDoji:
     def test_standard(self, quotes):
@@ -37,11 +39,11 @@ class TestDoji:
         assert 256.86 == round(float(r.price), 2)
         assert Match.NEUTRAL == r.match
 
-    def test_bad_data(self, bad_quotes):
-        r = indicators.get_doji(bad_quotes)
+    def test_bad_data(self, quotes_bad):
+        r = indicators.get_doji(quotes_bad)
         assert 502 == len(r)
 
-    def test_no_quotes(self, quotes):
+    def test_quotes_no(self, quotes):
         r = indicators.get_doji([])
         assert 0 == len(r)
 
@@ -54,6 +56,7 @@ class TestDoji:
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_doji(quotes, -0.001)
 

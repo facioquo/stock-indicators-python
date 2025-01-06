@@ -1,5 +1,7 @@
 import pytest
+
 from stock_indicators import indicators
+
 
 class TestRSI:
     def test_standard(self, quotes):
@@ -13,7 +15,7 @@ class TestRSI:
 
         r = results[14]
         assert 62.0541 == round(float(r.rsi), 4)
-                
+
         r = results[249]
         assert 70.9368 == round(float(r.rsi), 4)
 
@@ -30,11 +32,11 @@ class TestRSI:
         assert 100 == round(float(r.rsi), 4)
 
         r = results[52]
-        assert   0 == round(float(r.rsi), 4)
+        assert 0 == round(float(r.rsi), 4)
 
     # def test_convert_to_quotes(self, quotes):
     #     results = indicators.get_rsi(quotes, 14).to_quotes()
-        
+
     #     assert 488 == len(results)
 
     #     first = results[0]
@@ -43,8 +45,8 @@ class TestRSI:
     #     last = results.pop()
     #     assert 42.0773 == round(float(to_pydecimal(last.Close)), 4)
 
-    def test_bad_data(self, bad_quotes):
-        r = indicators.get_rsi(bad_quotes, 20)
+    def test_bad_data(self, quotes_bad):
+        r = indicators.get_rsi(quotes_bad, 20)
 
         assert 502 == len(r)
 
@@ -66,5 +68,6 @@ class TestRSI:
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_rsi(quotes, 0)

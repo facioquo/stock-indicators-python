@@ -1,12 +1,14 @@
 import pytest
+
 from stock_indicators import indicators
+
 
 class TestAwesome:
     def test_standard(self, quotes):
         results = indicators.get_awesome(quotes, 5, 34)
 
         assert 502 == len(results)
-        assert 469 == len(list(filter(lambda x: x.oscillator is not None,results)))
+        assert 469 == len(list(filter(lambda x: x.oscillator is not None, results)))
 
         r = results[32]
         assert r.oscillator is None
@@ -22,10 +24,10 @@ class TestAwesome:
 
         r = results[501]
         assert -17.7692 == round(float(r.oscillator), 4)
-        assert -7.2763  == round(float(r.normalized), 4)
+        assert -7.2763 == round(float(r.normalized), 4)
 
-    def test_bad_data(self, bad_quotes):
-        r = indicators.get_awesome(bad_quotes, 5, 34)
+    def test_bad_data(self, quotes_bad):
+        r = indicators.get_awesome(quotes_bad, 5, 34)
 
         assert 502 == len(r)
 
@@ -36,7 +38,7 @@ class TestAwesome:
 
         last = results.pop()
         assert -17.7692 == round(float(last.oscillator), 4)
-        assert -7.2763  == round(float(last.normalized), 4)
+        assert -7.2763 == round(float(last.normalized), 4)
 
     def test_condense(self, quotes):
         results = indicators.get_awesome(quotes, 5, 34).condense()
@@ -45,10 +47,11 @@ class TestAwesome:
 
         last = results.pop()
         assert -17.7692 == round(float(last.oscillator), 4)
-        assert -7.2763  == round(float(last.normalized), 4)
+        assert -7.2763 == round(float(last.normalized), 4)
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_awesome(quotes, 0, 34)
 

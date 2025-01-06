@@ -1,6 +1,8 @@
 import pytest
+
 from stock_indicators import indicators
 from stock_indicators.indicators.common.enums import Match
+
 
 class TestMarubozu:
     def test_standard(self, quotes):
@@ -33,11 +35,11 @@ class TestMarubozu:
         assert 248.13 == round(float(r.price), 2)
         assert Match.BEAR_SIGNAL == r.match
 
-    def test_bad_data(self, bad_quotes):
-        r = indicators.get_marubozu(bad_quotes)
+    def test_bad_data(self, quotes_bad):
+        r = indicators.get_marubozu(quotes_bad)
         assert 502 == len(r)
 
-    def test_no_quotes(self, quotes):
+    def test_quotes_no(self, quotes):
         r = indicators.get_marubozu([])
         assert 0 == len(r)
 
@@ -50,6 +52,7 @@ class TestMarubozu:
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_marubozu(quotes, 79.9)
 

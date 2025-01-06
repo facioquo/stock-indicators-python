@@ -1,5 +1,7 @@
 import pytest
+
 from stock_indicators import indicators
+
 
 class TestVolatilityStop:
     def test_standard(self, quotes):
@@ -53,11 +55,11 @@ class TestVolatilityStop:
         assert 249.2423 == round(float(last.upper_band), 4)
         assert last.lower_band is None
 
-    def test_bad_data(self, bad_quotes):
-        r = indicators.get_volatility_stop(bad_quotes)
+    def test_bad_data(self, quotes_bad):
+        r = indicators.get_volatility_stop(quotes_bad)
         assert 502 == len(r)
 
-    def test_no_quotes(self, quotes):
+    def test_quotes_no(self, quotes):
         r = indicators.get_volatility_stop([])
         assert 0 == len(r)
 
@@ -84,6 +86,7 @@ class TestVolatilityStop:
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_volatility_stop(quotes, 1)
 
