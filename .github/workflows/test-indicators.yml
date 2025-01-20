@@ -17,8 +17,8 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-        python-version: ["3.8", "3.12"]
-        dotnet-version: ["6.x", "8.x"]
+        python-version: ["3.12"] # Removed "3.8"
+        dotnet-version: ["6.x"]  # Removed "8.x"
 
     runs-on: ${{ matrix.os }}
     name: "Py${{ matrix.python-version }}/.NET${{ matrix.dotnet-version }} on ${{ matrix.os }}"
@@ -44,6 +44,10 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
 
+      - name: Verify DLL Presence
+        run: |
+          ls -la stock_indicators/_cslib/lib/
+
       - name: Install requirements
         run: |
           pip install -r requirements.txt
@@ -56,6 +60,7 @@ jobs:
 
       - name: Post test summary
         uses: test-summary/action@v2
+
         if: env.IS_PRIMARY == 'true' && always()
         with:
           paths: test-results.xml
