@@ -50,7 +50,8 @@ jobs:
           which dotnet
           dotnet --version
           echo "DOTNET_ROOT=$(dirname $(which dotnet))" >> $GITHUB_ENV
-          echo "DOTNET_ROOT is set to $DOTNET_ROOT"
+          echo "PATH=$PATH:$DOTNET_ROOT" >> $GITHUB_ENV
+          echo "DOTNET_ROOT is set to $DOTNET_ROOT and PATH is updated"
 
       - name: Verify DLL presence
         run: |
