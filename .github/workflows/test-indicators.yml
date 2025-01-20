@@ -44,9 +44,21 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
 
-      - name: Verify DLL Presence
+      - name: Set .NET DOTNET_ROOT on macOS
+        if: matrix.os == 'macos-latest'
+        run: |
+          which dotnet
+          dotnet --version
+          echo "DOTNET_ROOT=$(dirname $(which dotnet))" >> $GITHUB_ENV
+          echo "DOTNET_ROOT is set to $DOTNET_ROOT"
+
+      - name: Verify DLL presence
         run: |
           ls -la stock_indicators/_cslib/lib/
+          if [ ! -f stock_indicators/_cslib/lib/Skender.Stock.Indicators.dll ]; then
+            echo "Skender.Stock.Indicators.dll is missing."
+            exit 1
+          fi
 
       - name: Install requirements
         run: |
