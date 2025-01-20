@@ -61,6 +61,22 @@ jobs:
             exit 1
           fi
 
+      - name: Set Permissions for DLL on macOS
+        if: matrix.os == 'macos-latest'
+        run: |
+          chmod +r stock_indicators/_cslib/lib/Skender.Stock.Indicators.dll
+
+      - name: Install Dependencies on macOS
+        if: matrix.os == 'macos-latest'
+        run: |
+          brew install libffi
+          export LDFLAGS="-L/usr/local/opt/libffi/lib"
+          export CPPFLAGS="-I/usr/local/opt/libffi/include"
+          export PKG_CONFIG_PATH="/usr/local/opt/libffi/lib/pkgconfig"
+          echo "LDFLAGS=-L/usr/local/opt/libffi/lib" >> $GITHUB_ENV
+          echo "CPPFLAGS=-I/usr/local/opt/libffi/include" >> $GITHUB_ENV
+          echo "PKG_CONFIG_PATH=/usr/local/opt/libffi/lib/pkgconfig" >> $GITHUB_ENV
+
       - name: Install requirements
         run: |
           pip install -r requirements.txt
