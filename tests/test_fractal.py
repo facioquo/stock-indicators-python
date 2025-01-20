@@ -1,14 +1,16 @@
 import pytest
+
 from stock_indicators import indicators
 from stock_indicators.indicators.common.enums import EndType
+
 
 class TestFractal:
     def test_standard_span_2(self, quotes):
         results = indicators.get_fractal(quotes)
 
         assert 502 == len(results)
-        assert  63 == len(list(filter(lambda x: x.fractal_bear is not None, results)))
-        assert  71 == len(list(filter(lambda x: x.fractal_bull is not None, results)))
+        assert 63 == len(list(filter(lambda x: x.fractal_bear is not None, results)))
+        assert 71 == len(list(filter(lambda x: x.fractal_bull is not None, results)))
 
         r = results[1]
         assert r.fractal_bear is None
@@ -34,14 +36,13 @@ class TestFractal:
         assert r.fractal_bear is None
         assert r.fractal_bull is None
 
-
     def test_standard_span_4(self, quotes):
         results = indicators.get_fractal(quotes, 4, 4, EndType.HIGH_LOW)
 
         assert 502 == len(results)
-        assert  35 == len(list(filter(lambda x: x.fractal_bear is not None, results)))
-        assert  34 == len(list(filter(lambda x: x.fractal_bull is not None, results)))
-        
+        assert 35 == len(list(filter(lambda x: x.fractal_bear is not None, results)))
+        assert 34 == len(list(filter(lambda x: x.fractal_bull is not None, results)))
+
         r = results[3]
         assert r.fractal_bear is None
         assert r.fractal_bull is None
@@ -49,7 +50,7 @@ class TestFractal:
         r = results[7]
         assert r.fractal_bear is None
         assert 212.53 == round(float(r.fractal_bull), 2)
-        
+
         r = results[120]
         assert 233.02 == round(float(r.fractal_bear), 2)
         assert r.fractal_bull is None
@@ -73,8 +74,8 @@ class TestFractal:
         r = indicators.get_fractal(quotes[:1])
         assert 1 == len(r)
 
-    def test_bad_data(self, bad_quotes):
-        r = indicators.get_fractal(bad_quotes)
+    def test_bad_data(self, quotes_bad):
+        r = indicators.get_fractal(quotes_bad)
 
         assert 502 == len(r)
 
@@ -89,5 +90,6 @@ class TestFractal:
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_fractal(quotes, 1)
