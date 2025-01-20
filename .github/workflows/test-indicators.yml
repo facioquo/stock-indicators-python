@@ -18,7 +18,7 @@ jobs:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
         python-version: ["3.12"] # Removed "3.8"
-        dotnet-version: ["6.x"]  # Removed "8.x"
+        dotnet-version: ["6.0"]  # Removed "8.x"
 
     runs-on: ${{ matrix.os }}
     name: "Py${{ matrix.python-version }}/.NET${{ matrix.dotnet-version }} on ${{ matrix.os }}"
@@ -26,7 +26,7 @@ jobs:
     env:
 
       # identifying primary configuration so only one reports to console
-      IS_PRIMARY: ${{ matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12' && matrix.dotnet-version == '6.x' }}
+      IS_PRIMARY: ${{ matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12' && matrix.dotnet-version == '6.0' }}
 
     steps:
       - name: Checkout source
@@ -44,13 +44,13 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
 
-      - name: Set .NET DOTNET_ROOT on macOS
+      - name: Set .NET Environment Variables on macOS
         if: matrix.os == 'macos-latest'
         run: |
-          which dotnet
-          dotnet --version
           echo "DOTNET_ROOT=$(dirname $(which dotnet))" >> $GITHUB_ENV
           echo "PATH=$PATH:$DOTNET_ROOT" >> $GITHUB_ENV
+          export DOTNET_ROOT=$(dirname $(which dotnet))
+          export PATH=$PATH:$DOTNET_ROOT
           echo "DOTNET_ROOT is set to $DOTNET_ROOT and PATH is updated"
 
       - name: Verify DLL presence
