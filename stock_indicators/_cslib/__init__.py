@@ -20,10 +20,10 @@ except Exception as e:
 
 skender_stock_indicators_dll_path = os.path.join(
     os.path.dirname(__file__),
-    "lib",
-    "Skender.Stock.Indicators.dll"
+    "lib/Skender.Stock.Indicators.dll"
 )
 clr.AddReference(skender_stock_indicators_dll_path)
+clr.AddReference('System.Collections')
 clr.AddReference('System.Collections')
 
 # Built-in
