@@ -130,7 +130,7 @@ pytest benchmarks
 
 ## Documentation
 
-This site uses [GitHub Pages](https://pages.github.com) and [Jekyll](https://jekyllrb.com) construction with Front Matter.  The documentation site is in the `docs` folder.  Build the site locally to test that it works properly.
+This site uses [Jekyll](https://jekyllrb.com) construction with Front Matter.  The documentation site is in the `docs` folder.  Build the site locally to test that it works properly.
 See [GitHub Pages documentation](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll) for initial setup instructions.
 
 ```bash
