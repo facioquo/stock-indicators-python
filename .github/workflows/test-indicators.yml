@@ -52,7 +52,7 @@ jobs:
             echo "Skender.Stock.Indicators.dll is missing."
             exit 1
           fi
-          chmod +rx stock_indicators/_cslib/lib/Skender.Stock.Indicators.dll
+          chmod +r stock_indicators/_cslib/lib/Skender.Stock.Indicators.dll
 
       - name: Install requirements
         run: |

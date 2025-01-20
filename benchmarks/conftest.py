@@ -13,7 +13,7 @@ base_dir = os.path.dirname(__file__)
 def get_data_from_csv(filename):
     """Read from CSV file."""
 
-    data_path = os.path.join(base_dir, f"../samples/quotes/{filename}.csv")
+    data_path = os.path.join(base_dir, "samples", "quotes", f"{filename}.csv")
     with open(data_path, "r", newline="", encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
         data = list(reader)

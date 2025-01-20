@@ -20,19 +20,22 @@ except Exception as e:
 
 skender_stock_indicators_dll_path = os.path.join(
     os.path.dirname(__file__),
-    "lib/Skender.Stock.Indicators.dll"
+    'lib',
+    'Skender.Stock.Indicators.dll'
 )
+
 clr.AddReference(skender_stock_indicators_dll_path)
-clr.AddReference('System.Collections')
-clr.AddReference('System.Collections')
+clr.AddReference('System')
+clr.AddReference('System.Collections.Generic')
+clr.AddReference('System.Globalization')
 
 # Built-in
 from System import DateTime as CsDateTime
 from System import Decimal as CsDecimal
 from System import Enum as CsEnum
-from System.Globalization import CultureInfo as CsCultureInfo
 from System.Collections.Generic import IEnumerable as CsIEnumerable
 from System.Collections.Generic import List as CsList
+from System.Globalization import CultureInfo as CsCultureInfo
 
 # Classes
 from Skender.Stock.Indicators import CandleProperties as CsCandleProperties
