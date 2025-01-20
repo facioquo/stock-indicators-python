@@ -26,7 +26,7 @@ jobs:
     env:
 
       # identifying primary configuration so only one reports to console
-      IS_PRIMARY: ${{ matrix.os == 'macos-latest' && matrix.python-version == '3.12' && matrix.dotnet-version == '8.x' }}
+      IS_PRIMARY: ${{ matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12' && matrix.dotnet-version == '6.x' }}
 
     steps:
       - name: Checkout source
@@ -60,7 +60,6 @@ jobs:
 
       - name: Post test summary
         uses: test-summary/action@v2
-
         if: env.IS_PRIMARY == 'true' && always()
         with:
           paths: test-results.xml
