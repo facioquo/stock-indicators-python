@@ -47,8 +47,8 @@ jobs:
       - name: Set .NET Environment Variables on macOS
         if: matrix.os == 'macos-latest'
         run: |
-          echo "DOTNET_ROOT=$(dirname $(which dotnet))" >> $GITHUB_ENV
-          echo "PATH=$PATH:$DOTNET_ROOT" >> $GITHUB_ENV
+          echo "DOTNET_ROOT=/opt/homebrew/opt/dotnet" >> $GITHUB_ENV
+          echo "PATH=$PATH:/opt/homebrew/opt/dotnet" >> $GITHUB_ENV
           export DOTNET_ROOT=$(dirname $(which dotnet))
           export PATH=$PATH:$DOTNET_ROOT
           echo "DOTNET_ROOT is set to $DOTNET_ROOT and PATH is updated"
@@ -64,7 +64,7 @@ jobs:
       - name: Set Permissions for DLL on macOS
         if: matrix.os == 'macos-latest'
         run: |
-          chmod +r stock_indicators/_cslib/lib/Skender.Stock.Indicators.dll
+          chmod +rx stock_indicators/_cslib/lib/Skender.Stock.Indicators.dll
 
       - name: Install Dependencies on macOS
         if: matrix.os == 'macos-latest'
