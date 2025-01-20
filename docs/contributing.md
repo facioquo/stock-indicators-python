@@ -123,9 +123,6 @@ pip install -r requirements-test.txt
 
 # run performance tests
 pytest -m "performance"
-
-# alternate method
-pytest benchmarks
 ```
 
 ## Documentation

@@ -54,6 +54,7 @@ jobs:
           pytest benchmarks
           --benchmark-json=benchmark_data.json
           --benchmark-sort=name
+          -m "performance"
 
       - name: Publish test results
         run: |
