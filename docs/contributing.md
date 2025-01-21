@@ -55,6 +55,41 @@ For new features, submit an issue with the `enhancement` label.
 - Do not commingle multiple contributions.  Please keep changes small and separate.
 - If you're just getting started, [install and setup](https://python.stockindicators.dev/guide/#installation-and-setup) language SDKs for Python and .NET.
 
+## Development Environment Setup
+
+### Windows Setup
+
+1. Install .NET SDK (6.0 or newer):
+
+    ```powershell
+    winget install Microsoft.DotNet.SDK.6
+    # Or download from https://dotnet.microsoft.com/download
+    ```
+
+2. Clone and setup:
+
+    ```powershell
+    git clone https://github.com/facioquo/stock-indicators-python.git
+    cd stock-indicators-python
+    pip install -e ".[dev]"
+    ```
+
+### macOS Setup
+
+1. Install .NET SDK (6.0 or newer):
+
+    ```bash
+    brew install dotnet-sdk
+    ```
+
+2. Clone and setup:
+
+    ```bash
+    git clone https://github.com/facioquo/stock-indicators-python.git
+    cd stock-indicators-python
+    pip install -e ".[dev]"
+    ```
+
 ## Testing
 
 - We use [pytest](https://docs.pytest.org) for testing.
@@ -70,7 +105,7 @@ For new features, submit an issue with the `enhancement` label.
 # install core dependencies
 pip install -r requirements.txt
 
-# install dependencies
+# install test dependencies
 pip install -r requirements-test.txt
 
 # run standard unit tests

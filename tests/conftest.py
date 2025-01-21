@@ -1,15 +1,38 @@
 import csv
-import os
 from datetime import datetime
 from decimal import Decimal, DecimalException
-
+from pathlib import Path
+import platform
+import os
 import pytest
+import logging
 
+# Import pre-initialized CLR and Quote from stock_indicators
+from stock_indicators._cslib import clr
 from stock_indicators.indicators.common import Quote
 
-# Constants
-base_dir = os.path.dirname(__file__)
+# Setup logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
+def verify_dotnet():
+    """Verify .NET environment setup"""
+    dotnet_root = os.environ.get("DOTNET_ROOT")
+    logger.debug(f"DOTNET_ROOT: {dotnet_root}")
+    if platform.system() == "Darwin" and not dotnet_root:
+        raise EnvironmentError("DOTNET_ROOT not set. Please restart terminal after installation.")
+
+# Initialize .NET runtime before imports
+verify_dotnet()
+
+# Constants
+base_dir = Path(__file__).parent.parent / "test_data"  # Changed to look in project root
+
+@pytest.fixture(autouse=True)
+def verify_environment():
+    """Verify environment is properly setup"""
+    verify_dotnet()
+    return True
 
 # --- Utility Functions ---------------------------------------------------
 
@@ -17,7 +40,37 @@ base_dir = os.path.dirname(__file__)
 def get_data_from_csv(filename):
     """Read from CSV file."""
 
-    data_path = os.path.join(base_dir, "samples", "quotes", f"{filename}.csv")
+    quotes_dir = base_dir / "quotes"
+    if not base_dir.exists():
+        raise FileNotFoundError(
+            f"Test data directory not found at: {base_dir}\n"
+            "Please create directory structure:\n"
+            "  /test_data/\n"
+            "    /quotes/\n"
+            "      - Default.csv\n"
+            "      - Bad.csv\n"
+            "      - Compare.csv\n"
+            "      - ...\n"
+            "See README.md for test data setup instructions."
+        )
+
+    if not quotes_dir.exists():
+        quotes_dir.mkdir(parents=True, exist_ok=True)
+        raise FileNotFoundError(
+            f"Quotes directory created at: {quotes_dir}\n"
+            "Please add required CSV files to continue."
+        )
+
+    data_path = quotes_dir / f"{filename}.csv"
+    logger.debug(f"Loading test data from: {data_path}")
+
+    if not data_path.exists():
+        raise FileNotFoundError(
+            f"Test data file not found: {filename}.csv\n"
+            "Required files: Default.csv, Bad.csv, Compare.csv, etc.\n"
+            "See README.md for test data setup instructions."
+        )
+
     with open(data_path, "r", newline="", encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
         data = list(reader)

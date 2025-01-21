@@ -1,19 +1,36 @@
 import csv
-import os
 from datetime import datetime
 from decimal import Decimal, DecimalException
+from pathlib import Path
+import os  # Ensure os is imported
+import platform
+import logging
 
 import pytest
 
+# Import pre-initialized CLR and Quote from stock_indicators
+from stock_indicators._cslib import clr
 from stock_indicators.indicators.common import Quote
 
-base_dir = os.path.dirname(__file__)
+# Setup logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
+base_dir = Path(__file__).parent.parent / "test_data"  # Changed to look in project root
 
 def get_data_from_csv(filename):
     """Read from CSV file."""
 
-    data_path = os.path.join(base_dir, "samples", "quotes", f"{filename}.csv")
+    quotes_dir = base_dir / "quotes"
+    if not quotes_dir.exists():
+        raise FileNotFoundError(
+            f"Test data directory not found at: {quotes_dir}\n"
+            "Please ensure test data files are present in the correct location."
+        )
+
+    data_path = quotes_dir / f"{filename}.csv"
+    logger.debug(f"Loading benchmark data from: {data_path}")
+
     with open(data_path, "r", newline="", encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
         data = list(reader)

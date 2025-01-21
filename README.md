@@ -1,7 +1,7 @@
 [![image](https://raw.githubusercontent.com/facioquo/stock-indicators-python/main/docs/assets/social-banner.png)](https://python.stockindicators.dev/)
 
 [![PyPI](https://img.shields.io/pypi/v/stock-indicators?color=blue&label=PyPI)](https://badge.fury.io/py/stock-indicators)
-[![PyPI - Downloads](https://img.shields.io/pypi/dm/stock-indicators?style=flat&logo=Python&logoColor=white&label=Downloads&color=indigo&link=https%3A%2F%2Fpypistats.org%2Fpackages%2Fstock-indicators)](https://pypistats.org/packages/stock-indicators)
+[![PyPI - Downloads](https://img.shields.io/pypi/dm/stock-indicators?style=flat&logo=Python&logoColor=white&label=Downloads&color=indigo)](https://pypistats.org/packages/stock-indicators)
 
 # Stock Indicators for Python
 
@@ -17,3 +17,55 @@ Visit our project site for more information:
 - [Release notes](https://github.com/facioquo/stock-indicators-python/releases)
 - [Discussions](https://github.com/DaveSkender/Stock.Indicators/discussions)
 - [Contributing](https://github.com/facioquo/stock-indicators-python/blob/main/docs/contributing.md#readme)
+
+## Contributing
+
+See our [Contributing Guide](docs/contributing.md) for development environment setup and guidelines.
+
+## License
+
+[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
+
+## Getting started
+
+### Windows
+
+1. Install .NET SDK (6.0 or newer):
+    - Download from [Microsoft .NET Downloads](https://dotnet.microsoft.com/download)
+    - Or using winget: `winget install Microsoft.DotNet.SDK.6`
+    - Verify: `dotnet --info`
+
+2. Install the package:
+
+    ```bash
+    pip install stock-indicators
+    ```
+
+### macOS
+
+1. Install .NET SDK (6.0 or newer):
+
+    ```bash
+    brew install dotnet-sdk
+    dotnet --info  # Verify installation
+    ```
+
+2. Install the package:
+
+    ```bash
+    pip install stock-indicators
+    ```
+
+## Example usage
+
+```python
+from stock_indicators import indicators
+
+# fetch your data
+quotes = get_history("MSFT")
+
+# calculate 20-period SMA
+results = indicators.get_sma(quotes, 20)
+```
+
+> **Note:** This is a simple example. For a step-by-step guide, see the [QuickStart Guide](https://github.com/facioquo/stock-indicators-python-quickstart#readme) or our [documentation](https://python.stockindicators.dev/) site.
