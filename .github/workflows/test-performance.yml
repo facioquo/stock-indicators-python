@@ -59,12 +59,15 @@ jobs:
       - name: Publish test results
         run: |
           # Collect system info
-          echo "### Package version ${{ steps.gitversion.outputs.fullSemVer }}" > report.md
-          echo "\nTest environment:" >> report.md
+          echo "### Performance Test Results" > report.md
+          echo "" >> report.md
+          echo "**Package version:** ${{ steps.gitversion.outputs.fullSemVer }}" >> report.md
+          echo "" >> report.md
+          echo "**Test environment:**" >> report.md
           echo "- OS: $(uname -s) $(uname -r)" >> report.md
           echo "- CPU: $(cat /proc/cpuinfo | grep 'model name' | head -n1 | cut -d':' -f2 | xargs)" >> report.md
           echo "- Memory: $(free -h | awk '/^Mem:/ {print $2}')" >> report.md
-          echo "\n" >> report.md
+          echo "" >> report.md
 
           # Convert benchmark data to table
           python -c '
@@ -72,11 +75,13 @@ jobs:
           with open("benchmark_data.json") as f:
               data = json.load(f)
 
-          print("| Name | Mean (sec) | StdDev | Operations/sec |", file=open("report.md", "a"))
-          print("|------|------------|--------| ---------------|", file=open("report.md", "a"))
+          print("| Indicator | Mean (sec) | StdDev | Operations/sec |", file=open("report.md", "a"))
+          print("|-----------|------------|--------|----------------|", file=open("report.md", "a"))
 
           for bm in sorted(data["benchmarks"], key=lambda x: x["fullname"]):
-              name = bm["fullname"]
+              # Extract just the indicator name from the test name
+              name = bm["fullname"].split("test_benchmark_")[-1]
+              name = name.split("::")[-1].upper()
               mean = bm["stats"]["mean"]
               stddev = bm["stats"]["stddev"]
               ops = bm["stats"]["ops"]
