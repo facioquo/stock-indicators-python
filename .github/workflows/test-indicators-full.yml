@@ -6,6 +6,8 @@ name: Unit tests (full matrix)
 on:
   push:
     branches: ["main"]
+    paths:
+      - .github/workflows/test-indicators-full.yml
   workflow_dispatch:
 
 permissions:
@@ -16,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [windows-2025, ubuntu-24.04-arm, macos-15]
         python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
         dotnet-version: ["6.x", "8.x", "9.x"]
 
