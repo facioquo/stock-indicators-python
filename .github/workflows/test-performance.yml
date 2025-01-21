@@ -75,17 +75,20 @@ jobs:
           with open("benchmark_data.json") as f:
               data = json.load(f)
 
-          print("| Indicator | Mean (sec) | StdDev | Operations/sec |", file=open("report.md", "a"))
-          print("|-----------|------------|--------|----------------|", file=open("report.md", "a"))
+          print("| Indicator | Mean (ms) | StdDev (ms) | Ops/sec |", file=open("report.md", "a"))
+          print("| :-------- | --------: | ----------: | ------: |", file=open("report.md", "a"))
 
           for bm in sorted(data["benchmarks"], key=lambda x: x["fullname"]):
               # Extract just the indicator name from the test name
               name = bm["fullname"].split("test_benchmark_")[-1]
               name = name.split("::")[-1].upper()
-              mean = bm["stats"]["mean"]
-              stddev = bm["stats"]["stddev"]
+
+              # Convert seconds to milliseconds
+              mean_ms = bm["stats"]["mean"] * 1000
+              stddev_ms = bm["stats"]["stddev"] * 1000
               ops = bm["stats"]["ops"]
-              print(f"| {name} | {mean:.6f} | {stddev:.6f} | {ops:.2f} |",
+
+              print(f"| {name} | {mean_ms:.3f} | {stddev_ms:.3f} | {ops:.2f} |",
                     file=open("report.md", "a"))
           '
 
