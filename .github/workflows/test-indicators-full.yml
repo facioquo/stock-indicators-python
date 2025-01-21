@@ -5,7 +5,7 @@ name: Unit tests (full matrix)
 
 on:
   push:
-    branches: ["*"]  # temp
+    branches: ["main"]
     paths:
       - stock_indicators/**
       - .github/workflows/test-indicators-full.yml
