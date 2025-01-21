@@ -72,8 +72,24 @@ jobs:
         shell: pwsh
         run: |
           $locale = "${{ matrix.locale }}".Split('.')[0].Replace('_', '-')
+          
+          # Set system level culture
+          Set-WinSystemLocale -SystemLocale $locale
+          
+          # Set .NET cultures
           [System.Threading.Thread]::CurrentThread.CurrentCulture = [System.Globalization.CultureInfo]::GetCultureInfo($locale)
           [System.Threading.Thread]::CurrentThread.CurrentUICulture = [System.Globalization.CultureInfo]::GetCultureInfo($locale)
+          
+          # Set default AppContext switch for .NET
+          [AppContext]::SetSwitch('System.Globalization.UseNls', $true)
+          
+          # Set environment variables
+          $env:DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 'false'
+          $env:DOTNET_RUNTIME_IDENTIFIER = "win-x64"
+          
+          # Verify culture settings
+          Write-Host "Current Culture: $([System.Threading.Thread]::CurrentThread.CurrentCulture)"
+          Write-Host "Current UI Culture: $([System.Threading.Thread]::CurrentThread.CurrentUICulture)"
 
       - name: Install dependencies
         run: |

@@ -34,6 +34,24 @@ def verify_environment():
     verify_dotnet()
     return True
 
+@pytest.fixture(autouse=True, scope="session")
+def setup_clr_culture():
+    """Configure CLR culture settings for all tests."""
+    import clr
+    from System.Globalization import CultureInfo
+    from System.Threading import Thread
+
+    # Get current locale from environment
+    locale = os.getenv('LC_ALL', '').split('.')[0].replace('_', '-')
+    if locale:
+        try:
+            culture = CultureInfo(locale)
+            Thread.CurrentThread.CurrentCulture = culture
+            Thread.CurrentThread.CurrentUICulture = culture
+            logger.debug(f"Set CLR culture to: {culture.Name}")
+        except Exception as e:
+            logger.warning(f"Failed to set CLR culture: {e}")
+
 # --- Utility Functions ---------------------------------------------------
 
 
