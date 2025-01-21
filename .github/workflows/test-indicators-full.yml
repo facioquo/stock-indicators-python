@@ -5,7 +5,7 @@ name: Unit tests (full matrix)
 
 on:
   push:
-    branches: ["main"]
+    branches: ["*"]
     paths:
       - .github/workflows/test-indicators-full.yml
   workflow_dispatch:
