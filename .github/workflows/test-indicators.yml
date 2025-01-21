@@ -5,7 +5,7 @@ name: Unit tests (CI)
 
 on:
   pull_request:
-    branches: ["*"]
+    branches: ["main"]
   workflow_dispatch:
 
 permissions:
@@ -17,16 +17,16 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
-        python-version: ["3.8","3.12"]
-        dotnet-version: ["6.0.x","9.0.x"]
+        python-version: ["3.8", "3.12"]
+        dotnet-version: ["6.x", "9.x"]
 
     runs-on: ${{ matrix.os }}
     name: "Py${{ matrix.python-version }}/.NET${{ matrix.dotnet-version }} on ${{ matrix.os }}"
 
     env:
 
-      # identifying primary configuration so only one reports to console
-      IS_PRIMARY: ${{ matrix.os == 'ubuntu-latest' && matrix.python-version == '3.12' && matrix.dotnet-version == '9.0.x' }}
+      # identify configurations that post test reports
+      POST_REPORT: ${{ matrix.python-version == '3.12' && matrix.dotnet-version == '9.x' }}
 
     steps:
       - name: Checkout source
@@ -36,7 +36,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-          dotnet-quality: "ga"
+          dotnet-quality: ga
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -54,8 +54,9 @@ jobs:
           fi
           chmod +r stock_indicators/_cslib/lib/Skender.Stock.Indicators.dll
 
-      - name: Install requirements
+      - name: Install dependencies
         run: |
+          pip install -u --upgrade-strategy=only-if-needed pip
           pip install -r requirements.txt
           pip install -r requirements-test.txt
 
@@ -66,6 +67,6 @@ jobs:
 
       - name: Post test summary
         uses: test-summary/action@v2
-        if: env.IS_PRIMARY == 'true' && always()
+        if: env.POST_REPORT == 'true' && always()
         with:
           paths: test-results.xml

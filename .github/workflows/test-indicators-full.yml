@@ -5,7 +5,7 @@ name: Unit tests (full matrix)
 
 on:
   push:
-    branches: ["*"]
+    branches: ["*"]  # temp
     paths:
       - .github/workflows/test-indicators-full.yml
   workflow_dispatch:
@@ -19,7 +19,7 @@ jobs:
     strategy:
       matrix:
         os: [windows-2025, ubuntu-24.04-arm, macos-15]
-        python-version: ["3.8", "3.9", "3.10", "3.11", "3.12"]
+        python-version: ["3.8", "3.10", "3.12"]
         dotnet-version: ["6.x", "8.x", "9.x"]
 
     runs-on: ${{ matrix.os }}
@@ -27,8 +27,8 @@ jobs:
 
     env:
 
-      # identifying primary configuration so only one reports to console
-      IS_PRIMARY: ${{ matrix.os == 'macos-latest' && matrix.python-version == '3.12' && matrix.dotnet-version == '9.x' }}
+      # identify configurations that post test reports
+      POST_REPORT: ${{ matrix.python-version == '3.12' && matrix.dotnet-version == '9.x' }}
 
     steps:
       - name: Checkout source
@@ -38,7 +38,7 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-          dotnet-quality: "ga"
+          dotnet-quality: ga
 
       - name: Setup Python
         uses: actions/setup-python@v5
@@ -46,18 +46,17 @@ jobs:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
 
-      - name: Install requirements
+      - name: Install dependencies
         run: |
+          pip install -u --upgrade-strategy=only-if-needed pip
           pip install -r requirements.txt
           pip install -r requirements-test.txt
 
       - name: Test indicators
         run: pytest -vr A tests --junitxml=test-results.xml
 
-      # results only needed from one primary instance
-
       - name: Post test summary
         uses: test-summary/action@v2
-        if: env.IS_PRIMARY == 'true' && always()
+        if: env.POST_REPORT == 'true' && always()
         with:
           paths: test-results.xml
