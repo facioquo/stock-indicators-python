@@ -8,9 +8,11 @@ package from <https://github.com/DaveSkender/Stock.Indicators>, written in C#.
 The target framework of dll is `.NET 6.0`.
 """
 
+import json
 import logging
 import os
 import platform
+import sys
 from pathlib import Path
 
 from pythonnet import load

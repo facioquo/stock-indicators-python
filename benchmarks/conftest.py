@@ -1,11 +1,15 @@
 import csv
 import logging
+import os
+import platform
 from datetime import datetime
 from decimal import Decimal, DecimalException
 from pathlib import Path
 
 import pytest
 
+# Import pre-initialized CLR and Quote from stock_indicators
+from stock_indicators._cslib import clr
 from stock_indicators.indicators.common import Quote
 
 # Setup logging

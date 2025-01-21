@@ -7,9 +7,9 @@ from decimal import Decimal, DecimalException
 from pathlib import Path
 
 import pytest
-from System.Globalization import CultureInfo
-from System.Threading import Thread
 
+# Import pre-initialized CLR and Quote from stock_indicators
+from stock_indicators._cslib import clr
 from stock_indicators.indicators.common import Quote
 
 # Setup logging
@@ -38,6 +38,9 @@ def verify_environment():
 @pytest.fixture(autouse=True, scope="session")
 def setup_clr_culture():
     """Configure CLR culture settings for all tests."""
+    import clr
+    from System.Globalization import CultureInfo
+    from System.Threading import Thread
 
     # Get current locale from environment
     locale = os.getenv('LC_ALL', '').split('.')[0].replace('_', '-')
