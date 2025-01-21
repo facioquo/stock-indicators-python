@@ -6,6 +6,9 @@ name: Test performance
 on:
   push:
     branches: ["main"]
+    paths:
+      - benchmarks/**
+      - .github/workflows/test-performance.yml
   workflow_dispatch:
 
 permissions:
