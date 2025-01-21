@@ -18,14 +18,6 @@ Visit our project site for more information:
 - [Discussions](https://github.com/DaveSkender/Stock.Indicators/discussions)
 - [Contributing](https://github.com/facioquo/stock-indicators-python/blob/main/docs/contributing.md#readme)
 
-## Contributing
-
-See our [Contributing Guide](docs/contributing.md) for development environment setup and guidelines.
-
-## License
-
-[![License](https://img.shields.io/badge/License-Apache%202.0-blue.svg)](https://opensource.org/licenses/Apache-2.0)
-
 ## Getting started
 
 ### Windows
