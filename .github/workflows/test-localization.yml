@@ -23,13 +23,13 @@ jobs:
             locale: 'fr_FR.UTF-8'
           - os: windows-latest
             locale: 'ru_RU.UTF-8'
-            
+
           # Ubuntu tests
           - os: ubuntu-latest
             locale: 'fr_FR.UTF-8'
           - os: ubuntu-latest
             locale: 'ru_RU.UTF-8'
-            
+
           # macOS tests
           - os: macos-latest
             locale: 'fr_FR.UTF-8'
@@ -116,15 +116,29 @@ jobs:
           # Verify locale
           locale
 
-          # Configure .NET culture (similar to Windows approach)
-          dotnet run --project <(cat <<EOF
+          # Create temporary project directory
+          TEMP_DIR=$(mktemp -d)
+          pushd $TEMP_DIR
+
+          # Create project file
+          cat > LocaleSetup.csproj << 'EOF'
+          <Project Sdk="Microsoft.NET.Sdk">
+            <PropertyGroup>
+              <OutputType>Exe</OutputType>
+              <TargetFramework>net9.0</TargetFramework>
+            </PropertyGroup>
+          </Project>
+          EOF
+
+          # Create program file
+          cat > Program.cs << 'EOF'
           using System;
           using System.Globalization;
           using System.Threading;
 
           class Program {
               static void Main() {
-                  var locale = "${{ matrix.locale }}".Split('.')[0].Replace("_", "-");
+                  var locale = Environment.GetEnvironmentVariable("LC_ALL")?.Split('.')[0].Replace("_", "-");
                   try {
                       var culture = new CultureInfo(locale);
                       Thread.CurrentThread.CurrentCulture = culture;
@@ -136,7 +150,13 @@ jobs:
               }
           }
           EOF
-          )
+
+          # Build and run
+          dotnet run
+
+          # Cleanup
+          popd
+          rm -rf $TEMP_DIR
 
       - name: Install dependencies
         run: |
