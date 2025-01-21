@@ -51,10 +51,20 @@ jobs:
       - name: Configure Linux locale
         if: runner.os == 'Linux'
         run: |
-          sudo apt-get update && sudo apt-get install -y locales
-          LOCALE_NAME=$(echo "${{ matrix.locale }}" | cut -d. -f1)
+          sudo apt-get update
+          sudo apt-get install -y locales locales-all
+
+          # Generate and configure locales
           sudo locale-gen ${{ matrix.locale }}
-          sudo update-locale LANG=${{ matrix.locale }} LC_ALL=${{ matrix.locale }}
+          sudo update-locale LANG=${{ matrix.locale }}
+
+          # Set locale in multiple ways to ensure it takes effect
+          export LANG=${{ matrix.locale }}
+          export LANGUAGE=${{ matrix.locale }}
+          export LC_ALL=${{ matrix.locale }}
+
+          # Verify locale installation
+          locale -a
           locale
 
       - name: Configure Windows locale
@@ -71,10 +81,39 @@ jobs:
           pip install -r requirements-test.txt
 
       - name: Verify locale
+        shell: bash
         run: |
-          python -c "import locale; print(f'Locale: {locale.getlocale()}')"
-          python -c "import locale; print(f'Currency: {locale.currency(1234.56)}')"
-          python -c "import locale; print(f'Number: {locale.format_string(\"%.2f\", 1234.56)}')"
+          echo "Current locale settings:"
+          locale
+
+          echo -e "\nPython locale test:"
+          python -c "
+          import locale
+          import sys
+
+          print(f'Default encoding: {sys.getdefaultencoding()}')
+          print(f'Filesystem encoding: {sys.getfilesystemencoding()}')
+          print(f'Locale: {locale.getlocale()}')
+
+          # Try setting the locale explicitly
+          try:
+              locale.setlocale(locale.LC_ALL, '')
+              print(f'Set locale successful: {locale.getlocale()}')
+          except locale.Error as e:
+              print(f'Failed to set locale: {e}')
+
+          # Test number formatting
+          try:
+              print(f'Number formatting: {locale.format_string(\"%.2f\", 1234.56)}')
+          except Exception as e:
+              print(f'Number formatting failed: {e}')
+
+          # Test currency formatting
+          try:
+              print(f'Currency formatting: {locale.currency(1234.56)}')
+          except Exception as e:
+              print(f'Currency formatting failed: {e}')
+          "
 
       - name: Run locale tests
         run: pytest -m "localization" -vr A tests --junitxml=test-results.xml
