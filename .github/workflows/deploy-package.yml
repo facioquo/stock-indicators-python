@@ -31,7 +31,7 @@ jobs:
 
     - name: Build library
       run: |
-        pip install -u --upgrade-strategy=only-if-needed pip
+        pip install -U --upgrade-strategy=only-if-needed pip
         python3 -m pip install build --user
 
     - name: Build wheel and tarball

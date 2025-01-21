@@ -160,7 +160,7 @@ jobs:
 
       - name: Install dependencies
         run: |
-          pip install -u --upgrade-strategy=only-if-needed pip
+          pip install -U --upgrade-strategy=only-if-needed pip
           pip install -r requirements.txt
           pip install -r requirements-test.txt
 
