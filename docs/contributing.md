@@ -71,7 +71,8 @@ For new features, submit an issue with the `enhancement` label.
     ```powershell
     git clone https://github.com/facioquo/stock-indicators-python.git
     cd stock-indicators-python
-    pip install -e ".[dev]"
+    pip install -r requirements.txt
+    pip install -r requirements-test.txt
     ```
 
 ### macOS Setup
@@ -87,7 +88,8 @@ For new features, submit an issue with the `enhancement` label.
     ```bash
     git clone https://github.com/facioquo/stock-indicators-python.git
     cd stock-indicators-python
-    pip install -e ".[dev]"
+    pip install -r requirements.txt
+    pip install -r requirements-test.txt
     ```
 
 ## Testing

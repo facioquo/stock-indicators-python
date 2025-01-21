@@ -1,14 +1,15 @@
 import csv
+import logging
+import os
+import platform
 from datetime import datetime
 from decimal import Decimal, DecimalException
 from pathlib import Path
-import platform
-import os
-import pytest
-import logging
 
-# Import pre-initialized CLR and Quote from stock_indicators
-from stock_indicators._cslib import clr
+import pytest
+from System.Globalization import CultureInfo
+from System.Threading import Thread
+
 from stock_indicators.indicators.common import Quote
 
 # Setup logging
@@ -18,7 +19,7 @@ logger = logging.getLogger(__name__)
 def verify_dotnet():
     """Verify .NET environment setup"""
     dotnet_root = os.environ.get("DOTNET_ROOT")
-    logger.debug(f"DOTNET_ROOT: {dotnet_root}")
+    logger.debug("DOTNET_ROOT: %s", dotnet_root)
     if platform.system() == "Darwin" and not dotnet_root:
         raise EnvironmentError("DOTNET_ROOT not set. Please restart terminal after installation.")
 
@@ -26,7 +27,7 @@ def verify_dotnet():
 verify_dotnet()
 
 # Constants
-base_dir = Path(__file__).parent.parent / "test_data"  # Changed to look in project root
+base_dir = Path(__file__).parent.parent / "test_data"
 
 @pytest.fixture(autouse=True)
 def verify_environment():
@@ -37,9 +38,6 @@ def verify_environment():
 @pytest.fixture(autouse=True, scope="session")
 def setup_clr_culture():
     """Configure CLR culture settings for all tests."""
-    import clr
-    from System.Globalization import CultureInfo
-    from System.Threading import Thread
 
     # Get current locale from environment
     locale = os.getenv('LC_ALL', '').split('.')[0].replace('_', '-')
@@ -48,9 +46,9 @@ def setup_clr_culture():
             culture = CultureInfo(locale)
             Thread.CurrentThread.CurrentCulture = culture
             Thread.CurrentThread.CurrentUICulture = culture
-            logger.debug(f"Set CLR culture to: {culture.Name}")
-        except Exception as e:
-            logger.warning(f"Failed to set CLR culture: {e}")
+            logger.debug("Set CLR culture to: %s", culture.Name)
+        except (ValueError, AttributeError) as e:
+            logger.warning("Failed to set CLR culture: %s", e)
 
 # --- Utility Functions ---------------------------------------------------
 
@@ -59,34 +57,17 @@ def get_data_from_csv(filename):
     """Read from CSV file."""
 
     quotes_dir = base_dir / "quotes"
-    if not base_dir.exists():
+    if not base_dir.exists() or not quotes_dir.exists():
         raise FileNotFoundError(
-            f"Test data directory not found at: {base_dir}\n"
-            "Please create directory structure:\n"
-            "  /test_data/\n"
-            "    /quotes/\n"
-            "      - Default.csv\n"
-            "      - Bad.csv\n"
-            "      - Compare.csv\n"
-            "      - ...\n"
-            "See README.md for test data setup instructions."
-        )
-
-    if not quotes_dir.exists():
-        quotes_dir.mkdir(parents=True, exist_ok=True)
-        raise FileNotFoundError(
-            f"Quotes directory created at: {quotes_dir}\n"
-            "Please add required CSV files to continue."
+            "Test data not found. Please see README.md for test data setup instructions."
         )
 
     data_path = quotes_dir / f"{filename}.csv"
-    logger.debug(f"Loading test data from: {data_path}")
+    logger.debug("Loading test data from: %s", data_path)
 
     if not data_path.exists():
         raise FileNotFoundError(
-            f"Test data file not found: {filename}.csv\n"
-            "Required files: Default.csv, Bad.csv, Compare.csv, etc.\n"
-            "See README.md for test data setup instructions."
+            f"Test data file not found: {filename}"
         )
 
     with open(data_path, "r", newline="", encoding="utf-8") as csvfile:

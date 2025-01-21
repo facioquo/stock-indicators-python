@@ -1,22 +1,18 @@
 import csv
+import logging
 from datetime import datetime
 from decimal import Decimal, DecimalException
 from pathlib import Path
-import os  # Ensure os is imported
-import platform
-import logging
 
 import pytest
 
-# Import pre-initialized CLR and Quote from stock_indicators
-from stock_indicators._cslib import clr
 from stock_indicators.indicators.common import Quote
 
 # Setup logging
 logging.basicConfig(level=logging.DEBUG)
 logger = logging.getLogger(__name__)
 
-base_dir = Path(__file__).parent.parent / "test_data"  # Changed to look in project root
+base_dir = Path(__file__).parent.parent / "test_data"
 
 def get_data_from_csv(filename):
     """Read from CSV file."""
@@ -29,7 +25,7 @@ def get_data_from_csv(filename):
         )
 
     data_path = quotes_dir / f"{filename}.csv"
-    logger.debug(f"Loading benchmark data from: {data_path}")
+    logger.debug("Loading benchmark data from: %s", data_path)
 
     with open(data_path, "r", newline="", encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
