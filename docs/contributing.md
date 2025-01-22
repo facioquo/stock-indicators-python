@@ -32,7 +32,7 @@ We have different places to take issues by its category.
 
 ### Bug Report
 
-If you are reporting a bug or suspect a problem, please submit an issue with a detailed description of the problem + include steps to reproduce, code samples, and any reference materials.  
+If you are reporting a bug or suspect a problem, please submit an issue with a detailed description of the problem + include steps to reproduce, code samples, and any reference materials.
 
 🔧 [Report bugs](https://github.com/facioquo/stock-indicators-python/issues/new?labels=bug&template=bug_report.md)
 
@@ -55,14 +55,53 @@ For new features, submit an issue with the `enhancement` label.
 - Do not commingle multiple contributions.  Please keep changes small and separate.
 - If you're just getting started, [install and setup](https://python.stockindicators.dev/guide/#installation-and-setup) language SDKs for Python and .NET.
 
+## Development Environment Setup
+
+### Windows Setup
+
+1. Install .NET SDK (6.0 or newer):
+
+    ```powershell
+    winget install Microsoft.DotNet.SDK.6
+    # Or download from https://dotnet.microsoft.com/download
+    ```
+
+2. Clone and setup:
+
+    ```powershell
+    git clone https://github.com/facioquo/stock-indicators-python.git
+    cd stock-indicators-python
+    pip install -r requirements.txt
+    pip install -r requirements-test.txt
+    ```
+
+### macOS Setup
+
+1. Install .NET SDK (6.0 or newer):
+
+    ```bash
+    brew install dotnet-sdk
+    ```
+
+2. Clone and setup:
+
+    ```bash
+    git clone https://github.com/facioquo/stock-indicators-python.git
+    cd stock-indicators-python
+    pip install -r requirements.txt
+    pip install -r requirements-test.txt
+    ```
+
 ## Testing
 
 - We use [pytest](https://docs.pytest.org) for testing.
 - Review the `tests` folder for examples of unit tests.  Just copy one of these.
 - New indicators should be tested against manually calculated, proven, accurate results.  It is helpful to include your manual calculations spreadsheet in the appropriate indicator folder when [submitting changes](#submitting-changes).
-- Historical Stock Quotes are automatically added as pytest fixtures. The various `.csv` files in the `samples` folder are used in the unit tests. See `tests/conftest.py` for their usage. A `History.xlsx` Excel file is also included in the `samples` folder that contains the same information but separated by sheets. Use this for your manual calculations to ensure that it is correct.  Do not commit changes to this Excel file.
+- Historical Stock Quotes are automatically added as pytest fixtures.  The various `.csv` files in the `samples` folder are used in the unit tests.  See `tests/conftest.py` for their usage.  A `History.xlsx` Excel file is also included in the `samples` folder that contains the same information but separated by sheets.  Use this for your manual calculations to ensure that it is correct.  Do not commit changes to this Excel file.
 - We expect all unit tests to execute successfully and all Errors and Warning resolved before you submit your code.
 - Failed builds or unit testing will block acceptance of your Pull Request when submitting changes.
+
+### Running Tests
 
 ```bash
 # install core dependencies
@@ -71,8 +110,44 @@ pip install -r requirements.txt
 # install test dependencies
 pip install -r requirements-test.txt
 
-# run all tests.
-pytest -svr A tests
+# run standard unit tests
+pytest
+```
+
+To run different types of tests, use the following commands:
+
+- **Normal unit tests** (default):
+
+  ```bash
+  pytest
+  ```
+
+- **Non-standard `localization` tests**:
+
+  ```bash
+  pytest -m "localization"
+  ```
+
+- **Performance tests**:
+
+  ```bash
+  pytest -m "performance"
+  ```
+
+- **All tests** (not recommended):
+
+  ```bash
+  pytest -m ""
+  ```
+
+You can also use the `-svr A` arguments with pytest to get more detailed output:
+
+- `-s`: Disable output capturing (show print statements)
+- `-v`: Increase verbosity
+- `-r A`: Show extra test summary info for all tests
+
+```bash
+pytest -svr A
 ```
 
 ### Performance benchmarking
@@ -80,18 +155,16 @@ pytest -svr A tests
 Running the commands below in your console will show performance data.  You can find the latest results [here]({{site.baseurl}}/performance/).
 
 ```bash
-# install pytest and other dependencies
+# install dependencies
 pip install -r requirements-test.txt
-pip install pytest-benchmark
 
-# run benchmarks
-pytest benchmarks
+# run performance tests
+pytest -m "performance"
 ```
 
 ## Documentation
 
-This site uses [GitHub Pages](https://pages.github.com) and [Jekyll](https://jekyllrb.com) construction with Front Matter.
-The documentation site is in the `docs` folder.  Build the site locally to test that it works properly.
+This site uses [Jekyll](https://jekyllrb.com) construction with Front Matter.  The documentation site is in the `docs` folder.  Build the site locally to test that it works properly.
 See [GitHub Pages documentation](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll) for initial setup instructions.
 
 ```bash
@@ -111,8 +184,7 @@ When adding or updating indicators:
 
 By submitting changes to this repo you are also acknowledging and agree to the terms in both the [Developer Certificate of Origin (DCO) 1.1](https://developercertificate.org) and the [Apache 2.0 license](https://opensource.org/licenses/Apache-2.0).  These are standard open-source terms and conditions.
 
-When ready, submit a Pull Request with a clear list of what you've done (read more about [pull requests](http://help.github.com/pull-requests)).
-Always write a clear log message for your commits. One-line messages are fine for most changes.
+When ready, submit a Pull Request with a clear list of what you've done (read more about [pull requests](http://help.github.com/pull-requests)).  Always write a clear log message for your commits. One-line messages are fine for most changes.
 
 After a Pull Request is reviewed, accepted, and [squash] merged to `main`, we may batch changes before publishing a new package version to PyPI.  Please be patient with turnaround time.
 
@@ -137,9 +209,7 @@ Major | `x.-.-` | A significant deviation with major breaking changes.
 Minor | `-.x.-` | A new feature, usually new non-breaking change, such as adding an indicator.  Minor breaking changes may occur here and are denoted in the [release notes](https://github.com/facioquo/stock-indicators-python/releases).
 Patch | `-.-.x` | A small bug fix, chore, or documentation change.
 
-After one of our repository administrators creates a `git tag` on the `main` branch,
-reflecting the new version number, the `PyPI` deployment workflow will start.
-After the new package is published, they'll publicly post the [release record](https://github.com/facioquo/stock-indicators-python/releases) with [automatically generated notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes) and other information.
+After one of our repository administrators creates a `git tag` on the `main` branch, reflecting the new version number, the `PyPI` deployment workflow will start.  After the new package is published, they'll publicly post the [release record](https://github.com/facioquo/stock-indicators-python/releases) with [automatically generated notes](https://docs.github.com/en/repositories/releasing-projects-on-github/automatically-generated-release-notes) and other information.
 
 ## License
 

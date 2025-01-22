@@ -1,5 +1,7 @@
 import pytest
+
 from stock_indicators import indicators
+
 
 class TestAroon:
     def test_standard(self, quotes):
@@ -9,7 +11,7 @@ class TestAroon:
         assert 477 == len(list(filter(lambda x: x.aroon_up is not None, results)))
         assert 477 == len(list(filter(lambda x: x.aroon_down is not None, results)))
         assert 477 == len(list(filter(lambda x: x.oscillator is not None, results)))
-        
+
         r = results[210]
         assert 100 == float(r.aroon_up)
         assert 000 == float(r.aroon_down)
@@ -35,8 +37,8 @@ class TestAroon:
         assert +88 == float(r.aroon_down)
         assert -60 == float(r.oscillator)
 
-    def test_bad_data(self, bad_quotes):
-        r = indicators.get_aroon(bad_quotes, 20)
+    def test_bad_data(self, quotes_bad):
+        r = indicators.get_aroon(quotes_bad, 20)
 
         assert 502 == len(r)
 
@@ -56,11 +58,12 @@ class TestAroon:
         assert 477 == len(results)
 
         r = results[-1]
-        assert  28 == float(r.aroon_up)
-        assert  88 == float(r.aroon_down)
+        assert 28 == float(r.aroon_up)
+        assert 88 == float(r.aroon_down)
         assert -60 == float(r.oscillator)
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_aroon(quotes, 0)

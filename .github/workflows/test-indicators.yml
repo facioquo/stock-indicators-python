@@ -1,31 +1,32 @@
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+# For more information see:
+# https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: PR unit test
+name: Unit tests (CI)
 
 on:
   pull_request:
     branches: ["main"]
-    types: [opened, synchronize, reopened]
+  workflow_dispatch:
+
+permissions:
+  contents: read
 
 jobs:
   test:
-    name: indicators
-    runs-on: ${{ matrix.os }}
-
-    permissions:
-      contents: read
-      pull-requests: write
 
     strategy:
       matrix:
         os: [windows-latest, ubuntu-latest, macos-latest]
         python-version: ["3.8", "3.12"]
-        dotnet-version: ["6.x", "8.x"]
+        dotnet-version: ["6.x", "9.x"]
+
+    runs-on: ${{ matrix.os }}
+    name: "Py${{ matrix.python-version }}/.NET${{ matrix.dotnet-version }} on ${{ matrix.os }}"
 
     env:
 
-      # identifying primary configuration so only one reports to console
-      IS_PRIMARY: ${{ matrix.os == 'macos-latest' && matrix.python-version == '3.12' && matrix.dotnet-version == '8.x' }}
+      # identify configurations that post test reports
+      POST_REPORT: ${{ matrix.python-version == '3.12' && matrix.dotnet-version == '9.x' }}
 
     steps:
       - name: Checkout source
@@ -35,27 +36,37 @@ jobs:
         uses: actions/setup-dotnet@v4
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
-          dotnet-quality: "ga"
+          dotnet-quality: ga
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          cache: "pip"
           python-version: ${{ matrix.python-version }}
+          cache: "pip"
 
-      - name: Install requirements
+      - name: Verify DLL presence
+        if: matrix.os == 'macos-latest'
         run: |
+          ls -la stock_indicators/_cslib/lib/
+          if [ ! -f stock_indicators/_cslib/lib/Skender.Stock.Indicators.dll ]; then
+            echo "Skender.Stock.Indicators.dll is missing."
+            exit 1
+          fi
+          chmod +r stock_indicators/_cslib/lib/Skender.Stock.Indicators.dll
+
+      - name: Install dependencies
+        run: |
+          pip install -U --upgrade-strategy=only-if-needed pip
           pip install -r requirements.txt
           pip install -r requirements-test.txt
 
-      - name: Test indicators (not locale_specific)
-        if: runner.os != 'macOS'
-        run: pytest -vr A tests -m "not locale_specific"
+      - name: Test indicators
+        run: pytest -vr A tests --junitxml=test-results.xml
 
-      - if: runner.os == 'macOS'
-        name: Test indicators, including locale_specific(ru_RU)
-        run: |
-          sed -i '' 's/export\ LC_ALL=en_US.UTF-8/export\ LC_ALL=ru_RU.UTF-8/g' ~/.bashrc
-          source ~/.bashrc
-          locale
-          pytest -vr A tests $( $IS_PRIMARY && echo "--junitxml=test-results.xml" )
+      # results only needed from one primary instance
+
+      - name: Post test summary
+        uses: test-summary/action@v2
+        if: env.POST_REPORT == 'true' && always()
+        with:
+          paths: test-results.xml

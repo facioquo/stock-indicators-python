@@ -1,19 +1,37 @@
-import os
 import csv
+import logging
+import os
+import platform
 from datetime import datetime
 from decimal import Decimal, DecimalException
+from pathlib import Path
+
 import pytest
+
+# Import pre-initialized CLR and Quote from stock_indicators
+from stock_indicators._cslib import clr
 from stock_indicators.indicators.common import Quote
 
+# Setup logging
+logging.basicConfig(level=logging.DEBUG)
+logger = logging.getLogger(__name__)
 
-dir = os.path.dirname(__file__)
-
+base_dir = Path(__file__).parent.parent / "test_data"
 
 def get_data_from_csv(filename):
     """Read from CSV file."""
 
-    data_path = os.path.join(dir, f"../samples/quotes/{filename}.csv")
-    with open(data_path, 'r', newline='') as csvfile:
+    quotes_dir = base_dir / "quotes"
+    if not quotes_dir.exists():
+        raise FileNotFoundError(
+            f"Test data directory not found at: {quotes_dir}\n"
+            "Please ensure test data files are present in the correct location."
+        )
+
+    data_path = quotes_dir / f"{filename}.csv"
+    logger.debug("Loading benchmark data from: %s", data_path)
+
+    with open(data_path, "r", newline="", encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
         data = list(reader)
     return data[1:]  # skips the first row, those are headers
@@ -23,74 +41,80 @@ def parse_decimal(value):
     """Parse decimal value."""
 
     try:
-        return '{:f}'.format(Decimal(value))
+        return f"{Decimal(value):f}"
     except DecimalException:
         return None
 
 
 def parse_date(date_str):
-    """Parse date value. Input format must be '%Y-%m-%d' """
+    """Parse date value. Input format must be '%Y-%m-%d'"""
 
     try:
         if len(date_str) <= 10:
-            return datetime.strptime(date_str, '%Y-%m-%d')
-        return datetime.strptime(date_str, '%Y-%m-%d %H:%M:%S')
+            return datetime.strptime(date_str, "%Y-%m-%d")
+        return datetime.strptime(date_str, "%Y-%m-%d %H:%M:%S")
     except ValueError:
         return datetime.now()
 
 
-@pytest.fixture(scope='session')
+@pytest.fixture(scope="session")
 def quotes(days: int = 502):
-    rows = get_data_from_csv('Default')
+    rows = get_data_from_csv("Default")
 
     h = []
     for row in rows:
-        h.append(Quote(
-            parse_date(row[1]),
-            row[2],
-            row[3],
-            row[4],
-            row[5],
-            row[6],
-        ))
+        h.append(
+            Quote(
+                parse_date(row[1]),
+                row[2],
+                row[3],
+                row[4],
+                row[5],
+                row[6],
+            )
+        )
 
     h.reverse()
     return h[:days]
 
 
-@pytest.fixture(scope='session')
-def other_quotes(days: int = 502):
-    rows = get_data_from_csv('Compare')
+@pytest.fixture(scope="session")
+def quotes_other(days: int = 502):
+    rows = get_data_from_csv("Compare")
 
     h = []
     for row in rows:
-        h.append(Quote(
-            parse_date(row[2]),
-            row[3],
-            row[4],
-            row[5],
-            row[6],
-            row[7],
-        ))
+        h.append(
+            Quote(
+                parse_date(row[2]),
+                row[3],
+                row[4],
+                row[5],
+                row[6],
+                row[7],
+            )
+        )
 
     h.reverse()
     return h[:days]
 
 
-@pytest.fixture(scope='session')
-def longish_quotes(days: int = 5285):
-    rows = get_data_from_csv('Longish')
+@pytest.fixture(scope="session")
+def quotes_longish(days: int = 5285):
+    rows = get_data_from_csv("Longish")
 
     h = []
     for row in rows:
-        h.append(Quote(
-            parse_date(row[2]),
-            row[3],
-            row[4],
-            row[5],
-            row[6],
-            row[7],
-        ))
+        h.append(
+            Quote(
+                parse_date(row[2]),
+                row[3],
+                row[4],
+                row[5],
+                row[6],
+                row[7],
+            )
+        )
 
     h.reverse()
     return h[:days]

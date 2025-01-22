@@ -1,8 +1,14 @@
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+# For more information see:
+# https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
 
-name: Test with code coverage
+name: Test code coverage
 
-on: ["push"]
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["*"]
+  workflow_dispatch:
 
 permissions:
   contents: read
@@ -10,7 +16,7 @@ permissions:
 jobs:
   test:
     name: indicators
-    runs-on: macos-latest
+    runs-on: ubuntu-latest
 
     steps:
       - name: Checkout source
@@ -19,25 +25,24 @@ jobs:
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.x
-          dotnet-quality: "ga"
+          dotnet-version: 9.x
+          dotnet-quality: ga
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
           python-version: 3.12
+          cache: "pip"
 
-      - name: Install requirements
+      - name: Install dependencies
         run: |
+          pip install -U --upgrade-strategy=only-if-needed pip
           pip install -r requirements.txt
           pip install -r requirements-test.txt
 
       - name: Test indicators
         run: |
-          sed -i '' 's/export\ LC_ALL=en_US.UTF-8/export\ LC_ALL=ru_RU.UTF-8/g' ~/.bashrc
-          source ~/.bashrc
-          locale
-          coverage run -m --source=stock_indicators pytest -svr A tests
+          coverage run -m --source=stock_indicators pytest
           coverage xml
 
       - name: Publish coverage to Codacy

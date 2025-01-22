@@ -1,0 +1,63 @@
+# For more information see:
+# https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Unit tests (full matrix)
+
+on:
+  push:
+    branches: ["main"]
+    paths:
+      - stock_indicators/**
+      - .github/workflows/test-indicators-full.yml
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+
+    strategy:
+      matrix:
+        os: [windows-2025, ubuntu-24.04-arm, macos-15]
+        python-version: ["3.8", "3.10", "3.12"]
+        dotnet-version: ["6.x", "8.x", "9.x"]
+
+    runs-on: ${{ matrix.os }}
+    name: "Py${{ matrix.python-version }}/.NET${{ matrix.dotnet-version }} on ${{ matrix.os }}"
+
+    env:
+
+      # identify configurations that post test reports
+      POST_REPORT: ${{ matrix.python-version == '3.12' && matrix.dotnet-version == '9.x' }}
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: ${{ matrix.dotnet-version }}
+          dotnet-quality: ga
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          pip install -U --upgrade-strategy=only-if-needed pip
+          pip install -r requirements.txt
+          pip install -r requirements-test.txt
+
+      - name: Test indicators
+        run: pytest -vr A tests --junitxml=test-results.xml
+
+      - name: Post test summary
+        uses: test-summary/action@v2
+        if: env.POST_REPORT == 'true' && always()
+        with:
+          paths: test-results.xml

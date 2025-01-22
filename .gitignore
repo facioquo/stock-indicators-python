@@ -136,3 +136,10 @@ _site/
 
 # JetBrains
 .idea/
+
+# Benchmarks
+.benchmarks
+benchmark_data.json
+
+# OS generated files
+.DS_Store
