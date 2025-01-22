@@ -6,13 +6,14 @@ permalink: /
 layout: base
 lazy-images: true
 ---
+<!-- markdownlint-disable MD033 -->
 
 <p style="text-align:center;">
 <a href="https://pypi.org/project/stock-indicators" aria-label="Get the PyPI package." class="not-mobile">
-  <img src="https://img.shields.io/pypi/v/stock-indicators?color=blue&label=PyPI&cacheSeconds=259200" alt="" />
+  <img src="https://img.shields.io/pypi/v/stock-indicators?color=blue&label=PyPI&cacheSeconds=259200" alt="PyPI version badge" />
 </a>
 <a href="https://pypistats.org/packages/stock-indicators" aria-label="See PyPi download stats." class="not-mobile">
-  <img src="https://img.shields.io/pypi/dm/stock-indicators?style=flat&logo=Python&logoColor=white&label=Downloads&color=indigo&link=https%3A%2F%2Fpypistats.org%2Fpackages%2Fstock-indicators" alt="" />
+  <img src="https://img.shields.io/pypi/dm/stock-indicators?style=flat&logo=Python&logoColor=white&label=Downloads&color=indigo&link=https%3A%2F%2Fpypistats.org%2Fpackages%2Fstock-indicators" alt="PyPI downloads badge" />
 </a>
 </p>
 

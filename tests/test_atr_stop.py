@@ -1,14 +1,16 @@
 import pytest
+
 from stock_indicators import indicators
 from stock_indicators.indicators.common.enums import EndType
+
 
 class TestAtrStop:
     def test_standard(self, quotes):
         results = indicators.get_atr_stop(quotes, 21, 3, EndType.CLOSE)
-        
+
         assert 502 == len(results)
         assert 481 == len(list(filter(lambda x: x.atr_stop is not None, results)))
-        
+
         r = results[20]
         assert r.atr_stop is None
         assert r.buy_stop is None
@@ -41,10 +43,10 @@ class TestAtrStop:
 
     def test_high_low(self, quotes):
         results = indicators.get_atr_stop(quotes, 21, 3, EndType.HIGH_LOW)
-        
+
         assert 502 == len(results)
         assert 481 == len(list(filter(lambda x: x.atr_stop is not None, results)))
-        
+
         r = results[20]
         assert r.atr_stop is None
         assert r.buy_stop is None
@@ -75,13 +77,12 @@ class TestAtrStop:
         assert r.atr_stop == r.buy_stop
         assert r.sell_stop is None
 
+    def test_bad_data(self, quotes_bad):
+        r = indicators.get_atr_stop(quotes_bad, 7)
 
-    def test_bad_data(self, bad_quotes):
-        r = indicators.get_atr_stop(bad_quotes, 7)
-        
         assert 502 == len(r)
 
-    def test_no_quotes(self, quotes):
+    def test_quotes_no(self, quotes):
         r = indicators.get_atr_stop([])
         assert 0 == len(r)
 
@@ -110,6 +111,7 @@ class TestAtrStop:
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_atr_stop(quotes, 1)
 

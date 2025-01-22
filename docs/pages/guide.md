@@ -45,6 +45,26 @@ layout: page
 
     > See [Python documentation](https://packaging.python.org/en/latest/tutorials/installing-packages/) for more help with installing packages.
 
+### Troubleshooting
+
+#### Windows
+
+- Ensure PATH includes .NET SDK location
+- Run PowerShell as administrator if needed
+- Visual Studio Build Tools may be required
+
+#### macOS
+
+- If you see `DOTNET_ROOT not set`:
+
+    ```bash
+    export DOTNET_ROOT="/usr/local/share/dotnet"
+    ```
+
+- For M1/M2 Macs:
+  - Use ARM64 .NET SDK if available
+  - Or install Rosetta 2 for x64 SDK
+
 ### Prerequisite data
 
 Most indicators require that you provide historical quote data and additional configuration parameters.

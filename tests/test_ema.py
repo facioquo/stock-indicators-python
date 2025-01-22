@@ -1,6 +1,8 @@
 import pytest
+
 from stock_indicators import indicators
 from stock_indicators.indicators.common.enums import CandlePart
+
 
 class TestEMA:
     def test_standard(self, quotes):
@@ -20,7 +22,7 @@ class TestEMA:
 
     def test_custom(self, quotes):
         results = indicators.get_ema(quotes, 20, CandlePart.OPEN)
-        
+
         assert 502 == len(results)
         assert 483 == len(list(filter(lambda x: x.ema is not None, results)))
 
@@ -33,15 +35,15 @@ class TestEMA:
         r = results[501]
         assert 249.9157 == round(float(r.ema), 4)
 
-    def test_bad_data(self, bad_quotes):
-        r = indicators.get_ema(bad_quotes, 15)
+    def test_bad_data(self, quotes_bad):
+        r = indicators.get_ema(quotes_bad, 15)
 
         assert 502 == len(r)
-        
-    def test_no_quotes(self, quotes):
+
+    def test_quotes_no(self, quotes):
         r = indicators.get_ema([], 10)
         assert 0 == len(r)
-        
+
         r = indicators.get_ema(quotes[:1], 10)
         assert 1 == len(r)
 
@@ -63,5 +65,6 @@ class TestEMA:
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_ema(quotes, 0)

@@ -1,5 +1,7 @@
 import pytest
+
 from stock_indicators import indicators
+
 
 class TestSuperTrend:
     def test_standard(self, quotes):
@@ -38,16 +40,16 @@ class TestSuperTrend:
         assert r.super_trend == r.upper_band
         assert r.lower_band is None
 
-    def test_bitcoin(self, bitcoin_quotes):
-        results = indicators.get_super_trend(bitcoin_quotes, 10, 3)
+    def test_bitcoin(self, quotes_bitcoin):
+        results = indicators.get_super_trend(quotes_bitcoin, 10, 3)
 
         assert 1246 == len(results)
 
         r = results[1208]
         assert 16242.2704 == round(float(r.lower_band), 4)
 
-    def test_bad_data(self, bad_quotes):
-        r = indicators.get_super_trend(bad_quotes, 7)
+    def test_bad_data(self, quotes_bad):
+        r = indicators.get_super_trend(quotes_bad, 7)
 
         assert 502 == len(r)
 
@@ -73,6 +75,7 @@ class TestSuperTrend:
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_super_trend(quotes, 1)
 

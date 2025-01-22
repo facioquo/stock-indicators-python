@@ -1,0 +1,208 @@
+# For more information see:
+# https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
+
+name: Test localization
+
+on:
+  push:
+    branches: ["main"]
+  pull_request:
+    branches: ["*"]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  localization:
+    strategy:
+      matrix:
+        include:
+          # Windows tests
+          - os: windows-latest
+            locale: 'fr_FR.UTF-8'
+          - os: windows-latest
+            locale: 'ru_RU.UTF-8'
+
+          # Ubuntu tests
+          - os: ubuntu-latest
+            locale: 'fr_FR.UTF-8'
+          - os: ubuntu-latest
+            locale: 'ru_RU.UTF-8'
+
+          # macOS tests
+          - os: macos-latest
+            locale: 'fr_FR.UTF-8'
+          - os: macos-latest
+            locale: 'de_DE.UTF-8'
+
+    name: "${{ matrix.locale }} on ${{ matrix.os }}"
+    runs-on: ${{ matrix.os }}
+
+    env:
+      PYTHONPATH: ${{ github.workspace }}
+      LC_NUMERIC: ${{ matrix.locale }}
+      LC_MONETARY: ${{ matrix.locale }}
+      LANG: ${{ matrix.locale }}
+      LC_ALL: ${{ matrix.locale }}
+      PYTHONIOENCODING: utf-8
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 9.x
+          dotnet-quality: ga
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: 3.12
+          cache: "pip"
+
+      - name: Configure Linux locale
+        if: runner.os == 'Linux'
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y locales locales-all
+
+          # Generate and configure locales
+          sudo locale-gen ${{ matrix.locale }}
+          sudo update-locale LANG=${{ matrix.locale }}
+
+          # Set locale in multiple ways to ensure it takes effect
+          export LANG=${{ matrix.locale }}
+          export LANGUAGE=${{ matrix.locale }}
+          export LC_ALL=${{ matrix.locale }}
+
+          # Verify locale installation
+          locale -a
+          locale
+
+      - name: Configure Windows locale
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: |
+          $locale = "${{ matrix.locale }}".Split('.')[0].Replace('_', '-')
+
+          # Set system level culture
+          Set-WinSystemLocale -SystemLocale $locale
+
+          # Set .NET cultures
+          [System.Threading.Thread]::CurrentThread.CurrentCulture = [System.Globalization.CultureInfo]::GetCultureInfo($locale)
+          [System.Threading.Thread]::CurrentThread.CurrentUICulture = [System.Globalization.CultureInfo]::GetCultureInfo($locale)
+
+          # Set default AppContext switch for .NET
+          [AppContext]::SetSwitch('System.Globalization.UseNls', $true)
+
+          # Set environment variables
+          $env:DOTNET_SYSTEM_GLOBALIZATION_INVARIANT = 'false'
+          $env:DOTNET_RUNTIME_IDENTIFIER = "win-x64"
+
+          # Verify culture settings
+          Write-Host "Current Culture: $([System.Threading.Thread]::CurrentThread.CurrentCulture)"
+          Write-Host "Current UI Culture: $([System.Threading.Thread]::CurrentThread.CurrentUICulture)"
+
+      - name: Configure macOS locale
+        if: runner.os == 'macOS'
+        run: |
+          # List available locales
+          locale -a
+
+          # Try to set the locale
+          export LANG=${{ matrix.locale }}
+          export LC_ALL=${{ matrix.locale }}
+
+          # Verify locale
+          locale
+
+          # Create temporary project directory
+          TEMP_DIR=$(mktemp -d)
+          pushd $TEMP_DIR
+
+          # Create project file
+          cat > LocaleSetup.csproj << 'EOF'
+          <Project Sdk="Microsoft.NET.Sdk">
+            <PropertyGroup>
+              <OutputType>Exe</OutputType>
+              <TargetFramework>net9.0</TargetFramework>
+            </PropertyGroup>
+          </Project>
+          EOF
+
+          # Create program file
+          cat > Program.cs << 'EOF'
+          using System;
+          using System.Globalization;
+          using System.Threading;
+
+          class Program {
+              static void Main() {
+                  var locale = Environment.GetEnvironmentVariable("LC_ALL")?.Split('.')[0].Replace("_", "-");
+                  try {
+                      var culture = new CultureInfo(locale);
+                      Thread.CurrentThread.CurrentCulture = culture;
+                      Thread.CurrentThread.CurrentUICulture = culture;
+                      Console.WriteLine($"Set culture to: {culture.Name}");
+                  } catch (Exception e) {
+                      Console.WriteLine($"Failed to set culture: {e.Message}");
+                  }
+              }
+          }
+          EOF
+
+          # Build and run
+          dotnet run
+
+          # Cleanup
+          popd
+          rm -rf $TEMP_DIR
+
+      - name: Install dependencies
+        run: |
+          pip install -U --upgrade-strategy=only-if-needed pip
+          pip install -r requirements.txt
+          pip install -r requirements-test.txt
+
+      - name: Verify locale
+        shell: bash
+        run: |
+          echo "Current locale settings:"
+          locale
+
+          echo -e "\nPython locale test:"
+          python -c "
+          import locale
+          import sys
+
+          print(f'Default encoding: {sys.getdefaultencoding()}')
+          print(f'Filesystem encoding: {sys.getfilesystemencoding()}')
+          print(f'Locale: {locale.getlocale()}')
+
+          # Try setting the locale explicitly
+          try:
+              locale.setlocale(locale.LC_ALL, '')
+              print(f'Set locale successful: {locale.getlocale()}')
+          except locale.Error as e:
+              print(f'Failed to set locale: {e}')
+
+          # Test number formatting
+          try:
+              print(f'Number formatting: {locale.format_string(\"%.2f\", 1234.56)}')
+          except Exception as e:
+              print(f'Number formatting failed: {e}')
+
+          # Test currency formatting
+          try:
+              print(f'Currency formatting: {locale.currency(1234.56)}')
+          except Exception as e:
+              print(f'Currency formatting failed: {e}')
+          "
+
+      - name: Run locale tests
+        run: pytest -m "localization" -vr A tests --junitxml=test-results.xml
+
+      - uses: test-summary/action@v2
+        if: always()
+        with:
+          paths: test-results.xml

@@ -27,10 +27,12 @@ jobs:
     - name: Setup Python
       uses: actions/setup-python@v5
       with:
-        python-version: "3.x"
+        python-version: 3.12
 
     - name: Build library
-      run: python3 -m pip install build --user
+      run: |
+        pip install -U --upgrade-strategy=only-if-needed pip
+        python3 -m pip install build --user
 
     - name: Build wheel and tarball
       run: python3 -m build
