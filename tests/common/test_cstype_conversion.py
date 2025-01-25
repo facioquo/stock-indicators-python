@@ -87,7 +87,7 @@ class TestCsTypeConversion:
         )
 
         q3 = Quote(
-            date=dt3.astimezone,
+            date=dt3.astimezone(datetime.timezone.utc),
             open=Decimal('23'),
             high=Decimal('26'),
             low=Decimal('20'),
