@@ -1,4 +1,6 @@
 #### done when
 
-- [ ] Implement
 - [ ] Fix: #
+
+#### the details
+<!-- add Copilot generated summary here -->
