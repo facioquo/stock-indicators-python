@@ -1,7 +1,6 @@
 import csv
 import logging
 import os
-import platform
 from datetime import datetime
 from decimal import Decimal, DecimalException
 from pathlib import Path
@@ -21,29 +20,8 @@ def setup_logging():
 # Setup logging for this module
 logger = logging.getLogger(__name__)
 
-
-def verify_dotnet():
-    """Verify .NET environment setup"""
-    dotnet_root = os.environ.get("DOTNET_ROOT")
-    logger.debug("DOTNET_ROOT: %s", dotnet_root)
-    if platform.system() == "Darwin" and not dotnet_root:
-        raise EnvironmentError(
-            "DOTNET_ROOT not set. Please restart terminal after installation."
-        )
-
-
-# Initialize .NET runtime before imports
-verify_dotnet()
-
 # Constants
 base_dir = Path(__file__).parent.parent / "test_data"
-
-
-@pytest.fixture(autouse=True)
-def verify_environment():
-    """Verify environment is properly setup"""
-    verify_dotnet()
-    return True
 
 
 @pytest.fixture(autouse=True, scope="session")
