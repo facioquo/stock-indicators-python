@@ -18,8 +18,6 @@ def configure_logging(debug=False):
         )
         logger.addHandler(handler)
 
-    # An initial message to confirm logging setup
+    # Warn if DEBUG is enabled
     if debug:
-        logger.debug("Debug logging is enabled.")
-    else:
-        logger.warning("Logging level is set to WARNING (default).")
+        logger.warning("DEBUG logging is enabled.")
