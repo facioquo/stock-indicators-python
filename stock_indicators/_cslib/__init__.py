@@ -20,7 +20,7 @@ from pythonnet import load
 # Setup logging
 from stock_indicators.logging_config import configure_logging
 
-configure_logging(debug=True)  # Set to True if you need debug this module
+configure_logging(debug=False)  # Set to True if you need debug this module
 
 logger = logging.getLogger(__name__)
 
