@@ -32,6 +32,21 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v4
 
+      - name: Check debug settings
+        if: env.POST_REPORT == 'true'
+        shell: bash
+        run: |
+          echo "Checking for debug logging settings in package files..."
+          # Use find and grep consistently across platforms
+          debug_files=$(find stock_indicators -type f -name "*.py" -exec grep -l '\bdebug[[:space:]]*=[[:space:]]*True\b' {} \;)
+          if [ ! -z "$debug_files" ]; then
+            echo "ERROR: Debug logging is still enabled in the following files:"
+            echo "$debug_files"
+            echo "Please set debug=False in configure_logging() calls before merging."
+            exit 1
+          fi
+          echo "✓ No debug logging settings found."
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
@@ -62,8 +77,6 @@ jobs:
 
       - name: Test indicators
         run: pytest -vr A tests --junitxml=test-results.xml
-
-      # results only needed from one primary instance
 
       - name: Post test summary
         uses: test-summary/action@v2
