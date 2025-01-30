@@ -16,7 +16,7 @@ jobs:
 
     strategy:
       matrix:
-        os: [windows-latest, ubuntu-latest, macos-latest]
+        os: [windows-latest, ubuntu-24.04-arm, macos-latest]
         python-version: ["3.8", "3.12"]
         dotnet-version: ["6.x", "9.x"]
 
