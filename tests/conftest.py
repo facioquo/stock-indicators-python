@@ -8,20 +8,29 @@ from pathlib import Path
 
 import pytest
 
-# Import pre-initialized CLR and Quote from stock_indicators
 from stock_indicators._cslib import clr
-from stock_indicators.indicators.common import Quote
+from stock_indicators.indicators.common import Quote  # pre-initialized
+from stock_indicators.logging_config import configure_logging
 
-# Setup logging
-logging.basicConfig(level=logging.DEBUG)
+
+@pytest.fixture(scope="session", autouse=True)
+def setup_logging():
+    configure_logging(debug=True)
+
+
+# Setup logging for this module
 logger = logging.getLogger(__name__)
+
 
 def verify_dotnet():
     """Verify .NET environment setup"""
     dotnet_root = os.environ.get("DOTNET_ROOT")
     logger.debug("DOTNET_ROOT: %s", dotnet_root)
     if platform.system() == "Darwin" and not dotnet_root:
-        raise EnvironmentError("DOTNET_ROOT not set. Please restart terminal after installation.")
+        raise EnvironmentError(
+            "DOTNET_ROOT not set. Please restart terminal after installation."
+        )
+
 
 # Initialize .NET runtime before imports
 verify_dotnet()
@@ -29,11 +38,13 @@ verify_dotnet()
 # Constants
 base_dir = Path(__file__).parent.parent / "test_data"
 
+
 @pytest.fixture(autouse=True)
 def verify_environment():
     """Verify environment is properly setup"""
     verify_dotnet()
     return True
+
 
 @pytest.fixture(autouse=True, scope="session")
 def setup_clr_culture():
@@ -43,7 +54,7 @@ def setup_clr_culture():
     from System.Threading import Thread
 
     # Get current locale from environment
-    locale = os.getenv('LC_ALL', '').split('.')[0].replace('_', '-')
+    locale = os.getenv("LC_ALL", "").split(".")[0].replace("_", "-")
     if locale:
         try:
             culture = CultureInfo(locale)
@@ -52,6 +63,7 @@ def setup_clr_culture():
             logger.debug("Set CLR culture to: %s", culture.Name)
         except (ValueError, AttributeError) as e:
             logger.warning("Failed to set CLR culture: %s", e)
+
 
 # --- Utility Functions ---------------------------------------------------
 
@@ -69,9 +81,7 @@ def get_data_from_csv(filename):
     logger.debug("Loading test data from: %s", data_path)
 
     if not data_path.exists():
-        raise FileNotFoundError(
-            f"Test data file not found: {filename}"
-        )
+        raise FileNotFoundError(f"Test data file not found: {filename}")
 
     with open(data_path, "r", newline="", encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
