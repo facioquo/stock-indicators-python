@@ -36,7 +36,7 @@ jobs:
         if: env.POST_REPORT == 'true'
         run: |
           echo "Checking for debug logging settings in package files..."
-          debug_files=$(find stock_indicators -type f -name "*.py" -exec grep -l "configure_logging(debug=True)" {} \;)
+          debug_files=$(find stock_indicators -type f -name "*.py" -exec grep -l "\<debug[[:space:]]*=[[:space:]]*True\>" {} \;)
           if [ ! -z "$debug_files" ]; then
             echo "ERROR: Debug logging is still enabled in the following files:"
             echo "$debug_files"
