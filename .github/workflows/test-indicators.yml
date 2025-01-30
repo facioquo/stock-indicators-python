@@ -63,6 +63,11 @@ jobs:
       - name: Test indicators
         run: pytest -vr A tests --junitxml=test-results.xml
 
+      - name: Check debug settings
+        if: env.POST_REPORT == 'true'
+        run: |
+          ! find stock_indicators -type f -name "*.py" -exec grep -l "configure_logging(debug=True)" {} \;
+
       # results only needed from one primary instance
 
       - name: Post test summary
