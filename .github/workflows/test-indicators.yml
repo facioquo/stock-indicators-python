@@ -34,9 +34,11 @@ jobs:
 
       - name: Check debug settings
         if: env.POST_REPORT == 'true'
+        shell: bash
         run: |
           echo "Checking for debug logging settings in package files..."
-          debug_files=$(find stock_indicators -type f -name "*.py" -exec grep -l "\<debug[[:space:]]*=[[:space:]]*True\>" {} \;)
+          # Use find and grep consistently across platforms
+          debug_files=$(find stock_indicators -type f -name "*.py" -exec grep -l '\bdebug[[:space:]]*=[[:space:]]*True\b' {} \;)
           if [ ! -z "$debug_files" ]; then
             echo "ERROR: Debug logging is still enabled in the following files:"
             echo "$debug_files"
