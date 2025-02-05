@@ -8,11 +8,8 @@ package from <https://github.com/DaveSkender/Stock.Indicators>, written in C#.
 The target framework of dll is `.NET 6.0`.
 """
 
-import json
 import logging
-import os
 import platform
-import sys
 from pathlib import Path
 
 from pythonnet import load
@@ -24,52 +21,16 @@ configure_logging(debug=False)  # Set to True if you need debug this module
 
 logger = logging.getLogger(__name__)
 
-
-def verify_dotnet_environment():
-    """Verify .NET environment setup"""
-    dotnet_root = os.environ.get("DOTNET_ROOT")
-    logger.debug("DOTNET_ROOT: %s", dotnet_root)
-
-    if platform.system() == "Darwin":
-        if not dotnet_root:
-            os.environ["DOTNET_ROOT"] = "/usr/local/share/dotnet"
-            logger.debug("Setting DOTNET_ROOT for macOS")
-
-
 try:
-    verify_dotnet_environment()
+    # Load CLR
+    load(runtime="coreclr")
+    import clr
+    logger.debug("CLR loaded successfully on %s", platform.system())
 
     # Get absolute paths
     base_path = Path(__file__).parent.resolve()
-    runtime_config_path = base_path / "runtimeconfig.json"
     dll_path = base_path / "lib" / "Skender.Stock.Indicators.dll"
-
-    logger.debug("Base path: %s", base_path)
-    logger.debug("Runtime config path: %s", runtime_config_path)
-    logger.debug("DLL path: %s", dll_path)
-
-    if not runtime_config_path.exists():
-        raise FileNotFoundError(
-            f"runtimeconfig.json not found at: {runtime_config_path}"
-        )
-
-    if not dll_path.exists():
-        raise FileNotFoundError(f"DLL not found at: {dll_path}")
-
-    # Initialize runtime based on platform using runtimeconfig.json
-    if platform.system() == "Darwin":
-        load(
-            "coreclr",
-            dotnet_root=os.environ["DOTNET_ROOT"],
-            runtime_config=str(runtime_config_path),
-        )
-    else:
-        load("coreclr", runtime_config=str(runtime_config_path))
-
-    import clr
-
-    logger.debug("CLR loaded successfully on %s", platform.system())
-
+    
     # Set assembly resolve path
     from System import IO, AppDomain
 
@@ -132,6 +93,3 @@ from System import Enum as CsEnum
 from System.Collections.Generic import IEnumerable as CsIEnumerable
 from System.Collections.Generic import List as CsList
 from System.Globalization import CultureInfo as CsCultureInfo
-
-# Export initialized modules
-__all__ = ["clr"]
