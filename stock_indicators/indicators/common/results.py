@@ -10,7 +10,6 @@ from stock_indicators._cstypes import to_pydatetime
 class ResultBase:
     """A base wrapper class for a single unit of the results."""
     def __init__(self, base_result: CsResultBase):
-        super().__init__()
         self._csdata = base_result
 
     @property
@@ -29,7 +28,7 @@ class IndicatorResults(List[_T]):
     It provides helper methods written in CSharp implementation.
     """
     def __init__(self, data: Iterable, wrapper_class: Type[_T]):
-        super().__init__([ wrapper_class(_) for _ in data ])
+        super().__init__(map(wrapper_class, data))
         self._csdata = data
         self._wrapper_class = wrapper_class
 
