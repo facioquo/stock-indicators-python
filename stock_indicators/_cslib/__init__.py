@@ -2,7 +2,7 @@
 Skender.Stock.Indicators
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-This module loads `Skender.Stock.Indicators.dll`(v2.5.0), which is a compiled library
+This module loads `Skender.Stock.Indicators.dll`(v2.6.1), which is a compiled library
 package from <https://github.com/DaveSkender/Stock.Indicators>, written in C#.
 
 The target framework of dll is `.NET 6.0`.
