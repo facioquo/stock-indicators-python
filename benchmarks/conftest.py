@@ -8,15 +8,22 @@ from pathlib import Path
 
 import pytest
 
-# Import pre-initialized CLR and Quote from stock_indicators
 from stock_indicators._cslib import clr
-from stock_indicators.indicators.common import Quote
+from stock_indicators.indicators.common import Quote  # pre-initialized
+from stock_indicators.logging_config import configure_logging
 
-# Setup logging
-logging.basicConfig(level=logging.DEBUG)
+
+@pytest.fixture(scope="session", autouse=True)
+def setup_logging():
+    configure_logging(debug=True)
+
+
+# Setup logging for this module
 logger = logging.getLogger(__name__)
 
+# Constants
 base_dir = Path(__file__).parent.parent / "test_data"
+
 
 def get_data_from_csv(filename):
     """Read from CSV file."""

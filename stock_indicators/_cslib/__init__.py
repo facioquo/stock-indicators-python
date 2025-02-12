@@ -2,66 +2,38 @@
 Skender.Stock.Indicators
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-This module loads `Skender.Stock.Indicators.dll`(v2.5.0), which is a compiled library
+This module loads `Skender.Stock.Indicators.dll`(v2.6.1), which is a compiled library
 package from <https://github.com/DaveSkender/Stock.Indicators>, written in C#.
 
 The target framework of dll is `.NET 6.0`.
 """
 
-import json
 import logging
-import os
 import platform
-import sys
 from pathlib import Path
 
 from pythonnet import load
 
 # Setup logging
-logging.basicConfig(level=logging.DEBUG)
+from stock_indicators.logging_config import configure_logging
+
+configure_logging(debug=False)  # Set to True if you need debug this module
+
 logger = logging.getLogger(__name__)
 
-def verify_dotnet_environment():
-    """Verify .NET environment setup"""
-    dotnet_root = os.environ.get("DOTNET_ROOT")
-    logger.debug("DOTNET_ROOT: %s", dotnet_root)
-
-    if platform.system() == "Darwin":
-        if not dotnet_root:
-            os.environ["DOTNET_ROOT"] = "/usr/local/share/dotnet"
-            logger.debug("Setting DOTNET_ROOT for macOS")
-
 try:
-    verify_dotnet_environment()
-
-    # Get absolute paths
-    base_path = Path(__file__).parent.resolve()
-    runtime_config_path = base_path / "runtimeconfig.json"
-    dll_path = base_path / "lib" / "Skender.Stock.Indicators.dll"
-
-    logger.debug("Base path: %s", base_path)
-    logger.debug("Runtime config path: %s", runtime_config_path)
-    logger.debug("DLL path: %s", dll_path)
-
-    if not runtime_config_path.exists():
-        raise FileNotFoundError(f"runtimeconfig.json not found at: {runtime_config_path}")
-
-    if not dll_path.exists():
-        raise FileNotFoundError(f"DLL not found at: {dll_path}")
-
-    # Initialize runtime based on platform using runtimeconfig.json
-    if platform.system() == "Darwin":
-        load("coreclr",
-             dotnet_root=os.environ["DOTNET_ROOT"],
-             runtime_config=str(runtime_config_path))
-    else:
-        load("coreclr", runtime_config=str(runtime_config_path))
-
+    # Load CLR
+    load(runtime="coreclr")
     import clr
     logger.debug("CLR loaded successfully on %s", platform.system())
 
+    # Get absolute paths
+    base_path = Path(__file__).parent.resolve()
+    dll_path = base_path / "lib" / "Skender.Stock.Indicators.dll"
+    
     # Set assembly resolve path
     from System import IO, AppDomain
+
     current_domain = AppDomain.CurrentDomain
     assembly_path = IO.Path.GetDirectoryName(str(dll_path))
     current_domain.SetData("PROBING_PATH", assembly_path)
@@ -70,6 +42,7 @@ try:
     try:
         # Load the assembly first
         from System.Reflection import Assembly
+
         logger.debug("Loading assembly from: %s", dll_path)
         assembly = Assembly.LoadFile(str(dll_path))
         logger.debug("Assembly loaded: %s", assembly.FullName)
@@ -80,14 +53,14 @@ try:
 
     except Exception as asm_error:
         logger.error("Error loading assembly: %s", str(asm_error))
-        if hasattr(asm_error, 'LoaderExceptions'):
+        if hasattr(asm_error, "LoaderExceptions"):
             for ex in asm_error.LoaderExceptions:
                 logger.error("Loader exception: %s", str(ex))
         raise
 
 except Exception as e:
     logger.error("Detailed error information: %s", str(e))
-    if hasattr(e, '__cause__') and e.__cause__ is not None:
+    if hasattr(e, "__cause__") and e.__cause__ is not None:
         logger.error("Caused by: %s", str(e.__cause__))
     error_msg = (
         "Stock Indicators initialization failed.\n"
@@ -120,6 +93,3 @@ from System import Enum as CsEnum
 from System.Collections.Generic import IEnumerable as CsIEnumerable
 from System.Collections.Generic import List as CsList
 from System.Globalization import CultureInfo as CsCultureInfo
-
-# Export initialized modules
-__all__ = ['clr']
