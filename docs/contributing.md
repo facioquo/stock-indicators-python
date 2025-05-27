@@ -48,12 +48,21 @@ For new features, submit an issue with the `enhancement` label.
 - Work items are primarily [entered as Notes](https://docs.github.com/issues/organizing-your-work-with-project-boards/tracking-work-with-project-boards/adding-notes-to-a-project-board) (not Issues), except where an issue or feature is user reported.  With that said, Notes can be converted to Issues if in-progress and collaborative discussion is needed.
 - Use the [Discussions](https://github.com/DaveSkender/Stock.Indicators/discussions) area for general ideation and unrelated questions.
 
-## Developing
+## Development Environment (Quick Setup)
 
-- Read this first: [A Step by Step Guide to Making Your First GitHub Contribution](https://codeburst.io/a-step-by-step-guide-to-making-your-first-github-contribution-5302260a2940).  I also have a discussion [on Forking](https://github.com/DaveSkender/Stock.Indicators/discussions/503) if you have questions.
-- If you are adding a new indicator, the easiest way to do this is to copy the folder of an existing indicator and rename everything using the same naming conventions and taxonomy.  All new indicators should include unit and performance tests.
-- Do not commingle multiple contributions.  Please keep changes small and separate.
-- If you're just getting started, [install and setup](https://python.stockindicators.dev/guide/#installation-and-setup) language SDKs for Python and .NET.
+- Recommended tools: Git, Node.js, npm, Docker, Python, Docker Desktop, Visual Studio Code (see `.vscode/extensions.json` for recommended extensions).
+- This project supports [VS Code Dev Containers](https://code.visualstudio.com/docs/remote/containers) for a consistent development environment. Open the project in VS Code and select "Reopen in Container" (requires the Remote - Containers extension).
+- You can test GitHub Actions workflows locally using [`act`](https://github.com/nektos/act), which is preinstalled in the devcontainer. Example: `act -l` to list workflows, `act` to run all workflows.
+
+For more details, see the [official documentation](https://github.com/nektos/act#readme) and the project README.
+
+---
+
+### New to contributing?
+
+- Read this first: [A Step by Step Guide to Making Your First GitHub Contribution](https://codeburst.io/a-step-by-step-guide-to-making-your-first-github-contribution-5302260a2940). If you have questions about forking, see [this discussion](https://github.com/DaveSkender/Stock.Indicators/discussions/503).
+- Please keep contributions small and focused—avoid combining unrelated changes in one pull request.
+- If you're just getting started, make sure to install and set up the language SDKs for Python and .NET (see below for setup instructions).
 
 ## Development Environment Setup
 
