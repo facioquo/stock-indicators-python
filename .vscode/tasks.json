@@ -4,7 +4,7 @@
     {
       "label": "build",
       "type": "shell",
-      "command": "pip install -r requirements.txt && pip install requirements-test.txt",
+      "command": "pip install -r requirements.txt && pip install -r requirements-test.txt",
       "group": "build",
       "problemMatcher": []
     },
