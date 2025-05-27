@@ -1,26 +1,73 @@
+/* CONTAINER for Python Development
+ * references:
+ * » https://containers.dev/implementors/json_reference
+ * » https://github.com/devcontainers/features/tree/main/src
+ * » https://code.visualstudio.com/docs/remote/containers
+ * » https://github.com/devcontainers/images/blob/main/src/python
+ *
+ * » F1 > Dev Containers: Rebuild Container
+ */
 {
-  "name": "Python Dev Container",
-  "image": "mcr.microsoft.com/vscode/devcontainers/python:3.9",
-  "settings": {
-    "terminal.integrated.shell.linux": "/bin/bash"
+  "name": "Stock Indicators for Python",
+  "image": "mcr.microsoft.com/devcontainers/python:3.12",
+  "forwardPorts": [],
+  "remoteUser": "vscode",
+  "features": {
+    "ghcr.io/devcontainers/features/git:1": {
+      "version": "os-provided"
+    },
+    "ghcr.io/devcontainers/features/dotnet:2": {
+      "version": "lts"
+    },
+    "ghcr.io/devcontainers/features/node:1": {
+      "version": "lts",
+      "pnpmVersion": "none",
+      "nvmVersion": "none"
+    },
+    "ghcr.io/devcontainers/features/github-cli:1": {
+      "installDirectlyFromGitHubRelease": true,
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/azure-cli:1": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers/features/ruby:1": {
+      "version": "3.3"
+    },
+    "ghcr.io/devcontainers-extra/features/isort:2": {
+      "version": "latest"
+    },
+    "ghcr.io/devcontainers-extra/features/pylint:2": {
+      "version": "latest"
+    }
   },
-  "extensions": [
-    "ms-python.python",
-    "ms-python.vscode-pylance",
-    "ms-python.flake8",
-    "ms-python.black-formatter",
-    "ms-python.isort",
-    "ms-toolsai.jupyter",
-    "eamodio.gitlens",
-    "esbenp.prettier-vscode",
-    "dbaeumer.vscode-eslint",
-    "github.copilot",
-    "ms-vscode-remote.remote-containers"
-  ],
-  "postCreateCommand": "pip install -r requirements.txt -r requirements-test.txt",
-  "workspaceFolder": "/workspace",
-  "tasks": {
-    "build": "pip install -r requirements.txt && pip install -r requirements-test.txt",
-    "test": "pytest -vr A tests -m \"not locale_specific\""
-  }
+  // Use 'settings' to set *default* container specific settings.json
+  // values on container create.
+  "customizations": {
+    "vscode": {
+      // container overrides only
+      // otherwise use .vscode/settings.json
+      "settings": {
+        "pylint.importStrategy": "fromEnvironment",
+        "python.defaultInterpreterPath": "/usr/local/bin/python"
+      },
+      // required extensions
+      // for recommended, see .vscode/extensions.json
+      "extensions": [
+        "donjayamanne.python-extension-pack",
+        "DavidAnson.vscode-markdownlint",
+        "EditorConfig.EditorConfig",
+        "ms-python.black-formatter",
+        "ms-python.debugpy",
+        "ms-python.isort",
+        "ms-python.python",
+        "ms-python.pylint",
+        "ms-python.vscode-pylance"
+      ]
+    }
+  },
+  // Runs after the container is created
+  "postCreateCommand": "chmod +x .devcontainer/setup.sh && .devcontainer/setup.sh",
+  // Runs every time the container starts
+  "postStartCommand": "echo 'Container started'"
 }

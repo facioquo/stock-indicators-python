@@ -1,0 +1,34 @@
+{
+  "isort.args": [
+    "--profile",
+    "black"
+  ],
+  "isort.check": true,
+  "isort.importStrategy": "fromEnvironment",  // default: "useBundled"
+  "markdownlint.config": {
+    "default": true,          // Enable all default rules
+    "MD013": false,           // Disable line length checking entirely
+    "MD025": false,           // Allow multiple top level headers in the same document
+    "MD033": {                // Allow specific HTML elements
+      "allowed_elements": [
+        "details",
+        "summary",
+        "h1"                  // we use h1 as a Jekyll-y page title
+      ]
+    },
+    "MD041": false            // Allow content before first heading
+  },
+  "pylint.importStrategy": "fromEnvironment", // default: "useBundled"
+  "python.testing.pytestArgs": [
+    "tests"
+  ],
+  "python.testing.pytestEnabled": true,
+  "python.testing.unittestEnabled": false,
+  "[markdown]": {
+    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+    "files.trimTrailingWhitespace": true
+  },
+  "[python]": {
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  }
+}

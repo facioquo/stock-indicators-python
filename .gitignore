@@ -129,7 +129,6 @@ dmypy.json
 
 # personal editor configs
 .vs
-.vscode
 
 # Jekyll site
 _site/
