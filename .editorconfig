@@ -3,8 +3,6 @@
 # top-most EditorConfig file
 root = true
 
-#### Core EditorConfig Options ####
-
 # Global settings for all files
 [*]
 charset = utf-8

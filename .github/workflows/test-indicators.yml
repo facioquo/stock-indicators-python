@@ -13,11 +13,13 @@ permissions:
 
 jobs:
   test:
+
     strategy:
       matrix:
         # ref: https://github.com/actions/runner-images#readme
 
         include:
+
           # oldest combinations
           - os: macos-13
             dotnet-version: "6.x"

@@ -57,16 +57,13 @@
         "donjayamanne.python-extension-pack",
         "DavidAnson.vscode-markdownlint",
         "EditorConfig.EditorConfig",
-        "ms-azuretools.vscode-docker",
         "ms-dotnettools.vscode-dotnet-runtime",
         "ms-python.black-formatter",
         "ms-python.debugpy",
         "ms-python.isort",
         "ms-python.python",
         "ms-python.pylint",
-        "ms-python.vscode-pylance",
-        "ms-vscode-remote.remote-containers",
-        "SanjulaGanepola.github-local-actions"
+        "ms-python.vscode-pylance"
       ]
     }
   },

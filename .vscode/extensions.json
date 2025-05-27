@@ -1,21 +1,14 @@
 {
   "recommendations": [
-    "codacy-app.codacy",
-    "DavidAnson.vscode-markdownlint",
     "donjayamanne.python-extension-pack",
+    "DavidAnson.vscode-markdownlint",
     "EditorConfig.EditorConfig",
-    "ginfuru.ginfuru-vscode-jekyll-syntax",
-    "GitHub.codespaces",
-    "GitHub.copilot",
-    "github.vscode-github-actions",
     "ms-dotnettools.vscode-dotnet-runtime",
     "ms-python.black-formatter",
     "ms-python.debugpy",
     "ms-python.isort",
     "ms-python.python",
     "ms-python.pylint",
-    "ms-python.vscode-pylance",
-    "ms-vscode-remote.remote-containers",
-    "redhat.vscode-yaml"
+    "ms-python.vscode-pylance"
   ]
 }
