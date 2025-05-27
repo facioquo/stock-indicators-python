@@ -97,17 +97,17 @@ class TestZigZag:
         assert r.point_type is None
 
     def test_no_entry(self):
-        quotes = load_quotes_from_json("../samples/zig_zag/data.ethusdt.json")
+        quotes = load_quotes_from_json("../test_data/zig_zag/data.ethusdt.json")
         results = indicators.get_zig_zag(quotes, EndType.CLOSE, 5)
         assert 0 == len(list(filter(lambda x: x.point_type is not None, results)))
 
     def test_issue_632(self):
-        quotes = load_quotes_from_json("../samples/zig_zag/data.issue632.json")
+        quotes = load_quotes_from_json("../test_data/zig_zag/data.issue632.json")
         results = indicators.get_zig_zag(quotes, EndType.CLOSE, 5)
         assert 17 == len(results)
 
     def test_schrodinger_scenario(self):
-        quotes = load_quotes_from_json("../samples/zig_zag/data.schrodinger.json")
+        quotes = load_quotes_from_json("../test_data/zig_zag/data.schrodinger.json")
         quotes.sort(key=lambda x: x.date)
 
         results = indicators.get_zig_zag(quotes, EndType.CLOSE, 0.25)

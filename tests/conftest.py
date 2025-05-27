@@ -1,14 +1,46 @@
 import csv
+import logging
 import os
 from datetime import datetime
 from decimal import Decimal, DecimalException
+from pathlib import Path
 
 import pytest
 
-from stock_indicators.indicators.common import Quote
+from stock_indicators._cslib import clr
+from stock_indicators.indicators.common import Quote  # pre-initialized
+from stock_indicators.logging_config import configure_logging
+
+
+@pytest.fixture(scope="session", autouse=True)
+def setup_logging():
+    configure_logging(debug=True)
+
+
+# Setup logging for this module
+logger = logging.getLogger(__name__)
 
 # Constants
-base_dir = os.path.dirname(__file__)
+base_dir = Path(__file__).parent.parent / "test_data"
+
+
+@pytest.fixture(autouse=True, scope="session")
+def setup_clr_culture():
+    """Configure CLR culture settings for all tests."""
+    import clr
+    from System.Globalization import CultureInfo
+    from System.Threading import Thread
+
+    # Get current locale from environment
+    locale = os.getenv("LC_ALL", "").split(".")[0].replace("_", "-")
+    if locale:
+        try:
+            culture = CultureInfo(locale)
+            Thread.CurrentThread.CurrentCulture = culture
+            Thread.CurrentThread.CurrentUICulture = culture
+            logger.debug("Set CLR culture to: %s", culture.Name)
+        except (ValueError, AttributeError) as e:
+            logger.warning("Failed to set CLR culture: %s", e)
 
 
 # --- Utility Functions ---------------------------------------------------
@@ -17,7 +49,18 @@ base_dir = os.path.dirname(__file__)
 def get_data_from_csv(filename):
     """Read from CSV file."""
 
-    data_path = os.path.join(base_dir, f"../samples/quotes/{filename}.csv")
+    quotes_dir = base_dir / "quotes"
+    if not base_dir.exists() or not quotes_dir.exists():
+        raise FileNotFoundError(
+            "Test data not found. Please see README.md for test data setup instructions."
+        )
+
+    data_path = quotes_dir / f"{filename}.csv"
+    logger.debug("Loading test data from: %s", data_path)
+
+    if not data_path.exists():
+        raise FileNotFoundError(f"Test data file not found: {filename}")
+
     with open(data_path, "r", newline="", encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
         data = list(reader)

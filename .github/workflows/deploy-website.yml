@@ -2,6 +2,9 @@ name: Deploy website
 
 on: workflow_dispatch
 
+permissions:
+  contents: read
+
 concurrency:
   group: docs-website
 

@@ -8,6 +8,9 @@ on:
       - .github/workflows/test-website-links.yml
   workflow_dispatch:
 
+permissions:
+  contents: read
+
 # Prevent multiple concurrent runs
 concurrency:
   group: ${{ github.workflow }}-${{ github.ref }}

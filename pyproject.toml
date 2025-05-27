@@ -56,7 +56,7 @@ Documentation = "https://python.stockindicators.dev"
 "Release Notes" = "https://github.com/facioquo/stock-indicators-python/releases"
 
 [tool.setuptools.packages.find]
-exclude = ["tests*", "benchmarks*", "samples*", "docs*"]
+exclude = ["tests*", "benchmarks*", "test_data*", "docs*"]
 
 # can be empty if no extra settings are needed, presence enables setuptools_scm
 [tool.setuptools_scm]

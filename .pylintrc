@@ -2,6 +2,10 @@
 extension-pkg-allow-list=
   clr
 
+ignore-long-lines=yes
+
+ignore-imports=yes
+
 disable=
   C0103,  # Variable name doesn't conform to snake_case naming style
   C0114,  # Missing module docstring
@@ -10,6 +14,7 @@ disable=
   C0301,  # Line too long
   C0321,  # More than one statement on a single line
   C0413,  # Import should be at the top of the file
+  C0415,  # Import outside toplevel
   E0401,  # Import error
   W0212,  # Access to a protected member of a client class
   R0903,  # Too few public methods

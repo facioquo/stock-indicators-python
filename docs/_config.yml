@@ -22,7 +22,7 @@ dotnet:
   src: "https://github.com/DaveSkender/Stock.Indicators/blob/main/src"
   charts: "https://raw.githubusercontent.com/DaveSkender/Stock.Indicators/main/docs/assets/charts"
 
-  # this site URL refs
+# this site URL refs
 python:
   src: "https://github.com/facioquo/stock-indicators-python/blob/main/stock_indicators/indicators"
 

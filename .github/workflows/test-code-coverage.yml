@@ -6,33 +6,47 @@ name: Test code coverage
 on:
   push:
     branches: ["main"]
-  pull_request:
+  pull_request_target:
     branches: ["*"]
   workflow_dispatch:
 
+# Limit concurrent runs
+concurrency:
+  group: ${{ github.workflow }}-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
 jobs:
   test:
     name: indicators
     runs-on: ubuntu-latest
 
+    env:
+      CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
+
     steps:
-      - name: Checkout source
+      - name: Checkout PR
         uses: actions/checkout@v4
+        with:
+          # Explicitly checkout PR code
+          ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Setup .NET
         uses: actions/setup-dotnet@v4
         with:
-          dotnet-version: 8.x
-          dotnet-quality: "ga"
+          dotnet-version: 9.x
+          dotnet-quality: ga
 
       - name: Setup Python
         uses: actions/setup-python@v5
         with:
-          python-version: 3.12
+          python-version: 3.13
           cache: "pip"
 
       - name: Install dependencies
         run: |
+          pip install -U --upgrade-strategy=only-if-needed pip
           pip install -r requirements.txt
           pip install -r requirements-test.txt
 

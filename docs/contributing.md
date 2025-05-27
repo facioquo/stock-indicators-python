@@ -55,6 +55,43 @@ For new features, submit an issue with the `enhancement` label.
 - Do not commingle multiple contributions.  Please keep changes small and separate.
 - If you're just getting started, [install and setup](https://python.stockindicators.dev/guide/#installation-and-setup) language SDKs for Python and .NET.
 
+## Development Environment Setup
+
+### Windows Setup
+
+1. Install .NET SDK (6.0 or newer):
+
+    ```powershell
+    winget install Microsoft.DotNet.SDK.6
+    # Or download from https://dotnet.microsoft.com/download
+    ```
+
+2. Clone and setup:
+
+    ```powershell
+    git clone https://github.com/facioquo/stock-indicators-python.git
+    cd stock-indicators-python
+    pip install -r requirements.txt
+    pip install -r requirements-test.txt
+    ```
+
+### macOS Setup
+
+1. Install .NET SDK (6.0 or newer):
+
+    ```bash
+    brew install dotnet-sdk
+    ```
+
+2. Clone and setup:
+
+    ```bash
+    git clone https://github.com/facioquo/stock-indicators-python.git
+    cd stock-indicators-python
+    pip install -r requirements.txt
+    pip install -r requirements-test.txt
+    ```
+
 ## Testing
 
 - We use [pytest](https://docs.pytest.org) for testing.
@@ -123,14 +160,11 @@ pip install -r requirements-test.txt
 
 # run performance tests
 pytest -m "performance"
-
-# alternate method
-pytest benchmarks
 ```
 
 ## Documentation
 
-This site uses [GitHub Pages](https://pages.github.com) and [Jekyll](https://jekyllrb.com) construction with Front Matter.  The documentation site is in the `docs` folder.  Build the site locally to test that it works properly.
+This site uses [Jekyll](https://jekyllrb.com) construction with Front Matter.  The documentation site is in the `docs` folder.  Build the site locally to test that it works properly.
 See [GitHub Pages documentation](https://docs.github.com/en/pages/setting-up-a-github-pages-site-with-jekyll/testing-your-github-pages-site-locally-with-jekyll) for initial setup instructions.
 
 ```bash
