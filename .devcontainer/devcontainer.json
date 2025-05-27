@@ -17,7 +17,7 @@
       "version": "os-provided"
     },
     "ghcr.io/devcontainers/features/dotnet:2": {
-      "version": "8.0" // TODO: use "lts"
+      "version": "lts"
     },
     "ghcr.io/devcontainers/features/node:1": {
       "version": "lts",
