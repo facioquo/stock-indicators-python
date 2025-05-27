@@ -18,7 +18,7 @@
     {
       "label": "Test: Performance",
       "type": "shell",
-      "command": "pytest benchmarks",
+      "command": "pytest -m performance",
       "group": "none",
       "problemMatcher": []
     },
@@ -26,6 +26,20 @@
       "label": "Test: Localization",
       "type": "shell",
       "command": "pytest -m localization -vr A",
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: All",
+      "type": "shell",
+      "command": "pytest -m \"\"",
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: Coverage",
+      "type": "shell",
+      "command": "pytest --cov=stock_indicators --cov-report=term-missing",
       "group": "none",
       "problemMatcher": []
     }

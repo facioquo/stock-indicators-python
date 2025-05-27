@@ -6,15 +6,26 @@
       "type": "debugpy",
       "request": "launch",
       "program": "${file}",
-      "console": "integratedTerminal"
+      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}"
     },
     {
       "name": "Python: Run Tests",
       "type": "debugpy",
       "request": "launch",
-      "program": "${workspaceFolder}/tests",
+      "module": "pytest",
       "console": "integratedTerminal",
-      "args": ["-m", "pytest", "-vrA"]
+      "args": ["-svr", "A"],
+      "cwd": "${workspaceFolder}"
+    },
+    {
+      "name": "Python: Debug Current Test File",
+      "type": "debugpy",
+      "request": "launch",
+      "module": "pytest",
+      "console": "integratedTerminal",
+      "args": ["-svr", "A", "${file}"],
+      "cwd": "${workspaceFolder}"
     }
   ],
   "inputs": [
