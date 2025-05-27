@@ -1,0 +1,47 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "build",
+      "type": "shell",
+      "command": "pip install -r requirements.txt && pip install -r requirements-test.txt",
+      "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: Unit (default)",
+      "type": "shell",
+      "command": "pytest -vr A",
+      "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: Performance",
+      "type": "shell",
+      "command": "pytest -m performance",
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: Localization",
+      "type": "shell",
+      "command": "pytest -m localization -vr A",
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: All",
+      "type": "shell",
+      "command": "pytest -m \"\"",
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: Coverage",
+      "type": "shell",
+      "command": "pytest --cov=stock_indicators --cov-report=term-missing",
+      "group": "none",
+      "problemMatcher": []
+    }
+  ]
+}

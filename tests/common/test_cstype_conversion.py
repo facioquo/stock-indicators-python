@@ -1,11 +1,11 @@
 from datetime import datetime
 from numbers import Number
-from decimal import Decimal
+from decimal import Decimal as PyDecimal
 
 from stock_indicators._cslib import CsCultureInfo
 from stock_indicators._cstypes import DateTime as CsDateTime
-from stock_indicators._cstypes import to_pydatetime
-from stock_indicators.indicators.common.quote import Quote
+from stock_indicators._cstypes import Decimal as CsDecimal
+from stock_indicators._cstypes import to_pydatetime, to_pydecimal
 
 class TestCsTypeConversion:
     def test_datetime_conversion(self):
@@ -56,3 +56,29 @@ class TestCsTypeConversion:
 
         assert str(q.date.tzinfo) == 'UTC'
         assert str(q.date.time()) == '23:00:00'
+
+    def test_decimal_conversion(self):
+        py_decimal = 1996.1012
+        cs_decimal = CsDecimal(py_decimal)
+
+        assert str(py_decimal) == '1996.1012'
+        assert to_pydecimal(cs_decimal) == PyDecimal(str(py_decimal))
+
+    def test_decimal_conversion_expressed_in_exponential_notation(self):
+        py_decimal = 0.000018
+        cs_decimal = CsDecimal(py_decimal)
+
+        assert str(py_decimal) == '1.8e-05'
+        assert to_pydecimal(cs_decimal) == PyDecimal(str(py_decimal))
+
+    def test_exponential_notation_decimal_conversion(self):
+        py_decimal = 1.8e-05
+        cs_decimal = CsDecimal(py_decimal)
+
+        assert to_pydecimal(cs_decimal) == PyDecimal(str(py_decimal))
+
+    def test_large_decimal_conversion(self):
+        py_decimal = 12345678901234567890.123456789
+        cs_decimal = CsDecimal(py_decimal)
+
+        assert to_pydecimal(cs_decimal) == PyDecimal(str(py_decimal))
