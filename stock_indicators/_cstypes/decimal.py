@@ -17,8 +17,9 @@ class Decimal:
         >>> cs_decimal
         2.5
     """
-    cs_number_styles = CsNumberStyles.AllowDecimalPoint | CsNumberStyles.AllowExponent | CsNumberStyles.AllowLeadingSign
-    
+    cs_number_styles = CsNumberStyles.AllowDecimalPoint | CsNumberStyles.AllowExponent \
+        | CsNumberStyles.AllowLeadingSign | CsNumberStyles.AllowThousands
+
     def __new__(cls, decimal) -> CsDecimal:
         return CsDecimal.Parse(str(decimal), cls.cs_number_styles, CsCultureInfo.InvariantCulture)
 
