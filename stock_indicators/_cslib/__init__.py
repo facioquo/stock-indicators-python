@@ -93,3 +93,4 @@ from System import Enum as CsEnum
 from System.Collections.Generic import IEnumerable as CsIEnumerable
 from System.Collections.Generic import List as CsList
 from System.Globalization import CultureInfo as CsCultureInfo
+from System.Globalization import NumberStyles as CsNumberStyles
