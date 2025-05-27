@@ -3,7 +3,6 @@
     "donjayamanne.python-extension-pack",
     "DavidAnson.vscode-markdownlint",
     "EditorConfig.EditorConfig",
-    "ms-dotnettools.vscode-dotnet-runtime",
     "ms-python.black-formatter",
     "ms-python.debugpy",
     "ms-python.isort",

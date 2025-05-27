@@ -11,10 +11,6 @@
 
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
-    "editor.formatOnSave": true,
-    "editor.rulers": [
-      80
-    ],
     "files.trimTrailingWhitespace": true
   },
   "markdownlint.config": {
