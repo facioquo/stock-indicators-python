@@ -1,7 +1,6 @@
 from decimal import Decimal as PyDecimal
 
-from stock_indicators._cslib import CsDecimal
-from stock_indicators._cslib import CsCultureInfo
+from stock_indicators._cslib import CsDecimal, CsCultureInfo, CsNumberStyles
 
 
 class Decimal:
@@ -18,8 +17,10 @@ class Decimal:
         >>> cs_decimal
         2.5
     """
+    cs_number_styles = CsNumberStyles.AllowDecimalPoint | CsNumberStyles.AllowExponent | CsNumberStyles.AllowLeadingSign
+    
     def __new__(cls, decimal) -> CsDecimal:
-        return CsDecimal.Parse(str(decimal), CsCultureInfo.InvariantCulture)
+        return CsDecimal.Parse(str(decimal), cls.cs_number_styles, CsCultureInfo.InvariantCulture)
 
 
 def to_pydecimal(cs_decimal: CsDecimal) -> PyDecimal:
