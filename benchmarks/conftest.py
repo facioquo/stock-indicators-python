@@ -1,15 +1,12 @@
 import csv
 import logging
-import os
-import platform
 from datetime import datetime
 from decimal import Decimal, DecimalException
 from pathlib import Path
 
 import pytest
 
-from stock_indicators._cslib import clr
-from stock_indicators.indicators.common import Quote  # pre-initialized
+from stock_indicators.indicators.common import Quote
 from stock_indicators.logging_config import configure_logging
 
 
@@ -63,6 +60,10 @@ def parse_date(date_str):
     except ValueError:
         return datetime.now()
 
+
+@pytest.fixture(scope="session")
+def raw_data(filename: str = 'Default'):
+    return get_data_from_csv(filename)
 
 @pytest.fixture(scope="session")
 def quotes(days: int = 502):
