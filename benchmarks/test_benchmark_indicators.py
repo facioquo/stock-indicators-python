@@ -252,3 +252,26 @@ class TestPerformance:
 
     def test_benchmark_zig_zag(self, benchmark, quotes):
         benchmark(indicators.get_zig_zag, quotes)
+
+    def test_benchmark_converting_to_IndicatorResults(self, benchmark, quotes):
+        from stock_indicators._cslib import CsIndicator
+        from stock_indicators.indicators.common.enums import CandlePart
+        from stock_indicators.indicators.common.quote import Quote
+        from stock_indicators.indicators.sma import SMAResults, SMAResult
+
+        candle_part: CandlePart = CandlePart.CLOSE
+        lookback_periods = 12
+        quotes = Quote.use(quotes * 1000, candle_part)  # Error occurs if not assigned to local var.
+        results = CsIndicator.GetSma(quotes, lookback_periods)
+
+        benchmark(SMAResults, results, SMAResult)
+
+    def test_benchmark_converting_to_CsDecimal(self, benchmark, raw_data):
+        from stock_indicators._cstypes import Decimal as CsDecimal
+        raw_data = raw_data * 1000
+
+        def convert_to_quotes(rows):
+            for row in rows:
+                CsDecimal(row[2])
+
+        benchmark(convert_to_quotes, raw_data)
