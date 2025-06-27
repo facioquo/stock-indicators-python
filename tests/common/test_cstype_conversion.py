@@ -43,6 +43,20 @@ class TestCsTypeConversion:
         assert isinstance(cs_double, float)
         assert 1996.1012 == cs_double
 
+    def test_quote_constructor_retains_timezone(self):
+        dt = datetime.fromisoformat('2000-03-26 23:00+0000')
+        q = Quote(
+            date=dt,
+            open=Decimal('23'),
+            high=Decimal('26'),
+            low=Decimal('20'),
+            close=Decimal('25'),
+            volume=Decimal('323')
+        )
+
+        assert str(q.date.tzinfo) == 'UTC'
+        assert str(q.date.time()) == '23:00:00'
+
     def test_decimal_conversion(self):
         py_decimal = 1996.1012
         cs_decimal = CsDecimal(py_decimal)
