@@ -1,6 +1,6 @@
 from datetime import datetime
 from decimal import Decimal
-from typing import Any, Iterable, Optional, Union
+from typing import Iterable, Optional, Union
 
 from stock_indicators._cslib import CsQuote, CsQuoteUtility
 from stock_indicators._cstypes import List as CsList
@@ -82,7 +82,7 @@ def _set_volume(quote, value: Optional[Union[int, float, Decimal, str]]) -> None
 
 class _Quote:
     """Internal Quote implementation with property definitions."""
-    
+
     date = property(_get_date, _set_date)
     open = property(_get_open, _set_open)
     high = property(_get_high, _set_high)
@@ -90,15 +90,15 @@ class _Quote:
     close = property(_get_close, _set_close)
     volume = property(_get_volume, _set_volume)
 
-    def __init__(self, date: datetime, 
-                 open: Optional[Union[int, float, Decimal, str]] = None,
-                 high: Optional[Union[int, float, Decimal, str]] = None, 
+    def __init__(self, date: datetime,
+                 open: Optional[Union[int, float, Decimal, str]] = None,  # pylint: disable=redefined-builtin
+                 high: Optional[Union[int, float, Decimal, str]] = None,
                  low: Optional[Union[int, float, Decimal, str]] = None,
-                 close: Optional[Union[int, float, Decimal, str]] = None, 
+                 close: Optional[Union[int, float, Decimal, str]] = None,
                  volume: Optional[Union[int, float, Decimal, str]] = None):
         """
         Initialize a Quote with OHLCV data.
-        
+
         Args:
             date: The date for this quote (required)
             open: Opening price (optional)
@@ -109,7 +109,7 @@ class _Quote:
         """
         if not isinstance(date, datetime):
             raise TypeError("date must be a datetime.datetime instance")
-            
+
         self.date = date
         # Only set values that are not None to avoid C# nullable issues
         if open is not None:
@@ -128,7 +128,7 @@ class _Quote:
         """Constructs `Quote` instance from C# `Quote` instance."""
         if not isinstance(cs_quote, CsQuote):
             raise TypeError("cs_quote must be a C# Quote instance")
-            
+
         return cls(
             date=to_pydatetime(cs_quote.Date),
             open=to_pydecimal(cs_quote.Open),
@@ -143,11 +143,11 @@ class _Quote:
         """
         Optionally select which candle part to use in the calculation.
         It returns C# Object.
-        
+
         Args:
             quotes: Collection of Quote objects
             candle_part: Which part of the candle to use
-            
+
         Returns:
             C# collection prepared for indicator calculation
         """
@@ -155,7 +155,7 @@ class _Quote:
             raise TypeError("quotes must be iterable")
         if not isinstance(candle_part, CandlePart):
             raise TypeError("candle_part must be a CandlePart enum value")
-            
+
         try:
             return CsQuoteUtility.Use[Quote](CsList(Quote, quotes), candle_part.cs_value)
         except Exception as e:
@@ -166,7 +166,6 @@ class Quote(generate_cs_inherited_class(_Quote, CsQuote)):
     """
     A single dated quote containing OHLCV elements.
     OHLCV values can be given as any object that can be represented as a number string.
-    
+
     This class extends the C# Quote type to provide Python-friendly access to quote data.
     """
-    pass

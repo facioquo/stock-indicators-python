@@ -25,7 +25,6 @@ logger = logging.getLogger(__name__)
 
 class StockIndicatorsInitializationError(ImportError):
     """Custom exception for Stock Indicators initialization failures."""
-    pass
 
 
 def _initialize_clr() -> None:
@@ -49,7 +48,7 @@ def _setup_assembly_probing(dll_path: Path) -> None:
     """Setup assembly probing path for .NET dependency resolution."""
     try:
         from System import IO, AppDomain
-        
+
         current_domain = AppDomain.CurrentDomain
         assembly_path = IO.Path.GetDirectoryName(str(dll_path))
         current_domain.SetData("PROBING_PATH", assembly_path)
@@ -62,14 +61,14 @@ def _load_assembly(dll_path: Path):
     """Load the Stock Indicators assembly."""
     try:
         from System.Reflection import Assembly
-        
+
         if not dll_path.exists():
             raise FileNotFoundError(f"Assembly not found at: {dll_path}")
-        
+
         logger.debug("Loading assembly from: %s", dll_path)
         assembly = Assembly.LoadFile(str(dll_path))
         logger.debug("Assembly loaded: %s", assembly.FullName)
-        
+
         return assembly
     except Exception as e:
         error_msg = (
@@ -96,17 +95,17 @@ def _add_assembly_reference(assembly, clr) -> None:
 try:
     # Initialize CLR
     clr = _initialize_clr()
-    
+
     # Get assembly path
     base_path = Path(__file__).parent.resolve()
     dll_path = base_path / "lib" / "Skender.Stock.Indicators.dll"
-    
+
     # Setup assembly probing
     _setup_assembly_probing(dll_path)
-    
+
     # Load assembly
     assembly = _load_assembly(dll_path)
-    
+
     # Add assembly reference
     _add_assembly_reference(assembly, clr)
 
@@ -114,13 +113,13 @@ except Exception as e:
     # Re-raise our custom exception or create one from unexpected errors
     if isinstance(e, StockIndicatorsInitializationError):
         raise
-    else:
-        error_msg = (
-            "Stock Indicators initialization failed due to unexpected error.\n"
-            "Please ensure .NET 6.0+ is installed: https://dotnet.microsoft.com/download\n"
-            f"Error: {str(e)}"
-        )
-        raise StockIndicatorsInitializationError(error_msg) from e
+    
+    error_msg = (
+        "Stock Indicators initialization failed due to unexpected error.\n"
+        "Please ensure .NET 6.0+ is installed: https://dotnet.microsoft.com/download\n"
+        f"Error: {str(e)}"
+    )
+    raise StockIndicatorsInitializationError(error_msg) from e
 
 # Library modules (common) - Import after successful initialization
 try:
@@ -148,7 +147,7 @@ try:
     from System.Collections.Generic import List as CsList
     from System.Globalization import CultureInfo as CsCultureInfo
     from System.Globalization import NumberStyles as CsNumberStyles
-    
+
     logger.info("Stock Indicators library initialized successfully")
 
 except ImportError as e:

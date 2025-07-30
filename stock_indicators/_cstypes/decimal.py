@@ -25,18 +25,10 @@ class Decimal:
         if decimal is None:
             from stock_indicators.exceptions import ValidationError
             raise ValidationError("Cannot convert None to C# Decimal")
-        
-        # Handle different input types more efficiently
+
+        # Convert to string first to preserve precision for all numeric types
         try:
-            if isinstance(decimal, (int, float)):
-                # For numeric types, try direct conversion first
-                return CsDecimal(decimal)
-            elif isinstance(decimal, PyDecimal):
-                # For Python Decimal, convert to string with proper formatting
-                return CsDecimal.Parse(str(decimal), cls.cs_number_styles, CsCultureInfo.InvariantCulture)
-            else:
-                # For other types, convert to string and parse
-                return CsDecimal.Parse(str(decimal), cls.cs_number_styles, CsCultureInfo.InvariantCulture)
+            return CsDecimal.Parse(str(decimal), cls.cs_number_styles, CsCultureInfo.InvariantCulture)
         except Exception as e:
             from stock_indicators.exceptions import TypeConversionError
             raise TypeConversionError(f"Cannot convert {decimal} (type: {type(decimal)}) to C# Decimal: {e}") from e
@@ -48,13 +40,13 @@ def to_pydecimal(cs_decimal: Optional[CsDecimal]) -> Optional[PyDecimal]:
 
     Parameter:
         cs_decimal : `System.Decimal` of C# or None.
-        
+
     Returns:
         Python Decimal object or None if input is None.
     """
     if cs_decimal is None:
         return None
-        
+
     try:
         return PyDecimal(cs_decimal.ToString(CsCultureInfo.InvariantCulture))
     except Exception as e:

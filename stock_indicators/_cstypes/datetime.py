@@ -23,12 +23,12 @@ class DateTime:
     def __new__(cls, datetime: PyDateTime) -> CsDateTime:
         if not isinstance(datetime, PyDateTime):
             raise TypeError("Expected datetime.datetime instance")
-        
+
         # Use direct constructor instead of string parsing for better performance
         try:
             return CsDateTime(
                 datetime.year,
-                datetime.month, 
+                datetime.month,
                 datetime.day,
                 datetime.hour,
                 datetime.minute,
@@ -50,13 +50,13 @@ def to_pydatetime(cs_datetime: Optional[CsDateTime]) -> Optional[PyDateTime]:
 
     Parameter:
         cs_datetime : `System.DateTime` of C# or None.
-    
+
     Returns:
         Python datetime object or None if input is None.
     """
     if cs_datetime is None:
         return None
-        
+
     try:
         # Use direct property access for better performance
         return PyDateTime(

@@ -1,5 +1,6 @@
 from datetime import datetime as PyDateTime
 from typing import Callable, Iterable, List, Optional, Type, TypeVar
+from warnings import warn
 
 from stock_indicators._cslib import CsResultBase
 from stock_indicators._cstypes import DateTime as CsDateTime
@@ -8,10 +9,8 @@ from stock_indicators._cstypes import to_pydatetime
 
 class ResultBase:
     """A base wrapper class for a single unit of the results."""
-    
+
     def __init__(self, base_result: CsResultBase):
-        if not isinstance(base_result, CsResultBase):
-            raise TypeError("base_result must be an instance of CsResultBase")
         self._csdata = base_result
 
     @property
@@ -35,7 +34,7 @@ class IndicatorResults(List[_T]):
     A base wrapper class for the list of results.
     It provides helper methods written in CSharp implementation.
     """
-    
+
     def __init__(self, data: Iterable, wrapper_class: Type[_T]):
         if not data:
             super().__init__()
@@ -45,15 +44,40 @@ class IndicatorResults(List[_T]):
             self._csdata = data
         self._wrapper_class = wrapper_class
 
+    def reload(self):
+        """
+        Reload a C# array of the results to perform more operations.
+        It is usually called after `done()`.
+        This method is deprecated. It will be removed in the next version.
+        """
+        warn('This method is deprecated.', DeprecationWarning, stacklevel=2)
+        if self._csdata is None:
+            self._csdata = [_._csdata for _ in self]
+        return self
+
+    def done(self):
+        """
+        Remove a C# array of the results after finishing all operations.
+        It is not necessary but saves memory.
+        This method is deprecated. It will be removed in the next version.
+        """
+        warn('This method is deprecated.', DeprecationWarning, stacklevel=2)
+        self._csdata = None
+        return self
+
     def _get_csdata_type(self):
         """Get C# result object type."""
         if len(self) == 0:
             raise ValueError("Cannot determine C# data type from empty results")
         return type(self[0]._csdata)
 
+    @staticmethod
     def _verify_data(func: Callable):
         """Check whether `_csdata` can be passed to helper method."""
         def verify_data(self, *args):
+            if self._csdata is None:
+                raise ValueError(f"Cannot {func.__name__}() after done() has been called. Call reload() first.")
+
             if not isinstance(self._csdata, Iterable) or len(self) < 1:
                 raise ValueError(f"Cannot {func.__name__}() an empty result.")
 
@@ -85,10 +109,10 @@ class IndicatorResults(List[_T]):
         """Remove a specific quantity of results from the beginning of the results list."""
         if not isinstance(remove_periods, int):
             raise TypeError("remove_periods must be an integer.")
-        
+
         if remove_periods < 0:
             raise ValueError("remove_periods must be non-negative.")
-        
+
         if remove_periods >= len(self):
             return self.__class__([], self._wrapper_class)
 
@@ -96,12 +120,12 @@ class IndicatorResults(List[_T]):
 
     def find(self, lookup_date: PyDateTime) -> Optional[_T]:
         """
-        Find indicator values on a specific date. 
+        Find indicator values on a specific date.
         Returns `None` if no result found.
-        
+
         Args:
             lookup_date: The date to search for
-            
+
         Returns:
             The result for the given date or None if not found
         """
