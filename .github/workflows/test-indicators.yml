@@ -27,7 +27,7 @@ jobs:
           - os: ubuntu-22.04
             dotnet-version: "6.x"
             python-version: "3.8"
-          - os: windows-2019
+          - os: windows-2022
             dotnet-version: "6.x"
             python-version: "3.8"
 
