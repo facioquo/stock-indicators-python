@@ -8,7 +8,7 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_stoch(quotes: Iterable[Quote], lookback_periods: int = 14, signal_periods: int = 3, smooth_periods: int = 3,
+def get_stoch(quotes: Iterable[Quote], lookback_periods: int = 14, *, signal_periods: int = 3, smooth_periods: int = 3,
               k_factor: float = 3, d_factor: float = 2, ma_type: MAType = MAType.SMA):
     """Get Stochastic Oscillator calculated, with KDJ indexes.
 

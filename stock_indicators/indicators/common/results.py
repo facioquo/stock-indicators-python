@@ -71,14 +71,19 @@ class IndicatorResults(List[_T]):
             raise ValueError("Cannot determine C# data type from empty results")
         return type(self[0]._csdata)
 
+    @staticmethod
     def _verify_data(func: Callable):
         """Check whether `_csdata` can be passed to helper method."""
         def verify_data(self, *args):
             if self._csdata is None:
-                raise ValueError(f"Cannot {func.__name__}() after done() has been called. Call reload() first.")
+                # Use a generic name when func.__name__ is not available
+                func_name = getattr(func, '__name__', 'method')
+                raise ValueError(f"Cannot {func_name}() after done() has been called. Call reload() first.")
 
             if not isinstance(self._csdata, Iterable) or len(self) < 1:
-                raise ValueError(f"Cannot {func.__name__}() an empty result.")
+                # Use a generic name when func.__name__ is not available
+                func_name = getattr(func, '__name__', 'method')
+                raise ValueError(f"Cannot {func_name}() an empty result.")
 
             if not issubclass(self._get_csdata_type(), CsResultBase):
                 raise TypeError(

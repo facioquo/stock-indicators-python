@@ -1,6 +1,7 @@
 """
 Skender.Stock.Indicators
 ~~~~~~~~~~~~~~~~~~~~~~~~
+# pylint: disable=duplicate-code  # Property patterns are expected to repeat
 
 This module loads `Skender.Stock.Indicators.dll`(v2.6.1), which is a compiled library
 package from <https://github.com/DaveSkender/Stock.Indicators>, written in C#.

@@ -90,7 +90,7 @@ class _Quote:
     close = property(_get_close, _set_close)
     volume = property(_get_volume, _set_volume)
 
-    def __init__(self, date: datetime,
+    def __init__(self, date: datetime, *,
                  open: Optional[Union[int, float, Decimal, str]] = None,  # pylint: disable=redefined-builtin
                  high: Optional[Union[int, float, Decimal, str]] = None,
                  low: Optional[Union[int, float, Decimal, str]] = None,

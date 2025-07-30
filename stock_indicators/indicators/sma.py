@@ -32,8 +32,9 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int,
          - [SMA Reference](https://python.stockindicators.dev/indicators/Sma/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
+    # pylint: disable=no-member  # Error occurs if not assigned to local var.
     quotes = Quote.use(
-        quotes, candle_part)  # Error occurs if not assigned to local var.
+        quotes, candle_part)
     results = CsIndicator.GetSma(quotes, lookback_periods)
     return SMAResults(results, SMAResult)
 

@@ -15,16 +15,19 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 class _CandleProperties(_Quote):
     @property
     def size(self) -> Optional[Decimal]:
+        # pylint: disable=no-member  # C# interop properties
         return to_pydecimal(self.High - self.Low)
 
     @property
     def body(self) -> Optional[Decimal]:
+        # pylint: disable=no-member  # C# interop properties
         return to_pydecimal(self.Open - self.Close \
             if (self.Open > self.Close) \
             else self.Close - self.Open)
 
     @property
     def upper_wick(self) -> Optional[Decimal]:
+        # pylint: disable=no-member  # C# interop properties
         return to_pydecimal(self.High - (
             self.Open \
             if self.Open > self.Close \
@@ -32,6 +35,7 @@ class _CandleProperties(_Quote):
 
     @property
     def lower_wick(self) -> Optional[Decimal]:
+        # pylint: disable=no-member  # C# interop properties
         return to_pydecimal((self.Close \
             if self.Open > self.Close \
             else self.Open) - self.Low)
@@ -50,10 +54,12 @@ class _CandleProperties(_Quote):
 
     @property
     def is_bullish(self) -> bool:
+        # pylint: disable=no-member  # C# interop properties
         return self.Close > self.Open
 
     @property
     def is_bearish(self) -> bool:
+        # pylint: disable=no-member  # C# interop properties
         return self.Close < self.Open
 
 
@@ -87,6 +93,7 @@ class CandleResult(ResultBase):
     @property
     def candle(self) -> CandleProperties:
         if not self.__candle_prop_cache:
+            # pylint: disable=no-member  # C# interop method
             self.__candle_prop_cache = CandleProperties.from_csquote(self._csdata.Candle)
 
         return self.__candle_prop_cache

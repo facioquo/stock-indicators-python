@@ -12,10 +12,10 @@ from stock_indicators.indicators.common.quote import Quote
 @overload
 def get_vwap(quotes: Iterable[Quote], start: Optional[datetime] = None) -> "VWAPResults[VWAPResult]": ...
 @overload
-def get_vwap(quotes: Iterable[Quote], year: int,
+def get_vwap(quotes: Iterable[Quote], year: int, *,
              month: int = 1, day: int = 1,
              hour: int = 0, minute: int = 0) -> "VWAPResults[VWAPResult]": ...
-def get_vwap(quotes, start = None, month = 1, day = 1, hour = 0, minute = 0):
+def get_vwap(quotes, start=None, *, month=1, day=1, hour=0, minute=0):
     """Get VWAP calculated.
 
     Volume Weighted Average Price (VWAP) is a Volume weighted average
