@@ -71,7 +71,6 @@ class IndicatorResults(List[_T]):
             raise ValueError("Cannot determine C# data type from empty results")
         return type(self[0]._csdata)
 
-    @staticmethod
     def _verify_data(func: Callable):
         """Check whether `_csdata` can be passed to helper method."""
         def verify_data(self, *args):
