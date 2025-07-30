@@ -35,11 +35,12 @@ class DateTime:
                 datetime.second,
                 datetime.microsecond // 1000  # Convert microseconds to milliseconds
             )
-        except Exception as e:
+        except Exception as e:  # pylint: disable=broad-exception-caught
             # Fallback to string parsing if direct construction fails
+            # Broad exception catch is necessary for C# interop
             try:
                 return CsDateTime.Parse(datetime.isoformat())
-            except Exception:
+            except Exception:  # pylint: disable=broad-exception-caught
                 from stock_indicators.exceptions import TypeConversionError
                 raise TypeConversionError(f"Cannot convert datetime {datetime} to C# DateTime: {e}") from e
 
@@ -68,10 +69,11 @@ def to_pydatetime(cs_datetime: Optional[CsDateTime]) -> Optional[PyDateTime]:
             cs_datetime.Second,
             cs_datetime.Millisecond * 1000  # Convert milliseconds to microseconds
         )
-    except Exception as e:
+    except Exception as e:  # pylint: disable=broad-exception-caught
         # Fallback to string conversion if direct access fails
+        # Broad exception catch is necessary for C# interop
         try:
             return PyDateTime.fromisoformat(cs_datetime.ToString("s", CsCultureInfo.InvariantCulture))
-        except Exception:
+        except Exception:  # pylint: disable=broad-exception-caught
             from stock_indicators.exceptions import TypeConversionError
             raise TypeConversionError(f"Cannot convert C# DateTime to Python datetime: {e}") from e

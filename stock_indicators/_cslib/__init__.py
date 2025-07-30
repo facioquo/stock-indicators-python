@@ -31,65 +31,66 @@ def _initialize_clr() -> None:
     """Initialize the CLR runtime."""
     try:
         load(runtime="coreclr")
-        import clr
+        import clr as clr_module
         logger.debug("CLR loaded successfully on %s", platform.system())
-        return clr
+        return clr_module
     except Exception as e:
-        error_msg = (
+        init_error_msg = (
             "Failed to load .NET CLR runtime.\n"
             "Please ensure .NET 6.0+ is installed: https://dotnet.microsoft.com/download\n"
             f"Platform: {platform.system()}\n"
             f"Error: {str(e)}"
         )
-        raise StockIndicatorsInitializationError(error_msg) from e
+        raise StockIndicatorsInitializationError(init_error_msg) from e
 
 
-def _setup_assembly_probing(dll_path: Path) -> None:
+def _setup_assembly_probing(assembly_dll_path: Path) -> None:
     """Setup assembly probing path for .NET dependency resolution."""
     try:
         from System import IO, AppDomain
 
         current_domain = AppDomain.CurrentDomain
-        assembly_path = IO.Path.GetDirectoryName(str(dll_path))
+        assembly_path = IO.Path.GetDirectoryName(str(assembly_dll_path))
         current_domain.SetData("PROBING_PATH", assembly_path)
         logger.debug("Set assembly probing path to: %s", assembly_path)
-    except Exception as e:
+    except Exception as e:  # pylint: disable=broad-exception-caught
+        # Broad exception catch is necessary for C# interop
         logger.warning("Failed to set assembly probing path: %s", str(e))
 
 
-def _load_assembly(dll_path: Path):
+def _load_assembly(assembly_dll_path: Path):
     """Load the Stock Indicators assembly."""
     try:
         from System.Reflection import Assembly
 
-        if not dll_path.exists():
-            raise FileNotFoundError(f"Assembly not found at: {dll_path}")
+        if not assembly_dll_path.exists():
+            raise FileNotFoundError(f"Assembly not found at: {assembly_dll_path}")
 
-        logger.debug("Loading assembly from: %s", dll_path)
-        assembly = Assembly.LoadFile(str(dll_path))
-        logger.debug("Assembly loaded: %s", assembly.FullName)
+        logger.debug("Loading assembly from: %s", assembly_dll_path)
+        loaded_assembly = Assembly.LoadFile(str(assembly_dll_path))
+        logger.debug("Assembly loaded: %s", loaded_assembly.FullName)
 
-        return assembly
+        return loaded_assembly
     except Exception as e:
-        error_msg = (
-            f"Failed to load Stock Indicators assembly from: {dll_path}\n"
+        load_error_msg = (
+            f"Failed to load Stock Indicators assembly from: {assembly_dll_path}\n"
             "Please ensure the .NET assembly is present and compatible.\n"
             f"Error: {str(e)}"
         )
-        raise StockIndicatorsInitializationError(error_msg) from e
+        raise StockIndicatorsInitializationError(load_error_msg) from e
 
 
-def _add_assembly_reference(assembly, clr) -> None:
+def _add_assembly_reference(loaded_assembly, clr_module) -> None:
     """Add reference to the loaded assembly."""
     try:
-        clr.AddReference(assembly.FullName)  # pylint: disable=no-member
+        clr_module.AddReference(loaded_assembly.FullName)  # pylint: disable=no-member
         logger.debug("Assembly reference added successfully")
     except Exception as e:
-        error_msg = (
-            f"Failed to add reference to assembly: {assembly.FullName}\n"
+        ref_error_msg = (
+            f"Failed to add reference to assembly: {loaded_assembly.FullName}\n"
             f"Error: {str(e)}"
         )
-        raise StockIndicatorsInitializationError(error_msg) from e
+        raise StockIndicatorsInitializationError(ref_error_msg) from e
 
 
 try:
@@ -113,7 +114,6 @@ except Exception as e:
     # Re-raise our custom exception or create one from unexpected errors
     if isinstance(e, StockIndicatorsInitializationError):
         raise
-    
     error_msg = (
         "Stock Indicators initialization failed due to unexpected error.\n"
         "Please ensure .NET 6.0+ is installed: https://dotnet.microsoft.com/download\n"

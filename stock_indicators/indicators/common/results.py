@@ -71,6 +71,7 @@ class IndicatorResults(List[_T]):
             raise ValueError("Cannot determine C# data type from empty results")
         return type(self[0]._csdata)
 
+    @staticmethod
     def _verify_data(func: Callable):
         """Check whether `_csdata` can be passed to helper method."""
         def verify_data(self, *args):
@@ -135,6 +136,6 @@ class IndicatorResults(List[_T]):
         # Since results are typically sorted by date
         try:
             return next((r for r in self if r.date.date() == lookup_date.date()), None)
-        except Exception:
+        except (AttributeError, TypeError):
             # Fallback to exact match if date comparison fails
             return next((r for r in self if r.date == lookup_date), None)
