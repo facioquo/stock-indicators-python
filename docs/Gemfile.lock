@@ -41,11 +41,11 @@ GEM
     eventmachine (1.2.7)
     eventmachine (1.2.7-x64-mingw32)
     execjs (2.10.0)
-    faraday (2.13.1)
+    faraday (2.13.4)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
-    faraday-net_http (3.4.0)
+    faraday-net_http (3.4.1)
       net-http (>= 0.5.0)
     ffi (1.17.2)
     forwardable-extended (2.6.0)
@@ -227,7 +227,7 @@ GEM
       gemoji (>= 3, < 5)
       html-pipeline (~> 2.2)
       jekyll (>= 3.0, < 5.0)
-    json (2.12.2)
+    json (2.13.2)
     json-minify (0.0.3)
       json (> 0)
     kramdown (2.4.0)
@@ -289,7 +289,6 @@ GEM
       execjs (>= 0.3.0, < 3)
     unicode-display_width (1.8.0)
     uri (1.0.3)
-    wdm (0.2.0)
     webrick (1.9.1)
 
 PLATFORMS
@@ -306,7 +305,6 @@ DEPENDENCIES
   jekyll-redirect-from
   jekyll-seo-tag
   jekyll-sitemap
-  wdm (>= 0.2.0)
   webrick
 
 BUNDLED WITH
