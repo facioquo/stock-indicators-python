@@ -15,7 +15,7 @@ def get_vwap(quotes: Iterable[Quote], start: Optional[datetime] = None) -> "VWAP
 def get_vwap(quotes: Iterable[Quote], year: int, *,
              month: int = 1, day: int = 1,
              hour: int = 0, minute: int = 0) -> "VWAPResults[VWAPResult]": ...
-def get_vwap(quotes, start=None, *, month=1, day=1, hour=0, minute=0):
+def get_vwap(quotes, start=None, month=1, day=1, hour=0, minute=0):  # pylint: disable=too-many-positional-arguments
     """Get VWAP calculated.
 
     Volume Weighted Average Price (VWAP) is a Volume weighted average

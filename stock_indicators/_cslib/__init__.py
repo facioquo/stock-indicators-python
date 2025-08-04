@@ -12,7 +12,7 @@ The target framework of dll is `.NET 6.0`.
 import logging
 import platform
 from pathlib import Path
-from typing import Optional
+from typing import Any
 
 from pythonnet import load
 
@@ -28,7 +28,7 @@ class StockIndicatorsInitializationError(ImportError):
     """Custom exception for Stock Indicators initialization failures."""
 
 
-def _initialize_clr() -> None:
+def _initialize_clr() -> Any:
     """Initialize the CLR runtime."""
     try:
         load(runtime="coreclr")
