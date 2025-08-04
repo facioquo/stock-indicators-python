@@ -21,7 +21,7 @@ def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int,
 def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int,
                  kijun_periods: int, senkou_b_periods: int, *,
                  senkou_offset: int, chikou_offset: int) -> "IchimokuResults[IchimokuResult]": ...
-def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = None, *,
+def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = None,  # pylint: disable=too-many-positional-arguments
                  kijun_periods: int = None, senkou_b_periods: int = None,
                  senkou_offset: int = None, chikou_offset: int = None):
     """Get Ichimoku Cloud calculated.
