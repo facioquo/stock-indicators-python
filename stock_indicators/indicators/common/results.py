@@ -136,10 +136,10 @@ class IndicatorResults(List[_T]):
         if not isinstance(lookup_date, PyDateTime):
             raise TypeError("lookup_date must be an instance of datetime.datetime.")
 
-        # Use binary search for better performance on large datasets
-        # Since results are typically sorted by date
+        # Linear search (result sets are usually small enough that this is sufficient)
+        # First try matching only the calendar date (ignoring time) for convenience.
+        # If that attribute access fails, fall back to exact datetime comparison.
         try:
             return next((r for r in self if r.date.date() == lookup_date.date()), None)
         except (AttributeError, TypeError):
-            # Fallback to exact match if date comparison fails
             return next((r for r in self if r.date == lookup_date), None)

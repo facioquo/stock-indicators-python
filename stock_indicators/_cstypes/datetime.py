@@ -33,7 +33,7 @@ class DateTime:
                 datetime.hour,
                 datetime.minute,
                 datetime.second,
-                datetime.microsecond // 1000  # Convert microseconds to milliseconds
+                round(datetime.microsecond / 1000)  # Convert microseconds to nearest millisecond
             )
         except Exception as e:  # pylint: disable=broad-exception-caught
             # Fallback to string parsing if direct construction fails

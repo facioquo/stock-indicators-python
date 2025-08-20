@@ -23,9 +23,7 @@ configure_logging(debug=False)  # Set to True if you need debug this module
 
 logger = logging.getLogger(__name__)
 
-
-class StockIndicatorsInitializationError(ImportError):
-    """Custom exception for Stock Indicators initialization failures."""
+from stock_indicators.exceptions import StockIndicatorsInitializationError
 
 
 def _initialize_clr() -> Any:
@@ -112,15 +110,15 @@ try:
     _add_assembly_reference(assembly, clr)
 
 except Exception as e:
-    # Re-raise our custom exception or create one from unexpected errors
-    if isinstance(e, StockIndicatorsInitializationError):
-        raise
-    error_msg = (
-        "Stock Indicators initialization failed due to unexpected error.\n"
-        "Please ensure .NET 6.0+ is installed: https://dotnet.microsoft.com/download\n"
-        f"Error: {str(e)}"
-    )
-    raise StockIndicatorsInitializationError(error_msg) from e
+    # Re-raise our custom exception or wrap unexpected errors
+    if not isinstance(e, StockIndicatorsInitializationError):
+        error_msg = (
+            "Stock Indicators initialization failed due to unexpected error.\n"
+            "Please ensure .NET 6.0+ is installed: https://dotnet.microsoft.com/download\n"
+            f"Error: {str(e)}"
+        )
+        raise StockIndicatorsInitializationError(error_msg) from e
+    raise
 
 # Library modules (common) - Import after successful initialization
 try:
