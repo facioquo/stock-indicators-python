@@ -19,6 +19,9 @@ class DateTime:
         3/26/2021 10:02:22 PM
     """
     def __new__(cls, datetime: PyDateTime) -> CsDateTime:
+        if not isinstance(datetime, PyDateTime):
+            raise TypeError("Expected datetime.datetime instance")
+            
         # Preserve timezone: normalize tz-aware datetimes to UTC and set Kind=Utc
         if datetime.tzinfo is not None and datetime.utcoffset() is not None:
             dt_utc = datetime.astimezone(PyTimezone.utc).replace(tzinfo=None)
