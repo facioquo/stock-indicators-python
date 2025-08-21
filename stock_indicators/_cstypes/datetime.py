@@ -22,12 +22,12 @@ class DateTime:
         # Preserve timezone: normalize tz-aware datetimes to UTC and set Kind=Utc
         if datetime.tzinfo is not None and datetime.utcoffset() is not None:
             dt_utc = datetime.astimezone(PyTimezone.utc).replace(tzinfo=None)
-            cs_dt = CsDateTime.Parse(dt_utc.isoformat(timespec='seconds'))
+            cs_dt = CsDateTime.Parse(dt_utc.isoformat())
             # Import DateTimeKind dynamically to avoid import issues
             from System import DateTimeKind
             return CsDateTime.SpecifyKind(cs_dt, DateTimeKind.Utc)
-        # Naive: round to seconds and keep as-is (Kind=Unspecified in .NET)
-        return CsDateTime.Parse(datetime.isoformat(timespec='seconds'))
+        # Naive: preserve full precision
+        return CsDateTime.Parse(datetime.isoformat())
 
 
 def to_pydatetime(cs_datetime: CsDateTime) -> PyDateTime:
