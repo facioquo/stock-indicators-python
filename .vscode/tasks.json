@@ -46,9 +46,15 @@
     {
       "label": "Docs: Serve (Jekyll)",
       "type": "shell",
-      "command": "bundle exec jekyll serve -o",
+      "command": "bundle exec jekyll serve --livereload --open-url",
+      "dependsOn": "Docs: Update Ruby Packages",
+      "isBackground": true,
       "options": {
-        "cwd": "${workspaceFolder}/docs"
+        "cwd": "${workspaceFolder}/docs",
+        "env": {
+          "BUNDLE_GEMFILE": "${workspaceFolder}/docs/Gemfile",
+          "BUNDLE_PATH": "${workspaceFolder}/docs/vendor/bundle"
+        }
       },
       "group": "none",
       "problemMatcher": []
@@ -56,9 +62,13 @@
     {
       "label": "Docs: Update Ruby Packages",
       "type": "shell",
-      "command": "bundle install && bundle update",
+      "command": "bundle install --jobs 4 && bundle update --conservative && bundle clean --force",
       "options": {
-        "cwd": "${workspaceFolder}/docs"
+        "cwd": "${workspaceFolder}/docs",
+        "env": {
+          "BUNDLE_GEMFILE": "${workspaceFolder}/docs/Gemfile",
+          "BUNDLE_PATH": "${workspaceFolder}/docs/vendor/bundle"
+        }
       },
       "group": "none",
       "problemMatcher": []
