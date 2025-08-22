@@ -19,9 +19,30 @@ jobs:
 
     strategy:
       matrix:
-        os: [windows-2025, ubuntu-24.04-arm, macos-15]
-        python-version: ["3.8", "3.10", "3.12"]
-        dotnet-version: ["6.x", "8.x", "9.x"]
+        include:
+          # Primary testing on Ubuntu (free tier)
+          - os: ubuntu-24.04-arm
+            python-version: "3.8"
+            dotnet-version: "6.x"
+          - os: ubuntu-24.04-arm
+            python-version: "3.10"
+            dotnet-version: "8.x"
+          - os: ubuntu-24.04-arm
+            python-version: "3.12"
+            dotnet-version: "9.x"
+          
+          # Essential platform compatibility testing (reduced matrix)
+          - os: windows-2025
+            python-version: "3.12"
+            dotnet-version: "9.x"
+          - os: macos-15
+            python-version: "3.12"
+            dotnet-version: "9.x"
+          
+          # Legacy support verification
+          - os: ubuntu-22.04
+            python-version: "3.8"
+            dotnet-version: "6.x"
 
     runs-on: ${{ matrix.os }}
     name: "Py${{ matrix.python-version }}/.NET${{ matrix.dotnet-version }} on ${{ matrix.os }}"
