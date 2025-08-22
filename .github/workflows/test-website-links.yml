@@ -23,7 +23,8 @@ jobs:
       run:
         working-directory: docs
     env:
-      BUNDLE_GEMFILE: ${{github.workspace}}/docs/Gemfile
+      BUNDLE_GEMFILE: ${{ github.workspace }}/docs/Gemfile
+      BUNDLE_PATH: vendor/bundle
       JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
@@ -38,7 +39,9 @@ jobs:
 
       - name: Install dependencies
         run: |
-          gem install html-proofer
+          gem install --user-install html-proofer
+          echo "$(ruby -e 'puts Gem.user_dir')/bin" >> $GITHUB_PATH
+
 
       - name: Replace "data-src"
         uses: jacobtomlinson/gha-find-replace@v3

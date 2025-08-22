@@ -23,7 +23,8 @@ jobs:
       run:
         working-directory: docs
     env:
-      BUNDLE_GEMFILE: ${{github.workspace}}/docs/Gemfile
+      BUNDLE_GEMFILE: ${{ github.workspace }}/docs/Gemfile
+      BUNDLE_PATH: vendor/bundle
       JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
