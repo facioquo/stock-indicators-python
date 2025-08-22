@@ -42,6 +42,26 @@
       "command": "pytest --cov=stock_indicators --cov-report=term-missing",
       "group": "none",
       "problemMatcher": []
+    },
+    {
+      "label": "Docs: Serve (Jekyll)",
+      "type": "shell",
+      "command": "bundle exec jekyll serve -o",
+      "options": {
+        "cwd": "${workspaceFolder}/docs"
+      },
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "label": "Docs: Update Ruby Packages",
+      "type": "shell",
+      "command": "bundle install && bundle update",
+      "options": {
+        "cwd": "${workspaceFolder}/docs"
+      },
+      "group": "none",
+      "problemMatcher": []
     }
   ]
 }
