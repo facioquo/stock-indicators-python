@@ -1,5 +1,5 @@
 from decimal import Decimal as PyDecimal
-
+import locale
 import pytest
 
 from stock_indicators._cslib import CsDecimal
@@ -7,7 +7,41 @@ from stock_indicators._cstypes import Decimal as CsDecimalConverter
 from stock_indicators._cstypes.decimal import to_pydecimal
 
 
+def _uses_comma_decimal_separator() -> bool:
+    """Return True if the environment's decimal separator is a comma.
+
+    Prefers .NET CultureInfo when pythonnet is available; otherwise, falls back to
+    Python's locale settings.
+    """
+    # First try .NET CurrentCulture
+    try:
+        # Importing clr is optional but helps ensure pythonnet is initialized
+        import clr  # type: ignore  # noqa: F401
+        from System.Globalization import CultureInfo  # type: ignore
+
+        return (
+            CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator == ","
+        )
+    except Exception:
+        pass
+
+    # Fallback: Python locale
+    try:
+        # Ensure locale is set to the user default; ignore failures
+        try:
+            locale.setlocale(locale.LC_ALL, "")
+        except Exception:
+            pass
+        return locale.localeconv().get("decimal_point", ".") == ","
+    except Exception:
+        return False
+
+
+uses_comma_decimal = _uses_comma_decimal_separator()
+
+
 @pytest.mark.localization
+@pytest.mark.skipif(not uses_comma_decimal, reason="Localization tests require a comma decimal separator culture (e.g., ru-RU)")
 class TestLocale:
     """
     These tests are intended for environments where a comma is used as the decimal separator,
@@ -36,7 +70,7 @@ class TestLocale:
         assert "19961012" == str(cs_decimal)
 
     def test_conversion_to_double_with_comma_decimal_separator(self):
-        from System import Double as CsDouble
+        from System import Double as CsDouble  # type: ignore
 
         cs_double = CsDouble.Parse("1996,1012")
         assert 1996.1012 == cs_double  # should be period-separated float.

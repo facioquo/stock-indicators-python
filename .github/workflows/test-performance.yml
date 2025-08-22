@@ -21,7 +21,7 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -38,13 +38,13 @@ jobs:
           cache: "pip"
 
       - name: Setup GitVersion
-        uses: gittools/actions/gitversion/setup@v3.1.1
+        uses: gittools/actions/gitversion/setup@v3
         with:
           versionSpec: 6.0.5
 
       - name: Execute GitVersion
         id: gitversion
-        uses: gittools/actions/gitversion/execute@v3.1.1
+        uses: gittools/actions/gitversion/execute@v3
 
       - name: Install dependencies
         run: |
