@@ -20,40 +20,36 @@ jobs:
 
         include:
 
-          # oldest combinations
-          - os: macos-14
-            dotnet-version: "6.x"
-            python-version: "3.8"
+          # Primary testing on Ubuntu (free tier) with older configuration
           - os: ubuntu-22.04
             dotnet-version: "6.x"
             python-version: "3.8"
-          - os: windows-2022
-            dotnet-version: "6.x"
-            python-version: "3.8"
 
-          # newest combinations
-          - os: macos-15
-            dotnet-version: "9.x"
-            python-version: "3.13"
-            post-summary: true
+          # Primary testing on Ubuntu (free tier) with newer configuration
           - os: ubuntu-24.04-arm
             dotnet-version: "9.x"
             python-version: "3.13"
             post-summary: true
+
+          # Essential Windows compatibility testing (single config)
           - os: windows-2025
             dotnet-version: "9.x"
             python-version: "3.13"
-            post-summary: true
+
+          # Essential macOS compatibility testing (single config)
+          - os: macos-15
+            dotnet-version: "9.x"
+            python-version: "3.13"
 
     runs-on: ${{ matrix.os }}
     name: "Py${{ matrix.python-version }}/.NET${{ matrix.dotnet-version }} on ${{ matrix.os }}"
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Check debug settings
-        if: ${{ matrix['post-summary'] == true }}
+        if: ${{ matrix.post-summary }} == 'true'
         shell: bash
         run: |
           echo "Checking for debug logging settings in package files..."
@@ -100,7 +96,7 @@ jobs:
         continue-on-error: true
 
       - name: Post test summary
-        if: ${{ always() && matrix['post-summary'] == true }}
         uses: test-summary/action@v2
+        if: ${{ matrix.post-summary }} == 'true'
         with:
           paths: test-results.xml
