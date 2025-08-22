@@ -1,4 +1,5 @@
 from datetime import datetime, timezone
+import pytest
 
 import pytest
 
@@ -41,3 +42,16 @@ def test_to_pydatetime_keeps_naive_naive():
 def test_csdatetime_rejects_non_datetime_input():
     with pytest.raises(TypeError):
         CsDateTime('2020-01-01')  # type: ignore[arg-type]
+
+
+def test_to_pydatetime_handles_system_local_timezone_roundtrip():
+    # Create a tz-aware datetime using the system's local timezone
+    local_tz = datetime.now().astimezone().tzinfo
+    dt_local = datetime(2025, 8, 22, 14, 30, 0, tzinfo=local_tz)
+
+    cs_dt = CsDateTime(dt_local)
+    py_dt = to_pydatetime(cs_dt)
+
+    # Interop always returns tz-aware as UTC; ensure the instant is preserved
+    assert str(py_dt.tzinfo) == 'UTC'
+    assert py_dt.replace(microsecond=0) == dt_local.astimezone(timezone.utc).replace(microsecond=0)

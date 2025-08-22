@@ -1,6 +1,6 @@
 from stock_indicators.indicators.common.quote import Quote
 from decimal import Decimal
-from datetime import datetime
+from datetime import datetime, timezone
 
 
 def test_quote_constructor_retains_timezone():
@@ -58,3 +58,23 @@ def test_quote_constructor_handles_various_date_formats():
 
     assert str(q3.date.tzinfo) == 'None'
     assert str(q3.date.time()) == '00:00:00'
+
+
+def test_quote_constructor_handles_system_local_timezone():
+    # Build a tz-aware datetime in the system local zone and ensure it preserves the instant
+    local_tz = datetime.now().astimezone().tzinfo
+    dt = datetime(2025, 8, 22, 14, 30, 0, tzinfo=local_tz)
+
+    q = Quote(
+        date=dt,
+        open=Decimal('23'),
+        high=Decimal('26'),
+        low=Decimal('20'),
+        close=Decimal('25'),
+        volume=Decimal('323'),
+    )
+
+    # tz-aware should normalize to UTC but represent the same instant
+    d = getattr(q, 'date')
+    assert str(d.tzinfo) == 'UTC'
+    assert d.replace(microsecond=0) == dt.astimezone(timezone.utc).replace(microsecond=0)

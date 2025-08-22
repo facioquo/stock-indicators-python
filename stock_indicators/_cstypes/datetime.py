@@ -2,6 +2,9 @@ from datetime import datetime as PyDateTime, timezone as PyTimezone
 from stock_indicators._cslib import CsDateTime
 from System import DateTimeKind  # type: ignore
 
+# Module-level constant: 1 second = 10,000,000 ticks (100ns per tick)
+_TICKS_PER_SECOND = 10_000_000
+
 
 class DateTime:
     """
@@ -35,8 +38,7 @@ class DateTime:
         # Prepare components
         year, month, day = dt.year, dt.month, dt.day
         hour, minute, second = dt.hour, dt.minute, dt.second
-        ms = dt.microsecond // 1000
-        extra_micro = dt.microsecond - (ms * 1000)
+        ms, extra_micro = divmod(dt.microsecond, 1000)
 
         kind = DateTimeKind.Utc if is_tz_aware else DateTimeKind.Unspecified
         # Construct with millisecond precision
@@ -52,9 +54,6 @@ def to_pydatetime(cs_datetime: CsDateTime) -> PyDateTime:
 
     Preserves microseconds using DateTime.Ticks and attaches timezone if Kind is Utc.
     """
-    # constants to avoid importing System.TimeSpan: 1 tick = 100ns
-    TICKS_PER_SECOND = 10_000_000
-
     # Extract components directly
     year = cs_datetime.Year
     month = cs_datetime.Month
@@ -64,10 +63,10 @@ def to_pydatetime(cs_datetime: CsDateTime) -> PyDateTime:
     second = cs_datetime.Second
 
     # Microseconds within the second from ticks (1 tick = 100 ns)
-    microsecond = int((cs_datetime.Ticks % TICKS_PER_SECOND) // 10)
+    microsecond = int((cs_datetime.Ticks % _TICKS_PER_SECOND) // 10)
 
     # Attach tzinfo only for UTC
-    if str(cs_datetime.Kind) == 'Utc':
+    if cs_datetime.Kind == DateTimeKind.Utc:
         return PyDateTime(year, month, day, hour, minute, second, microsecond, tzinfo=PyTimezone.utc)
     else:
         return PyDateTime(year, month, day, hour, minute, second, microsecond)

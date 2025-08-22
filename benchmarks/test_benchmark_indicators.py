@@ -61,6 +61,7 @@ class TestPerformance:
     def test_benchmark_connors_rsi(self, benchmark, quotes):
         benchmark(indicators.get_connors_rsi, quotes)
 
+    @pytest.mark.perf_focus
     def test_benchmark_correlation(self, benchmark, quotes, quotes_other):
         benchmark(indicators.get_correlation, quotes, quotes_other, 20)
 
@@ -109,6 +110,7 @@ class TestPerformance:
     def test_benchmark_hma(self, benchmark, quotes):
         benchmark(indicators.get_hma, quotes, 20)
 
+    @pytest.mark.perf_focus
     def test_benchmark_ht_trendline(self, benchmark, quotes):
         benchmark(indicators.get_ht_trendline, quotes)
 
@@ -118,6 +120,7 @@ class TestPerformance:
     def test_benchmark_hurst_longlong(self, benchmark, quotes_longish):
         benchmark(indicators.get_hurst, quotes_longish + quotes_longish)
 
+    @pytest.mark.perf_focus
     def test_benchmark_ichimoku(self, benchmark, quotes):
         benchmark(indicators.get_ichimoku, quotes)
 
@@ -148,6 +151,7 @@ class TestPerformance:
     def test_benchmark_obv(self, benchmark, quotes):
         benchmark(indicators.get_obv, quotes)
 
+    @pytest.mark.perf_focus
     def test_benchmark_parabolic_sar(self, benchmark, quotes):
         benchmark(indicators.get_parabolic_sar, quotes)
 
@@ -172,8 +176,9 @@ class TestPerformance:
     def test_benchmark_roc(self, benchmark, quotes):
         benchmark(indicators.get_roc, quotes, 20)
 
+    @pytest.mark.perf_focus
     def test_benchmark_rolling_pivots(self, benchmark, quotes):
-        benchmark(indicators.get_rolling_pivots, quotes, 11, 9)
+        benchmark(indicators.get_rolling_pivots, quotes, 14, 1)
 
     def test_benchmark_rsi(self, benchmark, quotes):
         benchmark(indicators.get_rsi, quotes)
