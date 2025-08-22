@@ -116,6 +116,66 @@
       },
       "group": "none",
       "problemMatcher": []
+    },
+    {
+      "label": "Benchmark: JSON (prompt filename)",
+      "type": "shell",
+      "command": "pytest -m performance --benchmark-json=${input:benchJsonOut}",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "label": "Benchmark: Autosave to .benchmarks",
+      "type": "shell",
+      "command": "pytest -m performance --benchmark-autosave --benchmark-save-data",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "label": "Benchmark: List Saved Runs",
+      "type": "shell",
+      "command": "pytest-benchmark list",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "label": "Benchmark: Compare Saved Runs",
+      "type": "shell",
+      "command": "pytest-benchmark compare ${input:benchBase} ${input:benchTarget}",
+      "options": {
+        "cwd": "${workspaceFolder}"
+      },
+      "group": "none",
+      "problemMatcher": []
+    }
+  ],
+  "inputs": [
+    {
+      "id": "benchJsonOut",
+      "type": "promptString",
+      "description": "Output JSON filename (e.g., bench_current.json)",
+      "default": "bench_current.json"
+    },
+    {
+      "id": "benchBase",
+      "type": "promptString",
+      "description": "Base saved run name (from 'Benchmark: List Saved Runs')",
+      "default": ""
+    },
+    {
+      "id": "benchTarget",
+      "type": "promptString",
+      "description": "Target saved run name (from 'Benchmark: List Saved Runs')",
+      "default": ""
     }
   ]
 }
