@@ -2,10 +2,22 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "build",
+      "label": "Build",
       "type": "shell",
       "command": "pip install -r requirements.txt && pip install -r requirements-test.txt",
       "group": "build",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: All",
+      "dependsOrder": "parallel",
+      "dependsOn": [
+        "Test: Unit (default)",
+        "Test: Coverage",
+        "Test: Performance",
+        "Test: Localization"
+      ],
+      "group": "test",
       "problemMatcher": []
     },
     {
@@ -13,6 +25,13 @@
       "type": "shell",
       "command": "pytest -vr A",
       "group": "test",
+      "problemMatcher": []
+    },
+    {
+      "label": "Test: Coverage",
+      "type": "shell",
+      "command": "pytest --cov=stock_indicators --cov-report=term-missing",
+      "group": "none",
       "problemMatcher": []
     },
     {
@@ -30,25 +49,9 @@
       "problemMatcher": []
     },
     {
-      "label": "Test: All",
+      "label": "Install: Ruby Packages (docs)",
       "type": "shell",
-      "command": "pytest -m \"\"",
-      "group": "none",
-      "problemMatcher": []
-    },
-    {
-      "label": "Test: Coverage",
-      "type": "shell",
-      "command": "pytest --cov=stock_indicators --cov-report=term-missing",
-      "group": "none",
-      "problemMatcher": []
-    },
-    {
-      "label": "Doc Site: Open with LiveReload",
-      "type": "shell",
-      "command": "bundle exec jekyll serve --livereload --open-url",
-      "dependsOn": "Doc Site: Update Ruby Packages",
-      "isBackground": true,
+      "command": "bundle install --jobs 4 && bundle clean --force",
       "options": {
         "cwd": "${workspaceFolder}/docs",
         "env": {
@@ -60,9 +63,49 @@
       "problemMatcher": []
     },
     {
-      "label": "Doc Site: Update Ruby Packages",
+      "label": "Install: Python Packages",
       "type": "shell",
-      "command": "bundle install --jobs 4 && bundle update --conservative && bundle clean --force",
+      "command": "pip install -r requirements.txt && pip install -r requirements-test.txt",
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "label": "Update: Python Packages",
+      "type": "shell",
+      "command": "pip install -U -r requirements.txt && pip install -U -r requirements-test.txt",
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "label": "Update: Ruby Packages (docs)",
+      "type": "shell",
+      "command": "bundle update --conservative && bundle clean --force",
+      "options": {
+        "cwd": "${workspaceFolder}/docs",
+        "env": {
+          "BUNDLE_GEMFILE": "${workspaceFolder}/docs/Gemfile",
+          "BUNDLE_PATH": "${workspaceFolder}/docs/vendor/bundle"
+        }
+      },
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "label": "Update: All Packages",
+      "dependsOrder": "sequence",
+      "dependsOn": [
+        "Update: Python Packages",
+        "Update: Ruby Packages (docs)"
+      ],
+      "group": "none",
+      "problemMatcher": []
+    },
+    {
+      "label": "Run: Doc Site with LiveReload",
+      "type": "shell",
+      "command": "bundle exec jekyll serve --livereload --open-url",
+      "dependsOn": "Install: Ruby Packages (docs)",
+      "isBackground": true,
       "options": {
         "cwd": "${workspaceFolder}/docs",
         "env": {
