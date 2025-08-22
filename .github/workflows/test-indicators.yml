@@ -49,7 +49,7 @@ jobs:
         uses: actions/checkout@v5
 
       - name: Check debug settings
-        if: ${{ matrix.post-summary }} == 'true'
+        if: ${{ matrix['post-summary'] == true }}
         shell: bash
         run: |
           echo "Checking for debug logging settings in package files..."
@@ -97,6 +97,6 @@ jobs:
 
       - name: Post test summary
         uses: test-summary/action@v2
-        if: ${{ matrix.post-summary }} == 'true'
+        if: ${{ matrix['post-summary'] == true }}
         with:
           paths: test-results.xml

@@ -7,7 +7,7 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_alligator(quotes: Iterable[Quote],
+def get_alligator(quotes: Iterable[Quote],  # pylint: disable=too-many-positional-arguments
                   jaw_periods: int = 13, jaw_offset: int = 8,
                   teeth_periods: int = 8, teeth_offset: int = 5,
                   lips_periods: int = 5, lips_offset: int = 3):

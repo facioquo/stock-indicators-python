@@ -31,7 +31,7 @@ def get_ema(quotes: Iterable[Quote], lookback_periods: int,
          - [EMA Reference](https://python.stockindicators.dev/indicators/Ema/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var.
+    quotes = Quote.use(quotes, candle_part)  # pylint: disable=no-member  # Error occurs if not assigned to local var.
     ema_list = CsIndicator.GetEma(quotes, lookback_periods)
     return EMAResults(ema_list, EMAResult)
 
