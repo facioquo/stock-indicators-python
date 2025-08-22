@@ -18,21 +18,23 @@ jobs:
     strategy:
       matrix:
         include:
-          # Primary locale testing on Ubuntu (free tier)
+          # Windows tests
+          - os: windows-latest
+            locale: 'fr_FR.UTF-8'
+          - os: windows-latest
+            locale: 'ru_RU.UTF-8'
+
+          # Ubuntu tests
           - os: ubuntu-latest
             locale: 'fr_FR.UTF-8'
           - os: ubuntu-latest
             locale: 'ru_RU.UTF-8'
-          - os: ubuntu-latest
-            locale: 'de_DE.UTF-8'
 
-          # Essential Windows locale compatibility (single test)
-          - os: windows-latest
-            locale: 'fr_FR.UTF-8'
-
-          # Essential macOS locale compatibility (single test)
+          # macOS tests
           - os: macos-latest
             locale: 'fr_FR.UTF-8'
+          - os: macos-latest
+            locale: 'de_DE.UTF-8'
 
     name: "${{ matrix.locale }} on ${{ matrix.os }}"
     runs-on: ${{ matrix.os }}
