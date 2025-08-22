@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-# local dev: bundle exec jekyll serve -o -l
+# Run Task: "Doc Site: Open with LiveReload"
 
 # jekyll plugins
 group :jekyll_plugins do
@@ -12,6 +12,6 @@ group :jekyll_plugins do
   gem 'jekyll-minifier'
 end
 
-gem 'wdm', '>= 0.2.0' if Gem.win_platform? # windows compatibilty pack
-gem 'webrick' # needed for ruby > v3.0
-gem 'faraday' # reload/retry on file changes
+gem 'wdm', '>= 0.2.0' # windows compatibility pack
+gem 'webrick'         # needed for ruby > v3.0
+gem 'faraday'         # reload/retry on file changes

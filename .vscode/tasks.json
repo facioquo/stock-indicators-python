@@ -44,10 +44,10 @@
       "problemMatcher": []
     },
     {
-      "label": "Docs: Serve (Jekyll)",
+      "label": "Doc Site: Open with LiveReload",
       "type": "shell",
       "command": "bundle exec jekyll serve --livereload --open-url",
-      "dependsOn": "Docs: Update Ruby Packages",
+      "dependsOn": "Doc Site: Update Ruby Packages",
       "isBackground": true,
       "options": {
         "cwd": "${workspaceFolder}/docs",
@@ -60,7 +60,7 @@
       "problemMatcher": []
     },
     {
-      "label": "Docs: Update Ruby Packages",
+      "label": "Doc Site: Update Ruby Packages",
       "type": "shell",
       "command": "bundle install --jobs 4 && bundle update --conservative && bundle clean --force",
       "options": {
