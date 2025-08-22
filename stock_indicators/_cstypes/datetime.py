@@ -1,6 +1,6 @@
 from datetime import datetime as PyDateTime, timezone as PyTimezone
 from stock_indicators._cslib import CsDateTime
-from stock_indicators._cslib import CsCultureInfo
+from System import DateTimeKind  # type: ignore
 
 
 class DateTime:
@@ -19,45 +19,55 @@ class DateTime:
         3/26/2021 10:02:22 PM
     """
     def __new__(cls, datetime: PyDateTime) -> CsDateTime:
+        """Fast conversion from Python datetime to System.DateTime without string parsing.
+
+        - If tz-aware, normalize to UTC and create DateTime with Kind=Utc
+        - If naive, create DateTime with Kind=Unspecified
+        - Preserve milliseconds, and add remaining microseconds via AddTicks
+        """
         if not isinstance(datetime, PyDateTime):
             raise TypeError("Expected datetime.datetime instance")
-            
-        # Preserve timezone: normalize tz-aware datetimes to UTC and set Kind=Utc
-        if datetime.tzinfo is not None and datetime.utcoffset() is not None:
-            dt_utc = datetime.astimezone(PyTimezone.utc).replace(tzinfo=None)
-            cs_dt = CsDateTime.Parse(dt_utc.isoformat(timespec='seconds'))
-            # Import DateTimeKind dynamically to avoid import issues
-            from System import DateTimeKind
-            return CsDateTime.SpecifyKind(cs_dt, DateTimeKind.Utc)
-        # Naive: round to seconds and keep as-is (Kind=Unspecified in .NET)
-        return CsDateTime.Parse(datetime.isoformat(timespec='seconds'))
+
+        # Normalize timezone
+        is_tz_aware = datetime.tzinfo is not None and datetime.utcoffset() is not None
+        dt = datetime.astimezone(PyTimezone.utc) if is_tz_aware else datetime
+
+        # Prepare components
+        year, month, day = dt.year, dt.month, dt.day
+        hour, minute, second = dt.hour, dt.minute, dt.second
+        ms = dt.microsecond // 1000
+        extra_micro = dt.microsecond - (ms * 1000)
+
+        kind = DateTimeKind.Utc if is_tz_aware else DateTimeKind.Unspecified
+        # Construct with millisecond precision
+        cs_dt = CsDateTime(year, month, day, hour, minute, second, ms, kind)
+        # Add remaining microseconds as ticks (1 tick = 100 ns => 1 microsecond = 10 ticks)
+        if extra_micro:
+            cs_dt = cs_dt.AddTicks(extra_micro * 10)
+        return cs_dt
 
 
 def to_pydatetime(cs_datetime: CsDateTime) -> PyDateTime:
-    """
-    Converts C#'s `System.DateTime` struct to a native Python datetime object.
+    """Fast conversion from System.DateTime to Python datetime without string formatting.
 
-    Parameter:
-        cs_datetime : `System.DateTime` of C#.
+    Preserves microseconds using DateTime.Ticks and attaches timezone if Kind is Utc.
     """
-    # Check the Kind to determine if this should have timezone info
-    kind = cs_datetime.Kind
-    
-    if str(kind) == 'Utc':
-        # UTC DateTime - return with UTC timezone
-        try:
-            iso = cs_datetime.ToString("yyyy-MM-dd'T'HH:mm:ss.ffffff", CsCultureInfo.InvariantCulture)
-            dt = PyDateTime.fromisoformat(iso)
-            return dt.replace(tzinfo=PyTimezone.utc)
-        except ValueError:
-            iso_fallback = cs_datetime.ToString("yyyy-MM-dd'T'HH:mm:ss", CsCultureInfo.InvariantCulture)
-            dt = PyDateTime.fromisoformat(iso_fallback)
-            return dt.replace(tzinfo=PyTimezone.utc)
+    # constants to avoid importing System.TimeSpan: 1 tick = 100ns
+    TICKS_PER_SECOND = 10_000_000
+
+    # Extract components directly
+    year = cs_datetime.Year
+    month = cs_datetime.Month
+    day = cs_datetime.Day
+    hour = cs_datetime.Hour
+    minute = cs_datetime.Minute
+    second = cs_datetime.Second
+
+    # Microseconds within the second from ticks (1 tick = 100 ns)
+    microsecond = int((cs_datetime.Ticks % TICKS_PER_SECOND) // 10)
+
+    # Attach tzinfo only for UTC
+    if str(cs_datetime.Kind) == 'Utc':
+        return PyDateTime(year, month, day, hour, minute, second, microsecond, tzinfo=PyTimezone.utc)
     else:
-        # Unspecified or Local - return without timezone info
-        try:
-            iso = cs_datetime.ToString("yyyy-MM-dd'T'HH:mm:ss.ffffff", CsCultureInfo.InvariantCulture)
-            return PyDateTime.fromisoformat(iso)
-        except ValueError:
-            iso_fallback = cs_datetime.ToString("yyyy-MM-dd'T'HH:mm:ss", CsCultureInfo.InvariantCulture)
-            return PyDateTime.fromisoformat(iso_fallback)
+        return PyDateTime(year, month, day, hour, minute, second, microsecond)
