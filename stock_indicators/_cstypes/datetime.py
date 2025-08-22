@@ -21,6 +21,7 @@ class DateTime:
         >>> cs_now
         3/26/2021 10:02:22 PM
     """
+
     def __new__(cls, datetime: PyDateTime) -> CsDateTime:
         """Fast conversion from Python datetime to System.DateTime without string parsing.
 
@@ -67,6 +68,7 @@ def to_pydatetime(cs_datetime: CsDateTime) -> PyDateTime:
 
     # Attach tzinfo only for UTC
     if cs_datetime.Kind == DateTimeKind.Utc:
-        return PyDateTime(year, month, day, hour, minute, second, microsecond, tzinfo=PyTimezone.utc)
-    else:
-        return PyDateTime(year, month, day, hour, minute, second, microsecond)
+        return PyDateTime(
+            year, month, day, hour, minute, second, microsecond, tzinfo=PyTimezone.utc
+        )
+    return PyDateTime(year, month, day, hour, minute, second, microsecond)

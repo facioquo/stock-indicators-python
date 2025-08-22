@@ -4,7 +4,15 @@ import os
 import re
 from datetime import datetime
 from email.utils import parsedate_to_datetime
-from zoneinfo import ZoneInfo
+
+# ZoneInfo: stdlib on 3.9+, backport on 3.8
+try:  # pragma: no cover - import guard
+    from zoneinfo import ZoneInfo  # type: ignore[attr-defined]
+except Exception:  # pragma: no cover - fallback for Py<3.9
+    try:
+        from backports.zoneinfo import ZoneInfo  # type: ignore
+    except Exception:
+        ZoneInfo = None  # type: ignore
 from decimal import Decimal, DecimalException
 from pathlib import Path
 
@@ -111,11 +119,14 @@ def parse_date(date_str):
                     dt = datetime.strptime(base, "%Y-%m-%dT%H:%M")
                 else:
                     dt = datetime.strptime(base, "%Y-%m-%dT%H:%M:%S")
-            try:
-                return dt.replace(tzinfo=ZoneInfo(zone))
-            except Exception:
-                # Fallback if IANA zone isn't available on the system: treat as naive
-                return dt
+            if ZoneInfo is not None:
+                try:
+                    return dt.replace(tzinfo=ZoneInfo(zone))
+                except Exception:
+                    # Fallback if IANA zone isn't available on the system: treat as naive
+                    return dt
+            # ZoneInfo not available; treat as naive
+            return dt
 
         # ISO basic with offset without colon: YYYYMMDDTHHMMSS+HHMM
         if re.fullmatch(r"\d{8}T\d{6}[+-]\d{4}", s):
@@ -136,7 +147,10 @@ def parse_date(date_str):
             # If offset without colon at end (e.g., +0000), insert colon for fromisoformat
             m_off = re.search(r"([+-])(\d{2})(\d{2})$", s_norm)
             if m_off and ":" not in s_norm[-6:]:
-                s_norm = s_norm[: m_off.start()] + f"{m_off.group(1)}{m_off.group(2)}:{m_off.group(3)}"
+                s_norm = (
+                    s_norm[: m_off.start()]
+                    + f"{m_off.group(1)}{m_off.group(2)}:{m_off.group(3)}"
+                )
             return datetime.fromisoformat(s_norm)
 
         # Minutes-only ISO extended (naive)

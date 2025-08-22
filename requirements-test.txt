@@ -2,3 +2,4 @@
 pytest
 pytest-cov
 pytest-benchmark
+backports.zoneinfo; python_version < '3.9'
