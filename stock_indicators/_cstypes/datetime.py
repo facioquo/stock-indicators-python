@@ -1,8 +1,9 @@
-from datetime import datetime as PyDateTime
-from typing import Optional
+from datetime import datetime as PyDateTime, timezone as PyTimezone
+from System import DateTimeKind  # type: ignore
+from stock_indicators._cslib import CsDateTime  # type: ignore
 
-from stock_indicators._cslib import CsDateTime
-from stock_indicators._cslib import CsCultureInfo
+# Module-level constant: 1 second = 10,000,000 ticks (100ns per tick)
+_TICKS_PER_SECOND = 10_000_000
 
 
 class DateTime:
@@ -20,60 +21,54 @@ class DateTime:
         >>> cs_now
         3/26/2021 10:02:22 PM
     """
+
     def __new__(cls, datetime: PyDateTime) -> CsDateTime:
+        """Fast conversion from Python datetime to System.DateTime without string parsing.
+
+        - If tz-aware, normalize to UTC and create DateTime with Kind=Utc
+        - If naive, create DateTime with Kind=Unspecified
+        - Preserve milliseconds, and add remaining microseconds via AddTicks
+        """
         if not isinstance(datetime, PyDateTime):
             raise TypeError("Expected datetime.datetime instance")
 
-        # Use direct constructor instead of string parsing for better performance
-        try:
-            return CsDateTime(
-                datetime.year,
-                datetime.month,
-                datetime.day,
-                datetime.hour,
-                datetime.minute,
-                datetime.second,
-                round(datetime.microsecond / 1000)  # Convert microseconds to nearest millisecond
-            )
-        except Exception as e:  # pylint: disable=broad-exception-caught
-            # Fallback to string parsing if direct construction fails
-            # Broad exception catch is necessary for C# interop
-            try:
-                return CsDateTime.Parse(datetime.isoformat())
-            except Exception:  # pylint: disable=broad-exception-caught
-                from stock_indicators.exceptions import TypeConversionError
-                raise TypeConversionError(f"Cannot convert datetime {datetime} to C# DateTime: {e}") from e
+        # Normalize timezone
+        is_tz_aware = datetime.tzinfo is not None and datetime.utcoffset() is not None
+        dt = datetime.astimezone(PyTimezone.utc) if is_tz_aware else datetime
+
+        # Prepare components
+        year, month, day = dt.year, dt.month, dt.day
+        hour, minute, second = dt.hour, dt.minute, dt.second
+        ms, extra_micro = divmod(dt.microsecond, 1000)
+
+        kind = DateTimeKind.Utc if is_tz_aware else DateTimeKind.Unspecified
+        # Construct with millisecond precision
+        cs_dt = CsDateTime(year, month, day, hour, minute, second, ms, kind)
+        # Add remaining microseconds as ticks (1 tick = 100 ns => 1 microsecond = 10 ticks)
+        if extra_micro:
+            cs_dt = cs_dt.AddTicks(extra_micro * 10)
+        return cs_dt
 
 
-def to_pydatetime(cs_datetime: Optional[CsDateTime]) -> Optional[PyDateTime]:
+def to_pydatetime(cs_datetime: CsDateTime) -> PyDateTime:
+    """Fast conversion from System.DateTime to Python datetime without string formatting.
+
+    Preserves microseconds using DateTime.Ticks and attaches timezone if Kind is Utc.
     """
-    Converts C#'s `System.DateTime` struct to a native Python datetime object.
+    # Extract components directly
+    year = cs_datetime.Year
+    month = cs_datetime.Month
+    day = cs_datetime.Day
+    hour = cs_datetime.Hour
+    minute = cs_datetime.Minute
+    second = cs_datetime.Second
 
-    Parameter:
-        cs_datetime : `System.DateTime` of C# or None.
+    # Microseconds within the second from ticks (1 tick = 100 ns)
+    microsecond = int((cs_datetime.Ticks % _TICKS_PER_SECOND) // 10)
 
-    Returns:
-        Python datetime object or None if input is None.
-    """
-    if cs_datetime is None:
-        return None
-
-    try:
-        # Use direct property access for better performance
+    # Attach tzinfo only for UTC
+    if cs_datetime.Kind == DateTimeKind.Utc:
         return PyDateTime(
-            cs_datetime.Year,
-            cs_datetime.Month,
-            cs_datetime.Day,
-            cs_datetime.Hour,
-            cs_datetime.Minute,
-            cs_datetime.Second,
-            cs_datetime.Millisecond * 1000  # Convert milliseconds to microseconds
+            year, month, day, hour, minute, second, microsecond, tzinfo=PyTimezone.utc
         )
-    except Exception as e:  # pylint: disable=broad-exception-caught
-        # Fallback to string conversion if direct access fails
-        # Broad exception catch is necessary for C# interop
-        try:
-            return PyDateTime.fromisoformat(cs_datetime.ToString("s", CsCultureInfo.InvariantCulture))
-        except Exception:  # pylint: disable=broad-exception-caught
-            from stock_indicators.exceptions import TypeConversionError
-            raise TypeConversionError(f"Cannot convert C# DateTime to Python datetime: {e}") from e
+    return PyDateTime(year, month, day, hour, minute, second, microsecond)

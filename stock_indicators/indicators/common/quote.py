@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from decimal import Decimal
 from typing import Iterable, Optional, Union
 
@@ -15,11 +15,14 @@ def _get_date(quote) -> datetime:
     """Get the date property with proper null handling."""
     return to_pydatetime(quote.Date)
 
-
 def _set_date(quote, value: datetime) -> None:
-    """Set the date property with validation."""
+    """Set the date property with validation and timezone normalization."""
     if not isinstance(value, datetime):
         raise TypeError("Date must be a datetime.datetime instance")
+    
+    # Normalize timezone-aware datetime to UTC (from main branch)
+    if value.tzinfo is not None and value.utcoffset() is not None:
+        value = value.astimezone(timezone.utc)
     quote.Date = CsDateTime(value)
 
 

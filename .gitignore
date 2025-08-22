@@ -130,15 +130,19 @@ dmypy.json
 # personal editor configs
 .vs
 
-# Jekyll site
-_site/
-
 # JetBrains
 .idea/
 
 # Benchmarks
 .benchmarks
 benchmark_data.json
+bench_*.json
+
+# Test results (non-benchmark)
+test-results/
 
 # OS generated files
 .DS_Store
+
+# Codacy analysis output
+.codacy/

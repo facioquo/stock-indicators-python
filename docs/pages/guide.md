@@ -16,6 +16,7 @@ layout: page
 - [Using derived results classes](#using-derived-results-classes)
 - [Generating indicator of indicators](#generating-indicator-of-indicators)
 - [Candlestick patterns](#candlestick-patterns)
+- [Date and time compatibility](#date-and-time-compatibility)
 - [Utilities and Helper functions]({{site.baseurl}}/utilities/#content)
 - [Contributing guidelines]({{site.baseurl}}/contributing/#content)
 
@@ -166,8 +167,8 @@ If you are using `pandas.DataFrame` to hold quote data, you have to convert it i
 from stock_indicators import Quote
 
 quotes_list = [
-    Quote(d,o,h,l,c,v) 
-    for d,o,h,l,c,v 
+    Quote(d,o,h,l,c,v)
+    for d,o,h,l,c,v
     in zip(df['date'], df['open'], df['high'], df['low'], df['close'], df['volume'])
 ]
 ```
@@ -229,7 +230,7 @@ from stock_indicators.indicators.ema import EMAResult
 class ExtendedEMA(EMAResult):
     def __str__(self):
         return f"EMA on {self.date.date()} was ${self.ema or 0:.4f}"
-    
+
 # compute indicator
 quotes = get_historical_quotes("MSFT")
 results = indicators.get_ema(quotes, 20)
@@ -311,7 +312,7 @@ The `CandleProperties` class is an extended version of `Quote`, and contains add
 | `close` | Decimal | Close price |
 | `volume` | Decimal | Volume |
 | `size` | Decimal, Optional | `high-low` |
-| `body` | Decimal, Optional | `|open-close|` |
+| `body` | Decimal, Optional | `&#124;open-close&#124;` |
 | `upper_wick` | Decimal, Optional | Upper wick size |
 | `lower_wick` | Decimal, Optional | Lower wick size |
 | `body_pct` | float, Optional | `body/size` |
@@ -323,3 +324,25 @@ The `CandleProperties` class is an extended version of `Quote`, and contains add
 ## Utilities
 
 See [Utilities and helper functions]({{site.baseurl}}/utilities/#content) for additional tools.
+
+## Date and time compatibility
+
+Keep date handling simple and predictable:
+
+- Inputs are Python datetime.datetime objects. Provide either tz-aware or naive.
+- Tz-aware inputs are normalized to UTC internally; outputs remain tz-aware in UTC.
+- Naive inputs stay naive; outputs keep no tzinfo.
+- Mixed series are supported. Results align 1:1 with input dates. Sorting is chronological regardless of tz awareness.
+- Use valid ISO 8601 when constructing datetimes via parsing. Python's datetime.fromisoformat requires seconds and a colon in offsets, e.g. `2000-03-26T23:00:00+00:00`.
+- Examples of accepted creation patterns:
+  - Offset-aware: `datetime.fromisoformat('2022-06-02T10:29:00-04:00')`
+  - Zulu/UTC: `datetime.fromisoformat('2022-06-02T14:29:00+00:00')`
+  - Naive date-time: `datetime.strptime('2022-06-02 14:29:00', '%Y-%m-%d %H:%M:%S')`
+  - Date-only (naive midnight): `datetime.strptime('2022-06-02', '%Y-%m-%d')`
+- Do not pass raw strings to indicators; always pass datetimes through Quote(date=...).
+
+Behavior summary:
+
+- The instant-in-time is preserved for tz-aware inputs (converted to UTC).
+- Naive inputs are treated as unspecified local context and kept as-is.
+- Indicator results echo input dates unchanged in both value and tz awareness.
