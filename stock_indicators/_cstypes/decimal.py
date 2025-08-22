@@ -33,3 +33,15 @@ def to_pydecimal(cs_decimal: CsDecimal) -> PyDecimal:
     """
     if cs_decimal is not None:
         return PyDecimal(cs_decimal.ToString(CsCultureInfo.InvariantCulture))
+
+
+def to_pydecimal_via_double(cs_decimal: CsDecimal) -> PyDecimal:
+    """
+    Converts an object to a native Python decimal object via double conversion.
+    This method offers better performance but may have precision loss.
+
+    Parameter:
+        cs_decimal : `System.Decimal` of C# or any `object` that can be represented as a number.
+    """
+    if cs_decimal is not None:
+        return PyDecimal(CsDecimal.ToDouble(cs_decimal))

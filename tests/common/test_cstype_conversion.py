@@ -5,7 +5,7 @@ from decimal import Decimal as PyDecimal
 from stock_indicators._cslib import CsCultureInfo
 from stock_indicators._cstypes import DateTime as CsDateTime
 from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydatetime, to_pydecimal
+from stock_indicators._cstypes import to_pydatetime, to_pydecimal, to_pydecimal_via_double
 
 class TestCsTypeConversion:
     def test_datetime_conversion(self):
@@ -85,3 +85,21 @@ class TestCsTypeConversion:
         cs_decimal = CsDecimal(py_decimal)
 
         assert to_pydecimal(cs_decimal) == PyDecimal(str(py_decimal))
+
+    def test_alternative_decimal_conversion_via_double(self):
+        """Test the alternative double-based conversion method."""
+        py_decimal = 1996.1012
+        cs_decimal = CsDecimal(py_decimal)
+
+        # Test that the function works (though precision may differ)
+        result = to_pydecimal_via_double(cs_decimal)
+        assert result is not None
+        assert isinstance(result, PyDecimal)
+        
+        # The result should be close to the original, even if not exact
+        assert abs(float(result) - py_decimal) < 1e-10
+
+    def test_alternative_decimal_conversion_with_none(self):
+        """Test that the alternative method handles None correctly."""
+        result = to_pydecimal_via_double(None)
+        assert result is None
