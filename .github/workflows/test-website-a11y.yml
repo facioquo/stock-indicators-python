@@ -28,16 +28,16 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.3
+          bundler-cache: true # runs 'bundle install' and caches gems
 
       - name: Install dependencies
         run: |
-          bundle install
           npm install -g pa11y-ci
 
       - name: Use 'localhost'
