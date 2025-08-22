@@ -19,7 +19,8 @@ jobs:
       run:
         working-directory: docs
     env:
-      BUNDLE_GEMFILE: ${{github.workspace}}/docs/Gemfile
+      BUNDLE_GEMFILE: ${{ github.workspace }}/docs/Gemfile
+      BUNDLE_PATH: vendor/bundle
       JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     environment:
@@ -28,15 +29,13 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.3
-
-      - name: Install dependencies
-        run: bundle install
+          bundler-cache: true # runs 'bundle install' and caches gems
 
       - name: Define tag
         id: tag

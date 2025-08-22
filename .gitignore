@@ -130,9 +130,6 @@ dmypy.json
 # personal editor configs
 .vs
 
-# Jekyll site
-_site/
-
 # JetBrains
 .idea/
 

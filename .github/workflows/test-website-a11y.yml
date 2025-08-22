@@ -23,21 +23,22 @@ jobs:
       run:
         working-directory: docs
     env:
-      BUNDLE_GEMFILE: ${{github.workspace}}/docs/Gemfile
+      BUNDLE_GEMFILE: ${{ github.workspace }}/docs/Gemfile
+      BUNDLE_PATH: vendor/bundle
       JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
           ruby-version: 3.3
+          bundler-cache: true # runs 'bundle install' and caches gems
 
       - name: Install dependencies
         run: |
-          bundle install
           npm install -g pa11y-ci
 
       - name: Use 'localhost'
