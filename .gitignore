@@ -143,3 +143,6 @@ test-results/
 
 # OS generated files
 .DS_Store
+
+# Codacy analysis output
+.codacy/
