@@ -44,7 +44,10 @@ class TestCsTypeConversion:
         assert 1996.1012 == cs_double
 
     def test_quote_constructor_retains_timezone(self):
-        dt = datetime.fromisoformat('2000-03-26 23:00+0000')
+        from stock_indicators.indicators.common.quote import Quote
+        from decimal import Decimal
+        
+        dt = datetime.fromisoformat('2000-03-26T23:00:00+00:00')
         q = Quote(
             date=dt,
             open=Decimal('23'),

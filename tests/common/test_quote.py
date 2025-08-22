@@ -4,7 +4,7 @@ from datetime import datetime
 
 
 def test_quote_constructor_retains_timezone():
-    dt = datetime.fromisoformat('2000-03-26 23:00+0000')
+    dt = datetime.fromisoformat('2000-03-26T23:00:00+00:00')
     q = Quote(
         date=dt,
         open=Decimal('23'),
@@ -19,7 +19,7 @@ def test_quote_constructor_retains_timezone():
 
 
 def test_quote_constructor_handles_various_date_formats():
-    dt1 = datetime.fromisoformat('2000-03-26 23:00+0000')
+    dt1 = datetime.fromisoformat('2000-03-26T23:00:00+00:00')
     dt2 = datetime.strptime('2000-03-26 23:00:00', '%Y-%m-%d %H:%M:%S')
     dt3 = datetime.strptime('2000-03-26', '%Y-%m-%d')
 

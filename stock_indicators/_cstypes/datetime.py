@@ -1,5 +1,4 @@
-from datetime import datetime as PyDateTime
-
+from datetime import datetime as PyDateTime, timezone as PyTimezone
 from stock_indicators._cslib import CsDateTime
 from stock_indicators._cslib import CsCultureInfo
 
@@ -20,6 +19,17 @@ class DateTime:
         3/26/2021 10:02:22 PM
     """
     def __new__(cls, datetime: PyDateTime) -> CsDateTime:
+        if not isinstance(datetime, PyDateTime):
+            raise TypeError("Expected datetime.datetime instance")
+            
+        # Preserve timezone: normalize tz-aware datetimes to UTC and set Kind=Utc
+        if datetime.tzinfo is not None and datetime.utcoffset() is not None:
+            dt_utc = datetime.astimezone(PyTimezone.utc).replace(tzinfo=None)
+            cs_dt = CsDateTime.Parse(dt_utc.isoformat(timespec='seconds'))
+            # Import DateTimeKind dynamically to avoid import issues
+            from System import DateTimeKind
+            return CsDateTime.SpecifyKind(cs_dt, DateTimeKind.Utc)
+        # Naive: round to seconds and keep as-is (Kind=Unspecified in .NET)
         return CsDateTime.Parse(datetime.isoformat(timespec='seconds'))
 
 
@@ -30,4 +40,24 @@ def to_pydatetime(cs_datetime: CsDateTime) -> PyDateTime:
     Parameter:
         cs_datetime : `System.DateTime` of C#.
     """
-    return PyDateTime.fromisoformat(cs_datetime.ToString("o", CsCultureInfo.InvariantCulture))
+    # Check the Kind to determine if this should have timezone info
+    kind = cs_datetime.Kind
+    
+    if str(kind) == 'Utc':
+        # UTC DateTime - return with UTC timezone
+        try:
+            iso = cs_datetime.ToString("yyyy-MM-dd'T'HH:mm:ss.ffffff", CsCultureInfo.InvariantCulture)
+            dt = PyDateTime.fromisoformat(iso)
+            return dt.replace(tzinfo=PyTimezone.utc)
+        except ValueError:
+            iso_fallback = cs_datetime.ToString("yyyy-MM-dd'T'HH:mm:ss", CsCultureInfo.InvariantCulture)
+            dt = PyDateTime.fromisoformat(iso_fallback)
+            return dt.replace(tzinfo=PyTimezone.utc)
+    else:
+        # Unspecified or Local - return without timezone info
+        try:
+            iso = cs_datetime.ToString("yyyy-MM-dd'T'HH:mm:ss.ffffff", CsCultureInfo.InvariantCulture)
+            return PyDateTime.fromisoformat(iso)
+        except ValueError:
+            iso_fallback = cs_datetime.ToString("yyyy-MM-dd'T'HH:mm:ss", CsCultureInfo.InvariantCulture)
+            return PyDateTime.fromisoformat(iso_fallback)
