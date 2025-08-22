@@ -105,6 +105,7 @@
       "type": "shell",
       "command": "bundle exec jekyll serve --livereload --open-url",
       "dependsOn": "Install: Ruby Packages (docs)",
+      "dependsOrder": "sequence",
       "isBackground": true,
       "options": {
         "cwd": "${workspaceFolder}/docs",
