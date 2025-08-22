@@ -25,7 +25,7 @@ jobs:
             dotnet-version: "6.x"
             python-version: "3.8"
 
-          # Primary testing on Ubuntu (free tier) with newer configuration  
+          # Primary testing on Ubuntu (free tier) with newer configuration
           - os: ubuntu-24.04-arm
             dotnet-version: "9.x"
             python-version: "3.13"
@@ -38,7 +38,7 @@ jobs:
 
           # Essential macOS compatibility testing (single config)
           - os: macos-15
-            dotnet-version: "9.x" 
+            dotnet-version: "9.x"
             python-version: "3.13"
 
     runs-on: ${{ matrix.os }}

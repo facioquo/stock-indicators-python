@@ -1,4 +1,4 @@
-from datetime import datetime
+from datetime import datetime, timezone
 from decimal import Decimal
 from typing import Any, Iterable, Optional
 
@@ -15,6 +15,8 @@ def _get_date(quote):
     return to_pydatetime(quote.Date)
 
 def _set_date(quote, value):
+    if value.tzinfo is not None and value.utcoffset() is not None:
+        value = value.astimezone(timezone.utc)
     quote.Date = CsDateTime(value)
 
 def _get_open(quote):
