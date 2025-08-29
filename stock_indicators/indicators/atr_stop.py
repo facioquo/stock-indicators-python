@@ -4,7 +4,7 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
+from stock_indicators._cstypes import to_pydecimal_via_double
 from stock_indicators.indicators.common.enums import EndType
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
@@ -51,7 +51,7 @@ class AtrStopResult(ResultBase):
 
     @property
     def atr_stop(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.AtrStop)
+        return to_pydecimal_via_double(self._csdata.AtrStop)
 
     @atr_stop.setter
     def atr_stop(self, value):
@@ -59,7 +59,7 @@ class AtrStopResult(ResultBase):
 
     @property
     def buy_stop(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.BuyStop)
+        return to_pydecimal_via_double(self._csdata.BuyStop)
 
     @buy_stop.setter
     def buy_stop(self, value):
@@ -67,7 +67,7 @@ class AtrStopResult(ResultBase):
 
     @property
     def sell_stop(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.SellStop)
+        return to_pydecimal_via_double(self._csdata.SellStop)
 
     @sell_stop.setter
     def sell_stop(self, value):

@@ -4,7 +4,7 @@ from typing import Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
+from stock_indicators._cstypes import to_pydecimal_via_double
 from stock_indicators.indicators.common.enums import PeriodSize, PivotPointType
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
@@ -49,7 +49,7 @@ class PivotPointsResult(ResultBase):
 
     @property
     def r4(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.R4)
+        return to_pydecimal_via_double(self._csdata.R4)
 
     @r4.setter
     def r4(self, value):
@@ -57,7 +57,7 @@ class PivotPointsResult(ResultBase):
 
     @property
     def r3(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.R3)
+        return to_pydecimal_via_double(self._csdata.R3)
 
     @r3.setter
     def r3(self, value):
@@ -65,7 +65,7 @@ class PivotPointsResult(ResultBase):
 
     @property
     def r2(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.R2)
+        return to_pydecimal_via_double(self._csdata.R2)
 
     @r2.setter
     def r2(self, value):
@@ -73,7 +73,7 @@ class PivotPointsResult(ResultBase):
 
     @property
     def r1(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.R1)
+        return to_pydecimal_via_double(self._csdata.R1)
 
     @r1.setter
     def r1(self, value):
@@ -81,7 +81,7 @@ class PivotPointsResult(ResultBase):
 
     @property
     def pp(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.PP)
+        return to_pydecimal_via_double(self._csdata.PP)
 
     @pp.setter
     def pp(self, value):
@@ -89,7 +89,7 @@ class PivotPointsResult(ResultBase):
 
     @property
     def s1(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.S1)
+        return to_pydecimal_via_double(self._csdata.S1)
 
     @s1.setter
     def s1(self, value):
@@ -97,7 +97,7 @@ class PivotPointsResult(ResultBase):
 
     @property
     def s2(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.S2)
+        return to_pydecimal_via_double(self._csdata.S2)
 
     @s2.setter
     def s2(self, value):
@@ -105,7 +105,7 @@ class PivotPointsResult(ResultBase):
 
     @property
     def s3(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.S3)
+        return to_pydecimal_via_double(self._csdata.S3)
 
     @s3.setter
     def s3(self, value):
@@ -113,7 +113,7 @@ class PivotPointsResult(ResultBase):
 
     @property
     def s4(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.S4)
+        return to_pydecimal_via_double(self._csdata.S4)
 
     @s4.setter
     def s4(self, value):

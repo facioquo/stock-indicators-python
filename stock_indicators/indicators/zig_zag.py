@@ -4,7 +4,7 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
+from stock_indicators._cstypes import to_pydecimal_via_double
 from stock_indicators.indicators.common.enums import EndType
 from stock_indicators.indicators.common.helpers import CondenseMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
@@ -48,7 +48,7 @@ class ZigZagResult(ResultBase):
 
     @property
     def zig_zag(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.ZigZag)
+        return to_pydecimal_via_double(self._csdata.ZigZag)
 
     @zig_zag.setter
     def zig_zag(self, value):
@@ -64,7 +64,7 @@ class ZigZagResult(ResultBase):
 
     @property
     def retrace_high(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.RetraceHigh)
+        return to_pydecimal_via_double(self._csdata.RetraceHigh)
 
     @retrace_high.setter
     def retrace_high(self, value):
@@ -72,7 +72,7 @@ class ZigZagResult(ResultBase):
 
     @property
     def retrace_low(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.RetraceLow)
+        return to_pydecimal_via_double(self._csdata.RetraceLow)
 
     @retrace_low.setter
     def retrace_low(self, value):

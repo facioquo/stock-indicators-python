@@ -4,7 +4,7 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
+from stock_indicators._cstypes import to_pydecimal_via_double
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -74,7 +74,7 @@ class SlopeResult(ResultBase):
 
     @property
     def line(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Line)
+        return to_pydecimal_via_double(self._csdata.Line)
 
     @line.setter
     def line(self, value):

@@ -4,7 +4,7 @@ from typing import Iterable, Optional, TypeVar, overload
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
+from stock_indicators._cstypes import to_pydecimal_via_double
 from stock_indicators.indicators.common.helpers import CondenseMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
@@ -81,7 +81,7 @@ class IchimokuResult(ResultBase):
 
     @property
     def tenkan_sen(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.TenkanSen)
+        return to_pydecimal_via_double(self._csdata.TenkanSen)
 
     @tenkan_sen.setter
     def tenkan_sen(self, value):
@@ -89,7 +89,7 @@ class IchimokuResult(ResultBase):
 
     @property
     def kijun_sen(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.KijunSen)
+        return to_pydecimal_via_double(self._csdata.KijunSen)
 
     @kijun_sen.setter
     def kijun_sen(self, value):
@@ -97,7 +97,7 @@ class IchimokuResult(ResultBase):
 
     @property
     def senkou_span_a(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.SenkouSpanA)
+        return to_pydecimal_via_double(self._csdata.SenkouSpanA)
 
     @senkou_span_a.setter
     def senkou_span_a(self, value):
@@ -105,7 +105,7 @@ class IchimokuResult(ResultBase):
 
     @property
     def senkou_span_b(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.SenkouSpanB)
+        return to_pydecimal_via_double(self._csdata.SenkouSpanB)
 
     @senkou_span_b.setter
     def senkou_span_b(self, value):
@@ -113,7 +113,7 @@ class IchimokuResult(ResultBase):
 
     @property
     def chikou_span(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.ChikouSpan)
+        return to_pydecimal_via_double(self._csdata.ChikouSpan)
 
     @chikou_span.setter
     def chikou_span(self, value):

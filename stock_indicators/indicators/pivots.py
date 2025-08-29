@@ -4,7 +4,7 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
+from stock_indicators._cstypes import to_pydecimal_via_double
 from stock_indicators.indicators.common.enums import EndType, PivotTrend
 from stock_indicators.indicators.common.helpers import CondenseMixin
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
@@ -57,7 +57,7 @@ class PivotsResult(ResultBase):
 
     @property
     def high_point(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.HighPoint)
+        return to_pydecimal_via_double(self._csdata.HighPoint)
 
     @high_point.setter
     def high_point(self, value):
@@ -65,7 +65,7 @@ class PivotsResult(ResultBase):
 
     @property
     def low_point(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.LowPoint)
+        return to_pydecimal_via_double(self._csdata.LowPoint)
 
     @low_point.setter
     def low_point(self, value):
@@ -73,7 +73,7 @@ class PivotsResult(ResultBase):
 
     @property
     def high_line(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.HighLine)
+        return to_pydecimal_via_double(self._csdata.HighLine)
 
     @high_line.setter
     def high_line(self, value):
@@ -81,7 +81,7 @@ class PivotsResult(ResultBase):
 
     @property
     def low_line(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.LowLine)
+        return to_pydecimal_via_double(self._csdata.LowLine)
 
     @low_line.setter
     def low_line(self, value):

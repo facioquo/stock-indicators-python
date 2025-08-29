@@ -4,7 +4,7 @@ from typing import Iterable, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
+from stock_indicators._cstypes import to_pydecimal_via_double
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
 
@@ -37,7 +37,7 @@ class HeikinAshiResult(ResultBase):
 
     @property
     def open(self) -> Decimal:
-        return to_pydecimal(self._csdata.Open)
+        return to_pydecimal_via_double(self._csdata.Open)
 
     @open.setter
     def open(self, value):
@@ -45,7 +45,7 @@ class HeikinAshiResult(ResultBase):
 
     @property
     def high(self) -> Decimal:
-        return to_pydecimal(self._csdata.High)
+        return to_pydecimal_via_double(self._csdata.High)
 
     @high.setter
     def high(self, value):
@@ -53,7 +53,7 @@ class HeikinAshiResult(ResultBase):
 
     @property
     def low(self) -> Decimal:
-        return to_pydecimal(self._csdata.Low)
+        return to_pydecimal_via_double(self._csdata.Low)
 
     @low.setter
     def low(self, value):
@@ -61,7 +61,7 @@ class HeikinAshiResult(ResultBase):
 
     @property
     def close(self) -> Decimal:
-        return to_pydecimal(self._csdata.Close)
+        return to_pydecimal_via_double(self._csdata.Close)
 
     @close.setter
     def close(self, value):
@@ -69,7 +69,7 @@ class HeikinAshiResult(ResultBase):
 
     @property
     def volume(self) -> Decimal:
-        return to_pydecimal(self._csdata.Volume)
+        return to_pydecimal_via_double(self._csdata.Volume)
 
     @volume.setter
     def volume(self, value):
