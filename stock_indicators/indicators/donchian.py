@@ -73,6 +73,8 @@ class DonchianResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=DonchianResult)
+
+
 class DonchianResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Donchian Channels results.

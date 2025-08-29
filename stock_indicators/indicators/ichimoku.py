@@ -11,19 +11,37 @@ from stock_indicators.indicators.common.quote import Quote
 
 
 @overload
-def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = 9,
-                 kijun_periods: int = 26, senkou_b_periods: int = 52) -> "IchimokuResults[IchimokuResult]": ...
+def get_ichimoku(
+    quotes: Iterable[Quote],
+    tenkan_periods: int = 9,
+    kijun_periods: int = 26,
+    senkou_b_periods: int = 52,
+) -> "IchimokuResults[IchimokuResult]": ...
 @overload
-def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int,
-                 kijun_periods: int, senkou_b_periods: int,
-                 offset_periods: int) -> "IchimokuResults[IchimokuResult]": ...
+def get_ichimoku(
+    quotes: Iterable[Quote],
+    tenkan_periods: int,
+    kijun_periods: int,
+    senkou_b_periods: int,
+    offset_periods: int,
+) -> "IchimokuResults[IchimokuResult]": ...
 @overload
-def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int,
-                 kijun_periods: int, senkou_b_periods: int,
-                 senkou_offset: int, chikou_offset: int) -> "IchimokuResults[IchimokuResult]": ...
-def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = None,
-                 kijun_periods: int = None, senkou_b_periods: int = None,
-                 senkou_offset: int = None, chikou_offset: int = None):
+def get_ichimoku(
+    quotes: Iterable[Quote],
+    tenkan_periods: int,
+    kijun_periods: int,
+    senkou_b_periods: int,
+    senkou_offset: int,
+    chikou_offset: int,
+) -> "IchimokuResults[IchimokuResult]": ...
+def get_ichimoku(
+    quotes: Iterable[Quote],
+    tenkan_periods: int = None,
+    kijun_periods: int = None,
+    senkou_b_periods: int = None,
+    senkou_offset: int = None,
+    chikou_offset: int = None,
+):
     """Get Ichimoku Cloud calculated.
 
     Ichimoku Cloud, also known as Ichimoku Kinkō Hyō, is a collection of indicators
@@ -62,15 +80,23 @@ def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = None,
     """
     if chikou_offset is None:
         if senkou_offset is None:
-            if tenkan_periods is None: tenkan_periods = 9
-            if kijun_periods is None: kijun_periods = 26
-            if senkou_b_periods is None: senkou_b_periods = 52
+            if tenkan_periods is None:
+                tenkan_periods = 9
+            if kijun_periods is None:
+                kijun_periods = 26
+            if senkou_b_periods is None:
+                senkou_b_periods = 52
             senkou_offset = kijun_periods
         chikou_offset = senkou_offset
 
-    results = CsIndicator.GetIchimoku[Quote](CsList(Quote, quotes), tenkan_periods,
-                                             kijun_periods, senkou_b_periods,
-                                             senkou_offset, chikou_offset)
+    results = CsIndicator.GetIchimoku[Quote](
+        CsList(Quote, quotes),
+        tenkan_periods,
+        kijun_periods,
+        senkou_b_periods,
+        senkou_offset,
+        chikou_offset,
+    )
     return IchimokuResults(results, IchimokuResult)
 
 
@@ -121,6 +147,8 @@ class IchimokuResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=IchimokuResult)
+
+
 class IchimokuResults(CondenseMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Ichimoku Cloud results.

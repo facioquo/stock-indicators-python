@@ -11,8 +11,12 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_atr_stop(quotes: Iterable[Quote], lookback_periods: int = 21,
-                 multiplier: float = 3, end_type: EndType = EndType.CLOSE):
+def get_atr_stop(
+    quotes: Iterable[Quote],
+    lookback_periods: int = 21,
+    multiplier: float = 3,
+    end_type: EndType = EndType.CLOSE,
+):
     """Get ATR Trailing Stop calculated.
 
     ATR Trailing Stop attempts to determine the primary trend of prices by using
@@ -40,7 +44,9 @@ def get_atr_stop(quotes: Iterable[Quote], lookback_periods: int = 21,
          - [ATR Trailing Stop Reference](https://python.stockindicators.dev/indicators/AtrStop/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetAtrStop[Quote](CsList(Quote, quotes), lookback_periods, multiplier, end_type.cs_value)
+    results = CsIndicator.GetAtrStop[Quote](
+        CsList(Quote, quotes), lookback_periods, multiplier, end_type.cs_value
+    )
     return AtrStopResults(results, AtrStopResult)
 
 
@@ -75,6 +81,8 @@ class AtrStopResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=AtrStopResult)
+
+
 class AtrStopResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of ATR Trailing Stop results.

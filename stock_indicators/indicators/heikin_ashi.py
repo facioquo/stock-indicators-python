@@ -77,6 +77,8 @@ class HeikinAshiResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=HeikinAshiResult)
+
+
 class HeikinAshiResults(IndicatorResults[_T]):
     """
     A wrapper class for the list of Heikin-Ashi results.

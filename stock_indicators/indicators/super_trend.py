@@ -10,7 +10,9 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_super_trend(quotes: Iterable[Quote], lookback_periods: int = 10, multiplier: float = 3):
+def get_super_trend(
+    quotes: Iterable[Quote], lookback_periods: int = 10, multiplier: float = 3
+):
     """Get SuperTrend calculated.
 
     SuperTrend attempts to determine the primary trend of Close prices by using
@@ -35,7 +37,9 @@ def get_super_trend(quotes: Iterable[Quote], lookback_periods: int = 10, multipl
          - [SuperTrend Reference](https://python.stockindicators.dev/indicators/SuperTrend/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    super_trend_results = CsIndicator.GetSuperTrend[Quote](CsList(Quote, quotes), lookback_periods, multiplier)
+    super_trend_results = CsIndicator.GetSuperTrend[Quote](
+        CsList(Quote, quotes), lookback_periods, multiplier
+    )
     return SuperTrendResults(super_trend_results, SuperTrendResult)
 
 
@@ -70,6 +74,8 @@ class SuperTrendResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=SuperTrendResult)
+
+
 class SuperTrendResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Super Trend results.

@@ -11,8 +11,12 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_rolling_pivots(quotes: Iterable[Quote], window_periods: int,
-                      offset_periods: int, point_type: PivotPointType = PivotPointType.STANDARD):
+def get_rolling_pivots(
+    quotes: Iterable[Quote],
+    window_periods: int,
+    offset_periods: int,
+    point_type: PivotPointType = PivotPointType.STANDARD,
+):
     """Get Rolling Pivot Points calculated.
 
     Rolling Pivot Points is a modern update to traditional fixed calendar window Pivot Points.
@@ -39,8 +43,9 @@ def get_rolling_pivots(quotes: Iterable[Quote], window_periods: int,
          - [Rolling Pivot Points Reference](https://python.stockindicators.dev/indicators/RollingPivots/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetRollingPivots[Quote](CsList(Quote, quotes), window_periods,
-                                                 offset_periods, point_type.cs_value)
+    results = CsIndicator.GetRollingPivots[Quote](
+        CsList(Quote, quotes), window_periods, offset_periods, point_type.cs_value
+    )
     return RollingPivotsResults(results, RollingPivotsResult)
 
 
@@ -123,6 +128,8 @@ class RollingPivotsResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=RollingPivotsResult)
+
+
 class RollingPivotsResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Rolling Pivot Points results.

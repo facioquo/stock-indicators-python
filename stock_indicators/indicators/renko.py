@@ -10,8 +10,9 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 from stock_indicators.indicators.common.quote import Quote
 
 
-def get_renko(quotes: Iterable[Quote], brick_size: float,
-               end_type: EndType = EndType.CLOSE):
+def get_renko(
+    quotes: Iterable[Quote], brick_size: float, end_type: EndType = EndType.CLOSE
+):
     """Get Renko Chart calculated.
 
     Renko Chart is a modified Japanese candlestick pattern
@@ -35,13 +36,15 @@ def get_renko(quotes: Iterable[Quote], brick_size: float,
          - [Renko Chart Reference](https://python.stockindicators.dev/indicators/Renko/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetRenko[Quote](CsList(Quote, quotes), CsDecimal(brick_size),
-                                           end_type.cs_value)
+    results = CsIndicator.GetRenko[Quote](
+        CsList(Quote, quotes), CsDecimal(brick_size), end_type.cs_value
+    )
     return RenkoResults(results, RenkoResult)
 
 
-def get_renko_atr(quotes: Iterable[Quote], atr_periods: int,
-               end_type: EndType = EndType.CLOSE):
+def get_renko_atr(
+    quotes: Iterable[Quote], atr_periods: int, end_type: EndType = EndType.CLOSE
+):
     """Get ATR Renko Chart calculated.
 
     The ATR Renko Chart is a modified Japanese candlestick pattern
@@ -65,8 +68,9 @@ def get_renko_atr(quotes: Iterable[Quote], atr_periods: int,
          - [ATR Renko Chart Reference](https://python.stockindicators.dev/indicators/Renko/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetRenkoAtr[Quote](CsList(Quote, quotes), atr_periods,
-                                           end_type.cs_value)
+    results = CsIndicator.GetRenkoAtr[Quote](
+        CsList(Quote, quotes), atr_periods, end_type.cs_value
+    )
     return RenkoResults(results, RenkoResult)
 
 
@@ -125,6 +129,8 @@ class RenkoResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=RenkoResult)
+
+
 class RenkoResults(IndicatorResults[_T]):
     """
     A wrapper class for the list of Renko Chart results.

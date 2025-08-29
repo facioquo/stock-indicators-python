@@ -59,6 +59,8 @@ class FCBResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=FCBResult)
+
+
 class FCBResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Fractal Chaos Bands (FCB) results.

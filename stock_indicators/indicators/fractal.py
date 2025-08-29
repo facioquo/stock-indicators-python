@@ -12,10 +12,16 @@ from stock_indicators.indicators.common.quote import Quote
 
 
 @overload
-def get_fractal(quotes: Iterable[Quote], window_span: int = 2, end_type = EndType.HIGH_LOW) -> "FractalResults[FractalResult]": ...
+def get_fractal(
+    quotes: Iterable[Quote], window_span: int = 2, end_type=EndType.HIGH_LOW
+) -> "FractalResults[FractalResult]": ...
 @overload
-def get_fractal(quotes: Iterable[Quote], left_span: int, right_span: int, end_type = EndType.HIGH_LOW) -> "FractalResults[FractalResult]": ...
-def get_fractal(quotes, left_span = None, right_span = EndType.HIGH_LOW, end_type = EndType.HIGH_LOW):
+def get_fractal(
+    quotes: Iterable[Quote], left_span: int, right_span: int, end_type=EndType.HIGH_LOW
+) -> "FractalResults[FractalResult]": ...
+def get_fractal(
+    quotes, left_span=None, right_span=EndType.HIGH_LOW, end_type=EndType.HIGH_LOW
+):
     """Get Williams Fractal calculated.
 
     Williams Fractal is a retrospective price pattern that
@@ -46,10 +52,15 @@ def get_fractal(quotes, left_span = None, right_span = EndType.HIGH_LOW, end_typ
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     if isinstance(right_span, EndType):
-        if left_span is None: left_span = 2
-        fractal_results = CsIndicator.GetFractal[Quote](CsList(Quote, quotes), left_span, right_span.cs_value)
+        if left_span is None:
+            left_span = 2
+        fractal_results = CsIndicator.GetFractal[Quote](
+            CsList(Quote, quotes), left_span, right_span.cs_value
+        )
     else:
-        fractal_results = CsIndicator.GetFractal[Quote](CsList(Quote, quotes), left_span, right_span, end_type.cs_value)
+        fractal_results = CsIndicator.GetFractal[Quote](
+            CsList(Quote, quotes), left_span, right_span, end_type.cs_value
+        )
 
     return FractalResults(fractal_results, FractalResult)
 
@@ -77,6 +88,8 @@ class FractalResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=FractalResult)
+
+
 class FractalResults(CondenseMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Williams Fractal results.
