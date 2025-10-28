@@ -44,7 +44,7 @@ class IndicatorResults(List[_T]):
             self._csdata = data
         self._wrapper_class = wrapper_class
 
-    def reload(self):
+    def reload(self) -> "IndicatorResults":
         """
         Reload a C# array of the results to perform more operations.
         It is usually called after `done()`.
@@ -55,7 +55,7 @@ class IndicatorResults(List[_T]):
             self._csdata = [_._csdata for _ in self]
         return self
 
-    def done(self):
+    def done(self) -> "IndicatorResults":
         """
         Remove a C# array of the results after finishing all operations.
         It is not necessary but saves memory.
@@ -72,7 +72,7 @@ class IndicatorResults(List[_T]):
         return type(self[0]._csdata)
 
     @staticmethod  # pylint: disable=no-self-argument
-    def _verify_data(func: Callable):
+    def _verify_data(func: Callable) -> Callable:
         """Check whether `_csdata` can be passed to helper method."""
         def verify_data(self, *args):
             if self._csdata is None:
@@ -109,7 +109,7 @@ class IndicatorResults(List[_T]):
         return self.__class__(list(self._csdata).__mul__(value), self._wrapper_class)
 
     @_verify_data
-    def remove_warmup_periods(self, remove_periods: int):
+    def remove_warmup_periods(self, remove_periods: int) -> "IndicatorResults":
         """Remove a specific quantity of results from the beginning of the results list."""
         if not isinstance(remove_periods, int):
             raise TypeError("remove_periods must be an integer.")

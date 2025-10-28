@@ -1,6 +1,6 @@
 from datetime import datetime, timezone
 from decimal import Decimal
-from typing import Iterable, Optional, Union
+from typing import Any, Iterable, Optional, Union
 
 from stock_indicators._cslib import CsQuote, CsQuoteUtility
 from stock_indicators._cstypes import List as CsList
@@ -19,7 +19,7 @@ def _set_date(quote, value: datetime) -> None:
     """Set the date property with validation and timezone normalization."""
     if not isinstance(value, datetime):
         raise TypeError("Date must be a datetime.datetime instance")
-    
+
     # Normalize timezone-aware datetime to UTC (from main branch)
     if value.tzinfo is not None and value.utcoffset() is not None:
         value = value.astimezone(timezone.utc)
@@ -142,7 +142,7 @@ class _Quote:
         )
 
     @classmethod
-    def use(cls, quotes: Iterable["Quote"], candle_part: CandlePart):
+    def use(cls, quotes: Iterable["Quote"], candle_part: CandlePart) -> Any:
         """
         Optionally select which candle part to use in the calculation.
         It returns C# Object.
