@@ -21,9 +21,11 @@ def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int,
 def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int,
                  kijun_periods: int, senkou_b_periods: int, *,
                  senkou_offset: int, chikou_offset: int) -> "IchimokuResults[IchimokuResult]": ...
-def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = 9,  # pylint: disable=too-many-positional-arguments
+def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = 9,
                  kijun_periods: int = 26, senkou_b_periods: int = 52,
-                 senkou_offset: int = None, chikou_offset: int = None):
+                 senkou_offset: Optional[int] = None,
+                 chikou_offset: Optional[int] = None, *,
+                 offset_periods: Optional[int] = None) -> "IchimokuResults[IchimokuResult]":  # pylint: disable=too-many-positional-arguments
     """Get Ichimoku Cloud calculated.
 
     Ichimoku Cloud, also known as Ichimoku Kinkō Hyō, is a collection of indicators
@@ -60,6 +62,14 @@ def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = 9,  # pylint: di
          - [Ichimoku Cloud Reference](https://python.stockindicators.dev/indicators/Ichimoku/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
+    # Normalize offset_periods into senkou_offset and chikou_offset
+    if offset_periods is not None:
+        if senkou_offset is None:
+            senkou_offset = offset_periods
+        if chikou_offset is None:
+            chikou_offset = offset_periods
+
+    # Apply default logic when offsets are still None
     if chikou_offset is None:
         if senkou_offset is None:
             senkou_offset = kijun_periods
