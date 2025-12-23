@@ -170,6 +170,8 @@ reviews:
       enabled: true
     osvScanner:              # Vulnerability package scanner
       enabled: true
+    pylint:                  # Python static analyzer
+      enabled: true
     semgrep:                 # Security & code quality static analysis
       enabled: true
     shellcheck:              # Shell script linter
@@ -227,8 +229,6 @@ reviews:
     pmd:                     # Java/multilanguage static analyzer
       enabled: false
     prismaLint:              # Prisma schema linter
-      enabled: false
-    pylint:                  # Python static analyzer
       enabled: false
     regal:                   # Rego linter and language server
       enabled: false
