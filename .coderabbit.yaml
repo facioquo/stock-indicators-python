@@ -61,14 +61,6 @@ reviews:
     base_branches:
       - ".*"
 
-    # Exclude [bot] from triggering
-    # since CodeRabbit skips them anyway
-    ignore_usernames:
-      - "copilot[bot]"
-      - "copilot-swe-agent[bot]"
-      - "github-copilot[bot]"
-      - "github-actions[bot]"
-
   # Automatic labels
   # Suggest labels based on the changes in the pull request in the walkthrough.
   suggested_labels: false
@@ -140,6 +132,9 @@ reviews:
     - "!packages.lock.json"  # NuGet lock file
     - "!packages/"           # NuGet packages cache
     - "!.jekyll-cache/"      # Jekyll cache
+    - "!.pytest_cache/"      # Python test cache
+    - "!.benchmarks/"        # Benchmarks cache
+    - "!.coverage/"          # Code coverage reports
     - "!vendor/"             # Ruby vendor and gem files
     - "!Gemfile.lock"        # Ruby dependencies lock
     - "!.vitepress/cache/"   # VitePress cache

@@ -1,60 +1,25 @@
 {
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // Schema: https://code.visualstudio.com/docs/reference/tasks-appendix
+  "$schema": "vscode://schemas/tasks",
   "version": "2.0.0",
+  // defaults
+  "group": "none",
+  "presentation": {
+    "clear": true,
+    "echo": true,
+    "panel": "dedicated",
+    "focus": true,
+    "reveal": "always",
+    "revealProblems": "onProblem",
+    "showReuseMessage": false
+  },
+  "problemMatcher": [],
+  "options": {
+    "cwd": "${workspaceFolder}"
+  },
+  // tasks
   "tasks": [
-    {
-      "label": "Build",
-      "type": "shell",
-      "command": "pip install -r requirements.txt && pip install -r requirements-test.txt",
-      "group": "build",
-      "problemMatcher": []
-    },
-    {
-      "label": "Test: All",
-      "dependsOrder": "parallel",
-      "dependsOn": [
-        "Test: Unit (default)",
-        "Test: Coverage",
-        "Test: Performance",
-        "Test: Localization"
-      ],
-      "group": "test",
-      "problemMatcher": []
-    },
-    {
-      "label": "Test: Unit (default)",
-      "type": "shell",
-      "command": "pytest -vr A",
-      "group": "test",
-      "problemMatcher": []
-    },
-    {
-      "label": "Test: Coverage",
-      "type": "shell",
-      "command": "pytest --cov=stock_indicators --cov-report=term-missing",
-      "group": "none",
-      "problemMatcher": []
-    },
-    {
-      "label": "Test: Performance",
-      "type": "shell",
-      "command": "pytest -m performance",
-      "group": "none",
-      "problemMatcher": []
-    },
-    {
-      "label": "Test: Performance (focus)",
-      "type": "shell",
-      "command": "pytest -m \"performance and perf_focus\"",
-      "group": "none",
-      "problemMatcher": []
-    },
-    {
-      "label": "Test: Localization",
-      "type": "shell",
-      "command": "pytest -m localization -vr A",
-      "group": "none",
-      "problemMatcher": []
-    },
     {
       "label": "Install: Ruby Packages (docs)",
       "type": "shell",
@@ -65,23 +30,17 @@
           "BUNDLE_GEMFILE": "${workspaceFolder}/docs/Gemfile",
           "BUNDLE_PATH": "${workspaceFolder}/docs/vendor/bundle"
         }
-      },
-      "group": "none",
-      "problemMatcher": []
+      }
     },
     {
       "label": "Install: Python Packages",
       "type": "shell",
-      "command": "pip install -r requirements.txt && pip install -r requirements-test.txt",
-      "group": "none",
-      "problemMatcher": []
+      "command": "pip install -r requirements.txt && pip install -r requirements-test.txt"
     },
     {
       "label": "Update: Python Packages",
       "type": "shell",
-      "command": "pip install -U -r requirements.txt && pip install -U -r requirements-test.txt",
-      "group": "none",
-      "problemMatcher": []
+      "command": "pip install -U -r requirements.txt && pip install -U -r requirements-test.txt"
     },
     {
       "label": "Update: Ruby Packages (docs)",
@@ -93,9 +52,7 @@
           "BUNDLE_GEMFILE": "${workspaceFolder}/docs/Gemfile",
           "BUNDLE_PATH": "${workspaceFolder}/docs/vendor/bundle"
         }
-      },
-      "group": "none",
-      "problemMatcher": []
+      }
     },
     {
       "label": "Update: All Packages",
@@ -103,9 +60,50 @@
       "dependsOn": [
         "Update: Python Packages",
         "Update: Ruby Packages (docs)"
+      ]
+    },
+    {
+      "label": "Build",
+      "type": "shell",
+      "command": "pip install -r requirements.txt && pip install -r requirements-test.txt",
+      "group": "build"
+    },
+    {
+      "label": "Test: All",
+      "dependsOrder": "parallel",
+      "dependsOn": [
+        "Test: Unit (default)",
+        "Test: Coverage",
+        "Test: Performance",
+        "Test: Localization"
       ],
-      "group": "none",
-      "problemMatcher": []
+      "group": "test"
+    },
+    {
+      "label": "Test: Unit (default)",
+      "type": "shell",
+      "command": "pytest -vr A",
+      "group": "test"
+    },
+    {
+      "label": "Test: Coverage",
+      "type": "shell",
+      "command": "pytest --cov=stock_indicators --cov-report=term-missing"
+    },
+    {
+      "label": "Test: Performance",
+      "type": "shell",
+      "command": "pytest -m performance"
+    },
+    {
+      "label": "Test: Performance (focus)",
+      "type": "shell",
+      "command": "pytest -m \"performance and perf_focus\""
+    },
+    {
+      "label": "Test: Localization",
+      "type": "shell",
+      "command": "pytest -m localization -vr A"
     },
     {
       "label": "Run: Doc Site with LiveReload",
@@ -120,9 +118,7 @@
           "BUNDLE_GEMFILE": "${workspaceFolder}/docs/Gemfile",
           "BUNDLE_PATH": "${workspaceFolder}/docs/vendor/bundle"
         }
-      },
-      "group": "none",
-      "problemMatcher": []
+      }
     },
     {
       "label": "Benchmark: JSON (prompt filename)",
@@ -130,9 +126,7 @@
       "command": "pytest -m performance --benchmark-json=.benchmarks/${input:benchJsonOut}",
       "options": {
         "cwd": "${workspaceFolder}"
-      },
-      "group": "none",
-      "problemMatcher": []
+      }
     },
     {
       "label": "Benchmark: Focus JSON (prompt filename)",
@@ -140,9 +134,7 @@
       "command": "pytest -m \"performance and perf_focus\" --benchmark-json=.benchmarks/${input:benchJsonOut}",
       "options": {
         "cwd": "${workspaceFolder}"
-      },
-      "group": "none",
-      "problemMatcher": []
+      }
     },
     {
       "label": "Benchmark: Autosave to .benchmarks",
@@ -150,9 +142,7 @@
       "command": "pytest -m performance --benchmark-autosave --benchmark-save-data",
       "options": {
         "cwd": "${workspaceFolder}"
-      },
-      "group": "none",
-      "problemMatcher": []
+      }
     },
     {
       "label": "Benchmark: Focus Autosave to .benchmarks",
@@ -160,9 +150,7 @@
       "command": "pytest -m \"performance and perf_focus\" --benchmark-autosave --benchmark-save-data",
       "options": {
         "cwd": "${workspaceFolder}"
-      },
-      "group": "none",
-      "problemMatcher": []
+      }
     },
     {
       "label": "Benchmark: List Saved Runs",
@@ -170,9 +158,7 @@
       "command": "pytest-benchmark list",
       "options": {
         "cwd": "${workspaceFolder}"
-      },
-      "group": "none",
-      "problemMatcher": []
+      }
     },
     {
       "label": "Benchmark: Compare Saved Runs",
@@ -180,9 +166,7 @@
       "command": "pytest-benchmark compare ${input:benchBase} ${input:benchTarget}",
       "options": {
         "cwd": "${workspaceFolder}"
-      },
-      "group": "none",
-      "problemMatcher": []
+      }
     }
   ],
   "inputs": [
