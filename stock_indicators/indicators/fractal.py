@@ -14,15 +14,13 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 @overload
 def get_fractal(
     quotes: Iterable[Quote], window_span: int = 2, end_type=EndType.HIGH_LOW
-) -> "FractalResults[FractalResult]":
-    pass
+) -> "FractalResults[FractalResult]": ...
 
 
 @overload
 def get_fractal(
     quotes: Iterable[Quote], left_span: int, right_span: int, end_type=EndType.HIGH_LOW
-) -> "FractalResults[FractalResult]":
-    pass
+) -> "FractalResults[FractalResult]": ...
 
 
 def get_fractal(

@@ -16,8 +16,7 @@ def get_ichimoku(
     tenkan_periods: int = 9,
     kijun_periods: int = 26,
     senkou_b_periods: int = 52,
-) -> "IchimokuResults[IchimokuResult]":
-    pass
+) -> "IchimokuResults[IchimokuResult]": ...
 
 
 @overload
@@ -28,8 +27,7 @@ def get_ichimoku(
     senkou_b_periods: int,
     *,
     offset_periods: int,
-) -> "IchimokuResults[IchimokuResult]":
-    pass
+) -> "IchimokuResults[IchimokuResult]": ...
 
 
 @overload
@@ -41,8 +39,7 @@ def get_ichimoku(
     *,
     senkou_offset: int,
     chikou_offset: int,
-) -> "IchimokuResults[IchimokuResult]":
-    pass
+) -> "IchimokuResults[IchimokuResult]": ...
 
 
 def get_ichimoku(
