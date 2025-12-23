@@ -7,7 +7,7 @@ class StockIndicatorsError(Exception):
     """Base exception class for all Stock Indicators errors."""
 
 
-class StockIndicatorsInitializationError(StockIndicatorsError):
+class StockIndicatorsInitializationError(ImportError, StockIndicatorsError):
     """Raised when the .NET library fails to initialize."""
 
 

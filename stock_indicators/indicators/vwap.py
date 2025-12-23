@@ -12,7 +12,11 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 @overload
 def get_vwap(
     quotes: Iterable[Quote], start: Optional[datetime] = None
-) -> "VWAPResults[VWAPResult]": ...
+) -> "VWAPResults[VWAPResult]":
+    """Get VWAP with optional datetime start parameter."""
+    pass
+
+
 @overload
 def get_vwap(
     quotes: Iterable[Quote],
@@ -22,7 +26,11 @@ def get_vwap(
     day: int = 1,
     hour: int = 0,
     minute: int = 0,
-) -> "VWAPResults[VWAPResult]": ...
+) -> "VWAPResults[VWAPResult]":
+    """Get VWAP with year and optional date components."""
+    pass
+
+
 def get_vwap(
     quotes: Iterable[Quote],
     start: Union[datetime, int, None] = None,

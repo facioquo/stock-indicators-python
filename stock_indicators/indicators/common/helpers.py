@@ -4,6 +4,7 @@ from typing_extensions import Self
 
 from stock_indicators._cslib import CsIEnumerable, CsIndicator, CsResultUtility
 from stock_indicators._cstypes import List as CsList
+from stock_indicators.exceptions import IndicatorCalculationError
 from stock_indicators.indicators.common.results import IndicatorResults
 
 
@@ -36,7 +37,7 @@ class RemoveWarmupMixin:
             )
             return self.__class__(removed_results, self._wrapper_class)
         except Exception as e:
-            raise RuntimeError(f"Failed to remove warmup periods: {e}") from e
+            raise IndicatorCalculationError("remove_warmup_periods failed") from e
 
 
 class CondenseMixin:
@@ -66,4 +67,4 @@ class CondenseMixin:
             return self.__class__(condensed_results, self._wrapper_class)
 
         except Exception as e:
-            raise RuntimeError(f"Failed to condense results: {e}") from e
+            raise IndicatorCalculationError("condense failed") from e
