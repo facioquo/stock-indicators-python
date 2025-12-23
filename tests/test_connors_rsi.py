@@ -41,8 +41,6 @@ class TestConnorsRSI:
         streak_periods = 2
         rank_periods = 100
 
-        removed_periods = max(rsi_periods, max(streak_periods, rank_periods)) + 2
-
         results = indicators.get_connors_rsi(
             quotes, rsi_periods, streak_periods, rank_periods
         )

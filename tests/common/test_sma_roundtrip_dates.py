@@ -61,7 +61,7 @@ def _mk_date_only(d: datetime) -> datetime:
 
 
 @pytest.mark.parametrize(
-    "variant, maker",
+    ("variant", "maker"),
     [
         ("utc", _mk_utc),
         ("offset", _mk_offset),

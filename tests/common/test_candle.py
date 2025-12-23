@@ -14,8 +14,8 @@ class TestCandleResults:
         assert 0.60 == round(float(r.candle.lower_wick_pct), 2)
         assert 0.55 == round(float(r.candle.upper_wick), 2)
         assert 0.30 == round(float(r.candle.upper_wick_pct), 2)
-        assert r.candle.is_bearish == False
-        assert r.candle.is_bullish == True
+        assert not r.candle.is_bearish
+        assert r.candle.is_bullish
 
         r = results[351]
         assert 263.16 == round(float(r.candle.close), 2)
@@ -26,8 +26,8 @@ class TestCandleResults:
         assert 0.44 == round(float(r.candle.lower_wick_pct), 2)
         assert 0.69 == round(float(r.candle.upper_wick), 2)
         assert 0.56 == round(float(r.candle.upper_wick_pct), 2)
-        assert r.candle.is_bearish == False
-        assert r.candle.is_bullish == False
+        assert not r.candle.is_bearish
+        assert not r.candle.is_bullish
 
         r = results[501]
         assert 245.28 == round(float(r.candle.close), 2)
@@ -38,5 +38,5 @@ class TestCandleResults:
         assert 0.77 == round(float(r.candle.lower_wick_pct), 2)
         assert 0.26 == round(float(r.candle.upper_wick), 2)
         assert 0.10 == round(float(r.candle.upper_wick_pct), 2)
-        assert r.candle.is_bearish == False
-        assert r.candle.is_bullish == True
+        assert not r.candle.is_bearish
+        assert r.candle.is_bullish

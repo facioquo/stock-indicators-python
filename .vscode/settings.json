@@ -10,12 +10,6 @@
     "web_search"
   ],
   "github.copilot.chat.tools.memory.enabled": true,
-  "isort.args": [
-    "--profile",
-    "black"
-  ],
-  "isort.check": true,
-  "isort.importStrategy": "fromEnvironment", // default: "useBundled"
   "markdownlint.config": {
     "default": true, // Enable all default rules
     "MD013": false, // Disable line length checking entirely
@@ -29,28 +23,22 @@
     },
     "MD041": false // Allow content before first heading
   },
-  "pylint.importStrategy": "fromEnvironment", // default: "useBundled"
   "python.testing.pytestArgs": [
     "tests"
   ],
+  "python.defaultInterpreterPath": ".venv/bin/python",
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
-  "editor.formatOnSave": true,
-  "editor.codeActionsOnSave": {
-    "source.organizeImports": "always"
-  },
-  "python.formatting.provider": "black",
-  "python.sortImports.path": "isort",
-  "python.linting.enabled": true,
-  "python.linting.flake8Enabled": true,
-  "python.linting.pylintEnabled": false,
-  "python.linting.flake8Path": "flake8",
-  "[markdown]": {
-    "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
-    "files.trimTrailingWhitespace": true
-  },
   "[python]": {
-    "editor.defaultFormatter": "ms-python.black-formatter"
-  },
-  "python.analysis.typeCheckingMode": "basic"
+    "editor.defaultFormatter": "charliermarsh.ruff",
+    "editor.formatOnSave": true,
+    "editor.codeActionsOnSave": {
+      "source.organizeImports.ruff": "explicit",
+      "source.fixAll.ruff": "explicit"
+    },
+    "[markdown]": {
+      "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
+      "files.trimTrailingWhitespace": true
+    }
+  }
 }

@@ -99,9 +99,7 @@ class _Quote:
     def __init__(
         self,
         date: datetime,  # pylint: disable=too-many-positional-arguments
-        open: Optional[
-            Union[int, float, Decimal, str]
-        ] = None,  # pylint: disable=redefined-builtin
+        open: Optional[Union[int, float, Decimal, str]] = None,  # pylint: disable=redefined-builtin
         high: Optional[Union[int, float, Decimal, str]] = None,
         low: Optional[Union[int, float, Decimal, str]] = None,
         close: Optional[Union[int, float, Decimal, str]] = None,

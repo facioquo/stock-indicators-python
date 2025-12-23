@@ -9,7 +9,7 @@ class TestBasicQuote:
     def test_standard(self, quotes):
         o = indicators.get_basic_quote(quotes, CandlePart.OPEN)
         h = indicators.get_basic_quote(quotes, CandlePart.HIGH)
-        l = indicators.get_basic_quote(quotes, CandlePart.LOW)
+        low = indicators.get_basic_quote(quotes, CandlePart.LOW)
         c = indicators.get_basic_quote(quotes, CandlePart.CLOSE)
         v = indicators.get_basic_quote(quotes, CandlePart.VOLUME)
         hl = indicators.get_basic_quote(quotes, CandlePart.HL2)
@@ -24,7 +24,7 @@ class TestBasicQuote:
 
         assert 244.92 == o[-1].value
         assert 245.54 == h[-1].value
-        assert 242.87 == l[-1].value
+        assert 242.87 == low[-1].value
         assert 245.28 == c[-1].value
         assert 147031456 == v[-1].value
         assert 244.205 == hl[-1].value

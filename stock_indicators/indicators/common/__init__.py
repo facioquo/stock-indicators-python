@@ -14,17 +14,17 @@ from .quote import Quote
 from .results import IndicatorResults, ResultBase
 
 __all__ = [
-    "Quote",
-    "ResultBase",
-    "IndicatorResults",
-    "CandleProperties",
     "BetaType",
-    "ChandelierType",
     "CandlePart",
+    "CandleProperties",
+    "ChandelierType",
     "EndType",
+    "IndicatorResults",
     "MAType",
+    "Match",
     "PeriodSize",
     "PivotPointType",
     "PivotTrend",
-    "Match",
+    "Quote",
+    "ResultBase",
 ]

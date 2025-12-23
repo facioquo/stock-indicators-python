@@ -125,9 +125,6 @@ class TestStoch:
         assert 0 == len(
             list(filter(lambda x: x.d is not None and (x.d < 0 or x.d > 100), results))
         )
-        assert 0 == len(
-            list(filter(lambda x: x.j is not None and (x.d < 0 or x.d > 100), results))
-        )
 
     def test_removed(self, quotes):
         results = indicators.get_stoch(quotes, 14, 3, 3).remove_warmup_periods()

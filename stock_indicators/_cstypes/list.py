@@ -1,9 +1,7 @@
 from collections import deque
-from typing import Iterable, TypeVar
+from typing import Iterable
 
 from stock_indicators._cslib import CsList
-
-_T = TypeVar("_T")
 
 
 class List:
@@ -34,7 +32,7 @@ class List:
         123
     """
 
-    def __new__(cls, generic: _T, sequence: Iterable) -> CsList:
+    def __new__(cls, generic: object, sequence: Iterable) -> CsList:
         if not hasattr(sequence, "__iter__"):
             raise TypeError("sequence must be iterable")
 

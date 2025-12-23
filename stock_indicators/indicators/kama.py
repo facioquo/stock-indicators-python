@@ -15,7 +15,7 @@ def get_kama(
 ):
     """Get KAMA calculated.
 
-    Kaufman’s Adaptive Moving Average (KAMA) is an volatility
+    Kaufman's Adaptive Moving Average (KAMA) is an volatility
     adaptive moving average of Close price over configurable lookback periods.
 
     Parameters:
@@ -47,7 +47,7 @@ def get_kama(
 
 class KAMAResult(ResultBase):
     """
-    A wrapper class for a single unit of Kaufman’s Adaptive Moving Average (KAMA) results.
+    A wrapper class for a single unit of Kaufman's Adaptive Moving Average (KAMA) results.
     """
 
     @property
@@ -72,7 +72,7 @@ _T = TypeVar("_T", bound=KAMAResult)
 
 class KAMAResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
-    A wrapper class for the list of Kaufman’s Adaptive Moving Average (KAMA) results.
+    A wrapper class for the list of Kaufman's Adaptive Moving Average (KAMA) results.
     It is exactly same with built-in `list` except for that it provides
     some useful helper methods written in CSharp implementation.
     """

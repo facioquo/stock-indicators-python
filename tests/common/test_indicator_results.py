@@ -40,8 +40,8 @@ class TestIndicatorResults:
         results = indicators.get_sma(quotes, 20)
         results.done()
 
-        with pytest.raises(ValueError):
-            results * 2
+        with pytest.raises(ValueError, match=r"Cannot __mul__\(\).*done"):
+            _ = results * 2
 
         results.reload()
         r2 = results * 2
@@ -53,6 +53,7 @@ class TestIndicatorResults:
 
         # r[19]
         r = results.find(datetime(2017, 1, 31))
+        assert r is not None
         assert 214.5250 == round(float(r.sma), 4)
 
     def test_not_found(self, quotes):

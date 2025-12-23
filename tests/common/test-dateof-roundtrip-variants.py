@@ -47,7 +47,7 @@ def _mk_date_only():
 
 
 @pytest.mark.parametrize(
-    "variant, maker",
+    ("variant", "maker"),
     [
         ("utc", _mk_utc),
         ("offset", _mk_offset),
@@ -55,8 +55,9 @@ def _mk_date_only():
         ("date_only", _mk_date_only),
     ],
 )
-def test_sma_roundtrip_dates_variants(_variant, maker):
+def test_sma_roundtrip_dates_variants(variant, maker):
     quotes = maker()
+    assert variant
     results = indicators.get_sma(quotes, 2)
 
     assert len(results) == len(quotes)

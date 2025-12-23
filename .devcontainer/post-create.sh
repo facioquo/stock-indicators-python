@@ -1,10 +1,25 @@
 #!/bin/bash
+set -e
 
-# install or upgrade pip
-python -m ensurepip --upgrade
+# Create virtual environment if it doesn't exist
+if [ ! -d ".venv" ]; then
+  echo "Creating virtual environment..."
+  python -m venv .venv
+fi
 
-# install core dependencies
+# Activate virtual environment
+source .venv/bin/activate
+
+# Upgrade pip
+echo "Upgrading pip..."
+python -m pip install --upgrade pip
+
+# Install core dependencies
+echo "Installing core dependencies..."
 pip install -r requirements.txt
 
-# install test dependencies
+# Install test dependencies
+echo "Installing test dependencies..."
 pip install -r requirements-test.txt
+
+echo "✓ Dev container setup complete!"

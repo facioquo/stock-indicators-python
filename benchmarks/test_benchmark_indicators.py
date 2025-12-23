@@ -6,7 +6,6 @@ from stock_indicators.indicators.common.enums import PeriodSize
 
 @pytest.mark.performance
 class TestPerformance:
-
     def test_benchmark_adl(self, benchmark, quotes):
         benchmark(indicators.get_adl, quotes)
 

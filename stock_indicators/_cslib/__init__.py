@@ -16,14 +16,13 @@ from typing import Any
 
 from pythonnet import load
 
-# Setup logging
+from stock_indicators.exceptions import StockIndicatorsInitializationError
 from stock_indicators.logging_config import configure_logging
 
+# Setup logging
 configure_logging(debug=False)  # Set to True if you need debug this module
 
 logger = logging.getLogger(__name__)
-
-from stock_indicators.exceptions import StockIndicatorsInitializationError
 
 
 def _initialize_clr() -> Any:
@@ -39,7 +38,7 @@ def _initialize_clr() -> Any:
             "Failed to load .NET CLR runtime.\n"
             "Please ensure .NET 8.0+ is installed: https://dotnet.microsoft.com/download\n"
             f"Platform: {platform.system()}\n"
-            f"Error: {str(e)}"
+            f"Error: {e!s}"
         )
         raise StockIndicatorsInitializationError(init_error_msg) from e
 
@@ -55,7 +54,7 @@ def _setup_assembly_probing(assembly_dll_path: Path) -> None:
         logger.debug("Set assembly probing path to: %s", assembly_path)
     except Exception as e:  # pylint: disable=broad-exception-caught
         # Broad exception catch is necessary for C# interop
-        logger.warning("Failed to set assembly probing path: %s", str(e))
+        logger.warning("Failed to set assembly probing path: %s", e)
 
 
 def _load_assembly(assembly_dll_path: Path):
@@ -75,7 +74,7 @@ def _load_assembly(assembly_dll_path: Path):
         load_error_msg = (
             f"Failed to load Stock Indicators assembly from: {assembly_dll_path}\n"
             "Please ensure the .NET assembly is present and compatible.\n"
-            f"Error: {str(e)}"
+            f"Error: {e!s}"
         )
         raise StockIndicatorsInitializationError(load_error_msg) from e
 
@@ -88,7 +87,7 @@ def _add_assembly_reference(loaded_assembly, clr_module) -> None:
     except Exception as e:
         ref_error_msg = (
             f"Failed to add reference to assembly: {loaded_assembly.FullName}\n"
-            f"Error: {str(e)}"
+            f"Error: {e!s}"
         )
         raise StockIndicatorsInitializationError(ref_error_msg) from e
 
@@ -116,7 +115,7 @@ except Exception as e:
         error_msg = (
             "Stock Indicators initialization failed due to unexpected error.\n"
             "Please ensure .NET 8.0+ is installed: https://dotnet.microsoft.com/download\n"
-            f"Error: {str(e)}"
+            f"Error: {e!s}"
         )
         raise StockIndicatorsInitializationError(error_msg) from e
     raise
@@ -154,6 +153,6 @@ except ImportError as e:
     error_msg = (
         "Failed to import Stock Indicators types after successful assembly loading.\n"
         "This may indicate a version mismatch or missing dependencies.\n"
-        f"Error: {str(e)}"
+        f"Error: {e!s}"
     )
     raise StockIndicatorsInitializationError(error_msg) from e

@@ -9,7 +9,7 @@ def load_quotes_from_json(json_path):
     base_dir = os.path.dirname(__file__)
     data_path = os.path.join(base_dir, json_path)
     quotes = []
-    with open(data_path, "r", encoding="utf-8") as st_json:
+    with open(data_path, encoding="utf-8") as st_json:
         for j in json.load(st_json):
             quotes.append(
                 Quote(

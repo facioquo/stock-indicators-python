@@ -31,9 +31,7 @@ def get_vwap(
     day: int = 1,
     hour: int = 0,
     minute: int = 0,
-) -> (
-    "VWAPResults[VWAPResult]"
-):  # pylint: disable=too-many-branches,too-many-statements,keyword-arg-before-vararg
+) -> "VWAPResults[VWAPResult]":  # pylint: disable=too-many-branches,too-many-statements,keyword-arg-before-vararg
     """Get VWAP calculated.
 
     Volume Weighted Average Price (VWAP) is a Volume weighted average

@@ -10,7 +10,7 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 
 def get_starc_bands(
     quotes: Iterable[Quote],
-    sma_periods: int = None,
+    sma_periods: Optional[int] = None,
     multiplier: float = 2,
     atr_periods: int = 10,
 ):

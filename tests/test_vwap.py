@@ -6,7 +6,6 @@ from stock_indicators import indicators
 
 
 class TestVWAP:
-
     def test_standard(self, quotes_intraday):
         quotes_intraday.sort(key=lambda x: x.date)
         results = indicators.get_vwap(quotes_intraday[:391])

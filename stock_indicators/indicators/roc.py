@@ -7,7 +7,11 @@ from stock_indicators.indicators.common.quote import Quote
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_roc(quotes: Iterable[Quote], lookback_periods: int, sma_periods: int = None):
+def get_roc(
+    quotes: Iterable[Quote],
+    lookback_periods: int,
+    sma_periods: Optional[int] = None,
+):
     """Get ROC calculated.
 
     Rate of Change (ROC), also known as Momentum Oscillator, is the percent change

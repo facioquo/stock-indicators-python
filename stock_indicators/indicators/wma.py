@@ -36,9 +36,7 @@ def get_wma(
          - [WMA Reference](https://python.stockindicators.dev/indicators/Wma/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    quotes = Quote.use(
-        quotes, candle_part
-    )  # pylint: disable=no-member  # Error occurs if not assigned to local var.
+    quotes = Quote.use(quotes, candle_part)  # pylint: disable=no-member  # Error occurs if not assigned to local var.
     results = CsIndicator.GetWma(quotes, lookback_periods)
     return WMAResults(results, WMAResult)
 

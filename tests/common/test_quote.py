@@ -76,7 +76,7 @@ def test_quote_constructor_handles_system_local_timezone():
     )
 
     # tz-aware should normalize to UTC but represent the same instant
-    d = getattr(q, "date")
+    d = q.date
     assert str(d.tzinfo) == "UTC"
     assert d.replace(microsecond=0) == dt.astimezone(timezone.utc).replace(
         microsecond=0

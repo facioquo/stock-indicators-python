@@ -66,7 +66,21 @@
       "label": "Build",
       "type": "shell",
       "command": "python -m pip install -r requirements.txt && python -m pip install -r requirements-test.txt",
-      "group": "build"
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+    },
+    {
+      "label": "Lint: Code",
+      "type": "shell",
+      "command": "python -m ruff check . && python -m ruff format --check .",
+      "group": "test"
+    },
+    {
+      "label": "Lint: Code (fix)",
+      "type": "shell",
+      "command": "python -m ruff check --fix . && python -m ruff format .",
     },
     {
       "label": "Lint: Markdown files",
@@ -98,7 +112,10 @@
       "label": "Test: Unit (default)",
       "type": "shell",
       "command": "python -m pytest -vr A",
-      "group": "test"
+      "group": {
+        "kind": "test",
+        "isDefault": true
+      },
     },
     {
       "label": "Test: Coverage",
@@ -119,19 +136,6 @@
       "label": "Test: Localization",
       "type": "shell",
       "command": "python -m pytest -m localization -vr A"
-    },
-    {
-      "label": "Lint: Python",
-      "type": "shell",
-      "command": "python -m isort --check-only . && python -m black --check .",
-      "problemMatcher": ["$pytest"],
-      "group": "test"
-    },
-    {
-      "label": "Lint: Python (fix)",
-      "type": "shell",
-      "command": "python -m isort . && python -m black .",
-      "group": "build"
     },
     {
       "label": "Run: Doc Site with LiveReload",
