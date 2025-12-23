@@ -69,7 +69,7 @@
       "group": {
         "kind": "build",
         "isDefault": true
-      },
+      }
     },
     {
       "label": "Lint: Code",
@@ -80,7 +80,7 @@
     {
       "label": "Lint: Code (fix)",
       "type": "shell",
-      "command": "python -m ruff check --fix . && python -m ruff format .",
+      "command": "python -m ruff check --fix . && python -m ruff format ."
     },
     {
       "label": "Lint: Markdown files",
@@ -115,7 +115,7 @@
       "group": {
         "kind": "test",
         "isDefault": true
-      },
+      }
     },
     {
       "label": "Test: Coverage",
