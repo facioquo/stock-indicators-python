@@ -50,7 +50,7 @@ class IndicatorResults(List[_T]):
         It is usually called after `done()`.
         This method is deprecated. It will be removed in the next version.
         """
-        warn('This method is deprecated.', DeprecationWarning, stacklevel=2)
+        warn("This method is deprecated.", DeprecationWarning, stacklevel=2)
         if self._csdata is None:
             self._csdata = [_._csdata for _ in self]
         return self
@@ -61,7 +61,7 @@ class IndicatorResults(List[_T]):
         It is not necessary but saves memory.
         This method is deprecated. It will be removed in the next version.
         """
-        warn('This method is deprecated.', DeprecationWarning, stacklevel=2)
+        warn("This method is deprecated.", DeprecationWarning, stacklevel=2)
         self._csdata = None
         return self
 
@@ -74,15 +74,18 @@ class IndicatorResults(List[_T]):
     @staticmethod  # pylint: disable=no-self-argument
     def _verify_data(func: Callable) -> Callable:
         """Check whether `_csdata` can be passed to helper method."""
+
         def verify_data(self, *args):
             if self._csdata is None:
                 # Use a generic name when func.__name__ is not available
-                func_name = getattr(func, '__name__', 'method')
-                raise ValueError(f"Cannot {func_name}() after done() has been called. Call reload() first.")
+                func_name = getattr(func, "__name__", "method")
+                raise ValueError(
+                    f"Cannot {func_name}() after done() has been called. Call reload() first."
+                )
 
             if not isinstance(self._csdata, Iterable) or len(self) < 1:
                 # Use a generic name when func.__name__ is not available
-                func_name = getattr(func, '__name__', 'method')
+                func_name = getattr(func, "__name__", "method")
                 raise ValueError(f"Cannot {func_name}() an empty result.")
 
             if not issubclass(self._get_csdata_type(), CsResultBase):
@@ -99,7 +102,9 @@ class IndicatorResults(List[_T]):
         """Concatenate two IndicatorResults."""
         if not isinstance(other, IndicatorResults):
             raise TypeError("Can only add IndicatorResults to IndicatorResults")
-        return self.__class__(list(self._csdata).__add__(list(other._csdata)), self._wrapper_class)
+        return self.__class__(
+            list(self._csdata).__add__(list(other._csdata)), self._wrapper_class
+        )
 
     @_verify_data
     def __mul__(self, value: int):

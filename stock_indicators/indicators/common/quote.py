@@ -3,17 +3,20 @@ from decimal import Decimal
 from typing import Any, Iterable, Optional, Union
 
 from stock_indicators._cslib import CsQuote, CsQuoteUtility
-from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import DateTime as CsDateTime
 from stock_indicators._cstypes import Decimal as CsDecimal
+from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import to_pydatetime, to_pydecimal
+from stock_indicators.indicators.common._contrib.type_resolver import (
+    generate_cs_inherited_class,
+)
 from stock_indicators.indicators.common.enums import CandlePart
-from stock_indicators.indicators.common._contrib.type_resolver import generate_cs_inherited_class
 
 
 def _get_date(quote) -> datetime:
     """Get the date property with proper null handling."""
     return to_pydatetime(quote.Date)
+
 
 def _set_date(quote, value: datetime) -> None:
     """Set the date property with validation and timezone normalization."""
@@ -93,12 +96,17 @@ class _Quote:
     close = property(_get_close, _set_close)
     volume = property(_get_volume, _set_volume)
 
-    def __init__(self, date: datetime,  # pylint: disable=too-many-positional-arguments
-                 open: Optional[Union[int, float, Decimal, str]] = None,  # pylint: disable=redefined-builtin
-                 high: Optional[Union[int, float, Decimal, str]] = None,
-                 low: Optional[Union[int, float, Decimal, str]] = None,
-                 close: Optional[Union[int, float, Decimal, str]] = None,
-                 volume: Optional[Union[int, float, Decimal, str]] = None):
+    def __init__(
+        self,
+        date: datetime,  # pylint: disable=too-many-positional-arguments
+        open: Optional[
+            Union[int, float, Decimal, str]
+        ] = None,  # pylint: disable=redefined-builtin
+        high: Optional[Union[int, float, Decimal, str]] = None,
+        low: Optional[Union[int, float, Decimal, str]] = None,
+        close: Optional[Union[int, float, Decimal, str]] = None,
+        volume: Optional[Union[int, float, Decimal, str]] = None,
+    ):
         """
         Initialize a Quote with OHLCV data.
 
@@ -138,7 +146,7 @@ class _Quote:
             high=to_pydecimal(cs_quote.High),
             low=to_pydecimal(cs_quote.Low),
             close=to_pydecimal(cs_quote.Close),
-            volume=to_pydecimal(cs_quote.Volume)
+            volume=to_pydecimal(cs_quote.Volume),
         )
 
     @classmethod
@@ -154,13 +162,15 @@ class _Quote:
         Returns:
             C# collection prepared for indicator calculation
         """
-        if not hasattr(quotes, '__iter__'):
+        if not hasattr(quotes, "__iter__"):
             raise TypeError("quotes must be iterable")
         if not isinstance(candle_part, CandlePart):
             raise TypeError("candle_part must be a CandlePart enum value")
 
         try:
-            return CsQuoteUtility.Use[Quote](CsList(Quote, quotes), candle_part.cs_value)
+            return CsQuoteUtility.Use[Quote](
+                CsList(Quote, quotes), candle_part.cs_value
+            )
         except Exception as e:
             raise ValueError(f"Failed to prepare quotes for calculation: {e}") from e
 

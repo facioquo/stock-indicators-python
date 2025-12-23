@@ -2,7 +2,7 @@ from typing import Optional
 
 from typing_extensions import Self
 
-from stock_indicators._cslib import CsIndicator, CsIEnumerable, CsResultUtility
+from stock_indicators._cslib import CsIEnumerable, CsIndicator, CsResultUtility
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.results import IndicatorResults
 
@@ -11,7 +11,9 @@ class RemoveWarmupMixin:
     """IndicatorResults Mixin for remove_warmup_periods()."""
 
     @IndicatorResults._verify_data
-    def remove_warmup_periods(self: IndicatorResults, remove_periods: Optional[int] = None) -> Self:
+    def remove_warmup_periods(
+        self: IndicatorResults, remove_periods: Optional[int] = None
+    ) -> Self:
         """
         Remove the recommended(or specified) quantity of results from the beginning of the results list.
 
@@ -29,7 +31,9 @@ class RemoveWarmupMixin:
             return super().remove_warmup_periods(remove_periods)
 
         try:
-            removed_results = CsIndicator.RemoveWarmupPeriods(CsList(self._get_csdata_type(), self._csdata))
+            removed_results = CsIndicator.RemoveWarmupPeriods(
+                CsList(self._get_csdata_type(), self._csdata)
+            )
             return self.__class__(removed_results, self._wrapper_class)
         except Exception as e:
             raise RuntimeError(f"Failed to remove warmup periods: {e}") from e
@@ -51,7 +55,9 @@ class CondenseMixin:
         try:
             # Try to find the specific overloaded method first
             try:
-                condense_method = CsIndicator.Condense.Overloads[CsIEnumerable[cs_results_type]]
+                condense_method = CsIndicator.Condense.Overloads[
+                    CsIEnumerable[cs_results_type]
+                ]
             except TypeError:
                 # Fall back to generic utility method
                 condense_method = CsResultUtility.Condense[cs_results_type]

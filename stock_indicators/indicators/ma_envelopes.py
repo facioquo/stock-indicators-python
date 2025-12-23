@@ -4,12 +4,16 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.enums import MAType
 from stock_indicators.indicators.common.helpers import CondenseMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_ma_envelopes(quotes: Iterable[Quote], lookback_periods: int,
-                percent_offset: float = 2.5, ma_type: MAType = MAType.SMA):
+def get_ma_envelopes(
+    quotes: Iterable[Quote],
+    lookback_periods: int,
+    percent_offset: float = 2.5,
+    ma_type: MAType = MAType.SMA,
+):
     """Get Moving Average Envelopes calculated.
 
     Moving Average Envelopes is a price band overlay that is offset
@@ -36,8 +40,9 @@ def get_ma_envelopes(quotes: Iterable[Quote], lookback_periods: int,
          - [Moving Average Envelopes Reference](https://python.stockindicators.dev/indicators/MaEnvelopes/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetMaEnvelopes[Quote](CsList(Quote, quotes), lookback_periods,
-                                            percent_offset, ma_type.cs_value)
+    results = CsIndicator.GetMaEnvelopes[Quote](
+        CsList(Quote, quotes), lookback_periods, percent_offset, ma_type.cs_value
+    )
     return MAEnvelopeResults(results, MAEnvelopeResult)
 
 
@@ -72,6 +77,8 @@ class MAEnvelopeResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=MAEnvelopeResult)
+
+
 class MAEnvelopeResults(CondenseMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Moving Average Envelopes results.

@@ -48,16 +48,17 @@ jobs:
       PYTHONIOENCODING: utf-8
 
     steps:
-      - uses: actions/checkout@v5
+      - name: Checkout source
+        uses: actions/checkout@v6
 
-      - uses: actions/setup-dotnet@v4
+      - uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.x
+          dotnet-version: 10.x
           dotnet-quality: ga
 
-      - uses: actions/setup-python@v5
+      - uses: actions/setup-python@v6
         with:
-          python-version: 3.12
+          python-version: 3.13
           cache: "pip"
 
       - name: Configure Linux locale

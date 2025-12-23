@@ -68,10 +68,10 @@ For more details, see the [official documentation](https://github.com/nektos/act
 
 ### Windows Setup
 
-1. Install .NET SDK (6.0 or newer):
+1. Install .NET SDK (8.0 or newer):
 
     ```powershell
-    winget install Microsoft.DotNet.SDK.6
+    winget install Microsoft.DotNet.SDK.8
     # Or download from https://dotnet.microsoft.com/download
     ```
 
@@ -86,7 +86,7 @@ For more details, see the [official documentation](https://github.com/nektos/act
 
 ### macOS Setup
 
-1. Install .NET SDK (6.0 or newer):
+1. Install .NET SDK (8.0 or newer):
 
     ```bash
     brew install dotnet-sdk
@@ -161,7 +161,7 @@ pytest -svr A
 
 ### Performance benchmarking
 
-Running the commands below in your console will show performance data.  You can find the latest results [here]({{site.baseurl}}/performance/).
+Running the commands below in your console will produce [benchmark performance data](https://python.stockindicators.dev/performance/) that we include on our documentation site.
 
 ```bash
 # install dependencies

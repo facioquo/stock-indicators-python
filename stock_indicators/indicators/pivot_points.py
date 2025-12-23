@@ -2,17 +2,20 @@ from decimal import Decimal
 from typing import Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
+from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.enums import PeriodSize, PivotPointType
 from stock_indicators.indicators.common.helpers import RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_pivot_points(quotes, window_size: PeriodSize,
-                      point_type: PivotPointType = PivotPointType.STANDARD):
+def get_pivot_points(
+    quotes,
+    window_size: PeriodSize,
+    point_type: PivotPointType = PivotPointType.STANDARD,
+):
     """Get Pivot Points calculated.
 
     Pivot Points depict support and resistance levels, based on
@@ -37,8 +40,9 @@ def get_pivot_points(quotes, window_size: PeriodSize,
          - [Pivot Points Reference](https://python.stockindicators.dev/indicators/PivotPoints/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetPivotPoints[Quote](CsList(Quote, quotes), window_size.cs_value,
-                                                 point_type.cs_value)
+    results = CsIndicator.GetPivotPoints[Quote](
+        CsList(Quote, quotes), window_size.cs_value, point_type.cs_value
+    )
     return PivotPointsResults(results, PivotPointsResult)
 
 
@@ -121,6 +125,8 @@ class PivotPointsResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=PivotPointsResult)
+
+
 class PivotPointsResults(RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Pivot Points results.

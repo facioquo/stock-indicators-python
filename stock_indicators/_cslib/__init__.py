@@ -3,10 +3,10 @@ Skender.Stock.Indicators
 ~~~~~~~~~~~~~~~~~~~~~~~~
 # pylint: disable=duplicate-code  # Property patterns are expected to repeat
 
-This module loads `Skender.Stock.Indicators.dll`(v2.6.1), which is a compiled library
+This module loads `Skender.Stock.Indicators.dll`(v2.7.1), which is a compiled library
 package from <https://github.com/DaveSkender/Stock.Indicators>, written in C#.
 
-The target framework of dll is `.NET 6.0`.
+The target framework of dll is `.NET 8.0`.
 """
 
 import logging
@@ -31,12 +31,13 @@ def _initialize_clr() -> Any:
     try:
         load(runtime="coreclr")
         import clr as clr_module
+
         logger.debug("CLR loaded successfully on %s", platform.system())
         return clr_module
     except Exception as e:
         init_error_msg = (
             "Failed to load .NET CLR runtime.\n"
-            "Please ensure .NET 6.0+ is installed: https://dotnet.microsoft.com/download\n"
+            "Please ensure .NET 8.0+ is installed: https://dotnet.microsoft.com/download\n"
             f"Platform: {platform.system()}\n"
             f"Error: {str(e)}"
         )
@@ -114,7 +115,7 @@ except Exception as e:
     if not isinstance(e, StockIndicatorsInitializationError):
         error_msg = (
             "Stock Indicators initialization failed due to unexpected error.\n"
-            "Please ensure .NET 6.0+ is installed: https://dotnet.microsoft.com/download\n"
+            "Please ensure .NET 8.0+ is installed: https://dotnet.microsoft.com/download\n"
             f"Error: {str(e)}"
         )
         raise StockIndicatorsInitializationError(error_msg) from e

@@ -3,12 +3,16 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_pvo(quotes: Iterable[Quote], fast_periods: int = 12,
-               slow_periods: int = 26, signal_periods: int = 9):
+def get_pvo(
+    quotes: Iterable[Quote],
+    fast_periods: int = 12,
+    slow_periods: int = 26,
+    signal_periods: int = 9,
+):
     """Get PVO calculated.
 
     Percentage Volume Oscillator (PVO) is a simple oscillator view
@@ -35,8 +39,9 @@ def get_pvo(quotes: Iterable[Quote], fast_periods: int = 12,
          - [PVO Reference](https://python.stockindicators.dev/indicators/Pvo/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetPvo[Quote](CsList(Quote, quotes), fast_periods,
-                                           slow_periods, signal_periods)
+    results = CsIndicator.GetPvo[Quote](
+        CsList(Quote, quotes), fast_periods, slow_periods, signal_periods
+    )
     return PVOResults(results, PVOResult)
 
 
@@ -71,6 +76,8 @@ class PVOResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=PVOResult)
+
+
 class PVOResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Percentage Volume Oscillator (PVO) results.

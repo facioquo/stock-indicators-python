@@ -1,6 +1,15 @@
 from stock_indicators._cslib import (
-    CsCandlePart, CsMatch, CsEnum, CsBetaType, CsChandelierType, CsMaType,
-    CsPivotPointType, CsPeriodSize, CsEndType, CsPivotTrend)
+    CsBetaType,
+    CsCandlePart,
+    CsChandelierType,
+    CsEndType,
+    CsEnum,
+    CsMatch,
+    CsMaType,
+    CsPeriodSize,
+    CsPivotPointType,
+    CsPivotTrend,
+)
 from stock_indicators.indicators.common._contrib.enum import CsCompatibleIntEnum
 
 

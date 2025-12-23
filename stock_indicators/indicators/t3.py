@@ -3,12 +3,13 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_t3(quotes: Iterable[Quote], lookback_periods: int = 5,
-           volume_factor: float = 0.7):
+def get_t3(
+    quotes: Iterable[Quote], lookback_periods: int = 5, volume_factor: float = 0.7
+):
     """Get T3 calculated.
 
     Tillson T3 is a smooth moving average that reduces
@@ -32,8 +33,9 @@ def get_t3(quotes: Iterable[Quote], lookback_periods: int = 5,
          - [T3 Reference](https://python.stockindicators.dev/indicators/T3/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetT3[Quote](CsList(Quote, quotes), lookback_periods,
-                                       volume_factor)
+    results = CsIndicator.GetT3[Quote](
+        CsList(Quote, quotes), lookback_periods, volume_factor
+    )
     return T3Results(results, T3Result)
 
 
@@ -52,6 +54,8 @@ class T3Result(ResultBase):
 
 
 _T = TypeVar("_T", bound=T3Result)
+
+
 class T3Results(CondenseMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Tillson T3 results.

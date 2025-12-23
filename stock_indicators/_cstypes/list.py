@@ -3,7 +3,7 @@ from typing import Iterable, TypeVar
 
 from stock_indicators._cslib import CsList
 
-_T = TypeVar('_T')
+_T = TypeVar("_T")
 
 
 class List:
@@ -33,8 +33,9 @@ class List:
         >>>     print(i, end='')
         123
     """
+
     def __new__(cls, generic: _T, sequence: Iterable) -> CsList:
-        if not hasattr(sequence, '__iter__'):
+        if not hasattr(sequence, "__iter__"):
             raise TypeError("sequence must be iterable")
 
         try:
@@ -46,4 +47,6 @@ class List:
 
             return cs_list
         except Exception as e:
-            raise ValueError(f"Cannot convert sequence to C# List[{generic}]: {e}") from e
+            raise ValueError(
+                f"Cannot convert sequence to C# List[{generic}]: {e}"
+            ) from e

@@ -4,12 +4,16 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.enums import BetaType
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_beta(eval_quotes: Iterable[Quote], market_quotes: Iterable[Quote],
-             lookback_periods: int, beta_type: BetaType = BetaType.STANDARD):
+def get_beta(
+    eval_quotes: Iterable[Quote],
+    market_quotes: Iterable[Quote],
+    lookback_periods: int,
+    beta_type: BetaType = BetaType.STANDARD,
+):
     """Get Beta calculated.
 
     Beta shows how strongly one stock responds to systemic volatility of the entire market.
@@ -36,8 +40,12 @@ def get_beta(eval_quotes: Iterable[Quote], market_quotes: Iterable[Quote],
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
 
-    beta_results = CsIndicator.GetBeta[Quote](CsList(Quote, eval_quotes), CsList(Quote, market_quotes),
-                                              lookback_periods, beta_type.cs_value)
+    beta_results = CsIndicator.GetBeta[Quote](
+        CsList(Quote, eval_quotes),
+        CsList(Quote, market_quotes),
+        lookback_periods,
+        beta_type.cs_value,
+    )
     return BetaResults(beta_results, BetaResult)
 
 

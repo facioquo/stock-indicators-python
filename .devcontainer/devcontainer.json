@@ -9,28 +9,18 @@
  */
 {
   "name": "Stock Indicators for Python",
-  "image": "mcr.microsoft.com/devcontainers/python:3.12",
-  "forwardPorts": [],
-  "remoteUser": "vscode",
+  "image": "mcr.microsoft.com/devcontainers/python:3.13",
   "features": {
-    "ghcr.io/devcontainers/features/git:1": {
-      "version": "os-provided"
-    },
     "ghcr.io/devcontainers/features/dotnet:2": {
-      "version": "lts"
+      "version": "10.0",
+      "additionalVersions": "9.0,8.0"
     },
     "ghcr.io/devcontainers/features/node:1": {
       "version": "lts",
       "pnpmVersion": "none",
       "nvmVersion": "none"
     },
-    "ghcr.io/devcontainers/features/github-cli:1": {
-      "installDirectlyFromGitHubRelease": true,
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers/features/azure-cli:1": {
-      "version": "latest"
-    },
+    "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers/features/ruby:1": {
       "version": "3.3"
     },
@@ -54,7 +44,6 @@
       // required extensions
       // for recommended, see .vscode/extensions.json
       "extensions": [
-        "donjayamanne.python-extension-pack",
         "DavidAnson.vscode-markdownlint",
         "EditorConfig.EditorConfig",
         "ms-python.black-formatter",
@@ -66,8 +55,16 @@
       ]
     }
   },
-  // Runs after the container is created
-  "postCreateCommand": "chmod +x .devcontainer/setup.sh && .devcontainer/setup.sh",
-  // Runs every time the container starts
+  "forwardPorts": [
+    4000
+  ],
+  "portsAttributes": {
+    "4000": {
+      "label": "Doc Site (Jekyll)",
+      "onAutoForward": "notify"
+    }
+  },
+  "remoteUser": "vscode",
+  "postCreateCommand": ".devcontainer/post-create.sh",
   "postStartCommand": "echo 'Container started'"
 }

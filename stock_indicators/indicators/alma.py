@@ -7,7 +7,12 @@ from stock_indicators.indicators.common.quote import Quote
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_alma(quotes: Iterable[Quote], lookback_periods: int = 9, offset: float = .85, sigma : float = 6):
+def get_alma(
+    quotes: Iterable[Quote],
+    lookback_periods: int = 9,
+    offset: float = 0.85,
+    sigma: float = 6,
+):
     """Get ALMA calculated.
 
     Arnaud Legoux Moving Average (ALMA) is a Gaussian distribution
@@ -34,7 +39,9 @@ def get_alma(quotes: Iterable[Quote], lookback_periods: int = 9, offset: float =
          - [ALMA Reference](https://python.stockindicators.dev/indicators/Alma/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    alma_results = CsIndicator.GetAlma[Quote](CsList(Quote, quotes), lookback_periods, offset, sigma)
+    alma_results = CsIndicator.GetAlma[Quote](
+        CsList(Quote, quotes), lookback_periods, offset, sigma
+    )
     return ALMAResults(alma_results, ALMAResult)
 
 
@@ -53,6 +60,8 @@ class ALMAResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=ALMAResult)
+
+
 class ALMAResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of ALMA(Arnaud Legoux Moving Average) results.

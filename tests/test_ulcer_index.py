@@ -1,5 +1,7 @@
 import pytest
+
 from stock_indicators import indicators
+
 
 class TestUlcerIndex:
     def test_standard(self, quotes):
@@ -40,5 +42,6 @@ class TestUlcerIndex:
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_ulcer_index(quotes, 0)

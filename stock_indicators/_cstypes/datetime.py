@@ -1,5 +1,8 @@
-from datetime import datetime as PyDateTime, timezone as PyTimezone
+from datetime import datetime as PyDateTime
+from datetime import timezone as PyTimezone
+
 from System import DateTimeKind  # type: ignore
+
 from stock_indicators._cslib import CsDateTime  # type: ignore
 
 # Module-level constant: 1 second = 10,000,000 ticks (100ns per tick)

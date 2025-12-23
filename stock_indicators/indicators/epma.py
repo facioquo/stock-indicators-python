@@ -3,8 +3,8 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
 def get_epma(quotes: Iterable[Quote], lookback_periods: int):
@@ -48,6 +48,8 @@ class EPMAResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=EPMAResult)
+
+
 class EPMAResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Endpoint Moving Average (EPMA) results.

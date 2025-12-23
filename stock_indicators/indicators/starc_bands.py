@@ -4,12 +4,16 @@ from warnings import warn
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_starc_bands(quotes: Iterable[Quote], sma_periods: int = None,
-            multiplier: float = 2, atr_periods: int = 10):
+def get_starc_bands(
+    quotes: Iterable[Quote],
+    sma_periods: int = None,
+    multiplier: float = 2,
+    atr_periods: int = 10,
+):
     """Get STARC Bands calculated.
 
     Stoller Average Range Channel (STARC) Bands, are based
@@ -37,11 +41,16 @@ def get_starc_bands(quotes: Iterable[Quote], sma_periods: int = None,
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     if sma_periods is None:
-        warn('The default value of sma_periods will be removed in the next version. Pass sma_periods explicitly.', DeprecationWarning, stacklevel=2)
+        warn(
+            "The default value of sma_periods will be removed in the next version. Pass sma_periods explicitly.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
         sma_periods = 20
 
-    results = CsIndicator.GetStarcBands[Quote](CsList(Quote, quotes), sma_periods,
-                                               multiplier, atr_periods)
+    results = CsIndicator.GetStarcBands[Quote](
+        CsList(Quote, quotes), sma_periods, multiplier, atr_periods
+    )
     return STARCBandsResults(results, STARCBandsResult)
 
 
@@ -76,6 +85,8 @@ class STARCBandsResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=STARCBandsResult)
+
+
 class STARCBandsResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Stoller Average Range Channel (STARC) Bands results.

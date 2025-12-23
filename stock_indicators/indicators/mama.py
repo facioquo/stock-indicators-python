@@ -3,12 +3,13 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_mama(quotes: Iterable[Quote], fast_limit: float = 0.5,
-             slow_limit: float = 0.05):
+def get_mama(
+    quotes: Iterable[Quote], fast_limit: float = 0.5, slow_limit: float = 0.05
+):
     """Get MAMA calculated.
 
     MESA Adaptive Moving Average (MAMA) is a 5-period
@@ -32,8 +33,7 @@ def get_mama(quotes: Iterable[Quote], fast_limit: float = 0.5,
          - [MAMA Reference](https://python.stockindicators.dev/indicators/Mama/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetMama[Quote](CsList(Quote, quotes), fast_limit,
-                                         slow_limit)
+    results = CsIndicator.GetMama[Quote](CsList(Quote, quotes), fast_limit, slow_limit)
     return MAMAResults(results, MAMAResult)
 
 
@@ -60,6 +60,8 @@ class MAMAResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=MAMAResult)
+
+
 class MAMAResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of MESA Adaptive Moving Average (MAMA) results.

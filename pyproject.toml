@@ -28,7 +28,7 @@ classifiers = [
 ]
 requires-python = ">=3.8"
 dependencies = [
-    "pythonnet>=3.0.0",
+    "pythonnet>=3.0.5",
     "typing_extensions>=4.4.0"
 ]
 keywords = [
@@ -61,3 +61,8 @@ exclude = ["tests*", "benchmarks*", "test_data*", "docs*"]
 # can be empty if no extra settings are needed, presence enables setuptools_scm
 [tool.setuptools_scm]
 local_scheme = "no-local-version"
+
+[tool.isort]
+profile = "black"
+line_length = 88
+known_first_party = ["stock_indicators"]

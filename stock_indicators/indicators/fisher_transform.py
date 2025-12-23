@@ -3,8 +3,8 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
 def get_fisher_transform(quotes: Iterable[Quote], lookback_periods: int = 10):
@@ -29,7 +29,9 @@ def get_fisher_transform(quotes: Iterable[Quote], lookback_periods: int = 10):
          - [Fisher Transform Reference](https://python.stockindicators.dev/indicators/FisherTransform/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetFisherTransform[Quote](CsList(Quote, quotes), lookback_periods)
+    results = CsIndicator.GetFisherTransform[Quote](
+        CsList(Quote, quotes), lookback_periods
+    )
     return FisherTransformResults(results, FisherTransformResult)
 
 
@@ -56,6 +58,8 @@ class FisherTransformResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=FisherTransformResult)
+
+
 class FisherTransformResults(CondenseMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Ehlers Fisher Transform results.

@@ -131,8 +131,11 @@ reviews:
     - "!*-lock.json"         # NPM/PNPM lock files
     - "!packages.lock.json"  # NuGet lock file
     - "!packages/"           # NuGet packages cache
+    - "!_cslib/"             # DLL library path
     - "!.jekyll-cache/"      # Jekyll cache
     - "!.pytest_cache/"      # Python test cache
+    - "!__pycache__/"        # Python caches
+    - "!.venv/"              # Python virtual env
     - "!.benchmarks/"        # Benchmarks cache
     - "!.coverage/"          # Code coverage reports
     - "!vendor/"             # Ruby vendor and gem files
@@ -165,7 +168,7 @@ reviews:
       enabled: true
     osvScanner:              # Vulnerability package scanner
       enabled: true
-    pylint:                  # Python static analyzer
+    ruff:                    # Python linter and formatter
       enabled: true
     semgrep:                 # Security & code quality static analysis
       enabled: true
@@ -225,9 +228,9 @@ reviews:
       enabled: false
     prismaLint:              # Prisma schema linter
       enabled: false
-    regal:                   # Rego linter and language server
+    pylint:                  # Python static analyzer
       enabled: false
-    ruff:                    # Python linter and formatter
+    regal:                   # Rego linter and language server
       enabled: false
     rubocop:                 # Ruby linter and code formatter
       enabled: false

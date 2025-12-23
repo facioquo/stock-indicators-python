@@ -1,22 +1,17 @@
-from .quote import Quote
-from .results import (
-    ResultBase,
-    IndicatorResults
-)
-from .candles import (
-    CandleProperties,
-)
+from .candles import CandleProperties
 from .enums import (
     BetaType,
-    ChandelierType,
     CandlePart,
+    ChandelierType,
     EndType,
+    Match,
     MAType,
     PeriodSize,
     PivotPointType,
     PivotTrend,
-    Match
 )
+from .quote import Quote
+from .results import IndicatorResults, ResultBase
 
 __all__ = [
     "Quote",
@@ -31,5 +26,5 @@ __all__ = [
     "PeriodSize",
     "PivotPointType",
     "PivotTrend",
-    "Match"
+    "Match",
 ]

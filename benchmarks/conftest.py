@@ -62,8 +62,9 @@ def parse_date(date_str):
 
 
 @pytest.fixture(scope="session")
-def raw_data(filename: str = 'Default'):
+def raw_data(filename: str = "Default"):
     return get_data_from_csv(filename)
+
 
 @pytest.fixture(scope="session")
 def quotes(days: int = 502):

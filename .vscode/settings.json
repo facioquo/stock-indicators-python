@@ -35,6 +35,16 @@
   ],
   "python.testing.pytestEnabled": true,
   "python.testing.unittestEnabled": false,
+  "editor.formatOnSave": true,
+  "editor.codeActionsOnSave": {
+    "source.organizeImports": "always"
+  },
+  "python.formatting.provider": "black",
+  "python.sortImports.path": "isort",
+  "python.linting.enabled": true,
+  "python.linting.flake8Enabled": true,
+  "python.linting.pylintEnabled": false,
+  "python.linting.flake8Path": "flake8",
   "[markdown]": {
     "editor.defaultFormatter": "DavidAnson.vscode-markdownlint",
     "files.trimTrailingWhitespace": true
