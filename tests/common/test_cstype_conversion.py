@@ -5,7 +5,11 @@ from numbers import Number
 from stock_indicators._cslib import CsCultureInfo
 from stock_indicators._cstypes import DateTime as CsDateTime
 from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydatetime, to_pydecimal, to_pydecimal_via_double
+from stock_indicators._cstypes import (
+    to_pydatetime,
+    to_pydecimal,
+    to_pydecimal_via_double,
+)
 
 
 class TestCsTypeConversion:
@@ -99,7 +103,7 @@ class TestCsTypeConversion:
         result = to_pydecimal_via_double(cs_decimal)
         assert result is not None
         assert isinstance(result, PyDecimal)
-        
+
         # The result should be close to the original, even if not exact
         assert abs(float(result) - py_decimal) < 1e-10
 
