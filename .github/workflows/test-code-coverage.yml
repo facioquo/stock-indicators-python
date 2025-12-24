@@ -6,7 +6,7 @@ name: Test code coverage
 on:
   push:
     branches: ["main"]
-  pull_request_target:
+  pull_request:
     branches: ["*"]
   workflow_dispatch:
 
@@ -27,20 +27,20 @@ jobs:
       CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
 
     steps:
-      - name: Checkout PR
-        uses: actions/checkout@v5
+      - name: Checkout source
+        uses: actions/checkout@v6
         with:
           # Explicitly checkout PR code
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
-          dotnet-version: 9.x
+          dotnet-version: 10.x
           dotnet-quality: ga
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: 3.13
           cache: "pip"

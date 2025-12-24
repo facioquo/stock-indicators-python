@@ -3,12 +3,15 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_wma(quotes: Iterable[Quote], lookback_periods: int,
-            candle_part: CandlePart = CandlePart.CLOSE):
+def get_wma(
+    quotes: Iterable[Quote],
+    lookback_periods: int,
+    candle_part: CandlePart = CandlePart.CLOSE,
+):
     """Get WMA calculated.
 
     Weighted Moving Average (WMA) is the linear weighted average
@@ -33,7 +36,7 @@ def get_wma(quotes: Iterable[Quote], lookback_periods: int,
          - [WMA Reference](https://python.stockindicators.dev/indicators/Wma/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var.
+    quotes = Quote.use(quotes, candle_part)  # pylint: disable=no-member  # Error occurs if not assigned to local var.
     results = CsIndicator.GetWma(quotes, lookback_periods)
     return WMAResults(results, WMAResult)
 
@@ -53,6 +56,8 @@ class WMAResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=WMAResult)
+
+
 class WMAResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Weighted Moving Average (WMA) results.

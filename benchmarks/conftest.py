@@ -35,7 +35,7 @@ def get_data_from_csv(filename):
     data_path = quotes_dir / f"{filename}.csv"
     logger.debug("Loading benchmark data from: %s", data_path)
 
-    with open(data_path, "r", newline="", encoding="utf-8") as csvfile:
+    with open(data_path, newline="", encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
         data = list(reader)
     return data[1:]  # skips the first row, those are headers
@@ -62,8 +62,9 @@ def parse_date(date_str):
 
 
 @pytest.fixture(scope="session")
-def raw_data(filename: str = 'Default'):
+def raw_data(filename: str = "Default"):
     return get_data_from_csv(filename)
+
 
 @pytest.fixture(scope="session")
 def quotes(days: int = 502):

@@ -4,8 +4,9 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.alligator import AlligatorResult
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
+
 
 @overload
 def get_gator(quotes: Iterable[Quote]) -> "GatorResults[GatorResult]": ...
@@ -32,12 +33,12 @@ def get_gator(quotes):
         results = CsIndicator.GetGator[Quote](CsList(Quote, quotes))
     else:
         # Get C# objects.
-        if isinstance(quotes, IndicatorResults) and quotes._csdata is not None:
-            cs_results = quotes._csdata
+        if isinstance(quotes, IndicatorResults):
+            # Use the C# data directly if available
+            results = CsIndicator.GetGator(quotes._csdata)
         else:
-            cs_results = [ q._csdata for q in quotes ]
-
-        results = CsIndicator.GetGator(CsList(type(cs_results[0]), cs_results))
+            cs_results = [q._csdata for q in quotes]
+            results = CsIndicator.GetGator(CsList(type(cs_results[0]), cs_results))
     return GatorResults(results, GatorResult)
 
 
@@ -80,6 +81,8 @@ class GatorResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=GatorResult)
+
+
 class GatorResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Gator Oscillator results.

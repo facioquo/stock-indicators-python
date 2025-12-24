@@ -3,13 +3,17 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_macd(quotes: Iterable[Quote], fast_periods: int = 12,
-             slow_periods: int = 26, signal_periods: int = 9,
-             candle_part: CandlePart = CandlePart.CLOSE):
+def get_macd(
+    quotes: Iterable[Quote],
+    fast_periods: int = 12,
+    slow_periods: int = 26,
+    signal_periods: int = 9,
+    candle_part: CandlePart = CandlePart.CLOSE,
+):
     """Get MACD calculated.
 
     Moving Average Convergence/Divergence (MACD) is a simple oscillator view
@@ -39,9 +43,11 @@ def get_macd(quotes: Iterable[Quote], fast_periods: int = 12,
          - [MACD Reference](https://python.stockindicators.dev/indicators/Macd/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var.
-    macd_results = CsIndicator.GetMacd(quotes, fast_periods,
-                                            slow_periods, signal_periods)
+    # pylint: disable=no-member  # Error occurs if not assigned to local var.
+    quotes = Quote.use(quotes, candle_part)
+    macd_results = CsIndicator.GetMacd(
+        quotes, fast_periods, slow_periods, signal_periods
+    )
     return MACDResults(macd_results, MACDResult)
 
 
@@ -92,7 +98,9 @@ class MACDResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=MACDResult)
-class MACDResults(CondenseMixin, RemoveWarmupMixin ,IndicatorResults[_T]):
+
+
+class MACDResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of MACD(Moving Average Convergence/Divergence) results.
     It is exactly same with built-in `list` except for that it provides

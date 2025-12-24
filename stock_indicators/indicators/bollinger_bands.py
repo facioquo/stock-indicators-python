@@ -3,11 +3,13 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_bollinger_bands(quotes: Iterable[Quote], lookback_periods: int = 20, standard_deviations: float = 2):
+def get_bollinger_bands(
+    quotes: Iterable[Quote], lookback_periods: int = 20, standard_deviations: float = 2
+):
     """Get Bollinger Bands&#174; calculated.
 
     Bollinger Bands&#174; depict volatility as standard deviation
@@ -31,7 +33,9 @@ def get_bollinger_bands(quotes: Iterable[Quote], lookback_periods: int = 20, sta
          - [Bollinger Bands&#174; Reference](https://python.stockindicators.dev/indicators/BollingerBands/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    bollinger_bands_results = CsIndicator.GetBollingerBands[Quote](CsList(Quote, quotes), lookback_periods, standard_deviations)
+    bollinger_bands_results = CsIndicator.GetBollingerBands[Quote](
+        CsList(Quote, quotes), lookback_periods, standard_deviations
+    )
     return BollingerBandsResults(bollinger_bands_results, BollingerBandsResult)
 
 
@@ -90,6 +94,8 @@ class BollingerBandsResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=BollingerBandsResult)
+
+
 class BollingerBandsResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Bollinger Bands results.

@@ -3,12 +3,16 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_ultimate(quotes: Iterable[Quote], short_periods: int = 7,
-                 middle_periods: int = 14, long_periods: int = 28):
+def get_ultimate(
+    quotes: Iterable[Quote],
+    short_periods: int = 7,
+    middle_periods: int = 14,
+    long_periods: int = 28,
+):
     """Get Ultimate Oscillator calculated.
 
     Ultimate Oscillator uses several lookback periods to weigh buying power
@@ -35,8 +39,9 @@ def get_ultimate(quotes: Iterable[Quote], short_periods: int = 7,
          - [Ultimate Oscillator Reference](https://python.stockindicators.dev/indicators/Ultimate/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetUltimate[Quote](CsList(Quote, quotes), short_periods,
-                                             middle_periods, long_periods)
+    results = CsIndicator.GetUltimate[Quote](
+        CsList(Quote, quotes), short_periods, middle_periods, long_periods
+    )
     return UltimateResults(results, UltimateResult)
 
 
@@ -55,6 +60,8 @@ class UltimateResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=UltimateResult)
+
+
 class UltimateResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Ultimate Oscillator results.

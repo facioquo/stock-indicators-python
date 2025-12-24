@@ -2,23 +2,27 @@ from decimal import Decimal
 from typing import Iterable, Optional, TypeVar, overload
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
+from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import to_pydecimal_via_double
 from stock_indicators.indicators.common.enums import EndType
 from stock_indicators.indicators.common.helpers import CondenseMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
 @overload
 def get_fractal(
     quotes: Iterable[Quote], window_span: int = 2, end_type=EndType.HIGH_LOW
 ) -> "FractalResults[FractalResult]": ...
+
+
 @overload
 def get_fractal(
     quotes: Iterable[Quote], left_span: int, right_span: int, end_type=EndType.HIGH_LOW
 ) -> "FractalResults[FractalResult]": ...
+
+
 def get_fractal(
     quotes, left_span=None, right_span=EndType.HIGH_LOW, end_type=EndType.HIGH_LOW
 ):

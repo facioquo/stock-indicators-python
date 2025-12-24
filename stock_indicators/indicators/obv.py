@@ -3,8 +3,8 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
 def get_obv(quotes: Iterable[Quote], sma_periods: Optional[int] = None):
@@ -55,6 +55,8 @@ class OBVResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=OBVResult)
+
+
 class OBVResults(CondenseMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of On-balance Volume (OBV) results.

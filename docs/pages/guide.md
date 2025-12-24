@@ -31,11 +31,11 @@ layout: page
     > Install **Python** and the **.NET SDK**.  Use the latest versions for better performance.
 
     | Installer | Min | Latest | Download |
-    |---| :---: | :---: | --- |
-    | Python | 3.8 | 3.12 | [@python.org](https://www.python.org/downloads/) |
-    | .NET SDK | 6.0 | 8.0 | [@microsoft.com](https://dotnet.microsoft.com/en-us/download) |
+    | --- | :---: | :---: | --- |
+    | Python | 3.8 | 3.13 | [@python.org](https://www.python.org/downloads/) |
+    | .NET SDK | 8.0 | 10.0 | [@microsoft.com](https://dotnet.microsoft.com/en-us/download) |
 
-    Note: we do not support the open source [Mono .NET Framework](https://www.mono-project.com).
+    Note: we do not support the open source [Mono .NET Framework](https://www.mono-project.com). Python 3.14+ is not yet supported due to `pythonnet` compatibility.
 
 2. Install the **stock-indicators** Python package into your environment.
 
@@ -127,7 +127,7 @@ from stock_indicators.indicators.common.quote import Quote
 [[source]](https://github.com/facioquo/stock-indicators-python/blob/main/stock_indicators/indicators/common/quote.py)
 
 | name | type | notes |
-| -- |-- |-- |
+| ---- | ---- | ----- |
 | date | [`datetime.datetime`](https://docs.python.org/3.8/library/datetime.html#datetime.datetime) | Date |
 | open | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | Open price |
 | high | [`decimal.Decimal`](https://docs.python.org/3.8/library/decimal.html?highlight=decimal#decimal.Decimal), Optional | High price |
@@ -289,7 +289,7 @@ from stock_indicators.indicators.common.enums import Match
 ```
 
 | type | description |
-|-- |:-- |
+| ---- | :---------- |
 | `Match.BULL_CONFIRMED` | Confirmation of a prior bull Match |
 | `Match.BULL_SIGNAL` | Matching bullish pattern |
 | `Match.BULL_BASIS` | Bars supporting a bullish Match |
@@ -303,23 +303,23 @@ from stock_indicators.indicators.common.enums import Match
 
 The `CandleProperties` class is an extended version of `Quote`, and contains additional calculated properties.
 
-| name | type | notes |
-| -- |-- |-- |
-| `date` | datetime | Date |
-| `open` | Decimal | Open price |
-| `high` | Decimal | High price |
-| `low` | Decimal | Low price |
-| `close` | Decimal | Close price |
-| `volume` | Decimal | Volume |
-| `size` | Decimal, Optional | `high-low` |
-| `body` | Decimal, Optional | `&#124;open-close&#124;` |
-| `upper_wick` | Decimal, Optional | Upper wick size |
-| `lower_wick` | Decimal, Optional | Lower wick size |
-| `body_pct` | float, Optional | `body/size` |
-| `upper_wick_pct` | float, Optional | `upper_wick/size` |
-| `lower_wick_pct` | float, Optional | `lower_wick/size` |
-| `is_bullish` | bool | `close>open` direction |
-| `is_bearish` | bool | `close<open` direction |
+| name             | type              | notes                    |
+| ---------------- | ----------------- | ------------------------ |
+| `date`           | datetime          | Date                     |
+| `open`           | Decimal           | Open price               |
+| `high`           | Decimal           | High price               |
+| `low`            | Decimal           | Low price                |
+| `close`          | Decimal           | Close price              |
+| `volume`         | Decimal           | Volume                   |
+| `size`           | Decimal, Optional | `high-low`               |
+| `body`           | Decimal, Optional | `&#124;open-close&#124;` |
+| `upper_wick`     | Decimal, Optional | Upper wick size          |
+| `lower_wick`     | Decimal, Optional | Lower wick size          |
+| `body_pct`       | float, Optional   | `body/size`              |
+| `upper_wick_pct` | float, Optional   | `upper_wick/size`        |
+| `lower_wick_pct` | float, Optional   | `lower_wick/size`        |
+| `is_bullish`     | bool              | `close>open` direction   |
+| `is_bearish`     | bool              | `close<open` direction   |
 
 ## Utilities
 

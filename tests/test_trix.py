@@ -1,5 +1,7 @@
 import pytest
+
 from stock_indicators import indicators
+
 
 class TestTRIX:
     def test_standard(self, quotes):
@@ -21,7 +23,7 @@ class TestTRIX:
         assert 0.119769 == round(float(r.signal), 6)
 
         r = results[501]
-        assert  263.3216 == round(float(r.ema3), 4)
+        assert 263.3216 == round(float(r.ema3), 4)
         assert -0.230742 == round(float(r.trix), 6)
         assert -0.204536 == round(float(r.signal), 6)
 
@@ -35,7 +37,7 @@ class TestTRIX:
         assert 502 - ((3 * 20) + 100) == len(results)
 
         last = results.pop()
-        assert  263.3216 == round(float(last.ema3), 4)
+        assert 263.3216 == round(float(last.ema3), 4)
         assert -0.230742 == round(float(last.trix), 6)
         assert -0.204536 == round(float(last.signal), 6)
 
@@ -45,11 +47,12 @@ class TestTRIX:
         assert 482 == len(results)
 
         last = results.pop()
-        assert  263.3216 == round(float(last.ema3), 4)
+        assert 263.3216 == round(float(last.ema3), 4)
         assert -0.230742 == round(float(last.trix), 6)
         assert -0.204536 == round(float(last.signal), 6)
 
     def test_exceptions(self, quotes):
         from System import ArgumentOutOfRangeException
+
         with pytest.raises(ArgumentOutOfRangeException):
             indicators.get_trix(quotes, 0)

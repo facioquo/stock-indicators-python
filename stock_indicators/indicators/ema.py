@@ -3,12 +3,15 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_ema(quotes: Iterable[Quote], lookback_periods: int,
-            candle_part: CandlePart = CandlePart.CLOSE):
+def get_ema(
+    quotes: Iterable[Quote],
+    lookback_periods: int,
+    candle_part: CandlePart = CandlePart.CLOSE,
+):
     """Get EMA calculated.
 
     Exponential Moving Average (EMA) of the Close price.
@@ -31,7 +34,7 @@ def get_ema(quotes: Iterable[Quote], lookback_periods: int,
          - [EMA Reference](https://python.stockindicators.dev/indicators/Ema/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    quotes = Quote.use(quotes, candle_part) # Error occurs if not assigned to local var.
+    quotes = Quote.use(quotes, candle_part)  # pylint: disable=no-member  # Error occurs if not assigned to local var.
     ema_list = CsIndicator.GetEma(quotes, lookback_periods)
     return EMAResults(ema_list, EMAResult)
 
@@ -51,6 +54,8 @@ class EMAResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=EMAResult)
+
+
 class EMAResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of EMA(Exponential Moving Average) results.

@@ -3,8 +3,8 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
 def get_cmf(quotes: Iterable[Quote], lookback_periods: int = 20):
@@ -63,6 +63,8 @@ class CMFResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=CMFResult)
+
+
 class CMFResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Chaikin Money Flow (CMF) results.

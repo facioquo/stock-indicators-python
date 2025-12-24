@@ -3,13 +3,17 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_smi(quotes: Iterable[Quote], lookback_periods: int = 13,
-            first_smooth_periods: int = 25, second_smooth_periods: int = 2,
-            signal_periods: int = 3):
+def get_smi(
+    quotes: Iterable[Quote],
+    lookback_periods: int = 13,
+    first_smooth_periods: int = 25,
+    second_smooth_periods: int = 2,
+    signal_periods: int = 3,
+):
     """Get SMI calculated.
 
     Stochastic Momentum Index (SMI) is a double-smoothed variant of
@@ -39,9 +43,13 @@ def get_smi(quotes: Iterable[Quote], lookback_periods: int = 13,
          - [SMI Reference](https://python.stockindicators.dev/indicators/Smi/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetSmi[Quote](CsList(Quote, quotes), lookback_periods,
-                                        first_smooth_periods, second_smooth_periods,
-                                        signal_periods)
+    results = CsIndicator.GetSmi[Quote](
+        CsList(Quote, quotes),
+        lookback_periods,
+        first_smooth_periods,
+        second_smooth_periods,
+        signal_periods,
+    )
     return SMIResults(results, SMIResult)
 
 
@@ -68,6 +76,8 @@ class SMIResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=SMIResult)
+
+
 class SMIResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Stochastic Momentum Index (SMI) results.

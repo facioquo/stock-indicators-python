@@ -14,7 +14,9 @@ class TestHurst:
         assert 0.483563 == round(float(r.hurst_exponent), 6)
 
     # def test_to_quotes(self, quotes_longest):
-    #     new_quotes = indicators.get_hurst(quotes_longest, len(quotes_longest) - 1).to_quotes()
+    #     new_quotes = indicators.get_hurst(
+    #         quotes_longest, len(quotes_longest) - 1
+    #     ).to_quotes()
 
     #     assert 1  == len(new_quotes)
 

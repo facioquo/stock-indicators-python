@@ -9,36 +9,20 @@
  */
 {
   "name": "Stock Indicators for Python",
-  "image": "mcr.microsoft.com/devcontainers/python:3.12",
-  "forwardPorts": [],
-  "remoteUser": "vscode",
+  "image": "mcr.microsoft.com/devcontainers/python:3.13",
   "features": {
-    "ghcr.io/devcontainers/features/git:1": {
-      "version": "os-provided"
-    },
     "ghcr.io/devcontainers/features/dotnet:2": {
-      "version": "lts"
+      "version": "10.0",
+      "additionalVersions": "9.0,8.0"
     },
     "ghcr.io/devcontainers/features/node:1": {
       "version": "lts",
       "pnpmVersion": "none",
       "nvmVersion": "none"
     },
-    "ghcr.io/devcontainers/features/github-cli:1": {
-      "installDirectlyFromGitHubRelease": true,
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers/features/azure-cli:1": {
-      "version": "latest"
-    },
+    "ghcr.io/devcontainers/features/github-cli:1": {},
     "ghcr.io/devcontainers/features/ruby:1": {
       "version": "3.3"
-    },
-    "ghcr.io/devcontainers-extra/features/isort:2": {
-      "version": "latest"
-    },
-    "ghcr.io/devcontainers-extra/features/pylint:2": {
-      "version": "latest"
     }
   },
   // Use 'settings' to set *default* container specific settings.json
@@ -48,26 +32,39 @@
       // container overrides only
       // otherwise use .vscode/settings.json
       "settings": {
-        "pylint.importStrategy": "fromEnvironment",
-        "python.defaultInterpreterPath": "/usr/local/bin/python"
-      },
-      // required extensions
-      // for recommended, see .vscode/extensions.json
-      "extensions": [
-        "donjayamanne.python-extension-pack",
-        "DavidAnson.vscode-markdownlint",
-        "EditorConfig.EditorConfig",
-        "ms-python.black-formatter",
-        "ms-python.debugpy",
-        "ms-python.isort",
-        "ms-python.python",
-        "ms-python.pylint",
-        "ms-python.vscode-pylance"
-      ]
-    }
-  },
-  // Runs after the container is created
-  "postCreateCommand": "chmod +x .devcontainer/setup.sh && .devcontainer/setup.sh",
-  // Runs every time the container starts
-  "postStartCommand": "echo 'Container started'"
-}
+        "python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+        "python.testing.pytestEnabled": true,
+        "python.testing.unittestEnabled": false,
+        "[python]": {
+          "editor.defaultFormatter": "charliermarsh.ruff",
+          "editor.formatOnSave": true,
+          "editor.codeActionsOnSave": {
+            "source.organizeImports.ruff": "explicit",
+            "source.fixAll.ruff": "explicit"
+          }
+        },
+        // required extensions
+        // for recommended, see .vscode/extensions.json
+        "extensions": [
+          "charliermarsh.ruff",
+          "DavidAnson.vscode-markdownlint",
+          "EditorConfig.EditorConfig",
+          "ms-python.debugpy",
+          "ms-python.python",
+          "ms-python.vscode-pylance"
+        ]
+      }
+    },
+    "forwardPorts": [
+      4000
+    ],
+    "portsAttributes": {
+      "4000": {
+        "label": "Doc Site (Jekyll)",
+        "onAutoForward": "notify"
+      }
+    },
+    "remoteUser": "vscode",
+    "postCreateCommand": ".devcontainer/post-create.sh",
+    "postStartCommand": "echo 'Container started'"
+  }

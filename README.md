@@ -22,9 +22,9 @@ Visit our project site for more information:
 
 ### Windows
 
-1. Install .NET SDK (6.0 or newer):
+1. Install .NET SDK (8.0 or newer):
     - Download from [Microsoft .NET Downloads](https://dotnet.microsoft.com/download)
-    - Or using winget: `winget install Microsoft.DotNet.SDK.6`
+    - Or using winget: `winget install Microsoft.DotNet.SDK.8`
     - Verify: `dotnet --info`
 
 2. Install the package:
@@ -35,7 +35,7 @@ Visit our project site for more information:
 
 ### macOS
 
-1. Install .NET SDK (6.0 or newer):
+1. Install .NET SDK (8.0 or newer):
 
     ```bash
     brew install dotnet-sdk

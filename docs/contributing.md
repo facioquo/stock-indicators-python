@@ -50,11 +50,9 @@ For new features, submit an issue with the `enhancement` label.
 
 ## Development Environment (Quick Setup)
 
-- Recommended tools: Git, Node.js, npm, Docker, Python, Docker Desktop, Visual Studio Code (see `.vscode/extensions.json` for recommended extensions).
-- This project supports [VS Code Dev Containers](https://code.visualstudio.com/docs/remote/containers) for a consistent development environment. Open the project in VS Code and select "Reopen in Container" (requires the Remote - Containers extension).
-- You can test GitHub Actions workflows locally using [`act`](https://github.com/nektos/act), which is preinstalled in the devcontainer. Example: `act -l` to list workflows, `act` to run all workflows.
-
-For more details, see the [official documentation](https://github.com/nektos/act#readme) and the project README.
+- Recommended tools: Git, Python 3.8+, Docker (optional), and Visual Studio Code (see `.vscode/extensions.json` for recommended extensions).
+- This project supports [VS Code Dev Containers](https://code.visualstudio.com/docs/remote/containers) for a consistent development environment. Open the project in VS Code and select "Reopen in Container" (requires the Dev Containers extension).
+- Local installs are plain `pip + venv`; no Poetry/Conda/Hatch required.
 
 ---
 
@@ -68,10 +66,10 @@ For more details, see the [official documentation](https://github.com/nektos/act
 
 ### Windows Setup
 
-1. Install .NET SDK (6.0 or newer):
+1. Install .NET SDK (8.0 or newer):
 
     ```powershell
-    winget install Microsoft.DotNet.SDK.6
+    winget install Microsoft.DotNet.SDK.8
     # Or download from https://dotnet.microsoft.com/download
     ```
 
@@ -80,13 +78,15 @@ For more details, see the [official documentation](https://github.com/nektos/act
     ```powershell
     git clone https://github.com/facioquo/stock-indicators-python.git
     cd stock-indicators-python
-    pip install -r requirements.txt
-    pip install -r requirements-test.txt
+    python -m venv .venv
+    .venv\Scripts\python -m pip install --upgrade pip
+    .venv\Scripts\python -m pip install -e .
+    .venv\Scripts\python -m pip install -r requirements-test.txt
     ```
 
 ### macOS Setup
 
-1. Install .NET SDK (6.0 or newer):
+1. Install .NET SDK (8.0 or newer):
 
     ```bash
     brew install dotnet-sdk
@@ -97,13 +97,16 @@ For more details, see the [official documentation](https://github.com/nektos/act
     ```bash
     git clone https://github.com/facioquo/stock-indicators-python.git
     cd stock-indicators-python
-    pip install -r requirements.txt
-    pip install -r requirements-test.txt
+    python -m venv .venv
+    source .venv/bin/activate
+    python -m pip install --upgrade pip
+    python -m pip install -e .
+    python -m pip install -r requirements-test.txt
     ```
 
 ## Testing
 
-- We use [pytest](https://docs.pytest.org) for testing.
+- We use [Ruff](https://docs.astral.sh/ruff/) for linting/formatting, [Pyright](https://microsoft.github.io/pyright/) for type checking, and [pytest](https://docs.pytest.org) for tests. `pip-audit` runs in CI.
 - Review the `tests` folder for examples of unit tests.  Just copy one of these.
 - New indicators should be tested against manually calculated, proven, accurate results.  It is helpful to include your manual calculations spreadsheet in the appropriate indicator folder when [submitting changes](#submitting-changes).
 - Historical Stock Quotes are automatically added as pytest fixtures.  The various `.csv` files in the `samples` folder are used in the unit tests.  See `tests/conftest.py` for their usage.  A `History.xlsx` Excel file is also included in the `samples` folder that contains the same information but separated by sheets.  Use this for your manual calculations to ensure that it is correct.  Do not commit changes to this Excel file.
@@ -112,41 +115,38 @@ For more details, see the [official documentation](https://github.com/nektos/act
 
 ### Running Tests
 
-```bash
-# install core dependencies
-pip install -r requirements.txt
+Common commands (after activating `.venv`):
 
-# install dependencies
-pip install -r requirements-test.txt
+```bash
+# lint and format
+python -m ruff check .
+python -m ruff format --check .
+
+# type-check
+python -m pyright
 
 # run standard unit tests
-pytest
+python -m pytest
 ```
 
-To run different types of tests, use the following commands:
-
-- **Normal unit tests** (default):
-
-  ```bash
-  pytest
-  ```
+To run different types of tests:
 
 - **Non-standard `localization` tests**:
 
   ```bash
-  pytest -m "localization"
+  python -m pytest -m "localization"
   ```
 
 - **Performance tests**:
 
   ```bash
-  pytest -m "performance"
+  python -m pytest -m "performance"
   ```
 
 - **All tests** (not recommended):
 
   ```bash
-  pytest -m ""
+  python -m pytest -m ""
   ```
 
 You can also use the `-svr A` arguments with pytest to get more detailed output:
@@ -161,14 +161,14 @@ pytest -svr A
 
 ### Performance benchmarking
 
-Running the commands below in your console will show performance data.  You can find the latest results [here]({{site.baseurl}}/performance/).
+Running the commands below in your console will produce [benchmark performance data](https://python.stockindicators.dev/performance/) that we include on our documentation site.
 
 ```bash
 # install dependencies
-pip install -r requirements-test.txt
+python -m pip install -r requirements-test.txt
 
 # run performance tests
-pytest -m "performance"
+python -m pytest -m "performance"
 ```
 
 ## Documentation

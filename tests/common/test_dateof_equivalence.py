@@ -55,6 +55,6 @@ def test_equivalent_non_date_columns(name: str):
     assert len(rows) == len(ref_rows)
 
     # For each row, all columns except the date column (index 1) should match
-    for (ref_row, row) in zip(ref_rows, rows):
+    for ref_row, row in zip(ref_rows, rows):
         assert ref_row[0] == row[0]  # index
         assert ref_row[2:] == row[2:]  # all non-date price/volume columns

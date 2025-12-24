@@ -2,12 +2,12 @@ from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
+from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import to_pydecimal_via_double
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
 def get_super_trend(

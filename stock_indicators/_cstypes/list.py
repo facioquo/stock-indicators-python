@@ -1,4 +1,5 @@
 from collections import deque
+from typing import Iterable
 
 from stock_indicators._cslib import CsList
 
@@ -30,8 +31,20 @@ class List:
         >>>     print(i, end='')
         123
     """
-    def __new__(cls, generic, sequence) -> CsList:
-        cs_list = CsList[generic]()
-        deque(map(cs_list.Add, sequence), maxlen=0)
 
-        return cs_list
+    def __new__(cls, generic: object, sequence: Iterable) -> CsList:
+        if not hasattr(sequence, "__iter__"):
+            raise TypeError("sequence must be iterable")
+
+        try:
+            cs_list = CsList[generic]()
+
+            # Always use individual Add calls for reliability
+            # AddRange has issues with Python.NET type conversion in some cases
+            deque(map(cs_list.Add, sequence), maxlen=0)
+
+            return cs_list
+        except Exception as e:
+            raise ValueError(
+                f"Cannot convert sequence to C# List[{generic}]: {e}"
+            ) from e

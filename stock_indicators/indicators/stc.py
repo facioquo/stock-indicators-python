@@ -3,12 +3,16 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_stc(quotes: Iterable[Quote], cycle_periods: int = 10,
-            fast_periods: int = 23, slow_periods: int = 50):
+def get_stc(
+    quotes: Iterable[Quote],
+    cycle_periods: int = 10,
+    fast_periods: int = 23,
+    slow_periods: int = 50,
+):
     """Get STC calculated.
 
     Schaff Trend Cycle (STC) is a stochastic oscillator view
@@ -35,8 +39,9 @@ def get_stc(quotes: Iterable[Quote], cycle_periods: int = 10,
          - [STC Reference](https://python.stockindicators.dev/indicators/Stc/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetStc[Quote](CsList(Quote, quotes), cycle_periods,
-                                        fast_periods, slow_periods)
+    results = CsIndicator.GetStc[Quote](
+        CsList(Quote, quotes), cycle_periods, fast_periods, slow_periods
+    )
     return STCResults(results, STCResult)
 
 
@@ -55,6 +60,8 @@ class STCResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=STCResult)
+
+
 class STCResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Schaff Trend Cycle (STC) results.

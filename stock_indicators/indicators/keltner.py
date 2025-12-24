@@ -3,12 +3,16 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_keltner(quotes: Iterable[Quote], ema_periods: int = 20,
-                multiplier: float = 2, atr_periods: int = 10):
+def get_keltner(
+    quotes: Iterable[Quote],
+    ema_periods: int = 20,
+    multiplier: float = 2,
+    atr_periods: int = 10,
+):
     """Get Keltner Channels calculated.
 
     Keltner Channels are based on an EMA centerline andATR band widths.
@@ -35,8 +39,9 @@ def get_keltner(quotes: Iterable[Quote], ema_periods: int = 20,
          - [Keltner Channels Reference](https://python.stockindicators.dev/indicators/Keltner/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetKeltner[Quote](CsList(Quote, quotes), ema_periods,
-                                            multiplier, atr_periods)
+    results = CsIndicator.GetKeltner[Quote](
+        CsList(Quote, quotes), ema_periods, multiplier, atr_periods
+    )
     return KeltnerResults(results, KeltnerResult)
 
 
@@ -79,6 +84,8 @@ class KeltnerResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=KeltnerResult)
+
+
 class KeltnerResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Keltner Channels results.

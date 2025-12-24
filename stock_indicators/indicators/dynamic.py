@@ -3,8 +3,8 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
 def get_dynamic(quotes: Iterable[Quote], lookback_periods: int, k_factor: float = 0.6):
@@ -30,7 +30,9 @@ def get_dynamic(quotes: Iterable[Quote], lookback_periods: int, k_factor: float 
          - [McGinley Dynamic Reference](https://python.stockindicators.dev/indicators/Dynamic/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetDynamic[Quote](CsList(Quote, quotes), lookback_periods, k_factor)
+    results = CsIndicator.GetDynamic[Quote](
+        CsList(Quote, quotes), lookback_periods, k_factor
+    )
     return DynamicResults(results, DynamicResult)
 
 
@@ -49,6 +51,8 @@ class DynamicResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=DynamicResult)
+
+
 class DynamicResults(CondenseMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of McGinley Dynamic results.

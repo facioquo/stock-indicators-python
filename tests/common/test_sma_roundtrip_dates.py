@@ -1,4 +1,4 @@
-from datetime import datetime, timezone, timedelta
+from datetime import datetime, timedelta, timezone
 from decimal import Decimal
 
 import pytest
@@ -39,7 +39,9 @@ def _clone_with_date(quotes, transform):
 
 def _mk_utc(d: datetime) -> datetime:
     # Force tz-aware UTC at same Y-M-D h:m:s
-    return datetime(d.year, d.month, d.day, d.hour, d.minute, d.second, tzinfo=timezone.utc)
+    return datetime(
+        d.year, d.month, d.day, d.hour, d.minute, d.second, tzinfo=timezone.utc
+    )
 
 
 def _mk_offset(d: datetime) -> datetime:
@@ -59,7 +61,7 @@ def _mk_date_only(d: datetime) -> datetime:
 
 
 @pytest.mark.parametrize(
-    "variant, maker",
+    ("variant", "maker"),
     [
         ("utc", _mk_utc),
         ("offset", _mk_offset),

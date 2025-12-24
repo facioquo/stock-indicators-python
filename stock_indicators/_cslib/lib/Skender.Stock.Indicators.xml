@@ -1,0 +1,2742 @@
+<?xml version="1.0"?>
+<doc>
+  <assembly>
+    <name>Skender.Stock.Indicators</name>
+  </assembly>
+  <members>
+    <member name="M:Skender.Stock.Indicators.Indicator.GetAdl``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int32})">
+      <summary>
+    Accumulation/Distribution Line (ADL) is a rolling accumulation of Chaikin Money Flow Volume.
+        <para>
+      See
+          <see href="https://dotnet.StockIndicators.dev/indicators/Adl/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+        </para>
+      </summary>
+      <typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+      <param name="quotes">Historical price quotes.</param>
+      <param name="smaPeriods">Optional.  Number of periods in the moving average of ADL.</param>
+      <returns>Time series of ADL values.</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+    </member>
+    <member name="M:Skender.Stock.Indicators.Indicator.GetAdx``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+      <summary>
+    Directional Movement Index (DMI) and Average Directional Movement Index (ADX) is a measure of price directional movement.
+    It includes upward and downward indicators, and is often used to measure strength of trend.
+        <para>
+      See
+          <see href="https://dotnet.StockIndicators.dev/indicators/Adx/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+        </para>
+      </summary>
+      <typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+      <param name="quotes">Historical price quotes.</param>
+      <param name="lookbackPeriods">Number of periods in the lookback window.</param>
+      <returns>Time series of ADX and Plus/Minus Directional values.</returns>
+      <exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+    </member>
+    <member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.AdxResult})">
+      <summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+    </summary>
+    <param name="results">Indicator
+      results to evaluate.</param>
+    <returns>Time
+      series of results, pruned.</returns>
+
+  </member>
+  <member name="M:Skender.Stock.Indicators.Indicator.GetAlligator``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+    <summary>
+    Williams Alligator is an indicator that transposes multiple moving averages,
+    showing chart patterns that creator Bill Williams compared to an alligator's
+    feeding habits when describing market movement.
+      <para>
+      See
+        <see href="https://dotnet.StockIndicators.dev/indicators/Alligator/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+      </para>
+    </summary>
+    <typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+    <param name="quotes">Historical price quotes.</param>
+    <param name="jawPeriods">Lookback periods for the Jaw line.</param>
+    <param name="jawOffset">Offset periods for the Jaw line.</param>
+    <param name="teethPeriods">Lookback periods for the Teeth line.</param>
+    <param name="teethOffset">Offset periods for the Teeth line.</param>
+    <param name="lipsPeriods">Lookback periods for the Lips line.</param>
+    <param name="lipsOffset">Offset periods for the Lips line.</param>
+    <returns>Time series of Alligator values.</returns>
+    <exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+  </member>
+  <member name="M:Skender.Stock.Indicators.Indicator.Condense(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.AlligatorResult})">
+    <summary> Removes non-essential records containing null values with unique consideration for
+      this indicator. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+  </summary>
+  <param name="results">Indicator results to evaluate.</param>
+  <returns>Time series of
+      indicator results, condensed.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.AlligatorResult})">
+  <summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetAlma``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Double,System.Double)">
+<summary>
+    Arnaud Legoux Moving Average (ALMA) is a Gaussian distribution
+    weighted moving average of price over a lookback window.
+  <para>
+      See
+    <see href="https://dotnet.StockIndicators.dev/indicators/Alma/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+  </para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<param name="offset">Adjusts smoothness versus responsiveness.</param>
+<param name="sigma">Defines the width of the Gaussian normal distribution.</param>
+<returns>Time series of ALMA values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.AlmaResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetAroon``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Aroon is a simple oscillator view of how long the new high or low price occured over a lookback window.
+<para>
+      See
+  <see href="https://dotnet.StockIndicators.dev/indicators/Aroon/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of Aroon Up/Down and Oscillator values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.AroonResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetAtr``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Average True Range (ATR) is a measure of volatility that captures gaps and limits between periods.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Atr/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of ATR values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.AtrResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetAtrStop``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Double,Skender.Stock.Indicators.EndType)">
+<summary>
+    ATR Trailing Stop attempts to determine the primary trend of prices by using
+    Average True Range (ATR) band thresholds. It can indicate a buy/sell signal or a
+    trailing stop when the trend changes.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/AtrStop/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods for ATR.</param>
+<param name="multiplier">Multiplier sets the ATR band width.</param>
+<param name="endType">Sets basis for stop offsets (Close or High/Low).</param>
+<returns>Time series of ATR Trailing Stop values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.Condense(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.AtrStopResult})">
+<summary> Removes non-essential records containing null values with unique consideration for
+      this indicator. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator results to evaluate.</param>
+<returns>Time series of
+      indicator results, condensed.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.AtrStopResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetAwesome``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
+<summary>
+    Awesome Oscillator (aka Super AO) is a measure of the gap between a fast and slow period modified moving average.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Awesome/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="fastPeriods">Number of periods in the Fast moving average.</param>
+<param name="slowPeriods">Number of periods in the Slow moving average.</param>
+<returns>Time series of Awesome Oscillator values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.AwesomeResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetBaseQuote``1(System.Collections.Generic.IEnumerable{``0},Skender.Stock.Indicators.CandlePart)">
+<summary>
+    A simple quote transform.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/BasicQuote/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="candlePart">The OHLCV element or simply calculated value type.</param>
+<returns>Time series of Basic Quote values.</returns>
+<exception cref="T:Skender.Stock.Indicators.InvalidQuotesException">Invalid candle part provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetBeta``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0},System.Int32,Skender.Stock.Indicators.BetaType)">
+<summary>
+    Beta shows how strongly one stock responds to systemic volatility of the entire market.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Beta/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotesEval">Historical price quotes for Evaluation.</param>
+<param name="quotesMarket">Historical price quotes for Market.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<param name="type">Type of Beta to calculate.</param>
+<returns>Time series of Beta values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+<exception cref="T:Skender.Stock.Indicators.InvalidQuotesException">Invalid quotes provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.BetaResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetBollingerBands``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Double)">
+<summary>
+    Bollinger Bands® depict volatility as standard deviation boundary lines from a moving average of price.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/BollingerBands/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<param name="standardDeviations">Width of bands. Number of Standard Deviations from the moving average.</param>
+<returns>Time series of Bollinger Band and %B values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.BollingerBandsResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetBop``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Balance of Power (aka Balance of Market Power) is a momentum oscillator that depicts the strength of buying and selling pressure.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Bop/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="smoothPeriods">Number of periods for smoothing.</param>
+<returns>Time series of BOP values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.BopResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetCci``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Commodity Channel Index (CCI) is an oscillator depicting deviation from typical price range, often used to identify cyclical trends.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Cci/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of CCI values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.CciResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetChaikinOsc``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32)">
+<summary>
+    Chaikin Oscillator is the difference between fast and slow Exponential Moving Averages (EMA) of the Accumulation/Distribution Line (ADL).
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/ChaikinOsc/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="fastPeriods">Number of periods for the ADL fast EMA.</param>
+<param name="slowPeriods">Number of periods for the ADL slow EMA.</param>
+<returns>Time series of Chaikin Oscillator, Money Flow Volume, and ADL values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.ChaikinOscResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetChandelier``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Double,Skender.Stock.Indicators.ChandelierType)">
+<summary>
+    Chandelier Exit is typically used for stop-loss and can be computed for both long or short types.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Chandelier/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<param name="multiplier">Multiplier.</param>
+<param name="type">Short or Long variant selection.</param>
+<returns>Time series of Chandelier Exit values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.ChandelierResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetChop``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Choppiness Index (CHOP) measures the trendiness or choppiness over N lookback periods
+    on a scale of 0 to 100.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Chop/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of CHOP values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.ChopResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetCmf``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Chaikin Money Flow (CMF) is the simple moving average of Money Flow Volume (MFV).
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Cmf/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods for the MFV moving average.</param>
+<returns>Time series of Chaikin Money Flow and MFV values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.CmfResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetCmo``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+      The Chande Momentum Oscillator is a momentum indicator depicting the weighted percent of higher prices in financial markets.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Cmo/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of CMO values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.CmoResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetConnorsRsi``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32)">
+<summary>
+    ConnorsRSI is a composite oscillator that incorporates RSI, winning/losing streaks, and percentile gain metrics on scale of 0 to 100.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/ConnorsRsi/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="rsiPeriods">Number of periods in the RSI.</param>
+<param name="streakPeriods">Number of periods for streak RSI.</param>
+<param name="rankPeriods">Number of periods for the percentile ranking.</param>
+<returns>Time series of ConnorsRSI, RSI, Streak RSI, and Percent Rank values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.ConnorsRsiResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetCorrelation``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Correlation Coefficient between two quote histories, based on price.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Correlation/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotesA">Historical price quotes A for comparison.</param>
+<param name="quotesB">Historical price quotes B for comparison.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>
+    Time series of Correlation Coefficient values.
+    R², Variance, and Covariance are also included.
+</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+<exception cref="T:Skender.Stock.Indicators.InvalidQuotesException">Invalid quotes provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.CorrResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetDema``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Double Exponential Moving Average (DEMA) of the price.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Dema/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of Double EMA values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.DemaResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetDoji``1(System.Collections.Generic.IEnumerable{``0},System.Double)">
+<summary>
+    Doji is a single candlestick pattern where open and close price are virtually identical, representing market indecision.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Patterns/Doji/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="maxPriceChangePercent">Optional.  Maximum absolute percent difference in open and close price.</param>
+<returns>Time series of Doji values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.CalcDoji``1(System.Collections.Generic.IEnumerable{``0},System.Double)">
+<summary>
+    Doji is a single candlestick pattern where open and close price are virtually identical, representing market indecision.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Patterns/Doji/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="maxPriceChangePercent">Optional.  Maximum absolute percent difference in open and close price.</param>
+<returns>Time series of Doji values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetDonchian``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Donchian Channels, also called Price Channels, are derived from highest High and lowest Low values over a lookback window.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Donchian/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of Donchian Channel values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.Condense(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.DonchianResult})">
+<summary> Removes non-essential records containing null values with unique consideration for
+      this indicator. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator results to evaluate.</param>
+<returns>Time series of
+      indicator results, condensed.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.DonchianResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetDpo``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Detrended Price Oscillator (DPO) depicts the difference between price and an offset simple moving average.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Dpo/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of DPO values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetDynamic``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Double)">
+<summary>
+    McGinley Dynamic is a more responsive variant of exponential moving average.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Dynamic/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<param name="kFactor">Optional. Range adjustment factor.</param>
+<returns>Time series of Dynamic values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetElderRay``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    The Elder-ray Index depicts buying and selling pressure, also known as Bull and Bear Power.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/ElderRay/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods for the EMA.</param>
+<returns>Time series of Elder-ray Index values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.ElderRayResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetEma``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+      Exponential Moving Average (EMA) of price or any other specified OHLCV element.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Ema/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of EMA values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.InitEma``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+      Extablish a streaming base for Exponential Moving Average (EMA).
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Ema/#streaming?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>EMA base that you can add Quotes to with the .Add(quote) method.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.EmaResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetEpma``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Endpoint Moving Average (EPMA), also known as Least Squares Moving Average (LSMA), plots the projected last point of a linear regression lookback window.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Slope/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of Endpoint Moving Average values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.EpmaResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetFcb``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Fractal Chaos Bands outline high and low price channels to depict broad less-chaotic price movements. FCB is a channelized depiction of Williams Fractals.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Fcb/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="windowSpan">Number of span periods in the evaluation window.</param>
+<returns>Time series of Fractal Chaos Band and Oscillator values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.Condense(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.FcbResult})">
+<summary> Removes non-essential records containing null values with unique consideration for
+      this indicator. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator results to evaluate.</param>
+<returns>Time series of
+      indicator results, condensed.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.FcbResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetFisherTransform``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Ehlers Fisher Transform converts prices into a Gaussian normal distribution.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/FisherTransform/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of Fisher Transform values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetForceIndex``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    The Force Index depicts volume-based buying and selling pressure.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/ForceIndex/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods for the EMA of Force Index.</param>
+<returns>Time series of Force Index values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.ForceIndexResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetFractal``1(System.Collections.Generic.IEnumerable{``0},System.Int32,Skender.Stock.Indicators.EndType)">
+<summary>
+      Williams Fractal is a retrospective price pattern that identifies a central high or low point over a lookback window.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Fractal/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="windowSpan">Number of span periods to the left and right of the evaluation period.</param>
+<param name="endType">Determines use of Close or High/Low wicks for points.</param>
+<returns>Time series of Williams Fractal Bull/Bear values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetFractal``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,Skender.Stock.Indicators.EndType)">
+<summary>
+      Williams Fractal is a retrospective price pattern that identifies a central high or low point over a lookback window.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Fractal/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="leftSpan">Number of span periods to the left of the evaluation period.</param>
+<param name="rightSpan">Number of span periods to the right of the evaluation period.</param>
+<param name="endType">Determines use of Close or High/Low wicks for points.</param>
+<returns>Time series of Williams Fractal Bull/Bear values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.Condense(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.FractalResult})">
+<summary> Removes non-essential records containing null values with unique consideration for
+      this indicator. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator results to evaluate.</param>
+<returns>Time series of
+      indicator results, condensed.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetGator``1(System.Collections.Generic.IEnumerable{``0})">
+<summary>
+    Gator Oscillator is an expanded view of Williams Alligator.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Gator/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<returns>Time series of Gator values.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.Condense(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.GatorResult})">
+<summary> Removes non-essential records containing null values with unique consideration for
+      this indicator. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator results to evaluate.</param>
+<returns>Time series of
+      indicator results, condensed.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.GatorResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetHeikinAshi``1(System.Collections.Generic.IEnumerable{``0})">
+<summary>
+    Heikin-Ashi is a modified candlestick pattern that uses prior day for smoothing.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/HeikinAshi/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<returns>Time series of Heikin-Ashi candlestick values.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetHma``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Hull Moving Average (HMA) is a modified weighted average of price over N lookback periods that reduces lag.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Hma/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of HMA values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.HmaResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetHtTrendline``1(System.Collections.Generic.IEnumerable{``0})">
+<summary>
+    Hilbert Transform Instantaneous Trendline (HTL) is a 5-period trendline of high/low price that uses signal processing to reduce noise.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/HtTrendline/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<returns>Time series of HTL values and smoothed price.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.HtlResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetHurst``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Hurst Exponent is a measure of randomness, trending, and mean-reverting tendencies of incremental return values.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Hurst/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of lookback periods.</param>
+<returns>Time series of Hurst Exponent values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.HurstResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetIchimoku``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32)">
+<summary>
+      Ichimoku Cloud, also known as Ichimoku Kinkō Hyō, is a collection of indicators that depict support and resistance, momentum, and trend direction.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Ichimoku/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="tenkanPeriods">Number of periods in the Tenkan-sen midpoint evaluation.</param>
+<param name="kijunPeriods">Number of periods in the shorter Kijun-sen midpoint evaluation.  This value is also used to offset Senkou and Chinkou spans.</param>
+<param name="senkouBPeriods">Number of periods in the longer Senkou leading span B midpoint evaluation.</param>
+<returns>Time series of Ichimoku Cloud values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetIchimoku``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32,System.Int32)">
+<summary>
+      Ichimoku Cloud, also known as Ichimoku Kinkō Hyō, is a collection of indicators that depict support and resistance, momentum, and trend direction.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Ichimoku/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="tenkanPeriods">Number of periods in the Tenkan-sen midpoint evaluation.</param>
+<param name="kijunPeriods">Number of periods in the shorter Kijun-sen midpoint evaluation.</param>
+<param name="senkouBPeriods">Number of periods in the longer Senkou leading span B midpoint evaluation.</param>
+<param name="offsetPeriods">Number of periods to displace the Senkou and Chikou Spans.</param>
+<returns>Time series of Ichimoku Cloud values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetIchimoku``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32,System.Int32,System.Int32)">
+<summary>
+      Ichimoku Cloud, also known as Ichimoku Kinkō Hyō, is a collection of indicators that depict support and resistance, momentum, and trend direction.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Ichimoku/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="tenkanPeriods">Number of periods in the Tenkan-sen midpoint evaluation.</param>
+<param name="kijunPeriods">Number of periods in the shorter Kijun-sen midpoint evaluation.</param>
+<param name="senkouBPeriods">Number of periods in the longer Senkou leading span B midpoint evaluation.</param>
+<param name="senkouOffset">Number of periods to displace the Senkou Spans.</param>
+<param name="chikouOffset">Number of periods in displace the Chikou Span.</param>
+<returns>Time series of Ichimoku Cloud values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.Condense(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.IchimokuResult})">
+<summary> Removes non-essential records containing null values with unique consideration for
+      this indicator. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator results to evaluate.</param>
+<returns>Time series of
+      indicator results, condensed.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetKama``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32)">
+<summary>
+    Kaufman’s Adaptive Moving Average (KAMA) is an volatility adaptive moving average of price over configurable lookback periods.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Kama/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="erPeriods">Number of Efficiency Ratio (volatility) periods.</param>
+<param name="fastPeriods">Number of periods in the Fast EMA.</param>
+<param name="slowPeriods">Number of periods in the Slow EMA.</param>
+<returns>Time series of KAMA values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.KamaResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetKeltner``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Double,System.Int32)">
+<summary>
+    Keltner Channels are based on an EMA centerline and ATR band widths. See also STARC Bands for an SMA centerline equivalent.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Keltner/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="emaPeriods">Number of periods for the centerline EMA.</param>
+<param name="multiplier">ATR multiplier sets the width of the channel.</param>
+<param name="atrPeriods">Number of periods in the ATR evaluation.</param>
+<returns>Time series of Keltner Channel values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.Condense(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.KeltnerResult})">
+<summary> Removes non-essential records containing null values with unique consideration for
+      this indicator. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator results to evaluate.</param>
+<returns>Time series of
+      indicator results, condensed.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.KeltnerResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetKvo``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32)">
+<summary>
+    Klinger Oscillator depicts volume-based divergence between short and long-term money flow.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Klinger/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="fastPeriods">Number of periods for the short EMA.</param>
+<param name="slowPeriods">Number of periods for the long EMA.</param>
+<param name="signalPeriods">Number of periods Signal line.</param>
+<returns>Time series of Klinger Oscillator values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.KvoResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.MacdResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetMacd``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32)">
+<summary>
+    Moving Average Convergence/Divergence (MACD) is a simple oscillator view of two converging/diverging exponential moving averages.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Macd/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="fastPeriods">Number of periods in the Fast EMA.</param>
+<param name="slowPeriods">Number of periods in the Slow EMA.</param>
+<param name="signalPeriods">Number of periods for the Signal moving average.</param>
+<returns>Time series of MACD values, including MACD, Signal, and Histogram.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetMaEnvelopes``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Double,Skender.Stock.Indicators.MaType)">
+<summary>
+    Moving Average Envelopes is a price band overlay that is offset from the moving average of price over a lookback window.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/MaEnvelopes/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<param name="percentOffset">Percent offset for envelope width.</param>
+<param name="movingAverageType">Moving average type (e.g. EMA, HMA, TEMA, etc.).</param>
+<returns>Time series of MA Envelopes values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.Condense(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.MaEnvelopeResult})">
+<summary> Removes non-essential records containing null values with unique consideration for
+      this indicator. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator results to evaluate.</param>
+<returns>Time series of
+      indicator results, condensed.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetMama``1(System.Collections.Generic.IEnumerable{``0},System.Double,System.Double)">
+<summary>
+    MESA Adaptive Moving Average (MAMA) is a 5-period adaptive moving average of high/low price.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Mama/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="fastLimit">Fast limit threshold.</param>
+<param name="slowLimit">Slow limit threshold.</param>
+<returns>Time series of MAMA values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.MamaResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetMarubozu``1(System.Collections.Generic.IEnumerable{``0},System.Double)">
+<summary>
+    Marubozu is a single candlestick pattern that has no wicks, representing consistent directional movement.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Patterns/Marubozu/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="minBodyPercent">Optional.  Minimum candle body size as percentage.</param>
+<returns>Time series of Marubozu values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.CalcMarubozu``1(System.Collections.Generic.IEnumerable{``0},System.Double)">
+<summary>
+    Marubozu is a single candlestick pattern that has no wicks, representing consistent directional movement.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Patterns/Marubozu/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="minBodyPercent">Optional.  Minimum candle body size as percentage.</param>
+<returns>Time series of Marubozu values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetMfi``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Money Flow Index (MFI) is a price-volume oscillator that shows buying and selling momentum.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Mfi/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of MFI values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.MfiResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetObv``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int32})">
+<summary>
+    On-balance Volume (OBV) is a rolling accumulation of volume based on Close price direction.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Obv/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="smaPeriods">Optional.  Number of periods for an SMA of the OBV line.</param>
+<returns>Time series of OBV values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetParabolicSar``1(System.Collections.Generic.IEnumerable{``0},System.Double,System.Double)">
+<summary>
+      Parabolic SAR (stop and reverse) is a price-time based indicator used to determine trend direction and reversals.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/ParabolicSar/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="accelerationStep">Incremental step size.</param>
+<param name="maxAccelerationFactor">Maximum step threshold.</param>
+<returns>Time series of Parabolic SAR values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetParabolicSar``1(System.Collections.Generic.IEnumerable{``0},System.Double,System.Double,System.Double)">
+<summary>
+      Parabolic SAR (stop and reverse) is a price-time based indicator used to determine trend direction and reversals.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/ParabolicSar/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="accelerationStep">Incremental step size.</param>
+<param name="maxAccelerationFactor">Maximum step threshold.</param>
+<param name="initialFactor">Initial starting acceleration factor.</param>
+<returns>Time series of Parabolic SAR values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.ParabolicSarResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetPivotPoints``1(System.Collections.Generic.IEnumerable{``0},Skender.Stock.Indicators.PeriodSize,Skender.Stock.Indicators.PivotPointType)">
+<summary>
+    Pivot Points depict support and resistance levels, based on the prior lookback window. You can specify window size (e.g. month, week, day, etc).
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/PivotPoints/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="windowSize">Calendar size of the lookback window.</param>
+<param name="pointType">Pivot Point type.</param>
+<returns>Time series of Pivot Points values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.PivotPointsResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetPivots``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32,Skender.Stock.Indicators.EndType)">
+<summary>
+    Pivots is an extended version of Williams Fractal that includes identification of Higher High, Lower Low, Higher Low, and Lower Low trends between pivots in a lookback window.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Pivots/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="leftSpan">Number of span periods to the left of the evaluation period.</param>
+<param name="rightSpan">Number of span periods to the right of the evaluation period.</param>
+<param name="maxTrendPeriods">Number of periods in the lookback window.</param>
+<param name="endType">Determines use of Close or High/Low wicks for points.</param>
+<returns>Time series of Pivots values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.Condense(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.PivotsResult})">
+<summary> Removes non-essential records containing null values with unique consideration for
+      this indicator. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator results to evaluate.</param>
+<returns>Time series of
+      indicator results, condensed.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetPmo``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32)">
+<summary>
+    Price Momentum Oscillator (PMO) is double-smoothed ROC based momentum indicator.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Pmo/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="timePeriods">Number of periods for ROC EMA smoothing.</param>
+<param name="smoothPeriods">Number of periods for PMO EMA smoothing.</param>
+<param name="signalPeriods">Number of periods for Signal line EMA.</param>
+<returns>Time series of PMO values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.PmoResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetPrs``1(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int32},System.Nullable{System.Int32})">
+<summary>
+    Price Relative Strength (PRS), also called Comparative Relative Strength,
+    shows the ratio of two quote histories. It is often used to compare
+    against a market index or sector ETF. When using the optional lookbackPeriods,
+    this also return relative percent change over the specified periods.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Prs/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotesEval">Historical price quotes for evaluation.</param>
+<param name="quotesBase">This is usually market index data, but could be any baseline data that you might use for comparison.</param>
+<param name="lookbackPeriods">Optional. Number of periods for % difference.</param>
+<param name="smaPeriods">Optional.  Number of periods for a PRS SMA signal line.</param>
+<returns>Time series of PRS values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+<exception cref="T:Skender.Stock.Indicators.InvalidQuotesException">Invalid quotes provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetPvo``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32)">
+<summary>
+    Percentage Volume Oscillator (PVO) is a simple oscillator view of two converging/diverging exponential moving averages of Volume.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Pvo/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="fastPeriods">Number of periods in the Fast moving average.</param>
+<param name="slowPeriods">Number of periods in the Slow moving average.</param>
+<param name="signalPeriods">Number of periods for the PVO SMA signal line.</param>
+<returns>Time series of PVO values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.PvoResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetRenko``1(System.Collections.Generic.IEnumerable{``0},System.Decimal,Skender.Stock.Indicators.EndType)">
+<summary>
+      Renko Chart is a modified Japanese candlestick pattern that uses time-lapsed bricks.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Renko/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="brickSize">Fixed brick size ($).</param>
+<param name="endType">End type.  See documentation.</param>
+<returns>Time series of Renko Chart candlestick values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetRenkoAtr``1(System.Collections.Generic.IEnumerable{``0},System.Int32,Skender.Stock.Indicators.EndType)">
+<summary>
+      The ATR Renko Chart is a modified Japanese candlestick pattern based on Average True Range brick size.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Renko/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="atrPeriods">Lookback periods for the ATR evaluation.</param>
+<param name="endType">End type.  See documentation.</param>
+<returns>Time series of Renko Chart candlestick values.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetRoc``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Nullable{System.Int32})">
+<summary>
+      Rate of Change (ROC), also known as Momentum Oscillator, is the percent change of price over a lookback window.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Roc/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<param name="smaPeriods">Optional.  Number of periods for an ROC SMA signal line.</param>
+<returns>Time series of ROC values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.RocResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetRocWb``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32)">
+<summary>
+      Rate of Change with Bands (ROCWB) is the percent change of price over a lookback window with standard deviation bands.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Roc/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<param name="emaPeriods">Number of periods for the ROC EMA line.</param>
+<param name="stdDevPeriods">Number of periods the standard deviation for upper/lower band lines.</param>
+<returns>Time series of ROCWB values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.RocWbResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetRollingPivots``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,Skender.Stock.Indicators.PivotPointType)">
+<summary>
+    Rolling Pivot Points is a modern update to traditional fixed calendar window Pivot Points.
+    It depicts support and resistance levels, based on a defined rolling window and offset.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/RollingPivots/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="windowPeriods">Number of periods in the evaluation window.</param>
+<param name="offsetPeriods">Number of periods to offset the window from the current period.</param>
+<param name="pointType">Pivot Point type.</param>
+<returns>Time series of Rolling Pivot Points values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.RollingPivotsResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetRsi``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Relative Strength Index (RSI) measures strength of the winning/losing streak over N lookback periods
+    on a scale of 0 to 100, to depict overbought and oversold conditions.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Rsi/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of RSI values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.RsiResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetSlope``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Slope of the best fit line is determined by an ordinary least-squares simple linear regression on price.
+    It can be used to help identify trend strength and direction.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Slope/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of Slope values, including Slope, Standard Deviation, R², and a best-fit Line (for the last lookback segment).</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.SlopeResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetSma``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+      Simple Moving Average (SMA) of the price.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Sma/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of SMA values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetSmaAnalysis``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+      Simple Moving Average (SMA) is the average of price over a lookback window.  This extended variant includes mean absolute deviation (MAD), mean square error (MSE), and mean absolute percentage error (MAPE).
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Sma/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of SMA, MAD, MSE, and MAPE values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.SmaResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.SmaAnalysis})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetSmi``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32,System.Int32)">
+<summary>
+      Stochastic Momentum Index is a double-smoothed variant of the Stochastic Oscillator on a scale from -100 to 100.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Smi/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods for the Stochastic lookback.</param>
+<param name="firstSmoothPeriods">Number of periods in the first smoothing.</param>
+<param name="secondSmoothPeriods">Number of periods in the second smoothing.</param>
+<param name="signalPeriods">Number of periods in the EMA of SMI.</param>
+<returns>Time series of Stochastic Momentum Index values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.SmiResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetSmma``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+      Smoothed Moving Average (SMMA) is the average of price over a lookback window using a smoothing method.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Smma/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of SMMA values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.SmmaResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetStarcBands``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Double,System.Int32)">
+<summary>
+    Stoller Average Range Channel (STARC) Bands, are based on an SMA centerline and ATR band widths.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/StarcBands/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="smaPeriods">Number of periods for the centerline SMA.</param>
+<param name="multiplier">ATR multiplier sets the width of the channel.</param>
+<param name="atrPeriods">Number of periods in the ATR evaluation.</param>
+<returns>Time series of STARC Bands values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.Condense(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.StarcBandsResult})">
+<summary> Removes non-essential records containing null values with unique consideration for
+      this indicator. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator results to evaluate.</param>
+<returns>Time series of
+      indicator results, condensed.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.StarcBandsResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetStc``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32)">
+<summary>
+    Schaff Trend Cycle is a stochastic oscillator view of two converging/diverging exponential moving averages.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Stc/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="cyclePeriods">Number of periods for the Trend Cycle.</param>
+<param name="fastPeriods">Number of periods in the Fast EMA.</param>
+<param name="slowPeriods">Number of periods in the Slow EMA.</param>
+<returns>Time series of MACD values, including MACD, Signal, and Histogram.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.StcResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetStdDev``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Nullable{System.Int32})">
+<summary>
+    Rolling Standard Deviation of price over a lookback window.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/StdDev/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<param name="smaPeriods">Optional.  Number of periods in the Standard Deviation SMA signal line.</param>
+<returns>Time series of Standard Deviations values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.StdDevResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetStdDevChannels``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.Int32},System.Double)">
+<summary>
+    Standard Deviation Channels are based on an linear regression centerline and standard deviations band widths.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/StdDevChannels/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Size of the evaluation window.</param>
+<param name="stdDeviations">Width of bands. Number of Standard Deviations from the regression line.</param>
+<returns>Time series of Standard Deviation Channels values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.Condense(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.StdDevChannelsResult})">
+<summary> Removes non-essential records containing null values with unique consideration for
+      this indicator. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator results to evaluate.</param>
+<returns>Time series of
+      indicator results, condensed.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.StdDevChannelsResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetStoch``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32)">
+<summary>
+      Stochastic Oscillator is a momentum indicator that looks back N periods to produce a scale of 0 to 100.
+      %J is also included for the KDJ Index extension.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Stoch/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods for the Oscillator.</param>
+<param name="signalPeriods">Smoothing period for the %D signal line.</param>
+<param name="smoothPeriods">Smoothing period for the %K Oscillator.  Use 3 for Slow or 1 for Fast.</param>
+<returns>Time series of Stochastic Oscillator values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetStoch``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32,System.Double,System.Double,Skender.Stock.Indicators.MaType)">
+<summary>
+      Stochastic Oscillator is a momentum indicator that looks back N periods to produce a scale of 0 to 100.
+      %J is also included for the KDJ Index extension.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Stoch/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods for the Oscillator.</param>
+<param name="signalPeriods">Smoothing period for the %D signal line.</param>
+<param name="smoothPeriods">Smoothing period for the %K Oscillator.  Use 3 for Slow or 1 for Fast.</param>
+<param name="kFactor">Weight of %K in the %J calculation.  Default is 3.</param>
+<param name="dFactor">Weight of %K in the %J calculation.  Default is 2.</param>
+<param name="movingAverageType">Type of moving average to use.  Default is MaType.SMA.  See docs for instructions and options.</param>
+<returns>Time series of Stochastic Oscillator values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.StochResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetStochRsi``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32,System.Int32)">
+<summary>
+    Stochastic RSI is a Stochastic interpretation of the Relative Strength Index.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/StochRsi/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="rsiPeriods">Number of periods for the RSI.</param>
+<param name="stochPeriods">Number of periods for the Stochastic.</param>
+<param name="signalPeriods">Number of periods for the Stochastic RSI SMA signal line.</param>
+<param name="smoothPeriods">Number of periods for Stochastic Smoothing.  Use 1 for Fast or 3 for Slow.</param>
+<returns>Time series of Stochastic RSI values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.StochRsiResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetSuperTrend``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Double)">
+<summary>
+    SuperTrend attempts to determine the primary trend of prices by using
+    Average True Range (ATR) band thresholds around an HL2 midline. It can indicate a buy/sell signal or a
+    trailing stop when the trend changes.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/SuperTrend/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods for ATR.</param>
+<param name="multiplier">Multiplier sets the ATR band width.</param>
+<returns>Time series of SuperTrend values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.Condense(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.SuperTrendResult})">
+<summary> Removes non-essential records containing null values with unique consideration for
+      this indicator. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator results to evaluate.</param>
+<returns>Time series of
+      indicator results, condensed.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.SuperTrendResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetT3``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Double)">
+<summary>
+    Tillson T3 is a smooth moving average that reduces both lag and overshooting.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/T3/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods for the EMA smoothing.</param>
+<param name="volumeFactor">Size of the Volume Factor.</param>
+<returns>Time series of T3 values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetTema``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Triple Exponential Moving Average (TEMA) of the price.  Note: TEMA is often confused with the alternative TRIX oscillator.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Tema/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of Triple EMA values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.TemaResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetTr``1(System.Collections.Generic.IEnumerable{``0})">
+<summary>
+    True Range (TR) is a measure of volatility that captures gaps and limits between periods.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Atr/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<returns>Time series of True Range (TR) values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetTrix``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Nullable{System.Int32})">
+<summary>
+    Triple EMA Oscillator (TRIX) is the rate of change for a 3 EMA smoothing of the price over a lookback window. TRIX is often confused with TEMA.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Trix/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<param name="signalPeriods">Optional.  Number of periods for a TRIX SMA signal line.</param>
+<returns>Time series of TRIX values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.TrixResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetTsi``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32)">
+<summary>
+    True Strength Index (TSI) is a momentum oscillator that depicts trends in price changes.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Tsi/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods for the first EMA.</param>
+<param name="smoothPeriods">Number of periods in the second smoothing.</param>
+<param name="signalPeriods">Number of periods in the TSI SMA signal line.</param>
+<returns>Time series of TSI values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.TsiResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetUlcerIndex``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Ulcer Index (UI) is a measure of downside price volatility over a lookback window.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/UlcerIndex/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of Ulcer Index values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.UlcerIndexResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetUltimate``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Int32,System.Int32)">
+<summary>
+    Ultimate Oscillator uses several lookback periods to weigh buying power against True Range price to produce on oversold / overbought oscillator.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Ultimate/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="shortPeriods">Number of periods in the smallest window.</param>
+<param name="middlePeriods">Number of periods in the middle-sized window.</param>
+<param name="longPeriods">Number of periods in the largest window.</param>
+<returns>Time series of Ultimate Oscillator values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.UltimateResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetVolatilityStop``1(System.Collections.Generic.IEnumerable{``0},System.Int32,System.Double)">
+<summary>
+    Volatility Stop is an ATR based indicator used to determine trend direction, stops, and reversals.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/VolatilityStop/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<param name="multiplier">ATR offset amount.</param>
+<returns>Time series of Volatility Stop values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.VolatilityStopResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetVortex``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Vortex Indicator (VI) is a measure of price directional movement.
+    It includes positive and negative indicators, and is often used to identify trends and reversals.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Vortex/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of VI+ and VI- vortex movement indicator values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.Condense(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.VortexResult})">
+<summary> Removes non-essential records containing null values with unique consideration for
+      this indicator. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator results to evaluate.</param>
+<returns>Time series of
+      indicator results, condensed.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.VortexResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetVwap``1(System.Collections.Generic.IEnumerable{``0},System.Nullable{System.DateTime})">
+<summary>
+    Volume Weighted Average Price (VWAP) is a Volume weighted average of price, typically used on intraday data.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Vwap/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="startDate">Optional anchor date.  If not provided, the first date in quotes is used.</param>
+<returns>Time series of VWAP values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.VwapResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetVwma``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Volume Weighted Moving Average is the volume adjusted average price over a lookback window.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Vwma/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of Volume Weighted Moving Average values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.VwmaResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetWilliamsR``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Williams %R momentum indicator is a stochastic oscillator with scale of -100 to 0. It is exactly the same as the Fast variant of Stochastic Oscillator, but with a different scaling.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/WilliamsR/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of Williams %R values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.WilliamsResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetWma``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary>
+    Weighted Moving Average (WMA) is the linear weighted average of price over N lookback periods. This also called Linear Weighted Moving Average (LWMA).
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/Wma/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="lookbackPeriods">Number of periods in the lookback window.</param>
+<returns>Time series of WMA values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.RemoveWarmupPeriods(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.WmaResult})">
+<summary> Removes the recommended quantity of results from the beginning of the results list
+      using a reverse-engineering approach. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator
+      results to evaluate.</param>
+<returns>Time
+      series of results, pruned.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.GetZigZag``1(System.Collections.Generic.IEnumerable{``0},Skender.Stock.Indicators.EndType,System.Decimal)">
+<summary>
+    Zig Zag is a price chart overlay that simplifies the up and down movements and transitions based on a percent change smoothing threshold.
+<para>
+      See
+<see href="https://dotnet.StockIndicators.dev/indicators/ZigZag/#content?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+      for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="endType">Determines use of Close or High/Low wicks for extreme points.</param>
+<param name="percentChange">Percent price change to set threshold for minimum size movements.</param>
+<returns>Time series of Zig Zag values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Indicator.Condense(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.ZigZagResult})">
+<summary> Removes non-essential records containing null values with unique consideration for
+      this indicator. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="results">Indicator results to evaluate.</param>
+<returns>Time series of
+      indicator results, condensed.</returns>
+
+</member>
+<member name="T:Skender.Stock.Indicators.StochResult">
+<summary>
+      Stochastic indicator results includes aliases for those who prefer the simpler K,D,J outputs.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/Stoch/#response?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<remarks>
+      Standard output properties:
+<list type="table">
+<item>
+<term>Oscillator</term>
+<description>%K Oscillator over prior lookback periods.</description>
+</item>
+<item>
+<term>Signal</term>
+<description>%D Simple moving average of %K Oscillator.</description>
+</item>
+<item>
+<term>PercentJ</term>
+<description>
+            %J is the weighted divergence of %K and %D: %J=3×%K-2×%D
+</description>
+</item>
+</list>
+      These are the aliases of the above properties:
+<list type="table">
+<item>
+<term>K</term>
+<description>Same as Oscillator.</description>
+</item>
+<item>
+<term>D</term>
+<description>Same as Signal.</description>
+</item>
+<item>
+<term>J</term>
+<description>Same as PercentJ.</description>
+</item>
+</list>
+</remarks>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Pruning.RemoveWarmupPeriods``1(System.Collections.Generic.IEnumerable{``0},System.Int32)">
+<summary> Removes a specific quantity from the beginning of the time series list.
+<para>
+        See <see href="https://dotnet.StockIndicators.dev/utilities/#remove-warmup-periods?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see> for more information.
+</para>
+</summary>
+<typeparam name="T">Any series type.</typeparam>
+<param name="series">Collection to evaluate.</param>
+<param name="removePeriods">Exact quantity to remove from the beginning of the series.</param>
+<returns>Time series, pruned.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.Seeking.Find``1(System.Collections.Generic.IEnumerable{``0},System.DateTime)">
+<summary> Finds time series values on a specific date.
+<para>
+        See <see href="https://dotnet.StockIndicators.dev/utilities/#find-indicator-result-by-date?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see> for more information.
+</para>
+</summary>
+<typeparam name="TSeries">Any series type.</typeparam>
+<param name="series">Time series to evaluate.</param>
+<param name="lookupDate">Exact date to lookup.</param>
+<returns>First
+      record in the series on the date specified.</returns>
+
+</member>
+<member name="T:Skender.Stock.Indicators.NullMath">
+<summary>
+            Nullable <c>System.<see cref="T:System.Math"/>
+</c> functions.
+</summary>
+<remarks>
+<c>System.Math</c> infamously does not allow
+            or handle nullable input values.
+            Instead of adding repetitive inline defensive code,
+            we're using these equivalents.  Most are simple wrappers.
+</remarks>
+</member>
+<member name="M:Skender.Stock.Indicators.NullMath.Abs(System.Nullable{System.Double})">
+<summary>
+            Returns the absolute value of a nullable double.
+</summary>
+<param name="value">The nullable double value.</param>
+<returns>The absolute value, or null if the input is null.</returns>
+</member>
+<member name="M:Skender.Stock.Indicators.NullMath.Round(System.Nullable{System.Decimal},System.Int32)">
+<summary>
+            Rounds a nullable decimal value to a specified number of fractional digits.
+</summary>
+<param name="value">The nullable decimal value.</param>
+<param name="digits">The number of fractional digits.</param>
+<returns>The rounded value, or null if the input is null.</returns>
+</member>
+<member name="M:Skender.Stock.Indicators.NullMath.Round(System.Nullable{System.Double},System.Int32)">
+<summary>
+            Rounds a nullable double value to a specified number of fractional digits.
+</summary>
+<param name="value">The nullable double value.</param>
+<param name="digits">The number of fractional digits.</param>
+<returns>The rounded value, or null if the input is null.</returns>
+</member>
+<member name="M:Skender.Stock.Indicators.NullMath.Round(System.Double,System.Int32)">
+<summary>
+            Rounds a double value to a specified number of fractional digits.
+            It is an extension alias of <see cref="M:System.Math.Round(System.Double,System.Int32)"/>
+</summary>
+<param name="value">The double value.</param>
+<param name="digits">The number of fractional digits.</param>
+<returns>The rounded value.</returns>
+</member>
+<member name="M:Skender.Stock.Indicators.NullMath.Round(System.Decimal,System.Int32)">
+<summary>
+            Rounds a decimal value to a specified number of fractional digits.
+            It is an extension alias of <see cref="M:System.Math.Round(System.Decimal,System.Int32)"/>
+</summary>
+<param name="value">The decimal value.</param>
+<param name="digits">The number of fractional digits.</param>
+<returns>The rounded value.</returns>
+</member>
+<member name="M:Skender.Stock.Indicators.NullMath.Null2NaN(System.Nullable{System.Double})">
+<summary>
+            Converts a nullable double value to NaN if it is null.
+</summary>
+<param name="value">The nullable double value.</param>
+<returns>The value, or NaN if the input is null.</returns>
+</member>
+<member name="M:Skender.Stock.Indicators.NullMath.Null2NaN(System.Nullable{System.Decimal})">
+<summary>
+            Converts a nullable decimal value to NaN if it is null.
+</summary>
+<param name="value">The nullable decimal value.</param>
+<returns>The value as a double, or NaN if the input is null.</returns>
+</member>
+<member name="M:Skender.Stock.Indicators.NullMath.NaN2Null(System.Nullable{System.Double})">
+<summary>
+            Converts a nullable double value to null if it is NaN.
+</summary>
+<param name="value">The nullable double value.</param>
+<returns>The value, or null if the input is NaN.</returns>
+</member>
+<member name="M:Skender.Stock.Indicators.NullMath.NaN2Null(System.Double)">
+<summary>
+            Converts a double value to null if it is NaN.
+</summary>
+<param name="value">The double value.</param>
+<returns>The value, or null if the input is NaN.</returns>
+</member>
+<member name="M:Skender.Stock.Indicators.QuoteUtility.Aggregate``1(System.Collections.Generic.IEnumerable{``0},Skender.Stock.Indicators.PeriodSize)">
+<summary>
+      Converts historical quotes into larger bar sizes.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/utilities/#resize-quote-history?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="newSize">PeriodSize enum representing the new bar size.</param>
+<returns>Time series of historical quote values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.QuoteUtility.Aggregate``1(System.Collections.Generic.IEnumerable{``0},System.TimeSpan)">
+<summary>
+      Converts historical quotes into larger bar sizes.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/utilities/#resize-quote-history?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="timeSpan">TimeSpan representing the new bar size.</param>
+<returns>Time series of historical quote values.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">Invalid parameter value provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.QuoteUtility.Use``1(System.Collections.Generic.IEnumerable{``0},Skender.Stock.Indicators.CandlePart)">
+<summary>
+      Optionally select which candle part to use in the calculation.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/indicators/BasicQuote/#candlepart-options?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<param name="candlePart">The OHLCV element or simply calculated value type.</param>
+<returns>Time series of Quote tuple values.</returns>
+<exception cref="T:Skender.Stock.Indicators.InvalidQuotesException">Invalid candle part provided.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.QuoteUtility.Validate``1(System.Collections.Generic.IEnumerable{``0})">
+<summary>
+      Validate historical quotes.
+<para>
+        See
+<see href="https://dotnet.StockIndicators.dev/utilities/#validate-quote-history?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">documentation</see>
+        for more information.
+</para>
+</summary>
+<typeparam name="TQuote">Configurable Quote type.  See Guide for more information.</typeparam>
+<param name="quotes">Historical price quotes.</param>
+<returns>Time series of historical quote values.</returns>
+<exception cref="T:Skender.Stock.Indicators.InvalidQuotesException">Validation check failed.</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.ResultUtility.SyncIndex``2(System.Collections.Generic.IEnumerable{``0},System.Collections.Generic.IEnumerable{``1},Skender.Stock.Indicators.SyncType)">
+<summary>
+      Forces indicator results to have the same date-based records as another result baseline.
+<para>
+        This utility is undocumented.
+</para>
+</summary>
+<typeparam name="TResultA">Any indicator result series type to be transformed.</typeparam>
+<typeparam name="TResultB">Any indicator result series type to be matched.</typeparam>
+<param name="syncMe">The indicator result series to be modified.</param>
+<param name="toMatch">The indicator result series to compare for matching.</param>
+<param name="syncType">Synchronization behavior  See options in SyncType enum.</param>
+<returns>Indicator result series, synchronized to a comparator match.</returns>
+<exception cref="T:System.ArgumentOutOfRangeException">
+      Invalid parameter value provided.
+</exception>
+
+</member>
+<member name="M:Skender.Stock.Indicators.ResultUtility.Condense``1(System.Collections.Generic.IEnumerable{``0})">
+<summary> Removes non-essential records containing null or NaN values. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#condense?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<typeparam name="TResult">Any result
+      type.</typeparam>
+<param name="results">Indicator results to evaluate.</param>
+<returns>Time series of indicator results,
+      condensed.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.ResultUtility.ToTupleChainable(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.IReusableResult})">
+<summary>Converts results into a reusable tuple with warmup periods removed and nulls converted
+      to NaN. <para> See <see href="https://dotnet.StockIndicators.dev/utilities/#using-tuple-results?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="reusable">Indicator results to evaluate.</param>
+<returns>Collection of non-nullable tuple time series of results, without null warmup periods.</returns>
+
+</member>
+<member name="M:Skender.Stock.Indicators.ResultUtility.ToTupleNaN(System.Collections.Generic.IEnumerable{Skender.Stock.Indicators.IReusableResult})">
+<summary>Converts results into a tuple collection with non-nullable NaN to replace null values. <para>
+      See <see href="https://dotnet.StockIndicators.dev/utilities/#using-tuple-results?utm_source=library&amp;utm_medium=inline-help&amp;utm_campaign=embedded">
+      documentation</see> for more information. </para>
+</summary>
+<param name="reusable">Indicator results to evaluate.</param>
+<returns>Collection of tuple time series of
+      results with specified handling of nulls, without pruning.</returns>
+
+</member>
+</members>
+</doc>

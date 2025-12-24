@@ -28,7 +28,7 @@ classifiers = [
 ]
 requires-python = ">=3.8"
 dependencies = [
-    "pythonnet>=3.0.0",
+    "pythonnet>=3.0.5",
     "typing_extensions>=4.4.0"
 ]
 keywords = [
@@ -61,3 +61,56 @@ exclude = ["tests*", "benchmarks*", "test_data*", "docs*"]
 # can be empty if no extra settings are needed, presence enables setuptools_scm
 [tool.setuptools_scm]
 local_scheme = "no-local-version"
+
+[tool.ruff]
+target-version = "py38"
+line-length = 88
+
+[tool.ruff.lint]
+select = [
+    "E",  # pycodestyle errors
+    "F",  # pyflakes
+    "I",  # import sorting
+    "B",  # flake8-bugbear
+    "UP", # pyupgrade
+    "C4", # flake8-comprehensions
+    "TID",# flake8-tidy-imports
+    "PT", # flake8-pytest-style
+    "RUF" # Ruff-specific rules
+]
+ignore = [
+    "B905", # allow zip without strict length check on py38 support floor
+    "E501"  # allow longer docstrings/comments
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["stock_indicators"]
+
+[tool.ruff.lint.per-file-ignores]
+"stock_indicators/__init__.py" = ["F401", "F403"]
+"stock_indicators/_cslib/__init__.py" = ["F401"]
+"stock_indicators/_cstypes/__init__.py" = ["F401"]
+"stock_indicators/indicators/__init__.py" = ["F401"]
+
+[tool.ruff.format]
+quote-style = "double"
+
+[tool.pyright]
+include = ["stock_indicators", "tests"]
+pythonVersion = "3.8"
+typeCheckingMode = "standard"
+useLibraryCodeForTypes = true
+reportMissingImports = "none"
+reportMissingModuleSource = "none"
+reportMissingTypeStubs = "none"
+stubPath = "typings"
+exclude = ["typings"]
+reportInvalidTypeForm = "none"
+reportAttributeAccessIssue = "none"
+reportOperatorIssue = "none"
+reportReturnType = "none"
+reportGeneralTypeIssues = "none"
+reportArgumentType = "none"
+reportInconsistentOverload = "none"
+reportIndexIssue = "none"
+reportCallIssue = "none"

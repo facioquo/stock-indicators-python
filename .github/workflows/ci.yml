@@ -1,0 +1,63 @@
+name: CI
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  linting:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v6
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v5
+        with:
+          dotnet-version: 10.x
+          dotnet-quality: ga
+
+      - name: Setup Python
+        uses: actions/setup-python@v6
+        with:
+          python-version: 3.13
+          cache: "pip"
+
+      - name: Create virtual environment
+        run: python -m venv .venv
+
+      - name: Install dependencies
+        run: |
+          source .venv/bin/activate
+          python -m pip install --upgrade pip
+          python -m pip install -e .
+          python -m pip install -r requirements-test.txt
+
+      - name: Ruff lint
+        run: |
+          source .venv/bin/activate
+          ruff check .
+
+      - name: Ruff format check
+        run: |
+          source .venv/bin/activate
+          ruff format --check .
+
+      - name: Pyright
+        run: |
+          source .venv/bin/activate
+          pyright
+
+      - name: Pytest
+        run: |
+          source .venv/bin/activate
+          pytest
+
+      - name: pip-audit
+        run: |
+          source .venv/bin/activate
+          pip-audit -r requirements.txt -r requirements-test.txt

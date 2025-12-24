@@ -28,5 +28,7 @@ def get_doji(quotes: Iterable[Quote], max_price_change_percent: float = 0.1):
          - [Doji Reference](https://python.stockindicators.dev/indicators/Doji/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetDoji[Quote](CsList(Quote, quotes), max_price_change_percent)
+    results = CsIndicator.GetDoji[Quote](
+        CsList(Quote, quotes), max_price_change_percent
+    )
     return CandleResults(results, CandleResult)
