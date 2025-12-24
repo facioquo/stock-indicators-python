@@ -1,6 +1,5 @@
 from datetime import datetime as PyDateTime
 from typing import Callable, Iterable, List, Optional, Type, TypeVar
-from warnings import warn
 
 from stock_indicators._cslib import CsResultBase
 from stock_indicators._cstypes import DateTime as CsDateTime
@@ -43,27 +42,6 @@ class IndicatorResults(List[_T]):
             super().__init__(map(wrapper_class, data))
             self._csdata = data
         self._wrapper_class = wrapper_class
-
-    def reload(self) -> "IndicatorResults":
-        """
-        Reload a C# array of the results to perform more operations.
-        It is usually called after `done()`.
-        This method is deprecated. It will be removed in the next version.
-        """
-        warn("This method is deprecated.", DeprecationWarning, stacklevel=2)
-        if self._csdata is None:
-            self._csdata = [_._csdata for _ in self]
-        return self
-
-    def done(self) -> "IndicatorResults":
-        """
-        Remove a C# array of the results after finishing all operations.
-        It is not necessary but saves memory.
-        This method is deprecated. It will be removed in the next version.
-        """
-        warn("This method is deprecated.", DeprecationWarning, stacklevel=2)
-        self._csdata = None
-        return self
 
     def _get_csdata_type(self):
         """Get C# result object type."""

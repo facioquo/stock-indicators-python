@@ -1,7 +1,5 @@
 from datetime import datetime
 
-import pytest
-
 from stock_indicators import indicators
 
 
@@ -35,18 +33,6 @@ class TestIndicatorResults:
             assert 234.9350 == round(float(r4[149 + idx].sma), 4)
             assert 255.5500 == round(float(r4[249 + idx].sma), 4)
             assert 251.8600 == round(float(r4[501 + idx].sma), 4)
-
-    def test_done_and_reload(self, quotes):
-        results = indicators.get_sma(quotes, 20)
-        results.done()
-
-        with pytest.raises(ValueError, match=r"Cannot __mul__\(\).*done"):
-            _ = results * 2
-
-        results.reload()
-        r2 = results * 2
-
-        assert len(r2) == len(results) * 2
 
     def test_find(self, quotes):
         results = indicators.get_sma(quotes, 20)

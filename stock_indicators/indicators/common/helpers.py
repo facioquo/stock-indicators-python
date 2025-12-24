@@ -67,4 +67,4 @@ class CondenseMixin:
             return self.__class__(condensed_results, self._wrapper_class)
 
         except Exception as e:
-            raise IndicatorCalculationError("condense failed") from e
+            raise ValueError("Failed to condense results") from e

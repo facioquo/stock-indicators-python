@@ -71,7 +71,6 @@ class TestGator:
 
     def test_gator_with_alligator(self, quotes):
         alligator_results = indicators.get_alligator(quotes)
-        alligator_results.done()
 
         results = indicators.get_gator(alligator_results)
         assert 502 == len(results)

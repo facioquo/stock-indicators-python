@@ -1,5 +1,4 @@
 from typing import Iterable, Optional, TypeVar
-from warnings import warn
 
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
@@ -10,7 +9,7 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 
 def get_starc_bands(
     quotes: Iterable[Quote],
-    sma_periods: Optional[int] = None,
+    sma_periods: int = 20,
     multiplier: float = 2,
     atr_periods: int = 10,
 ):
@@ -40,14 +39,6 @@ def get_starc_bands(
          - [STARC Bands Reference](https://python.stockindicators.dev/indicators/StarcBands/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    if sma_periods is None:
-        warn(
-            "The default value of sma_periods will be removed in the next version. Pass sma_periods explicitly.",
-            DeprecationWarning,
-            stacklevel=2,
-        )
-        sma_periods = 20
-
     results = CsIndicator.GetStarcBands[Quote](
         CsList(Quote, quotes), sma_periods, multiplier, atr_periods
     )
