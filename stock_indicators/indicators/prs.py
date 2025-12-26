@@ -3,12 +3,16 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_prs(eval_quotes: Iterable[Quote], base_quotes: Iterable[Quote],
-            lookback_periods: Optional[int] = None, sma_periods: Optional[int] = None):
+def get_prs(
+    eval_quotes: Iterable[Quote],
+    base_quotes: Iterable[Quote],
+    lookback_periods: Optional[int] = None,
+    sma_periods: Optional[int] = None,
+):
     """Get PRS calculated.
 
     Price Relative Strength (PRS), also called Comparative Relative Strength,
@@ -40,8 +44,12 @@ def get_prs(eval_quotes: Iterable[Quote], base_quotes: Iterable[Quote],
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
 
-    results = CsIndicator.GetPrs[Quote](CsList(Quote, eval_quotes), CsList(Quote, base_quotes),
-                                        lookback_periods, sma_periods)
+    results = CsIndicator.GetPrs[Quote](
+        CsList(Quote, eval_quotes),
+        CsList(Quote, base_quotes),
+        lookback_periods,
+        sma_periods,
+    )
     return PRSResults(results, PRSResult)
 
 

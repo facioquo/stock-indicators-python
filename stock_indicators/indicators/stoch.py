@@ -4,12 +4,19 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.enums import MAType
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_stoch(quotes: Iterable[Quote], lookback_periods: int = 14, signal_periods: int = 3, smooth_periods: int = 3,
-              k_factor: float = 3, d_factor: float = 2, ma_type: MAType = MAType.SMA):
+def get_stoch(
+    quotes: Iterable[Quote],
+    lookback_periods: int = 14,  # pylint: disable=too-many-positional-arguments
+    signal_periods: int = 3,
+    smooth_periods: int = 3,
+    k_factor: float = 3,
+    d_factor: float = 2,
+    ma_type: MAType = MAType.SMA,
+):
     """Get Stochastic Oscillator calculated, with KDJ indexes.
 
     Stochastic Oscillatoris a momentum indicator that looks back N periods to produce a scale of 0 to 100.
@@ -47,8 +54,15 @@ def get_stoch(quotes: Iterable[Quote], lookback_periods: int = 14, signal_period
          - [Stochastic Oscillator Reference](https://python.stockindicators.dev/indicators/Stoch/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    stoch_results = CsIndicator.GetStoch[Quote](CsList(Quote, quotes), lookback_periods, signal_periods, smooth_periods,
-                                                    k_factor, d_factor, ma_type.cs_value)
+    stoch_results = CsIndicator.GetStoch[Quote](
+        CsList(Quote, quotes),
+        lookback_periods,
+        signal_periods,
+        smooth_periods,
+        k_factor,
+        d_factor,
+        ma_type.cs_value,
+    )
     return StochResults(stoch_results, StochResult)
 
 
@@ -87,6 +101,8 @@ class StochResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=StochResult)
+
+
 class StochResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Stochastic Oscillator(with KDJ Index) results.

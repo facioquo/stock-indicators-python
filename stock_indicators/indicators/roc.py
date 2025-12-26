@@ -3,11 +3,15 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_roc(quotes: Iterable[Quote], lookback_periods: int, sma_periods: int = None):
+def get_roc(
+    quotes: Iterable[Quote],
+    lookback_periods: int,
+    sma_periods: Optional[int] = None,
+):
     """Get ROC calculated.
 
     Rate of Change (ROC), also known as Momentum Oscillator, is the percent change
@@ -31,10 +35,18 @@ def get_roc(quotes: Iterable[Quote], lookback_periods: int, sma_periods: int = N
          - [ROC Reference](https://python.stockindicators.dev/indicators/Roc/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetRoc[Quote](CsList(Quote, quotes), lookback_periods, sma_periods)
+    results = CsIndicator.GetRoc[Quote](
+        CsList(Quote, quotes), lookback_periods, sma_periods
+    )
     return ROCResults(results, ROCResult)
 
-def get_roc_with_band(quotes: Iterable[Quote], lookback_periods: int, ema_periods: int, std_dev_periods: int):
+
+def get_roc_with_band(
+    quotes: Iterable[Quote],
+    lookback_periods: int,
+    ema_periods: int,
+    std_dev_periods: int,
+):
     """Get ROCWB calculated.
 
     Rate of Change with Bands (ROCWB) is the percent change of Close price
@@ -61,7 +73,9 @@ def get_roc_with_band(quotes: Iterable[Quote], lookback_periods: int, ema_period
          - [ROCWB Reference](https://python.stockindicators.dev/indicators/Roc/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetRocWb[Quote](CsList(Quote, quotes), lookback_periods, ema_periods, std_dev_periods)
+    results = CsIndicator.GetRocWb[Quote](
+        CsList(Quote, quotes), lookback_periods, ema_periods, std_dev_periods
+    )
     return ROCWBResults(results, ROCWBResult)
 
 
@@ -96,6 +110,8 @@ class ROCResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=ROCResult)
+
+
 class ROCResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of ROC(Rate of Change) results.
@@ -143,6 +159,8 @@ class ROCWBResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=ROCWBResult)
+
+
 class ROCWBResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of ROC(Rate of Change) with band results.

@@ -3,11 +3,13 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.enums import CandlePart
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_basic_quote(quotes: Iterable[Quote], candle_part: CandlePart = CandlePart.CLOSE):
+def get_basic_quote(
+    quotes: Iterable[Quote], candle_part: CandlePart = CandlePart.CLOSE
+):
     """Get Basic Quote calculated.
 
     A simple quote transform (e.g. HL2, OHL3, etc.) and isolation of individual
@@ -28,7 +30,9 @@ def get_basic_quote(quotes: Iterable[Quote], candle_part: CandlePart = CandlePar
          - [Basic Quote Reference](https://python.stockindicators.dev/indicators/BasicQuote/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetBaseQuote[Quote](CsList(Quote, quotes), candle_part.cs_value)
+    results = CsIndicator.GetBaseQuote[Quote](
+        CsList(Quote, quotes), candle_part.cs_value
+    )
     return BasicQuoteResults(results, BasicQuoteResult)
 
 
@@ -47,6 +51,8 @@ class BasicQuoteResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=BasicQuoteResult)
+
+
 class BasicQuoteResults(IndicatorResults[_T]):
     """
     A wrapper class for the list of Basic Quote results.

@@ -3,8 +3,8 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
 def get_adx(quotes: Iterable[Quote], lookback_periods: int = 14):
@@ -54,6 +54,14 @@ class ADXResult(ResultBase):
         self._csdata.Mdi = value
 
     @property
+    def dx(self) -> Optional[float]:
+        return self._csdata.Dx
+
+    @dx.setter
+    def dx(self, value):
+        self._csdata.Dx = value
+
+    @property
     def adx(self) -> Optional[float]:
         return self._csdata.Adx
 
@@ -71,6 +79,8 @@ class ADXResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=ADXResult)
+
+
 class ADXResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of ADX(Average Directional Movement Index) results.

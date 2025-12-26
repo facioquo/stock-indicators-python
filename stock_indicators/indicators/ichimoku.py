@@ -2,28 +2,56 @@ from decimal import Decimal
 from typing import Iterable, Optional, TypeVar, overload
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
+from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.helpers import CondenseMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
 @overload
-def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = 9,
-                 kijun_periods: int = 26, senkou_b_periods: int = 52) -> "IchimokuResults[IchimokuResult]": ...
+def get_ichimoku(
+    quotes: Iterable[Quote],
+    tenkan_periods: int = 9,
+    kijun_periods: int = 26,
+    senkou_b_periods: int = 52,
+) -> "IchimokuResults[IchimokuResult]": ...
+
+
 @overload
-def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int,
-                 kijun_periods: int, senkou_b_periods: int,
-                 offset_periods: int) -> "IchimokuResults[IchimokuResult]": ...
+def get_ichimoku(
+    quotes: Iterable[Quote],
+    tenkan_periods: int,
+    kijun_periods: int,
+    senkou_b_periods: int,
+    *,
+    offset_periods: int,
+) -> "IchimokuResults[IchimokuResult]": ...
+
+
 @overload
-def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int,
-                 kijun_periods: int, senkou_b_periods: int,
-                 senkou_offset: int, chikou_offset: int) -> "IchimokuResults[IchimokuResult]": ...
-def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = None,
-                 kijun_periods: int = None, senkou_b_periods: int = None,
-                 senkou_offset: int = None, chikou_offset: int = None):
+def get_ichimoku(
+    quotes: Iterable[Quote],
+    tenkan_periods: int,
+    kijun_periods: int,
+    senkou_b_periods: int,
+    *,
+    senkou_offset: int,
+    chikou_offset: int,
+) -> "IchimokuResults[IchimokuResult]": ...
+
+
+def get_ichimoku(
+    quotes: Iterable[Quote],
+    tenkan_periods: int = 9,
+    kijun_periods: int = 26,
+    senkou_b_periods: int = 52,
+    senkou_offset: Optional[int] = None,
+    chikou_offset: Optional[int] = None,
+    *,
+    offset_periods: Optional[int] = None,
+) -> "IchimokuResults[IchimokuResult]":  # pylint: disable=too-many-positional-arguments
     """Get Ichimoku Cloud calculated.
 
     Ichimoku Cloud, also known as Ichimoku Kinkō Hyō, is a collection of indicators
@@ -60,17 +88,27 @@ def get_ichimoku(quotes: Iterable[Quote], tenkan_periods: int = None,
          - [Ichimoku Cloud Reference](https://python.stockindicators.dev/indicators/Ichimoku/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
+    # Normalize offset_periods into senkou_offset and chikou_offset
+    if offset_periods is not None:
+        if senkou_offset is None:
+            senkou_offset = offset_periods
+        if chikou_offset is None:
+            chikou_offset = offset_periods
+
+    # Apply default logic when offsets are still None
     if chikou_offset is None:
         if senkou_offset is None:
-            if tenkan_periods is None: tenkan_periods = 9
-            if kijun_periods is None: kijun_periods = 26
-            if senkou_b_periods is None: senkou_b_periods = 52
             senkou_offset = kijun_periods
         chikou_offset = senkou_offset
 
-    results = CsIndicator.GetIchimoku[Quote](CsList(Quote, quotes), tenkan_periods,
-                                             kijun_periods, senkou_b_periods,
-                                             senkou_offset, chikou_offset)
+    results = CsIndicator.GetIchimoku[Quote](
+        CsList(Quote, quotes),
+        tenkan_periods,
+        kijun_periods,
+        senkou_b_periods,
+        senkou_offset,
+        chikou_offset,
+    )
     return IchimokuResults(results, IchimokuResult)
 
 
@@ -121,6 +159,8 @@ class IchimokuResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=IchimokuResult)
+
+
 class IchimokuResults(CondenseMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Ichimoku Cloud results.

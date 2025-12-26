@@ -1,5 +1,6 @@
-from decimal import Decimal as PyDecimal
 import locale
+from decimal import Decimal as PyDecimal
+
 import pytest
 
 from stock_indicators._cslib import CsDecimal
@@ -19,9 +20,7 @@ def _uses_comma_decimal_separator() -> bool:
         import clr  # type: ignore  # noqa: F401
         from System.Globalization import CultureInfo  # type: ignore
 
-        return (
-            CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator == ","
-        )
+        return CultureInfo.CurrentCulture.NumberFormat.NumberDecimalSeparator == ","
     except Exception:
         pass
 
@@ -41,7 +40,10 @@ uses_comma_decimal = _uses_comma_decimal_separator()
 
 
 @pytest.mark.localization
-@pytest.mark.skipif(not uses_comma_decimal, reason="Localization tests require a comma decimal separator culture (e.g., ru-RU)")
+@pytest.mark.skipif(
+    not uses_comma_decimal,
+    reason="Localization tests require a comma decimal separator culture (e.g., ru-RU)",
+)
 class TestLocale:
     """
     These tests are intended for environments where a comma is used as the decimal separator,

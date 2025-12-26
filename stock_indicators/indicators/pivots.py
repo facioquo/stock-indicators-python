@@ -2,18 +2,22 @@ from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
+from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.enums import EndType, PivotTrend
 from stock_indicators.indicators.common.helpers import CondenseMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_pivots(quotes: Iterable[Quote], left_span: int = 2,
-               right_span: int = 2, max_trend_periods: int = 20,
-               end_type: EndType = EndType.HIGH_LOW):
+def get_pivots(
+    quotes: Iterable[Quote],
+    left_span: int = 2,
+    right_span: int = 2,
+    max_trend_periods: int = 20,
+    end_type: EndType = EndType.HIGH_LOW,
+):
     """Get Pivots calculated.
 
     Pivots is an extended version of Williams Fractal that includes
@@ -44,9 +48,13 @@ def get_pivots(quotes: Iterable[Quote], left_span: int = 2,
          - [Pivots Reference](https://python.stockindicators.dev/indicators/Pivots/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetPivots[Quote](CsList(Quote, quotes), left_span,
-                                           right_span, max_trend_periods,
-                                           end_type.cs_value)
+    results = CsIndicator.GetPivots[Quote](
+        CsList(Quote, quotes),
+        left_span,
+        right_span,
+        max_trend_periods,
+        end_type.cs_value,
+    )
     return PivotsResults(results, PivotsResult)
 
 
@@ -109,6 +117,8 @@ class PivotsResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=PivotsResult)
+
+
 class PivotsResults(CondenseMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Pivots results.

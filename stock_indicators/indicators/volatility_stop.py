@@ -3,12 +3,13 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_volatility_stop(quotes: Iterable[Quote], lookback_periods: int = 7,
-                        multiplier: float = 3):
+def get_volatility_stop(
+    quotes: Iterable[Quote], lookback_periods: int = 7, multiplier: float = 3
+):
     """Get Volatility Stop calculated.
 
     Volatility Stop is an ATR based indicator used to
@@ -32,8 +33,9 @@ def get_volatility_stop(quotes: Iterable[Quote], lookback_periods: int = 7,
          - [Volatility Stop Reference](https://python.stockindicators.dev/indicators/VolatilityStop/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetVolatilityStop[Quote](CsList(Quote, quotes), lookback_periods,
-                                                   multiplier)
+    results = CsIndicator.GetVolatilityStop[Quote](
+        CsList(Quote, quotes), lookback_periods, multiplier
+    )
     return VolatilityStopResults(results, VolatilityStopResult)
 
 
@@ -76,6 +78,8 @@ class VolatilityStopResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=VolatilityStopResult)
+
+
 class VolatilityStopResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Volatility Stop results.

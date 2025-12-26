@@ -1,11 +1,14 @@
 from decimal import Decimal
 from typing import Optional, TypeVar
+
 from typing_extensions import override
 
 from stock_indicators._cslib import CsCandleProperties
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import to_pydecimal
-from stock_indicators.indicators.common._contrib.type_resolver import generate_cs_inherited_class
+from stock_indicators.indicators.common._contrib.type_resolver import (
+    generate_cs_inherited_class,
+)
 from stock_indicators.indicators.common.enums import Match
 from stock_indicators.indicators.common.helpers import CondenseMixin
 from stock_indicators.indicators.common.quote import _Quote
@@ -15,26 +18,31 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 class _CandleProperties(_Quote):
     @property
     def size(self) -> Optional[Decimal]:
+        # pylint: disable=no-member  # C# interop properties
         return to_pydecimal(self.High - self.Low)
 
     @property
     def body(self) -> Optional[Decimal]:
-        return to_pydecimal(self.Open - self.Close \
-            if (self.Open > self.Close) \
-            else self.Close - self.Open)
+        # pylint: disable=no-member  # C# interop properties
+        return to_pydecimal(
+            self.Open - self.Close
+            if (self.Open > self.Close)
+            else self.Close - self.Open
+        )
 
     @property
     def upper_wick(self) -> Optional[Decimal]:
-        return to_pydecimal(self.High - (
-            self.Open \
-            if self.Open > self.Close \
-            else self.Close))
+        # pylint: disable=no-member  # C# interop properties
+        return to_pydecimal(
+            self.High - (self.Open if self.Open > self.Close else self.Close)
+        )
 
     @property
     def lower_wick(self) -> Optional[Decimal]:
-        return to_pydecimal((self.Close \
-            if self.Open > self.Close \
-            else self.Open) - self.Low)
+        # pylint: disable=no-member  # C# interop properties
+        return to_pydecimal(
+            (self.Close if self.Open > self.Close else self.Open) - self.Low
+        )
 
     @property
     def body_pct(self) -> Optional[float]:
@@ -50,14 +58,18 @@ class _CandleProperties(_Quote):
 
     @property
     def is_bullish(self) -> bool:
+        # pylint: disable=no-member  # C# interop properties
         return self.Close > self.Open
 
     @property
     def is_bearish(self) -> bool:
+        # pylint: disable=no-member  # C# interop properties
         return self.Close < self.Open
 
 
-class CandleProperties(generate_cs_inherited_class(_CandleProperties, CsCandleProperties)):
+class CandleProperties(
+    generate_cs_inherited_class(_CandleProperties, CsCandleProperties)
+):
     """An extended version of Quote that contains additional calculated properties."""
 
 
@@ -87,7 +99,10 @@ class CandleResult(ResultBase):
     @property
     def candle(self) -> CandleProperties:
         if not self.__candle_prop_cache:
-            self.__candle_prop_cache = CandleProperties.from_csquote(self._csdata.Candle)
+            # pylint: disable=no-member  # C# interop method
+            self.__candle_prop_cache = CandleProperties.from_csquote(
+                self._csdata.Candle
+            )
 
         return self.__candle_prop_cache
 
@@ -98,6 +113,8 @@ class CandleResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=CandleResult)
+
+
 class CandleResults(CondenseMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Candlestick pattern results.
@@ -107,4 +124,6 @@ class CandleResults(CondenseMixin, IndicatorResults[_T]):
 
     @override
     def condense(self):
-        return self.__class__(filter(lambda x: x.match != Match.NONE, self), self._wrapper_class)
+        return self.__class__(
+            filter(lambda x: x.match != Match.NONE, self), self._wrapper_class
+        )

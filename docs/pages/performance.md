@@ -112,8 +112,8 @@ Legend:
   OPS: Operations Per Second, computed as 1 / Mean
 ```
 
-
 ---
+
 # {{ page.title }} for v1.1.0
 
 These are the execution times for the current indicators using two years of historical daily stock quotes (502 periods) with default or typical parameters.
@@ -216,8 +216,8 @@ Legend:
   OPS: Operations Per Second, computed as 1 / Mean
 ```
 
-
 ---
+
 # {{ page.title }} for v1.0.0
 
 These are the execution times for the current indicators using two years of historical daily stock quotes (502 periods) with default or typical parameters.

@@ -3,13 +3,15 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_stdev_channels(quotes: Iterable[Quote],
-                       lookback_periods: Optional[int] = 20,
-                       standard_deviations: float = 2):
+def get_stdev_channels(
+    quotes: Iterable[Quote],
+    lookback_periods: Optional[int] = 20,
+    standard_deviations: float = 2,
+):
     """Get Standard Deviation Channels calculated.
 
     Standard Deviation Channels are based on an linearregression centerline
@@ -33,7 +35,9 @@ def get_stdev_channels(quotes: Iterable[Quote],
          - [Stdev Channels Reference](https://python.stockindicators.dev/indicators/StdDevChannels/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetStdDevChannels[Quote](CsList(Quote, quotes), lookback_periods, standard_deviations)
+    results = CsIndicator.GetStdDevChannels[Quote](
+        CsList(Quote, quotes), lookback_periods, standard_deviations
+    )
     return StdevChannelsResults(results, StdevChannelsResult)
 
 
@@ -76,6 +80,8 @@ class StdevChannelsResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=StdevChannelsResult)
+
+
 class StdevChannelsResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Standard Deviation Channels results.

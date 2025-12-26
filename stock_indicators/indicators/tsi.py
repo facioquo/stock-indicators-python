@@ -3,12 +3,16 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_tsi(quotes: Iterable[Quote], lookback_periods: int = 25,
-           smooth_periods: int = 13, signal_periods: int = 7):
+def get_tsi(
+    quotes: Iterable[Quote],
+    lookback_periods: int = 25,
+    smooth_periods: int = 13,
+    signal_periods: int = 7,
+):
     """Get TSI calculated.
 
     True Strength Index (TSI) is a momentum oscillator
@@ -35,8 +39,9 @@ def get_tsi(quotes: Iterable[Quote], lookback_periods: int = 25,
          - [TSI Reference](https://python.stockindicators.dev/indicators/Tsi/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetTsi[Quote](CsList(Quote, quotes), lookback_periods,
-                                       smooth_periods, signal_periods)
+    results = CsIndicator.GetTsi[Quote](
+        CsList(Quote, quotes), lookback_periods, smooth_periods, signal_periods
+    )
     return TSIResults(results, TSIResult)
 
 
@@ -63,6 +68,8 @@ class TSIResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=TSIResult)
+
+
 class TSIResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of True Strength Index (TSI) results.

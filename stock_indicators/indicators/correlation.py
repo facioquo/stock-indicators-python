@@ -3,12 +3,13 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_correlation(quotes_a: Iterable[Quote], quotes_b: Iterable[Quote],
-                    lookback_periods: int):
+def get_correlation(
+    quotes_a: Iterable[Quote], quotes_b: Iterable[Quote], lookback_periods: int
+):
     """Get Correlation Coefficient calculated.
 
     Correlation Coefficient between two quote histories, based on Close price.
@@ -31,8 +32,9 @@ def get_correlation(quotes_a: Iterable[Quote], quotes_b: Iterable[Quote],
          - [Correlation Coefficient Reference](https://python.stockindicators.dev/indicators/Correlation/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetCorrelation[Quote](CsList(Quote, quotes_a), CsList(Quote, quotes_b),
-                                                lookback_periods)
+    results = CsIndicator.GetCorrelation[Quote](
+        CsList(Quote, quotes_a), CsList(Quote, quotes_b), lookback_periods
+    )
     return CorrelationResults(results, CorrelationResult)
 
 
@@ -83,6 +85,8 @@ class CorrelationResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=CorrelationResult)
+
+
 class CorrelationResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Correlation Coefficient results.

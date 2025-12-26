@@ -3,12 +3,16 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_connors_rsi(quotes: Iterable[Quote], rsi_periods: int = 3,
-                    streak_periods: int = 2, rank_periods: int = 100):
+def get_connors_rsi(
+    quotes: Iterable[Quote],
+    rsi_periods: int = 3,
+    streak_periods: int = 2,
+    rank_periods: int = 100,
+):
     """Get Connors RSI calculated.
 
     Connors RSI is a composite oscillator that incorporates
@@ -35,8 +39,9 @@ def get_connors_rsi(quotes: Iterable[Quote], rsi_periods: int = 3,
          - [Connors RSI Reference](https://python.stockindicators.dev/indicators/ConnorsRsi/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetConnorsRsi[Quote](CsList(Quote, quotes), rsi_periods,
-                                               streak_periods, rank_periods)
+    results = CsIndicator.GetConnorsRsi[Quote](
+        CsList(Quote, quotes), rsi_periods, streak_periods, rank_periods
+    )
     return ConnorsRSIResults(results, ConnorsRSIResult)
 
 
@@ -81,6 +86,8 @@ class ConnorsRSIResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=ConnorsRSIResult)
+
+
 class ConnorsRSIResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Connors RSI results.

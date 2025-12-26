@@ -1,7 +1,6 @@
 import pytest
 
 from stock_indicators import indicators
-from stock_indicators._cslib import CsDecimal
 
 
 class TestSMAExtended:
@@ -10,10 +9,10 @@ class TestSMAExtended:
 
         # Sample value.
         r = results[501]
-        assert float == type(r._csdata.Sma)
-        assert float == type(r._csdata.Mad)
-        assert float == type(r._csdata.Mse)
-        assert float == type(r._csdata.Mape)
+        assert isinstance(r._csdata.Sma, float)
+        assert isinstance(r._csdata.Mad, float)
+        assert isinstance(r._csdata.Mse, float)
+        assert isinstance(r._csdata.Mape, float)
 
     def test_extended(self, quotes):
         results = indicators.get_sma_analysis(quotes, 20)

@@ -4,12 +4,15 @@ from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.enums import CandlePart
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_sma(quotes: Iterable[Quote], lookback_periods: int,
-            candle_part: CandlePart = CandlePart.CLOSE):
+def get_sma(
+    quotes: Iterable[Quote],
+    lookback_periods: int,
+    candle_part: CandlePart = CandlePart.CLOSE,
+):
     """Get SMA calculated.
 
     Simple Moving Average (SMA) is the average of price over a lookback window.
@@ -32,8 +35,8 @@ def get_sma(quotes: Iterable[Quote], lookback_periods: int,
          - [SMA Reference](https://python.stockindicators.dev/indicators/Sma/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    quotes = Quote.use(
-        quotes, candle_part)  # Error occurs if not assigned to local var.
+    # pylint: disable=no-member  # Error occurs if not assigned to local var.
+    quotes = Quote.use(quotes, candle_part)
     results = CsIndicator.GetSma(quotes, lookback_periods)
     return SMAResults(results, SMAResult)
 
@@ -61,7 +64,8 @@ def get_sma_analysis(quotes: Iterable[Quote], lookback_periods: int):
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
     sma_extended_list = CsIndicator.GetSmaAnalysis[Quote](
-        CsList(Quote, quotes), lookback_periods)
+        CsList(Quote, quotes), lookback_periods
+    )
     return SMAAnalysisResults(sma_extended_list, SMAAnalysisResult)
 
 
@@ -80,6 +84,8 @@ class SMAResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=SMAResult)
+
+
 class SMAResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of SMA(Simple Moving Average) results.
@@ -119,6 +125,8 @@ class SMAAnalysisResult(SMAResult):
 
 
 _T = TypeVar("_T", bound=SMAAnalysisResult)
+
+
 class SMAAnalysisResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of SMA Analysis results.

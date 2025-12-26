@@ -3,12 +3,13 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_stdev(quotes: Iterable[Quote], lookback_periods: int,
-              sma_periods: Optional[int] = None):
+def get_stdev(
+    quotes: Iterable[Quote], lookback_periods: int, sma_periods: Optional[int] = None
+):
     """Get Rolling Standard Deviation calculated.
 
     Rolling Standard Deviation of Close price over a lookback window.
@@ -31,7 +32,9 @@ def get_stdev(quotes: Iterable[Quote], lookback_periods: int,
          - [Stdev Reference](https://python.stockindicators.dev/indicators/StdDev/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetStdDev[Quote](CsList(Quote, quotes), lookback_periods, sma_periods)
+    results = CsIndicator.GetStdDev[Quote](
+        CsList(Quote, quotes), lookback_periods, sma_periods
+    )
     return StdevResults(results, StdevResult)
 
 
@@ -74,6 +77,8 @@ class StdevResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=StdevResult)
+
+
 class StdevResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Rolling Standard Deviation results.

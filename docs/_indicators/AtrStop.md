@@ -89,7 +89,6 @@ Created by Welles Wilder, the ATR Trailing Stop indicator attempts to determine 
 
 ![chart for {{page.title}}]({{site.dotnet.charts}}/AtrStop.png)
 
-
 ### Sources
 
 - [C# core]({{site.dotnet.src}}/a-d/AtrStop/AtrStop.Series.cs)

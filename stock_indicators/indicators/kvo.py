@@ -3,12 +3,16 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_kvo(quotes: Iterable[Quote], fast_periods: int = 34,
-            slow_periods: int = 55, signal_periods: int = 13):
+def get_kvo(
+    quotes: Iterable[Quote],
+    fast_periods: int = 34,
+    slow_periods: int = 55,
+    signal_periods: int = 13,
+):
     """Get KVO calculated.
 
     Klinger Volume Oscillator (KVO) depicts volume-based divergence
@@ -35,8 +39,9 @@ def get_kvo(quotes: Iterable[Quote], fast_periods: int = 34,
          - [KVO Reference](https://python.stockindicators.dev/indicators/Kvo/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetKvo[Quote](CsList(Quote, quotes), fast_periods,
-                                        slow_periods, signal_periods)
+    results = CsIndicator.GetKvo[Quote](
+        CsList(Quote, quotes), fast_periods, slow_periods, signal_periods
+    )
     return KVOResults(results, KVOResult)
 
 
@@ -63,6 +68,8 @@ class KVOResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=KVOResult)
+
+
 class KVOResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Klinger Volume Oscillator (KVO) results.

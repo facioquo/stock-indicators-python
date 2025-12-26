@@ -3,12 +3,16 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_pmo(quotes: Iterable[Quote], time_periods: int = 35,
-            smooth_periods: int = 20, signal_periods: int = 10):
+def get_pmo(
+    quotes: Iterable[Quote],
+    time_periods: int = 35,
+    smooth_periods: int = 20,
+    signal_periods: int = 10,
+):
     """Get PMO calculated.
 
     Price Momentum Oscillator (PMO) is double-smoothed ROC
@@ -35,8 +39,9 @@ def get_pmo(quotes: Iterable[Quote], time_periods: int = 35,
          - [PMO Reference](https://python.stockindicators.dev/indicators/Pmo/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetPmo[Quote](CsList(Quote, quotes), time_periods,
-                                        smooth_periods, signal_periods)
+    results = CsIndicator.GetPmo[Quote](
+        CsList(Quote, quotes), time_periods, smooth_periods, signal_periods
+    )
     return PMOResults(results, PMOResult)
 
 
@@ -63,6 +68,8 @@ class PMOResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=PMOResult)
+
+
 class PMOResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Price Momentum Oscillator (PMO) results.

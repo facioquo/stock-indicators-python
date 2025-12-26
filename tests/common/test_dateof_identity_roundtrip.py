@@ -4,6 +4,7 @@ Verifies 1:1 date alignment and exact equality across five diverse indicators.
 """
 
 from datetime import timezone
+
 import pytest
 
 from stock_indicators import indicators

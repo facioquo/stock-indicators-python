@@ -20,14 +20,14 @@ jobs:
 
         include:
 
-          # Primary testing on Ubuntu (free tier) with older configuration
+          # Primary testing on Ubuntu (free tier) with minimum supported .NET version
           - os: ubuntu-22.04
-            dotnet-version: "6.x"
+            dotnet-version: "8.x"
             python-version: "3.8"
 
           # Primary testing on Ubuntu (free tier) with newer configuration
           - os: ubuntu-24.04-arm
-            dotnet-version: "9.x"
+            dotnet-version: "10.x"
             python-version: "3.13"
             post-summary: true
 
@@ -46,10 +46,10 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v5
+        uses: actions/checkout@v6
 
       - name: Check debug settings
-        if: ${{ matrix.post-summary }} == 'true'
+        if: ${{ matrix['post-summary'] == true }}
         shell: bash
         run: |
           echo "Checking for debug logging settings in package files..."
@@ -64,13 +64,13 @@ jobs:
           echo "✓ No debug logging settings found."
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v4
+        uses: actions/setup-dotnet@v5
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
           dotnet-quality: ga
 
       - name: Setup Python
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v6
         with:
           python-version: ${{ matrix.python-version }}
           cache: "pip"
@@ -97,6 +97,6 @@ jobs:
 
       - name: Post test summary
         uses: test-summary/action@v2
-        if: ${{ matrix.post-summary }} == 'true'
+        if: ${{ matrix['post-summary'] == true }}
         with:
           paths: test-results.xml

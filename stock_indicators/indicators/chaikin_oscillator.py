@@ -3,11 +3,13 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_chaikin_osc(quotes: Iterable[Quote], fast_periods: int = 3, slow_periods: int = 10):
+def get_chaikin_osc(
+    quotes: Iterable[Quote], fast_periods: int = 3, slow_periods: int = 10
+):
     """Get Chaikin Oscillator calculated.
 
     Chaikin Oscillator is the difference between fast and slow
@@ -31,7 +33,9 @@ def get_chaikin_osc(quotes: Iterable[Quote], fast_periods: int = 3, slow_periods
          - [Chaikin Oscillator Reference](https://python.stockindicators.dev/indicators/ChaikinOsc/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetChaikinOsc[Quote](CsList(Quote, quotes), fast_periods, slow_periods)
+    results = CsIndicator.GetChaikinOsc[Quote](
+        CsList(Quote, quotes), fast_periods, slow_periods
+    )
     return ChaikinOscResults(results, ChaikinOscResult)
 
 
@@ -74,6 +78,8 @@ class ChaikinOscResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=ChaikinOscResult)
+
+
 class ChaikinOscResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Chaikin Oscillator results.

@@ -3,14 +3,19 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_alligator(quotes: Iterable[Quote],
-                  jaw_periods: int = 13, jaw_offset: int = 8,
-                  teeth_periods: int = 8, teeth_offset: int = 5,
-                  lips_periods: int = 5, lips_offset: int = 3):
+def get_alligator(
+    quotes: Iterable[Quote],  # pylint: disable=too-many-positional-arguments
+    jaw_periods: int = 13,
+    jaw_offset: int = 8,
+    teeth_periods: int = 8,
+    teeth_offset: int = 5,
+    lips_periods: int = 5,
+    lips_offset: int = 3,
+):
     """Get Williams Alligator calculated.
 
     Williams Alligator is an indicator that transposes multiple moving averages,
@@ -47,10 +52,15 @@ def get_alligator(quotes: Iterable[Quote],
          - [Williams Alligator Reference](https://python.stockindicators.dev/indicators/Alligator/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    alligator_results = CsIndicator.GetAlligator[Quote](CsList(Quote, quotes),
-                                                        jaw_periods, jaw_offset,
-                                                        teeth_periods, teeth_offset,
-                                                        lips_periods, lips_offset)
+    alligator_results = CsIndicator.GetAlligator[Quote](
+        CsList(Quote, quotes),
+        jaw_periods,
+        jaw_offset,
+        teeth_periods,
+        teeth_offset,
+        lips_periods,
+        lips_offset,
+    )
     return AlligatorResults(alligator_results, AlligatorResult)
 
 
@@ -85,6 +95,8 @@ class AlligatorResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=AlligatorResult)
+
+
 class AlligatorResults(CondenseMixin, RemoveWarmupMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Williams Alligator results.

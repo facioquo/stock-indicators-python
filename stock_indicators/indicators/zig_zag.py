@@ -2,17 +2,20 @@ from decimal import Decimal
 from typing import Iterable, Optional, TypeVar
 
 from stock_indicators._cslib import CsIndicator
-from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import Decimal as CsDecimal
+from stock_indicators._cstypes import List as CsList
 from stock_indicators._cstypes import to_pydecimal
 from stock_indicators.indicators.common.enums import EndType
 from stock_indicators.indicators.common.helpers import CondenseMixin
-from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 from stock_indicators.indicators.common.quote import Quote
+from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
 
 
-def get_zig_zag(quotes: Iterable[Quote], end_type: EndType = EndType.CLOSE,
-                percent_change: float = 5):
+def get_zig_zag(
+    quotes: Iterable[Quote],
+    end_type: EndType = EndType.CLOSE,
+    percent_change: float = 5,
+):
     """Get Zig Zag calculated.
 
     Zig Zag is a price chart overlay that simplifies the up and down
@@ -36,8 +39,9 @@ def get_zig_zag(quotes: Iterable[Quote], end_type: EndType = EndType.CLOSE,
          - [Zig Zag Reference](https://python.stockindicators.dev/indicators/ZigZag/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
-    results = CsIndicator.GetZigZag[Quote](CsList(Quote, quotes), end_type.cs_value,
-                                           CsDecimal(percent_change))
+    results = CsIndicator.GetZigZag[Quote](
+        CsList(Quote, quotes), end_type.cs_value, CsDecimal(percent_change)
+    )
     return ZigZagResults(results, ZigZagResult)
 
 
@@ -80,6 +84,8 @@ class ZigZagResult(ResultBase):
 
 
 _T = TypeVar("_T", bound=ZigZagResult)
+
+
 class ZigZagResults(CondenseMixin, IndicatorResults[_T]):
     """
     A wrapper class for the list of Zig Zag results.

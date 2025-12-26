@@ -18,7 +18,6 @@ from pathlib import Path
 
 import pytest
 
-from stock_indicators._cslib import clr
 from stock_indicators.indicators.common import Quote  # pre-initialized
 from stock_indicators.logging_config import configure_logging
 
@@ -38,7 +37,7 @@ base_dir = Path(__file__).parent.parent / "test_data"
 @pytest.fixture(autouse=True, scope="session")
 def setup_clr_culture():
     """Configure CLR culture settings for all tests."""
-    import clr
+    import clr  # noqa: F401
     from System.Globalization import CultureInfo
     from System.Threading import Thread
 
@@ -63,7 +62,8 @@ def get_data_from_csv(filename):
     quotes_dir = base_dir / "quotes"
     if not base_dir.exists() or not quotes_dir.exists():
         raise FileNotFoundError(
-            "Test data not found. Please see README.md for test data setup instructions."
+            "Test data not found. Please see README.md "
+            "for test data setup instructions."
         )
 
     data_path = quotes_dir / f"{filename}.csv"
@@ -72,7 +72,7 @@ def get_data_from_csv(filename):
     if not data_path.exists():
         raise FileNotFoundError(f"Test data file not found: {filename}")
 
-    with open(data_path, "r", newline="", encoding="utf-8") as csvfile:
+    with open(data_path, newline="", encoding="utf-8") as csvfile:
         reader = csv.reader(csvfile)
         data = list(reader)
     return data[1:]  # skips the first row, those are headers
@@ -89,11 +89,14 @@ def parse_decimal(value):
 
 def parse_date(date_str):
     """Parse date value across many common formats.
+
     Supported families:
     - Date-only: YYYY-MM-DD, YYYYMMDD, DD-MM-YYYY, MM/DD/YYYY
-    - Naive date+time: YYYY-MM-DDTHH:MM, YYYY-MM-DDTHH:MM:SS, YYYY-MM-DDTHH:MM:SS.sss[sss], YYYYMMDDTHHMMSS
-    - With offset: ISO-8601 extended with offset (e.g., +00:00, -04:00, +05:30, with optional fractions);
-      ISO basic with offset without colon: YYYYMMDDTHHMMSS+0000
+    - Naive date+time: YYYY-MM-DDTHH:MM, YYYY-MM-DDTHH:MM:SS,
+      YYYY-MM-DDTHH:MM:SS.sss[sss], YYYYMMDDTHHMMSS
+    - With offset: ISO-8601 extended with offset (e.g., +00:00, -04:00, +05:30,
+      with optional fractions); ISO basic with offset without colon:
+      YYYYMMDDTHHMMSS+0000
     - Zulu: ...Z with optional fractional seconds
     - RFC1123/HTTP-date: Fri, 22 Aug 2025 17:45:30 GMT
     - IANA zone name appended after a space: YYYY-MM-DDTHH:MM:SS America/New_York
@@ -123,7 +126,8 @@ def parse_date(date_str):
                 try:
                     return dt.replace(tzinfo=ZoneInfo(zone))
                 except Exception:
-                    # Fallback if IANA zone isn't available on the system: treat as naive
+                    # Fallback if IANA zone isn't available on the system:
+                    # treat as naive
                     return dt
             # ZoneInfo not available; treat as naive
             return dt
@@ -144,7 +148,8 @@ def parse_date(date_str):
         # ISO extended with Zulu or offset, including fractional seconds
         if "T" in s and (s.endswith("Z") or re.search(r"[+-]\d{2}:?\d{2}$", s)):
             s_norm = s.replace("Z", "+00:00")
-            # If offset without colon at end (e.g., +0000), insert colon for fromisoformat
+            # If offset without colon at end (e.g., +0000), insert colon for
+            # fromisoformat
             m_off = re.search(r"([+-])(\d{2})(\d{2})$", s_norm)
             if m_off and ":" not in s_norm[-6:]:
                 s_norm = (
@@ -182,7 +187,8 @@ def parse_date(date_str):
         # As a final attempt, try fromisoformat on whatever remains
         return datetime.fromisoformat(s)
     except Exception:
-        # Last-resort fallback to keep tests running; individual tests will assert equality
+        # Last-resort fallback to keep tests running; individual tests will
+        # assert equality
         return datetime.now()
 
 

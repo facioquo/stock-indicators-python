@@ -8,7 +8,6 @@ class TestSTARCBands:
         sma_periods = 20
         multiplier = 2
         atr_periods = 14
-        lookback_periods = max(sma_periods, atr_periods)
 
         results = indicators.get_starc_bands(
             quotes, sma_periods, multiplier, atr_periods

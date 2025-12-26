@@ -31,47 +31,46 @@ class TestGator:
         assert r.upper is None
         assert -0.0406 == round(float(r.lower), 4)
         assert r.is_upper_expanding is None
-        assert r.is_lower_expanding == False
+        assert not r.is_lower_expanding
 
         r = results[19]
         assert r.upper is None
         assert -1.0018 == round(float(r.lower), 4)
         assert r.is_upper_expanding is None
-        assert r.is_lower_expanding == True
+        assert r.is_lower_expanding
 
         r = results[20]
         assert 0.4004 == round(float(r.upper), 4)
         assert -1.0130 == round(float(r.lower), 4)
         assert r.is_upper_expanding is None
-        assert r.is_lower_expanding == True
+        assert r.is_lower_expanding
 
         r = results[21]
         assert 0.7298 == round(float(r.upper), 4)
         assert -0.6072 == round(float(r.lower), 4)
-        assert r.is_upper_expanding == True
-        assert r.is_lower_expanding == False
+        assert r.is_upper_expanding
+        assert not r.is_lower_expanding
 
         r = results[99]
         assert 0.5159 == round(float(r.upper), 4)
         assert -0.2320 == round(float(r.lower), 4)
-        assert r.is_upper_expanding == False
-        assert r.is_lower_expanding == True
+        assert not r.is_upper_expanding
+        assert r.is_lower_expanding
 
         r = results[249]
         assert 3.1317 == round(float(r.upper), 4)
         assert -1.8058 == round(float(r.lower), 4)
-        assert r.is_upper_expanding == True
-        assert r.is_lower_expanding == False
+        assert r.is_upper_expanding
+        assert not r.is_lower_expanding
 
         r = results[501]
         assert 7.4538 == round(float(r.upper), 4)
         assert -9.2399 == round(float(r.lower), 4)
-        assert r.is_upper_expanding == True
-        assert r.is_lower_expanding == True
+        assert r.is_upper_expanding
+        assert r.is_lower_expanding
 
     def test_gator_with_alligator(self, quotes):
         alligator_results = indicators.get_alligator(quotes)
-        alligator_results.done()
 
         results = indicators.get_gator(alligator_results)
         assert 502 == len(results)
@@ -95,8 +94,8 @@ class TestGator:
         last = results.pop()
         assert 7.4538 == round(float(last.upper), 4)
         assert -9.2399 == round(float(last.lower), 4)
-        assert last.is_upper_expanding == True
-        assert last.is_lower_expanding == True
+        assert last.is_upper_expanding
+        assert last.is_lower_expanding
 
     def test_condense(self, quotes):
         results = indicators.get_gator(quotes).condense()
@@ -106,5 +105,5 @@ class TestGator:
         last = results.pop()
         assert 7.4538 == round(float(last.upper), 4)
         assert -9.2399 == round(float(last.lower), 4)
-        assert last.is_upper_expanding == True
-        assert last.is_lower_expanding == True
+        assert last.is_upper_expanding
+        assert last.is_lower_expanding
