@@ -26,12 +26,8 @@ class TestDecimalConversionComparison:
             string_result = to_pydecimal(cs_decimal)
             double_result = to_pydecimal_via_double(cs_decimal)
 
-            # Check if they're the same
-            if string_result == double_result:
-                # No precision loss
-                assert string_result == double_result
-            else:
-                # Document precision loss
+            # Document precision loss, if any
+            if string_result != double_result:
                 print(f"Precision difference for {py_decimal}:")
                 print(f"  String method: {string_result}")
                 print(f"  Double method: {double_result}")
