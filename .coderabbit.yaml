@@ -68,7 +68,5 @@ reviews:
 knowledge_base:
   code_guidelines:
     filePatterns:
-      - "**/agents.md"
-      - ".github/copilot-instructions.md"
-      - ".github/instructions/**/*.instructions.md"
-      - ".github/skills/**/*skill.md"
+      - "**/AGENTS.md"
+      - ".github/skills/**"
