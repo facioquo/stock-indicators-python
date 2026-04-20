@@ -4,7 +4,7 @@ from typing import Iterable, Optional, TypeVar
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import to_pydecimal
+from stock_indicators._cstypes import to_pydecimal_via_double
 from stock_indicators.indicators.common.helpers import CondenseMixin, RemoveWarmupMixin
 from stock_indicators.indicators.common.quote import Quote
 from stock_indicators.indicators.common.results import IndicatorResults, ResultBase
@@ -43,7 +43,7 @@ class FCBResult(ResultBase):
 
     @property
     def upper_band(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.UpperBand)
+        return to_pydecimal_via_double(self._csdata.UpperBand)
 
     @upper_band.setter
     def upper_band(self, value):
@@ -51,7 +51,7 @@ class FCBResult(ResultBase):
 
     @property
     def lower_band(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.LowerBand)
+        return to_pydecimal_via_double(self._csdata.LowerBand)
 
     @lower_band.setter
     def lower_band(self, value):

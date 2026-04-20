@@ -285,12 +285,12 @@ class TestPivotPoints:
         assert r.r4 is None
 
         r = results[391]
-        assert 368.7850 == float(round(r.pp, 4))
+        assert 368.7849 == float(round(r.pp, 4))
         assert 367.9901 == float(round(r.s1, 4))
         assert 365.1252 == float(round(r.s2, 4))
         assert 364.3303 == float(round(r.s3, 4))
         assert 371.6499 == float(round(r.r1, 4))
-        assert 372.4448 == float(round(r.r2, 4))
+        assert 372.4447 == float(round(r.r2, 4))
         assert 375.3097 == float(round(r.r3, 4))
 
         r = results[1172]

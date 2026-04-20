@@ -4,7 +4,7 @@ from typing import Iterable, Optional, TypeVar, overload
 from stock_indicators._cslib import CsIndicator
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import to_pydecimal
+from stock_indicators._cstypes import to_pydecimal_via_double
 from stock_indicators.indicators.common.enums import EndType
 from stock_indicators.indicators.common.helpers import CondenseMixin
 from stock_indicators.indicators.common.quote import Quote
@@ -14,13 +14,15 @@ from stock_indicators.indicators.common.results import IndicatorResults, ResultB
 @overload
 def get_fractal(
     quotes: Iterable[Quote], window_span: int = 2, end_type=EndType.HIGH_LOW
-) -> "FractalResults[FractalResult]": ...
+) -> "FractalResults[FractalResult]":
+    pass
 
 
 @overload
 def get_fractal(
     quotes: Iterable[Quote], left_span: int, right_span: int, end_type=EndType.HIGH_LOW
-) -> "FractalResults[FractalResult]": ...
+) -> "FractalResults[FractalResult]":
+    pass
 
 
 def get_fractal(
@@ -76,7 +78,7 @@ class FractalResult(ResultBase):
 
     @property
     def fractal_bear(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.FractalBear)
+        return to_pydecimal_via_double(self._csdata.FractalBear)
 
     @fractal_bear.setter
     def fractal_bear(self, value):
@@ -84,7 +86,7 @@ class FractalResult(ResultBase):
 
     @property
     def fractal_bull(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.FractalBull)
+        return to_pydecimal_via_double(self._csdata.FractalBull)
 
     @fractal_bull.setter
     def fractal_bull(self, value):

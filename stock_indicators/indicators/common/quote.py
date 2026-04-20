@@ -6,7 +6,7 @@ from stock_indicators._cslib import CsQuote, CsQuoteUtility
 from stock_indicators._cstypes import DateTime as CsDateTime
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes import List as CsList
-from stock_indicators._cstypes import to_pydatetime, to_pydecimal
+from stock_indicators._cstypes import to_pydatetime, to_pydecimal_via_double
 from stock_indicators.indicators.common._contrib.type_resolver import (
     generate_cs_inherited_class,
 )
@@ -31,7 +31,7 @@ def _set_date(quote, value: datetime) -> None:
 
 def _get_open(quote) -> Optional[Decimal]:
     """Get the open property with proper null handling."""
-    return to_pydecimal(quote.Open)
+    return to_pydecimal_via_double(quote.Open)
 
 
 def _set_open(quote, value: Optional[Union[int, float, Decimal, str]]) -> None:
@@ -44,7 +44,7 @@ def _set_open(quote, value: Optional[Union[int, float, Decimal, str]]) -> None:
 
 def _get_high(quote) -> Optional[Decimal]:
     """Get the high property with proper null handling."""
-    return to_pydecimal(quote.High)
+    return to_pydecimal_via_double(quote.High)
 
 
 def _set_high(quote, value: Optional[Union[int, float, Decimal, str]]) -> None:
@@ -55,7 +55,7 @@ def _set_high(quote, value: Optional[Union[int, float, Decimal, str]]) -> None:
 
 def _get_low(quote) -> Optional[Decimal]:
     """Get the low property with proper null handling."""
-    return to_pydecimal(quote.Low)
+    return to_pydecimal_via_double(quote.Low)
 
 
 def _set_low(quote, value: Optional[Union[int, float, Decimal, str]]) -> None:
@@ -66,7 +66,7 @@ def _set_low(quote, value: Optional[Union[int, float, Decimal, str]]) -> None:
 
 def _get_close(quote) -> Optional[Decimal]:
     """Get the close property with proper null handling."""
-    return to_pydecimal(quote.Close)
+    return to_pydecimal_via_double(quote.Close)
 
 
 def _set_close(quote, value: Optional[Union[int, float, Decimal, str]]) -> None:
@@ -77,7 +77,7 @@ def _set_close(quote, value: Optional[Union[int, float, Decimal, str]]) -> None:
 
 def _get_volume(quote) -> Optional[Decimal]:
     """Get the volume property with proper null handling."""
-    return to_pydecimal(quote.Volume)
+    return to_pydecimal_via_double(quote.Volume)
 
 
 def _set_volume(quote, value: Optional[Union[int, float, Decimal, str]]) -> None:
@@ -140,11 +140,11 @@ class _Quote:
 
         return cls(
             date=to_pydatetime(cs_quote.Date),
-            open=to_pydecimal(cs_quote.Open),
-            high=to_pydecimal(cs_quote.High),
-            low=to_pydecimal(cs_quote.Low),
-            close=to_pydecimal(cs_quote.Close),
-            volume=to_pydecimal(cs_quote.Volume),
+            open=to_pydecimal_via_double(cs_quote.Open),
+            high=to_pydecimal_via_double(cs_quote.High),
+            low=to_pydecimal_via_double(cs_quote.Low),
+            close=to_pydecimal_via_double(cs_quote.Close),
+            volume=to_pydecimal_via_double(cs_quote.Volume),
         )
 
     @classmethod

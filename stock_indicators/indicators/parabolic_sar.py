@@ -12,14 +12,20 @@ def get_parabolic_sar(
     quotes: Iterable[Quote],
     acceleration_step: float = 0.02,
     max_acceleration_factor: float = 0.2,
-) -> "ParabolicSARResults[ParabolicSARResult]": ...
+) -> "ParabolicSARResults[ParabolicSARResult]":
+    pass
+
+
 @overload
 def get_parabolic_sar(
     quotes: Iterable[Quote],
     acceleration_step: float,
     max_acceleration_factor: float,
     initial_factor: float,
-) -> "ParabolicSARResults[ParabolicSARResult]": ...
+) -> "ParabolicSARResults[ParabolicSARResult]":
+    pass
+
+
 def get_parabolic_sar(
     quotes, acceleration_step=None, max_acceleration_factor=None, initial_factor=None
 ):

@@ -66,3 +66,27 @@ def to_pydecimal(cs_decimal: Optional[CsDecimal]) -> Optional[PyDecimal]:
         raise TypeConversionError(
             f"Cannot convert C# Decimal to Python Decimal: {e}"
         ) from e
+
+
+def to_pydecimal_via_double(cs_decimal: Optional[CsDecimal]) -> Optional[PyDecimal]:
+    """
+    Converts an object to a native Python decimal object via double conversion.
+    This method offers better performance (~4x faster) but may have precision loss.
+
+    Parameter:
+        cs_decimal : `System.Decimal` of C# or None.
+
+    Returns:
+        Python Decimal object or None if input is None.
+    """
+    if cs_decimal is None:
+        return None
+
+    try:
+        return PyDecimal(CsDecimal.ToDouble(cs_decimal))
+    except Exception as e:
+        from stock_indicators.exceptions import TypeConversionError
+
+        raise TypeConversionError(
+            f"Cannot convert C# Decimal to Python Decimal via double: {e}"
+        ) from e

@@ -5,7 +5,7 @@ from typing_extensions import override
 
 from stock_indicators._cslib import CsCandleProperties
 from stock_indicators._cstypes import Decimal as CsDecimal
-from stock_indicators._cstypes import to_pydecimal
+from stock_indicators._cstypes import to_pydecimal_via_double
 from stock_indicators.indicators.common._contrib.type_resolver import (
     generate_cs_inherited_class,
 )
@@ -19,12 +19,12 @@ class _CandleProperties(_Quote):
     @property
     def size(self) -> Optional[Decimal]:
         # pylint: disable=no-member  # C# interop properties
-        return to_pydecimal(self.High - self.Low)
+        return to_pydecimal_via_double(self.High - self.Low)
 
     @property
     def body(self) -> Optional[Decimal]:
         # pylint: disable=no-member  # C# interop properties
-        return to_pydecimal(
+        return to_pydecimal_via_double(
             self.Open - self.Close
             if (self.Open > self.Close)
             else self.Close - self.Open
@@ -33,14 +33,14 @@ class _CandleProperties(_Quote):
     @property
     def upper_wick(self) -> Optional[Decimal]:
         # pylint: disable=no-member  # C# interop properties
-        return to_pydecimal(
+        return to_pydecimal_via_double(
             self.High - (self.Open if self.Open > self.Close else self.Close)
         )
 
     @property
     def lower_wick(self) -> Optional[Decimal]:
         # pylint: disable=no-member  # C# interop properties
-        return to_pydecimal(
+        return to_pydecimal_via_double(
             (self.Close if self.Open > self.Close else self.Open) - self.Low
         )
 
@@ -82,7 +82,7 @@ class CandleResult(ResultBase):
 
     @property
     def price(self) -> Optional[Decimal]:
-        return to_pydecimal(self._csdata.Price)
+        return to_pydecimal_via_double(self._csdata.Price)
 
     @price.setter
     def price(self, value):

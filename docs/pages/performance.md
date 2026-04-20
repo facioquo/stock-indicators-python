@@ -7,6 +7,113 @@ noindex: true
 sitemap: false
 ---
 
+# {{ page.title }} (Windows, Python 3.13)
+
+These are the execution times for the indicators using two years of historical daily stock quotes (502 periods) with default or typical parameters on Windows.
+
+```bash
+pytest=v9.0.2, pytest-benchmark=v5.2.3
+OS=Windows 11 build 26200
+CPU=13th Gen Intel(R) Core(TM) i9-13900H (20 cores)
+Python=CPython 3.13.11
+```
+
+## Indicators and conversions
+
+```bash
+Name                                            Min (ms)  Max (ms)  Mean (ms)  StdDev  Median  IQR    OPS    Rounds
+test_benchmark_renko                              0.5058    3.5910     0.6515   0.2599   0.6023  0.0683  1535.02     482
+test_benchmark_rsi                                0.6020    2.7681     0.7210   0.1213   0.7046  0.0862  1387.03     749
+test_benchmark_atr                                0.6033    3.0488     0.7262   0.1714   0.6831  0.0730  1377.07     745
+test_benchmark_ema                                0.6119    1.6394     0.7292   0.0882   0.7165  0.0619  1371.31     432
+test_benchmark_smma                               0.6125    1.4172     0.7434   0.0835   0.7201  0.0388  1345.25     655
+test_benchmark_cci                                0.6222    1.4446     0.7493   0.1154   0.7267  0.0527  1334.66     404
+test_benchmark_roc                                0.6024    1.9660     0.7514   0.1890   0.7061  0.0534  1330.89     458
+test_benchmark_fractal                            0.6235    2.1104     0.7517   0.1139   0.7322  0.0516  1330.32     557
+test_benchmark_kama                               0.6137    1.7470     0.7520   0.1039   0.7255  0.0558  1329.79     619
+test_benchmark_bop                                0.6227    1.3432     0.7529   0.1049   0.7262  0.0499  1328.13     525
+test_benchmark_vwma                               0.6159    1.7425     0.7535   0.1054   0.7291  0.0634  1327.13     631
+test_benchmark_dynamic                            0.6179    4.1550     0.7536   0.2186   0.7129  0.0922  1326.89     665
+test_benchmark_wma                                0.6257    1.3413     0.7538   0.1072   0.7303  0.0672  1326.62     858
+test_benchmark_force_index                        0.6193    1.2192     0.7542   0.0834   0.7340  0.0463  1325.96     583
+test_benchmark_vwap                               0.6161    1.3504     0.7543   0.0913   0.7312  0.0717  1325.80     597
+test_benchmark_obv                                0.6188    9.4784     0.7546   0.4357   0.7042  0.0811  1325.23     444
+test_benchmark_smi                                0.6169    2.4164     0.7560   0.1276   0.7347  0.0784  1322.77     582
+test_benchmark_slope                              0.6214    2.1473     0.7567   0.1167   0.7345  0.0632  1321.56     779
+test_benchmark_dema                               0.6053    1.6393     0.7579   0.1746   0.7107  0.1077  1319.39     585
+test_benchmark_vortex                             0.6245    1.5766     0.7582   0.0976   0.7324  0.0588  1318.95     569
+test_benchmark_fisher_transform                   0.6242    2.3836     0.7610   0.1597   0.7301  0.0732  1314.15     597
+test_benchmark_sma                                0.6208    1.6036     0.7626   0.1114   0.7368  0.0455  1311.39     892
+test_benchmark_epma                               0.6376    2.0052     0.7646   0.1160   0.7427  0.0779  1307.85     298
+test_benchmark_williams_r                         0.6340    1.3901     0.7651   0.0905   0.7443  0.0509  1307.04     730
+test_benchmark_awesome                            0.6201    2.6923     0.7652   0.1744   0.7258  0.0530  1306.88     438
+test_benchmark_elder_ray                          0.6263    4.6096     0.7660   0.2157   0.7346  0.0879  1305.48     607
+test_benchmark_parabolic_sar                      0.6172    1.5045     0.7692   0.1414   0.7356  0.1035  1300.06     437
+test_benchmark_stoch                              0.6386    1.6827     0.7714   0.1292   0.7457  0.0835  1296.32     719
+test_benchmark_kvo                                0.6427    1.3211     0.7716   0.0983   0.7427  0.0511  1296.05     554
+test_benchmark_alma                               0.6150    1.7744     0.7717   0.1340   0.7372  0.0841  1295.78     522
+test_benchmark_mfi                                0.6225    2.8507     0.7729   0.1733   0.7338  0.0978  1293.85     586
+test_benchmark_marubozu                           0.6358    1.5268     0.7767   0.1389   0.7416  0.0935  1287.50     819
+test_benchmark_chandelier                         0.6437    1.5799     0.7778   0.1198   0.7445  0.0517  1285.64     419
+test_benchmark_ma_envelopes                       0.6221    2.7079     0.7780   0.1581   0.7427  0.0471  1285.39     534
+test_benchmark_ht_trendline                       0.6487    1.3283     0.7810   0.1194   0.7552  0.0771  1280.34     281
+test_benchmark_cmo                                0.6326    2.0743     0.7813   0.1483   0.7387  0.0469  1279.92     447
+test_benchmark_keltner                            0.6240    2.6047     0.7827   0.1210   0.7593  0.0637  1277.62     613
+test_benchmark_pvo                                0.6179    1.6550     0.7828   0.1887   0.7315  0.0861  1277.49     551
+test_benchmark_tsi                                0.6162    2.5446     0.7831   0.1689   0.7372  0.0559  1276.95     555
+test_benchmark_chop                               0.6404    1.8782     0.7847   0.1361   0.7473  0.0424  1274.44     584
+test_benchmark_gator                              0.6320    1.2811     0.7860   0.1114   0.7467  0.1016  1272.30     517
+test_benchmark_stdev                              0.6143    4.3753     0.7882   0.2264   0.7429  0.0645  1268.64     478
+test_benchmark_mama                               0.6288    3.3905     0.7902   0.1680   0.7705  0.0934  1265.49     542
+test_benchmark_aroon                              0.6492    3.1026     0.7908   0.1875   0.7517  0.0487  1264.48     395
+test_benchmark_starc_bands                        0.6522    2.7085     0.7923   0.1458   0.7555  0.0601  1262.16     529
+test_benchmark_cmf                                0.6634    1.6412     0.7924   0.1356   0.7531  0.0456  1261.94     447
+test_benchmark_stdev_channels                     0.6413    1.3524     0.7930   0.1145   0.7658  0.0541  1260.99     500
+test_benchmark_fcb                                0.6913    1.8795     0.7947   0.1064   0.7767  0.0770  1258.38     499
+test_benchmark_volatility_stop                    0.6406    1.6809     0.7947   0.1460   0.7551  0.0477  1258.31     528
+test_benchmark_atr_stop                           0.6259    1.4199     0.7950   0.1422   0.7675  0.0903  1257.88     443
+test_benchmark_macd                               0.6388    1.3477     0.7965   0.1203   0.7633  0.0686  1255.54     570
+test_benchmark_stoch_rsi                          0.6373    1.3855     0.7973   0.1228   0.7617  0.0541  1254.20     535
+test_benchmark_super_trend                        0.6218    1.6929     0.7988   0.1472   0.7645  0.0917  1251.83     564
+test_benchmark_chaikin_osc                        0.6272    2.3810     0.8001   0.1425   0.7695  0.0592  1249.90     446
+test_benchmark_dpo                                0.6293    1.8743     0.8007   0.1860   0.7484  0.0860  1248.90     369
+test_benchmark_doji                               0.6498    2.6358     0.8027   0.1899   0.7547  0.0543  1245.77     471
+test_benchmark_ultimate                           0.6576    1.6127     0.8036   0.1590   0.7521  0.0497  1244.41     394
+test_benchmark_bollinger_bands                    0.6307    2.3677     0.8049   0.1531   0.7830  0.0991  1242.41     402
+test_benchmark_triple_ema                         0.6078    2.4939     0.8079   0.1769   0.7708  0.0860  1237.85     436
+test_benchmark_trix                               0.6207    1.9191     0.8192   0.1691   0.7640  0.1226  1220.74     528
+test_benchmark_stc                                0.6552    2.8504     0.8232   0.1933   0.7772  0.0729  1214.71     377
+test_benchmark_heikin_ashi                        0.6448    1.5777     0.8241   0.1261   0.8122  0.0956  1213.41     412
+test_benchmark_hma                                0.6717    2.7407     0.8294   0.1809   0.7827  0.0844  1205.73     295
+test_benchmark_pivot_points                       0.6453    3.7643     0.8330   0.2229   0.7790  0.1322  1200.47     440
+test_benchmark_t3                                 0.6583    1.6644     0.8356   0.1531   0.8143  0.1233  1196.73     487
+test_benchmark_pmo                                0.6554    1.8478     0.8492   0.1795   0.8013  0.1141  1177.51     355
+test_benchmark_connors_rsi                        0.7261    2.4937     0.8724   0.1788   0.8273  0.0537  1146.28     338
+test_benchmark_ulcer_index                        0.7257    1.7372     0.8732   0.1588   0.8249  0.0490  1145.22     436
+test_benchmark_zig_zag                            0.7474    1.7469     0.8909   0.1358   0.8747  0.1151  1122.43     308
+test_benchmark_pivots                             0.6822    4.0178     0.9075   0.2942   0.8316  0.1262  1101.98     376
+test_benchmark_rolling_pivots                     0.7386    2.1527     0.9104   0.1553   0.8816  0.1098  1098.40     434
+test_benchmark_donchian                           0.7682    1.8458     0.9271   0.1652   0.8829  0.0501  1078.63     241
+test_benchmark_adx                                0.7468    1.6267     0.9324   0.1207   0.9183  0.1111  1072.56     501
+test_benchmark_alligator                          0.7599    1.4379     0.9387   0.1284   0.9204  0.1171  1065.33     221
+test_benchmark_prs                                1.0069    2.2567     1.2662   0.2193   1.1979  0.0815   789.79     410
+test_benchmark_correlation                        1.0365    4.0427     1.2800   0.2402   1.2114  0.0721   781.23     474
+test_benchmark_beta                               1.0599    4.1115     1.3300   0.2589   1.2709  0.1882   751.86     284
+test_benchmark_ichimoku                           0.9693    3.6210     1.5621   0.5740   1.1807  1.0927   640.15     246
+test_benchmark_hurst                              1.2046    3.0597     1.7850   0.5804   1.3624  1.1133   560.22     194
+test_benchmark_adl                                0.9096    3.5800     2.3849   0.6378   2.5637  0.8626   419.30     110
+test_benchmark_small_dataset_double_conversion   11.1730   15.7974    13.4967   0.8632  13.8795  1.2070    74.09      71
+test_benchmark_sma_longlong                      15.2710   35.4404    18.3152   3.7159  17.3157  0.8863    54.60      57
+test_benchmark_hurst_longlong                    28.5278   40.5886    31.4385   3.0087  30.6435  1.2094    31.81      24
+test_benchmark_small_dataset_string_conversion   52.7986   58.4067    54.9115   1.5607  54.9273  2.0336    18.21      17
+test_benchmark_double_conversion                 87.7827   90.8925    89.5127   0.7813  89.5080  0.7988    11.17      11
+test_benchmark_string_conversion                354.2637  371.2325   360.9358   8.0169  356.4304  14.0702     2.77       5
+test_benchmark_converting_to_IndicatorResults   430.7795  495.6005   465.9106  24.5489  471.4504  33.4462     2.15       5
+test_benchmark_converting_to_CsDecimal         6583.5905 7088.3011  6694.0890 220.6633 6600.6668 145.2359     0.15       5
+```
+
+---
+
 # {{ page.title }} for v1.3.0
 
 These are the execution times for the current indicators using two years of historical daily stock quotes (502 periods) with default or typical parameters.
