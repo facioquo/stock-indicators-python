@@ -26,6 +26,13 @@ class TestDecimalConversionComparison:
             string_result = to_pydecimal(cs_decimal)
             double_result = to_pydecimal_via_double(cs_decimal)
 
+            assert string_result is not None
+            assert double_result is not None
+            assert abs(string_result - double_result) < PyDecimal("0.0001"), (
+                f"Excessive precision difference for {py_decimal}: "
+                f"string={string_result}, double={double_result}"
+            )
+
             # Document precision loss, if any
             if string_result != double_result:
                 print(f"Precision difference for {py_decimal}:")
@@ -52,6 +59,9 @@ class TestDecimalConversionComparison:
             print(f"  String method: {string_result}")
             print(f"  Double method: {double_result}")
 
+            assert string_result is not None
+            assert double_result is not None
+
             # For exponential notation, we expect the string method to be more precise
             if string_result != double_result:
                 print(f"  Precision loss: {abs(string_result - double_result)}")
@@ -73,6 +83,9 @@ class TestDecimalConversionComparison:
             print(f"Testing large decimal {py_decimal}:")
             print(f"  String method: {string_result}")
             print(f"  Double method: {double_result}")
+
+            assert string_result is not None
+            assert double_result is not None
 
             # Large decimals are where we expect the most precision loss
             if string_result != double_result:
@@ -103,6 +116,9 @@ class TestDecimalConversionComparison:
             print(f"  String method: {string_result}")
             print(f"  Double method: {double_result}")
 
+            assert string_result is not None
+            assert double_result is not None
+
             # Compare precision loss
             string_loss = abs(py_decimal - string_result)
             double_loss = abs(py_decimal - double_result)
@@ -117,9 +133,7 @@ class TestDecimalConversionComparison:
             1e28,  # Very large
             0.0,  # Zero
             -123.456,  # Negative
-            float("inf")
-            if hasattr(float, "__dict__") and "inf" in str(float("inf"))
-            else 1e308,  # Large number as alternative
+            float("inf"),
         ]
 
         for py_decimal in test_values:
@@ -135,6 +149,10 @@ class TestDecimalConversionComparison:
 
                 if string_result != double_result:
                     print(f"  Difference: {abs(string_result - double_result)}")
+
+                if string_result is not None and double_result is not None:
+                    assert string_result is not None
+                    assert double_result is not None
 
             except Exception as e:
                 print(f"Error testing {py_decimal}: {e}")

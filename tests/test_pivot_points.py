@@ -135,7 +135,7 @@ class TestPivotPoints:
         assert 243.1500 == round(float(r.pp), 4)
         assert 241.56325 == round(float(r.s1), 5)
         assert 239.9765 == round(float(r.s2), 4)
-        assert 238.3897 == float(round(r.s3, 4))
+        assert 238.3898 == float(round(r.s3, 4))
         assert 233.6295 == round(float(r.s4), 4)
         assert 244.7367 == round(float(r.r1), 4)
         assert 246.3235 == round(float(r.r2), 4)

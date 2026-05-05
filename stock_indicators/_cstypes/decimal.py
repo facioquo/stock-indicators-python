@@ -83,7 +83,7 @@ def to_pydecimal_via_double(cs_decimal: Optional[CsDecimal]) -> Optional[PyDecim
         return None
 
     try:
-        return PyDecimal(CsDecimal.ToDouble(cs_decimal))
+        return PyDecimal(str(CsDecimal.ToDouble(cs_decimal)))
     except Exception as e:
         from stock_indicators.exceptions import TypeConversionError
 

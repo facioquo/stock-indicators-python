@@ -137,6 +137,9 @@ dmypy.json
 .benchmarks
 benchmark_data.json
 bench_*.json
+benchmark_sample.json
+decimal_benchmark.json
+sample_indicators.json
 
 # Test results (non-benchmark)
 test-results/

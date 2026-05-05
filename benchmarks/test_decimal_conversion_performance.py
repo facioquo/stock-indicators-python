@@ -12,8 +12,6 @@ class TestDecimalConversionPerformance:
 
     def test_benchmark_string_conversion(self, benchmark, raw_data):
         """Benchmark the current string-based conversion method."""
-        from stock_indicators._cstypes.decimal import to_pydecimal
-
         raw_data = raw_data * 100  # Use subset for faster testing
 
         # Pre-convert to CsDecimal to isolate the conversion performance
@@ -27,8 +25,6 @@ class TestDecimalConversionPerformance:
 
     def test_benchmark_double_conversion(self, benchmark, raw_data):
         """Benchmark the new double-based conversion method."""
-        from stock_indicators._cstypes.decimal import to_pydecimal_via_double
-
         raw_data = raw_data * 100  # Use subset for faster testing
 
         # Pre-convert to CsDecimal to isolate the conversion performance
