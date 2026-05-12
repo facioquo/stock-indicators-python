@@ -173,8 +173,6 @@ quotes_list = [
 ]
 ```
 
-> For a quickstart that uses **pandas.DataFrame**, see our online _ReplIt_ code example for the [Williams Fractal indicator](https://replit.com/@daveskender/Stock-Indicators-for-Python-Williams-Fractal).
->
 > _For more help_, see our GitHub community discussion on
 > [Converting pandas.DataFrame to iterable Quotes]({{site.dotnet.repo}}/discussions/1165).
 
