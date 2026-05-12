@@ -133,7 +133,6 @@ class TestDecimalConversionComparison:
             1e28,  # Very large
             0.0,  # Zero
             -123.456,  # Negative
-            float("inf"),
         ]
 
         for py_decimal in test_values:
@@ -155,7 +154,18 @@ class TestDecimalConversionComparison:
                     assert double_result is not None
 
             except Exception as e:
-                print(f"Error testing {py_decimal}: {e}")
+                assert False, str(e)
+
+    def test_edge_case_infinity_raises(self):
+        """Test that infinity raises an exception."""
+        try:
+            cs_decimal = CsDecimal(float("inf"))
+            to_pydecimal(cs_decimal)
+            to_pydecimal_via_double(cs_decimal)
+            assert False, "Expected exception for infinity was not raised"
+        except Exception:
+            # Exception is expected for infinity
+            pass
 
     def test_none_input_handling(self):
         """Test that both methods handle None input correctly."""
