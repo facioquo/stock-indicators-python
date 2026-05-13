@@ -6,6 +6,7 @@ import pytest
 
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes.decimal import to_pydecimal, to_pydecimal_via_double
+from stock_indicators.exceptions import TypeConversionError
 
 
 class TestDecimalConversionComparison:
@@ -150,11 +151,12 @@ class TestDecimalConversionComparison:
             if string_result != double_result:
                 print(f"  Difference: {abs(string_result - double_result)}")
 
-            assert string_result is not None and double_result is not None
+            assert string_result is not None
+            assert double_result is not None
 
     def test_edge_case_infinity_raises(self):
         """Test that infinity raises an exception."""
-        with pytest.raises(ValueError, match=r"."):
+        with pytest.raises(TypeConversionError, match=r"."):
             CsDecimal(float("inf"))
 
     def test_none_input_handling(self):
