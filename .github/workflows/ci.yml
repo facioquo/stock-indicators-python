@@ -8,7 +8,7 @@ permissions:
   contents: read
 
 jobs:
-  linting:
+  lint-and-test:
     runs-on: ubuntu-latest
 
     steps:
