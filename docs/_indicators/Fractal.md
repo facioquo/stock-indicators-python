@@ -9,7 +9,7 @@ layout: indicator
 
 ><span class="indicator-syntax">**get_fractal**(*quotes, window_span=2, end_type = EndType.HIGH_LOW*)</span>
 
-### More overloaded interfaces
+## More overloaded interfaces
 
 **get_fractal**(quotes, left_span, right_span, end_type)
 

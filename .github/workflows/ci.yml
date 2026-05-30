@@ -15,6 +15,9 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v6
 
+      - name: Lint markdown
+        uses: DavidAnson/markdownlint-cli2-action@v23
+
       - name: Setup .NET
         uses: actions/setup-dotnet@v5
         with:
