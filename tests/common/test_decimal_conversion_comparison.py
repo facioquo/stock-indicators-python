@@ -2,8 +2,11 @@
 
 from decimal import Decimal as PyDecimal
 
+import pytest
+
 from stock_indicators._cstypes import Decimal as CsDecimal
 from stock_indicators._cstypes.decimal import to_pydecimal, to_pydecimal_via_double
+from stock_indicators.exceptions import TypeConversionError
 
 
 class TestDecimalConversionComparison:
@@ -133,29 +136,28 @@ class TestDecimalConversionComparison:
             1e28,  # Very large
             0.0,  # Zero
             -123.456,  # Negative
-            float("inf"),
         ]
 
         for py_decimal in test_values:
-            try:
-                cs_decimal = CsDecimal(py_decimal)
+            cs_decimal = CsDecimal(py_decimal)
 
-                string_result = to_pydecimal(cs_decimal)
-                double_result = to_pydecimal_via_double(cs_decimal)
+            string_result = to_pydecimal(cs_decimal)
+            double_result = to_pydecimal_via_double(cs_decimal)
 
-                print(f"Testing edge case {py_decimal}:")
-                print(f"  String method: {string_result}")
-                print(f"  Double method: {double_result}")
+            print(f"Testing edge case {py_decimal}:")
+            print(f"  String method: {string_result}")
+            print(f"  Double method: {double_result}")
 
-                if string_result != double_result:
-                    print(f"  Difference: {abs(string_result - double_result)}")
+            if string_result != double_result:
+                print(f"  Difference: {abs(string_result - double_result)}")
 
-                if string_result is not None and double_result is not None:
-                    assert string_result is not None
-                    assert double_result is not None
+            assert string_result is not None
+            assert double_result is not None
 
-            except Exception as e:
-                print(f"Error testing {py_decimal}: {e}")
+    def test_edge_case_infinity_raises(self):
+        """Test that infinity raises an exception."""
+        with pytest.raises(TypeConversionError, match=r"."):
+            CsDecimal(float("inf"))
 
     def test_none_input_handling(self):
         """Test that both methods handle None input correctly."""
