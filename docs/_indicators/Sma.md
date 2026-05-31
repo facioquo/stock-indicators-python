@@ -68,6 +68,8 @@ quotes = get_historical_quotes("SPY")
 results = indicators.get_sma(quotes, 20, CandlePart.CLOSE)
 ```
 
+---
+
 # Extended analysis
 
 This indicator has an extended version with more analysis.
