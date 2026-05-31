@@ -11,6 +11,7 @@ layout: indicator
 
 ## Parameters
 
+<!-- markdownlint-disable MD051 -- #candlepart-options resolves via Jekyll {% include candlepart-options.md %} below -->
 | name | type | notes
 | -- |-- |--
 | `quotes` | Iterable[Quote] | Iterable of the [Quote class]({{site.baseurl}}/guide/#historical-quotes) or [its sub-class]({{site.baseurl}}/guide/#using-custom-quote-classes). <br><span class='qna-dataframe'> • [See here]({{site.baseurl}}/guide/#using-pandasdataframe) for usage with pandas.DataFrame</span>
@@ -18,6 +19,7 @@ layout: indicator
 | `slow_periods` | int, *default 26* | Number of periods (`S`) for the slower moving average.  Must be greater than `fast_periods`.
 | `signal_periods` | int, *default 9* | Number of periods (`P`) for the moving average of MACD.  Must be greater than or equal to 0.
 | `candle_part` | CandlePart, *default CandlePart.CLOSE* | Specify candle part to evaluate.  See [CandlePart options](#candlepart-options) below.
+<!-- markdownlint-enable MD051 -->
 
 ### Historical quotes requirements
 

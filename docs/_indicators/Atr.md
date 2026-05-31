@@ -9,7 +9,7 @@ layout: indicator
 
 ><span class="indicator-syntax">**get_atr**(*quotes, lookback_periods=14*)</span>
 
-### Related interfaces
+## Related interfaces
 
 For raw True Range (TR) only, use:
 >**get_tr**(quotes) -> TrResults[TrResult]

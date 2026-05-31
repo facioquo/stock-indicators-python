@@ -9,7 +9,7 @@ layout: indicator
 
 ><span class="indicator-syntax">**get_parabolic_sar**(*quotes, acceleration_step=0.02, max_acceleration_factor=0.2*)</span>
 
-### More overloaded interfaces
+## More overloaded interfaces
 
 **get_parabolic_sar**(quotes, acceleration_step, max_acceleration_factor, initial_factor)
 
