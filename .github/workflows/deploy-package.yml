@@ -9,6 +9,12 @@ on:
     tags:
       - '[0-9]+.[0-9]+.[0-9]+'
 
+# Deploy/publish workflow: do not cancel an in-flight release mid-run;
+# the group key still coalesces duplicate triggers, but running deploys finish.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.head_ref || github.ref }}
+  cancel-in-progress: false
+
 jobs:
 
   # production build
