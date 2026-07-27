@@ -35,7 +35,7 @@ Explore more information:
 
 ## Samples
 
-![image](https://raw.githubusercontent.com/DaveSkender/Stock.Indicators/main/docs/examples.webp)
+![image](https://raw.githubusercontent.com/facioquo/stock-indicators-dotnet/d0b99458e17505c32b966109b5e38979cd25c047/docs/examples.webp)
 
 ### Example usage
 

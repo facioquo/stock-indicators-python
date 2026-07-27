@@ -18,9 +18,16 @@ logo: /assets/icons/android-chrome-192x192.png
 
 # .NET site URL refs
 dotnet:
-  repo: "https://github.com/DaveSkender/Stock.Indicators"
-  src: "https://github.com/DaveSkender/Stock.Indicators/blob/main/src"
-  charts: "https://raw.githubusercontent.com/DaveSkender/Stock.Indicators/main/docs/assets/charts"
+  repo: "https://github.com/facioquo/stock-indicators-dotnet"
+  src: "https://github.com/facioquo/stock-indicators-dotnet/blob/main/src"
+  # The .NET docs moved to VitePress in v3.0.0 (896ae089), which deleted
+  # docs/assets/charts and renamed the surviving images to kebab-case.
+  # raw.githubusercontent does not follow repo renames, so the old
+  # DaveSkender/Stock.Indicators URLs 404. Pinned to the last commit that
+  # still carries the full PascalCase set — four of the images referenced
+  # here (AdIndex, Correlation, HeikinAshi, StdDevChannelsFull) have no
+  # equivalent in the current tree.
+  charts: "https://raw.githubusercontent.com/facioquo/stock-indicators-dotnet/d0b99458e17505c32b966109b5e38979cd25c047/docs/assets/charts"
 
 # this site URL refs
 python:
