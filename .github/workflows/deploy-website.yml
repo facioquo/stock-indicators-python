@@ -24,7 +24,7 @@ jobs:
       JEKYLL_GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     environment:
-      name: stockindicators.dev
+      name: ${{ github.ref == 'refs/heads/main' && 'stockindicators.dev' || 'preview' }}
       url: ${{ steps.deploy.outputs.pages-deployment-alias-url }}
 
     steps:
