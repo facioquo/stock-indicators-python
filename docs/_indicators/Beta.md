@@ -74,7 +74,7 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 from stock_indicators import indicators
-from stock_indicators import BetaType      # Short path, version >= 0.8.1
+from stock_indicators import BetaType  # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
 history_SPX = get_historical_quotes("SPX")

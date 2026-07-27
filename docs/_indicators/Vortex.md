@@ -60,7 +60,7 @@ from stock_indicators import indicators
 quotes = get_historical_quotes("SPY")
 
 # Calculate 14-period VI
-results = indicators.get_vortex(quotes, 14);
+results = indicators.get_vortex(quotes, 14)
 ```
 
 ## About {{ page.title }}

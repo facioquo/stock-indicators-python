@@ -63,7 +63,7 @@ from stock_indicators import indicators
 quotes = get_historical_quotes("SPY")
 
 # Calculate Mama(0.5,0.05)
-results = indicators.get_mama(quotes, 0.5,0.05)
+results = indicators.get_mama(quotes, 0.5, 0.05)
 ```
 
 ## About {{ page.title }}

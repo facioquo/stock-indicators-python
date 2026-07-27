@@ -55,7 +55,7 @@ from stock_indicators import indicators
 quotes = get_historical_quotes("SPY")
 
 # Calculate
-results = indicators.get_marubozu(quotes);
+results = indicators.get_marubozu(quotes)
 ```
 
 ## About {{ page.title }}

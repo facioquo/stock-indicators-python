@@ -92,7 +92,6 @@ results = indicators.get_sma(quotes, 20)
 # use results as needed for your use case (example only)
 for r in results:
     print(f"SMA on {r.date.date()} was ${r.sma or 0:.4f}")
-
 ```
 
 ```console
@@ -167,9 +166,10 @@ If you are using `pandas.DataFrame` to hold quote data, you have to convert it i
 from stock_indicators import Quote
 
 quotes_list = [
-    Quote(d,o,h,l,c,v)
-    for d,o,h,l,c,v
-    in zip(df['date'], df['open'], df['high'], df['low'], df['close'], df['volume'])
+    Quote(d, o, h, l, c, v)
+    for d, o, h, l, c, v in zip(
+        df["date"], df["open"], df["high"], df["low"], df["close"], df["volume"]
+    )
 ]
 ```
 
@@ -193,10 +193,9 @@ class MyCustomQuote(Quote):
 from stock_indicators import indicators
 
 # fetch historical quotes from your favorite feed
-quotes: Iterable[MyCustomQuote] = get_historical_quotes("MSFT");
-
+quotes: Iterable[MyCustomQuote] = get_historical_quotes("MSFT")
 # example: get 20-period simple moving average
-results = indicators.get_sma(quotes, 20);
+results = indicators.get_sma(quotes, 20)
 ```
 
 #### Using custom quote property names
@@ -208,9 +207,9 @@ Suppose your class has a property called `close_date` instead of `date`, it coul
 ```python
 from stock_indicators.indicators.common.quote import Quote
 
+
 class MyCustomQuote(Quote):
     close_date = Quote.date
-
 ```
 
 Note that the property `date` now can be accessed by both `close_date` and `date`.
@@ -225,16 +224,18 @@ Here's an example of how you'd set that up:
 from stock_indicators import indicators
 from stock_indicators.indicators.ema import EMAResult
 
+
 class ExtendedEMA(EMAResult):
     def __str__(self):
         return f"EMA on {self.date.date()} was ${self.ema or 0:.4f}"
+
 
 # compute indicator
 quotes = get_historical_quotes("MSFT")
 results = indicators.get_ema(quotes, 20)
 
 # 1. list[ExtendedEMA]
-extended_results = [ ExtendedEMA(r._csdata) for r in results ]
+extended_results = [ExtendedEMA(r._csdata) for r in results]
 for r in extended_results:
     print(r)
 ```
@@ -265,11 +266,10 @@ quotes = get_historical_quotes("MSFT")
 results = indicators.get_ema(quotes, 20)
 
 # convert to synthetic quotes
-quotes_from_ema = [ Quote(date=r.date, close=r.ema) for r in results ]
+quotes_from_ema = [Quote(date=r.date, close=r.ema) for r in results]
 
 # calculate SMA of EMA
 sma_of_ema = indicators.get_sma(quotes_from_ema, 20)
-
 ```
 
 ## Candlestick patterns

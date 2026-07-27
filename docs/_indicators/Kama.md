@@ -66,7 +66,7 @@ from stock_indicators import indicators
 quotes = get_historical_quotes("SPY")
 
 # Calculate KAMA(10,2,30)
-results = indicators.get_kama(quotes, 10,2,30)
+results = indicators.get_kama(quotes, 10, 2, 30)
 ```
 
 ## About {{ page.title }}

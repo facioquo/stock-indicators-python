@@ -16,7 +16,7 @@ layout: page
 
 ```python
 # Example: only show Marubozu signals
-results = quotes.get_marubozu(quotes).condense();
+results = quotes.get_marubozu(quotes).condense()
 ```
 
 >&#128681; **Warning**: In all cases, `.condense()` will remove non-essential results and will produce fewer records than are in `quotes`.
@@ -51,6 +51,7 @@ results = indicators.get_ema(quotes, 20)
 
 # find result on a specific date
 from datetime import datetime
+
 lookup_date = datetime(2018, 10, 12)
 result = results.find(lookup_date)
 ```
