@@ -62,7 +62,7 @@ from stock_indicators import indicators
 quotes = get_historical_quotes("SPY")
 
 # Calculate 20-period PMO
-results = indicators.get_pmo(quotes, 35,20,10)
+results = indicators.get_pmo(quotes, 35, 20, 10)
 ```
 
 ## About {{ page.title }}

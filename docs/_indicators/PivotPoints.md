@@ -91,13 +91,13 @@ See [Utilities and Helpers]({{site.baseurl}}/utilities#utilities-for-indicator-r
 
 ```python
 from stock_indicators import indicators
-from stock_indicators import PeriodSize, PivotPointType      # Short path, version >= 0.8.1
+from stock_indicators import PeriodSize, PivotPointType  # Short path, version >= 0.8.1
 
 # This method is NOT a part of the library.
 quotes = get_historical_quotes("SPY")
 
 # Calculate Woodie-style month-based Pivot Points
-results = indicators.get_pivot_points(quotes, PeriodSize.MONTH, PivotPointType.WOODIE);
+results = indicators.get_pivot_points(quotes, PeriodSize.MONTH, PivotPointType.WOODIE)
 ```
 
 ## About {{ page.title }}

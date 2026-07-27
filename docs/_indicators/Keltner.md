@@ -66,7 +66,7 @@ from stock_indicators import indicators
 quotes = get_historical_quotes("SPY")
 
 # Calculate Keltner(20)
-results = indicators.get_keltner(quotes, 20,2.0,10)
+results = indicators.get_keltner(quotes, 20, 2.0, 10)
 ```
 
 ## About {{ page.title }}
