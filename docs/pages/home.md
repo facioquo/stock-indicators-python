@@ -73,7 +73,7 @@ If you want to buy us a beer or are interested in ongoing support as a patron, [
 
 ## Contribute to help others
 
-This PyPI package is an open-source project.  If you want to report bugs or contribute fixes, new indicators, or new features, please review our [contributing guidelines]({{site.baseurl}}/contributing/#content) and [the backlog](https://github.com/users/DaveSkender/projects/2).
+This PyPI package is an open-source project.  If you want to report bugs or contribute fixes, new indicators, or new features, please review our [contributing guidelines]({{site.baseurl}}/contributing/#content) and [the backlog](https://github.com/orgs/facioquo/projects/16).
 
 Special thanks to all of our community code contributors!
 

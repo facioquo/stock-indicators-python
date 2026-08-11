@@ -44,9 +44,9 @@ For new features, submit an issue with the `enhancement` label.
 
 ## Project management
 
-- Planned work is managed in [the backlog](https://github.com/users/DaveSkender/projects/2).
+- Planned work is managed in [the backlog](https://github.com/orgs/facioquo/projects/16).
 - Work items are primarily [entered as Notes](https://docs.github.com/issues/organizing-your-work-with-project-boards/tracking-work-with-project-boards/adding-notes-to-a-project-board) (not Issues), except where an issue or feature is user reported.  With that said, Notes can be converted to Issues if in-progress and collaborative discussion is needed.
-- Use the [Discussions](https://github.com/DaveSkender/Stock.Indicators/discussions) area for general ideation and unrelated questions.
+- Use the [Discussions](https://github.com/facioquo/stock-indicators-dotnet/discussions) area for general ideation and unrelated questions.
 
 ## Development Environment (Quick Setup)
 
@@ -58,7 +58,7 @@ For new features, submit an issue with the `enhancement` label.
 
 ### New to contributing?
 
-- Read this first: [A Step by Step Guide to Making Your First GitHub Contribution](https://codeburst.io/a-step-by-step-guide-to-making-your-first-github-contribution-5302260a2940). If you have questions about forking, see [this discussion](https://github.com/DaveSkender/Stock.Indicators/discussions/503).
+- Read this first: [A Step by Step Guide to Making Your First GitHub Contribution](https://codeburst.io/a-step-by-step-guide-to-making-your-first-github-contribution-5302260a2940). If you have questions about forking, see [this discussion](https://github.com/facioquo/stock-indicators-dotnet/discussions/503).
 - Please keep contributions small and focused—avoid combining unrelated changes in one pull request.
 - If you're just getting started, make sure to install and set up the language SDKs for Python and .NET (see below for setup instructions).
 
@@ -228,7 +228,7 @@ This repository uses a standard Apache 2.0 open-source license.  It enables open
 
 ## Contact info
 
-[Start a new discussion, ask a question](https://github.com/DaveSkender/Stock.Indicators/discussions), or [submit an issue](https://python.stockindicators.dev/contributing/#reporting-bugs-and-feature-requests) if it is publicly relevant.  You can also direct message [@daveskender](https://twitter.com/messages/compose?recipient_id=27475431).
+[Start a new discussion, ask a question](https://github.com/facioquo/stock-indicators-dotnet/discussions), or [submit an issue](https://python.stockindicators.dev/contributing/#reporting-bugs-and-feature-requests) if it is publicly relevant.  You can also direct message [@daveskender](https://twitter.com/messages/compose?recipient_id=27475431).
 
 Thanks,
 Dong-Geon Lee

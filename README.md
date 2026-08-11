@@ -15,7 +15,7 @@ Visit our project site for more information:
 - [Indicators and overlays](https://python.stockindicators.dev/indicators/)
 - [Guide and Pro tips](https://python.stockindicators.dev/guide/)
 - [Release notes](https://github.com/facioquo/stock-indicators-python/releases)
-- [Discussions](https://github.com/DaveSkender/Stock.Indicators/discussions)
+- [Discussions](https://github.com/facioquo/stock-indicators-dotnet/discussions)
 - [Contributing](https://github.com/facioquo/stock-indicators-python/blob/main/docs/contributing.md#readme)
 
 ## Getting started
