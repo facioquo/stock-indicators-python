@@ -12,7 +12,7 @@ permissions:
   contents: read
 
 jobs:
-  lint-and-test:
+  gate:
     runs-on: ubuntu-latest
 
     steps:
