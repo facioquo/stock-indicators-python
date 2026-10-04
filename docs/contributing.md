@@ -193,7 +193,7 @@ When adding or updating indicators:
 
 By submitting changes to this repo you are also acknowledging and agree to the terms in both the [Developer Certificate of Origin (DCO) 1.1](https://developercertificate.org) and the [Apache 2.0 license](https://opensource.org/licenses/Apache-2.0).  These are standard open-source terms and conditions.
 
-When ready, submit a Pull Request with a clear list of what you've done (read more about [pull requests](http://help.github.com/pull-requests)).  Always write a clear log message for your commits. One-line messages are fine for most changes.
+When ready, submit a Pull Request with a clear list of what you've done (read more about [pull requests](https://docs.github.com/en/pull-requests/reference/pull-requests)).  Always write a clear log message for your commits. One-line messages are fine for most changes.
 
 After a Pull Request is reviewed, accepted, and [squash] merged to `main`, we may batch changes before publishing a new package version to PyPI.  Please be patient with turnaround time.
 
