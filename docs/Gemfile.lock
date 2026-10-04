@@ -40,7 +40,7 @@ GEM
       ffi (>= 1.15.0)
     eventmachine (1.2.7)
     execjs (2.10.0)
-    faraday (2.14.2)
+    faraday (2.14.4)
       faraday-net_http (>= 2.0, < 3.5)
       json
       logger
@@ -305,4 +305,4 @@ DEPENDENCIES
   webrick
 
 BUNDLED WITH
-   2.5.18
+   2.5.22
