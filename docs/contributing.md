@@ -44,8 +44,7 @@ For new features, submit an issue with the `enhancement` label.
 
 ## Project management
 
-- Planned work is managed in [the backlog](https://github.com/orgs/facioquo/projects/16).
-- Work items are primarily [entered as Notes](https://docs.github.com/issues/organizing-your-work-with-project-boards/tracking-work-with-project-boards/adding-notes-to-a-project-board) (not Issues), except where an issue or feature is user reported.  With that said, Notes can be converted to Issues if in-progress and collaborative discussion is needed.
+- Planned work is tracked as [GitHub Issues](https://github.com/facioquo/stock-indicators-python/issues).
 - Use the [Discussions](https://github.com/facioquo/stock-indicators-dotnet/discussions) area for general ideation and unrelated questions.
 
 ## Development Environment (Quick Setup)
