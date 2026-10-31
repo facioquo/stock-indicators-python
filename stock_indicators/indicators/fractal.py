@@ -26,7 +26,12 @@ def get_fractal(
 
 
 def get_fractal(
-    quotes, left_span=None, right_span=EndType.HIGH_LOW, end_type=EndType.HIGH_LOW
+    quotes,
+    left_span=None,
+    right_span=None,
+    end_type=None,
+    *,
+    window_span=None,
 ):
     """Get Williams Fractal calculated.
 
@@ -57,11 +62,35 @@ def get_fractal(
          - [Williams Fractal Reference](https://python.stockindicators.dev/indicators/Fractal/#content)
          - [Helper Methods](https://python.stockindicators.dev/utilities/#content)
     """
+    # `window_span` is the documented name for the symmetric form's span.
+    # It is an alternative to the left/right span pair, not a third span,
+    # so it cannot be combined with either span argument.
+    if window_span is not None:
+        if left_span is not None or right_span is not None:
+            raise TypeError(
+                "window_span cannot be combined with left_span or right_span"
+            )
+        left_span = window_span
+
+    # In the symmetric form the second positional argument is `end_type`,
+    # not `right_span`: get_fractal(quotes, 2, EndType.CLOSE)
     if isinstance(right_span, EndType):
-        if left_span is None:
-            left_span = 2
+        if end_type is not None and end_type != right_span:
+            raise ValueError(
+                "end_type was given twice with different values: "
+                f"{right_span} and {end_type}"
+            )
+        end_type = right_span
+        right_span = None
+
+    if left_span is None:
+        left_span = 2
+    if end_type is None:
+        end_type = EndType.HIGH_LOW
+
+    if right_span is None:
         fractal_results = CsIndicator.GetFractal[Quote](
-            CsList(Quote, quotes), left_span, right_span.cs_value
+            CsList(Quote, quotes), left_span, end_type.cs_value
         )
     else:
         fractal_results = CsIndicator.GetFractal[Quote](
