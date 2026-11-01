@@ -22,25 +22,31 @@ jobs:
   test:
     name: indicators
     runs-on: ubuntu-latest
+    # Fork PRs get no repository secrets, so skip the job for them; the unit
+    # test workflow verifies forks.
+    if: |
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.head.repo.full_name == github.repository
 
     env:
       CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
+          persist-credentials: false
           # Explicitly checkout PR code
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v5
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 10.x
           dotnet-quality: ga
 
       - name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: 3.13
           cache: "pip"
@@ -56,7 +62,10 @@ jobs:
           coverage run -m --source=stock_indicators pytest
           coverage xml
 
+      # Dependabot PRs run with Dependabot secrets, not Actions secrets, so the
+      # token is empty there; skip only the upload and keep the coverage run.
       - name: Publish coverage to Codacy
+        if: env.CODACY_PROJECT_TOKEN != ''
         uses: codacy/codacy-coverage-reporter-action@v1
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
