@@ -22,6 +22,11 @@ jobs:
   test:
     name: indicators
     runs-on: ubuntu-latest
+    # Fork PRs get no secrets, so the Codacy upload cannot succeed for them.
+    # Skip it quietly; the unit test workflow verifies forks.
+    if: |
+      github.event_name != 'pull_request' ||
+      github.event.pull_request.head.repo.full_name == github.repository
 
     env:
       CODACY_PROJECT_TOKEN: ${{ secrets.CODACY_PROJECT_TOKEN }}
@@ -56,10 +61,7 @@ jobs:
           coverage run -m --source=stock_indicators pytest
           coverage xml
 
-      # Pull requests from forks get no repository secrets, so skip the
-      # upload there instead of failing the job after the tests pass.
       - name: Publish coverage to Codacy
-        if: env.CODACY_PROJECT_TOKEN != ''
         uses: codacy/codacy-coverage-reporter-action@v1
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
