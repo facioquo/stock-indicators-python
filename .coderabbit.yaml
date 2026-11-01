@@ -2,6 +2,15 @@
 inheritance: true
 
 reviews:
+
+  review_status: false
+  commit_status: false
+
+  auto_review:
+    enabled: false
+    auto_incremental_review: false
+    drafts: false
+
   auto_title_instructions: |
     Use conventional commit with short (<65 chars) sentence case Subject.  See Copilot instructions.
 
