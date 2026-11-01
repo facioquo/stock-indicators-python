@@ -68,16 +68,28 @@ class TestFractal:
         assert r.fractal_bull is None
 
     def test_window_span_keyword(self, quotes):
-        # Documented form: get_fractal(quotes, window_span=2, end_type=...)
-        results = indicators.get_fractal(quotes, window_span=2)
+        # Documented form: get_fractal(quotes, window_span=4, end_type=...).
+        # A non-default span, so an ignored keyword would change the result.
+        results = indicators.get_fractal(quotes, window_span=4)
 
         assert 502 == len(results)
-        assert 63 == len(list(filter(lambda x: x.fractal_bear is not None, results)))
-        assert 71 == len(list(filter(lambda x: x.fractal_bull is not None, results)))
+        assert 35 == len(list(filter(lambda x: x.fractal_bear is not None, results)))
+        assert 34 == len(list(filter(lambda x: x.fractal_bull is not None, results)))
 
-        r = results[3]
-        assert 215.17 == round(float(r.fractal_bear), 2)
-        assert r.fractal_bull is None
+        r = results[7]
+        assert r.fractal_bear is None
+        assert 212.53 == round(float(r.fractal_bull), 2)
+
+    def test_window_span_with_end_type_keyword(self, quotes):
+        results = indicators.get_fractal(quotes, window_span=2, end_type=EndType.CLOSE)
+        positional = indicators.get_fractal(quotes, 2, EndType.CLOSE)
+
+        assert 64 == len(list(filter(lambda x: x.fractal_bear is not None, results)))
+        assert 69 == len(list(filter(lambda x: x.fractal_bull is not None, results)))
+
+        for keyword_result, positional_result in zip(results, positional):
+            assert keyword_result.fractal_bear == positional_result.fractal_bear
+            assert keyword_result.fractal_bull == positional_result.fractal_bull
 
     def test_end_type_keyword_window_form(self, quotes):
         # end_type given as a keyword in the window-span form must not be
@@ -97,6 +109,32 @@ class TestFractal:
 
         assert 64 == len(list(filter(lambda x: x.fractal_bear is not None, results)))
         assert 69 == len(list(filter(lambda x: x.fractal_bull is not None, results)))
+
+    def test_end_type_keyword_asymmetric_form(self, quotes):
+        results = indicators.get_fractal(quotes, 4, 4, end_type=EndType.HIGH_LOW)
+        positional = indicators.get_fractal(quotes, 4, 4, EndType.HIGH_LOW)
+
+        for keyword_result, positional_result in zip(results, positional):
+            assert keyword_result.fractal_bear == positional_result.fractal_bear
+            assert keyword_result.fractal_bull == positional_result.fractal_bull
+
+    def test_window_span_conflicts_raise(self, quotes):
+        with pytest.raises(TypeError, match="window_span cannot be combined"):
+            indicators.get_fractal(quotes, 2, 3, window_span=4)
+        with pytest.raises(TypeError, match="window_span cannot be combined"):
+            indicators.get_fractal(quotes, window_span=2, right_span=2)
+        with pytest.raises(TypeError, match="window_span cannot be combined"):
+            indicators.get_fractal(quotes, left_span=2, window_span=2)
+
+    def test_end_type_conflict_raises(self, quotes):
+        with pytest.raises(ValueError, match="end_type was given twice"):
+            indicators.get_fractal(quotes, 2, EndType.CLOSE, end_type=EndType.HIGH_LOW)
+
+        # The same value given twice is not a conflict.
+        results = indicators.get_fractal(
+            quotes, 2, EndType.CLOSE, end_type=EndType.CLOSE
+        )
+        assert 64 == len(list(filter(lambda x: x.fractal_bear is not None, results)))
 
     def test_no_data(self, quotes):
         r = indicators.get_fractal([])
