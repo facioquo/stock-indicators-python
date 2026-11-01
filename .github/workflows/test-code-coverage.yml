@@ -28,19 +28,19 @@ jobs:
 
     steps:
       - name: Checkout source
-        uses: actions/checkout@v6
+        uses: actions/checkout@v7
         with:
           # Explicitly checkout PR code
           ref: ${{ github.event.pull_request.head.sha }}
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v5
+        uses: actions/setup-dotnet@v6
         with:
           dotnet-version: 10.x
           dotnet-quality: ga
 
       - name: Setup Python
-        uses: actions/setup-python@v6
+        uses: actions/setup-python@v7
         with:
           python-version: 3.13
           cache: "pip"
@@ -56,7 +56,10 @@ jobs:
           coverage run -m --source=stock_indicators pytest
           coverage xml
 
+      # Pull requests from forks get no repository secrets, so skip the
+      # upload there instead of failing the job after the tests pass.
       - name: Publish coverage to Codacy
+        if: env.CODACY_PROJECT_TOKEN != ''
         uses: codacy/codacy-coverage-reporter-action@v1
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
