@@ -18,6 +18,8 @@ jobs:
     steps:
       - name: Checkout source
         uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Lint markdown
         uses: DavidAnson/markdownlint-cli2-action@v25

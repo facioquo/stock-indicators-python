@@ -35,6 +35,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v7
         with:
+          persist-credentials: false
           # Explicitly checkout PR code
           ref: ${{ github.event.pull_request.head.sha }}
 

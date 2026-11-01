@@ -21,12 +21,15 @@ jobs:
   build:
     name: Create package 📦
     runs-on: ubuntu-latest
+    permissions:
+      contents: read
 
     steps:
 
     - name: Checkout source
       uses: actions/checkout@v7
       with:
+        persist-credentials: false
         fetch-tags: true
         fetch-depth: 0
 

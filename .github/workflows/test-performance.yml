@@ -27,6 +27,7 @@ jobs:
       - name: Checkout source
         uses: actions/checkout@v7
         with:
+          persist-credentials: false
           fetch-depth: 0
 
       - name: Setup .NET
