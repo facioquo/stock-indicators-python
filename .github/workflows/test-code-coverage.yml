@@ -22,8 +22,8 @@ jobs:
   test:
     name: indicators
     runs-on: ubuntu-latest
-    # Fork PRs get no secrets, so the Codacy upload cannot succeed for them.
-    # Skip it quietly; the unit test workflow verifies forks.
+    # Fork PRs get no repository secrets, so skip the job for them; the unit
+    # test workflow verifies forks.
     if: |
       github.event_name != 'pull_request' ||
       github.event.pull_request.head.repo.full_name == github.repository
@@ -62,7 +62,10 @@ jobs:
           coverage run -m --source=stock_indicators pytest
           coverage xml
 
+      # Dependabot PRs run with Dependabot secrets, not Actions secrets, so the
+      # token is empty there; skip only the upload and keep the coverage run.
       - name: Publish coverage to Codacy
+        if: env.CODACY_PROJECT_TOKEN != ''
         uses: codacy/codacy-coverage-reporter-action@v1
         with:
           project-token: ${{ secrets.CODACY_PROJECT_TOKEN }}
