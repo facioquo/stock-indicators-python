@@ -5,13 +5,13 @@ from typing_extensions import Self
 from stock_indicators._cslib import CsIEnumerable, CsIndicator, CsResultUtility
 from stock_indicators._cstypes import List as CsList
 from stock_indicators.exceptions import IndicatorCalculationError
-from stock_indicators.indicators.common.results import IndicatorResults
+from stock_indicators.indicators.common.results import IndicatorResults, verify_data
 
 
 class RemoveWarmupMixin:
     """IndicatorResults Mixin for remove_warmup_periods()."""
 
-    @IndicatorResults._verify_data
+    @verify_data
     def remove_warmup_periods(
         self: IndicatorResults, remove_periods: Optional[int] = None
     ) -> Self:
@@ -43,7 +43,7 @@ class RemoveWarmupMixin:
 class CondenseMixin:
     """IndicatorResults Mixin for condense()."""
 
-    @IndicatorResults._verify_data
+    @verify_data
     def condense(self: IndicatorResults) -> Self:
         """
         Removes non-essential records containing null values with unique consideration for this indicator.
