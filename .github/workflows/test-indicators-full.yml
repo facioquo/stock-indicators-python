@@ -27,26 +27,29 @@ jobs:
           # Primary testing on Ubuntu (free tier)
           - os: ubuntu-24.04-arm
             python-version: "3.8"
-            dotnet-version: "8.x"
+            dotnet-version: "8.0"
           - os: ubuntu-24.04-arm
             python-version: "3.10"
-            dotnet-version: "9.x"
+            dotnet-version: "9.0"
+          - os: ubuntu-24.04-arm
+            python-version: "3.12"
+            dotnet-version: "10.0"
           - os: ubuntu-24.04-arm
             python-version: "3.13"
-            dotnet-version: "10.x"
+            dotnet-version: "11.0"
 
           # Essential platform compatibility testing (reduced matrix)
           - os: windows-2025
             python-version: "3.12"
-            dotnet-version: "10.x"
+            dotnet-version: "11.0"
           - os: macos-15
             python-version: "3.13"
-            dotnet-version: "10.x"
+            dotnet-version: "11.0"
 
           # Legacy support verification
           - os: ubuntu-22.04
             python-version: "3.8"
-            dotnet-version: "8.x"
+            dotnet-version: "8.0"
 
     runs-on: ${{ matrix.os }}
     name: "Py${{ matrix.python-version }}/.NET${{ matrix.dotnet-version }} on ${{ matrix.os }}"
@@ -54,7 +57,7 @@ jobs:
     env:
 
       # identify configurations that post test reports
-      POST_REPORT: ${{ matrix.python-version == '3.12' && matrix.dotnet-version == '9.x' }}
+      POST_REPORT: ${{ matrix.os == 'ubuntu-24.04-arm' && matrix.dotnet-version == '11.0' }}
 
     steps:
       - name: Checkout source
@@ -63,10 +66,9 @@ jobs:
           persist-credentials: false
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v6
+        uses: ./.github/actions/setup-dotnet-runtime
         with:
-          dotnet-version: ${{ matrix.dotnet-version }}
-          dotnet-quality: ga
+          version: ${{ matrix.dotnet-version }}
 
       - name: Setup Python
         uses: actions/setup-python@v7
