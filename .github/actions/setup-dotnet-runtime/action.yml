@@ -1,0 +1,39 @@
+name: Setup .NET runtime
+description: >
+  Install a .NET version and make Python.NET load that runtime. Without a
+  runtime config, Python.NET loads the newest runtime installed on the runner,
+  whatever version setup-dotnet installed.
+
+inputs:
+  version:
+    description: Major and minor .NET version, such as "10.0"
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - name: Setup .NET
+      uses: actions/setup-dotnet@v6
+      with:
+        dotnet-version: ${{ inputs.version }}.x
+        dotnet-quality: ga
+
+    - name: Pin the Python.NET runtime
+      shell: bash
+      env:
+        DOTNET_VERSION: ${{ inputs.version }}
+      run: |
+        config="$RUNNER_TEMP/pythonnet.runtimeconfig.json"
+        cat > "$config" <<JSON
+        {
+          "runtimeOptions": {
+            "tfm": "net$DOTNET_VERSION",
+            "rollForward": "LatestPatch",
+            "framework": {
+              "name": "Microsoft.NETCore.App",
+              "version": "$DOTNET_VERSION.0"
+            }
+          }
+        }
+        JSON
+        echo "PYTHONNET_CORECLR_RUNTIME_CONFIG=$config" >> "$GITHUB_ENV"

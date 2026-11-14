@@ -22,6 +22,13 @@ from stock_indicators.indicators.common import Quote  # pre-initialized
 from stock_indicators.logging_config import configure_logging
 
 
+def pytest_report_header():
+    """Show the .NET runtime Python.NET loaded, since it may not be the one CI installed."""
+    from System import Environment
+
+    return f".NET runtime: {Environment.Version}"
+
+
 @pytest.fixture(scope="session", autouse=True)
 def setup_logging():
     configure_logging(debug=True)

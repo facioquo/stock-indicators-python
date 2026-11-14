@@ -26,23 +26,23 @@ jobs:
 
           # Primary testing on Ubuntu (free tier) with minimum supported .NET version
           - os: ubuntu-22.04
-            dotnet-version: "8.x"
+            dotnet-version: "8.0"
             python-version: "3.8"
 
           # Primary testing on Ubuntu (free tier) with newer configuration
           - os: ubuntu-24.04-arm
-            dotnet-version: "10.x"
+            dotnet-version: "11.0"
             python-version: "3.13"
             post-summary: true
 
           # Essential Windows compatibility testing (single config)
           - os: windows-2025
-            dotnet-version: "9.x"
+            dotnet-version: "9.0"
             python-version: "3.13"
 
           # Essential macOS compatibility testing (single config)
           - os: macos-15
-            dotnet-version: "9.x"
+            dotnet-version: "10.0"
             python-version: "3.13"
 
     runs-on: ${{ matrix.os }}
@@ -70,10 +70,9 @@ jobs:
           echo "✓ No debug logging settings found."
 
       - name: Setup .NET
-        uses: actions/setup-dotnet@v6
+        uses: ./.github/actions/setup-dotnet-runtime
         with:
-          dotnet-version: ${{ matrix.dotnet-version }}
-          dotnet-quality: ga
+          version: ${{ matrix.dotnet-version }}
 
       - name: Setup Python
         uses: actions/setup-python@v7
@@ -99,10 +98,9 @@ jobs:
 
       - name: Test indicators
         run: pytest -vr A tests --junitxml=test-results.xml
-        continue-on-error: true
 
       - name: Post test summary
         uses: test-summary/action@v2
-        if: ${{ matrix['post-summary'] == true }}
+        if: ${{ matrix['post-summary'] == true && always() }}
         with:
           paths: test-results.xml
