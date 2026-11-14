@@ -137,7 +137,10 @@ class TestPivotPoints:
         assert 239.9765 == round(float(r.s2), 4)
         assert 238.3898 == float(round(r.s3, 4))
         assert 233.6295 == round(float(r.s4), 4)
-        assert 244.7367 == round(float(r.r1), 4)
+        # R1 is exactly 244.73675, a 4-place rounding tie. The double that
+        # carries it lands on either side of the tie depending on the .NET
+        # runtime, so compare the full value instead of a rounded one.
+        assert float(r.r1) == pytest.approx(244.73675)
         assert 246.3235 == round(float(r.r2), 4)
         assert 247.91025 == round(float(r.r3), 5)
         assert 252.6705 == round(float(r.r4), 4)
