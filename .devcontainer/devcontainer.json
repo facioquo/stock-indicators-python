@@ -21,7 +21,7 @@
       "nvmVersion": "none"
     },
     "ghcr.io/devcontainers/features/github-cli:1": {},
-    "ghcr.io/devcontainers/features/ruby:1": {
+    "ghcr.io/devcontainers/features/ruby:2": {
       "version": "3.3"
     }
   },
