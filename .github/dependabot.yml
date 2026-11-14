@@ -1,15 +1,59 @@
-# Dependabot configuration
+# Monthly, grouped version updates: one pull request per ecosystem per month.
+# The seven-day cooldown lets a compromised or yanked release surface before it is proposed.
 version: 2
 updates:
-  - package-ecosystem: "pip"
-    directory: "/"
+  - package-ecosystem: pip
+    directory: /
     schedule:
-      interval: "monthly"
-  - package-ecosystem: "bundler"
-    directory: "/docs"
+      interval: monthly
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    groups:
+      pip:
+        patterns: ["*"]
+    commit-message:
+      prefix: build
+      include: scope
+
+  - package-ecosystem: bundler
+    directory: /docs
     schedule:
-      interval: "monthly"
-  - package-ecosystem: "github-actions"
-    directory: "/"
+      interval: monthly
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    groups:
+      bundler:
+        patterns: ["*"]
+    commit-message:
+      prefix: build
+      include: scope
+
+  - package-ecosystem: github-actions
+    directory: /
     schedule:
-      interval: "monthly"
+      interval: monthly
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    groups:
+      actions:
+        patterns: ["*"]
+    commit-message:
+      prefix: ci
+      include: scope
+
+  - package-ecosystem: devcontainers
+    directory: /
+    schedule:
+      interval: monthly
+    cooldown:
+      default-days: 7
+    open-pull-requests-limit: 5
+    groups:
+      devcontainers:
+        patterns: ["*"]
+    commit-message:
+      prefix: build
+      include: scope
