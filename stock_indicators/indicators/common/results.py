@@ -1,4 +1,5 @@
 from datetime import datetime as PyDateTime
+from functools import wraps
 from typing import Callable, Iterable, List, Optional, Type, TypeVar
 
 from stock_indicators._cslib import CsResultBase
@@ -28,6 +29,33 @@ class ResultBase:
 _T = TypeVar("_T", bound=ResultBase)
 
 
+def verify_data(func: Callable) -> Callable:
+    """Check whether `_csdata` can be passed to helper method."""
+
+    @wraps(func)
+    def wrapper(self, *args):
+        if self._csdata is None:
+            # Use a generic name when func.__name__ is not available
+            func_name = getattr(func, "__name__", "method")
+            raise ValueError(
+                f"Cannot {func_name}() after done() has been called. Call reload() first."
+            )
+
+        if not isinstance(self._csdata, Iterable) or len(self) < 1:
+            # Use a generic name when func.__name__ is not available
+            func_name = getattr(func, "__name__", "method")
+            raise ValueError(f"Cannot {func_name}() an empty result.")
+
+        if not issubclass(self._get_csdata_type(), CsResultBase):
+            raise TypeError(
+                "The data should be an instance of Skender.Stock.Indicators.ResultBase or its subclasses."
+            )
+
+        return func(self, *args)
+
+    return wrapper
+
+
 class IndicatorResults(List[_T]):
     """
     A base wrapper class for the list of results.
@@ -49,33 +77,7 @@ class IndicatorResults(List[_T]):
             raise ValueError("Cannot determine C# data type from empty results")
         return type(self[0]._csdata)
 
-    @staticmethod  # pylint: disable=no-self-argument
-    def _verify_data(func: Callable) -> Callable:
-        """Check whether `_csdata` can be passed to helper method."""
-
-        def verify_data(self, *args):
-            if self._csdata is None:
-                # Use a generic name when func.__name__ is not available
-                func_name = getattr(func, "__name__", "method")
-                raise ValueError(
-                    f"Cannot {func_name}() after done() has been called. Call reload() first."
-                )
-
-            if not isinstance(self._csdata, Iterable) or len(self) < 1:
-                # Use a generic name when func.__name__ is not available
-                func_name = getattr(func, "__name__", "method")
-                raise ValueError(f"Cannot {func_name}() an empty result.")
-
-            if not issubclass(self._get_csdata_type(), CsResultBase):
-                raise TypeError(
-                    "The data should be an instance of Skender.Stock.Indicators.ResultBase or its subclasses."
-                )
-
-            return func(self, *args)
-
-        return verify_data
-
-    @_verify_data
+    @verify_data
     def __add__(self, other: "IndicatorResults"):
         """Concatenate two IndicatorResults."""
         if not isinstance(other, IndicatorResults):
@@ -84,14 +86,14 @@ class IndicatorResults(List[_T]):
             list(self._csdata).__add__(list(other._csdata)), self._wrapper_class
         )
 
-    @_verify_data
+    @verify_data
     def __mul__(self, value: int):
         """Repeat IndicatorResults."""
         if not isinstance(value, int):
             raise TypeError("Can only multiply IndicatorResults by integer")
         return self.__class__(list(self._csdata).__mul__(value), self._wrapper_class)
 
-    @_verify_data
+    @verify_data
     def remove_warmup_periods(self, remove_periods: int) -> "IndicatorResults":
         """Remove a specific quantity of results from the beginning of the results list."""
         if not isinstance(remove_periods, int):
