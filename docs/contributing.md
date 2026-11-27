@@ -34,13 +34,13 @@ We have different places to take issues by its category.
 
 If you are reporting a bug or suspect a problem, please submit an issue with a detailed description of the problem + include steps to reproduce, code samples, and any reference materials.
 
-🔧 [Report bugs](https://github.com/facioquo/stock-indicators-python/issues/new?labels=bug&template=bug_report.md)
+🔧 [Report bugs](https://github.com/facioquo/stock-indicators-python/issues/new?labels=bug&template=bug_report.yml)
 
 ### Feature Request
 
 For new features, submit an issue with the `enhancement` label.
 
-💡 [Request features](https://github.com/facioquo/stock-indicators-python/issues/new?labels=enhancement&template=feature_request.md)
+💡 [Request features](https://github.com/facioquo/stock-indicators-python/issues/new?labels=enhancement)
 
 ## Project management
 
