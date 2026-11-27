@@ -38,7 +38,7 @@ If you are reporting a bug or suspect a problem, please submit an issue with a d
 
 ### Feature Request
 
-For new features, submit an issue with the `enhancement` label.
+For new features, submit a Feature Issue.
 
 💡 [Request features](https://github.com/facioquo/stock-indicators-python/issues/new?type=Feature)
 
