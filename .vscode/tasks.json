@@ -86,7 +86,7 @@
       "label": "Lint: Markdown files",
       "detail": "Run markdownlint over documentation",
       "type": "shell",
-      "command": "echo y | npx markdownlint-cli2",
+      "command": "pnpm dlx markdownlint-cli2",
       "group": "test",
       "problemMatcher": "$markdownlint"
     },
@@ -94,7 +94,7 @@
       "label": "Lint: Markdown files (fix)",
       "detail": "Auto-fix markdown formatting issues",
       "type": "shell",
-      "command": "echo y | npx markdownlint-cli2 --fix",
+      "command": "pnpm dlx markdownlint-cli2 --fix",
       "problemMatcher": "$markdownlint"
     },
     {

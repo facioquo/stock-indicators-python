@@ -39,9 +39,21 @@ jobs:
           ruby-version: 3.3
           bundler-cache: true # runs 'bundle install' and caches gems
 
-      - name: Install dependencies
+      # The repository has no package.json, so the step names its pnpm and Node.js.
+      - name: Setup pnpm and Node.js
+        uses: pnpm/setup@v3
+        with:
+          version: 12.23.0
+          runtime: node@lts
+          install: false
+
+      # Puppeteer's install script downloads the browser pa11y drives.
+      - name: Install pa11y-ci
+        working-directory: ${{ runner.temp }}
         run: |
-          npm install -g pa11y-ci
+          mkdir pa11y && cd pa11y && echo '{}' > package.json
+          pnpm add pa11y-ci pa11y --allow-build=puppeteer
+          echo "$PWD/node_modules/.bin" >> "$GITHUB_PATH"
 
       - name: Use 'localhost'
         uses: jacobtomlinson/gha-find-replace@v3
@@ -57,7 +69,7 @@ jobs:
         run: bundle exec jekyll serve --port 4000 --detach
 
       - name: Show environment
-        run: npx pa11y --environment
+        run: pa11y --environment
 
       - name: Test accessibility
         run: >
