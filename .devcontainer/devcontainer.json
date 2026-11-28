@@ -17,7 +17,7 @@
     },
     "ghcr.io/devcontainers/features/node:2": {
       "version": "lts",
-      "pnpmVersion": "none",
+      "pnpmVersion": "12.23.0",
       "nvmVersion": "none"
     },
     "ghcr.io/devcontainers/features/github-cli:1": {},
